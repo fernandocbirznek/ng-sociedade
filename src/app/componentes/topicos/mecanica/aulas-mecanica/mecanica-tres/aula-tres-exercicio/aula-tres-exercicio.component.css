@@ -1,0 +1,65 @@
+p {
+    text-align: justify;
+}
+
+.conteudo {
+    padding: 50px;
+}
+
+a:hover, a {
+    text-decoration: none;
+    color: black;
+}
+
+/* CONTEUDO */
+h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+    margin: 10px 0;
+    font-weight: 700;
+}
+
+.card-11 {
+    border: 2px solid #e07a5f;
+    background-color: #a7dbd8;
+    border-radius: 20px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.definicao {
+    font-size: 1.3em;
+    text-align: center;
+    padding: 8px 3px;
+    color: white;
+    background-color: #fa6900;
+    border-radius: 20px;
+}
+
+/* COLLAPSE */
+.resposta {
+    padding: 10px;
+    font-size: 15px;
+    width: 98%;
+    height: 300px;
+    overflow: auto;
+    margin: 5px 0 0 5px;
+}
+
+.resposta-fundo {
+    background-color: #e6dc84;
+    border-radius: 10px;
+}
+
+.botao-resposta {
+    background-color: #E49960;
+    border-radius: 8px;
+    border-color: #793F0D;
+    color: black;
+    font-size: 15px;
+    padding: 5px;
+    transition: 1s;
+}
+
+.botao-resposta:hover {
+    background-color: #6E7640;
+}

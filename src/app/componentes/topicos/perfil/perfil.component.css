@@ -1,0 +1,64 @@
+.container-perfil {
+    position: relative;
+}
+
+.titulo {
+    font-size: 30px;
+    font-weight: 700;
+    margin: 15px 0 30px 0;
+}
+
+.deslogar-conta {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 15px;
+    background-color: bisque;
+    border-radius: 10px;
+}
+
+.deslogar-conta:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 0px 2px black;
+}
+
+.deletar-conta {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 14px;
+}
+
+.deletar-conta:hover {
+    color: red;
+    cursor: pointer;
+}
+
+.container-aulas {
+    border-radius: 20px;
+    border: 2px solid black;
+    background-color: #DBCFC3;
+    padding: 20px;
+    min-height: 400px;
+}
+
+.titulo-aulas {
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.aula {
+    font-size: 20px;
+    margin: 5px 0;
+    cursor: pointer;
+}
+
+.aula:hover {
+    color: rgb(42, 0, 230);
+}
+
+.container-equacoes {
+    margin: 50px 0;
+    width: 90%;
+}

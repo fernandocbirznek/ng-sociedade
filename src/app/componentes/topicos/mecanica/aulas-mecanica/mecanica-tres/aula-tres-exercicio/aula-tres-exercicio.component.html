@@ -1,0 +1,309 @@
+<div class="conteudo">
+    <h1><span class="conteudo-titulo">Exercícios</span></h1>
+    <div fxLayout="column" fxLayoutAlign="center center" class="card-11">
+        <h2>Movimento relativo</h2>
+        <div fxLayout="row" fxLayoutAlign="space-between start">
+            <div fxFlex="48%">
+                <h3>Exercício 1</h3>
+                <p> Enquanto você lê isso, se estiver sentado, o quão rápido você está em relação ao solo? E se você estiver dentro de um ônibus que está em movimento, quão rápido você está em relação ao solo?
+                    Se estiver sentado, o quão rápido você está em relação ao sol?
+                </p>
+                <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="resposta-fundo">
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>Clique para</mat-panel-title>
+                        <mat-panel-description>{{panelOpenState ? 'Fechar' : 'Abrir'}}</mat-panel-description>
+                      </mat-expansion-panel-header>
+                      <div class="card-11">
+                        <div class="resposta">
+                            <p>Para respondemos essa questão devemos lembrar um conceito muito importante, o referencial. Qual é o referencial que estamos tomando por base. Para responder a primeira 
+                                pergunta temos que análisar que o referencial nesse caso é o solo, o quão rápido estamos em relação ao solo. Como vimos em nossos estudos para termos uma rapidez é preciso um 
+                                descolamento, então se num intervalo de tempo não ocorreu um deslocamento, então não temos rapidez.
+                            </p>
+                            <p>Em resumo, se não houve uma variação na posição num intervalo de tempo, então não ocorreu rapidez em relação ao solo.</p>
+                            <p>No segundo caso, fixando o referencial no solo também, temos que a rapidez vai se igual a rapidez do ônibus. Apesar de você não se deslocar, ficar sempre sentado, que está movendo você é o ônibus,
+                                é ele que está fazendo você ter um deslocamento num intervalo de tempo.
+                            </p>
+                            <p>O terceiro caso é parecido com o segundo, precisamos apenas abstrair um pouco a situação. Em vez de ser o ônibus imaginaremos que é a Terra, e o Sol é o solo. Mesmo que estejamos aparentemente sentamos sem nos movermos, precisamos análisar 
+                                que o nosso referencial é o Sol e devido a Terra se mover em volta dele, nós estamos nos movendo em relação ao Sol também, pois a Terra está nos "carregando".
+                            </p>
+                        </div>
+                      </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+            <div fxFlex="48%">
+                <h3>Exercício 2</h3>
+                <p> Você está sentado num banco de ônibus que está em movimento. Você pode afirmar que existe algo em repouso em relação a você? Por quê?
+                </p>
+                <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="resposta-fundo">
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>Clique para</mat-panel-title>
+                        <mat-panel-description>{{panelOpenState ? 'abrir' : 'fechar'}}</mat-panel-description>
+                      </mat-expansion-panel-header>
+                      <div class="card-11">
+                        <div class="resposta">
+                            <p>
+                                Precisamos saber quem é o referencial, nesse caso será você mesmo que estará sentado no banco do ônibus. Para afirmar que algo está em repouso em relação à você, precisamos lembrar que para estar em repouso 
+                                a distância desse "algo" em relação à você não vai variar com o tempo, ou seja, nem vai se afastar ou se aproximar.
+                            </p>
+                            <p>Alguns exemplos que estarão em repouso em relação a você seria: o motorista do ônibus e os bancos do ônibus.</p>
+                        </div>
+                      </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between start">
+            <div fxFlex="48%">
+                <h3>Exercício 3</h3>
+                <p> Um astronauta está vagando pelo espaço quando observa um outro astronauta vagando passar por ele e vai indo embora, quem está em movimento? Existe alguma maneira de afirmar que alguém está em repouso?
+                </p>
+                <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="resposta-fundo">
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>Clique para</mat-panel-title>
+                        <mat-panel-description>{{panelOpenState ? 'Fechar' : 'Abrir'}}</mat-panel-description>
+                      </mat-expansion-panel-header>
+                      <div class="card-11">
+                        <div class="resposta">
+                            <p>
+                                Essa é uma questão mais complexa, precisamos abstrair bastante. Num primeiro momento precisamos imaginar apenas os dois astronautas e focar no primeiro astronauta. Ele vai observar o segundo astronaurata 
+                                se aproximar, passar por ele e ir se afastando cada vez mais, para ele o segundo astronauta é que está em movimento. Porém se focarmos no segundo astronauta, é ele quem vai ver o primeiro 
+                                astronauta se aproximar, passar por ele e se afastar cada vez mais. Para afirmarmos se alguem está em repouso seria necessário mais um referencial para comparação.
+                            </p>
+                            <p>
+                                Por exemplo, o primeiro astronauta estaria em repouso em relação a esse novo referencial, mas o segundo não, estaria em movimento, agora já podemos afirmar algo de quem está em repouso e quem está em movimento.
+                                Porém, cairemos num mesmo paradoxo, e se esse novo referencial está em movimento junto ao primeiro e quem está parado é o segundo astronauta. Isso nós leva a uma questão de profunda reflexão, será que existe um referencial absoluto?
+                                Pesquise sobre o assunto.
+                            </p>
+                        </div>
+                      </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+            <div fxFlex="48%">
+                <h3>Exercício 4</h3>
+                <p> João observa Magali caminhar sobre uma prancha com rodinhas, na prancha existe um velocimetro e mostra que está com rapidez de 10 km/h para a direita. Responda as questões:
+                    A) Se Magali está parada na prancha, qual é a velocidade de Magali em relação ao solo? B) se Magali se move 3 km/h para a esquerda em relação a prancha, qual é a velocidade dela em 
+                    relação ao solo? C) E se ela se move 3 km/h para a direita, qual é a velocidade dela em relação ao solo?
+                </p>
+                <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="resposta-fundo">
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>Clique para</mat-panel-title>
+                        <mat-panel-description>{{panelOpenState ? 'abrir' : 'fechar'}}</mat-panel-description>
+                      </mat-expansion-panel-header>
+                      <div class="card-11">
+                        <div class="resposta">
+                            <p>
+                                Para a letra A, assumindo que o referencial é o solo, temos que a velocidade da Magali será a mesma da prancha, pois a prancha está carregando ela e assim sua posição 
+                                está variando ao decorrer do tempo.
+                                Para a letra B temos que a prancha se move com rapidez de 10 km/h para a direita e a Magali 3 km/h para a esquerda em relação a prancha. Imagine que se não existisse a prancha a 
+                                Magali se moveria a 3 km/h para a esquerda em relação ao solo. Assim sendo, João que observa Magali vai perceber que ela se move para a direita com rapidez de 7 km/h.
+                            </p>
+                            <p>
+                                Para a letra C teremos que Magali se move a 13km/h para a direita segundo João que está parado no solo.
+                            </p>
+                        </div>
+                      </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between start">
+            <div fxFlex="48%">
+                <h3>Exercício 5</h3>
+                <p>Homem de ferro está em seu carro numa rodovia com várias faixas, eles está com velocidade de 80 km/h, quando percebe o Hulk passar por ele, no carro de Hulk a velocidade está marcando 100 km/h. 
+                    Segundo o Homem de ferro, com que velocidade Hulk passa por ele? Para o Homem aranha que está sentado vendo tudo isso, qual é a velocidade de cada um deles?
+                </p>
+                <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="resposta-fundo">
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>Clique para</mat-panel-title>
+                        <mat-panel-description>{{panelOpenState ? 'Fechar' : 'Abrir'}}</mat-panel-description>
+                      </mat-expansion-panel-header>
+                      <div class="card-11">
+                        <div class="resposta">
+                            <p>
+                                Para o Homem de ferro o Hulk passa por ele com velocidade de 20 km/h, pois o referencial nesse caso está no Homem de ferro e se traçarmos um vetor posição para a posição do Hulk ele vai variar 
+                                20 km a cada hora.
+                                Já para o Homem aranha ele vai observar que os dois seguem a velocidade relatada no problema, pois ele está parado no solo.
+                            </p>
+                        </div>
+                      </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+            <div fxFlex="48%">
+                <h3>Exercício 6</h3>
+                <p> Você está dentro de um ônibus que está com uma velocidade de 50 km/h, você tira uma bolinha do bolso e a joga verticalmente para cima e mantem sua mão no mesmo local de lançamento. O que vai acontecer 
+                    com a bolinha, cairá na sua mão ou cairá para trás da sua mão ou na frente da sua mão? Supondo que o ônibus não freia nem acelere, permaneça com uma velocidade constante.
+                </p>
+                <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="resposta-fundo">
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>Clique para</mat-panel-title>
+                        <mat-panel-description>{{panelOpenState ? 'abrir' : 'fechar'}}</mat-panel-description>
+                      </mat-expansion-panel-header>
+                      <div class="card-11">
+                        <div class="resposta">
+                            <p>
+                                A bolinha vai cair exatamente no mesmo lugar onde ocorreu o lançamento. Observe que tanto você quanto a bolinha estaram com a mesma velocidade do ônibus, mesmo se você jogar essa bolinha para cima ela 
+                                vai continuar com a mesma velocidade do ônibus (claro que desconsiderando resistência do ar). Caso o ônibus freiasse ou acelerasse a bolinha iria cair depois ou antes da mão, pois você sofreria variação na 
+                                velocidade enquanto a bolinha permaneceria com a velocidade inicial que estava o ônibus.
+                            </p>
+                        </div>
+                      </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+        </div>
+    </div>
+
+    <div fxLayout="column" fxLayoutAlign="center center" class="card-11">
+        <h2>Rapidez</h2>
+        <div fxLayout="row" fxLayoutAlign="space-between start">
+            <div fxFlex="48%">
+                <h3>Exercício 1</h3>
+                <p> Batman está sentado um banco de praça e observar um carro se deslocar, por curiosidade Batman decide descobrir a rapidez do carro. Ele sabe que a distância entre dois postes é de 50 metros,
+                    assim sendo ele precisa cronometrar o tempo que o carro leva para percorrer essa distância, ao utilizar seu relógio ele constata que o carro levou 5 segundos. Qual é a rapidez do carro?
+                </p>
+                <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="resposta-fundo">
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>Clique para</mat-panel-title>
+                        <mat-panel-description>{{panelOpenState ? 'Fechar' : 'Abrir'}}</mat-panel-description>
+                      </mat-expansion-panel-header>
+                      <div class="card-11">
+                        <div class="resposta">
+                            <p>Resposta
+                            </p>
+                        </div>
+                      </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+            <div fxFlex="48%">
+                <h3>Exercício 2</h3>
+                <p> Homem aranha vai viajar para outra cidade para uma competição da escola. Essa cidade se encontra a 96 km de distância da qual ele ira partir. Se a rapidez média de um ônibus de viagem é de 
+                    64 km/h, quanto tempo ele levará para chegar até a cidade que ocorrerá a competição?
+                </p>
+                <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="resposta-fundo">
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>Clique para</mat-panel-title>
+                        <mat-panel-description>{{panelOpenState ? 'abrir' : 'fechar'}}</mat-panel-description>
+                      </mat-expansion-panel-header>
+                      <div class="card-11">
+                        <div class="resposta">
+                            <p> Resposta</p>
+                        </div>
+                      </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between start">
+            <div fxFlex="48%">
+                <h3>Exercício 3</h3>
+                <p> Hulk está andando de bicicleta e sua rapidez é de 25 km/h. Se ele anda por 2 horas e 20 minutos, quantos metros ele terá percorrido de bicicleta?
+                </p>
+                <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="resposta-fundo">
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>Clique para</mat-panel-title>
+                        <mat-panel-description>{{panelOpenState ? 'Fechar' : 'Abrir'}}</mat-panel-description>
+                      </mat-expansion-panel-header>
+                      <div class="card-11">
+                        <div class="resposta">
+                            <p>Resposta
+                            </p>
+                        </div>
+                      </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+            <div fxFlex="48%">
+                <h3>Exercício 4</h3>
+                <p> Doutor Estranho ficou curioso para saber quantas voltas uma particula de luz daria em torno da Terra em 30 segundos. Sabe-se que o raio da Terra é de 6371 km e que a velocidade 
+                    da luz é de 300000 km/h. Quantas voltas a luz percorreu em torno da Terra?
+                </p>
+                <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="resposta-fundo">
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>Clique para</mat-panel-title>
+                        <mat-panel-description>{{panelOpenState ? 'abrir' : 'fechar'}}</mat-panel-description>
+                      </mat-expansion-panel-header>
+                      <div class="card-11">
+                        <div class="resposta">
+                            <p> Resposta</p>
+                        </div>
+                      </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between start">
+            <div fxFlex="48%">
+                <h3>Exercício 5</h3>
+                <p> Usain Bold detem o recorde mundial de corrida dos 100 metros, seu tempo foi de 9,58 segundos. Pensando numa rapidez média, qual foi a sua rapidez nesse intervalo de tempo?
+                </p>
+                <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="resposta-fundo">
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>Clique para</mat-panel-title>
+                        <mat-panel-description>{{panelOpenState ? 'Fechar' : 'Abrir'}}</mat-panel-description>
+                      </mat-expansion-panel-header>
+                      <div class="card-11">
+                        <div class="resposta">
+                            <p>Resposta
+                            </p>
+                        </div>
+                      </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+            <div fxFlex="48%">
+                <h3>Exercício 6</h3>
+                <p> 
+                
+                </p>
+                <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="resposta-fundo">
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>Clique para</mat-panel-title>
+                        <mat-panel-description>{{panelOpenState ? 'abrir' : 'fechar'}}</mat-panel-description>
+                      </mat-expansion-panel-header>
+                      <div class="card-11">
+                        <div class="resposta">
+                            <p> Resposta</p>
+                        </div>
+                      </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-11">
+        <h2>Velocidade</h2>
+        <p> Na seção anterior falamos sobre a rapidez, ela nos diz o quão rapido é alguma coisa em relaçao a um referencial. Mas podemos pensar, isso que vimos não é 
+            velocidade? Esses dois conceitos são muito parecidos, no uso cotidiano elas podem ser sinônimos, porém na Física elas são diferentes. Esses dois conceitos 
+            informam o quão rápido é alguma coisa, mas o conceito de velocidade nos da mais duas informações, a direção e o sentido.
+        </p>
+    </div>
+
+    <div class="card-11">
+        <h2>Velocidade Média</h2>
+        <div>
+            <div>
+                <h3>Exercício 1</h3>
+                <p> Vimos na seção anterior como podemos calcular a velocidade vetorial de um corpo. Repare que o cálculo da velocidade é feito entre a variação entre duas
+                    posições num intervalo de tempo. 
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

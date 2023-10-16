@@ -1,0 +1,73 @@
+.container {
+    margin: auto ;
+    margin-top: 20px;
+}
+
+a:hover, a {
+    text-decoration: none;
+    color: black;
+}
+
+.titulo {
+    letter-spacing: 2px;
+    font-weight: 700;
+    font-size: 30px;
+    background-color: #e07a5f;
+    border-radius: 20px;
+    padding: 15px 30px;
+    margin-bottom: 20px;
+}
+
+.sub-titulo {
+    margin: 10px 0;
+    font-size: 24px;
+    font-weight: 700;
+    border-bottom: 2px solid #e07a5f;
+}
+
+.paragrafo {
+    font-weight: 500;
+    padding: 15px 30px;
+    font-size: 16px;
+    text-align: justify;
+    line-height: 26px;
+}
+
+.container-descricao-topico {
+    border: 2px solid #e07a5f;
+    background-color: #abb6c8;
+    border-radius: 20px;
+    min-height: 350px;
+}
+
+.imagem {
+    width: 70px;
+    height: auto;
+    background-size: cover;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin: 0 10px;
+}
+
+.container-divisao {
+    border: 2px solid #e07a5f;
+    background-color: #5fabd4;
+    padding-bottom: 5px;
+    border-radius: 20px;
+    margin: 20px 10px;
+    box-shadow: 6px 6px 6px rgba(128, 128, 128, 0.658);
+    min-height: 400px;
+}
+
+.container-cards {
+    width: 100%;
+}
+
+.tamanho-horizontal {
+    width: 100%;
+}
+
+.descricao {
+    text-align: justify;
+    margin: 15px 10px 20px 10px;
+}

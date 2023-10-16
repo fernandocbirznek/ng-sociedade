@@ -1,0 +1,18 @@
+.imagem {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    background-image: url(../assets/imagens/fundo-2.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: bisque;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    margin-top: 40px;
+    background-color: #F3E8DC;
+    border-radius: 10px;
+    padding: 10px;
+}

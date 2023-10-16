@@ -1,0 +1,9 @@
+<div fxLayoutAlign="end end" class="fechar" (click)="fecharModal()">X</div>
+<div fxLayout="column" fxLayoutAlign="center center">
+    <div>Deseja realmente excluir?</div>
+    <div> {{ data.nome }} </div>
+    <div fxLayout="row" fxLayoutAlign="space-around center" class="container-botao">
+        <div fxLayoutAlign="center center" class="botao-confirmar" (click)="confirmarExcluir()">Sim</div>
+        <div fxLayoutAlign="center center" class="botao-cancelar" (click)="fecharModal()">Não</div>
+    </div>
+</div>

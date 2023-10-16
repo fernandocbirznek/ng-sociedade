@@ -1,0 +1,60 @@
+<div class="container-header" *ngIf="this.telaInicial">
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+        <div fxFlex="45%" fxLayout="column" fxLayoutAlign="center center">
+            <h1 class="titulo">A Sociedade da Física</h1>
+            <h2>Compreendendo a natureza desde a sua origem</h2>
+            <img class="logo-site" src="../../../assets/imagens/header/logosite.png">
+        </div>
+        <div fxFlex="26%" fxLayout="column" fxLayoutAlign="center center">
+            <h2>Home</h2>
+            <img class="img-topico" [src]="imagem">
+            <p class="paragrafo-topico">
+                {{ this.resumoTopico }}
+            </p>
+        </div>
+        <div fxFlex="20%">
+            <div class="menu-navegacao" fxLayout="column" fxLayoutAlign="center center">
+                <a routerLink="" (click)="mudarCabecalho(true)">Home</a>
+                <a (mouseover)="mudaFoto('1')" (mouseout)="mudaFoto('0')" (click)="mudarCabecalho(false)"
+                    routerLink="/mecanica">Mecânica</a>
+                <a (mouseover)="mudaFoto('2')" (mouseout)="mudaFoto('0')" (click)="mudarCabecalho(false)"
+                    routerLink="/termodinamica">Termodinâmica</a>
+                <a (mouseover)="mudaFoto('3')" (mouseout)="mudaFoto('0')" (click)="mudarCabecalho(false)"
+                    routerLink="/ondulatoria">Ondulatória</a>
+                <a (mouseover)="mudaFoto('4')" (mouseout)="mudaFoto('0')" (click)="mudarCabecalho(false)"
+                    routerLink="/eletormagnetismo">Eletromagnetismo</a>
+                <a (mouseover)="mudaFoto('5')" (mouseout)="mudaFoto('0')" (click)="mudarCabecalho(false)"
+                    routerLink="/fisicamoderna">Física Moderna</a>
+                <a (mouseover)="mudaFoto('6')" (mouseout)="mudaFoto('0')" (click)="mudarCabecalho(false)"
+                    routerLink="/matematica">Matemática</a>
+                <a (mouseover)="mudaFoto('7')" (mouseout)="mudaFoto('0')" (click)="mudarCabecalho(false)"
+                    routerLink="/especiais">Especiais</a>
+                <a (mouseover)="mudaFoto('8')" (mouseout)="mudaFoto('0')" (click)="mudarCabecalho(false)"
+                    routerLink="/vestibular">Exercícios vestibulares</a>
+                <a (click)="abrirDialogo()">Criar Conta / Login</a>
+                <a routerLink="/forum" (click)="mudarCabecalho(false)">Fórum</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="!this.telaInicial" class="menu-navegacao menu-navegacao-topico" fxLayoutAlign="center center">
+    <a routerLink="" (click)="mudarCabecalho(true)">Home</a>
+    <a (mouseover)="mudaFoto('1')" (mouseout)="mudaFoto('0')" (click)="mudarCabecalho(false)"
+        routerLink="/mecanica">Mecânica</a>
+    <a (mouseover)="mudaFoto('2')" (mouseout)="mudaFoto('0')" (click)="mudarCabecalho(false)"
+        routerLink="/termodinamica">Termodinâmica</a>
+    <a (mouseover)="mudaFoto('3')" (mouseout)="mudaFoto('0')" (click)="mudarCabecalho(false)"
+        routerLink="/ondulatoria">Ondulatória</a>
+    <a (mouseover)="mudaFoto('4')" (mouseout)="mudaFoto('0')" (click)="mudarCabecalho(false)"
+        routerLink="/eletormagnetismo">Eletromagnetismo</a>
+    <a (mouseover)="mudaFoto('5')" (mouseout)="mudaFoto('0')" (click)="mudarCabecalho(false)"
+        routerLink="/fisicamoderna">Física Moderna</a>
+    <a (mouseover)="mudaFoto('6')" (mouseout)="mudaFoto('0')" (click)="mudarCabecalho(false)"
+        routerLink="/matematica">Matemática</a>
+    <a (mouseover)="mudaFoto('7')" (mouseout)="mudaFoto('0')" (click)="mudarCabecalho(false)"
+        routerLink="/especiais">Especiais</a>
+    <a (mouseover)="mudaFoto('8')" (mouseout)="mudaFoto('0')" (click)="mudarCabecalho(false)"
+        routerLink="/vestibular">Exercícios vestibulares</a>
+    <a (click)="abrirDialogo()">Criar Conta</a>
+</div>

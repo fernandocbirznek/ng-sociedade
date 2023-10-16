@@ -1,0 +1,1 @@
+export * from './aula-tres-exercicio.component';

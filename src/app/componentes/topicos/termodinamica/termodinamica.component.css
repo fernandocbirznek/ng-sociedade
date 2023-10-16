@@ -1,0 +1,180 @@
+.container {
+    margin: auto ;
+    margin-top: 20px;
+}
+
+a:hover, a {
+    text-decoration: none;
+    color: black;
+}
+
+.titulo {
+    letter-spacing: 2px;
+    font-weight: 700;
+    font-size: 30px;
+    background-color: red;
+    border-radius: 20px;
+    padding: 15px 30px;
+    margin-bottom: 20px;
+}
+
+.sub-titulo {
+    margin: 10px 0;
+    font-size: 24px;
+    font-weight: 700;
+    border-bottom: 2px solid red;
+}
+
+.paragrafo {
+    font-weight: 500;
+    padding: 15px 30px;
+    font-size: 16px;
+    text-align: justify;
+    line-height: 26px;
+}
+
+.container-descricao-topico {
+    border: 2px solid red;
+    background-color: #abb6c8;
+    border-radius: 20px;
+    min-height: 350px;
+}
+
+.imagem {
+    width: 90%;
+    height: auto;
+    background-size: cover;
+}
+
+.container-divisao {
+    border: 2px solid red;
+    background-color: #5fabd4;
+    padding-bottom: 5px;
+    border-radius: 20px;
+    margin: 20px auto;
+    box-shadow: 6px 6px 6px rgba(128, 128, 128, 0.658);
+    min-height: 400px;
+}
+
+.aulas-titulo {
+    font-weight: 700;
+    border-radius: 20px;
+    display: inline-block;
+    margin: 0 auto;
+    padding: 10px 20px;
+}
+
+.card-6 h4 {
+    border-bottom: 2px solid red;
+    padding-bottom: 10px;
+}
+
+.card-11 {
+    border: 2px solid red;
+    background-color: #a7dbd8;
+    border-radius: 20px;
+    margin: 20px auto;
+}
+
+.card-aula {
+    border: 2px solid red;
+    background-color: #f4b076;
+    border-radius: 20px;
+    margin: 20px;
+    box-shadow: 6px 6px 6px rgba(128, 128, 128, 0.658);
+    height: 200px;
+    width: 300px;
+    padding-top: 20px;
+}
+
+.card-aula-paragrafo {
+    margin: 0;
+    padding: 0;
+}
+
+.card-aula-titulo {
+    border: 1px solid black;
+    background-color: rgb(106, 199, 30);
+    padding: 4px 15px;
+    border-radius: 20px;
+    display: inline-block;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.card-aula-titulo:hover {
+    background-color: rgb(76, 141, 23);
+    color: white;
+}
+
+.divisão-cards {
+    border-right: 2px solid red;
+}
+
+/* TAGS */
+.tags {
+    border: 1px solid rgb(144, 144, 214);
+    border-radius: 20px;
+    background-color: cornflowerblue;
+    padding: 8px;
+    display: inline-block;
+    font-weight: 500;
+}
+
+.tags:hover, .tags a:hover {
+    background-color: rgb(144, 144, 214);
+    color: white;
+    cursor: pointer;
+}
+
+
+/* CONTAINER PAGINAÇÃO */
+
+.container-cards {
+    flex-wrap: wrap;
+}
+
+.container-aulas {
+    height: auto;
+    overflow-x: hidden;
+}
+
+.flex-cards {
+    display: flex;
+    flex-wrap: wrap;
+    width: 900px;
+}
+
+.card-aulas {
+    position: relative;
+}
+
+.botao-config {
+    background-color: #AC92EC;
+    border-radius: 100%;
+    height: 50px;
+    width: 50px;
+    font-size: 30px;
+    font-weight: bolder;
+    border: 3px solid #233A4E;
+}
+
+.botao-config:hover {
+    background-color: #967ADC;
+    color: white;
+}
+
+.opcoes {
+    text-align: center;
+}
+
+.opcao {
+    background-color: chocolate;
+    padding: 1px 13px;
+    margin: 0 10px;
+    border-radius: 100px;
+}
+
+.opcao-um {
+    background-color: crimson;
+}

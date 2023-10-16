@@ -1,0 +1,17 @@
+.container-footer {
+    border-top: 2px solid #cccccc;
+    padding: 10px;
+}
+
+.botao-equipe {
+    border-radius: 5px;
+    border: 2px solid black;
+    background-color: bisque;
+    font-size: 15px;
+    cursor: pointer;
+    padding: 9px;
+}
+
+.botao-equipe:hover {
+    background-color: antiquewhite;
+}

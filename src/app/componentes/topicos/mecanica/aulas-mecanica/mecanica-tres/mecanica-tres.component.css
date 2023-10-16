@@ -1,0 +1,79 @@
+p {
+    text-align: justify;
+}
+
+.conteudo {
+    padding: 50px;
+}
+
+a:hover, a {
+    text-decoration: none;
+    color: black;
+}
+
+/* CONTEUDO */
+h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+    margin: 10px 0;
+    font-weight: 700;
+}
+
+.card-11 {
+    border: 2px solid #e07a5f;
+    background-color: #a7dbd8;
+    border-radius: 20px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.definicao {
+    font-size: 1.3em;
+    text-align: center;
+    padding: 8px 3px;
+    color: white;
+    background-color: #fa6900;
+    border-radius: 20px;
+}
+
+.conceito {
+    font-weight: 700;
+    color: rgb(189, 122, 22);
+    border: 1px solid rgb(39, 187, 179);
+    background-color: cornsilk;
+    padding: 2px 10px;
+    border-radius: 20px;
+}
+
+.borda {
+    border: 2px solid blue;
+}
+
+.links-problemas {
+    padding: 8px;
+    width: 160px;
+    border-radius: 10px;
+    background-color: #b1722b;
+    text-align: center;
+}
+
+.links-problemas:hover {
+    background-color: #946024;
+    color: white;
+    cursor: pointer;
+}
+
+/* IMAGEM */
+.img {
+    max-width: 100%;
+    border-radius: 20px;
+    margin: 15px 0;
+}
+
+.img-texto {
+    max-width: 100%;
+}
+
+.credito {
+    font-size: 0.7em;
+    text-align: center;
+}

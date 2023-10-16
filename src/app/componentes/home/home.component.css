@@ -1,0 +1,106 @@
+.container-home {
+    margin-top: 20px;
+}
+
+.paragrafo-geral {
+    margin-left: 2em;
+}
+
+.postagens-titulo {
+    padding: 10px 0;
+    font-weight: bolder;
+    font-size: 20px;
+    border-bottom: 2px solid black;
+}
+
+.postagens {
+    background-color: #FFCCB6;
+    border: 2px solid black;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgba(131, 131, 131, 0.589);
+    padding: 0 10px 10px 10px;
+}
+
+.container-tags {
+    margin-bottom: 20px;
+}
+
+.postagem-geral {
+    margin-left: 20px;
+}
+
+.container-ultimas-postagens {
+    width: 100%;
+    border-bottom: 2px solid black;
+}
+
+.ultimas-postagens {
+    width: 100%;
+    border-bottom: 2px dotted black;
+}
+
+.postagem-texto {
+    margin-top: 5px;
+    font-size: 0.8em;
+}
+
+.tag {
+    margin: 5px 0;
+}
+
+.tags {
+    font-size: 0.7em;
+    border: 1px solid rgb(144, 144, 214);
+    border-radius: 20px;
+    background-color: cornflowerblue;
+    padding: 3px 5px;
+    margin: 0 2px;
+    display: inline-block;
+}
+
+.tags:hover {
+    background-color: rgb(144, 144, 214);
+    color: white;
+    cursor: pointer;
+}
+
+.postagem-geral-conteudos {
+    margin-bottom: 20px;
+    height: auto;
+}
+
+.topicos {
+    color: #007bff;
+    font-weight: 550;
+    font-size: 16px;
+    padding: 6px 0px;
+    border-bottom: 2px dotted black;
+    word-break: break-all;
+}
+
+.topicos a {
+    text-decoration: none;
+}
+
+.topicos a:hover {
+    color: #007bffc4;
+}
+
+/* CONTEUDO GERAL */
+
+.postagem-geral-card {
+    text-align: center;
+    font-size: 0.9em;
+    margin: 0 auto;
+    padding: 10px;
+    border: 2px solid #FBC78D;
+    background-color: #A8DEE0;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgba(131, 131, 131, 0.589);
+    min-height: 300px;
+}
+
+.postagem-geral-card-paragrafo {
+    line-height: 1.5;
+    padding-top: 10px;
+}
