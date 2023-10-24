@@ -24,7 +24,11 @@ import {
 } from './componentes';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
-import { ManipularContaModule } from './store';
+
+import {
+  ManipularContaModule, 
+  NoticiaModule
+} from './store';
 
 @NgModule({
   declarations: [
@@ -66,6 +70,7 @@ import { ManipularContaModule } from './store';
     MatSnackBarModule,
     HttpClientModule,
     ManipularContaModule,
+    NoticiaModule,
     StoreModule.forRoot([]),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),

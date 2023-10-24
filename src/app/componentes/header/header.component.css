@@ -1,10 +1,5 @@
 .container-header {
     border-bottom: 2px solid #cccccc;
-    padding: 10px;
-}
-
-.titulo {
-    font-size: 48px;
 }
 
 .logo-site {
@@ -22,6 +17,11 @@
 
 .paragrafo-topico {
     font-size: 18px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
 
 .menu-navegacao {
@@ -36,7 +36,7 @@
 
 .menu-navegacao a {
     background-color: rgb(175, 84, 187);
-    width: 96%;
+    width: 90%;
     padding: 8px;
     margin: 10px;
     border-radius: 20px;
@@ -48,10 +48,6 @@
 
 .menu-navegacao a:hover {
     box-shadow: 0 0 0 2px black;
-}
-
-.menu-navegacao-topico {
-    flex-wrap: wrap;
 }
 
 .menu-navegacao-topico a {

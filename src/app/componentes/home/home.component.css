@@ -1,16 +1,5 @@
 .container-home {
-    margin-top: 20px;
-}
-
-.paragrafo-geral {
-    margin-left: 2em;
-}
-
-.postagens-titulo {
-    padding: 10px 0;
-    font-weight: bolder;
-    font-size: 20px;
-    border-bottom: 2px solid black;
+    padding: 30px 0;
 }
 
 .postagens {
@@ -21,47 +10,70 @@
     padding: 0 10px 10px 10px;
 }
 
-.container-tags {
-    margin-bottom: 20px;
+.postagens-titulo {
+    padding: 10px 0;
+    font-weight: bolder;
+    font-size: 20px;
+    border-bottom: 2px solid rgb(168, 102, 102);
+    color: rgb(168, 102, 102);
 }
 
-.postagem-geral {
-    margin-left: 20px;
+.container-noticia {
+    border-bottom: 2px dotted rgb(168, 102, 102);
 }
 
-.container-ultimas-postagens {
-    width: 100%;
-    border-bottom: 2px solid black;
+.titulo-noticia {
+    font-weight: bold;
+    font-size: 18px;
+    margin: 8px 0;
 }
 
-.ultimas-postagens {
-    width: 100%;
-    border-bottom: 2px dotted black;
+.data-postagem {
+    font-size: 12px;
 }
 
-.postagem-texto {
+.postagem-resumo {
     margin-top: 5px;
-    font-size: 0.8em;
+    font-size: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    text-align: justify;
 }
 
-.tag {
-    margin: 5px 0;
+.container-tags {
+    margin: 8px 0;
 }
 
 .tags {
     font-size: 0.7em;
     border: 1px solid rgb(144, 144, 214);
     border-radius: 20px;
-    background-color: cornflowerblue;
+    background-color: #d1d1d1;
     padding: 3px 5px;
     margin: 0 2px;
-    display: inline-block;
 }
 
-.tags:hover {
-    background-color: rgb(144, 144, 214);
-    color: white;
-    cursor: pointer;
+.postagem-geral {
+    margin-left: 20px;
+}
+
+.postagem-geral-card {
+    text-align: center;
+    font-size: 0.9em;
+    margin: 0 auto;
+    padding: 10px;
+    border: 2px solid #FBC78D;
+    background-color: #A8DEE0;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgba(131, 131, 131, 0.589);
+    min-height: 300px;
+}
+
+.paragrafo-geral {
+    margin-left: 2em;
 }
 
 .postagem-geral-conteudos {
@@ -76,28 +88,6 @@
     padding: 6px 0px;
     border-bottom: 2px dotted black;
     word-break: break-all;
-}
-
-.topicos a {
-    text-decoration: none;
-}
-
-.topicos a:hover {
-    color: #007bffc4;
-}
-
-/* CONTEUDO GERAL */
-
-.postagem-geral-card {
-    text-align: center;
-    font-size: 0.9em;
-    margin: 0 auto;
-    padding: 10px;
-    border: 2px solid #FBC78D;
-    background-color: #A8DEE0;
-    border-radius: 10px;
-    box-shadow: 5px 5px 5px rgba(131, 131, 131, 0.589);
-    min-height: 300px;
 }
 
 .postagem-geral-card-paragrafo {
