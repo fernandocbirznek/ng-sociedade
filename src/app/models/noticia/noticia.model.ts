@@ -6,6 +6,7 @@ export class NoticiaModel {
 	resumo: string = "";
 	descricao: string = "";
     usuarioId: string = "";
+	usuarioNome: string = "";
 	dataCadastro: Date | undefined = undefined;
 	dataAtualizacao: Date | undefined = undefined;
 

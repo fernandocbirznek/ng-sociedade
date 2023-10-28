@@ -207,6 +207,7 @@ export const noticiaReducer = createReducer(
         noticia.dataCadastro = item.dataCadastro,
         noticia.descricao = item.descricao,
         noticia.id = item.id;
+        noticia.usuarioNome = item.usuarioNome;
         noticia.resumo = item.resumo;
         noticia.titulo = item.titulo;
         noticia.usuarioId = item.usuarioId;

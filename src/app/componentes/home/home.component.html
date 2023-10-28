@@ -1,10 +1,13 @@
 <div fxLayout="row" fxLayoutAlign="space-between start" class="container-home">
     <div fxFlex="300px" class="postagens">
         <div fxLayoutAlign="center center" class="postagens-titulo">Ultimas Postagens</div>
-        <div *ngFor="let noticia of this.noticias" fxLayout="column" class="container-noticia">
-            <!-- <span class="autor">@{{noticia.autorNome}}</span> -->
+        <div *ngFor="let noticia of this.noticiaMany" fxLayout="column" class="container-noticia">
             <span class="titulo-noticia">{{noticia.titulo}}</span>
-            <span fxLayoutAlign="end center" class="data-postagem">{{noticia.dataCadastro | date: 'dd/MM/yyyy HH:mm' }}</span>
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+                <span class="usuario-nome">@{{noticia.usuarioNome}}</span>
+                <span fxLayoutAlign="end center" class="data-postagem">{{noticia.dataCadastro | date: 'dd/MM/yyyy HH:mm' }}</span>
+            </div>
+            
             <!-- <div class="postagem-texto" [innerHTML]="noticia.conteudo"></div> -->
             <div class="postagem-resumo">{{noticia.resumo}}</div>
             <div fxLayout="row" fxLayoutAlign="center center" class="container-tags">

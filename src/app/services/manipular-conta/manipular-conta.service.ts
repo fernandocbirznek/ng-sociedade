@@ -10,7 +10,7 @@ import { selecionarManipularConta } from "src/app/store";
 })
 
 export class ManipularContaService {
-    urlCriarConta = 'http://localhost:3000/criarConta/criarNovaConta';
+    urlCriarConta = 'https://localhost:44362/api/Usuario/inserir';
     urlLoginConta = 'https://localhost:44362/api/Usuario/login';
     urlDeletarConta = 'http://localhost:3000/criarConta/deletarConta';
 

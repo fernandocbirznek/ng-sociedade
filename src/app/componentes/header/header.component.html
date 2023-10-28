@@ -7,7 +7,7 @@
         <div fxFlex="40%" fxLayout="row" fxLayoutAlign="space-between start" class="menu-navegacao">
             <div fxFlex="32%" fxLayout="column" fxLayoutAlign="center center">
                 <a routerLink="" (click)="mudarCabecalho(true)">Home</a>
-                <a (click)="abrirDialogo()">Criar Conta / Login</a>
+                <a (click)="conta()">Criar Conta / Login</a>
                 <a routerLink="/forum" (click)="mudarCabecalho(false)">Fórum</a>
             </div>
             <div fxFlex="32%" fxLayout="column" fxLayoutAlign="center center">
@@ -63,6 +63,6 @@
             routerLink="/especiais">Especiais</a>
         <a (mouseover)="mudaFoto('8')" (mouseout)="mudaFoto('0')" (click)="mudarCabecalho(false)"
             routerLink="/vestibular">Exercícios vestibulares</a>
-        <a (click)="abrirDialogo()">Criar Conta</a>
+        <a (click)="conta()">Criar Conta</a>
     </div>
 </div>

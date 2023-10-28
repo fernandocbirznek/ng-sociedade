@@ -1,0 +1,1 @@
+export * from './criar-conta.component';

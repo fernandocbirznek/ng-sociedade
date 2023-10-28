@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 import { 
   NoticiaModel 
@@ -17,8 +17,10 @@ import {
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  noticias$: Observable<NoticiaModel[]> = new Observable<NoticiaModel[]>();
-  noticias: NoticiaModel[] = [];
+
+  noticiaManySubscription$: Subscription = new Subscription();
+  noticiaMany$: Observable<NoticiaModel[]> = new Observable<NoticiaModel[]>();
+  noticiaMany: NoticiaModel[] = [];
 
   constructor(
     public store: Store,
@@ -30,12 +32,15 @@ export class HomeComponent implements OnInit {
     this.setupNoticia();
   }
 
+  ngOnDestroy() {
+    this.noticiaManySubscription$.unsubscribe();
+  }
+
   setupNoticia() {
-    this.noticias$ = this.store.select(selecionarManyNoticia);
-    this.noticias$.subscribe(noticias => {
-      if(noticias)
-        this.noticias = noticias;
-      console.log("noticias = ", noticias);
+    this.noticiaMany$ = this.store.select(selecionarManyNoticia);
+    this.noticiaManySubscription$ = this.noticiaMany$.subscribe(itens => {
+      if(itens)
+        this.noticiaMany = itens;
     });
   }
 }

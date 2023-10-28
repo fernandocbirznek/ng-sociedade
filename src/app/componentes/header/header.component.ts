@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { ToastComponent } from '../genericos';
-import { CriarContaComponent } from '../topicos';
+import { LoginCriarContaComponent } from '../topicos';
 
 @Component({
   selector: 'app-header',
@@ -16,8 +14,7 @@ export class HeaderComponent implements OnInit {
   public telaInicial: boolean = true;
 
   constructor(
-    public dialog: MatDialog,
-    private snackBar: MatSnackBar
+    public dialog: MatDialog
   ) { 
     this.imagem = "../../../assets/imagens/header/home.png";
     this.resumoTopico = "Aqui é a página principal, nela temos um resumo sobre a Física," 
@@ -30,16 +27,10 @@ export class HeaderComponent implements OnInit {
     this.telaInicial= cabecalho;
   }
 
-  abrirDialogo() {
-    this.dialog.open(CriarContaComponent, {
+  conta() {
+    this.dialog.open(LoginCriarContaComponent, {
       maxHeight: '800px',
       height: 'auto',
-    }).afterClosed().subscribe((evento) => {
-      this.snackBar.openFromComponent(ToastComponent, {
-        data: evento,
-        duration: 7 * 1000,
-        panelClass: 'css-toast'
-      });
     });
   }
 
@@ -102,3 +93,17 @@ export class HeaderComponent implements OnInit {
     }
 	}
 }
+
+
+// conta() {
+//   this.dialog.open(CriarContaComponent, {
+//     maxHeight: '800px',
+//     height: 'auto',
+//   }).afterClosed().subscribe((evento) => {
+//     this.snackBar.openFromComponent(ToastComponent, {
+//       data: evento,
+//       duration: 7 * 1000,
+//       panelClass: 'css-toast'
+//     });
+//   });
+// }

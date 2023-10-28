@@ -1,0 +1,15 @@
+<div fxLayout="column" class="container-criar-perfil">
+    <form fxLayout="column" [formGroup]="this.formPerfil" class="container-form">
+        <mat-form-field class="container-data">
+            <mat-label>Data de Nascimento</mat-label>
+            <input matInput formControlName="data" [matDatepicker]="picker" (change)="requestCriarPerfil()">
+            <mat-datepicker-toggle matIconSuffix class="data-picker" [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <input type="file" formControlName="foto" (change)="requestCriarPerfil()">
+        <mat-form-field appearance="outline">
+            <mat-label>Hobbie</mat-label>
+            <textarea formControlName="hobbie" matInput (change)="requestCriarPerfil()"></textarea>
+        </mat-form-field>
+    </form>
+</div>

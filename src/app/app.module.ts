@@ -15,12 +15,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 import { 
   HeaderComponent, FooterComponent, MecanicaUmComponent, AppRoutingModuleMecanica, MecanicaDoisComponent, 
-  MecanicaTresComponent, HomeComponent, MecanicaComponent, TermodinamicaComponent, CriarContaComponent,
+  MecanicaTresComponent, HomeComponent, MecanicaComponent, TermodinamicaComponent, LoginCriarContaComponent,
   EquipeContatoComponent, ForumComponent, ForumMecanicaComponent, DuvidaMecanicaComponent, PerfilComponent,
-  MecanicaQuatroComponent, AulaTresExercicioComponent, PerfilRoutingModule, ToastComponent, ModalExcluirComponent 
+  MecanicaQuatroComponent, AulaTresExercicioComponent, PerfilRoutingModule, ToastComponent, ModalExcluirComponent,
+  CriarContaComponent, CriarPerfilComponent
 } from './componentes';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
@@ -29,6 +32,7 @@ import {
   ManipularContaModule, 
   NoticiaModule
 } from './store';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -39,6 +43,7 @@ import {
     MecanicaComponent,
     TermodinamicaComponent,
     CriarContaComponent,
+    LoginCriarContaComponent,
     EquipeContatoComponent,
     ForumComponent,
     ForumMecanicaComponent,
@@ -51,6 +56,7 @@ import {
     AulaTresExercicioComponent,
     ToastComponent,
     ModalExcluirComponent,
+    CriarPerfilComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,6 +74,9 @@ import {
     MatButtonModule,
     MatExpansionModule,
     MatSnackBarModule,
+    MatTabsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     HttpClientModule,
     ManipularContaModule,
     NoticiaModule,

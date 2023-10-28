@@ -28,6 +28,11 @@
     margin: 8px 0;
 }
 
+.usuario-nome {
+    font-size: 12px;
+    color: #6060ff;
+}
+
 .data-postagem {
     font-size: 12px;
 }

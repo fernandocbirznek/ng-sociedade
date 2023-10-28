@@ -1,0 +1,28 @@
+<div fxLayout="column" fxLayoutAlign="center center" class="container-criar-conta">
+    <form [formGroup]="this.formConta" class="container-inputs">
+        <mat-form-field class="container-inputs" appearance="outline">
+            <mat-label>Nome Completo</mat-label>
+            <input formControlName="nome" matInput required>
+            <mat-error *ngIf="nome.invalid">Nome é obrigatório</mat-error>
+        </mat-form-field>
+        <mat-form-field class="container-inputs" appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="fernando@exemplo.com" formControlName="email" required>
+            <mat-error *ngIf="email.invalid">Formato de email não é válido</mat-error>
+        </mat-form-field>
+        <mat-form-field class="container-inputs" appearance="outline">
+            <mat-label>Senha</mat-label>
+            <input matInput formControlName="senha" [type]="hide ? 'password' : 'text'" required>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <span class="material-icons">
+                    {{hide ? 'visibility' : 'visibility_off' }}
+                </span>
+            </button>
+            <mat-error *ngIf="senha.invalid">Senha é obrigatório, mínimo 8 digitos</mat-error>
+        </mat-form-field>
+    </form>
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="container-inputs">
+        <button mat-stroked-button color="accent" (click)="fecharModal()">Cancelar</button>
+        <button mat-stroked-button color="primary" (click)="requestCriarConta()">Criar Conta</button>
+    </div>
+</div>
