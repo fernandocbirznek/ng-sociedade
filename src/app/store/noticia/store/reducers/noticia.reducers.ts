@@ -33,7 +33,12 @@ export const noticiaReducer = createReducer(
     };
   }),
   on(actions.selecionarManyNoticiaHomeSuccess, (state, action) => {
-    let itens = [...state.itens, ...action.response];
+    let itens = [...state.itens];
+    
+    action.response.forEach(noticia => {
+      if(!state.itens.find(item => item.id == noticia.id))
+        itens.push(noticia);
+    })
 
     return { 
         ...state, 

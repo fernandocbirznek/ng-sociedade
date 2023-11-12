@@ -1,0 +1,11 @@
+<div *ngIf="this.usuarioLogado; else usuarioVazio" fxLayout="column">
+    <div>Olá {{this.usuarioLogado.nome}}</div>
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+        <app-usuario-informacao fxFlex="48%" [usuarioLogado]="this.usuarioLogado"></app-usuario-informacao>
+        <app-usuario-conquistas fxFlex="48%"></app-usuario-conquistas>
+    </div>
+    <app-professor-tabela-aula [professorId]="this.usuarioLogado.id"></app-professor-tabela-aula>
+</div>
+<ng-template #usuarioVazio>
+    Carregando informações...
+</ng-template>

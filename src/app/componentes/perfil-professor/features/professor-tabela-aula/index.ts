@@ -1,0 +1,1 @@
+export * from './professor-tabela-aula.component';

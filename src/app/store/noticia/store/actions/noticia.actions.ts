@@ -1,8 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 
 import { 
-    AreaInteresseModel,
-    NoticiaAreaInteresseModel,
     NoticiaModel, 
     NoticiaRequestModel
 } from 'src/app/models';

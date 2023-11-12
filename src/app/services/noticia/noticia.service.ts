@@ -2,12 +2,8 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
-import { selecionarManipularConta } from "src/app/store";
 
 import { 
-    CriarConta, 
-    DeletarConta, 
-    Login, 
     NoticiaModel, 
     NoticiaRequestModel 
 } from "src/app/models";

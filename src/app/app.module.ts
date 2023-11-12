@@ -17,22 +17,29 @@ import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatIconModule } from '@angular/material/icon';
 
 import { 
   HeaderComponent, FooterComponent, MecanicaUmComponent, AppRoutingModuleMecanica, MecanicaDoisComponent, 
   MecanicaTresComponent, HomeComponent, MecanicaComponent, TermodinamicaComponent, LoginCriarContaComponent,
   EquipeContatoComponent, ForumComponent, ForumMecanicaComponent, DuvidaMecanicaComponent, PerfilComponent,
   MecanicaQuatroComponent, AulaTresExercicioComponent, PerfilRoutingModule, ToastComponent, ModalExcluirComponent,
-  CriarContaComponent, CriarPerfilComponent
+  CriarContaComponent, CriarPerfilComponent, UsuarioInformacaoComponent, PerfilProfessorRoutingModule, ProfessorHomeComponent,
+  UsuarioConquistasComponent, ProfessorTabelaAulaComponent, ProfessorNovaAulaComponent
 } from './componentes';
+
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 
 import {
+  AulaStoreModule,
   ManipularContaModule, 
   NoticiaModule
 } from './store';
+
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -57,6 +64,11 @@ import { MatNativeDateModule } from '@angular/material/core';
     ToastComponent,
     ModalExcluirComponent,
     CriarPerfilComponent,
+    ProfessorHomeComponent,
+    UsuarioInformacaoComponent,
+    UsuarioConquistasComponent,
+    ProfessorTabelaAulaComponent,
+    ProfessorNovaAulaComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,10 +88,15 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatSnackBarModule,
     MatTabsModule,
     MatDatepickerModule,
+    MatIconModule,
+    MatTableModule,
+    MatPaginatorModule,
     MatNativeDateModule,
     HttpClientModule,
     ManipularContaModule,
+    AulaStoreModule,
     NoticiaModule,
+    PerfilProfessorRoutingModule,
     StoreModule.forRoot([]),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),

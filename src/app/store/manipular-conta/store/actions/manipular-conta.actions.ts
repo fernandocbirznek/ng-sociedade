@@ -1,14 +1,20 @@
 import { createAction, props } from '@ngrx/store';
-import { CriarConta, DeletarConta, Login } from 'src/app/models';
+
+import { 
+  CriarContaPerfilModel, 
+  DeletarConta, 
+  Login,
+  UsuarioModel
+} from 'src/app/models';
 
 export const criarConta = createAction(
   '[CriarConta] CriarConta',
-  props<{ conta: CriarConta }>()
+  props<{ conta: CriarContaPerfilModel }>()
 );
 
 export const criarContaSuccess = createAction(
     '[CriarConta] CriarConta Success',
-    props<{ conta: CriarConta, response: any }>()
+    props<{ conta: CriarContaPerfilModel, response: any }>()
 );
 
 export const criarContaFailure = createAction(
@@ -23,7 +29,7 @@ export const loginConta = createAction(
 
 export const loginContaSuccess = createAction(
     '[Login] LoginConta Success',
-    props<{ login: Login, response: any }>()
+    props<{ login: Login, response: UsuarioModel }>()
 );
 
 export const loginContaFailure = createAction(

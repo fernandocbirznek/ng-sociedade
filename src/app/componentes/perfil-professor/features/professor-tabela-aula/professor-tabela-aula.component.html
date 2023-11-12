@@ -1,0 +1,79 @@
+<div class="container-tabela-aula" fxLayout="column" fxLayoutAlign="center center">
+    <div class="container-filtro" fxLayout="row" fxLayoutAlign="start center">
+        <mat-form-field fxFlex="80%" class="container-filtro filtro">
+            <mat-label>Filtrar aulas</mat-label>
+            <input matInput (keyup)="aplicarFiltro($event)" placeholder="Ex: termodinâmica" #input>
+        </mat-form-field>
+        <button fxFlex="20%" class="btn btn-outline-success pull-right botao-nova-aula" (click)="criarAula()">
+            <span class="btn-label">
+                <i class="nc-icon nc-simple-add"></i>
+            </span>
+            Novo aula
+        </button>
+    </div>
+    <table mat-table [dataSource]="dataSource" class="container-tabela" matSort>
+        <ng-container matColumnDef="titulo">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="40%" fxLayoutAlign="start center" class="cabecalho"> Título da aula</th>
+            <td mat-cell *matCellDef="let element" fxFlex="40%" fxLayoutAlign="start center" class="container-aula" (click)="acessarAula(element.id)"> 
+                {{element.titulo}} 
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="resumo">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="40%" fxLayoutAlign="start center" class="cabecalho"> Título da aula</th>
+            <td mat-cell *matCellDef="let element" fxFlex="40%" fxLayoutAlign="start center" class="container-aula" (click)="acessarAula(element.id)"> 
+                {{element.resumo}} 
+            </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="data-postagem">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="15%" fxLayoutAlign="center center" class="cabecalho"> Data postagem </th>
+            <td mat-cell *matCellDef="let element" fxFlex="15%" fxLayoutAlign="center center" class="container-aula" (click)="acessarAula(element.id)"> 
+                {{element.dataCadastro | date: 'dd/MM/yyyy HH:mm'}} 
+            </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="comentarios">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="120px" fxLayoutAlign="center center" class="cabecalho"> Comentários </th>
+            <td mat-cell *matCellDef="let element" fxFlex="120px" fxLayoutAlign="center center" class="container-aula" (click)="acessarAula(element.id)"> 
+                {{element.comentarios}} 
+            </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="visualizacoes">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="120px" fxLayoutAlign="center center" class="cabecalho"> Visualizações </th>
+            <td mat-cell *matCellDef="let element" fxFlex="120px" fxLayoutAlign="center center" class="container-aula" (click)="acessarAula(element.id)"> 
+                {{element.visualizacoes}} 
+            </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="favoritado">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="100px" fxLayoutAlign="center center" class="cabecalho"> Favoritado </th>
+            <td mat-cell *matCellDef="let element" fxFlex="100px" fxLayoutAlign="center center" class="container-aula" (click)="acessarAula(element.id)"> 
+                {{element.favoritos}} 
+            </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="acao">
+            <th mat-header-cell *matHeaderCellDef fxFlex="20%" fxLayoutAlign="center center" class="cabecalho"> Ações </th>
+            <td mat-cell *matCellDef="let element" fxFlex="20%" fxLayoutAlign="center center">
+                <div fxLayout="row" fxLayoutAlign="space-around center" class="container-botoes">
+                    <button class="btn btn-outline-primary pull-right botoes" (click)="editarAula(element)">
+                        Editar
+                    </button>
+                    <button class="btn btn-outline-danger pull-right botoes" (click)="excluirAula(element)">
+                        Excluir
+                    </button>
+                </div>
+            </td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    
+        <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">Não foi encontrado nenhuma aula a partir da busca de: "{{input.value}}"</td>
+        </tr>
+    </table>
+    <mat-paginator class="container-paginator" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+</div>

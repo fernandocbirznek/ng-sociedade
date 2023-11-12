@@ -2,8 +2,16 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
-import { CriarConta, DeletarConta, Login } from "src/app/models";
-import { selecionarManipularConta } from "src/app/store";
+
+import { 
+    CriarConta, 
+    CriarContaPerfilModel, 
+    DeletarConta, 
+    Login, 
+    UsuarioModel
+} from "src/app/models";
+
+import { getOneUsuarioLogado } from "src/app/store";
 
 @Injectable({
     providedIn: 'root'
@@ -14,21 +22,21 @@ export class ManipularContaService {
     urlLoginConta = 'https://localhost:44362/api/Usuario/login';
     urlDeletarConta = 'http://localhost:3000/criarConta/deletarConta';
 
-    loginConta$: Observable<any>;
+    usuariologado$: Observable<any>;
 
     constructor(
         private httpClient: HttpClient,
         public store: Store
     ) {
-        this.loginConta$ = this.store.select(selecionarManipularConta);
+        this.usuariologado$ = this.store.select(getOneUsuarioLogado);
     }
 
-    criarConta(criarConta: CriarConta): Observable<CriarConta> {
-        return this.httpClient.post<CriarConta>(this.urlCriarConta, JSON.stringify(criarConta), this.buildHttpOptions());
+    criarConta(criarConta: CriarContaPerfilModel): Observable<CriarConta> {
+        return this.httpClient.post<CriarContaPerfilModel>(this.urlCriarConta, JSON.stringify(criarConta), this.buildHttpOptions());
     }
 
-    loginConta(loginConta: Login): Observable<Login> {
-        return this.httpClient.post<Login>(this.urlLoginConta, JSON.stringify(loginConta), this.buildHttpOptions());
+    loginConta(loginConta: Login): Observable<UsuarioModel> {
+        return this.httpClient.post<UsuarioModel>(this.urlLoginConta, JSON.stringify(loginConta), this.buildHttpOptions());
     }
 
     deletarConta(deletarConta: DeletarConta): Observable<any> {
@@ -54,7 +62,7 @@ export class ManipularContaService {
 
     private pegarToken(): string | undefined {
         let token: string | undefined = undefined;
-        this.loginConta$.subscribe(item => {
+        this.usuariologado$.subscribe(item => {
             token = item.token;
         }).unsubscribe();
         return token;

@@ -1,26 +1,23 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import * as actions from '../actions/manipular-conta.actions';
+import { UsuarioModel } from 'src/app/models';
 
 export const manipularContaFeatureKey = 'manipularConta';
 
 export interface ManipularContaState {
-  email: string;
-	nome: string;
+  usuario: UsuarioModel;
   isSuccess: boolean;
   isLoading: boolean;
   isFailure: boolean;
   mensagem: string;
-  token: string;
 }
 
 export const manipularContaInitialState: ManipularContaState = {
-  email: "",
-	nome: "",
+  usuario: new UsuarioModel(),
   isSuccess: false,
   isLoading: false,
   isFailure: false,
   mensagem: "",
-  token: ""
 };
 
 export const manipularContaReducer = createReducer(
@@ -36,10 +33,13 @@ export const manipularContaReducer = createReducer(
     };
   }),
   on(actions.criarContaSuccess, (state, action) => {
+    let usuario = new UsuarioModel();
+    usuario.nome = action.conta.nome;
+    usuario.email = action.conta.email;
+
     return { 
-      ...state, 
-      nome: action.conta.nome, 
-      email: action.conta.email, 
+      ...state,
+      usuario: usuario,
       isLoading: false, 
       isSuccess: true, 
       isFailure: false,
@@ -65,15 +65,30 @@ export const manipularContaReducer = createReducer(
     };
   }),
   on(actions.loginContaSuccess, (state, action) => {
+    let usuario = new UsuarioModel();
+    usuario.id = action.response.id;
+    usuario.nome = action.response.nome;
+    usuario.comentarioAula = action.response.comentarioAula;
+    usuario.comentarioForum = action.response.comentarioForum;
+    usuario.curtirAula = action.response.curtirAula;
+    usuario.dataNascimento = action.response.dataNascimento;
+    usuario.email = action.response.email;
+    usuario.hobbie = action.response.hobbie;
+    usuario.noticiaVisualizada = action.response.noticiaVisualizada;
+    usuario.sociedadeId = action.response.sociedadeId;
+    usuario.tipoUsuarioEnum = action.response.tipoUsuarioEnum;
+    usuario.token = action.response.token;
+    usuario.topicoForum = action.response.topicoForum;
+    usuario.usuarioPerfilId = action.response.usuarioPerfilId;
+
+    //TODO, falta a foto
+
     return { 
       ...state, 
-      nome: action.response.nome, 
-      email: action.response.email, 
+      usuario: usuario,
       isLoading: false, 
       isSuccess: true, 
-      isFailure: false, 
-      mensagem: action.response.mensagem,
-      token: action.response.token 
+      isFailure: false
     };
   }),
   on(actions.loginContaFailure, (state, action) => {

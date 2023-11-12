@@ -3,12 +3,16 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { CriarConta, Login } from 'src/app/models';
+
+import { 
+  CriarContaPerfilModel, 
+  Login 
+} from 'src/app/models';
 
 import { 
   criarConta, 
   loginConta, 
-  selecionarManipularConta 
+  getOneUsuarioLogado 
 } from 'src/app/store';
 
 @Component({
@@ -23,7 +27,7 @@ export class LoginCriarContaComponent implements OnInit {
   email = new FormControl('', [Validators.required]);
   senha = new FormControl('', [Validators.required]);
 
-  criarConta$: Observable<any>;
+  usuarioLogado$: Observable<any>;
   mensagemConta: string = "";
 
   isTelaCriarConta = false;
@@ -33,7 +37,7 @@ export class LoginCriarContaComponent implements OnInit {
     public dialogRef: MatDialogRef<LoginCriarContaComponent>,
     public store: Store,
   ) { 
-    this.criarConta$ = this.store.select(selecionarManipularConta);
+    this.usuarioLogado$ = this.store.select(getOneUsuarioLogado);
   }
 
   ngOnInit(): void {
@@ -57,9 +61,10 @@ export class LoginCriarContaComponent implements OnInit {
     login.email = this.formLogin.get("email")?.value;
     login.senha = this.formLogin.get("senha")?.value;
     this.store.dispatch(loginConta({ login: login }));
+    this.dialogRef.close();
   }
 
-  requestCriarConta(formCriarConta: CriarConta) {
+  requestCriarConta(formCriarConta: CriarContaPerfilModel) {
     if(formCriarConta) {
       this.store.dispatch(criarConta({ conta: formCriarConta }));
       this.dialogRef.close();

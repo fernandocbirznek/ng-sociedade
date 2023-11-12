@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { CriarConta } from 'src/app/models';
+import { CriarContaPerfilModel } from 'src/app/models';
 
 @Component({
   selector: 'app-criar-conta',
@@ -10,7 +10,7 @@ import { CriarConta } from 'src/app/models';
 })
 export class CriarContaComponent implements OnInit {
 
-  @Output() ngCriarConta= new EventEmitter<CriarConta>();
+  @Output() ngCriarConta= new EventEmitter<CriarContaPerfilModel>();
 
   formConta: FormGroup = null as any;
 
@@ -36,7 +36,7 @@ export class CriarContaComponent implements OnInit {
   }
 
   requestCriarConta() {
-    let conta: CriarConta = new CriarConta();
+    let conta: CriarContaPerfilModel = new CriarContaPerfilModel();
     conta.email = this.formConta.get("email")?.value;
     conta.nome = this.formConta.get("nome")?.value;
     conta.senha = this.formConta.get("senha")?.value;

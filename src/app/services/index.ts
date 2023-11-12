@@ -1,3 +1,4 @@
+export * from './aula';
 export * from './noticia-area-interesse';
 export * from './autenticacao';
 export * from './manipular-conta';

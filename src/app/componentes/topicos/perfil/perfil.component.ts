@@ -4,8 +4,21 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { deletarConta, deslogarConta, selecionarManipularConta } from 'src/app/store';
-import { ModalExcluirComponent, ToastComponent } from '../../genericos';
+
+import { 
+  deletarConta, 
+  deslogarConta, 
+  getOneUsuarioLogado 
+} from 'src/app/store';
+
+import { 
+  ModalExcluirComponent, 
+  ToastComponent 
+} from '../../genericos';
+
+import { 
+  UsuarioModel 
+} from 'src/app/models';
 
 @Component({
   selector: 'app-perfil',
@@ -14,7 +27,7 @@ import { ModalExcluirComponent, ToastComponent } from '../../genericos';
 })
 export class PerfilComponent implements OnInit {
 
-  criarConta$: Observable<any>;
+  usuarioLogado$: Observable<UsuarioModel>;
   conta: any;
 
   constructor(
@@ -23,8 +36,8 @@ export class PerfilComponent implements OnInit {
     private router: Router,
     private snackBar: MatSnackBar
   ) { 
-    this.criarConta$ = this.store.select(selecionarManipularConta);
-    this.criarConta$.subscribe(item => {
+    this.usuarioLogado$ = this.store.select(getOneUsuarioLogado);
+    this.usuarioLogado$.subscribe(item => {
       this.conta = item;
     })
   }

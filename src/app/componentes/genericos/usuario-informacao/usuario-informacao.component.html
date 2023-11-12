@@ -1,0 +1,49 @@
+<div *ngIf="this.usuarioLogado; else usuarioVazio" fxLayout="column">
+    <div>Informações gerais</div>
+    <fieldset class="fieldset">
+        <div class="email">Login: {{this.usuarioLogado.email}}</div>
+        <div fxLayout="row" class="container-informacao">
+            <div fxLayout="column" fxLayoutAlign="start center" class="informacao">
+                <div fxLayout="column" fxLayoutAlign="start center" class="informacao-header">
+                    <mat-icon class="icone-header material-symbols-outlined">forum</mat-icon>
+                    <div>Fórum</div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <mat-icon class="material-symbols-outlined">edit_square</mat-icon>
+                    <div class="informacao-texto">Tópicos criados: {{this.usuarioLogado.topicoForum}}</div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <mat-icon class="material-symbols-outlined">comment</mat-icon>
+                    <div class="informacao-texto">Comentários: {{this.usuarioLogado.comentarioForum}}</div>
+                </div>
+            </div>
+            <div fxLayout="column" fxLayoutAlign="start center" class="informacao">
+                <div fxLayout="column" fxLayoutAlign="start center" class="informacao-header">
+                    <mat-icon class="icone-header material-symbols-outlined">school</mat-icon>
+                    <div>Aulas</div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <mat-icon class="material-symbols-outlined">thumb_up</mat-icon>
+                    <div class="informacao-texto">Aulas curtidas: {{this.usuarioLogado.curtirAula}}</div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <mat-icon class="material-symbols-outlined">edit_square</mat-icon>
+                    <div class="informacao-texto">Comentários: {{this.usuarioLogado.comentarioAula}}</div>
+                </div>
+            </div>
+            <div fxLayout="column" fxLayoutAlign="start center" class="informacao">
+                <div fxLayout="column" fxLayoutAlign="start center" class="informacao-header">
+                    <mat-icon class="icone-header material-symbols-outlined">full_coverage</mat-icon>
+                    <div>Notícias</div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <mat-icon class="material-symbols-outlined">visibility</mat-icon>
+                    <div class="informacao-texto">visualizadas: {{this.usuarioLogado.noticiaVisualizada}}</div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</div>
+<ng-template #usuarioVazio>
+    Carregando informações...
+</ng-template>

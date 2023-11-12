@@ -5,6 +5,6 @@ export const selectManipularContaState = createFeatureSelector<fromManipularCont
   fromManipularConta.manipularContaFeatureKey
 );
 
-export const selecionarManipularConta = createSelector(selectManipularContaState, (state) => {
-  return state;
+export const getOneUsuarioLogado = createSelector(selectManipularContaState, (state) => {
+  return state.usuario;
 })

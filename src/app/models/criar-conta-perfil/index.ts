@@ -1,0 +1,1 @@
+export * from './criar-conta-perfil.model';
