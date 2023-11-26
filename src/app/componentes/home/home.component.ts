@@ -7,6 +7,7 @@ import {
 } from 'src/app/models';
 
 import { 
+  selecionarManyAreaFisica,
   selecionarManyNoticia,
   selecionarManyNoticiaHome 
 } from 'src/app/store';
@@ -26,6 +27,7 @@ export class HomeComponent implements OnInit {
     public store: Store,
   ) {
     this.store.dispatch(selecionarManyNoticiaHome());
+    this.store.dispatch(selecionarManyAreaFisica());
   }
 
   ngOnInit(): void {

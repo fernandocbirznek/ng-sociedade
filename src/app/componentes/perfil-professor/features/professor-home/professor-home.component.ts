@@ -35,9 +35,7 @@ export class ProfessorHomeComponent implements OnInit {
     this.usuarioLogadoSubscription$ = this.usuarioLogado$.subscribe(item => {
       if(item) {
         this.usuarioLogado = item;
-        console.log("professorId = ", this.usuarioLogado);
-      }
-        
+      }  
     });
   }
 

@@ -75,7 +75,7 @@ export class AulaEffects {
       ofType(actions.atualizarAula),
       concatMap((action) =>
         this.aulaService.atualizarAula(action.aula).pipe(
-          map(response => actions.inserirAulaSuccess({ aula: action.aula, response: response })),
+          map(response => actions.atualizarAulaSuccess({ aula: action.aula, response: response })),
           catchError(error => of(actions.atualizarAulaFailure({ error }))))
       )
     );

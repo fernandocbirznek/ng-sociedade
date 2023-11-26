@@ -10,5 +10,11 @@ export const getAulas = createSelector(selectAulaState, (state) => {
 })
 
 export const getManyAulaByProfessorId = (professorId: number) => createSelector(selectAulaState, (state) => {
-  return state.aulas.filter(item => item.professorId == professorId);;
+  return state.aulas.filter(item => item.professorId == professorId);
+})
+
+export const getOneAulaById = (aulaId: number) => createSelector(selectAulaState, (state) => {
+  console.log("aulaId = ", aulaId);
+  console.log("intes = ", state.aulas);
+  return state.aulas.find(item => item.id == aulaId);
 })

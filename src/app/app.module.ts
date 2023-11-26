@@ -18,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
 
 import { 
   HeaderComponent, FooterComponent, MecanicaUmComponent, AppRoutingModuleMecanica, MecanicaDoisComponent, 
@@ -25,13 +26,17 @@ import {
   EquipeContatoComponent, ForumComponent, ForumMecanicaComponent, DuvidaMecanicaComponent, PerfilComponent,
   MecanicaQuatroComponent, AulaTresExercicioComponent, PerfilRoutingModule, ToastComponent, ModalExcluirComponent,
   CriarContaComponent, CriarPerfilComponent, UsuarioInformacaoComponent, PerfilProfessorRoutingModule, ProfessorHomeComponent,
-  UsuarioConquistasComponent, ProfessorTabelaAulaComponent, ProfessorNovaAulaComponent
+  UsuarioConquistasComponent, ProfessorTabelaAulaComponent, ProfessorNovaAulaComponent, ProfessorNovaSessaoComponent, 
+  ProfessorEditarSessaoComponent,
+  ProfessorEditarAulaComponent
 } from './componentes';
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 
 import {
+  AreaFisicaStoreModule,
+  AulaSessaoStoreModule,
   AulaStoreModule,
   ManipularContaModule, 
   NoticiaModule
@@ -69,6 +74,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     UsuarioConquistasComponent,
     ProfessorTabelaAulaComponent,
     ProfessorNovaAulaComponent,
+    ProfessorNovaSessaoComponent,
+    ProfessorEditarSessaoComponent,
+    ProfessorEditarAulaComponent,
   ],
   imports: [
     BrowserModule,
@@ -80,6 +88,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatDialogModule,
     MatInputModule,
     MatFormFieldModule,
+    MatSelectModule,
     FormsModule, 
     ReactiveFormsModule,
     MatCheckboxModule,
@@ -94,7 +103,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatNativeDateModule,
     HttpClientModule,
     ManipularContaModule,
+    AreaFisicaStoreModule,
     AulaStoreModule,
+    AulaSessaoStoreModule,
     NoticiaModule,
     PerfilProfessorRoutingModule,
     StoreModule.forRoot([]),

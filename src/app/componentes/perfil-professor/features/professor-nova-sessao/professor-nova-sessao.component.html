@@ -1,0 +1,34 @@
+<div class="cadastro-sessao-component">
+  <div fxLayoutAlign="end end" class="fechar" (click)="fecharModal()">X</div>
+  <div fxLayout="column" fxLayoutAlign="center center">
+    <form [formGroup]="this.formSessao" fxLayout="column" fxLayoutAlign="center center" class="container-inputs">
+      <mat-form-field class="container-inputs" appearance="outline">
+        <mat-label>Titulo</mat-label>
+        <input formControlName="titulo_sessao" matInput required />
+      </mat-form-field>
+      <mat-form-field class="container-inputs" appearance="outline">
+        <mat-label>Tipo da Sessão</mat-label>
+        <mat-select formControlName="tipo_sessao" matInput required>
+          <mat-option value="1">Conceito</mat-option>
+          <mat-option value="2">Equação</mat-option>
+          <mat-option value="3">Imagem</mat-option>
+          <mat-option value="4">Vídeo</mat-option>
+          <mat-option value="5">Texto</mat-option>
+        </mat-select>
+        <mat-error *ngIf="tipoSessao.invalid">Sessão é obrigatória</mat-error>
+      </mat-form-field>
+      <mat-form-field class="container-inputs" appearance="outline">
+        <mat-label>Conteúdo</mat-label>
+        <textarea maxlength="8000" formControlName="conteudo_sessao" matInput></textarea>
+        <mat-error *ngIf="conteudo.invalid">Conteúdo é obrigatório</mat-error>
+      </mat-form-field>
+    </form>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <button mat-stroked-button color="accent" (click)="fecharModal()">Cancelar</button>
+    <button mat-stroked-button color="primary" (click)="cadastrarSessao()">
+      <mat-icon class="material-symbols-outlined">add_circle</mat-icon>
+      Cadastrar sessão
+    </button>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+.container-aula {
+    min-width: 800px;
+}
+
+.button-nova-sessao {
+    width: 150px;
+}
+
+.container-sessao-many {
+    margin: 20px 0;
+}
+
+.titulo-sessao {
+    font-size: 24px;
+    font-weight: bolder;
+    margin-bottom: 10px;
+}
+
+.conteudo-sessao {
+    margin-bottom: 10px;
+}

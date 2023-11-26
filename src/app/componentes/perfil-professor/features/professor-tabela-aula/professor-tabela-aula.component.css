@@ -1,0 +1,25 @@
+.container-filtro,
+.container-tabela {
+    width: 100%;
+}
+
+.container-filtro {
+    gap: 15px;
+}
+
+.fieldset-aula {
+    border-radius: 10px;
+    margin: 20px 0;
+    position: relative;
+}
+
+.fieldset-label {
+    position: absolute;
+    top: -10px;
+    background-color: white;
+    padding: 0 10px;
+}
+
+.container-buttons {
+    gap: 10px;
+}

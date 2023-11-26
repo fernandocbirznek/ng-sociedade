@@ -1,0 +1,18 @@
+.cadastro-sessao-component {
+  position: relative;
+  min-width: 800px;
+  min-height: 400px;
+}
+
+.fechar {
+  font-weight: bolder;
+  cursor: pointer;
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  font-size: 18px;
+}
+
+.container-inputs {
+  width: 100%;
+}

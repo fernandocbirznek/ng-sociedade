@@ -25,7 +25,7 @@ import {
 export class ProfessorTabelaAulaComponent implements OnInit, AfterViewInit {
   @Input() professorId: number = 0;
 
-  displayedColumns: string[] = ['titulo', 'resumo', 'data-postagem', 'comentarios', 'visualizacoes', 'favoritado', 'acao'];
+  displayedColumns: string[] = ['titulo', 'resumo', 'areaFisica', 'data-postagem', 'comentarios', 'curtido', 'favoritado', 'acao'];
   dataSource: any;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -72,7 +72,7 @@ export class ProfessorTabelaAulaComponent implements OnInit, AfterViewInit {
   }
 
   criarAula() {
-    this.dialog.open(ProfessorNovaAulaComponent)
+    this.dialog.open(ProfessorNovaAulaComponent);
   }
 
   acessarAula(item: AulaModel) {
@@ -80,7 +80,7 @@ export class ProfessorTabelaAulaComponent implements OnInit, AfterViewInit {
   }
 
   editarAula(item: AulaModel) {
-    this.router.navigate([`aula/editar/${item.id}`]);
+    this.router.navigate([`editar-aula/${item.id}`]);
   }
 
   excluirAula(item: AulaModel) {

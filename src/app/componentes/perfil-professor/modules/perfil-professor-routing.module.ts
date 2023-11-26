@@ -7,7 +7,9 @@ import {
 } from "../resolver";
 
 import { 
-    ProfessorHomeComponent 
+    ProfessorEditarAulaComponent,
+    ProfessorHomeComponent, 
+    ProfessorNovaAulaComponent 
 } from "../features";
 
 const perfilProfessorRoutes: Routes = [
@@ -18,6 +20,16 @@ const perfilProfessorRoutes: Routes = [
         resolve: {
             perfilProfessorResolver: PerfilProfessorResolver
         }
+    },
+    {
+        path: "cadastrar-aula",
+        component: ProfessorNovaAulaComponent,
+        canActivate: [AutenticacaoService],
+    },
+    {
+        path: "editar-aula/:id",
+        component: ProfessorEditarAulaComponent,
+        canActivate: [AutenticacaoService],
     }
 ];
 
