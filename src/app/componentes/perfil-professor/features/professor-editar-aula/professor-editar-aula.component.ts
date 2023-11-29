@@ -4,8 +4,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 import { 
+  ProfessorEditarSessaoComponent,
   ProfessorNovaSessaoComponent 
 } from 'src/app/componentes';
 
@@ -132,17 +134,48 @@ export class ProfessorEditarAulaComponent implements OnInit {
 
     this.formGroupAula.reset();
     
-    this.store.dispatch(atualizarAula({ aula: aula }))
+    this.store.dispatch(atualizarAula({ aula: aula }));
   }
 
   novaSessao() {
     this.dialog.open(ProfessorNovaSessaoComponent, {
-      maxHeight: '800px',
+      minWidth: '500px',
       height: 'auto',
       data: {
         aula: this.aula, 
         sessaoMany: this.aulaSessao
       }
     });
+  }
+
+  ordenarSessao(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.aulaSessao, event.previousIndex, event.currentIndex);
+    this.reordenarSessoes();
+  }
+
+  public reordenarSessoes(): void {
+    let ordem = 0;
+    this.aulaSessao = this.aulaSessao.map((sessao) => {
+      return {
+        ...sessao,
+        ordem: ordem
+      }
+    });
+    //TODO, precisa atualizar os itens no banco, fazer a partir de um botão e criar uma variavel verificar q foi editado
+  }
+
+  editarSessao(sessao: AulaSessaoModel) {
+    this.dialog.open(ProfessorEditarSessaoComponent, {
+      minWidth: '500px',
+      height: 'auto',
+      data: {
+        aula: this.aula, 
+        sessaoEditar: sessao
+      }
+    });
+  }
+
+  deletarSessao(sessao: AulaSessaoModel) {
+    //TODO, fazer modal de confirmar delete
   }
 }

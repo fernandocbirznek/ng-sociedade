@@ -32,12 +32,19 @@
       <mat-icon class="material-symbols-outlined">list_alt_add</mat-icon>
       Nova sessão
     </button>
-    <div *ngFor="let sessao of this.aulaSessao" fxLayout="column" class="container-sessao-many">
-      <div fxLayout="column" fxLayoutAlign="center center" class="titulo-sessao">
-        {{ sessao.titulo }}
+    <div cdkDropList (cdkDropListDropped)="ordenarSessao($event)">
+      <div>
+        <mat-icon class="material-symbols-outlined" (click)="editarSessao(sessao)">edit</mat-icon>
+        <mat-icon class="material-symbols-outlined" (click)="deletarSessao(sessao)">delete</mat-icon>
       </div>
-      <div fxLayout="column" fxLayoutAlign="center center">
-        {{ sessao.conteudo }}
+      <div cdkDrag *ngFor="let sessao of this.aulaSessao" fxLayout="column" class="container-sessao-many example-box">
+        <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+        <div fxLayout="column" fxLayoutAlign="center center" class="titulo-sessao">
+          {{ sessao.titulo }}
+        </div>
+        <div fxLayout="column" fxLayoutAlign="center center">
+          {{ sessao.conteudo }}
+        </div>
       </div>
     </div>
 </div>

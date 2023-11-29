@@ -19,6 +19,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { 
   HeaderComponent, FooterComponent, MecanicaUmComponent, AppRoutingModuleMecanica, MecanicaDoisComponent, 
@@ -84,6 +85,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     AppRoutingModuleMecanica,
     PerfilRoutingModule,
     BrowserAnimationsModule,
+    DragDropModule,
     FlexLayoutModule,
     MatDialogModule,
     MatInputModule,

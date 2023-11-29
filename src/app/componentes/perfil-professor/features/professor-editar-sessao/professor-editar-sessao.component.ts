@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Store } from '@ngrx/store';
+import { AulaModel, AulaSessaoModel } from 'src/app/models';
+import { atualizarAulaSessao } from 'src/app/store';
 
 @Component({
   selector: 'app-professor-editar-sessao',
@@ -16,11 +19,15 @@ export class ProfessorEditarSessaoComponent implements OnInit {
   formSessao: FormGroup = null as any;
 
   constructor(
-    public dialog: MatDialogRef<ProfessorEditarSessaoComponent>,
-  ) { }
+    public dialogRef: MatDialogRef<ProfessorEditarSessaoComponent>,
+    public store: Store,
+    @Inject(MAT_DIALOG_DATA) public data: {aula: AulaModel, sessaoEditar: AulaSessaoModel}
+  ) { 
+    this.criarFormularioSessao();
+  }
 
   public ngOnInit(): void {
-    this.criarFormularioSessao();
+    this.setupEditarSessao();
   }
 
   private criarFormularioSessao() {
@@ -31,11 +38,24 @@ export class ProfessorEditarSessaoComponent implements OnInit {
     })
   }
 
+  setupEditarSessao() {
+    this.formSessao.get("tipo_sessao")!.setValue(this.data.sessaoEditar.aulaSessaoTipo);
+    this.formSessao.get("conteudo_sessao")!.setValue(this.data.sessaoEditar.conteudo);
+    this.formSessao.get("titulo_sessao")!.setValue(this.data.sessaoEditar.titulo);
+  }
+
   public editarSessao(): void {
+    let sessao: AulaSessaoModel = {...this.data.sessaoEditar};
+    sessao.conteudo = this.formSessao.get("conteudo_sessao")?.value;
+    sessao.titulo = this.formSessao.get("titulo_sessao")?.value;
+    sessao.aulaSessaoTipo = this.formSessao.get("tipo_sessao")?.value;
+
+    this.store.dispatch(atualizarAulaSessao({ aulaSessao: sessao }));
+    this.dialogRef.close();
   }
 
   public fecharModal() {
-    this.dialog.close();
+    this.dialogRef.close();
   }
 
 }
