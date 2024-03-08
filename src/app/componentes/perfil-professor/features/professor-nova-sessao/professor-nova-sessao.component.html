@@ -17,11 +17,7 @@
         </mat-select>
         <mat-error *ngIf="tipoSessao.invalid">Sessão é obrigatória</mat-error>
       </mat-form-field>
-      <mat-form-field class="container-inputs" appearance="outline">
-        <mat-label>Conteúdo</mat-label>
-        <textarea maxlength="8000" formControlName="conteudo_sessao" matInput></textarea>
-        <mat-error *ngIf="conteudo.invalid">Conteúdo é obrigatório</mat-error>
-      </mat-form-field>
+      <ckeditor #ckEditorTag [editor]="ckEditor" data="<p>Hello, world!</p>"></ckeditor>
     </form>
   </div>
   <div fxLayout="row" fxLayoutAlign="space-between center">

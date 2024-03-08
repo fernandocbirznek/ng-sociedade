@@ -21,6 +21,8 @@
     "@angular/platform-browser": "~13.3.0",
     "@angular/platform-browser-dynamic": "~13.3.0",
     "@angular/router": "~13.3.0",
+    "@ckeditor/ckeditor5-alignment": "^40.1.0",
+    "@ckeditor/ckeditor5-angular": "^7.0.1",
     "@ngrx/effects": "^13.2.0",
     "@ngrx/store": "^13.2.0",
     "@ngrx/store-devtools": "^13.2.0",

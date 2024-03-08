@@ -6,13 +6,18 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
-import { ProfessorNovaAulaComponent } from 'src/app/componentes';
+
+import { 
+  ModalExcluirComponent, 
+  NovaAulaComponent
+} from 'src/app/componentes';
 
 import { 
   AulaModel 
 } from 'src/app/models';
 
 import { 
+  excluirAula,
   getManyAulaByProfessorId, selecionarManyAulaByProfessorId 
 } from 'src/app/store';
 
@@ -72,7 +77,7 @@ export class ProfessorTabelaAulaComponent implements OnInit, AfterViewInit {
   }
 
   criarAula() {
-    this.dialog.open(ProfessorNovaAulaComponent);
+    this.dialog.open(NovaAulaComponent);
   }
 
   acessarAula(item: AulaModel) {
@@ -84,12 +89,12 @@ export class ProfessorTabelaAulaComponent implements OnInit, AfterViewInit {
   }
 
   excluirAula(item: AulaModel) {
-    // this.dialog.open(ModalExcluirComponent, {
-    //   data: 'Notícia'
-    // }).afterClosed().subscribe((evento) => {
-    //   if(evento) {
-    //     this.store.dispatch(excluirAula({ aulaId: item.id! }));
-    //   }
-    // });
+    this.dialog.open(ModalExcluirComponent, {
+      data: `Aula: ${item.titulo}`
+    }).afterClosed().subscribe((evento) => {
+      if(evento) {
+        this.store.dispatch(excluirAula({ aulaId: item.id! }));
+      }
+    });
   }
 }

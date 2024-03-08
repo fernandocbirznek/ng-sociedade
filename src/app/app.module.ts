@@ -21,6 +21,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
+
 import { 
   HeaderComponent, FooterComponent, MecanicaUmComponent, AppRoutingModuleMecanica, MecanicaDoisComponent, 
   MecanicaTresComponent, HomeComponent, MecanicaComponent, TermodinamicaComponent, LoginCriarContaComponent,
@@ -29,7 +30,10 @@ import {
   CriarContaComponent, CriarPerfilComponent, UsuarioInformacaoComponent, PerfilProfessorRoutingModule, ProfessorHomeComponent,
   UsuarioConquistasComponent, ProfessorTabelaAulaComponent, ProfessorNovaAulaComponent, ProfessorNovaSessaoComponent, 
   ProfessorEditarSessaoComponent,
-  ProfessorEditarAulaComponent
+  ProfessorEditarAulaComponent,
+  AulaRoutingModule,
+  EditarAulaComponent,
+  NovaAulaComponent
 } from './componentes';
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -46,6 +50,8 @@ import {
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { VisualizarAulaComponent } from './componentes/aula/features/visualizar-aula/visualizar-aula.component';
 
 @NgModule({
   declarations: [
@@ -78,9 +84,13 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     ProfessorNovaSessaoComponent,
     ProfessorEditarSessaoComponent,
     ProfessorEditarAulaComponent,
+    NovaAulaComponent,
+    EditarAulaComponent,
+    VisualizarAulaComponent
   ],
   imports: [
     BrowserModule,
+    CKEditorModule, 
     AppRoutingModule,
     AppRoutingModuleMecanica,
     PerfilRoutingModule,
@@ -110,6 +120,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     AulaSessaoStoreModule,
     NoticiaModule,
     PerfilProfessorRoutingModule,
+    AulaRoutingModule,
     StoreModule.forRoot([]),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),

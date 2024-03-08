@@ -236,4 +236,16 @@ export const aulaSessaoReducer = createReducer(
       mensagem: "Erro ao excluir a sessão da aula"
     };
   }),
+  on(actions.atualizarAulaSessaoOrdem, (state, action) => {
+    let itens = action.aulaSessaoMany
+
+    return { 
+      ...state, 
+      aulaSessao: itens,
+      isLoading: false, 
+      isSuccess: false, 
+      isFailure: true, 
+      mensagem: "Erro ao excluir a sessão da aula"
+    };
+  }),
 );

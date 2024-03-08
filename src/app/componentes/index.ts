@@ -1,3 +1,4 @@
+export * from './aula';
 export * from './footer';
 export * from './genericos';
 export * from './header';

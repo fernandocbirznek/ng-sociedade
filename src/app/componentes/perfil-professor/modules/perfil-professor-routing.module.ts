@@ -7,9 +7,7 @@ import {
 } from "../resolver";
 
 import { 
-    ProfessorEditarAulaComponent,
     ProfessorHomeComponent, 
-    ProfessorNovaAulaComponent 
 } from "../features";
 
 const perfilProfessorRoutes: Routes = [
@@ -21,16 +19,6 @@ const perfilProfessorRoutes: Routes = [
             perfilProfessorResolver: PerfilProfessorResolver
         }
     },
-    {
-        path: "cadastrar-aula",
-        component: ProfessorNovaAulaComponent,
-        canActivate: [AutenticacaoService],
-    },
-    {
-        path: "editar-aula/:id",
-        component: ProfessorEditarAulaComponent,
-        canActivate: [AutenticacaoService],
-    }
 ];
 
 @NgModule({

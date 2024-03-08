@@ -1,7 +1,9 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
+
+import Editor from 'src/app/componentes/genericos/ckeditor/build/ckeditor';
 
 import { 
   AulaModel, 
@@ -9,7 +11,9 @@ import {
   TipoSessaoAulaEnum
 } from 'src/app/models';
 
-import { inserirAulaSessao } from 'src/app/store';
+import { 
+  inserirAulaSessao 
+} from 'src/app/store';
 
 @Component({
   selector: 'app-professor-nova-sessao',
@@ -17,6 +21,9 @@ import { inserirAulaSessao } from 'src/app/store';
   styleUrls: ['./professor-nova-sessao.component.css']
 })
 export class ProfessorNovaSessaoComponent implements OnInit {
+
+  public ckEditor = Editor;
+  @ViewChild('ckEditorTag') ckEditorTag: any;
 
   tipoSessao = new FormControl('', [Validators.required]);
   conteudo = new FormControl('', [Validators.required, Validators.maxLength(8000)]);
@@ -45,15 +52,14 @@ export class ProfessorNovaSessaoComponent implements OnInit {
   public cadastrarSessao(): void {
     let request: AulaSessaoModel = new AulaSessaoModel();
     request.titulo = this.formSessao.get("titulo_sessao")?.value;
-    request.conteudo = this.formSessao.get("conteudo_sessao")?.value;
+    request.conteudo = this.ckEditorTag.editorInstance.getData();
     request.aulaSessaoTipo = this.tipoSessaoValue(this.formSessao.get("tipo_sessao")?.value);
     request.aulaId = this.data.aula.id;
     request.ordem = this.data.sessaoMany.length + 1;
 
-    this.formSessao.reset();
-    
     this.store.dispatch(inserirAulaSessao({ aulaSessao: request }))
     this.dialogRef.close();
+    this.formSessao.reset();
   }
 
   public fecharModal() {

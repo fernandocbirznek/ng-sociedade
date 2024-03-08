@@ -1,0 +1,79 @@
+.container-aula {
+    min-width: 800px;
+}
+
+.button-nova-sessao {
+    width: 150px;
+}
+
+.container-sessao-many {
+    margin: 20px 0;
+    position: relative;
+}
+
+.container-icones {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    display: inline-flex;
+    gap: 20px;
+}
+
+.titulo-sessao {
+    font-size: 24px;
+    font-weight: bolder;
+    margin-bottom: 10px;
+}
+
+.conteudo-sessao {
+    margin-bottom: 10px;
+}
+
+.example-box {
+    padding: 20px 10px;
+    border: solid 1px #ccc;
+    border-radius: 10px;
+    color: rgba(0, 0, 0, 0.87);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    cursor: move;
+    background: white;
+    font-size: 14px;
+}
+
+.cdk-drag-preview {
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+                0 8px 10px 1px rgba(0, 0, 0, 0.14),
+                0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+  
+.cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.icone {
+    font-size: 30px;
+    width: 30px;
+    height: 30px;
+}
+
+.icone:hover {
+    cursor: pointer;
+    background-color: #CCCCCC;
+}
+
+.example-custom-placeholder {
+    background: #ccc;
+    border: dotted 3px #999;
+    min-height: 60px;
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}

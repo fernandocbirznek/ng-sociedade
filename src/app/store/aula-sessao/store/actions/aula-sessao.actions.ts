@@ -93,3 +93,8 @@ export const excluirAulaSessaoFailure = createAction(
   '[AulaSessao] excluirAulaSessao Failure',
   props<{ error: any }>()
 );
+
+export const atualizarAulaSessaoOrdem = createAction(
+  '[AulaSessao] atualizarAulaSessaoOdem',
+  props<{ aulaSessaoMany: AulaSessaoModel[] }>()
+);

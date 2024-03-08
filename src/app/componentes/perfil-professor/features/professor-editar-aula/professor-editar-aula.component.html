@@ -33,17 +33,16 @@
       Nova sessão
     </button>
     <div cdkDropList (cdkDropListDropped)="ordenarSessao($event)">
-      <div>
-        <mat-icon class="material-symbols-outlined" (click)="editarSessao(sessao)">edit</mat-icon>
-        <mat-icon class="material-symbols-outlined" (click)="deletarSessao(sessao)">delete</mat-icon>
-      </div>
       <div cdkDrag *ngFor="let sessao of this.aulaSessao" fxLayout="column" class="container-sessao-many example-box">
+        <div>
+          <mat-icon class="material-symbols-outlined" (click)="editarSessao(sessao)">edit</mat-icon>
+          <mat-icon class="material-symbols-outlined" (click)="deletarSessao(sessao)">delete</mat-icon>
+        </div>
         <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
         <div fxLayout="column" fxLayoutAlign="center center" class="titulo-sessao">
           {{ sessao.titulo }}
         </div>
-        <div fxLayout="column" fxLayoutAlign="center center">
-          {{ sessao.conteudo }}
+        <div fxLayout="column" fxLayoutAlign="center center" [innerHTML]="sessao.conteudo">
         </div>
       </div>
     </div>
