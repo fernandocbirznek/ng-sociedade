@@ -28,16 +28,18 @@ import {
   EquipeContatoComponent, ForumComponent, ForumMecanicaComponent, DuvidaMecanicaComponent, PerfilComponent,
   MecanicaQuatroComponent, AulaTresExercicioComponent, PerfilRoutingModule, ToastComponent, ModalExcluirComponent,
   CriarContaComponent, CriarPerfilComponent, UsuarioInformacaoComponent, PerfilProfessorRoutingModule, ProfessorHomeComponent,
-  UsuarioConquistasComponent, ProfessorTabelaAulaComponent, ProfessorNovaAulaComponent, ProfessorNovaSessaoComponent, 
-  ProfessorEditarSessaoComponent,
-  ProfessorEditarAulaComponent,
+  UsuarioConquistasComponent, ProfessorTabelaAulaComponent,
+  NovaSessaoComponent,
   AulaRoutingModule,
   EditarAulaComponent,
-  NovaAulaComponent
+  NovaAulaComponent,
+  VisualizarAulaComponent,
+  EditarAulaInformacaoComponent
 } from './componentes';
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { KatexModule } from 'ng-katex';
 
 import {
   AreaFisicaStoreModule,
@@ -51,7 +53,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
-import { VisualizarAulaComponent } from './componentes/aula/features/visualizar-aula/visualizar-aula.component';
+import { EditarSessaoComponent } from './componentes/sessao/features/editar-sessao/editar-sessao.component';
 
 @NgModule({
   declarations: [
@@ -80,17 +82,17 @@ import { VisualizarAulaComponent } from './componentes/aula/features/visualizar-
     UsuarioInformacaoComponent,
     UsuarioConquistasComponent,
     ProfessorTabelaAulaComponent,
-    ProfessorNovaAulaComponent,
-    ProfessorNovaSessaoComponent,
-    ProfessorEditarSessaoComponent,
-    ProfessorEditarAulaComponent,
     NovaAulaComponent,
     EditarAulaComponent,
-    VisualizarAulaComponent
+    VisualizarAulaComponent,
+    NovaSessaoComponent,
+    EditarSessaoComponent,
+    EditarAulaInformacaoComponent
   ],
   imports: [
     BrowserModule,
     CKEditorModule, 
+    KatexModule,
     AppRoutingModule,
     AppRoutingModuleMecanica,
     PerfilRoutingModule,

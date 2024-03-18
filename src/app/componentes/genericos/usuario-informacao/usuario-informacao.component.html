@@ -1,10 +1,13 @@
 <div *ngIf="this.usuarioLogado; else usuarioVazio" fxLayout="column">
-    <div>Informações gerais</div>
     <fieldset class="fieldset">
-        <div class="email">Login: {{this.usuarioLogado.email}}</div>
-        <div fxLayout="row" class="container-informacao">
-            <div fxLayout="column" fxLayoutAlign="start center" class="informacao">
-                <div fxLayout="column" fxLayoutAlign="start center" class="informacao-header">
+        <div class="fieldset-titulo">Informações gerais</div>
+        <div fxLayout="row" class="container-email">
+            <b>Login: </b>
+            <span class="email">{{this.usuarioLogado.email}}</span>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between start" class="container-informacao">
+            <div fxFlex="33%" fxLayout="column" fxLayoutAlign="start center" class="informacao">
+                <div fxLayout="row" fxLayoutAlign="center center" class="informacao-header">
                     <mat-icon class="icone-header material-symbols-outlined">forum</mat-icon>
                     <div>Fórum</div>
                 </div>
@@ -17,10 +20,14 @@
                     <div class="informacao-texto">Comentários: {{this.usuarioLogado.comentarioForum}}</div>
                 </div>
             </div>
-            <div fxLayout="column" fxLayoutAlign="start center" class="informacao">
-                <div fxLayout="column" fxLayoutAlign="start center" class="informacao-header">
+            <div fxFlex="33%" fxLayout="column" fxLayoutAlign="start center" class="informacao">
+                <div fxLayout="row" fxLayoutAlign="center center" class="informacao-header">
                     <mat-icon class="icone-header material-symbols-outlined">school</mat-icon>
                     <div>Aulas</div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <mat-icon class="material-symbols-outlined">full_coverage</mat-icon>
+                    <div class="informacao-texto">Aulas criadas: {{this.usuarioLogado.curtirAula}}</div>
                 </div>
                 <div fxLayout="row" fxLayoutAlign="start center">
                     <mat-icon class="material-symbols-outlined">thumb_up</mat-icon>
@@ -31,10 +38,14 @@
                     <div class="informacao-texto">Comentários: {{this.usuarioLogado.comentarioAula}}</div>
                 </div>
             </div>
-            <div fxLayout="column" fxLayoutAlign="start center" class="informacao">
-                <div fxLayout="column" fxLayoutAlign="start center" class="informacao-header">
+            <div fxFlex="33%" fxLayout="column" fxLayoutAlign="start center" class="informacao">
+                <div fxLayout="row" fxLayoutAlign="center center" class="informacao-header">
                     <mat-icon class="icone-header material-symbols-outlined">full_coverage</mat-icon>
                     <div>Notícias</div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <mat-icon class="material-symbols-outlined">newspaper</mat-icon>
+                    <div class="informacao-texto">Notícias criadas: {{this.usuarioLogado.curtirAula}}</div>
                 </div>
                 <div fxLayout="row" fxLayoutAlign="start center">
                     <mat-icon class="material-symbols-outlined">visibility</mat-icon>

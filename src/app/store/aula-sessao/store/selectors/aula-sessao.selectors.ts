@@ -10,5 +10,5 @@ export const getAulaSessaoMany = createSelector(selectAulaSessaoState, (state) =
 })
 
 export const getManyAulaSessaoByAulaId = (aulaId: number) => createSelector(selectAulaSessaoState, (state) => {
-  return state.aulaSessao.filter(item => item.aulaId == aulaId);;
+  return state.aulaSessao.filter(item => item.aulaId == aulaId);
 })

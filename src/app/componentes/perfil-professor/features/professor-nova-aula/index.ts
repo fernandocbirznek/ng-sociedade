@@ -1,1 +1,0 @@
-export * from './professor-nova-aula.component';

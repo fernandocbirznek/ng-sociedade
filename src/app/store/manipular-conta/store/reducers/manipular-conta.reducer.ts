@@ -1,6 +1,6 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import * as actions from '../actions/manipular-conta.actions';
-import { UsuarioModel } from 'src/app/models';
+import { TipoUsuarioEnum, UsuarioModel } from 'src/app/models';
 
 export const manipularContaFeatureKey = 'manipularConta';
 
@@ -76,6 +76,31 @@ export const manipularContaReducer = createReducer(
     usuario.hobbie = action.response.hobbie;
     usuario.noticiaVisualizada = action.response.noticiaVisualizada;
     usuario.sociedadeId = action.response.sociedadeId;
+
+    switch(action.response.tipoUsuario) { 
+      case TipoUsuarioEnum.UsuarioAdministrador: { 
+        //TODO, por hora ta o professor
+        usuario.tipoUsuarioEnum = TipoUsuarioEnum.UsuarioProfessor;
+        break; 
+      } 
+      case TipoUsuarioEnum.UsuarioProfessor: { 
+        usuario.tipoUsuarioEnum = TipoUsuarioEnum.UsuarioProfessor;
+        break; 
+      } 
+      case TipoUsuarioEnum.UsuarioProfessorAdministrador: { 
+        usuario.tipoUsuarioEnum = TipoUsuarioEnum.UsuarioProfessorAdministrador;
+        break; 
+      } 
+      case TipoUsuarioEnum.UsuarioComum: { 
+        usuario.tipoUsuarioEnum = TipoUsuarioEnum.UsuarioComum;
+        break; 
+      } 
+      default: { 
+        usuario.tipoUsuarioEnum = TipoUsuarioEnum.None;
+        break; 
+      } 
+    }
+
     usuario.tipoUsuarioEnum = action.response.tipoUsuarioEnum;
     usuario.token = action.response.token;
     usuario.topicoForum = action.response.topicoForum;

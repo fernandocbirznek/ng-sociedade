@@ -1,48 +1,48 @@
 <div fxLayout="column" class="container-aula">
-    <h2 >Informações da Aula</h2>
-    <form [formGroup]="this.formGroupAula" fxLayout="row" fxLayoutAlign="space-between start">   
-      <div fxFlex="48%" fxLayout="column">
-        <mat-form-field appearance="outline">
-          <mat-label>Área da Física</mat-label>
-          <mat-select formControlName="formAreaFisica" matInput>
-            <mat-option *ngFor="let area of this.areaFisicaMany" [value]="area.id">{{ area.descricao }}</mat-option>
-          </mat-select>
-          <mat-error *ngIf="formAreaFisica.invalid">Área da Física é obrigatória</mat-error>
-        </mat-form-field>
-        <mat-form-field  appearance="outline">
-          <mat-label>Título</mat-label>
-          <input formControlName="formTitulo" matInput required>
-          <mat-error *ngIf="formTitulo.invalid">Titulo é obrigatório</mat-error>
-        </mat-form-field>
+  <fieldset class="fieldset">
+    <div fxLayout="row" fxLayoutAlign="center center" class="fieldset-titulo">
+      Informações da Aula
+      <mat-icon class="icone-editar material-symbols-outlined" (click)="editarAulaInformacao()">edit</mat-icon>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="start start" class="container-informacao">
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <span class="label">Área da Física: </span>
+        <span>{{ this.aula.areaFisicaDescricao }}</span>
       </div>
-      <div fxFlex="48%" fxLayout="column">            
-        <mat-form-field appearance="outline">
-          <mat-label>Resumo</mat-label>
-          <textarea maxlength="200" formControlName="formResumo" matInput required></textarea>
-          <mat-error *ngIf="formResumo.invalid">Resumo é obrigatória</mat-error>
-        </mat-form-field>
-        <button mat-stroked-button color="primary" (click)="atualizarAula()">
-          <mat-icon class="material-symbols-outlined">edit</mat-icon>
-          Editar aula
-        </button>
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <span class="label">Título: </span>
+        <span>{{ this.aula.titulo }}</span>
       </div>
-    </form>
-    <h3 class="titulo-bloco titulo-espacado">Sessões</h3>
-    <button mat-stroked-button color="primary" (click)="novaSessao()" class="button-nova-sessao">
-      <mat-icon class="material-symbols-outlined">list_alt_add</mat-icon>
-      Nova sessão
-    </button>
-    <div cdkDropList (cdkDropListDropped)="ordenarSessao($event)">
-      <div cdkDrag *ngFor="let sessao of this.aulaSessao; index as i" fxLayout="column" class="container-sessao-many example-box">
-        <div class="container-icones">
-          <mat-icon class="icone material-symbols-outlined" (click)="editarSessao(sessao)">edit</mat-icon>
-          <mat-icon class="icone material-symbols-outlined" (click)="deletarSessao(sessao)">delete</mat-icon>
-        </div>
-        <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
-        <div fxLayout="column" fxLayoutAlign="center center" class="titulo-sessao">
-          {{ sessao.titulo }}
-        </div>
-        <div fxLayout="column" fxLayoutAlign="center center" [innerHTML]="this.trustedDashboardHtml[i]">
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <span class="label">Resumo: </span>
+        <span>{{ this.aula.resumo }}</span>
       </div>
     </div>
+  </fieldset>
+  <h3 class="titulo-bloco titulo-espacado">Sessões</h3>
+  <button mat-stroked-button color="primary" (click)="novaSessao()" class="button-nova-sessao">
+    <mat-icon class="material-symbols-outlined">list_alt_add</mat-icon>
+    Nova sessão
+  </button>
+  <div cdkDropList (cdkDropListDropped)="ordenarSessao($event)">
+    <div cdkDrag *ngFor="let sessao of this.aulaSessaoMany; index as i" fxLayout="column" class="container-sessao-many">
+      <div cdkDragHandle class="container-move">
+        <mat-icon class="icone-move material-symbols-outlined">open_with</mat-icon>
+      </div>
+      <div class="container-icones">
+        <mat-icon class="icone material-symbols-outlined" (click)="editarSessao(sessao)">edit</mat-icon>
+        <mat-icon class="icone material-symbols-outlined" (click)="deletarSessao(sessao)">delete</mat-icon>
+      </div>
+      <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+      <div fxLayout="column" fxLayoutAlign="center center" class="titulo-sessao">
+        {{ sessao.titulo }}
+      </div>
+      <div *ngIf="sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Conceito || sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Texto" 
+        fxLayout="column" fxLayoutAlign="center center" [innerHTML]="this.trustedDashboardHtml[i]">
+      </div>
+      <div *ngIf="sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Equacao"> 
+        <ng-katex [equation]="sessao.conteudo"></ng-katex>
+      </div>
+    </div>
+  </div>
 </div>

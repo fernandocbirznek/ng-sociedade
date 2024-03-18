@@ -6,6 +6,7 @@ export class UsuarioModel {
 	nome: string = "";
 	email: string = "";
 	tipoUsuarioEnum: TipoUsuarioEnum = TipoUsuarioEnum.None;
+    tipoUsuario: number = -1;
     comentarioForum: number = 0;
     topicoForum: number = 0;
     comentarioAula: number = 0;

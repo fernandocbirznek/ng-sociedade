@@ -1,6 +1,7 @@
 export * from './area-fisica';
 export * from './area-interesse';
 export * from './aula';
+export * from './aula-comentario';
 export * from './aula-sessao';
 export * from './criar-conta';
 export * from './criar-conta-perfil';

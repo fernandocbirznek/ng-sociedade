@@ -5,8 +5,6 @@ import { Observable } from "rxjs";
 
 import { 
     AulaModel,
-    NoticiaModel, 
-    NoticiaRequestModel 
 } from "src/app/models";
 
 @Injectable({
@@ -15,9 +13,9 @@ import {
 
 export class AulaService {
     urlInserirAula = 'https://localhost:44303/api/Aula/inserir';
-    urlAtualizarAula = 'https://localhost:44303/api/Atualizar/atualizar';
-    urlAtualizarAulaCurtir = 'https://localhost:44303/api/Atualizar/atualizar-curtir';
-    urlAtualizarAulaFavoritada = 'https://localhost:44303/api/Atualizar/atualizar-favoritada';
+    urlAtualizarAula = 'https://localhost:44303/api/Aula/atualizar';
+    urlAtualizarAulaCurtir = 'https://localhost:44303/api/Aula/atualizar-curtir';
+    urlAtualizarAulaFavoritada = 'https://localhost:44303/api/Aula/atualizar-favoritada';
     urlExcluirAula = 'https://localhost:44303/api/Aula/excluir';
     urlSelecionarAulaById = 'https://localhost:44303/api/Aula/selecionar-aula';
     urlSelecionarManyAulaAreaFisica = 'https://localhost:44303/api/Aula/selecionar-aulas-area-fisica';

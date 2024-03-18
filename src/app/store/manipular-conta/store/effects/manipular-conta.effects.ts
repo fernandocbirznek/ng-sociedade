@@ -38,13 +38,14 @@ export class ManipularContaEffects {
       concatMap((action) =>
         this.manipularContaService.loginConta(action.login).pipe(
           map(response => {
-            switch(response.tipoUsuarioEnum) { 
+            switch(response.tipoUsuario) { 
               case TipoUsuarioEnum.UsuarioAdministrador: { 
                 //TODO, rota administrador
                 break; 
               } 
               case TipoUsuarioEnum.UsuarioComum: { 
-                this.router.navigate([`perfil/${response.email}`])
+                this.router.navigate([`perfil-professor/${response.email}`])
+                //this.router.navigate([`perfil/${response.email}`])
                 break; 
               } 
               case TipoUsuarioEnum.UsuarioProfessor: { 

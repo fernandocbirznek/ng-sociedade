@@ -59,6 +59,20 @@ export class AulaSessaoEffects {
     );
   });
 
+  atualizarAulaSessaoOrdem$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(actions.atualizarAulaSessaoOrdem),
+      concatMap((action) =>
+        this.aulaSessaoService.atualizarAulaSessaoOrdem(action.aulaSessaoOrdemRequest).pipe(
+          map(response => {
+            //TODO atualizar a dataAtualizacao da aula
+            return actions.atualizarAulaSessaoOrdemSuccess({ aulaSessaoOrdemRequest: action.aulaSessaoOrdemRequest, response: response })
+          }),
+          catchError(error => of(actions.atualizarAulaSessaoOrdemFailure({ error }))))
+      )
+    );
+  });
+
   atualizarAulaSessaoFavoritada$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(actions.atualizarAulaSessaoFavoritada),

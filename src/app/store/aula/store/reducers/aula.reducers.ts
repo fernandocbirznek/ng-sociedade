@@ -170,7 +170,11 @@ export const aulaReducer = createReducer(
     };
   }),
   on(actions.inserirAulaSuccess, (state, action) => {
-    let itens = [...state.aulas, action.aula];
+    let item: AulaModel = {...action.aula};
+    item.id = action.response.id;
+    item.dataCadastro = action.response.dataCadastro;
+
+    let itens = [...state.aulas, item];
 
     return {
       ...state,

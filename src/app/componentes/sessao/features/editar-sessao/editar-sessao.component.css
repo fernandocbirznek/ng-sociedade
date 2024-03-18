@@ -13,6 +13,19 @@
   font-size: 18px;
 }
 
-.container-inputs {
+::ng-deep .ckeditor-editar-sessao .ck-content {
+  min-height: 150px;
+}
+
+.container-exemplo {
+  gap: 20px;
+}
+
+.container-katex {
   width: 100%;
+  margin-top: 20px;
+}
+
+.container-buttons {
+  margin-top: 20px;
 }

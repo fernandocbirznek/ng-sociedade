@@ -1,5 +1,5 @@
-<div class="container-tabela-aula" fxLayout="column">
-    <div class="container-filtro" fxLayout="row" fxLayoutAlign="start center">
+<div fxLayout="column" class="container-tabela-aula">
+    <div fxLayout="row" fxLayoutAlign="start center" class="container-filtro">
         <button mat-stroked-button color="accent" (click)="criarAula()">
             <mat-icon class="material-symbols-outlined">note_add</mat-icon>
             Novo aula
@@ -9,60 +9,85 @@
             <input matInput (keyup)="aplicarFiltro($event)" placeholder="Ex: termodinâmica" #input>
         </mat-form-field>
     </div>
-    <fieldset class="fieldset-aula">
-        <div class="fieldset-label">Gerenciar aulas</div>
+    <fieldset class="fieldset">
+        <div class="fieldset-titulo">Gerenciar aulas</div>
         <table mat-table [dataSource]="dataSource" class="container-tabela" matSort>
             <ng-container matColumnDef="titulo">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header  fxFlex="25%" fxLayoutAlign="start center"> Título da aula</th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header  fxFlex="25%" fxLayoutAlign="start center" 
+                    class="tabela-header"> 
+                    Título da aula
+                </th>
                 <td mat-cell *matCellDef="let element" fxFlex="40%" fxLayoutAlign="start center" (click)="acessarAula(element.id)"> 
                     {{element.titulo}} 
                 </td>
             </ng-container>
     
             <ng-container matColumnDef="resumo">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="25%" fxLayoutAlign="start center"> Resumo da aula</th>
-                <td mat-cell *matCellDef="let element" fxFlex="40%" fxLayoutAlign="start center" (click)="acessarAula(element.id)"> 
-                    {{element.resumo}} 
+                <th mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="25%" fxLayoutAlign="start center" 
+                    class="tabela-header"> 
+                    Resumo da aula
+                </th>
+                <td mat-cell *matCellDef="let element" fxFlex="40%" fxLayoutAlign="start center" (click)="acessarAula(element.id)"
+                    > 
+                    <span class="g-text-overflow-2">{{element.resumo}}</span>
                 </td>
             </ng-container>
     
             <ng-container matColumnDef="areaFisica">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="10%" fxLayoutAlign="center center"> Área da Física</th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="10%" fxLayoutAlign="center center" 
+                    class="tabela-header"> 
+                    Área da Física
+                </th>
                 <td mat-cell *matCellDef="let element" fxFlex="10%" fxLayoutAlign="center center" (click)="acessarAula(element.id)"> 
-                    {{element.areaFisica}} 
+                    {{element.areaFisicaDescricao}} 
                 </td>
             </ng-container>
         
             <ng-container matColumnDef="data-postagem">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="10%" fxLayoutAlign="center center"> Data postagem </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="10%" fxLayoutAlign="center center"
+                    class="tabela-header"> 
+                    Data postagem 
+                </th>
                 <td mat-cell *matCellDef="let element" fxFlex="10%" fxLayoutAlign="center center" (click)="acessarAula(element.id)"> 
                     {{element.dataCadastro | date: 'dd/MM/yyyy HH:mm'}} 
                 </td>
             </ng-container>
         
             <ng-container matColumnDef="comentarios">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="10%" fxLayoutAlign="center center"> Comentários </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="10%" fxLayoutAlign="center center" 
+                    class="tabela-header"> 
+                    Comentários 
+                </th>
                 <td mat-cell *matCellDef="let element" fxFlex="10%" fxLayoutAlign="center center" (click)="acessarAula(element.id)"> 
                     {{element.comentario}} 
                 </td>
             </ng-container>
             
             <ng-container matColumnDef="curtido">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="10%" fxLayoutAlign="center center"> Curtido </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="10%" fxLayoutAlign="center center"
+                    class="tabela-header"> 
+                    Curtido 
+                </th>
                 <td mat-cell *matCellDef="let element" fxFlex="10%" fxLayoutAlign="center center" (click)="acessarAula(element.id)"> 
                     {{element.curtido}} 
                 </td>
             </ng-container>
         
             <ng-container matColumnDef="favoritado">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="10%" fxLayoutAlign="center center"> Favoritado </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="10%" fxLayoutAlign="center center"
+                    class="tabela-header"> 
+                    Favoritado 
+                </th>
                 <td mat-cell *matCellDef="let element" fxFlex="10%" fxLayoutAlign="center center" (click)="acessarAula(element.id)"> 
                     {{element.favoritado}} 
                 </td>
             </ng-container>
             
             <ng-container matColumnDef="acao">
-                <th mat-header-cell *matHeaderCellDef fxFlex="170px" fxLayoutAlign="center center" class="cabecalho"> Ações </th>
+                <th mat-header-cell *matHeaderCellDef fxFlex="170px" fxLayoutAlign="center center" 
+                    class="tabela-header"> 
+                    Ações 
+                </th>
                 <td mat-cell *matCellDef="let element" fxFlex="170px" fxLayoutAlign="center center">
                     <div fxLayout="row" fxLayoutAlign="space-around center" class="container-buttons">
                         <button mat-stroked-button color="primary" (click)="editarAula(element)">

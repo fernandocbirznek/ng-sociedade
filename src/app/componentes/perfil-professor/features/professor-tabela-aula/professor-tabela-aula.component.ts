@@ -13,11 +13,13 @@ import {
 } from 'src/app/componentes';
 
 import { 
+  AreaFisicaModel,
   AulaModel 
 } from 'src/app/models';
 
 import { 
   excluirAula,
+  getManyAreaFisica,
   getManyAulaByProfessorId, selecionarManyAulaByProfessorId 
 } from 'src/app/store';
 
@@ -39,6 +41,10 @@ export class ProfessorTabelaAulaComponent implements OnInit, AfterViewInit {
   aulaManySubscription$: Subscription = new Subscription();
   aulaMany$: Observable<AulaModel[]> = new Observable<AulaModel[]>();
 
+  areaFisicaManySubscription$: Subscription = new Subscription();
+  areaFisicaMany$: Observable<AreaFisicaModel[]> = new Observable<AreaFisicaModel[]>();
+  areaFisicaMany: AreaFisicaModel[] = [];
+
   constructor(
     public router: Router,
     public store: Store,
@@ -46,7 +52,7 @@ export class ProfessorTabelaAulaComponent implements OnInit, AfterViewInit {
   ) {}
 
   public ngOnInit() {
-    
+    this.setupAreaFisica();
     this.setupProfessorAula();
   }
 
@@ -59,9 +65,18 @@ export class ProfessorTabelaAulaComponent implements OnInit, AfterViewInit {
     this.aulaManySubscription$.unsubscribe();
   }
 
+  setupAreaFisica() {
+    this.areaFisicaMany$ = this.store.select(getManyAreaFisica);
+    this.areaFisicaManySubscription$ = this.areaFisicaMany$.subscribe(itens => {
+      this.areaFisicaMany = itens;
+    });
+  }
+
   setupProfessorAula() {
-    this.aulaMany$ = this.store.select(getManyAulaByProfessorId(this.professorId));
+    //TODO, colocar no resolver
     this.store.dispatch(selecionarManyAulaByProfessorId({ professorId: this.professorId}));
+
+    this.aulaMany$ = this.store.select(getManyAulaByProfessorId(this.professorId));
     this.aulaManySubscription$ = this.aulaMany$.subscribe(itens => {
       this.dataSource = new MatTableDataSource(itens);
     });
@@ -81,7 +96,7 @@ export class ProfessorTabelaAulaComponent implements OnInit, AfterViewInit {
   }
 
   acessarAula(item: AulaModel) {
-    
+    //TODO, fazer depois que fizer a parte da sessão
   }
 
   editarAula(item: AulaModel) {

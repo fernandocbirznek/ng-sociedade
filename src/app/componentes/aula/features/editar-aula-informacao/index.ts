@@ -1,0 +1,1 @@
+export * from './editar-aula-informacao.component';

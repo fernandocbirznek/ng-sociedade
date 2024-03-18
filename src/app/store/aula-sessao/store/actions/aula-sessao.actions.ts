@@ -1,7 +1,8 @@
 import { createAction, props } from '@ngrx/store';
 
 import { 
-    AulaSessaoModel 
+  AulaSessaoModel,
+  AulaSessaoOrdemRequestModel
 } from 'src/app/models';
 
 export const selecionarOneAulaSessaoById = createAction(
@@ -95,6 +96,19 @@ export const excluirAulaSessaoFailure = createAction(
 );
 
 export const atualizarAulaSessaoOrdem = createAction(
-  '[AulaSessao] atualizarAulaSessaoOdem',
-  props<{ aulaSessaoMany: AulaSessaoModel[] }>()
+  '[AulaSessao] atualizarAulaSessaoOrdem',
+  props<{ aulaSessaoOrdemRequest: AulaSessaoOrdemRequestModel }>()
+);
+
+export const atualizarAulaSessaoOrdemSuccess = createAction(
+  '[AulaSessao] atualizarAulaSessaoOrdem Success',
+  props<{ 
+    aulaSessaoOrdemRequest: AulaSessaoOrdemRequestModel,
+    response: Date 
+  }>()
+);
+
+export const atualizarAulaSessaoOrdemFailure = createAction(
+  '[AulaSessao] atualizarAulaSessaoOrdem Failure',
+  props<{ error: any }>()
 );

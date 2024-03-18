@@ -27,6 +27,7 @@
     "@ngrx/store": "^13.2.0",
     "@ngrx/store-devtools": "^13.2.0",
     "material-design-icons": "^3.0.1",
+    "ng-katex": "^2.0.3",
     "normalize.css": "^8.0.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

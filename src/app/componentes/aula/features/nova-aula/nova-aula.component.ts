@@ -79,14 +79,13 @@ export class NovaAulaComponent implements OnInit {
   }
 
   requestCriarAula() {
-    let aula: AulaModel = new AulaModel();
-    aula.titulo = this.formGroupAula.get("formTitulo")?.value;
-    aula.resumo = this.formGroupAula.get("formResumo")?.value;
-    aula.areaFisicaId = this.formGroupAula.get("formAreaFisica")?.value;
-    aula.professorId = this.usuarioLogado!.id;
+    let request: AulaModel = new AulaModel();
+    request.titulo = this.formGroupAula.get("formTitulo")?.value;
+    request.resumo = this.formGroupAula.get("formResumo")?.value;
+    request.areaFisicaId = this.formGroupAula.get("formAreaFisica")?.value;
+    request.professorId = this.usuarioLogado!.id;
     this.formGroupAula.reset();
-    
-    this.store.dispatch(inserirAula({ aula: aula }))
+    this.store.dispatch(inserirAula({ aula: request }))
     this.dialogRef.close();
   }
 

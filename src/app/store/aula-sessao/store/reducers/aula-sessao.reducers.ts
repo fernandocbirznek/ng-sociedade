@@ -237,15 +237,55 @@ export const aulaSessaoReducer = createReducer(
     };
   }),
   on(actions.atualizarAulaSessaoOrdem, (state, action) => {
-    let itens = action.aulaSessaoMany
-
     return { 
-      ...state, 
-      aulaSessao: itens,
+      ...state,
       isLoading: false, 
       isSuccess: false, 
       isFailure: true, 
       mensagem: "Erro ao excluir a sessão da aula"
     };
   }),
+  on(actions.atualizarAulaSessaoOrdemSuccess, (state, action) => {
+    let itens = 
+      state
+        .aulaSessao
+        .filter(item => 
+          action.aulaSessaoOrdemRequest.aulaSessaoMany.some(aulaSessao => aulaSessao.id == item.id)
+        )
+        .map(item => {
+          let aulaSessao = action.aulaSessaoOrdemRequest.aulaSessaoMany.find(aulaSessao => aulaSessao.id == item.id);
+          if (aulaSessao) {
+            let aulaSessaoAtualizada = new AulaSessaoModel();
+            aulaSessaoAtualizada.aulaId = item.aulaId;
+            aulaSessaoAtualizada.aulaSessaoTipo = item.aulaSessaoTipo;
+            aulaSessaoAtualizada.conteudo = item.conteudo;
+            aulaSessaoAtualizada.dataAtualizacao = action.response;
+            aulaSessaoAtualizada.dataCadastro = item.dataCadastro;
+            aulaSessaoAtualizada.favoritado = item.favoritado;
+            aulaSessaoAtualizada.id = item.id;
+            aulaSessaoAtualizada.ordem = aulaSessao.ordem;
+            aulaSessaoAtualizada.titulo = item.titulo;
+
+            return aulaSessao;
+          }
+          return item;
+        });
+   
+    return { 
+      ...state, 
+      aulaSessao: itens,
+      isLoading: false, 
+      isSuccess: true, 
+      isFailure: false, 
+    };
+   }),
+   on(actions.atualizarAulaSessaoOrdemFailure, (state) => {
+     return { 
+       ...state, 
+       isLoading: false, 
+       isSuccess: false, 
+       isFailure: true, 
+       mensagem: "Erro ao excluir a sessão da aula"
+     };
+   }),
 );

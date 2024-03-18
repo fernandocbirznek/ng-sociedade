@@ -1,1 +1,0 @@
-export * from './professor-editar-sessao.component';

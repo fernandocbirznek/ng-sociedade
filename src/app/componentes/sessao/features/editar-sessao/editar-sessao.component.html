@@ -1,0 +1,48 @@
+<div class="editar-sessao-component">
+    <div fxLayoutAlign="end end" class="fechar" (click)="fecharModal()">X</div>
+    <div fxLayout="column" fxLayoutAlign="center center">
+      <form [formGroup]="this.formSessao" fxLayout="column" fxLayoutAlign="center center" class="g-full-width">
+        <mat-form-field class="g-full-width" appearance="outline">
+          <mat-label>Titulo</mat-label>
+          <input formControlName="titulo_sessao" matInput required />
+        </mat-form-field>
+        <mat-form-field class="g-full-width" appearance="outline">
+          <mat-label>Tipo da Sessão</mat-label>
+          <mat-select formControlName="tipo_sessao" [(value)]="this.data.sessaoEditar.aulaSessaoTipo" matInput required>
+            <mat-option value="1">Conceito</mat-option>
+            <mat-option value="2">Equação</mat-option>
+            <mat-option value="3">Imagem</mat-option>
+            <mat-option value="4">Vídeo</mat-option>
+            <mat-option value="5">Texto</mat-option>
+          </mat-select>
+          <mat-error *ngIf="tipoSessao.invalid">Sessão é obrigatória</mat-error>
+        </mat-form-field>
+        <ckeditor *ngIf="this.tipoSessao.value == 1 || this.tipoSessao.value == 5" class="ckeditor-editar-sessao" 
+          formControlName="conteudo_sessao" #ckEditorTagEditar [editor]="ckEditor" data="<p>Hello, world!</p>">
+        </ckeditor>
+        <div *ngIf="this.tipoSessao.value == 2" fxLayout="column" fxLayoutAlign="start center" class="g-full-width">
+          <div fxLayout="column" class="container-exemplo">
+            <div fxLayout="row" fxLayoutAlign="start center">
+              Aceita formato Latex. Para aprender latex clique em: 
+              <a href="https://edisciplinas.usp.br/pluginfile.php/5567087/mod_resource/content/1/Tutorial_TEX.pdf">Tutorial Latex</a>
+            </div>
+            <span>Exemplo, em Latex: {{ this.exemploEquacao }}</span>
+            <div>fica: <ng-katex [equation]="exemploEquacao"></ng-katex></div>
+          </div>
+          <mat-form-field class="container-katex" appearance="outline">
+            <mat-label>Conteúdo</mat-label>
+            <textarea style="resize: none" [rows]="this.rows" maxlength="500" formControlName="conteudo_sessao" matInput>
+            </textarea>
+            <mat-error *ngIf="conteudoSessao.invalid">Conteúdo é obrigatório</mat-error>
+          </mat-form-field>
+        </div>
+      </form>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-around center" class="container-buttons">
+      <button mat-stroked-button color="accent" (click)="fecharModal()">Cancelar</button>
+      <button mat-stroked-button color="primary" (click)="editarSessao()">
+        <mat-icon class="material-symbols-outlined">edit</mat-icon>
+        Atualizar sessão
+      </button>
+    </div>
+  </div>

@@ -5,6 +5,7 @@ import { Observable } from "rxjs";
 
 import { 
     AulaSessaoModel,
+    AulaSessaoOrdemRequestModel,
 } from "src/app/models";
 
 @Injectable({
@@ -14,8 +15,9 @@ import {
 export class AulaSessaoService {
     urlInserirAulaSessao = 'https://localhost:44303/api/AulaSessao/inserir';
     urlAtualizarAulaSessao = 'https://localhost:44303/api/AulaSessao/atualizar';
+    urlAtualizarAulaSessaoOrdem = 'https://localhost:44303/api/AulaSessao/atualizar-aula-sessao-ordem';
     urlAtualizarAulaSessaoFavoritada = 'https://localhost:44303/api/AulaSessao/atualizar-favoritada';
-    urlExcluirAulaSessao = 'https://localhost:44303/api/AulaSessao/excluir';
+    urlExcluirAulaSessao = 'https://localhost:44303/api/AulaSessao/excluir'; 
     urlSelecionarManyAulaSessaoByAulaId = 'https://localhost:44303/api/AulaSessao/selecionar-sessoes-aula';
     urlSelecionarAulaSessaoById = 'https://localhost:44303/api/AulaSessao/selecionar-aula-sessao';
 
@@ -30,6 +32,11 @@ export class AulaSessaoService {
 
     atualizarAulaSessao(aulaSessao: AulaSessaoModel): Observable<AulaSessaoModel> {
         return this.httpClient.put<AulaSessaoModel>(this.urlAtualizarAulaSessao, JSON.stringify(aulaSessao), this.buildHttpOptions());
+    }
+
+    atualizarAulaSessaoOrdem(item: AulaSessaoOrdemRequestModel): Observable<Date> {
+        let aulaSessaoMany = JSON.stringify(item);
+        return this.httpClient.put<Date>(this.urlAtualizarAulaSessaoOrdem, aulaSessaoMany, this.buildHttpOptions());
     }
 
     atualizarAulaSessaoFavoritada(aulaSessao: AulaSessaoModel): Observable<AulaSessaoModel> {
