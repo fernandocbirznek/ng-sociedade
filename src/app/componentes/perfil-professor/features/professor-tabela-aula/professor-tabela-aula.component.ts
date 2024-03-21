@@ -20,7 +20,8 @@ import {
 import { 
   excluirAula,
   getManyAreaFisica,
-  getManyAulaByProfessorId, selecionarManyAulaByProfessorId 
+  getManyAulaByProfessorId, 
+  selecionarManyAulaByProfessorId 
 } from 'src/app/store';
 
 

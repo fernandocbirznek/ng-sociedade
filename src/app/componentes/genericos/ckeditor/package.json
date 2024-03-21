@@ -34,6 +34,7 @@
     "@ckeditor/ckeditor5-style": "40.1.0",
     "@ckeditor/ckeditor5-table": "40.1.0",
     "@ckeditor/ckeditor5-typing": "40.1.0",
+    "@ckeditor/ckeditor5-upload": "^41.2.1",
     "@ckeditor/ckeditor5-word-count": "40.1.0"
   },
   "devDependencies": {

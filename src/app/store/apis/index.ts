@@ -5,9 +5,11 @@ import { NoticiaState, noticiaReducer } from "../noticia";
 import { aulaReducer, AulaState } from "../aula";
 import { areaFisicaReducer, AreaFisicaState } from "../area-fisica";
 import { aulaSessaoReducer, AulaSessaoState } from "../aula-sessao";
+import { areaInteresseReducer, AreaInteresseState } from "../area-interesse";
 
 export interface AppState {
     areaFisica: AreaFisicaState,
+    areaInteresse: AreaInteresseState,
     aula: AulaState,
     aulaSessao: AulaSessaoState,
     manipularConta: ManipularContaState,
@@ -16,6 +18,7 @@ export interface AppState {
 
 export const reducers: ActionReducerMap<AppState> = {
     areaFisica: areaFisicaReducer,
+    areaInteresse: areaInteresseReducer,
     aula: aulaReducer,
     aulaSessao: aulaSessaoReducer,
     manipularConta: manipularContaReducer,

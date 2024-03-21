@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
@@ -60,7 +60,8 @@ export class EditarAulaComponent implements OnInit {
     public dialog: MatDialog,
     public store: Store,
     private route: ActivatedRoute,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    public router: Router,
   ) {
     this.aulaId = this.route.snapshot.paramMap.get('id') ? +this.route.snapshot.paramMap.get('id')!: 0;
   }
@@ -91,7 +92,6 @@ export class EditarAulaComponent implements OnInit {
     this.aulaSessaoSubscription$ = this.aulaSessao$.subscribe(itens => {
       this.trustedDashboardHtml = [];
       this.aulaSessaoMany = itens;
-      console.log("items = ", itens);
       this.aulaSessaoMany.sort((a, b) => (a.ordem < b.ordem) ? -1 : 1);
       this.aulaSessaoMany.forEach(item => {
         this.trustedDashboardHtml.push(this.sanitizer.bypassSecurityTrustHtml(item.conteudo));
@@ -176,5 +176,9 @@ export class EditarAulaComponent implements OnInit {
         this.store.dispatch(excluirAulaSessao({ aulaSessaoId: sessao.id }));
       }
     });
+  }
+
+  voltarPaginaPainelProfessor() {
+    this.router.navigate([`perfil-professor/${this.usuarioLogado?.email}`]);
   }
 }

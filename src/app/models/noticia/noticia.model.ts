@@ -4,11 +4,11 @@ export class NoticiaModel {
 	id: number = 0;
 	titulo: string = "";
 	resumo: string = "";
-	descricao: string = "";
-    usuarioId: string = "";
-	usuarioNome: string = "";
+	conteudo: string = "";
+    usuarioCadastroId: number = 0;
+	usuarioCadastroNome: string = "";
 	dataCadastro: Date | undefined = undefined;
 	dataAtualizacao: Date | undefined = undefined;
 
-	areaInteresses: AreaInteresseModel[] = [] 
+	areaInteresseMany: AreaInteresseModel[] = [] 
 }

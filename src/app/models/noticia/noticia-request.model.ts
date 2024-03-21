@@ -1,6 +1,8 @@
 export class NoticiaRequestModel {
+	id: number = 0;
 	titulo: string = "";
 	resumo: string = "";
-	descricao: string = "";
-    usuarioId: string = "";
+	conteudo: string = "";
+    usuarioCadastroId: number = 0;
+	areaInteresseMany: number[] = [];
 }

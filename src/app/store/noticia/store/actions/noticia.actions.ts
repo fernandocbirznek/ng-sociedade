@@ -5,32 +5,32 @@ import {
     NoticiaRequestModel
 } from 'src/app/models';
 
-export const selecionarManyNoticiaHome = createAction(
-    '[Noticia] SelecionarNoticia'
+export const selecionarNoticiaManyHome = createAction(
+    '[Noticia] selecionarNoticiaManyHome'
 );
 
-export const selecionarManyNoticiaHomeSuccess = createAction(
-    '[Noticia] SelecionarNoticia Success',
+export const selecionarNoticiaManyHomeSuccess = createAction(
+    '[Noticia] selecionarNoticiaManyHome Success',
     props<{ response: NoticiaModel[] }>()
 );
 
-export const selecionarManyNoticiaHomeFailure = createAction(
-    '[Noticia] SelecionarNoticia Failure',
+export const selecionarNoticiaManyHomeFailure = createAction(
+    '[Noticia] selecionarNoticiaManyHome Failure',
     props<{ error: any }>()
 );
 
-export const selecionarOneNoticiaById = createAction(
-    '[Noticia] selecionarOneNoticiaById',
-    props<{ noticiaId: number }>()
+export const selecionarNoticiaManyByProfessorId = createAction(
+    '[Noticia] selecionarNoticiaManyByProfessorId',
+    props<{ professorId: number }>()
 );
 
-export const selecionarOneNoticiaByIdSuccess = createAction(
-    '[Noticia] selecionarOneNoticiaById Success',
-    props<{ response: NoticiaModel }>()
+export const selecionarNoticiaManyByProfessorIdSuccess = createAction(
+    '[Noticia] selecionarNoticiaManyByProfessorId Success',
+    props<{ response: NoticiaModel[] }>()
 );
 
-export const selecionarOneNoticiaByIdFailure = createAction(
-    '[Noticia] selecionarOneNoticiaById Failure',
+export const selecionarNoticiaManyByProfessorIdFailure = createAction(
+    '[Noticia] selecionarNoticiaManyByProfessorId Failure',
     props<{ error: any }>()
 );
 
@@ -51,12 +51,12 @@ export const inserirNoticiaFailure = createAction(
 
 export const atualizarNoticia = createAction(
     '[Noticia] atualizarNoticia',
-    props<{ noticia: NoticiaModel }>()
+    props<{ noticia: NoticiaRequestModel }>()
 );
 
 export const atualizarNoticiaSuccess = createAction(
     '[Noticia] atualizarNoticia Success',
-    props<{ request: NoticiaModel, response: NoticiaModel }>()
+    props<{ request: NoticiaRequestModel, response: NoticiaModel }>()
 );
 
 export const atualizarNoticiaFailure = createAction(

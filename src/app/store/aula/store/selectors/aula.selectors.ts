@@ -1,8 +1,12 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as fromAula from '../reducers/aula.reducers';
 
+import { 
+  AreaFisicaModel,
+  AulaModel 
+} from 'src/app/models';
+
 import * as areaFisicaFeature from '../../../area-fisica/store';
-import { AreaFisicaModel, AulaModel } from 'src/app/models';
 
 export const selectAulaState = createFeatureSelector<fromAula.AulaState>(
   fromAula.aulaFeatureKey

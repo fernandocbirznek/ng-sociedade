@@ -1,0 +1,37 @@
+<div fxLayout="column" class="container-noticia">
+    <h2>Editar notícia</h2>
+    <form [formGroup]="this.formGroupNoticia" fxLayout="column" fxLayoutAlign="start center">   
+        <mat-form-field  appearance="outline" class="g-full-width">
+            <mat-label>Título</mat-label>
+            <input formControlName="formTitulo" matInput required>
+            <mat-error *ngIf="formTitulo.invalid">Titulo é obrigatório</mat-error>
+        </mat-form-field>          
+        <mat-form-field appearance="outline" class="g-full-width">
+            <mat-label>Resumo</mat-label>
+            <textarea maxlength="200" formControlName="formResumo" matInput required></textarea>
+            <mat-error *ngIf="formResumo.invalid">Resumo é obrigatória</mat-error>
+        </mat-form-field>
+        <ckeditor class="ckeditor-editar-noticia" 
+            formControlName="formConteudo" #ckEditorTagEditar [editor]="ckEditor">
+        </ckeditor>
+    </form>
+    <h4>Selecione as áreas de interesse da notícia:</h4>
+    <div fxLayout="row" fxLayoutAlign="start center" class="container-area-interesse">
+        <section *ngFor="let areaInteresse of this.areaInteresseMany">
+            <mat-checkbox [checked]="this.areaInteresseSelecionado.includes(areaInteresse.id)" 
+                (change)="selecionouAreaInteresse(areaInteresse, $event)">
+                {{areaInteresse.nome}}
+            </mat-checkbox>
+        </section>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-around center" class="container-buttons">
+        <button mat-stroked-button color="warn" (click)="fecharModal()">
+            <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
+            Cancelar
+        </button>
+        <button mat-stroked-button color="primary" (click)="requestEditarNoticia()">
+            <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
+            Editar noticia
+        </button>
+    </div>
+</div>

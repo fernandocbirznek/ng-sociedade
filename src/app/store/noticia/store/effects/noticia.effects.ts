@@ -27,29 +27,26 @@ export class NoticiaEffects {
     ) 
   {}
 
-  selecionarManyNoticiaHome$ = createEffect(() => {
+  selecionarNoticiaManyHome$ = createEffect(() => {
     return this.actions$.pipe( 
-      ofType(actions.selecionarManyNoticiaHome),
+      ofType(actions.selecionarNoticiaManyHome),
       concatMap(() =>
-        this.noticiaService.selecionarManyNoticia().pipe(
+        this.noticiaService.selecionarNoticiaManyHome().pipe(
           map(response => {
-            response.forEach(item => {
-              this.store.dispatch(selecionarManyAreaInteresseByNoticiaId({noticiaId: item.id}));
-            })
-            return actions.selecionarManyNoticiaHomeSuccess({ response: response })
+            return actions.selecionarNoticiaManyHomeSuccess({ response: response })
           }),
-          catchError(error => of(actions.selecionarManyNoticiaHomeFailure({ error }))))
+          catchError(error => of(actions.selecionarNoticiaManyHomeFailure({ error }))))
       )
     );
   });
 
-  selecionarOneNoticiaById$ = createEffect(() => {
+  selecionarNoticiaManyByProfessorId$ = createEffect(() => {
     return this.actions$.pipe( 
-      ofType(actions.selecionarOneNoticiaById),
+      ofType(actions.selecionarNoticiaManyByProfessorId),
       concatMap((action) =>
-        this.noticiaService.selecionarOneNoticia(action.noticiaId).pipe(
-          map(response => actions.selecionarOneNoticiaByIdSuccess({ response: response })),
-          catchError(error => of(actions.selecionarOneNoticiaByIdFailure({ error }))))
+        this.noticiaService.selecionarNoticiaManyProfessor(action.professorId).pipe(
+          map(response => actions.selecionarNoticiaManyByProfessorIdSuccess({ response: response })),
+          catchError(error => of(actions.selecionarNoticiaManyByProfessorIdFailure({ error }))))
       )
     );
   });

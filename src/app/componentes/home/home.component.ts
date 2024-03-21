@@ -7,9 +7,10 @@ import {
 } from 'src/app/models';
 
 import { 
+  selecionarAreaInteresseMany,
   selecionarManyAreaFisica,
   selecionarManyNoticia,
-  selecionarManyNoticiaHome 
+  selecionarNoticiaManyHome 
 } from 'src/app/store';
 
 @Component({
@@ -26,7 +27,9 @@ export class HomeComponent implements OnInit {
   constructor(
     public store: Store,
   ) {
-    this.store.dispatch(selecionarManyNoticiaHome());
+    //TODO, ficar aqui ou alterar para o resolver global?
+    this.store.dispatch(selecionarAreaInteresseMany());
+    this.store.dispatch(selecionarNoticiaManyHome());
     this.store.dispatch(selecionarManyAreaFisica());
   }
 

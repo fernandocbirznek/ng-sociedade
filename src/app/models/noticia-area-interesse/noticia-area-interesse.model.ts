@@ -1,8 +1,7 @@
-import { AreaInteresseModel } from "../area-interesse";
-
 export class NoticiaAreaInteresseModel {
 	dataCadastro: Date | undefined = undefined;
 	dataAtualizacao: Date | undefined = undefined;
-
-	areaInteresses: AreaInteresseModel[] = [] 
+	noticiaId: number = 0;
+	areaInteresseId: number = 0;
+	areaInteresseNome: string = '';
 }

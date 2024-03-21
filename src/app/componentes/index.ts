@@ -3,6 +3,7 @@ export * from './footer';
 export * from './genericos';
 export * from './header';
 export * from './home';
+export * from './noticia';
 export * from './perfil-professor';
 export * from './sessao';
 export * from './topicos';

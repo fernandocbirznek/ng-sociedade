@@ -23,7 +23,7 @@ export const noticiaInitialState: NoticiaState = {
 export const noticiaReducer = createReducer(
   noticiaInitialState,
 
-  on(actions.selecionarManyNoticiaHome, state => {
+  on(actions.selecionarNoticiaManyHome, state => {
     return { 
         ...state, 
         isLoading: true, 
@@ -32,7 +32,7 @@ export const noticiaReducer = createReducer(
         error: "" 
     };
   }),
-  on(actions.selecionarManyNoticiaHomeSuccess, (state, action) => {
+  on(actions.selecionarNoticiaManyHomeSuccess, (state, action) => {
     let itens = [...state.itens];
     
     action.response.forEach(noticia => {
@@ -49,7 +49,7 @@ export const noticiaReducer = createReducer(
         error: ""
     };
   }),
-  on(actions.selecionarManyNoticiaHomeFailure, (state) => {
+  on(actions.selecionarNoticiaManyHomeFailure, (state) => {
     return { 
         ...state, 
         isLoading: false, 
@@ -59,7 +59,7 @@ export const noticiaReducer = createReducer(
     };
   }),
 
-  on(actions.selecionarOneNoticiaById, state => {
+  on(actions.selecionarNoticiaManyByProfessorId, state => {
     return { 
         ...state, 
         isLoading: true, 
@@ -68,9 +68,13 @@ export const noticiaReducer = createReducer(
         error: "" 
     };
   }),
-  on(actions.selecionarOneNoticiaByIdSuccess, (state, action) => {
-    let itens = [...state.itens, action.response];
-  
+  on(actions.selecionarNoticiaManyByProfessorIdSuccess, (state, action) => {
+    let itens = 
+      state.itens
+      .filter(item => !action.response.some(noticia => noticia.id == item.id));
+
+    itens = itens.concat(action.response);
+
     return { 
         ...state, 
         itens: itens,
@@ -80,7 +84,7 @@ export const noticiaReducer = createReducer(
         error: ""
     };
   }),
-  on(actions.selecionarOneNoticiaByIdFailure, (state) => {
+  on(actions.selecionarNoticiaManyByProfessorIdFailure, (state) => {
     return { 
         ...state, 
         isLoading: false, 
@@ -130,14 +134,16 @@ export const noticiaReducer = createReducer(
   on(actions.atualizarNoticiaSuccess, (state, action) => {
     let itens = [...state.itens].map(item => {
         if(item.id == action.request.id) {
-            let noticia: NoticiaModel = new NoticiaModel();
-            noticia.id = item.id;
-            noticia.dataCadastro = item.dataCadastro;
-            noticia.titulo = action.request.titulo;
-            noticia.descricao = action.request.descricao;
-            noticia.usuarioId = item.usuarioId;
-            noticia.dataAtualizacao = action.response.dataAtualizacao;
-            return noticia;
+          let noticia: NoticiaModel = new NoticiaModel();
+          noticia.id = item.id;
+          noticia.dataCadastro = item.dataCadastro;
+          noticia.titulo = action.request.titulo;
+          noticia.resumo = action.request.resumo;
+          noticia.conteudo = action.request.conteudo;
+          noticia.usuarioCadastroId = item.usuarioCadastroId;
+          noticia.dataAtualizacao = action.response.dataAtualizacao;
+          noticia.areaInteresseMany = action.response.areaInteresseMany;
+          return noticia;
         }
         return item;
     });
@@ -210,13 +216,13 @@ export const noticiaReducer = createReducer(
         let noticia = new NoticiaModel();
         noticia.dataAtualizacao = item.dataAtualizacao,
         noticia.dataCadastro = item.dataCadastro,
-        noticia.descricao = item.descricao,
+        noticia.conteudo = item.conteudo,
         noticia.id = item.id;
-        noticia.usuarioNome = item.usuarioNome;
+        noticia.usuarioCadastroNome = item.usuarioCadastroNome;
         noticia.resumo = item.resumo;
         noticia.titulo = item.titulo;
-        noticia.usuarioId = item.usuarioId;
-        noticia.areaInteresses = areaInteresses;
+        noticia.usuarioCadastroId = item.usuarioCadastroId;
+        noticia.areaInteresseMany = areaInteresses;
         return noticia;
       }
       return item;

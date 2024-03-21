@@ -34,7 +34,11 @@ import {
   EditarAulaComponent,
   NovaAulaComponent,
   VisualizarAulaComponent,
-  EditarAulaInformacaoComponent
+  EditarAulaInformacaoComponent,
+  NovaNoticiaComponent,
+  ProfessorTabelaNoticiaComponent,
+  EditarNoticiaComponent,
+  EditarSessaoComponent
 } from './componentes';
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -43,6 +47,7 @@ import { KatexModule } from 'ng-katex';
 
 import {
   AreaFisicaStoreModule,
+  AreaInteresseStoreModule,
   AulaSessaoStoreModule,
   AulaStoreModule,
   ManipularContaModule, 
@@ -53,7 +58,6 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
-import { EditarSessaoComponent } from './componentes/sessao/features/editar-sessao/editar-sessao.component';
 
 @NgModule({
   declarations: [
@@ -87,7 +91,10 @@ import { EditarSessaoComponent } from './componentes/sessao/features/editar-sess
     VisualizarAulaComponent,
     NovaSessaoComponent,
     EditarSessaoComponent,
-    EditarAulaInformacaoComponent
+    EditarAulaInformacaoComponent,
+    NovaNoticiaComponent,
+    ProfessorTabelaNoticiaComponent,
+    EditarNoticiaComponent
   ],
   imports: [
     BrowserModule,
@@ -118,6 +125,7 @@ import { EditarSessaoComponent } from './componentes/sessao/features/editar-sess
     HttpClientModule,
     ManipularContaModule,
     AreaFisicaStoreModule,
+    AreaInteresseStoreModule,
     AulaStoreModule,
     AulaSessaoStoreModule,
     NoticiaModule,
