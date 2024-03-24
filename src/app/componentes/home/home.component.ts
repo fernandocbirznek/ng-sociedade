@@ -3,12 +3,12 @@ import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 
 import { 
+  AreaFisicaModel,
   NoticiaModel 
 } from 'src/app/models';
 
 import { 
   selecionarAreaInteresseMany,
-  selecionarManyAreaFisica,
   selecionarManyNoticia,
   selecionarNoticiaManyHome 
 } from 'src/app/store';
@@ -19,7 +19,6 @@ import {
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
   noticiaManySubscription$: Subscription = new Subscription();
   noticiaMany$: Observable<NoticiaModel[]> = new Observable<NoticiaModel[]>();
   noticiaMany: NoticiaModel[] = [];
@@ -30,7 +29,6 @@ export class HomeComponent implements OnInit {
     //TODO, ficar aqui ou alterar para o resolver global?
     this.store.dispatch(selecionarAreaInteresseMany());
     this.store.dispatch(selecionarNoticiaManyHome());
-    this.store.dispatch(selecionarManyAreaFisica());
   }
 
   ngOnInit(): void {

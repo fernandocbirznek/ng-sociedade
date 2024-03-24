@@ -8,7 +8,8 @@ import {
 
 import { 
     EditarAulaComponent,
-    NovaAulaComponent 
+    NovaAulaComponent, 
+    VisualizarAulaComponent
 } from "../features";
 
 const aulaRoutes: Routes = [
@@ -21,6 +22,10 @@ const aulaRoutes: Routes = [
         path: "editar-aula/:id",
         component: EditarAulaComponent,
         canActivate: [AutenticacaoService],
+    },
+    {
+        path: "visualizar-aula/:id",
+        component: VisualizarAulaComponent
     }
 ];
 

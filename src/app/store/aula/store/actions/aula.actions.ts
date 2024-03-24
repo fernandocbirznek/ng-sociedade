@@ -34,21 +34,6 @@ export const selecionarAulaByProfessorIdFailure = createAction(
   props<{ error: any }>()
 );
 
-export const selecionarManyAulaByAreaFisicaId = createAction(
-  '[Aula] selecionarManyAulaByAreaFisicaId',
-  props<{ areaFisicaId: number }>()
-);
-
-export const selecionarManyAulaByAreaFisicaIdSuccess = createAction(
-  '[Aula] selecionarManyAulaByAreaFisicaId Success',
-  props<{ response: AulaModel[] }>()
-);
-
-export const selecionarManyAulaByAreaFisicaIdFailure = createAction(
-  '[Aula] selecionarManyAulaByAreaFisicaId Failure',
-  props<{ error: any }>()
-);
-
 export const selecionarManyAulaByProfessorId = createAction(
   '[Aula] selecionarManyAulaByProfessorId',
   props<{ professorId: number }>()
@@ -61,6 +46,21 @@ export const selecionarManyAulaByProfessorIdSuccess = createAction(
 
 export const selecionarManyAulaByProfessorIdFailure = createAction(
   '[Aula] selecionarManyAulaByProfessorId Failure',
+  props<{ error: any }>()
+);
+
+export const selecionarManyAulaByAreaFisicaId = createAction(
+  '[Aula] selecionarManyAulaByAreaFisicaId',
+  props<{ areaFisicaId: number }>()
+);
+
+export const selecionarManyAulaByAreaFisicaIdSuccess = createAction(
+  '[Aula] selecionarManyAulaByAreaFisicaId Success',
+  props<{ response: AulaModel[] }>()
+);
+
+export const selecionarManyAulaByAreaFisicaIdFailure = createAction(
+  '[Aula] selecionarManyAulaByAreaFisicaId Failure',
   props<{ error: any }>()
 );
 
@@ -101,7 +101,7 @@ export const atualizarAulaCurtir = createAction(
 
 export const atualizarAulaCurtirSuccess = createAction(
   '[Aula] atualizarAulaCurtir Success',
-  props<{ response: AulaModel }>()
+  props<{ aula: AulaModel, response: AulaModel }>()
 );
 
 export const atualizarAulaCurtirFailure = createAction(

@@ -1,1 +1,45 @@
-<p>visualizar-aula works!</p>
+<div fxLayout="column">
+    <div fxLayout="row" fxLayoutAlign="start center">
+        <div class="dot-mecanica"></div>
+        <div class="titulo">Mecânica</div>
+    </div>
+    <div class="titulo-aula">
+        {{ this.aula.titulo }}
+    </div>
+    <div fxLayout="column" fxLayoutAlign="center end">
+        <div>
+            Nome do professor
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="container-icones">
+            <div fxLayout="row" fxLayoutAlign="space-between center" class="icone" (click)="curtirAula()">
+                <mat-icon class="material-symbols-outlined">thumb_up</mat-icon>
+                <div>{{ this.aula.curtido }}</div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-between center" class="icone" (click)="favoritarAula()">
+                <mat-icon class="material-symbols-outlined">star</mat-icon>
+                <div>{{ this.aula.favoritado }}</div>
+            </div>
+        </div>
+    </div>
+    
+    <fieldset class="fieldset">
+        <div class="fieldset-titulo">Resumo</div>
+        <div>{{ this.aula.resumo }}</div>
+    </fieldset>
+
+    <div *ngFor="let sessao of this.aula.aulaSessaoMany; index as i" fxLayout="column" class="container-sessao-many">
+        <div fxLayout="column" fxLayoutAlign="center center" class="titulo-sessao">
+        {{ sessao.titulo }}
+        </div>
+        <div *ngIf="sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Conceito || sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Texto" 
+            fxLayout="column" fxLayoutAlign="center center" [innerHTML]="this.trustedDashboardHtml[i]">
+        </div>
+        <div *ngIf="sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Equacao"> 
+        <ng-katex [equation]="sessao.conteudo"></ng-katex>
+        </div>
+    </div>
+    <div>
+        Parte dos comentários
+    </div>
+</div>
+    

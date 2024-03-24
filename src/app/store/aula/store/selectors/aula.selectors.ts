@@ -39,6 +39,19 @@ export const getManyAulaByProfessorId = (professorId: number) => createSelector(
   }
 )
 
+export const getManyAulaByAreaFisicaId = (areaFisicaId: number) => createSelector(
+  selectAulaState, (
+    state,
+  ) => {
+  let itens: AulaModel[] = 
+    state
+      .aulas
+      .filter(item => item.areaFisicaId == areaFisicaId);
+
+    return itens;
+  }
+)
+
 export const getOneAulaById = (aulaId: number) => createSelector(
   selectAulaState, 
   areaFisicaFeature.getManyAreaFisica, (

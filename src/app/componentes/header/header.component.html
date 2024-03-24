@@ -5,37 +5,15 @@
             <h2>Compreendendo a natureza desde a sua origem</h2>
         </div>
         <div fxFlex="40%" fxLayout="row" fxLayoutAlign="space-between start" class="menu-navegacao">
-            <div fxFlex="32%" fxLayout="column" fxLayoutAlign="center center">
-                <a routerLink="" (click)="mudarCabecalho(true)">Home</a>
+            <div fxFlex="30%" fxLayout="column" fxLayoutAlign="center center">
+                <a routerLink="">Home</a>
                 <a (click)="conta()">Criar Conta / Login</a>
-                <a routerLink="/forum" (click)="mudarCabecalho(false)">Fórum</a>
+                <a routerLink="/forum">Fórum</a>
             </div>
-            <div fxFlex="32%" fxLayout="column" fxLayoutAlign="center center">
-                <a (mouseover)="mudaFoto('1')" (mouseout)="mudaFoto('0')" (click)="mudarCabecalho(false)" routerLink="/mecanica">
-                    Mecânica
-                </a>
-                <a (mouseover)="mudaFoto('2')" (mouseout)="mudaFoto('0')" (click)="mudarCabecalho(false)" routerLink="/termodinamica">
-                    Termodinâmica
-                </a>
-                <a (mouseover)="mudaFoto('3')" (mouseout)="mudaFoto('0')" (click)="mudarCabecalho(false)" routerLink="/ondulatoria">
-                    Ondulatória
-                </a>
-                <a (mouseover)="mudaFoto('4')" (mouseout)="mudaFoto('0')" (click)="mudarCabecalho(false)" routerLink="/eletormagnetismo">
-                    Eletromagnetismo
-                </a>
-                <a (mouseover)="mudaFoto('5')" (mouseout)="mudaFoto('0')" (click)="mudarCabecalho(false)" routerLink="/fisicamoderna">
-                    Física Moderna
-                </a>
-            </div>
-            <div fxFlex="32%" fxLayout="column" fxLayoutAlign="center center">
-                <a (mouseover)="mudaFoto('6')" (mouseout)="mudaFoto('0')" (click)="mudarCabecalho(false)" routerLink="/matematica">
-                    Matemática
-                </a>
-                <a (mouseover)="mudaFoto('7')" (mouseout)="mudaFoto('0')" (click)="mudarCabecalho(false)" routerLink="/especiais">
-                    Especiais
-                </a>
-                <a (mouseover)="mudaFoto('8')" (mouseout)="mudaFoto('0')" (click)="mudarCabecalho(false)" routerLink="/vestibular">
-                    Exercícios vestibulares
+            <div fxFlex="70%" fxLayout="row wrap" fxLayoutAlign="space-between center">
+                <a *ngFor="let areaFisica of this.areaFisicaMany" class="g-full-width" (mouseover)="mudaFoto(areaFisica.id.toString())" 
+                    (mouseout)="mudaFoto('0')" (click)="areaSelecionada(areaFisica)" routerLink="/mecanica">
+                    {{areaFisica.descricao}}
                 </a>
             </div>
         </div>
@@ -46,22 +24,22 @@
         </div> 
     </div>
     <div *ngIf="!this.telaInicial" fxLayout="row wrap" class="menu-navegacao menu-navegacao-topico" fxLayoutAlign="center center">
-        <a routerLink="" (click)="mudarCabecalho(true)">Home</a>
-        <a (mouseover)="mudaFoto('1')" (mouseout)="mudaFoto('0')" (click)="mudarCabecalho(false)"
+        <a routerLink="">Home</a>
+        <a (mouseover)="mudaFoto('1')" (mouseout)="mudaFoto('0')"
             routerLink="/mecanica">Mecânica</a>
-        <a (mouseover)="mudaFoto('2')" (mouseout)="mudaFoto('0')" (click)="mudarCabecalho(false)"
+        <a (mouseover)="mudaFoto('2')" (mouseout)="mudaFoto('0')"
             routerLink="/termodinamica">Termodinâmica</a>
-        <a (mouseover)="mudaFoto('3')" (mouseout)="mudaFoto('0')" (click)="mudarCabecalho(false)"
+        <a (mouseover)="mudaFoto('3')" (mouseout)="mudaFoto('0')" 
             routerLink="/ondulatoria">Ondulatória</a>
-        <a (mouseover)="mudaFoto('4')" (mouseout)="mudaFoto('0')" (click)="mudarCabecalho(false)"
+        <a (mouseover)="mudaFoto('4')" (mouseout)="mudaFoto('0')" 
             routerLink="/eletormagnetismo">Eletromagnetismo</a>
-        <a (mouseover)="mudaFoto('5')" (mouseout)="mudaFoto('0')" (click)="mudarCabecalho(false)"
+        <a (mouseover)="mudaFoto('5')" (mouseout)="mudaFoto('0')"
             routerLink="/fisicamoderna">Física Moderna</a>
-        <a (mouseover)="mudaFoto('6')" (mouseout)="mudaFoto('0')" (click)="mudarCabecalho(false)"
+        <a (mouseover)="mudaFoto('6')" (mouseout)="mudaFoto('0')"
             routerLink="/matematica">Matemática</a>
-        <a (mouseover)="mudaFoto('7')" (mouseout)="mudaFoto('0')" (click)="mudarCabecalho(false)"
+        <a (mouseover)="mudaFoto('7')" (mouseout)="mudaFoto('0')"
             routerLink="/especiais">Especiais</a>
-        <a (mouseover)="mudaFoto('8')" (mouseout)="mudaFoto('0')" (click)="mudarCabecalho(false)"
+        <a (mouseover)="mudaFoto('8')" (mouseout)="mudaFoto('0')"
             routerLink="/vestibular">Exercícios vestibulares</a>
         <a (click)="conta()">Criar Conta</a>
     </div>

@@ -1,6 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginCriarContaComponent } from '../topicos';
+import { Store } from '@ngrx/store';
+import { Observable, Subscription } from 'rxjs';
+
+import { 
+  AreaFisicaModel 
+} from 'src/app/models';
+
+import { 
+  getManyAreaFisica,
+  selecionarManyAreaFisica 
+} from 'src/app/store';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,23 +20,63 @@ import { LoginCriarContaComponent } from '../topicos';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  areaFisicaManySubscription$: Subscription = new Subscription();
+  areaFisicaMany$: Observable<AreaFisicaModel[]> = new Observable<AreaFisicaModel[]>();
+  areaFisicaMany: AreaFisicaModel[] = [];
+  
   public imagem: string;
   public resumoTopico: string;
   public tituloTopico: string = "Home";
   public telaInicial: boolean = true;
 
   constructor(
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public router: Router,
+    public store: Store,
   ) { 
     this.imagem = "../../../assets/imagens/header/home.png";
     this.resumoTopico = "Aqui é a página principal, nela temos um resumo sobre a Física," 
                         + "na esquerda temos as últimas postagens...";
+
+    this.store.dispatch(selecionarManyAreaFisica());
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.setupAreaFisica();
+  }
 
-  mudarCabecalho(cabecalho: boolean) {
-    this.telaInicial= cabecalho;
+  setupAreaFisica() {
+    this.areaFisicaMany$ = this.store.select(getManyAreaFisica);
+    this.areaFisicaManySubscription$ = this.areaFisicaMany$.subscribe(itens => {
+      this.areaFisicaMany = itens;
+    });
+  }
+
+
+  areaSelecionada(areaFisica: AreaFisicaModel) {
+    switch(areaFisica.id) {
+      case 1:
+        this.router.navigate([`cosmologia`]);
+        break;
+      case 2:
+        this.router.navigate(['mecanica'], { queryParams: { areaFisicaId: areaFisica.id }});
+        break;
+      case 3:
+        this.router.navigate([`termodinamica`]);
+        break;
+      case 4:
+        this.router.navigate([`eletromagnetismo`]);
+        break;
+      case 5:
+        this.router.navigate([`fisica-moderna`]);
+        break;
+      case 6:
+        this.router.navigate([`optica`]);
+        break;
+      case 7:
+        this.router.navigate([`mecanica-quantica`]);
+        break;
+    }
   }
 
   conta() {
@@ -37,25 +89,19 @@ export class HeaderComponent implements OnInit {
   mudaFoto (foto: string)
 	{
 		switch(foto) {
-      case "0":
-        this.tituloTopico = "Home";
-        this.imagem = "../../../assets/imagens/header/home.png";
-        this.resumoTopico = "Aqui é a página principal, nela temos um resumo sobre a Física," 
-                            + "na esquerda temos as últimas postagens...";
-        break;
-      case "1":
+      case "2":
         this.tituloTopico = "Mecânica";
         this.imagem = "../../../assets/imagens/header/mecanica.png";
         this.resumoTopico = "O que é a velocidade? Podemos prever o movimento dos planetas?" 
                             + " Essas e outras perguntas serão respondidas aqui.";
         break;
-      case "2":
+      case "3":
         this.tituloTopico = "Termodinâmica";
         this.imagem = "../../../assets/imagens/header/termodinamica.png";
         this.resumoTopico = "Aqui descobriremos o que é o calor, a diferença entre calor" 
                             + " e temperatura e muitos outros conceitos.";
         break;
-      case "3":
+      case "6":
         this.tituloTopico = "Ondulatória";
         this.imagem = "../../../assets/imagens/header/ondulatoria.png";
         this.resumoTopico = "Vamos compreender juntos como o som se propaga e porquê não existe som no espaço.";
@@ -90,20 +136,11 @@ export class HeaderComponent implements OnInit {
         this.resumoTopico = "Se você quer praticar exercícios de vestibular e se preparar para" 
                             + " ingressar numa universidade, aqui é o lugar certo.";
         break;
+      default:
+        this.tituloTopico = "Home";
+        this.imagem = "../../../assets/imagens/header/home.png";
+        this.resumoTopico = "Aqui é a página principal, nela temos um resumo sobre a Física," 
+                            + "na esquerda temos as últimas postagens...";
     }
 	}
 }
-
-
-// conta() {
-//   this.dialog.open(CriarContaComponent, {
-//     maxHeight: '800px',
-//     height: 'auto',
-//   }).afterClosed().subscribe((evento) => {
-//     this.snackBar.openFromComponent(ToastComponent, {
-//       data: evento,
-//       duration: 7 * 1000,
-//       panelClass: 'css-toast'
-//     });
-//   });
-// }

@@ -1,21 +1,34 @@
 .container {
-    margin: auto ;
-    margin-top: 20px;
+    padding: 20px;
+    gap: 20px;
 }
 
-a:hover, a {
-    text-decoration: none;
-    color: black;
+.container-titulo {
+    width: 100%;
+}
+
+.dot-mecanica {
+    background-color: #e07a5f;
+    border-radius: 20px;
+    padding: 15px;
+    margin-right: 10px;
 }
 
 .titulo {
     letter-spacing: 2px;
     font-weight: 700;
     font-size: 30px;
-    background-color: #e07a5f;
+}
+
+.container-descricao {
+    gap: 20px;
+}
+
+.container-descricao-topico {
+    border: 2px solid #e07a5f;
+    background-color: #abb6c8;
     border-radius: 20px;
-    padding: 15px 30px;
-    margin-bottom: 20px;
+    min-height: 350px;
 }
 
 .sub-titulo {
@@ -33,11 +46,12 @@ a:hover, a {
     line-height: 26px;
 }
 
-.container-descricao-topico {
+.container-divisao {
     border: 2px solid #e07a5f;
-    background-color: #abb6c8;
+    background-color: #5fabd4;
     border-radius: 20px;
-    min-height: 350px;
+    box-shadow: 6px 6px 6px rgba(128, 128, 128, 0.658);
+    min-height: 400px;
 }
 
 .imagem {
@@ -46,40 +60,53 @@ a:hover, a {
     background-size: cover;
 }
 
-.container-divisao {
-    border: 2px solid #e07a5f;
-    background-color: #5fabd4;
-    padding-bottom: 5px;
-    border-radius: 20px;
-    margin: 20px auto;
-    box-shadow: 6px 6px 6px rgba(128, 128, 128, 0.658);
-    min-height: 400px;
-}
-
-.card-11 {
+.card-geral {
     border: 2px solid #e07a5f;
     background-color: #a7dbd8;
     border-radius: 20px;
-    margin: 20px auto;
+    position: relative;
+    padding: 20px;
+    width: 100%;
+    height: 600px;
+}
+
+.divisor {
+    height: 100%;
+    width: 1px;
+    background-color: #e07a5f;
+}
+
+.container-aulas {
+    gap: 20px;
 }
 
 .card-aula {
     border: 2px solid #e07a5f;
     background-color: #f4b076;
     border-radius: 20px;
-    margin: 20px;
     box-shadow: 6px 6px 6px rgba(128, 128, 128, 0.658);
-    height: auto;
-    width: 300px;
-    padding: 20px 0;
+    width: 500px;
+    padding: 15px;
+    gap: 10px;
+    height: 250px;
 }
 
-.card-aula-paragrafo {
-    margin: 0;
-    padding: 0;
+.card-aula-descricao {
+    gap: 15px;
 }
 
-.card-aula-titulo {
+.aula-autor, 
+.descricao {
+    gap: 8px;
+    height: 100%;
+}
+
+.sessao-text {
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+.card-aula-acessar {
     border: 1px solid black;
     background-color: rgb(106, 199, 30);
     padding: 4px 15px;
@@ -87,11 +114,43 @@ a:hover, a {
     display: inline-block;
     cursor: pointer;
     margin-bottom: 10px;
+    gap: 5px;
 }
 
-.card-aula-titulo:hover {
+.card-aula-acessar:hover {
     background-color: rgb(76, 141, 23);
     color: white;
+}
+
+.container-paginacao {
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.button-page {
+    font-size: 22px;
+    font-weight: bolder;
+    cursor: pointer;
+    width: 30px;
+}
+
+.button-page:hover {
+    background-color: rgb(233, 233, 233);
+    border-radius: 8px;
+}
+
+.botao-config:hover {
+    color: rgb(59, 59, 59);
+}
+
+
+
+
+
+
+.card-aula-paragrafo {
+    margin: 0;
+    padding: 0;
 }
 
 .divisão-cards {
@@ -126,54 +185,6 @@ a:hover, a {
     cursor: pointer;
 }
 
-
-/* CONTAINER PAGINAÇÃO */
-
-.container-aulas {
-    padding-left: 80px;
-}
-
-.flex-cards {
-    display: flex;
-    flex-wrap: wrap;
-    width: 900px;
-}
-
-.card-aulas {
-    position: relative;
-}
-
-.botao-config {
-    background-color: #AC92EC;
-    border-radius: 100%;
-    height: 50px;
-    width: 50px;
-    font-size: 30px;
-    font-weight: bolder;
-    border: 3px solid #233A4E;
-    cursor: pointer;
-}
-
-.botao-config:hover {
-    background-color: #967ADC;
-    color: white;
-}
-
-.opcoes {
-    text-align: center;
-    margin: 20px 0;
-}
-
-.opcao {
-    background-color: chocolate;
-    padding: 1px 13px;
-    margin: 0 10px;
-    border-radius: 100px;
-}
-
-.opcao-selecionada {
-    background-color: crimson;
-}
 
 .links-problemas {
     border-radius: 10px;

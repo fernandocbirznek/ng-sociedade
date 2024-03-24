@@ -248,8 +248,12 @@ export const aulaReducer = createReducer(
   }),
   on(actions.atualizarAulaCurtirSuccess, (state, action) => {
     let aulas = [...state.aulas].map(item => {
-      if(item.id == action.response.id) {
-        return action.response;
+      if(item.id == action.aula.id) {
+        let aula: AulaModel = {...item};
+        aula.curtido = action.aula.curtido;
+        aula.dataAtualizacao = action.response.dataAtualizacao;
+
+        return aula;
       }
       return item;
     });

@@ -50,7 +50,7 @@ export class EditarAulaComponent implements OnInit {
 
   usuarioLogadoSubscription$: Subscription = new Subscription();
   usuarioLogado$: Observable<UsuarioModel> = new Observable<UsuarioModel>();
-  usuarioLogado: UsuarioModel | undefined = undefined ;
+  usuarioLogado: UsuarioModel | undefined = undefined;
 
   trustedDashboardHtml : SafeHtml[] = [];
 
@@ -74,6 +74,8 @@ export class EditarAulaComponent implements OnInit {
   }
 
   ngOnDestroy() {
+    this.aulaSubscription$.unsubscribe();
+    this.aulaSessaoSubscription$.unsubscribe();
     this.usuarioLogadoSubscription$.unsubscribe();
   }
 
