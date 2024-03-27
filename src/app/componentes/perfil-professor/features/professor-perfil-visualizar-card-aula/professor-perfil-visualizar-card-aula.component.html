@@ -1,0 +1,50 @@
+<fieldset class="g-fieldset" fxLayout="column">
+    <div class="g-fieldset-titulo">Aulas postadas</div>
+    <div fxLayout="row" fxLayoutAlign="space-between start" class="container-aulas">
+        <div fxFlex="200px">
+            Filtros
+        </div>
+        <div fxLayout="column">
+            <div fxFlex="100%" fxLayout="row wrap" fxLayoutAlign="space-around start" class="container-card-aula">
+                <div *ngFor="let aula of this.pageAulaMany" fxLayout="column"
+                    class="card-aula">
+                    <app-aula-icone [areaFisicaId]="aula.areaFisicaId" class="aula-area-fisica"></app-aula-icone>
+                    <div fxFlex="100%">
+                        <div class="aula-titulo">{{ aula.titulo }}</div>
+                        <div fxLayout="row" fxLayoutAlign="start center">
+                            <div class="aula-resumo">{{ aula.resumo }}</div>
+                        </div>
+                    </div>
+                    <div fxFlex="50px" fxLayout="row" fxLayoutAlign="space-around center">
+                        <div fxLayout="column" fxLayoutAlign="center center">
+                            <mat-icon class="material-symbols-outlined">thumb_up</mat-icon>
+                            <div>{{ aula.curtido }}</div>
+                        </div>
+                        <div fxLayout="column" fxLayoutAlign="center center">
+                            <mat-icon class="material-symbols-outlined">star</mat-icon>
+                            <div>{{ aula.favoritado }}</div>
+                        </div>
+                        <div fxLayout="column" fxLayoutAlign="center center">
+                            <mat-icon class="material-symbols-outlined">chat</mat-icon>
+                            <div>{{ aula.aulaComentarioMany.length }}</div>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="center center" class="card-aula-acessar" 
+                            (click)="visualizarAula(aula)">
+                            <div>Acessar aula</div>
+                            <mat-icon class="material-symbols-outlined">menu_book</mat-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="this.pageMax > 1" fxLayout="row" fxLayoutAlign="center center" class="container-paginacao">
+                <mat-icon fxLayoutAlign="center center" class="button-page" (click)="mudarPagina(-1)">
+                    chevron_left
+                </mat-icon>
+                <div>Página {{ pageAtual + 1 }} de {{ pageMax }}</div>
+                <mat-icon fxLayoutAlign="center center" class="button-page" (click)="mudarPagina(1)">
+                    navigate_next
+                </mat-icon>
+            </div>
+        </div>
+    </div>
+</fieldset>

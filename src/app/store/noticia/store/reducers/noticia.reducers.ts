@@ -69,19 +69,20 @@ export const noticiaReducer = createReducer(
     };
   }),
   on(actions.selecionarNoticiaManyByProfessorIdSuccess, (state, action) => {
-    let itens = 
-      state.itens
-      .filter(item => !action.response.some(noticia => noticia.id == item.id));
-
-    itens = itens.concat(action.response);
+    let itens = [...state.itens];
+    
+    action.response.forEach(noticia => {
+      if(!state.itens.find(item => item.id == noticia.id))
+        itens.push(noticia);
+    })
 
     return { 
-        ...state, 
-        itens: itens,
-        isLoading: false, 
-        isSuccess: true, 
-        isFailure: false,
-        error: ""
+      ...state, 
+      itens: itens,
+      isLoading: false, 
+      isSuccess: true, 
+      isFailure: false,
+      error: ""
     };
   }),
   on(actions.selecionarNoticiaManyByProfessorIdFailure, (state) => {

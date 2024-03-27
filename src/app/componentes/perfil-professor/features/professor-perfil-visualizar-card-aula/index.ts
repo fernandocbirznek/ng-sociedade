@@ -1,0 +1,1 @@
+export * from './professor-perfil-visualizar-card-aula.component';

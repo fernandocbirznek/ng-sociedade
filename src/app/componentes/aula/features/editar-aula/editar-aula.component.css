@@ -17,24 +17,6 @@
     background-color: #f0f0f0;
 } 
 
-.fieldset {
-    border-radius: 10px;
-    background-color: white;
-    padding: 15px;
-    position: relative;
-}
-
-.fieldset-titulo {
-    position: absolute;
-    top: -20px;
-    left: 10px;
-    background: inherit;
-    padding: 0px 5px;
-    font-weight: 500;
-    color: #2900c5;
-    font-size: 20px;
-}
-
 .icone-editar {
     font-size: 22px;
     margin-left: 15px;

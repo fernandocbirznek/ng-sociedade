@@ -1,0 +1,17 @@
+<div fxLayout="column" class="container-noticia">
+    <mat-icon class="icone-close material-symbols-outlined" (click)="this.fecharModal()">close</mat-icon>
+    <div fxLayout="row" fxLayoutAlign="center center"class="noticia-titulo">{{ this.data.titulo }}</div>
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+        <div fxLayout="row wrap" fxLayoutAlign="start center">
+            <div *ngFor="let item of this.data.areaInteresseMany">
+                <span class="g-tag">{{item.nome}}</span>
+            </div>
+        </div>
+        <div fxLayout="column" fxLayoutAlign="center end">
+            <div class="noticia-autor">{{ this.data.usuarioCadastroNome }}</div>
+            <div class="noticia-data-cadastro">{{ this.data.dataCadastro | date : 'dd/MM/yyyy HH:mm' }}</div>
+        </div>
+    </div>     
+    <div class="divisoria"></div>
+    <div [innerHTML]="this.trustedDashboardHtml"></div>
+</div>

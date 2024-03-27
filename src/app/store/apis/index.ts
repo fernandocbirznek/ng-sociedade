@@ -6,6 +6,7 @@ import { aulaReducer, AulaState } from "../aula";
 import { areaFisicaReducer, AreaFisicaState } from "../area-fisica";
 import { aulaSessaoReducer, AulaSessaoState } from "../aula-sessao";
 import { areaInteresseReducer, AreaInteresseState } from "../area-interesse";
+import { usuarioReducer, UsuarioState } from "../usuario";
 
 export interface AppState {
     areaFisica: AreaFisicaState,
@@ -13,7 +14,8 @@ export interface AppState {
     aula: AulaState,
     aulaSessao: AulaSessaoState,
     manipularConta: ManipularContaState,
-    noticia: NoticiaState
+    noticia: NoticiaState,
+    usuario: UsuarioState
 };
 
 export const reducers: ActionReducerMap<AppState> = {
@@ -22,7 +24,8 @@ export const reducers: ActionReducerMap<AppState> = {
     aula: aulaReducer,
     aulaSessao: aulaSessaoReducer,
     manipularConta: manipularContaReducer,
-    noticia: noticiaReducer
+    noticia: noticiaReducer,
+    usuario: usuarioReducer
 }
 
 export const metaReducers: MetaReducer<AppState>[] = [];

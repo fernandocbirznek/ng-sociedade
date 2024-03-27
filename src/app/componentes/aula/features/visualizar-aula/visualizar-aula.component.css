@@ -1,18 +1,38 @@
-.dot-mecanica {
-    background-color: #e07a5f;
-    border-radius: 20px;
-    padding: 8px;
-    margin-right: 10px;
-}
-
 .titulo {
     font-size: 20px;
 }
+
+.container-voltar {
+    top: 10px;
+    right: 20px;
+    z-index: 1;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.container-voltar:hover {
+    background-color: #f0f0f0;
+} 
 
 .titulo-aula {
     margin-top: 20px;
     font-weight: bold;
     font-size: 30px;
+}
+
+.aula-autor {
+    font-style: italic;
+    cursor: pointer;
+}
+
+.aula-autor:hover {
+    font-weight: bold;
+}
+
+.aula-data-cadastro {
+    font-size: 14px;
+    margin-top: 5px;
 }
 
 .container-icones {
@@ -23,25 +43,6 @@
 .icone {
     gap: 5px;
     padding: 4px 6px;
-}
-
-.fieldset {
-    border-radius: 10px;
-    background-color: white;
-    padding: 15px;
-    position: relative;
-    margin-top: 20px;
-}
-
-.fieldset-titulo {
-    position: absolute;
-    top: -20px;
-    left: 10px;
-    background: inherit;
-    padding: 0px 5px;
-    font-weight: 500;
-    color: #2900c5;
-    font-size: 20px;
 }
 
 .icone:hover {

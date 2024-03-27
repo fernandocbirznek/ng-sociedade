@@ -1,0 +1,25 @@
+<div [ngSwitch]="areaFisicaId">
+    <div *ngSwitchCase="1">
+        <mat-icon class="material-symbols-outlined">hub</mat-icon>
+    </div>
+    <div *ngSwitchCase="2" fxLayout="row" fxLayoutAlign="space-between center">
+        <div fxFlex="25px"></div>
+        <mat-icon class="icone-mecanica material-symbols-outlined">manufacturing</mat-icon>
+    </div>
+    <div *ngSwitchCase="3">
+        <mat-icon class="material-symbols-outlined">fireplace</mat-icon>
+    </div>
+    <div *ngSwitchCase="5">
+        <mat-icon class="material-symbols-outlined">eletric_bolt</mat-icon>
+    </div>
+    <div *ngSwitchCase="6">
+        <mat-icon class="material-symbols-outlined">schedule</mat-icon>
+    </div>
+    <div *ngSwitchCase="7">
+        <mat-icon class="material-symbols-outlined">rainy_light</mat-icon>
+    </div>
+    <div *ngSwitchCase="8">
+        <mat-icon class="material-symbols-outlined">explosion</mat-icon>
+    </div>
+    <div *ngSwitchDefault>...</div>
+</div>

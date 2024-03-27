@@ -1,15 +1,22 @@
 <div fxLayout="column">
-    <div fxLayout="row" fxLayoutAlign="start center">
-        <div class="dot-mecanica"></div>
-        <div class="titulo">Mecânica</div>
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+        <div fxLayout="row" fxLayoutAlign="start center">
+            <div class="g-dot-mecanica"></div>
+            <div class="titulo">Mecânica</div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="center center" class="container-voltar" (click)="voltarPaginaMecanica()">
+            <mat-icon class="material-symbols-outlined">undo</mat-icon>
+            <span>Voltar</span>
+        </div>
     </div>
-    <div class="titulo-aula">
-        {{ this.aula.titulo }}
-    </div>
+    
+    <div class="titulo-aula">{{ this.aula.titulo }}</div>
+
     <div fxLayout="column" fxLayoutAlign="center end">
-        <div>
+        <div class="aula-autor" (click)="visualizarPerfil()">
             Nome do professor
         </div>
+        <div class="aula-data-cadastro">{{ this.aula.dataCadastro | date : 'dd/MM/yyyy HH:mm' }}</div>
         <div fxLayout="row" fxLayoutAlign="space-between center" class="container-icones">
             <div fxLayout="row" fxLayoutAlign="space-between center" class="icone" (click)="curtirAula()">
                 <mat-icon class="material-symbols-outlined">thumb_up</mat-icon>
@@ -22,8 +29,8 @@
         </div>
     </div>
     
-    <fieldset class="fieldset">
-        <div class="fieldset-titulo">Resumo</div>
+    <fieldset class="g-fieldset">
+        <div class="g-fieldset-titulo">Resumo</div>
         <div>{{ this.aula.resumo }}</div>
     </fieldset>
 

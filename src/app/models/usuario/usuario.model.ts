@@ -1,5 +1,6 @@
 import { Byte } from "@angular/compiler/src/util";
 import { TipoUsuarioEnum } from "../enum";
+import { AreaInteresseModel } from "../area-interesse";
 
 export class UsuarioModel {
     id: number = 0;
@@ -17,5 +18,6 @@ export class UsuarioModel {
     foto: Byte[] | undefined = undefined;
     hobbie: string = "";
     sociedadeId: number = 0;
-    token: string = ""; 
+    token: string = "";
+    usuarioAreaInteresses: AreaInteresseModel[] = [];
 }

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DuvidaMecanicaComponent, EquipeContatoComponent, ForumComponent, ForumMecanicaComponent, 
+import { EquipeContatoComponent, ForumComponent,
         HomeComponent, MecanicaComponent, PerfilComponent, TermodinamicaComponent 
 } from './componentes';
 
@@ -11,8 +11,6 @@ const routes: Routes = [
   { path: 'equipe-contato', component: EquipeContatoComponent },
   { path: 'forum', component: ForumComponent },
   { path: 'perfil', component: PerfilComponent },
-  //{ path: 'forum/mecanica', component: ForumMecanicaComponent, },
-  //{ path: 'forum/mecanica/duvida-mecanica', component: DuvidaMecanicaComponent },
 ];
 
 @NgModule({

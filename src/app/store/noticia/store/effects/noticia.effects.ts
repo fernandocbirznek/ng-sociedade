@@ -11,11 +11,6 @@ import {
   NoticiaService 
 } from 'src/app/services';
 
-import { 
-  selecionarManyAreaInteresseByNoticiaId 
-} from '../actions/noticia.actions';
-
-
 @Injectable()
 export class NoticiaEffects {
 

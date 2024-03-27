@@ -38,7 +38,12 @@ import {
   NovaNoticiaComponent,
   ProfessorTabelaNoticiaComponent,
   EditarNoticiaComponent,
-  EditarSessaoComponent
+  EditarSessaoComponent,
+  ProfessorPerfilVisualizarComponent,
+  AulaIconeComponent,
+  ProfessorPerfilVisualizarCardAulaComponent,
+  ProfessorPerfilVisualizarCardNoticiaComponent,
+  VisualizarNoticiaComponent
 } from './componentes';
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -51,7 +56,8 @@ import {
   AulaSessaoStoreModule,
   AulaStoreModule,
   ManipularContaModule, 
-  NoticiaModule
+  NoticiaModule,
+  UsuarioModule
 } from './store';
 
 import { MatNativeDateModule } from '@angular/material/core';
@@ -94,7 +100,12 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     EditarAulaInformacaoComponent,
     NovaNoticiaComponent,
     ProfessorTabelaNoticiaComponent,
-    EditarNoticiaComponent
+    EditarNoticiaComponent,
+    ProfessorPerfilVisualizarComponent,
+    AulaIconeComponent,
+    ProfessorPerfilVisualizarCardAulaComponent,
+    ProfessorPerfilVisualizarCardNoticiaComponent,
+    VisualizarNoticiaComponent
   ],
   imports: [
     BrowserModule,
@@ -129,6 +140,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     AulaStoreModule,
     AulaSessaoStoreModule,
     NoticiaModule,
+    UsuarioModule,
     PerfilProfessorRoutingModule,
     AulaRoutingModule,
     StoreModule.forRoot([]),

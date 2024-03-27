@@ -1,8 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
+import { ProfessorPerfilVisualizarComponent } from 'src/app/componentes';
 import { AulaModel, AulaSessaoModel, TipoSessaoAulaEnum } from 'src/app/models';
 import { atualizarAulaCurtir, getOneAulaById, selecionarOneAulaById } from 'src/app/store';
 
@@ -28,29 +30,21 @@ export class VisualizarAulaComponent implements OnInit {
     private sanitizer: DomSanitizer,
     private route: ActivatedRoute,
     public router: Router,
+    private dialog: MatDialog,
   ) { 
     this.aulaId = this.route.snapshot.paramMap.get('id') ? +this.route.snapshot.paramMap.get('id')!: 0;
   }
 
   ngOnInit(): void {
     this.store.dispatch(selecionarOneAulaById({ aulaId: this.aulaId }))
-    this.setupAula();
+    this.setupObservableAula();
   }
 
-  setupAula() {
+  setupObservableAula() {
     this.aula$ = this.store.select(getOneAulaById(this.aulaId));
     this.aulaSubscription$ = this.aula$.subscribe(item => {
-      if(item) {
-        this.aula = item;
-        this.trustedDashboardHtml = [];
-        if (item.aulaSessaoMany.length > 0) {
-          this.aulaSessaoMany = [...item.aulaSessaoMany];
-          this.aulaSessaoMany.sort((a, b) => (a.ordem < b.ordem) ? -1 : 1);
-          this.aulaSessaoMany.forEach(item => {
-            this.trustedDashboardHtml.push(this.sanitizer.bypassSecurityTrustHtml(item.conteudo));
-          });
-        }
-      }
+      if(item)
+        this.setupAula(item);
     });
   }
 
@@ -66,7 +60,32 @@ export class VisualizarAulaComponent implements OnInit {
     //TODO, fazer depois que criar perfil usuario Aluno
   }
 
-  voltar() {
+  visualizarPerfil() {
+    this.dialog.open(ProfessorPerfilVisualizarComponent, {
+      data: this.aula.professorId,
+      width: '80%',
+      height: 'auto',
+    }).afterClosed().subscribe((aula: AulaModel) => {
+      if(aula) {
+        this.router.navigate([`visualizar-aula/${aula.id}`]);
+        this.setupAula(aula);
+      }
+    });
+  }
+
+  voltarPaginaMecanica() {
     this.router.navigate(['mecanica'], { queryParams: { areaFisicaId: this.aula.areaFisicaId }});
+  }
+
+  setupAula(item: AulaModel) {
+    this.aula = item;
+    this.trustedDashboardHtml = [];
+    if (item.aulaSessaoMany.length > 0) {
+      this.aulaSessaoMany = [...item.aulaSessaoMany];
+      this.aulaSessaoMany.sort((a, b) => (a.ordem < b.ordem) ? -1 : 1);
+      this.aulaSessaoMany.forEach(item => {
+        this.trustedDashboardHtml.push(this.sanitizer.bypassSecurityTrustHtml(item.conteudo));
+      });
+    }
   }
 }

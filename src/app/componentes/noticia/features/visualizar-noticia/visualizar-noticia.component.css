@@ -1,0 +1,31 @@
+.container-noticia {
+    gap: 20px;
+    position: relative;
+}
+
+.icone-close {
+    position: absolute;
+    top: -15px;
+    right: -10px;
+}
+
+.icone-close:hover {
+    color: rgb(233, 111, 111);
+    cursor: pointer;
+}
+
+.noticia-titulo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.noticia-autor,
+.noticia-data-cadastro {
+    font-size: 14px;
+    font-style: italic;
+}
+
+.divisoria {
+    height: 1px;
+    background-color: #ccc;
+}

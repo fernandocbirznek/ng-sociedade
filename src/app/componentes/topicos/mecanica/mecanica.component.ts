@@ -29,7 +29,6 @@ export class MecanicaComponent implements OnInit {
   pageAtual: number = 0;
 
   areaFisicaId: number = 0;
-  public contador: number = 1;
 
   constructor(
     public store: Store,
