@@ -1,11 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 
 import { 
+  ProfessorEditarPerfilComponent 
+} from 'src/app/componentes';
+
+import { 
   UsuarioModel 
 } from 'src/app/models';
-import { getOneUsuarioLogado } from 'src/app/store';
+
+import { 
+  getOneUsuarioLogado 
+} from 'src/app/store';
 
 @Component({
   selector: 'app-professor-home',
@@ -19,6 +27,7 @@ export class ProfessorHomeComponent implements OnInit {
   usuarioLogado: UsuarioModel | undefined = undefined ;
 
   constructor(
+    private dialog: MatDialog,
     public store: Store,
   ) { }
 
@@ -39,4 +48,9 @@ export class ProfessorHomeComponent implements OnInit {
     });
   }
 
+  editarPerfil() {
+    this.dialog.open(ProfessorEditarPerfilComponent, {
+      data: this.usuarioLogado
+    });
+  }
 }

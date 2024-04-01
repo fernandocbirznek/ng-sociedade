@@ -15,7 +15,7 @@ export class UsuarioModel {
     noticiaVisualizada: number = 0;
     usuarioPerfilId: number = 0;
     dataNascimento: Date | undefined = undefined;
-    foto: Byte[] | undefined = undefined;
+    foto: File | undefined = undefined;
     hobbie: string = "";
     sociedadeId: number = 0;
     token: string = "";

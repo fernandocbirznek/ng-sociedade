@@ -1,6 +1,6 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import * as actions from '../actions/manipular-conta.actions';
-import { TipoUsuarioEnum, UsuarioModel } from 'src/app/models';
+import { AreaInteresseModel, TipoUsuarioEnum, UsuarioModel } from 'src/app/models';
 
 export const manipularContaFeatureKey = 'manipularConta';
 
@@ -75,6 +75,7 @@ export const manipularContaReducer = createReducer(
     usuario.email = action.response.email;
     usuario.hobbie = action.response.hobbie;
     usuario.noticiaVisualizada = action.response.noticiaVisualizada;
+    usuario.usuarioAreaInteresses = action.response.usuarioAreaInteresses;
     usuario.sociedadeId = action.response.sociedadeId;
 
     switch(action.response.tipoUsuario) { 
@@ -165,6 +166,124 @@ export const manipularContaReducer = createReducer(
       isFailure: false, 
       mensagem: "Conta deslogada com sucesso",
       token: ""
+    };
+  }),
+
+  on(actions.atualizarUsuarioPerfil, state => {
+    return { 
+        ...state, 
+        isLoading: true, 
+        isSuccess: false, 
+        isFailure: false, 
+        error: "" 
+    };
+  }),
+  on(actions.atualizarUsuarioPerfilSuccess, (state, action) => {
+    let usuario: UsuarioModel = {...state.usuario};
+    
+    usuario.foto = action.usuarioPerfil.foto ? action.usuarioPerfil.foto : undefined;
+    usuario.hobbie = action.usuarioPerfil.hobbie ? action.usuarioPerfil.hobbie : '';
+    usuario.dataNascimento = action.usuarioPerfil.dataNascimento ? action.usuarioPerfil.dataNascimento : undefined;
+      
+    return { 
+        ...state, 
+        usuario: usuario,
+        isLoading: false, 
+        isSuccess: true, 
+        isFailure: false,
+        error: ""
+    };
+  }),
+  on(actions.atualizarUsuarioPerfilFailure, (state) => {
+    return { 
+        ...state, 
+        isLoading: false, 
+        isSuccess: false, 
+        isFailure: true, 
+        mensagem: "Falha em atualizar o perfil" 
+    };
+  }),
+
+  on(actions.inserirUsuarioAreaInteresse, state => {
+    return { 
+        ...state, 
+        isLoading: true, 
+        isSuccess: false, 
+        isFailure: false, 
+        error: "" 
+    };
+  }),
+  on(actions.inserirUsuarioAreaInteresseSuccess, (state, action) => {
+    let usuario: UsuarioModel = new UsuarioModel();
+    usuario.id = state.usuario.id;
+    usuario.nome = state.usuario.nome;
+    usuario.comentarioAula = state.usuario.comentarioAula;
+    usuario.comentarioForum = state.usuario.comentarioForum;
+    usuario.curtirAula = state.usuario.curtirAula;
+    usuario.dataNascimento = state.usuario.dataNascimento;
+    usuario.email = state.usuario.email;
+    usuario.hobbie = state.usuario.hobbie;
+    usuario.noticiaVisualizada = state.usuario.noticiaVisualizada;
+    usuario.sociedadeId = state.usuario.sociedadeId;
+    
+    let usuarioAreaInteresse: AreaInteresseModel = new AreaInteresseModel();
+    usuarioAreaInteresse.id = action.usuarioAreaInteresse.areaInteresseId;
+    usuarioAreaInteresse.nome = action.usuarioAreaInteresse.areaInteresseNome;
+
+    usuario.usuarioAreaInteresses.push(usuarioAreaInteresse);
+
+    return { 
+        ...state, 
+        usuario: usuario,
+        isLoading: false, 
+        isSuccess: true, 
+        isFailure: false,
+        error: ""
+    };
+  }),
+  on(actions.inserirUsuarioAreaInteresseFailure, (state) => {
+    return { 
+        ...state, 
+        isLoading: false, 
+        isSuccess: false, 
+        isFailure: true, 
+        mensagem: "Falha em adicionar area de interesse do usuário" 
+    };
+  }),
+
+  on(actions.removerUsuarioAreaInteresse, state => {
+    return { 
+        ...state, 
+        isLoading: true, 
+        isSuccess: false, 
+        isFailure: false, 
+        error: "" 
+    };
+  }),
+  on(actions.removerUsuarioAreaInteresseSuccess, (state, action) => {
+    let usuario: UsuarioModel = {...state.usuario};
+    
+    usuario.usuarioAreaInteresses = 
+      usuario
+        .usuarioAreaInteresses
+        .filter(item => item.id == action.usuarioAreaInteresse.areaInteresseId);
+
+    return { 
+        ...state, 
+        usuario: usuario,
+        isLoading: false, 
+        isSuccess: true, 
+        isFailure: false,
+        error: ""
+    };
+  }),
+  on(actions.removerUsuarioAreaInteresseFailure, (state) => {
+    return { 
+        ...state, 
+        isLoading: false, 
+        isSuccess: false, 
+        isFailure: true, 
+        mensagem: "Falha em remover area de interesse do usuário" 
     };
   }),
 );

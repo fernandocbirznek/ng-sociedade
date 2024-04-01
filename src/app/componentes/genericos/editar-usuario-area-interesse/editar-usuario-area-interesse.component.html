@@ -1,0 +1,18 @@
+<div fxLayout="column" fxLayoutAlign="start center" class="container-area-interesse">
+    <section *ngFor="let areaInteresse of this.areaInteresseMany" fxLayout="row">
+        <mat-checkbox [checked]="this.selecionado.includes(areaInteresse.id)" 
+            (change)="selecionouAreaInteresse(areaInteresse, $event)">
+            {{areaInteresse.nome}}
+        </mat-checkbox>
+    </section>
+    <div fxLayout="row" fxLayoutAlign="space-around center" class="container-buttons">
+        <button mat-stroked-button color="warn" (click)="fecharModal()">
+            <mat-icon class="material-symbols-outlined">cancel</mat-icon>
+            Cancelar
+        </button>
+        <button mat-stroked-button color="primary" (click)="requestUsuarioAreaInteresse()">
+            <mat-icon class="material-symbols-outlined">draw</mat-icon>
+            Alterar
+        </button>
+    </div>
+</div>

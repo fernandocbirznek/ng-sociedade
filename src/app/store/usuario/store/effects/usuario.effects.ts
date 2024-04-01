@@ -7,7 +7,7 @@ import { Store } from '@ngrx/store';
 import * as actions from '../actions/usuario.actions';
 
 import { 
-    UsuarioService 
+    UsuarioService,
 } from 'src/app/services';
 
 @Injectable()

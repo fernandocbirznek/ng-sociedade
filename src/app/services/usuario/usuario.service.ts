@@ -13,7 +13,7 @@ import {
 
 export class UsuarioService {
     urlSelecionarUsuarioById = 'https://localhost:44362/api/Usuario/selecionar-usuario';
-
+    
     constructor(
         private httpClient: HttpClient,
         public store: Store

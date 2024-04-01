@@ -2,12 +2,19 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, concatMap } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { Router } from '@angular/router';
 
 import * as actions from '../actions/manipular-conta.actions';
-import { ManipularContaService } from 'src/app/services';
-import { Router } from '@angular/router';
-import { TipoUsuarioEnum } from 'src/app/models';
 
+import { 
+  ManipularContaService, 
+  UsuarioAreaInteresseService, 
+  UsuarioPerfilService 
+} from 'src/app/services';
+
+import { 
+  TipoUsuarioEnum 
+} from 'src/app/models';
 
 
 @Injectable()
@@ -17,6 +24,8 @@ export class ManipularContaEffects {
   constructor(
     private actions$: Actions,
     private manipularContaService: ManipularContaService,
+    private usuarioPerfilService: UsuarioPerfilService,
+    private usuarioAreaInteresseService: UsuarioAreaInteresseService,
     private router: Router
     ) 
   {}
@@ -77,6 +86,51 @@ export class ManipularContaEffects {
         this.manipularContaService.deletarConta(action.email).pipe(
           map(response => actions.deletarContaSuccess({ response: response })),
           catchError(response => of(actions.deletarContaFailure({ response }))))
+      )
+    );
+  });
+
+  atualizarUsuarioPerfil$ = createEffect(() => {
+    return this.actions$.pipe( 
+      ofType(actions.atualizarUsuarioPerfil),
+      concatMap((action) =>
+        this.usuarioPerfilService.atualizarUsuarioPerfil(action.usuarioPerfil).pipe(
+          map(response => {
+            return actions.atualizarUsuarioPerfilSuccess({ usuarioPerfil: action.usuarioPerfil, response: response })
+          }),
+          catchError(error => of(actions.atualizarUsuarioPerfilFailure({ error }))))
+      )
+    );
+  });
+
+  inserirUsuarioAreaInteresse$ = createEffect(() => {
+    return this.actions$.pipe( 
+      ofType(actions.inserirUsuarioAreaInteresse),
+      concatMap((action) =>
+        this.usuarioAreaInteresseService.inserirUsuarioAreaInteresse(action.usuarioAreaInteresse).pipe(
+          map(response => {
+            return actions.inserirUsuarioAreaInteresseSuccess({ 
+              usuarioAreaInteresse: action.usuarioAreaInteresse, 
+              response: response 
+            })
+          }),
+          catchError(error => of(actions.inserirUsuarioAreaInteresseFailure({ error }))))
+      )
+    );
+  });
+
+  removerUsuarioAreaInteresse$ = createEffect(() => {
+    return this.actions$.pipe( 
+      ofType(actions.removerUsuarioAreaInteresse),
+      concatMap((action) =>
+        this.usuarioAreaInteresseService.removerUsuarioAreaInteresse(action.usuarioAreaInteresse).pipe(
+          map(response => {
+            return actions.removerUsuarioAreaInteresseSuccess({ 
+              usuarioAreaInteresse: action.usuarioAreaInteresse, 
+              response: response 
+            })
+          }),
+          catchError(error => of(actions.removerUsuarioAreaInteresseFailure({ error }))))
       )
     );
   });

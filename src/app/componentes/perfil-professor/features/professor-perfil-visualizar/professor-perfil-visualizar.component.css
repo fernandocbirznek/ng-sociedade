@@ -4,6 +4,12 @@
     position: relative;
 }
 
+.imagem {
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+}
+
 .icone-close {
     position: absolute;
     top: -15px;

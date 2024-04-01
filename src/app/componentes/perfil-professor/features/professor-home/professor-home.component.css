@@ -3,6 +3,15 @@
     gap: 20px;
 }
 
+.editar-perfil {
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.editar-perfil:hover {
+    font-weight: bold;
+}
+
 .titulo {
     font-size: 20px;
     font-weight: bold;

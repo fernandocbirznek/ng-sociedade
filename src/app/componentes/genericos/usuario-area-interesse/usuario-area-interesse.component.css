@@ -1,0 +1,11 @@
+.editar-area-interesse {
+    cursor: pointer;
+    font-size: 13px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.editar-area-interesse:hover {
+    font-weight: bold;
+}

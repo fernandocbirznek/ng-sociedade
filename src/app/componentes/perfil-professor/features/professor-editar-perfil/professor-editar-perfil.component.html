@@ -1,0 +1,25 @@
+<div fxLayout="column" class="container-criar-perfil">
+    <form fxLayout="column" [formGroup]="this.formPerfil" class="container-form">
+        <mat-form-field class="container-data">
+            <mat-label>Data de Nascimento</mat-label>
+            <input matInput formControlName="formData" [matDatepicker]="picker">
+            <mat-datepicker-toggle matIconSuffix class="data-picker" [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <input type="file" formControlName="formFoto" (change)="imagemAlterada($event)" accept="image/*">
+        <mat-form-field appearance="outline">
+            <mat-label>Hobbie</mat-label>
+            <textarea formControlName="formHobbie" matInput (change)="hobbieAlterado()"></textarea>
+        </mat-form-field>
+    </form>
+    <div fxLayout="row" fxLayoutAlign="space-around center" class="container-buttons">
+        <button mat-stroked-button color="warn" (click)="fecharModal()">
+            <mat-icon class="material-symbols-outlined">contract_delete</mat-icon>
+            Cancelar
+        </button>
+        <button mat-stroked-button color="primary" (click)="requestCriarPerfil()">
+            <mat-icon class="material-symbols-outlined">manage_accounts</mat-icon>
+            Editar perfil
+        </button>
+    </div>
+</div>

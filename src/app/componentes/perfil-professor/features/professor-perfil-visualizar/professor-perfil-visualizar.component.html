@@ -4,7 +4,7 @@
         <div class="g-fieldset-titulo">Informações do professor</div>
         <div fxLayout="row" fxLayoutAlign="start start" class="container-informacao">
             <div fxLayout="column" fxLayoutAlign="space-between center">
-                <div fxFlex="100%">FOTO</div>
+                <img fxFlex="100px" [src]="'data:image/png;base64,' + this.usuario.foto" alt="Imagem" class="imagem">
                 <div>{{ this.usuario.nome }}</div>
             </div>
             <div fxLayout="column" fxLayoutAlign="start start">

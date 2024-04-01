@@ -7,3 +7,5 @@ export * from './autenticacao';
 export * from './manipular-conta';
 export * from './noticia';
 export * from './usuario';
+export * from './usuario-area-interesse';
+export * from './usuario-perfil';

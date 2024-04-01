@@ -1,9 +1,19 @@
 <div *ngIf="this.usuarioLogado; else usuarioVazio" fxLayout="column" class="container-professor-home">
-    <div class="titulo">Olá {{this.usuarioLogado.nome}}</div>
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="titulo">Olá {{this.usuarioLogado.nome}}</div>
+        <div fxLayout="row" fxLayoutAlign="center center" class="editar-perfil" (click)="editarPerfil()">
+            <mat-icon class="material-symbols-outlined">edit_document</mat-icon>
+            <div>Editar perfil</div>
+        </div>
+    </div>
+    
     <div fxLayout="row" fxLayoutAlign="space-between start" class="container-informacao">
         <app-usuario-informacao fxFlex="50%" [usuarioLogado]="this.usuarioLogado"></app-usuario-informacao>
         <app-usuario-conquistas fxFlex="50%"></app-usuario-conquistas>
     </div>
+
+    <app-usuario-area-interesse [usuarioLogado]="this.usuarioLogado"></app-usuario-area-interesse>
+
     <mat-tab-group>
         <mat-tab label="Aulas">
             <app-professor-tabela-aula [professorId]="this.usuarioLogado.id"></app-professor-tabela-aula>

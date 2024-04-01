@@ -43,7 +43,10 @@ import {
   AulaIconeComponent,
   ProfessorPerfilVisualizarCardAulaComponent,
   ProfessorPerfilVisualizarCardNoticiaComponent,
-  VisualizarNoticiaComponent
+  VisualizarNoticiaComponent,
+  ProfessorEditarPerfilComponent,
+  UsuarioAreaInteresseComponent,
+  EditarUsuarioAreaInteresseComponent
 } from './componentes';
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -105,7 +108,10 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     AulaIconeComponent,
     ProfessorPerfilVisualizarCardAulaComponent,
     ProfessorPerfilVisualizarCardNoticiaComponent,
-    VisualizarNoticiaComponent
+    VisualizarNoticiaComponent,
+    ProfessorEditarPerfilComponent,
+    UsuarioAreaInteresseComponent,
+    EditarUsuarioAreaInteresseComponent
   ],
   imports: [
     BrowserModule,

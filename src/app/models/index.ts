@@ -11,3 +11,5 @@ export * from './login';
 export * from './noticia';
 export * from './noticia-area-interesse';
 export * from './usuario';
+export * from './usuario-area-interesse';
+export * from './usuario-perfil';

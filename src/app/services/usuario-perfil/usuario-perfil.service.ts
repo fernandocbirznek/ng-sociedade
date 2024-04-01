@@ -4,24 +4,27 @@ import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
 
 import { 
-    AreaInteresseModel,
-    NoticiaAreaInteresseModel,
+    UsuarioPerfilModel, 
 } from "src/app/models";
 
 @Injectable({
     providedIn: 'root'
 })
 
-export class NoticiaAreaInteresseService {
-    urlSelecionarManyAreaInteresseByNoticiaId = 'https://localhost:44362/api/NoticiaAreaInteresse/selecionar-areas-interesse-noticia'
+export class UsuarioPerfilService {
+    urlAlterarUsuarioPerfil = 'https://localhost:44362/api/UsuarioPerfil/atualizar';
 
     constructor(
         private httpClient: HttpClient,
         public store: Store
     ) {}
 
-    selecionarManyAreaInteresseByNoticiaId(noticiaId: number): Observable<AreaInteresseModel[]> {
-        return this.httpClient.get<AreaInteresseModel[]>(this.urlSelecionarManyAreaInteresseByNoticiaId + `/${noticiaId}`);
+    atualizarUsuarioPerfil(usuarioPerfil: UsuarioPerfilModel): Observable<Date> {
+        return this.httpClient.put<Date>(
+            this.urlAlterarUsuarioPerfil, 
+            JSON.stringify(usuarioPerfil), 
+            this.buildHttpOptions()
+        );
     }
 
     private buildHttpOptions() {

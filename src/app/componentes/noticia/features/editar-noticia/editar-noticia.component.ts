@@ -1,6 +1,6 @@
-import { Component, Inject, Input, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 
@@ -49,7 +49,6 @@ export class EditarNoticiaComponent implements OnInit {
   public ckEditor = Editor;
 
   constructor(
-    public dialog: MatDialog,
     public dialogRef: MatDialogRef<EditarNoticiaComponent>,
     @Inject(MAT_DIALOG_DATA) public data: NoticiaModel,
     public store: Store,

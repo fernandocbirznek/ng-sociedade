@@ -1,0 +1,17 @@
+.container-criar-perfil {
+    margin-top: 20px;
+}
+
+.container-form{
+    gap: 20px;
+}
+
+.container-data {
+    position: relative;
+}
+
+.data-picker {
+    position: absolute;
+    right: 0;
+    top: -10px;
+}
