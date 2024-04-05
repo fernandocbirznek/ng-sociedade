@@ -1,0 +1,75 @@
+.container-aulas {
+    gap: 50px;
+    margin: 20px 0;
+}
+
+.fieldset {
+    min-height: 200px;
+    gap: 15px;
+}
+
+.container-aula-many {
+    margin-top: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #CCC;
+    position: relative;
+}
+
+.container-aula {
+    margin-top: 30px;
+    position: relative;
+}
+
+.container-mover {
+    font-size: 10px;
+    color: #CCC;
+    position: absolute;
+    top: -30px;
+}
+
+.container-mover:hover {
+    color: black;
+    cursor: pointer;
+}
+
+.mover-direita {
+    right: 0;
+}
+
+.mover-esquerda {
+    left: 0;
+}
+
+.card-aula-acessar {
+    position: absolute;
+    top: -30px;
+    right: 33%;
+    border: 1px solid black;
+    background-color: rgb(106, 199, 30);
+    padding: 4px 15px;
+    border-radius: 20px;
+    display: inline-block;
+    cursor: pointer;
+    margin-bottom: 10px;
+    gap: 5px;
+}
+
+.card-aula-acessar:hover {
+    background-color: rgb(76, 141, 23);
+    color: white;
+}
+
+.container-descricao-many {
+    gap: 8px;
+}
+
+.descricao-titulo {
+    font-size: 11px;
+    color: #CCC;
+}
+
+.descricao {
+    font-size: 18px;
+    font-weight: 500;
+    margin-left: 20px;
+}

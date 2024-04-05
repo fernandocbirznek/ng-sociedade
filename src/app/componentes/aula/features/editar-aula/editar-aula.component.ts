@@ -70,7 +70,6 @@ export class EditarAulaComponent implements OnInit {
     this.setupAula();
     this.setupAulaSessao();
     this.setupUsuarioLogado();
-    this.setupUsuarioLogado();
   }
 
   ngOnDestroy() {

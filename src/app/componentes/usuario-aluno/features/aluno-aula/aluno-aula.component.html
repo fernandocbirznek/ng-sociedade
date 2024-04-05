@@ -1,0 +1,99 @@
+<div *ngIf="this.widget" fxLayout="row" fxLayoutAlign="space-between start" class="container-aulas">
+    <fieldset fxFlex="33%" class="g-fieldset fieldset">
+        <div class="g-fieldset-titulo">Para cursar</div>
+        <div *ngFor="let widget of this.widget.widgetCursar; index as i" fxLayout="row" fxLayoutAlign="space-between center"
+            class="container-aula-many">
+
+            <div fxFlex="100%" fxLayout="column" fxLayoutAlign="center start" class="container-descricao-many">
+                <div fxLayout="column">
+                    <div class="descricao-titulo">Título</div>
+                    <div class="descricao">{{ widget.aula!.titulo }}</div>
+                </div>
+                <div fxLayout="column">
+                    <div class="descricao-titulo">Área da física</div>
+                    <app-aula-icone class="descricao" [areaFisicaId]="widget.aula!.areaFisicaId" [areaFisicaNome]="true">
+                    </app-aula-icone>
+                </div>
+                <div fxLayout="column">
+                    <div class="descricao-titulo">Professor</div>
+                    <div class="descricao">{{ widget.aula!.professorNome }}</div>
+                </div>
+            </div>
+            <div fxLayout="column" fxLayoutAlign="space-between center" class="container-mover mover-direita" 
+                (click)="moverParaCursando(widget)">
+                <mat-icon class="material-symbols-outlined" matTooltip="Mover para cursando">move_item</mat-icon>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="center center" class="card-aula-acessar" 
+                (click)="visualizarAula(widget)">
+                <div>Acessar aula</div>
+                <mat-icon class="material-symbols-outlined">menu_book</mat-icon>
+            </div>
+        </div>
+    </fieldset>
+
+    <fieldset fxFlex="33%" class="g-fieldset fieldset">
+        <div class="g-fieldset-titulo">Cursando</div>
+        <div *ngFor="let widget of this.widget.widgetCursando; index as i" fxLayout="row" fxLayoutAlign="space-between center"
+            class="container-aula-many">
+        <div fxLayout="column" fxLayoutAlign="space-between center" class="container-mover mover-esquerda"
+            (click)="moverParaCursar(widget)">
+            <mat-icon class="material-symbols-outlined" matTooltip="Mover para cursar">keyboard_return</mat-icon>
+        </div>
+            <div fxFlex="100%" fxLayout="column" fxLayoutAlign="center start" class="container-descricao-many">
+                <div fxLayout="column">
+                    <div class="descricao-titulo">Título</div>
+                    <div class="descricao">{{ widget.aula!.titulo }}</div>
+                </div>
+                <div fxLayout="column">
+                    <div class="descricao-titulo">Área da física</div>
+                    <app-aula-icone class="descricao" [areaFisicaId]="widget.aula!.areaFisicaId" [areaFisicaNome]="true">
+                    </app-aula-icone>
+                </div>
+                <div fxLayout="column">
+                    <div class="descricao-titulo">Professor</div>
+                    <div class="descricao">{{ widget.aula!.professorNome }}</div>
+                </div>
+            </div>
+            <div fxLayout="column" fxLayoutAlign="space-between center" class="container-mover mover-direita"
+                (click)="moverParaConcluido(widget)">
+                <mat-icon class="material-symbols-outlined" matTooltip="Mover para concluido">move_item</mat-icon>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="center center" class="card-aula-acessar" 
+                (click)="visualizarAula(widget)">
+                <div>Acessar aula</div>
+                <mat-icon class="material-symbols-outlined">menu_book</mat-icon>
+            </div>
+        </div>
+    </fieldset>
+
+    <fieldset fxFlex="33%" class="g-fieldset fieldset">
+        <div class="g-fieldset-titulo">Concluido</div>
+        <div *ngFor="let widget of this.widget.widgetConcluido; index as i" fxLayout="row" fxLayoutAlign="space-between center"
+            class="container-aula-many">
+            <div fxLayout="column" fxLayoutAlign="space-between center" class="container-mover mover-esquerda"
+                (click)="moverParaCursando(widget)">
+                <mat-icon class="material-symbols-outlined" matTooltip="Mover para cursando">keyboard_return</mat-icon>
+            </div>    
+            <div fxFlex="100%" fxLayout="column" fxLayoutAlign="center start" class="container-descricao-many">
+                <div fxLayout="column">
+                    <div class="descricao-titulo">Título</div>
+                    <div class="descricao">{{ widget.aula!.titulo }}</div>
+                </div>
+                <div fxLayout="column">
+                    <div class="descricao-titulo">Área da física</div>
+                    <app-aula-icone class="descricao" [areaFisicaId]="widget.aula!.areaFisicaId" [areaFisicaNome]="true">
+                    </app-aula-icone>
+                </div>
+                <div fxLayout="column">
+                    <div class="descricao-titulo">Professor</div>
+                    <div class="titulo-aula-descricao">{{ widget.aula!.professorNome }}</div>
+                </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="center center" class="card-aula-acessar" 
+                (click)="visualizarAula(widget)">
+                <div>Acessar aula</div>
+                <mat-icon class="material-symbols-outlined">menu_book</mat-icon>
+            </div>
+        </div>
+    </fieldset>
+</div>

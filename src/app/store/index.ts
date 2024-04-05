@@ -6,3 +6,4 @@ export * from './aula-sessao';
 export * from './manipular-conta';
 export * from './noticia';
 export * from './usuario';
+export * from './widget';

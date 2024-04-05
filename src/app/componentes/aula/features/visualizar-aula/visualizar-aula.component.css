@@ -21,6 +21,50 @@
     font-size: 30px;
 }
 
+.container-salvar-aula {
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.salvar-aula {
+    border: 1px solid #CCC;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.salvar-aula:hover {
+    fill: 50%;
+}
+
+.para-cursar {
+    color: rgb(66, 150, 66);
+}
+
+.para-cursar-selecionado {
+    background-color: rgb(66, 150, 66);
+    color: white;
+}
+
+.cursando {
+    color: rgb(202, 202, 64);
+}
+
+.para-cursando-selecionado {
+    background-color: rgb(202, 202, 64);
+    color: white;
+}
+
+.concluido {
+    color: rgb(78, 78, 187);
+}
+
+.para-concluido-selecionado {
+    background-color: rgb(78, 78, 187);
+    color: white;
+}
+
 .aula-autor {
     font-style: italic;
     cursor: pointer;

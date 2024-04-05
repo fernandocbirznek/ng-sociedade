@@ -1,4 +1,3 @@
-import { Byte } from "@angular/compiler/src/util";
 import { TipoUsuarioEnum } from "../enum";
 import { AreaInteresseModel } from "../area-interesse";
 
@@ -7,6 +6,7 @@ export class UsuarioModel {
 	nome: string = "";
 	email: string = "";
 	tipoUsuarioEnum: TipoUsuarioEnum = TipoUsuarioEnum.None;
+    //TODO, transformat tipo do usuário em um enum
     tipoUsuario: number = -1;
     comentarioForum: number = 0;
     topicoForum: number = 0;

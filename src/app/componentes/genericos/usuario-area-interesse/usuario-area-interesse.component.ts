@@ -33,8 +33,9 @@ export class UsuarioAreaInteresseComponent implements OnInit {
     this.dialog.open(EditarUsuarioAreaInteresseComponent, {
       data: this.usuarioLogado
     }).afterClosed()
-      .subscribe((areaInteresseModel: AreaInteresseModel[]) => {
-        this.areaInteresseMany = areaInteresseModel;
+      .subscribe((areaInteresseModel: AreaInteresseModel[] | undefined) => {
+        if (areaInteresseModel)
+          this.areaInteresseMany = areaInteresseModel;
     });
   }
 }

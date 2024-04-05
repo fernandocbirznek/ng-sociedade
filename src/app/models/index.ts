@@ -13,3 +13,5 @@ export * from './noticia-area-interesse';
 export * from './usuario';
 export * from './usuario-area-interesse';
 export * from './usuario-perfil';
+export * from './view';
+export * from './widget';

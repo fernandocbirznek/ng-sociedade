@@ -83,7 +83,7 @@ export class EditarUsuarioAreaInteresseComponent implements OnInit {
   }
 
   fecharModal() {
-    this.dialogRef.close();
+    this.dialogRef.close(undefined);
   }
 
   selecionouAreaInteresse(areaInteresse: AreaInteresseModel, check: any) {

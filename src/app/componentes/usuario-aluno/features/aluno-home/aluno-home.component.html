@@ -1,0 +1,21 @@
+<div *ngIf="this.usuarioLogado; else usuarioVazio" fxLayout="column" class="container-professor-home">
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="titulo">Olá {{this.usuarioLogado.nome}}</div>
+        <div fxLayout="row" fxLayoutAlign="center center" class="editar-perfil" (click)="editarPerfil()">
+            <mat-icon class="material-symbols-outlined">edit_document</mat-icon>
+            <div>Editar perfil</div>
+        </div>
+    </div>
+    
+    <div fxLayout="row" fxLayoutAlign="space-between start" class="container-informacao">
+        <app-usuario-informacao fxFlex="50%" [usuarioLogado]="this.usuarioLogado"></app-usuario-informacao>
+        <app-usuario-conquistas fxFlex="50%"></app-usuario-conquistas>
+    </div>
+
+    <app-usuario-area-interesse [usuarioLogado]="this.usuarioLogado"></app-usuario-area-interesse>
+
+    <app-aluno-aula [usuarioLogado]="this.usuarioLogado"></app-aluno-aula>
+</div>
+<ng-template #usuarioVazio>
+    Carregando informações...
+</ng-template>

@@ -53,8 +53,7 @@ export class ManipularContaEffects {
                 break; 
               } 
               case TipoUsuarioEnum.UsuarioComum: { 
-                this.router.navigate([`perfil-professor/${response.email}`])
-                //this.router.navigate([`perfil/${response.email}`])
+                this.router.navigate([`aluno-home/${response.email}`])
                 break; 
               } 
               case TipoUsuarioEnum.UsuarioProfessor: { 

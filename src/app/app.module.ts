@@ -7,6 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AppRoutingModule } from './app-routing.module';
@@ -46,7 +47,10 @@ import {
   VisualizarNoticiaComponent,
   ProfessorEditarPerfilComponent,
   UsuarioAreaInteresseComponent,
-  EditarUsuarioAreaInteresseComponent
+  EditarUsuarioAreaInteresseComponent,
+  AlunoAulaComponent,
+  AlunoHomeComponent,
+  AlunoRoutingModule
 } from './componentes';
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -60,7 +64,8 @@ import {
   AulaStoreModule,
   ManipularContaModule, 
   NoticiaModule,
-  UsuarioModule
+  UsuarioModule,
+  WidgetModule
 } from './store';
 
 import { MatNativeDateModule } from '@angular/material/core';
@@ -111,7 +116,9 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     VisualizarNoticiaComponent,
     ProfessorEditarPerfilComponent,
     UsuarioAreaInteresseComponent,
-    EditarUsuarioAreaInteresseComponent
+    EditarUsuarioAreaInteresseComponent,
+    AlunoHomeComponent,
+    AlunoAulaComponent
   ],
   imports: [
     BrowserModule,
@@ -131,6 +138,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     ReactiveFormsModule,
     MatCheckboxModule,
     MatButtonModule,
+    MatTooltipModule,
     MatExpansionModule,
     MatSnackBarModule,
     MatTabsModule,
@@ -147,7 +155,9 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     AulaSessaoStoreModule,
     NoticiaModule,
     UsuarioModule,
+    WidgetModule,
     PerfilProfessorRoutingModule,
+    AlunoRoutingModule,
     AulaRoutingModule,
     StoreModule.forRoot([]),
     EffectsModule.forRoot([]),

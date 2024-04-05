@@ -77,11 +77,11 @@ export const manipularContaReducer = createReducer(
     usuario.noticiaVisualizada = action.response.noticiaVisualizada;
     usuario.usuarioAreaInteresses = action.response.usuarioAreaInteresses;
     usuario.sociedadeId = action.response.sociedadeId;
+    usuario.tipoUsuario = action.response.tipoUsuario;
 
     switch(action.response.tipoUsuario) { 
       case TipoUsuarioEnum.UsuarioAdministrador: { 
-        //TODO, por hora ta o professor
-        usuario.tipoUsuarioEnum = TipoUsuarioEnum.UsuarioProfessor;
+        usuario.tipoUsuarioEnum = TipoUsuarioEnum.UsuarioAdministrador;
         break; 
       } 
       case TipoUsuarioEnum.UsuarioProfessor: { 
@@ -106,8 +106,7 @@ export const manipularContaReducer = createReducer(
     usuario.token = action.response.token;
     usuario.topicoForum = action.response.topicoForum;
     usuario.usuarioPerfilId = action.response.usuarioPerfilId;
-
-    //TODO, falta a foto
+    usuario.foto = action.response.foto;
 
     return { 
       ...state, 

@@ -28,6 +28,23 @@
             </div>
         </div>
     </div>
+
+    <div *ngIf="this.usuarioLogado && this.usuarioLogado.tipoUsuario == 1" fxLayout="row" fxLayoutAlign="start center" 
+        class="container-salvar-aula">
+        <span>salvar em:</span>
+        <div class="salvar-aula para-cursar" [ngClass]="{'para-cursar-selecionado': this.widgetCursar }" 
+            (click)="cursar()">
+            Para cursar
+        </div>
+        <div class="salvar-aula cursando"  [ngClass]="{'para-cursando-selecionado': this.widgetCursando }" 
+            (click)="cursando()">
+            Cursando
+        </div>
+        <div class="salvar-aula concluido" [ngClass]="{'para-concluido-selecionado': this.widgetConcluido }" 
+            (click)="concluido()">
+            Concluído
+        </div>
+    </div>
     
     <fieldset class="g-fieldset">
         <div class="g-fieldset-titulo">Resumo</div>

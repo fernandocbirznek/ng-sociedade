@@ -7,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class AulaIconeComponent implements OnInit {
   @Input() areaFisicaId: number = 0;
+  @Input() areaFisicaNome: boolean = false;
 
   constructor() { }
 

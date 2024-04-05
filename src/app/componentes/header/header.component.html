@@ -7,7 +7,8 @@
         <div fxFlex="40%" fxLayout="row" fxLayoutAlign="space-between start" class="menu-navegacao">
             <div fxFlex="30%" fxLayout="column" fxLayoutAlign="center center">
                 <a routerLink="">Home</a>
-                <a (click)="conta()">Criar Conta / Login</a>
+                <a *ngIf="this.usuarioLogado && this.usuarioLogado.id == 0" (click)="conta()">Criar Conta / Login</a>
+                <a *ngIf="this.usuarioLogado && this.usuarioLogado.id != 0" (click)="acessarPerfil()">Acessar perfil</a>
                 <a routerLink="/forum">Fórum</a>
             </div>
             <div fxFlex="70%" fxLayout="row wrap" fxLayoutAlign="space-between center">

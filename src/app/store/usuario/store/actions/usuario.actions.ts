@@ -1,8 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 
 import { 
-    UsuarioAreaInteresseModel,
-    UsuarioModel, UsuarioPerfilModel, 
+    UsuarioModel,
 } from 'src/app/models';
 
 export const selecionarUsuarioById = createAction(

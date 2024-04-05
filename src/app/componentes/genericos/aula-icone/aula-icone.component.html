@@ -1,24 +1,30 @@
 <div [ngSwitch]="areaFisicaId">
     <div *ngSwitchCase="1">
+        <div *ngIf="this.areaFisicaNome">Cosmologia</div>
         <mat-icon class="material-symbols-outlined">hub</mat-icon>
     </div>
     <div *ngSwitchCase="2" fxLayout="row" fxLayoutAlign="space-between center">
-        <div fxFlex="25px"></div>
+        <div *ngIf="this.areaFisicaNome">Mecânica</div>
         <mat-icon class="icone-mecanica material-symbols-outlined">manufacturing</mat-icon>
     </div>
     <div *ngSwitchCase="3">
+        <div *ngIf="this.areaFisicaNome">Termodinâmica</div>
         <mat-icon class="material-symbols-outlined">fireplace</mat-icon>
     </div>
-    <div *ngSwitchCase="5">
+    <div *ngSwitchCase="4">
+        <div *ngIf="this.areaFisicaNome">Eletromagnetismo</div>
         <mat-icon class="material-symbols-outlined">eletric_bolt</mat-icon>
     </div>
-    <div *ngSwitchCase="6">
+    <div *ngSwitchCase="5">
+        <div *ngIf="this.areaFisicaNome">Física moderna</div>
         <mat-icon class="material-symbols-outlined">schedule</mat-icon>
     </div>
-    <div *ngSwitchCase="7">
+    <div *ngSwitchCase="6">
+        <div *ngIf="this.areaFisicaNome">Óptica</div>
         <mat-icon class="material-symbols-outlined">rainy_light</mat-icon>
     </div>
-    <div *ngSwitchCase="8">
+    <div *ngSwitchCase="7">
+        <div *ngIf="this.areaFisicaNome">Mecânica quântica</div>
         <mat-icon class="material-symbols-outlined">explosion</mat-icon>
     </div>
     <div *ngSwitchDefault>...</div>

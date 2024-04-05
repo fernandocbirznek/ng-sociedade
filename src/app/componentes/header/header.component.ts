@@ -3,16 +3,17 @@ import { MatDialog } from '@angular/material/dialog';
 import { LoginCriarContaComponent } from '../topicos';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 import { 
-  AreaFisicaModel 
+  AreaFisicaModel, TipoUsuarioEnum, UsuarioModel 
 } from 'src/app/models';
 
 import { 
   getManyAreaFisica,
+  getOneUsuarioLogado,
   selecionarManyAreaFisica 
 } from 'src/app/store';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -23,6 +24,10 @@ export class HeaderComponent implements OnInit {
   areaFisicaManySubscription$: Subscription = new Subscription();
   areaFisicaMany$: Observable<AreaFisicaModel[]> = new Observable<AreaFisicaModel[]>();
   areaFisicaMany: AreaFisicaModel[] = [];
+
+  usuarioLogadoSubscription$: Subscription = new Subscription();
+  usuarioLogado$: Observable<UsuarioModel> = new Observable<UsuarioModel>();
+  usuarioLogado: UsuarioModel | undefined = undefined;
   
   public imagem: string;
   public resumoTopico: string;
@@ -43,6 +48,12 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.setupAreaFisica();
+    this.setupUsuarioLogado();
+  }
+
+  ngOnDestroy() {
+    this.areaFisicaManySubscription$.unsubscribe();
+    this.usuarioLogadoSubscription$.unsubscribe();
   }
 
   setupAreaFisica() {
@@ -52,6 +63,14 @@ export class HeaderComponent implements OnInit {
     });
   }
 
+  setupUsuarioLogado() {
+    this.usuarioLogado$ = this.store.select(getOneUsuarioLogado);
+    this.usuarioLogadoSubscription$ = this.usuarioLogado$.subscribe(item => {
+      if(item) {
+        this.usuarioLogado = item;
+      }  
+    });
+  }
 
   areaSelecionada(areaFisica: AreaFisicaModel) {
     switch(areaFisica.id) {
@@ -84,6 +103,32 @@ export class HeaderComponent implements OnInit {
       maxHeight: '800px',
       height: 'auto',
     });
+  }
+
+  acessarPerfil() {
+    if (this.usuarioLogado)
+      switch(this.usuarioLogado.tipoUsuario) { 
+        case TipoUsuarioEnum.UsuarioAdministrador: { 
+          //TODO, rota administrador
+          break; 
+        } 
+        case TipoUsuarioEnum.UsuarioComum: { 
+          this.router.navigate([`aluno-home/${this.usuarioLogado.email}`])
+          break; 
+        } 
+        case TipoUsuarioEnum.UsuarioProfessor: { 
+          this.router.navigate([`perfil-professor/${this.usuarioLogado.email}`])
+          break; 
+        } 
+        case TipoUsuarioEnum.UsuarioProfessorAdministrador: { 
+          //TODO, professor administrador; 
+        break; 
+        } 
+        default: { 
+          //TODO, rota home; 
+          break; 
+        } 
+      }
   }
 
   mudaFoto (foto: string)
