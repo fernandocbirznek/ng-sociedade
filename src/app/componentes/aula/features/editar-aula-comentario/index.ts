@@ -1,0 +1,1 @@
+export * from './editar-aula-comentario.component';

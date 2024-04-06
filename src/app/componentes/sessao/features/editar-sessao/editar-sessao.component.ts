@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
@@ -88,8 +88,7 @@ export class EditarSessaoComponent implements OnInit {
   tipoSessaoValue(item: string): TipoSessaoAulaEnum {
     switch(item) { 
       case "1": { 
-         return TipoSessaoAulaEnum.Conceito;
-
+        return TipoSessaoAulaEnum.Conceito;
       } 
       case "2": { 
         return TipoSessaoAulaEnum.Imagem;

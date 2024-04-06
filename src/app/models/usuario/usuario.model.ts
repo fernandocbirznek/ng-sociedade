@@ -7,7 +7,7 @@ export class UsuarioModel {
 	email: string = "";
 	tipoUsuarioEnum: TipoUsuarioEnum = TipoUsuarioEnum.None;
     //TODO, transformat tipo do usuário em um enum
-    tipoUsuario: number = -1;
+    tipoUsuario: number = 0;
     comentarioForum: number = 0;
     topicoForum: number = 0;
     comentarioAula: number = 0;

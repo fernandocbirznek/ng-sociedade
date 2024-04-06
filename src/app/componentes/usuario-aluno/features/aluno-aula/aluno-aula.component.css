@@ -5,6 +5,7 @@
 
 .fieldset {
     min-height: 200px;
+    display: grid;
     gap: 15px;
 }
 

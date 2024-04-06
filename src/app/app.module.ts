@@ -50,7 +50,8 @@ import {
   EditarUsuarioAreaInteresseComponent,
   AlunoAulaComponent,
   AlunoHomeComponent,
-  AlunoRoutingModule
+  AlunoRoutingModule,
+  EditarAulaComentarioComponent
 } from './componentes';
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -60,6 +61,7 @@ import { KatexModule } from 'ng-katex';
 import {
   AreaFisicaStoreModule,
   AreaInteresseStoreModule,
+  AulaComentarioStoreModule,
   AulaSessaoStoreModule,
   AulaStoreModule,
   ManipularContaModule, 
@@ -118,7 +120,8 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     UsuarioAreaInteresseComponent,
     EditarUsuarioAreaInteresseComponent,
     AlunoHomeComponent,
-    AlunoAulaComponent
+    AlunoAulaComponent,
+    EditarAulaComentarioComponent
   ],
   imports: [
     BrowserModule,
@@ -152,6 +155,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     AreaFisicaStoreModule,
     AreaInteresseStoreModule,
     AulaStoreModule,
+    AulaComentarioStoreModule,
     AulaSessaoStoreModule,
     NoticiaModule,
     UsuarioModule,

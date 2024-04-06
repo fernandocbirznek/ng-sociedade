@@ -4,12 +4,16 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { 
+  EditarAulaComentarioComponent,
+  ModalExcluirComponent,
   ProfessorPerfilVisualizarComponent 
 } from 'src/app/componentes';
 
 import { 
+  AulaComentarioModel,
   AulaModel, 
   AulaSessaoModel, 
   TipoSessaoAulaEnum, 
@@ -20,17 +24,23 @@ import {
 
 import { 
   atualizarAulaCurtir, 
+  excluirAulaComentario, 
+  getManyAulaComentarioByAulaId, 
   getOneAulaById, 
   getOneUsuarioLogado, 
   getWidgetMany, 
+  inserirAulaComentario, 
   inserirWidgetConcluido, 
   inserirWidgetCursando, 
   inserirWidgetCursar, 
   removerWidgetConcluido, 
   removerWidgetCursando, 
   removerWidgetCursar, 
+  selecionarManyAulaComentarioByAulaId, 
   selecionarOneAulaById 
 } from 'src/app/store';
+
+import Editor from 'src/app/componentes/genericos/ckeditor/build/ckeditor';
 
 @Component({
   selector: 'app-visualizar-aula',
@@ -42,6 +52,10 @@ export class VisualizarAulaComponent implements OnInit {
   aula$: Observable<AulaModel | undefined> = new Observable<AulaModel | undefined>();
   aula: AulaModel = new AulaModel();
   aulaId: number = 0;
+
+  aulaComentarioManySubscription$: Subscription = new Subscription();
+  aulaComentarioMany$: Observable<AulaComentarioModel[]> = new Observable<AulaComentarioModel[]>();
+  aulaComentarioMany: AulaComentarioModel[] = [];
 
   usuarioLogadoSubscription$: Subscription = new Subscription();
   usuarioLogado$: Observable<UsuarioModel> = new Observable<UsuarioModel>();
@@ -57,7 +71,13 @@ export class VisualizarAulaComponent implements OnInit {
 
   aulaSessaoMany: AulaSessaoModel[] = [];
 
-  trustedDashboardHtml : SafeHtml[] = [];
+  trustedVisualizarAulaHtml : SafeHtml[] = [];
+  trustedAulaComentarioHtml : SafeHtml[] = [];
+
+  escreverComentario: boolean = false;
+  formComentario: FormGroup = null as any;
+  formControlComentario = new FormControl('', [Validators.required, Validators.maxLength(2000)]);
+  public ckEditor = Editor;
 
   readonly tipoSessaoAulaEnum = TipoSessaoAulaEnum;
 
@@ -69,11 +89,13 @@ export class VisualizarAulaComponent implements OnInit {
     private dialog: MatDialog,
   ) { 
     this.aulaId = this.route.snapshot.paramMap.get('id') ? +this.route.snapshot.paramMap.get('id')!: 0;
+    this.criarFormularioComentario();
   }
 
   ngOnInit(): void {
     this.store.dispatch(selecionarOneAulaById({ aulaId: this.aulaId }))
-    this.setupObservableAula();
+    this.setupAulaComentario();
+    this.setupAula();
     this.setupUsuarioLogado();
     this.setupWidget();
   }
@@ -84,12 +106,34 @@ export class VisualizarAulaComponent implements OnInit {
     this.widgetSubscription$.unsubscribe();
   }
 
-  setupObservableAula() {
+  private criarFormularioComentario() {
+    this.formComentario = new FormGroup({
+      comentario: this.formControlComentario,
+    })
+  }
+
+  setupAula() {
     this.aula$ = this.store.select(getOneAulaById(this.aulaId));
     this.aulaSubscription$ = this.aula$.subscribe(item => {
       if(item)
-        this.setupAula(item);
+        this.setupAulaSessao(item);
     });
+  }
+
+  setupAulaComentario() {
+    this.store.dispatch(selecionarManyAulaComentarioByAulaId({ aulaId: this.aulaId }))
+    this.aulaComentarioMany$ = this.store.select(getManyAulaComentarioByAulaId(this.aulaId));
+    this.aulaComentarioManySubscription$ = this.aulaComentarioMany$.subscribe(itens => {
+      this.aulaComentarioMany = itens;
+      this.setupAulaComentarioTrustedHtml();
+    });
+  }
+
+  setupAulaComentarioTrustedHtml() {
+    this.trustedAulaComentarioHtml = [];
+    this.aulaComentarioMany.forEach(item => {
+      this.trustedAulaComentarioHtml.push(this.sanitizer.bypassSecurityTrustHtml(item.descricao));
+    })
   }
 
   setupUsuarioLogado() {
@@ -131,7 +175,7 @@ export class VisualizarAulaComponent implements OnInit {
     }).afterClosed().subscribe((aula: AulaModel) => {
       if(aula) {
         this.router.navigate([`visualizar-aula/${aula.id}`]);
-        this.setupAula(aula);
+        this.setupAulaSessao(aula);
       }
     });
   }
@@ -140,16 +184,56 @@ export class VisualizarAulaComponent implements OnInit {
     this.router.navigate(['mecanica'], { queryParams: { areaFisicaId: this.aula.areaFisicaId }});
   }
 
-  setupAula(item: AulaModel) {
+  setupAulaSessao(item: AulaModel) {
     this.aula = item;
-    this.trustedDashboardHtml = [];
+    this.trustedVisualizarAulaHtml = [];
     if (item.aulaSessaoMany.length > 0) {
       this.aulaSessaoMany = [...item.aulaSessaoMany];
       this.aulaSessaoMany.sort((a, b) => (a.ordem < b.ordem) ? -1 : 1);
       this.aulaSessaoMany.forEach(item => {
-        this.trustedDashboardHtml.push(this.sanitizer.bypassSecurityTrustHtml(item.conteudo));
+        this.trustedVisualizarAulaHtml.push(this.sanitizer.bypassSecurityTrustHtml(item.conteudo));
       });
     }
+  }
+
+  comentar() {
+    this.escreverComentario = true;
+  }
+
+  cancelarComentario() {
+    this.escreverComentario = false;
+  }
+
+  cadastrarComentario() {
+    let aulaComentario: AulaComentarioModel = new AulaComentarioModel();
+    if (this.usuarioLogado) {
+      aulaComentario.aulaId = this.aula.id;
+      aulaComentario.usuarioId = this.usuarioLogado.id;
+      aulaComentario.descricao = this.formComentario.get("comentario")?.value;
+
+      this.store.dispatch(inserirAulaComentario({ aulaComentario: aulaComentario }));
+    }
+    this.escreverComentario = false;
+  }
+
+  editarComentario(item: AulaComentarioModel) {
+    if (this.usuarioLogado)
+      this.dialog.open(EditarAulaComentarioComponent, {
+        data: {
+          aulaComentario: item,
+          usuarioLogado: this.usuarioLogado
+        }
+      });
+  }
+
+  excluirComentario(item: AulaComentarioModel) {
+    this.dialog.open(ModalExcluirComponent, {
+      data: `Comentário`
+    }).afterClosed().subscribe((evento) => {
+      if(evento) {
+        this.store.dispatch(excluirAulaComentario({ aulaComentarioId: item.id }));
+      }
+    });
   }
 
   cursar() {

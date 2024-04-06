@@ -35,10 +35,10 @@
         <div class="g-fieldset-titulo">Cursando</div>
         <div *ngFor="let widget of this.widget.widgetCursando; index as i" fxLayout="row" fxLayoutAlign="space-between center"
             class="container-aula-many">
-        <div fxLayout="column" fxLayoutAlign="space-between center" class="container-mover mover-esquerda"
-            (click)="moverParaCursar(widget)">
-            <mat-icon class="material-symbols-outlined" matTooltip="Mover para cursar">keyboard_return</mat-icon>
-        </div>
+            <div fxLayout="column" fxLayoutAlign="space-between center" class="container-mover mover-esquerda"
+                (click)="moverParaCursar(widget)">
+                <mat-icon class="material-symbols-outlined" matTooltip="Mover para cursar">keyboard_return</mat-icon>
+            </div>
             <div fxFlex="100%" fxLayout="column" fxLayoutAlign="center start" class="container-descricao-many">
                 <div fxLayout="column">
                     <div class="descricao-titulo">Título</div>

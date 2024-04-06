@@ -1,0 +1,12 @@
+.ckeditor-editar-comentario {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+::ng-deep .ckeditor-editar-comentario .ck-content {
+    min-height: 150px;
+}
+
+.container-buttons {
+    margin-bottom: 20px;
+}

@@ -53,17 +53,62 @@
 
     <div *ngFor="let sessao of this.aula.aulaSessaoMany; index as i" fxLayout="column" class="container-sessao-many">
         <div fxLayout="column" fxLayoutAlign="center center" class="titulo-sessao">
-        {{ sessao.titulo }}
+            {{ sessao.titulo }}
         </div>
         <div *ngIf="sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Conceito || sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Texto" 
-            fxLayout="column" fxLayoutAlign="center center" [innerHTML]="this.trustedDashboardHtml[i]">
+            fxLayout="column" fxLayoutAlign="center center" [innerHTML]="this.trustedVisualizarAulaHtml[i]">
         </div>
         <div *ngIf="sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Equacao"> 
-        <ng-katex [equation]="sessao.conteudo"></ng-katex>
+            <ng-katex [equation]="sessao.conteudo"></ng-katex>
         </div>
     </div>
-    <div>
-        Parte dos comentários
+    <div fxLayout="column" class="container-comentario-cards">
+        <div class="text-comentarios">Comentários</div>
+        <div *ngIf="this.usuarioLogado && this.usuarioLogado.tipoUsuario != 0 && !escreverComentario" fxLayout="column" 
+            class="button-comentario" (click)="comentar()">
+            Escrever comentário
+        </div>
+        <div *ngIf="this.usuarioLogado && this.usuarioLogado.tipoUsuario != 0 && escreverComentario" fxLayout="column">
+            <form [formGroup]="this.formComentario" fxLayout="column" fxLayoutAlign="center center" class="g-full-width">
+                <ckeditor formControlName="comentario" class="ckeditor-comentario" #ckEditorTag [editor]="ckEditor" 
+                    data="<p>Escreva o comentário</p>">
+                </ckeditor>
+            </form>
+
+            <div fxLayout="row" fxLayoutAlign="space-around center" class="container-buttons">
+                <button mat-stroked-button color="accent" (click)="cancelarComentario()">Cancelar</button>
+                <button mat-stroked-button color="primary" (click)="cadastrarComentario()">Comentar</button>
+            </div>
+        </div>
+        <div fxLayout="row wrap" class="g-gap-20">
+            <div *ngFor="let aulaComentario of  this.aulaComentarioMany; index as i" fxLayout="row wrap" 
+                class="container-comentario-many">
+                <div fxLayout="row" fxLayoutAlign="space-between start" class="container-comentario">
+                    <div class="comentario-data-cadastro">
+                        {{ aulaComentario.dataCadastro | date : 'dd/MM/yyyy HH:mm' }}
+                    </div>
+                    <div fxFlex="100px" fxLayout="column" fxLayoutAlign="space-between center" class="usuario-perfil">
+                        <div *ngIf="this.usuarioLogado && this.usuarioLogado.id == this.aulaComentario.usuarioId"  
+                            fxLayout="row" fxLayoutAlign="space-around center" class="container-comentario-buttons">
+                            <mat-icon class="icone-delete material-symbols-outlined" (click)="excluirComentario(aulaComentario)"
+                                matTooltip="Excluir comentário">
+                                delete
+                            </mat-icon>
+                            <mat-icon class="icone-edit material-symbols-outlined" (click)="editarComentario(aulaComentario)"
+                                matTooltip="Editar comentário">
+                                edit_square
+                            </mat-icon>
+                        </div>
+                        <div fxFlex="100%">FOTO</div>
+                        <div>Nome</div>
+                    </div>
+                    <div fxFlex="1px" class="divisoria"></div>
+                    <div fxFlex="100%" fxLayout="column" fxLayoutAlign="start center" class="comentario"
+                        [innerHTML]="this.trustedAulaComentarioHtml[i]">
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
     
