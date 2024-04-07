@@ -17,6 +17,7 @@ import {
   AulaModel, 
   AulaSessaoModel, 
   TipoSessaoAulaEnum, 
+  UsuarioAulaSessaoFavoritadoModel, 
   UsuarioModel, 
   WidgetModel,
   WidgetViewModel
@@ -26,13 +27,16 @@ import {
   atualizarAulaCurtir, 
   excluirAulaComentario, 
   getManyAulaComentarioByAulaId, 
+  getManySessaoIdInUsuarioAulaSessaoFavoritado, 
   getOneAulaById, 
   getOneUsuarioLogado, 
   getWidgetMany, 
   inserirAulaComentario, 
+  inserirUsuarioAulaSessaoFavoritado, 
   inserirWidgetConcluido, 
   inserirWidgetCursando, 
   inserirWidgetCursar, 
+  removerUsuarioAulaSessaoFavoritado, 
   removerWidgetConcluido, 
   removerWidgetCursando, 
   removerWidgetCursar, 
@@ -56,6 +60,10 @@ export class VisualizarAulaComponent implements OnInit {
   aulaComentarioManySubscription$: Subscription = new Subscription();
   aulaComentarioMany$: Observable<AulaComentarioModel[]> = new Observable<AulaComentarioModel[]>();
   aulaComentarioMany: AulaComentarioModel[] = [];
+
+  usuarioAulaSessaoFavoritadoSubscription$: Subscription = new Subscription();
+  usuarioAulaSessaoFavoritado$: Observable<number[]> = new Observable<number[]>();
+  usuarioAulaSessaoFavoritado: number[] = [];
 
   usuarioLogadoSubscription$: Subscription = new Subscription();
   usuarioLogado$: Observable<UsuarioModel> = new Observable<UsuarioModel>();
@@ -96,12 +104,14 @@ export class VisualizarAulaComponent implements OnInit {
     this.store.dispatch(selecionarOneAulaById({ aulaId: this.aulaId }))
     this.setupAulaComentario();
     this.setupAula();
+    this.setupUsuarioAulaSessaoFavoritado();
     this.setupUsuarioLogado();
     this.setupWidget();
   }
 
   ngOnDestroy() {
     this.aulaSubscription$.unsubscribe();
+    this.usuarioAulaSessaoFavoritadoSubscription$.unsubscribe();
     this.usuarioLogadoSubscription$.unsubscribe();
     this.widgetSubscription$.unsubscribe();
   }
@@ -134,6 +144,13 @@ export class VisualizarAulaComponent implements OnInit {
     this.aulaComentarioMany.forEach(item => {
       this.trustedAulaComentarioHtml.push(this.sanitizer.bypassSecurityTrustHtml(item.descricao));
     })
+  }
+
+  setupUsuarioAulaSessaoFavoritado() {
+    this.usuarioAulaSessaoFavoritado$ = this.store.select(getManySessaoIdInUsuarioAulaSessaoFavoritado);
+    this.usuarioAulaSessaoFavoritadoSubscription$ = this.usuarioAulaSessaoFavoritado$.subscribe(itens => {
+      this.usuarioAulaSessaoFavoritado = itens;
+    });
   }
 
   setupUsuarioLogado() {
@@ -178,6 +195,21 @@ export class VisualizarAulaComponent implements OnInit {
         this.setupAulaSessao(aula);
       }
     });
+  }
+
+  salvarSessaoFavoritado(item: AulaSessaoModel) {
+    if (this.usuarioLogado) {
+      let request: UsuarioAulaSessaoFavoritadoModel = new UsuarioAulaSessaoFavoritadoModel();
+      request.aulaSessaoId = item.id;
+      request.usuarioId = this.usuarioLogado.id;
+
+      this.store.dispatch(inserirUsuarioAulaSessaoFavoritado({ usuarioAulaSessaoFavoritado: request }));
+    }
+  }
+
+  removerSessaoFavoritado(item: AulaSessaoModel) {
+    if (this.usuarioLogado)
+      this.store.dispatch(removerUsuarioAulaSessaoFavoritado({ usuarioId: this.usuarioLogado.id, aulaSessaoId: item.id }));
   }
 
   voltarPaginaMecanica() {

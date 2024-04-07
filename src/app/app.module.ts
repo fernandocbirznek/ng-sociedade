@@ -51,7 +51,8 @@ import {
   AlunoAulaComponent,
   AlunoHomeComponent,
   AlunoRoutingModule,
-  EditarAulaComentarioComponent
+  EditarAulaComentarioComponent,
+  AlunoFavoritadoComponent
 } from './componentes';
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -67,6 +68,7 @@ import {
   ManipularContaModule, 
   NoticiaModule,
   UsuarioModule,
+  UsuarioAulaSessaoFavoritadoModule,
   WidgetModule
 } from './store';
 
@@ -121,7 +123,8 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     EditarUsuarioAreaInteresseComponent,
     AlunoHomeComponent,
     AlunoAulaComponent,
-    EditarAulaComentarioComponent
+    EditarAulaComentarioComponent,
+    AlunoFavoritadoComponent
   ],
   imports: [
     BrowserModule,
@@ -159,6 +162,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     AulaSessaoStoreModule,
     NoticiaModule,
     UsuarioModule,
+    UsuarioAulaSessaoFavoritadoModule,
     WidgetModule,
     PerfilProfessorRoutingModule,
     AlunoRoutingModule,

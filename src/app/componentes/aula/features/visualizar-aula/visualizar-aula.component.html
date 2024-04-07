@@ -52,6 +52,16 @@
     </fieldset>
 
     <div *ngFor="let sessao of this.aula.aulaSessaoMany; index as i" fxLayout="column" class="container-sessao-many">
+        <div *ngIf="this.usuarioLogado && this.usuarioLogado.tipoUsuario != 0" class="salvar-sessao">
+            <div *ngIf="!this.usuarioAulaSessaoFavoritado.includes(sessao.id)" (click)="salvarSessaoFavoritado(sessao)"
+                matTooltip="Adicionar aos favoritos">
+                <mat-icon class="material-symbols-outlined">bookmark_add</mat-icon>
+            </div>
+            <div *ngIf="this.usuarioAulaSessaoFavoritado.includes(sessao.id)" (click)="removerSessaoFavoritado(sessao)"
+                matTooltip="Remover dos favoritos" class="sessao-favoritado">
+                <mat-icon class="material-symbols-outlined">bookmark_added</mat-icon>
+            </div>
+        </div>
         <div fxLayout="column" fxLayoutAlign="center center" class="titulo-sessao">
             {{ sessao.titulo }}
         </div>

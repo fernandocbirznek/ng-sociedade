@@ -17,9 +17,11 @@
           </mat-select>
           <mat-error *ngIf="tipoSessao.invalid">Sessão é obrigatória</mat-error>
         </mat-form-field>
+
         <ckeditor *ngIf="this.tipoSessao.value == 1 || this.tipoSessao.value == 5" class="ckeditor-nova-sessao" 
           #ckEditorTag [editor]="ckEditor" data="<p>Hello, world!</p>">
         </ckeditor>
+
         <div *ngIf="this.tipoSessao.value == 2" fxLayout="column" fxLayoutAlign="start center" class="g-full-width">
           <div fxLayout="column" class="container-exemplo">
             <div fxLayout="row" fxLayoutAlign="start center">

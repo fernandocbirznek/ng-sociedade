@@ -111,6 +111,23 @@
     font-size: 14px;
 }
 
+.salvar-sessao {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.sessao-favoritado {
+    color: rgb(91, 163, 91);
+    background-color: #ebebeb;
+}
+
+.salvar-sessao:hover {
+    cursor: pointer;
+    background-color: #ececec;
+    border-radius: 5px;
+}
+
 .titulo-sessao {
     font-size: 24px;
     font-weight: bolder;
