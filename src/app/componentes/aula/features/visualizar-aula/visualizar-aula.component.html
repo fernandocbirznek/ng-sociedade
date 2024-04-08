@@ -71,6 +71,9 @@
         <div *ngIf="sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Equacao"> 
             <ng-katex [equation]="sessao.conteudo"></ng-katex>
         </div>
+        <div *ngIf="sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Imagem">
+            <img fxFlex="100%" [src]="this.trustedUrlImageHtml[i]" alt="Imagem" class="imagem">
+        </div>
     </div>
     <div fxLayout="column" class="container-comentario-cards">
         <div class="text-comentarios">Comentários</div>

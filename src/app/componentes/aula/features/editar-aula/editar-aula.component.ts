@@ -53,6 +53,7 @@ export class EditarAulaComponent implements OnInit {
   usuarioLogado: UsuarioModel | undefined = undefined;
 
   trustedDashboardHtml : SafeHtml[] = [];
+  trustedUrlImageHtml: SafeHtml[] = [];
 
   readonly tipoSessaoAulaEnum = TipoSessaoAulaEnum;
 
@@ -95,7 +96,14 @@ export class EditarAulaComponent implements OnInit {
       this.aulaSessaoMany = itens;
       this.aulaSessaoMany.sort((a, b) => (a.ordem < b.ordem) ? -1 : 1);
       this.aulaSessaoMany.forEach(item => {
-        this.trustedDashboardHtml.push(this.sanitizer.bypassSecurityTrustHtml(item.conteudo));
+        if (item.aulaSessaoTipo != this.tipoSessaoAulaEnum.Imagem) {
+          this.trustedDashboardHtml.push(this.sanitizer.bypassSecurityTrustHtml(item.conteudo));
+          this.trustedUrlImageHtml.push('');
+        }
+        if (item.aulaSessaoTipo == this.tipoSessaoAulaEnum.Imagem) {
+          this.trustedDashboardHtml.push('');
+          this.trustedUrlImageHtml.push(this.sanitizer.bypassSecurityTrustUrl('data:image/png;base64,' + item.conteudo));
+        }
       });
     });
   }

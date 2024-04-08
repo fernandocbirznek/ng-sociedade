@@ -38,6 +38,11 @@
             <mat-error *ngIf="conteudo.invalid">Conteúdo é obrigatório</mat-error>
           </mat-form-field>
         </div>
+
+        <div *ngIf="this.tipoSessao.value == 3" fxLayout="column" fxLayoutAlign="start center" class="g-full-width">
+          <input type="file" formControlName="formFoto" (change)="imagemAlterada($event)" accept="image/*">
+        </div>
+
       </form>
     </div>
     <div fxLayout="row" fxLayoutAlign="space-around center" class="container-buttons">

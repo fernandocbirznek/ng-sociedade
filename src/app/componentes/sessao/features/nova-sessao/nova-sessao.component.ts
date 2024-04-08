@@ -28,11 +28,15 @@ export class NovaSessaoComponent implements OnInit {
   tipoSessao = new FormControl('', [Validators.required]);
   conteudo = new FormControl('', [Validators.required, Validators.maxLength(8000)]);
   titulo = new FormControl('', [Validators.required, Validators.maxLength(200)]);
+  formFoto = new FormControl('');
 
   formSessao: FormGroup = null as any;
 
   exemploEquacao: string = "y = 5 + \\sqrt{100} - \\sum (x+1) + \\int z \\Delta z";
   rows = 10;
+
+  selectedFile: File | null = null;
+  conteudoImagem: string = '';
 
   constructor(
     public dialogRef: MatDialogRef<NovaSessaoComponent>,
@@ -48,7 +52,8 @@ export class NovaSessaoComponent implements OnInit {
     this.formSessao = new FormGroup({
       tipo_sessao: this.tipoSessao,
       conteudo_sessao: this.conteudo,
-      titulo_sessao: this.titulo
+      titulo_sessao: this.titulo,
+      formFoto: this.formFoto,
     })
   }
 
@@ -62,7 +67,10 @@ export class NovaSessaoComponent implements OnInit {
       case "2":
         conteudo = this.formSessao.get("conteudo_sessao")?.value;
         break;
-   } 
+      case "3":
+        conteudo = this.conteudoImagem;
+        break;
+    } 
 
     let request: AulaSessaoModel = new AulaSessaoModel();
     request.titulo = this.formSessao.get("titulo_sessao")?.value;
@@ -84,13 +92,12 @@ export class NovaSessaoComponent implements OnInit {
     switch(item) { 
       case "1": { 
          return TipoSessaoAulaEnum.Conceito;
-
       } 
       case "2": { 
-        return TipoSessaoAulaEnum.Imagem;
+        return TipoSessaoAulaEnum.Equacao;
       } 
       case "3": { 
-        return TipoSessaoAulaEnum.Equacao;
+        return TipoSessaoAulaEnum.Imagem;
       } 
       case "4": { 
         return TipoSessaoAulaEnum.Video;
@@ -104,4 +111,13 @@ export class NovaSessaoComponent implements OnInit {
     } 
   }
 
+  imagemAlterada(event: any) {
+    this.selectedFile = event.target.files[0];
+    const reader = new FileReader();
+    reader.onload = (e: any) => {
+      const bytes = e.target.result.split('base64,')[1];
+      this.conteudoImagem = bytes;
+    };
+    reader.readAsDataURL(event.target.files[0]);
+  }
 }

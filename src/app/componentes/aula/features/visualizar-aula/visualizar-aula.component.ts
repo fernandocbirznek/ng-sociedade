@@ -81,6 +81,7 @@ export class VisualizarAulaComponent implements OnInit {
 
   trustedVisualizarAulaHtml : SafeHtml[] = [];
   trustedAulaComentarioHtml : SafeHtml[] = [];
+  trustedUrlImageHtml: SafeHtml[] = [];
 
   escreverComentario: boolean = false;
   formComentario: FormGroup = null as any;
@@ -223,7 +224,14 @@ export class VisualizarAulaComponent implements OnInit {
       this.aulaSessaoMany = [...item.aulaSessaoMany];
       this.aulaSessaoMany.sort((a, b) => (a.ordem < b.ordem) ? -1 : 1);
       this.aulaSessaoMany.forEach(item => {
-        this.trustedVisualizarAulaHtml.push(this.sanitizer.bypassSecurityTrustHtml(item.conteudo));
+        if (item.aulaSessaoTipo != this.tipoSessaoAulaEnum.Imagem) {
+          this.trustedVisualizarAulaHtml.push(this.sanitizer.bypassSecurityTrustHtml(item.conteudo));
+          this.trustedUrlImageHtml.push('');
+        }
+        if (item.aulaSessaoTipo == this.tipoSessaoAulaEnum.Imagem) {
+          this.trustedVisualizarAulaHtml.push('');
+          this.trustedUrlImageHtml.push(this.sanitizer.bypassSecurityTrustUrl('data:image/png;base64,' + item.conteudo));
+        }
       });
     }
   }
