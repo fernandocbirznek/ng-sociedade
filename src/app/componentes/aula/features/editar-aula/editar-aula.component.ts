@@ -93,6 +93,7 @@ export class EditarAulaComponent implements OnInit {
     this.aulaSessao$ = this.store.select(getManyAulaSessaoByAulaId(this.aulaId));
     this.aulaSessaoSubscription$ = this.aulaSessao$.subscribe(itens => {
       this.trustedDashboardHtml = [];
+      this.trustedUrlImageHtml = [];
       this.aulaSessaoMany = itens;
       this.aulaSessaoMany.sort((a, b) => (a.ordem < b.ordem) ? -1 : 1);
       this.aulaSessaoMany.forEach(item => {

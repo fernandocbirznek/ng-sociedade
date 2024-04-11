@@ -91,7 +91,7 @@ export class NovaSessaoComponent implements OnInit {
   tipoSessaoValue(item: string): TipoSessaoAulaEnum {
     switch(item) { 
       case "1": { 
-         return TipoSessaoAulaEnum.Conceito;
+        return TipoSessaoAulaEnum.Conceito;
       } 
       case "2": { 
         return TipoSessaoAulaEnum.Equacao;

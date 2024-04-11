@@ -14,9 +14,14 @@
 
     <app-usuario-area-interesse [usuarioLogado]="this.usuarioLogado"></app-usuario-area-interesse>
 
-    <app-aluno-aula [usuarioLogado]="this.usuarioLogado"></app-aluno-aula>
-
-    <app-aluno-favoritado [usuarioLogado]="this.usuarioLogado"></app-aluno-favoritado>
+    <mat-tab-group>
+        <mat-tab label="Widget aulas">
+            <app-aluno-aula [usuarioLogado]="this.usuarioLogado"></app-aluno-aula>
+        </mat-tab>
+        <mat-tab label="Sessões favoritadas">
+            <app-aluno-favoritado [usuarioLogado]="this.usuarioLogado"></app-aluno-favoritado>
+        </mat-tab>
+    </mat-tab-group>
 </div>
 <ng-template #usuarioVazio>
     Carregando informações...

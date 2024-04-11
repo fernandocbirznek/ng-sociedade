@@ -1,0 +1,84 @@
+.container-favoritado-many {
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    gap: 50px;
+}
+
+.container-filtro {
+    gap: 20px;
+}
+
+.card-favoritado {
+    width: 450px;
+    height: 330px;
+    padding: 15px;
+    border-radius: 20px;
+    box-shadow: 3px 3px 8px #969696;
+    border: 2px solid black;
+    position: relative;
+}
+
+.card-expandido {
+    width: 100em;
+    height: -webkit-fill-available;
+    margin: 80px;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    position: fixed;
+    background: white;
+}
+
+.card-tipo-aula {
+    position: absolute;
+    top: 5px;
+    color: #CCC;
+    font-size: 12px;
+    font-style: italic;
+}
+
+.card-tipo {
+    left: 15px;
+}
+
+.acessar-aula {
+    right: 15px;
+}
+
+.acessar-aula:hover,
+.card-expandir:hover {
+    font-weight: bold;
+    color: black;
+    cursor: pointer;
+}
+
+.card-conteudo {
+    margin-top: 20px;
+    gap: 15px;
+    height: 100%;
+    width: 100%;
+}
+
+.titulo-sessao {
+    font-weight: bold;
+}
+
+.card-expandir {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    cursor: pointer;
+    color: #CCC;
+    font-size: 12px;
+}
+
+.card-imagem {
+    border: 2px solid black;
+    border-radius: 10px;
+    height: 220px;
+}
+
+.card-imagem-expandido {
+    height: calc(100% - 80px);
+}

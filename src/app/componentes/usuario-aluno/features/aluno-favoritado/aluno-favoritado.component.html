@@ -1,3 +1,65 @@
-<div *ngFor="let item of this.usuarioAulaSessaoFavoritado" fxLayout="row wrap" fxLayoutAlign="space-aroud start">
-    {{ item.titulo }}
+<div fxLayout="column" fxLayoutAlign="start start" class="container-favoritado-many">
+    <div fxLayout="row wrap" fxLayoutAlign="start start" class="container-filtro">
+        <span>Conceito</span>
+        <span>Texto</span>
+        <span>Imagem</span>
+        <span>Equação</span>
+        <span>Aula</span>
+    </div>
+    <div fxLayout="row wrap" fxLayoutAlign="start start" class="container-favoritado-many">
+        <div *ngFor="let item of this.usuarioAulaSessaoFavoritado; index as i" fxLayout="row wrap" fxLayoutAlign="space-aroud start">
+            <div *ngIf="item.aulaSessaoTipo == this.tipoSessaoAulaEnum.Conceito" fxLayout="column" fxLayoutAlign="center center"
+                class="card-favoritado" [ngClass]="{'card-expandido': this.cardExpandidoMany[i]}">
+                <div class="card-tipo-aula card-tipo">Conceito</div>
+                <div class="card-tipo-aula acessar-aula" (click)="acessarAula(item)">Acessar aula</div>
+                <div fxLayout="column" class="card-conteudo">
+                    <div class="titulo-sessao">{{ item.titulo }}</div>
+                    <div [innerHTML]="this.trustedDashboardHtml[i]"></div>
+                </div>
+                <div class="card-expandir" (click)="expandirCard(i)">
+                    {{ this.cardExpandidoMany[i] ? 'Minimizar' : 'Expandir' }}
+                </div>
+            </div>
+            
+            <div *ngIf="item.aulaSessaoTipo == this.tipoSessaoAulaEnum.Texto" fxLayout="column" fxLayoutAlign="center center"
+                class="card-favoritado" [ngClass]="{'card-expandido': this.cardExpandidoMany[i]}">
+                <div class="card-tipo-aula card-tipo">Texto</div>
+                <div class="card-tipo-aula acessar-aula" (click)="acessarAula(item)">Acessar aula</div>
+                <div fxLayout="column" class="card-conteudo">
+                    <div class="titulo-sessao">{{ item.titulo }}</div>
+                    <div [innerHTML]="this.trustedDashboardHtml[i]"></div>
+                </div>
+                <div class="card-expandir" (click)="expandirCard(i)">
+                    {{ this.cardExpandidoMany[i] ? 'Minimizar' : 'Expandir' }}
+                </div>
+            </div>
+        
+            <div *ngIf="item.aulaSessaoTipo == this.tipoSessaoAulaEnum.Equacao" fxLayout="column" fxLayoutAlign="center center"
+                class="card-favoritado" [ngClass]="{'card-expandido': this.cardExpandidoMany[i]}"> 
+                <div class="card-tipo-aula card-tipo">Equação</div>
+                <div class="card-tipo-aula acessar-aula" (click)="acessarAula(item)">Acessar aula</div>
+                <div fxLayout="column" class="card-conteudo">
+                    <div class="titulo-sessao">{{ item.titulo }}</div>
+                    <ng-katex [equation]="item.conteudo"></ng-katex>
+                </div>
+                <div class="card-expandir" (click)="expandirCard(i)">
+                    {{ this.cardExpandidoMany[i] ? 'Minimizar' : 'Expandir' }}
+                </div>
+            </div>
+        
+            <div *ngIf="item.aulaSessaoTipo == this.tipoSessaoAulaEnum.Imagem" fxLayout="column" fxLayoutAlign="center center"
+                class="card-favoritado" [ngClass]="{'card-expandido': this.cardExpandidoMany[i]}">
+                <div class="card-tipo-aula card-tipo">Imagem</div>
+                <div class="card-tipo-aula acessar-aula" (click)="acessarAula(item)">Acessar aula</div>
+                <div fxLayout="column" fxLayoutAlign="start center" class="card-conteudo">
+                    <div class="titulo-sessao">{{ item.titulo }}</div>
+                    <img [src]="this.trustedUrlImageHtml[i]" alt="Imagem" class="card-imagem" 
+                        [ngClass]="{'card-imagem-expandido': this.cardExpandidoMany[i]}">
+                </div>
+                <div class="card-expandir" (click)="expandirCard(i)">
+                    {{ this.cardExpandidoMany[i] ? 'Minimizar' : 'Expandir' }}
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
