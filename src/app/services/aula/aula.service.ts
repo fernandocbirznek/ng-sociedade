@@ -20,6 +20,7 @@ export class AulaService {
     urlSelecionarAulaById = 'https://localhost:44303/api/Aula/selecionar-aula';
     urlSelecionarManyAulaAreaFisica = 'https://localhost:44303/api/Aula/selecionar-aulas-area-fisica';
     urlSelecionarAulaByProfessorId = 'https://localhost:44303/api/Aula/selecionar-aulas-professor';
+    urlSelecionarManyAula = 'https://localhost:44303/api/Aula/selecionar-aulas-sistema';
 
     constructor(
         private httpClient: HttpClient,
@@ -55,6 +56,10 @@ export class AulaService {
 
     selecionarManyAulaByProfessorId(professorId: number): Observable<AulaModel[]> {
         return this.httpClient.get<AulaModel[]>(this.urlSelecionarAulaByProfessorId + `/${professorId}`, this.buildHttpOptions());
+    }
+
+    selecionarManyAula(): Observable<AulaModel[]> {
+        return this.httpClient.get<AulaModel[]>(this.urlSelecionarManyAula, this.buildHttpOptions());
     }
 
     private buildHttpOptions() {

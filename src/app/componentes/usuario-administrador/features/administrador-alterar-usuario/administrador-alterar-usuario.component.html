@@ -1,0 +1,34 @@
+<div fxLayout="column" fxLayoutAlign="center center" class="container-criar-conta">
+    <form [formGroup]="this.formAlterarUsuario" class="container-form">
+        <mat-form-field class="container-inputs" appearance="outline">
+            <mat-label>Nome Completo</mat-label>
+            <input formControlName="nome" matInput required>
+            <mat-error *ngIf="nome.invalid">Nome é obrigatório</mat-error>
+        </mat-form-field>
+        <mat-form-field class="container-inputs" appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="fernando@exemplo.com" formControlName="email" required>
+            <mat-error *ngIf="email.invalid">Formato de email não é válido</mat-error>
+        </mat-form-field>
+        <mat-radio-group fxLayout="row wrap" fxLayoutAlign="space-around center" class="tipo-usuario" 
+            (change)="selectedTipoUsuario($event)">
+            <mat-radio-button [checked]="tipoUsuarioEnum.UsuarioComum == this.tipoUsuario" [value]="tipoUsuarioEnum.UsuarioComum">
+                Aluno
+            </mat-radio-button>
+            <mat-radio-button [checked]="tipoUsuarioEnum.UsuarioProfessor == this.tipoUsuario" [value]="tipoUsuarioEnum.UsuarioProfessor">
+                Professor
+            </mat-radio-button>
+            <mat-radio-button [checked]="tipoUsuarioEnum.UsuarioProfessorAdministrador == this.tipoUsuario" [value]="tipoUsuarioEnum.UsuarioProfessorAdministrador">
+                Professor administrador
+            </mat-radio-button>
+            <mat-radio-button [checked]="tipoUsuarioEnum.UsuarioAdministrador == this.tipoUsuario" [value]="tipoUsuarioEnum.UsuarioAdministrador">
+                Administrador
+            </mat-radio-button>
+        </mat-radio-group>
+    </form>
+    
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="container-inputs">
+        <button mat-stroked-button color="accent" (click)="fecharModal()">Cancelar</button>
+        <button mat-stroked-button color="primary" (click)="requestAlterarUsuario()">Atualizar usuário</button>
+    </div>
+</div>

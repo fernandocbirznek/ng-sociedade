@@ -1,0 +1,31 @@
+.container-perfil,
+.container-informacao {
+    gap: 20px;
+    position: relative;
+}
+
+.imagem {
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+}
+
+.icone-close {
+    position: absolute;
+    top: -15px;
+    right: -10px;
+}
+
+.icone-close:hover {
+    color: rgb(233, 111, 111);
+    cursor: pointer;
+}
+
+
+.fieldset-perfil-informacao {
+    min-height: 100px;
+}
+
+.informacao {
+    gap: 10px;
+}

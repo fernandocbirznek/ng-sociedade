@@ -13,7 +13,10 @@
                 <div class="card-tipo-aula card-tipo">Conceito</div>
                 <div class="card-tipo-aula acessar-aula" (click)="acessarAula(item)">Acessar aula</div>
                 <div fxLayout="column" class="card-conteudo">
-                    <div class="titulo-sessao">{{ item.titulo }}</div>
+                    <div class="aba">
+                        <div class="titulo-sessao">{{ item.titulo }}</div>
+                    </div>
+                    
                     <div [innerHTML]="this.trustedDashboardHtml[i]"></div>
                 </div>
                 <div class="card-expandir" (click)="expandirCard(i)">
@@ -26,7 +29,10 @@
                 <div class="card-tipo-aula card-tipo">Texto</div>
                 <div class="card-tipo-aula acessar-aula" (click)="acessarAula(item)">Acessar aula</div>
                 <div fxLayout="column" class="card-conteudo">
-                    <div class="titulo-sessao">{{ item.titulo }}</div>
+                    <div class="aba">
+                        <div class="titulo-sessao">{{ item.titulo }}</div>
+                    </div>
+                    
                     <div [innerHTML]="this.trustedDashboardHtml[i]"></div>
                 </div>
                 <div class="card-expandir" (click)="expandirCard(i)">
@@ -39,7 +45,10 @@
                 <div class="card-tipo-aula card-tipo">Equação</div>
                 <div class="card-tipo-aula acessar-aula" (click)="acessarAula(item)">Acessar aula</div>
                 <div fxLayout="column" class="card-conteudo">
-                    <div class="titulo-sessao">{{ item.titulo }}</div>
+                    <div class="aba">
+                        <div class="titulo-sessao">{{ item.titulo }}</div>
+                    </div>
+                    
                     <ng-katex [equation]="item.conteudo"></ng-katex>
                 </div>
                 <div class="card-expandir" (click)="expandirCard(i)">
@@ -52,7 +61,10 @@
                 <div class="card-tipo-aula card-tipo">Imagem</div>
                 <div class="card-tipo-aula acessar-aula" (click)="acessarAula(item)">Acessar aula</div>
                 <div fxLayout="column" fxLayoutAlign="start center" class="card-conteudo">
-                    <div class="titulo-sessao">{{ item.titulo }}</div>
+                    <div class="aba">
+                        <div class="titulo-sessao">{{ item.titulo }}</div>
+                    </div>
+                    
                     <img [src]="this.trustedUrlImageHtml[i]" alt="Imagem" class="card-imagem" 
                         [ngClass]="{'card-imagem-expandido': this.cardExpandidoMany[i]}">
                 </div>

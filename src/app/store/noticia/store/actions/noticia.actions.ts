@@ -19,6 +19,20 @@ export const selecionarNoticiaManyHomeFailure = createAction(
     props<{ error: any }>()
 );
 
+export const selecionarManyNoticia = createAction(
+    '[Noticia] selecionarManyNoticia'
+);
+
+export const selecionarManyNoticiaSuccess = createAction(
+    '[Noticia] selecionarManyNoticia Success',
+    props<{ response: NoticiaModel[] }>()
+);
+
+export const selecionarManyNoticiaFailure = createAction(
+    '[Noticia] selecionarManyNoticia Failure',
+    props<{ error: any }>()
+);
+
 export const selecionarNoticiaManyByProfessorId = createAction(
     '[Noticia] selecionarNoticiaManyByProfessorId',
     props<{ professorId: number }>()

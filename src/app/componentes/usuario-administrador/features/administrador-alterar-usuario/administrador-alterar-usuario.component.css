@@ -1,0 +1,57 @@
+.container-login {
+    position: relative;
+    padding: 15px;
+}
+
+.fechar {
+    font-weight: bolder;
+    cursor: pointer;
+    position: absolute;
+    right: -7px;
+    top: -10px;
+}
+
+.fechar:hover {
+    color: rgb(255, 102, 102);
+}
+
+.container-modal {
+    width: 500px;
+}
+
+.container-form,
+.tipo-usuario {
+    gap: 20px;
+}
+
+.container-inputs {
+    width: 100%;
+}
+
+.criar-conta {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px solid black;
+    width: 90%;
+    cursor: pointer;
+    text-align: center;
+}
+
+.criar-conta:hover {
+    color: darkgray;
+}
+
+.logar {
+    font-size: 20px;
+    background-color: #A0D468;
+    border: 2px solid black;
+    padding: 10px 30px;
+    cursor: pointer;
+    width: 250px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.logar:hover {
+    background-color: #a0d468d3;
+}

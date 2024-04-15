@@ -59,6 +59,37 @@ export const noticiaReducer = createReducer(
     };
   }),
 
+  on(actions.selecionarManyNoticia, state => {
+    return { 
+        ...state, 
+        isLoading: true, 
+        isSuccess: false, 
+        isFailure: false, 
+        error: "" 
+    };
+  }),
+  on(actions.selecionarManyNoticiaSuccess, (state, action) => {
+    let itens = action.response;
+
+    return { 
+        ...state, 
+        itens: itens,
+        isLoading: false, 
+        isSuccess: true, 
+        isFailure: false,
+        error: ""
+    };
+  }),
+  on(actions.selecionarManyNoticiaFailure, (state) => {
+    return { 
+        ...state, 
+        isLoading: false, 
+        isSuccess: false, 
+        isFailure: true, 
+        mensagem: "Falha em buscar as notícias no sistema" 
+    };
+  }),
+
   on(actions.selecionarNoticiaManyByProfessorId, state => {
     return { 
         ...state, 

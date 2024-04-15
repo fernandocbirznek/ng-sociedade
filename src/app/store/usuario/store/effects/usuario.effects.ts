@@ -7,7 +7,8 @@ import { Store } from '@ngrx/store';
 import * as actions from '../actions/usuario.actions';
 
 import { 
-    UsuarioService,
+  ManipularContaService,
+  UsuarioService,
 } from 'src/app/services';
 
 @Injectable()
@@ -17,6 +18,7 @@ export class UsuarioEffects {
     public store: Store,
     private actions$: Actions,
     private usuarioService: UsuarioService,
+    private manipularContaService: ManipularContaService,
     ) 
   {}
 
@@ -29,6 +31,56 @@ export class UsuarioEffects {
             return actions.selecionarUsuarioByIdSuccess({ response: response })
           }),
           catchError(error => of(actions.selecionarUsuarioByIdFailure({ error }))))
+      )
+    );
+  });
+
+  selecionarManyUsuario$ = createEffect(() => {
+    return this.actions$.pipe( 
+      ofType(actions.selecionarManyUsuario),
+      concatMap(() =>
+        this.usuarioService.selecionarManyUsuario().pipe(
+          map(response => {
+            return actions.selecionarManyUsuarioSuccess({ response: response })
+          }),
+          catchError(error => of(actions.selecionarManyUsuarioFailure({ error }))))
+      )
+    );
+  });
+
+  criarUsuario$ = createEffect(() => {
+    return this.actions$.pipe( 
+      ofType(actions.criarUsuario),
+      concatMap((action) =>
+        this.manipularContaService.criarConta(action.conta).pipe(
+          map(response => actions.criarUsuarioSuccess({ conta: action.conta, response: response })),
+          catchError(error => of(actions.criarUsuarioFailure({ error }))))
+      )
+    );
+  });
+
+  atualizarUsuario$ = createEffect(() => {
+    return this.actions$.pipe( 
+      ofType(actions.atualizarUsuario),
+      concatMap((action) =>
+        this.usuarioService.atualizarUsuario(action.usuario).pipe(
+          map(response => {
+            return actions.atualizarUsuarioSuccess({ usuario: action.usuario, response: response })
+          }),
+          catchError(error => of(actions.atualizarUsuarioFailure({ error }))))
+      )
+    );
+  });
+
+  excluirUsuario$ = createEffect(() => {
+    return this.actions$.pipe( 
+      ofType(actions.excluirUsuario),
+      concatMap((action) =>
+        this.usuarioService.excluirUsuario(action.usuarioId).pipe(
+          map(response => {
+            return actions.excluirUsuarioSuccess({ response: response })
+          }),
+          catchError(error => of(actions.excluirUsuarioFailure({ error }))))
       )
     );
   });

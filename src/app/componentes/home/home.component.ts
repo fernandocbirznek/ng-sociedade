@@ -3,13 +3,12 @@ import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 
 import { 
-  AreaFisicaModel,
   NoticiaModel 
 } from 'src/app/models';
 
 import { 
+  getManyNoticiaHome,
   selecionarAreaInteresseMany,
-  selecionarManyNoticia,
   selecionarNoticiaManyHome 
 } from 'src/app/store';
 
@@ -40,7 +39,7 @@ export class HomeComponent implements OnInit {
   }
 
   setupNoticia() {
-    this.noticiaMany$ = this.store.select(selecionarManyNoticia);
+    this.noticiaMany$ = this.store.select(getManyNoticiaHome);
     this.noticiaManySubscription$ = this.noticiaMany$.subscribe(itens => {
       if(itens)
         this.noticiaMany = itens;

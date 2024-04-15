@@ -12,8 +12,26 @@ export const selectAulaState = createFeatureSelector<fromAula.AulaState>(
   fromAula.aulaFeatureKey
 );
 
-export const getAulas = createSelector(selectAulaState, (state) => {
-  return state.aulas;
+export const getManyAula = createSelector(
+  selectAulaState, 
+  areaFisicaFeature.getManyAreaFisica,(
+    state,
+    areaFisicaMany: AreaFisicaModel[]
+  ) => {
+
+    let itens: AulaModel[] = 
+    state
+      .aulas
+      .map(item => {
+        let areaFisica = areaFisicaMany.find(areaFisica => areaFisica.id == item.areaFisicaId);
+        let aulaModel = {...item};
+        if (areaFisica)
+          aulaModel.areaFisicaDescricao = areaFisica.descricao;
+        aulaModel.comentario = item.aulaComentarioMany.length;
+        return aulaModel;
+      });
+
+    return itens;
 })
 
 export const getManyAulaByProfessorId = (professorId: number) => createSelector(

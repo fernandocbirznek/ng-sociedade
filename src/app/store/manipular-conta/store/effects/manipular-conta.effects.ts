@@ -49,7 +49,7 @@ export class ManipularContaEffects {
           map(response => {
             switch(response.tipoUsuario) { 
               case TipoUsuarioEnum.UsuarioAdministrador: { 
-                //TODO, rota administrador
+                this.router.navigate([`administrador-home/${response.email}`])
                 break; 
               } 
               case TipoUsuarioEnum.UsuarioComum: { 

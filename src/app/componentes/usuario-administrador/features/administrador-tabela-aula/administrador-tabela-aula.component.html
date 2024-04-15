@@ -1,0 +1,111 @@
+<div fxLayout="column" class="container-tabela-aula">
+    <div fxLayout="row" fxLayoutAlign="start center" class="container-filtro">
+        <mat-form-field fxFlex="100%">
+            <mat-label>Filtrar aulas</mat-label>
+            <input matInput (keyup)="aplicarFiltro($event)" placeholder="Ex: termodinâmica" #input>
+        </mat-form-field>
+    </div>
+    <fieldset class="g-fieldset">
+        <div class="g-fieldset-titulo">Gerenciar aulas</div>
+        <table mat-table [dataSource]="dataSource" class="container-tabela" matSort>
+            <ng-container matColumnDef="titulo">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header  fxFlex="25%" fxLayoutAlign="start center" 
+                    class="tabela-header"> 
+                    Título da aula
+                </th>
+                <td mat-cell *matCellDef="let element" fxFlex="25%" fxLayoutAlign="start center" class="coluna"
+                    (click)="acessarAula(element.id)"> 
+                    {{element.titulo}} 
+                </td>
+            </ng-container>
+    
+            <ng-container matColumnDef="resumo">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="25%" fxLayoutAlign="start center" 
+                    class="tabela-header"> 
+                    Resumo da aula
+                </th>
+                <td mat-cell *matCellDef="let element" fxFlex="25%" fxLayoutAlign="start center" class="coluna"
+                (click)="acessarAula(element.id)"> 
+                    <span class="g-text-overflow-2">{{element.resumo}}</span>
+                </td>
+            </ng-container>
+    
+            <ng-container matColumnDef="areaFisica">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="10%" fxLayoutAlign="center center" 
+                    class="tabela-header"> 
+                    Área da Física
+                </th>
+                <td mat-cell *matCellDef="let element" fxFlex="10%" fxLayoutAlign="center center" class="coluna"
+                (click)="acessarAula(element.id)"> 
+                    {{element.areaFisicaDescricao}} 
+                </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="data-postagem">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="10%" fxLayoutAlign="center center"
+                    class="tabela-header"> 
+                    Data postagem 
+                </th>
+                <td mat-cell *matCellDef="let element" fxFlex="10%" fxLayoutAlign="center center" class="coluna"
+                (click)="acessarAula(element.id)"> 
+                    {{element.dataCadastro | date: 'dd/MM/yyyy HH:mm'}} 
+                </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="comentarios">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="10%" fxLayoutAlign="center center" 
+                    class="tabela-header"> 
+                    Comentários 
+                </th>
+                <td mat-cell *matCellDef="let element" fxFlex="10%" fxLayoutAlign="center center" class="coluna"
+                (click)="acessarAula(element.id)"> 
+                    {{element.comentario}} 
+                </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="curtido">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="10%" fxLayoutAlign="center center"
+                    class="tabela-header"> 
+                    Curtido 
+                </th>
+                <td mat-cell *matCellDef="let element" fxFlex="10%" fxLayoutAlign="center center" class="coluna"
+                (click)="acessarAula(element.id)"> 
+                    {{element.curtido}} 
+                </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="favoritado">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="10%" fxLayoutAlign="center center"
+                    class="tabela-header"> 
+                    Favoritado 
+                </th>
+                <td mat-cell *matCellDef="let element" fxFlex="10%" fxLayoutAlign="center center" class="coluna"
+                (click)="acessarAula(element.id)"> 
+                    {{element.favoritado}} 
+                </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="acao">
+                <th mat-header-cell *matHeaderCellDef fxFlex="170px" fxLayoutAlign="center center" 
+                    class="tabela-header"> 
+                    Ações 
+                </th>
+                <td mat-cell *matCellDef="let element" fxFlex="170px" fxLayoutAlign="center center">
+                    <div fxLayout="row" fxLayoutAlign="space-around center" class="container-buttons">
+                        <button mat-icon-button color="warn" (click)="excluirAula(element)">
+                            <mat-icon class="material-symbols-outlined">delete</mat-icon>
+                        </button>
+                    </div>
+                </td>
+            </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">Não foi encontrado nenhuma aula a partir da busca de: "{{input.value}}"</td>
+            </tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    </fieldset>
+</div>

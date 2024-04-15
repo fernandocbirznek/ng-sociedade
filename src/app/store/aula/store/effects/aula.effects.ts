@@ -26,6 +26,17 @@ export class AulaEffects {
    );
   });
 
+  selecionarManyAula$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(actions.selecionarManyAula),
+      concatMap((action) =>
+        this.aulaService.selecionarManyAula().pipe(
+          map(response => actions.selecionarManyAulaSuccess({ response: response })),
+          catchError(error => of(actions.selecionarManyAulaFailure({ error }))))
+      )
+    );
+   });
+
   selecionarOneAulaById$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(actions.selecionarOneAulaById),

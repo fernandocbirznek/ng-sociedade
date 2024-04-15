@@ -1,0 +1,8 @@
+<mat-tab-group mat-stretch-tabs="true" mat-align-tabs="center">
+    <mat-tab label="Criar conta">
+        <app-criar-conta (ngCriarConta)="requestCriarConta($event)"></app-criar-conta>
+    </mat-tab>
+    <mat-tab label="Criar perfil (opcional)">
+        <app-criar-perfil></app-criar-perfil>
+    </mat-tab>
+</mat-tab-group>

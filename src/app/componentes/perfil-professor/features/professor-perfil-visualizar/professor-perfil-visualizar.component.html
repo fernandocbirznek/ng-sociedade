@@ -3,9 +3,12 @@
     <fieldset class="g-fieldset fieldset-perfil-informacao">
         <div class="g-fieldset-titulo">Informações do professor</div>
         <div fxLayout="row" fxLayoutAlign="start start" class="container-informacao">
-            <div fxLayout="column" fxLayoutAlign="space-between center">
+            <div *ngIf="this.usuario.foto" fxLayout="column" fxLayoutAlign="space-between center">
                 <img fxFlex="100px" [src]="'data:image/png;base64,' + this.usuario.foto" alt="Imagem" class="imagem">
                 <div>{{ this.usuario.nome }}</div>
+            </div>
+            <div *ngIf="!this.usuario.foto">
+                Sem foto
             </div>
             <div fxLayout="column" fxLayoutAlign="start start">
                 <div fxLayout="row" fxLayoutAlign="start start" class="informacao">

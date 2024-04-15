@@ -3,10 +3,12 @@ import { AreaInteresseModel } from "../area-interesse";
 
 export class UsuarioModel {
     id: number = 0;
+    dataCadastro: Date | undefined = undefined;
+    dataAtualizacao: Date | undefined = undefined;
+
 	nome: string = "";
 	email: string = "";
 	tipoUsuarioEnum: TipoUsuarioEnum = TipoUsuarioEnum.None;
-    //TODO, transformat tipo do usuário em um enum
     tipoUsuario: number = 0;
     comentarioForum: number = 0;
     topicoForum: number = 0;

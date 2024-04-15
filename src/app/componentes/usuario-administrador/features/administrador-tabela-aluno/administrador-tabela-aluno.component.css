@@ -1,0 +1,28 @@
+.container-filtro,
+.container-tabela {
+    width: 100%;
+}
+
+.coluna:hover ~ .coluna, .coluna:hover, .coluna:has(~ .coluna:hover) {
+    background-color: rgba(0, 0, 0, 0.034);
+    cursor: pointer;
+}
+
+.container-filtro {
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.container-tags {
+    margin: 8px 0;
+}
+
+.tabela-header {
+    font-weight: bold;
+    color: black;
+    font-size: 16px;
+}
+
+.container-buttons {
+    gap: 10px;
+}

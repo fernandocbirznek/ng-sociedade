@@ -16,6 +16,7 @@ export class NoticiaService {
     urlInserirNoticia = 'https://localhost:44362/api/Noticia/inserir';
     urlAtualizarNoticia = 'https://localhost:44362/api/Noticia/atualizar';
     urlExcluirNoticia = 'https://localhost:44362/api/Noticia/excluir';
+    urlSelecionarManyNoticia = 'https://localhost:44362/api/Noticia/selecionar-noticias-sistema';
     urlSelecionarNoticiaManyHome = 'https://localhost:44362/api/Noticia/selecionar-noticia-many/home';
     urlSelecionarNoticiaManyProfessor = 'https://localhost:44362/api/Noticia/selecionar-noticia-many';
 
@@ -33,6 +34,10 @@ export class NoticiaService {
 
     excluirNoticia(noticia: NoticiaModel): Observable<NoticiaModel> {
         return this.httpClient.delete<NoticiaModel>(this.urlExcluirNoticia + `/${noticia.id}`);
+    }
+
+    selecionarManyNoticia(): Observable<NoticiaModel[]> {
+        return this.httpClient.get<NoticiaModel[]>(this.urlSelecionarManyNoticia);
     }
 
     selecionarNoticiaManyHome(): Observable<NoticiaModel[]> {

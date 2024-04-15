@@ -31,8 +31,8 @@ export class ManipularContaService {
         this.usuariologado$ = this.store.select(getOneUsuarioLogado);
     }
 
-    criarConta(criarConta: CriarContaPerfilModel): Observable<CriarConta> {
-        return this.httpClient.post<CriarContaPerfilModel>(this.urlCriarConta, JSON.stringify(criarConta), this.buildHttpOptions());
+    criarConta(criarConta: CriarContaPerfilModel): Observable<UsuarioModel> {
+        return this.httpClient.post<UsuarioModel>(this.urlCriarConta, JSON.stringify(criarConta), this.buildHttpOptions());
     }
 
     loginConta(loginConta: Login): Observable<UsuarioModel> {

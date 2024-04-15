@@ -60,6 +60,36 @@ export const aulaReducer = createReducer(
     };
   }),
 
+  on(actions.selecionarManyAula, state => {
+    return { 
+      ...state, 
+      isLoading: true, 
+      isSuccess: false, 
+      isFailure: false, 
+      error: "" 
+    };
+  }),
+  on(actions.selecionarManyAulaSuccess, (state, action) => {
+   let aulas = action.response;
+
+   return { 
+     ...state, 
+     aulas: aulas,
+     isLoading: false, 
+     isSuccess: true, 
+     isFailure: false, 
+   };
+  }),
+  on(actions.selecionarManyAulaFailure, (state, action) => {
+    return { 
+      ...state, 
+      isLoading: false, 
+      isSuccess: false, 
+      isFailure: true, 
+      mensagem: "Erro ao buscar as aulas do sistema"
+    };
+  }),
+
   on(actions.selecionarAulaByProfessorId, state => {
     return { 
       ...state, 

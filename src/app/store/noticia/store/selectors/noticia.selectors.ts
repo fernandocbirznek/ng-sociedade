@@ -2,30 +2,25 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as fromNoticia from '../reducers/noticia.reducers';
 
 import * as areaInteresseFeature from '../../../area-interesse/store';
-import { AreaInteresseModel, NoticiaModel } from 'src/app/models';
+
+import { 
+  AreaInteresseModel, 
+  NoticiaModel 
+} from 'src/app/models';
 
 export const selecionarNoticiaState = createFeatureSelector<fromNoticia.NoticiaState>(
   fromNoticia.noticiaFeatureKey
 );
 
-export const selecionarManyNoticia = createSelector(selecionarNoticiaState, (state) => {
-  return state.itens;
-})
-
-export const getOneNoticiaById = (noticiaId: number) => createSelector(selecionarNoticiaState, (state) => {
-  return state.itens.find(item => item.id == noticiaId);
-})
-
-export const getManyNoticiaByProfessorId = (professorId: number) => createSelector(
-  areaInteresseFeature.getAreaInteresseMany,
-  selecionarNoticiaState, (
+export const getManyNoticia = createSelector(
+  selecionarNoticiaState,
+  areaInteresseFeature.getAreaInteresseMany, (
+    state,
     areaInteresseMany: AreaInteresseModel[],
-    state
   ) => {
-    let itens = 
+  let itens = 
       state
       .itens
-      .filter(item => item.usuarioCadastroId == professorId)
       .map(item => {
         let areaInteresse: AreaInteresseModel[] = [];
         if (item.areaInteresseMany) {
@@ -52,5 +47,28 @@ export const getManyNoticiaByProfessorId = (professorId: number) => createSelect
       });
 
     return itens;
+})
+
+export const getOneNoticiaById = (noticiaId: number) => createSelector(selecionarNoticiaState, (state) => {
+  return state.itens.find(item => item.id == noticiaId);
+})
+
+export const getManyNoticiaByProfessorId = (professorId: number) => createSelector(
+  getManyNoticia, (
+    itens: NoticiaModel[]
+  ) => {
+
+    return itens.filter(item => item.usuarioCadastroId == professorId);
+  }
+)
+
+export const getManyNoticiaHome = createSelector(
+  getManyNoticia, (
+    itens: NoticiaModel[]
+  ) => {
+
+    return itens.slice(0, 5).sort((a, b) => {
+      return <any>new Date(b.dataCadastro!) - <any>new Date(a.dataCadastro!);
+    });
   }
 )

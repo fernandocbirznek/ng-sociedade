@@ -35,6 +35,19 @@ export class NoticiaEffects {
     );
   });
 
+  selecionarManyNoticia$ = createEffect(() => {
+    return this.actions$.pipe( 
+      ofType(actions.selecionarManyNoticia),
+      concatMap(() =>
+        this.noticiaService.selecionarManyNoticia().pipe(
+          map(response => {
+            return actions.selecionarManyNoticiaSuccess({ response: response })
+          }),
+          catchError(error => of(actions.selecionarManyNoticiaFailure({ error }))))
+      )
+    );
+  });
+
   selecionarNoticiaManyByProfessorId$ = createEffect(() => {
     return this.actions$.pipe( 
       ofType(actions.selecionarNoticiaManyByProfessorId),

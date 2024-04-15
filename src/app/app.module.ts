@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatRadioModule } from '@angular/material/radio'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -52,7 +53,16 @@ import {
   AlunoHomeComponent,
   AlunoRoutingModule,
   EditarAulaComentarioComponent,
-  AlunoFavoritadoComponent
+  AlunoFavoritadoComponent,
+  AdministradorHomeComponent,
+  AdministradorRoutingModule,
+  AdministradorTabelaAlunoComponent,
+  AdministradorTabelaProfessorComponent,
+  AdministradorModalCriarUsuarioComponent,
+  AdministradorAlterarUsuarioComponent,
+  AlunoVisualizarComponent,
+  AdministradorTabelaAulaComponent,
+  AdministradorTabelaNoticiaComponent
 } from './componentes';
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -69,7 +79,7 @@ import {
   NoticiaModule,
   UsuarioModule,
   UsuarioAulaSessaoFavoritadoModule,
-  WidgetModule
+  WidgetModule,
 } from './store';
 
 import { MatNativeDateModule } from '@angular/material/core';
@@ -124,7 +134,15 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     AlunoHomeComponent,
     AlunoAulaComponent,
     EditarAulaComentarioComponent,
-    AlunoFavoritadoComponent
+    AlunoFavoritadoComponent,
+    AdministradorHomeComponent,
+    AdministradorTabelaAlunoComponent,
+    AdministradorTabelaProfessorComponent,
+    AdministradorModalCriarUsuarioComponent,
+    AdministradorAlterarUsuarioComponent,
+    AlunoVisualizarComponent,
+    AdministradorTabelaAulaComponent,
+    AdministradorTabelaNoticiaComponent,
   ],
   imports: [
     BrowserModule,
@@ -147,6 +165,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     MatTooltipModule,
     MatExpansionModule,
     MatSnackBarModule,
+    MatRadioModule,
     MatTabsModule,
     MatDatepickerModule,
     MatIconModule,
@@ -165,6 +184,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     UsuarioAulaSessaoFavoritadoModule,
     WidgetModule,
     PerfilProfessorRoutingModule,
+    AdministradorRoutingModule,
     AlunoRoutingModule,
     AulaRoutingModule,
     StoreModule.forRoot([]),

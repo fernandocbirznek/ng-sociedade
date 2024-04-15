@@ -19,6 +19,20 @@ export const selecionarOneAulaByIdFailure = createAction(
   props<{ error: any }>()
 );
 
+export const selecionarManyAula = createAction(
+  '[Aula] selecionarManyAula'
+);
+
+export const selecionarManyAulaSuccess = createAction(
+  '[Aula] selecionarManyAula Success',
+  props<{ response: AulaModel[] }>()
+);
+
+export const selecionarManyAulaFailure = createAction(
+  '[Aula] selecionarManyAula Failure',
+  props<{ error: any }>()
+);
+
 export const selecionarAulaByProfessorId = createAction(
   '[Aula] selecionarAulaByProfessorId',
   props<{ professorId: number }>()

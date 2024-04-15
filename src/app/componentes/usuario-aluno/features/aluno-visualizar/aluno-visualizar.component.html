@@ -1,0 +1,36 @@
+<div fxLayout="column" class="container-perfil">
+    <mat-icon class="icone-close material-symbols-outlined" (click)="this.fecharModal()">close</mat-icon>
+    <fieldset class="g-fieldset fieldset-perfil-informacao">
+        <div class="g-fieldset-titulo">Informações do aluno</div>
+        <div fxLayout="row" fxLayoutAlign="start start" class="container-informacao">
+            <div *ngIf="this.data.foto" fxLayout="column" fxLayoutAlign="space-between center">
+                <img fxFlex="100px" [src]="'data:image/png;base64,' + this.data.foto" alt="Imagem" class="imagem">
+                <div>{{ this.data.nome }}</div>
+            </div>
+            <div *ngIf="!this.data.foto">
+                Sem foto
+            </div>
+            <div fxLayout="column" fxLayoutAlign="start start">
+                <div fxLayout="row" fxLayoutAlign="start start" class="informacao">
+                    <mat-icon class="material-symbols-outlined">mail</mat-icon>
+                    <div><b>email: </b></div>
+                    <div>{{ this.data.email }}</div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start start" class="informacao">
+                    <mat-icon class="material-symbols-outlined">surfing</mat-icon>
+                    <div><b>Hobbie: </b></div>
+                    <div>{{ this.data.hobbie }}</div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start start" class="informacao">
+                    <mat-icon class="material-symbols-outlined">stars</mat-icon>
+                    <div><b>Áreas de interesse</b></div>
+                    <div *ngFor="let areaInteresse of this.data.usuarioAreaInteresses ">
+                        <div>
+                            {{ areaInteresse.nome }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</div>
