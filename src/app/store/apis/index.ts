@@ -9,6 +9,10 @@ import { areaInteresseReducer, AreaInteresseState } from "../area-interesse";
 import { usuarioReducer, UsuarioState } from "../usuario";
 import { aulaComentarioReducer, AulaComentarioState } from "../aula-comentario";
 import { usuarioAulaSessaoFavoritadoReducer, UsuarioAulaSessaoFavoritadoState } from "../usuario-aula-sessao-favoritado";
+import { forumReducer, ForumState } from "../forum";
+import { forumTopicoReducer, ForumTopicoState } from "../forum-topico";
+import { forumTagReducer, ForumTagState } from "../forum-tag";
+import { forumTopicoRespostaReducer, ForumTopicoRespostaState } from "../forum-topico-resposta";
 
 export interface AppState {
     areaFisica: AreaFisicaState,
@@ -16,6 +20,10 @@ export interface AppState {
     aula: AulaState,
     aulaComentario: AulaComentarioState,
     aulaSessao: AulaSessaoState,
+    forum: ForumState,
+    forumTag: ForumTagState,
+    forumTopico: ForumTopicoState,
+    forumTopicoResposta: ForumTopicoRespostaState,
     manipularConta: ManipularContaState,
     noticia: NoticiaState,
     usuario: UsuarioState,
@@ -28,6 +36,10 @@ export const reducers: ActionReducerMap<AppState> = {
     aula: aulaReducer,
     aulaComentario: aulaComentarioReducer,
     aulaSessao: aulaSessaoReducer,
+    forum: forumReducer,
+    forumTag: forumTagReducer,
+    forumTopico: forumTopicoReducer,
+    forumTopicoResposta: forumTopicoRespostaReducer,
     manipularConta: manipularContaReducer,
     noticia: noticiaReducer,
     usuario: usuarioReducer,

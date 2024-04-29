@@ -1,0 +1,26 @@
+.container-forum-topico {
+    min-width: 400px;
+    position: relative;
+}
+
+.fechar {
+    font-weight: bolder;
+    cursor: pointer;
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    font-size: 18px;
+}  
+
+.container-topico-tags {
+    gap: 20px;
+}
+
+::ng-deep .ckeditor-novo-forum-topico .ck-content {
+    min-height: 150px;
+}
+
+.container-buttons {
+    margin-top: 20px;
+    gap: 20px;
+}

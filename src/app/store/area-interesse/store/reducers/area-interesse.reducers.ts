@@ -36,13 +36,10 @@ export const areaInteresseReducer = createReducer(
     };
   }),
   on(actions.selecionarAreaInteresseManySuccess, (state, action) => {
-   let itens = state.itens.filter(item => action.response.some(areaInteresse => areaInteresse.id != item.id));
 
-   itens = itens.concat(action.response);
-  
    return { 
      ...state, 
-     itens: itens,
+     itens: action.response,
      isLoading: false, 
      isSuccess: true, 
      isFailure: false, 

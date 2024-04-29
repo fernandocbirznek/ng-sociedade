@@ -102,7 +102,7 @@ export class VisualizarAulaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.store.dispatch(selecionarOneAulaById({ aulaId: this.aulaId }))
+    this.store.dispatch(selecionarOneAulaById({ aulaId: this.aulaId }));
     this.setupAulaComentario();
     this.setupAula();
     this.setupUsuarioAulaSessaoFavoritado();

@@ -1,5 +1,7 @@
 export * from './aula';
 export * from './footer';
+export * from './forum';
+export * from './forum-topico';
 export * from './genericos';
 export * from './header';
 export * from './home';

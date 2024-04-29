@@ -110,7 +110,7 @@ export class EditarNoticiaComponent implements OnInit {
   setupAreaInteresseSelecionado() {
     this.noticia?.areaInteresseMany.forEach(item => {
       this.areaInteresseSelecionado.push(item.id);
-    })
+    });
   }
 
   requestEditarNoticia() {

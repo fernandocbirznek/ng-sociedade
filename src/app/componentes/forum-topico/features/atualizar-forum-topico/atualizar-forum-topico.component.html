@@ -1,0 +1,49 @@
+<div fxLayout="column" class="container-forum-topico">
+    <div fxLayoutAlign="end end" class="fechar" (click)="fecharModal()">X</div>
+    <h2>Criando novo tópico do fórum</h2>
+    <form [formGroup]="this.formGroupForumTopico" fxLayout="column" fxLayoutAlign="start center">   
+        <mat-form-field  appearance="outline" class="g-full-width">
+            <mat-label>Título</mat-label>
+            <input formControlName="formTitulo" matInput required>
+            <mat-error *ngIf="formTitulo.invalid">Titulo é obrigatório</mat-error>
+        </mat-form-field>
+        <div fxLayout="row" fxLayoutAlign="space-around center" class="container-topico-tags">
+            <div fxFlex="50%" fxLayout="column" fxLayoutAlign="start start">
+                <h4>Selecione um tipo de tópico:</h4>
+                <div fxLayout="row wrap" fxLayoutAlign="start start" class="container-topico-tags">
+                    <mat-radio-group formControlName="formTipoTopico">
+                        <mat-radio-button [value]="this.forumTopicoEnum.Geral">Geral</mat-radio-button>
+                        <mat-radio-button [value]="this.forumTopicoEnum.Conceito">Conceito</mat-radio-button>
+                        <mat-radio-button [value]="this.forumTopicoEnum.Equacao">Equação</mat-radio-button>
+                        <mat-radio-button [value]="this.forumTopicoEnum.Curiosidade">Curiosidade</mat-radio-button>
+                        <mat-radio-button [value]="this.forumTopicoEnum.Exercicio">Exercício</mat-radio-button>
+                        <mat-radio-button [value]="this.forumTopicoEnum.Vestibular">Vestibular</mat-radio-button>
+                        <mat-radio-button [value]="this.forumTopicoEnum.Noticia">Notícia</mat-radio-button>
+                    </mat-radio-group>  
+                </div>
+            </div>
+            <div *ngIf="this.forumTagMany.length > 0" fxFlex="50%" fxLayout="column" fxLayoutAlign="start start">
+                <h4>Selecione as tags do tópico:</h4>
+                <div fxLayout="row wrap" fxLayoutAlign="start start" class="container-topico-tags">
+                    <section *ngFor="let forumTag of this.forumTagMany">
+                        <mat-checkbox [checked]="this.forumTagSelectId.includes(forumTag.id)" 
+                            (change)="selecionouForumTag(forumTag, $event)">{{forumTag.titulo}}</mat-checkbox>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <ckeditor class="ckeditor-editar-forum-topico" 
+            formControlName="formConteudo" #ckEditorTagEditar [editor]="ckEditor" data="<p>Hello, world!</p>">
+        </ckeditor>
+    </form>
+    <div fxLayout="row" fxLayoutAlign="space-around center" class="container-buttons">
+        <button mat-stroked-button color="warn" (click)="fecharModal()">
+            <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
+            Cancelar
+        </button>
+        <button mat-stroked-button color="primary" (click)="requestCriarForumTopico()">
+            <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
+            Novo fórum tópico
+        </button>
+    </div>
+</div>

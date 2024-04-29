@@ -1,0 +1,72 @@
+.container-forum-many {
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+.container-filtro {
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.card-aula {
+    border: 2px solid #e07a5f;
+    background-color: #f4b076;
+    border-radius: 20px;
+    box-shadow: 6px 6px 6px rgba(128, 128, 128, 0.658);
+    width: 400px;
+    padding: 15px;
+    gap: 10px;
+    height: 200px;
+    position: relative;
+}
+
+.titulo {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.aula-autor, 
+.descricao {
+    gap: 8px;
+    height: 100%;
+}
+
+.divisor {
+    height: 100%;
+    width: 1px;
+    background-color: #e07a5f;
+}
+
+.container-tags {
+    gap: 10px;
+    width: 100%;
+}
+
+.card-aula-acessar {
+    border: 1px solid black;
+    background-color: rgb(106, 199, 30);
+    padding: 4px 15px;
+    border-radius: 20px;
+    display: inline-block;
+    cursor: pointer;
+    margin-bottom: 10px;
+    gap: 5px;
+}
+
+.card-aula-acessar:hover {
+    background-color: rgb(76, 141, 23);
+    color: white;
+}
+
+.data-cadastro {
+    position: absolute;
+    bottom: 5px;
+    right: 20px;
+    font-size: 12px;
+}
+
+.tipo-topico {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+}
