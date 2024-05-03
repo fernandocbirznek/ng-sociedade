@@ -10,6 +10,7 @@ export * from './enum';
 export * from './forum';
 export * from './forum-tag';
 export * from './forum-topico';
+export * from './forum-topico-replica';
 export * from './forum-topico-resposta';
 export * from './login';
 export * from './noticia';

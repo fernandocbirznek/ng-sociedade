@@ -13,6 +13,7 @@ import { forumReducer, ForumState } from "../forum";
 import { forumTopicoReducer, ForumTopicoState } from "../forum-topico";
 import { forumTagReducer, ForumTagState } from "../forum-tag";
 import { forumTopicoRespostaReducer, ForumTopicoRespostaState } from "../forum-topico-resposta";
+import { forumTopicoReplicaReducer, ForumTopicoReplicaState } from "../forum-topico-replica";
 
 export interface AppState {
     areaFisica: AreaFisicaState,
@@ -23,6 +24,7 @@ export interface AppState {
     forum: ForumState,
     forumTag: ForumTagState,
     forumTopico: ForumTopicoState,
+    forumTopicoReplica: ForumTopicoReplicaState,
     forumTopicoResposta: ForumTopicoRespostaState,
     manipularConta: ManipularContaState,
     noticia: NoticiaState,
@@ -39,6 +41,7 @@ export const reducers: ActionReducerMap<AppState> = {
     forum: forumReducer,
     forumTag: forumTagReducer,
     forumTopico: forumTopicoReducer,
+    forumTopicoReplica: forumTopicoReplicaReducer,
     forumTopicoResposta: forumTopicoRespostaReducer,
     manipularConta: manipularContaReducer,
     noticia: noticiaReducer,

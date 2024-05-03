@@ -1,0 +1,1 @@
+export * from './atualizar-forum-topico-replica.component';

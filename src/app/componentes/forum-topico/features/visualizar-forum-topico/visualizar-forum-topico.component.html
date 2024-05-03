@@ -34,7 +34,7 @@
             <div [innerHTML]="this.trustedVisualizarForumTopicoHtml"></div>
             <div *ngIf="this.forumTopico.usuarioId == this.usuarioLogado.id" 
                 fxLayout="row" fxLayoutAlign="space-around center" class="container-buttons-topico">
-                <button *ngIf="this.trustedVisualizarForumTopicoRespostaHtml.length == 0" mat-stroked-button color="warn" 
+                <button *ngIf="this.forumTopicoRespostaMany.length == 0" mat-stroked-button color="warn" 
                     (click)="excluirForumTopico()">
                     <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
                     Excluir
@@ -67,13 +67,64 @@
             </button>
         </div>
     </div>
-    <div *ngFor="let resposta of this.trustedVisualizarForumTopicoRespostaHtml" fxLayout="row" fxLayoutAlign="start center" 
-        class="container-descricao">
-        <div fxFlex="100px" fxLayout="column">
-            <div>Usuário foto</div>
-            <div>Usuário nome</div>
+    <div *ngFor="let resposta of this.forumTopicoRespostaMany" fxLayout="column" class="container-descricao">
+        <div fxLayout="row" fxLayoutAlign="space-around center">
+            <div fxFlex="100px" fxLayout="column">
+                <div>Usuário foto</div>
+                <div>Usuário nome</div>
+            </div>
+            <div fxLayout="column"[innerHTML]="resposta.trustedHtml"></div>
+            <div *ngIf="resposta.forumTopicoComentario.usuarioId == this.usuarioLogado.id" 
+                fxLayout="row" fxLayoutAlign="space-around center" class="container-buttons-topico">
+                <button *ngIf="this.forumTopicoReplicaMany.length == 0" mat-stroked-button color="warn" 
+                    (click)="excluirRespostaForumTopico(resposta.forumTopicoComentario)">
+                    <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
+                    Excluir comentario
+                </button>
+                <button mat-stroked-button color="primary" (click)="editarRespostaForumTopico(resposta.forumTopicoComentario)">
+                    <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
+                    Editar comentario
+                </button>
+            </div>
         </div>
-        <div fxLayout="column"[innerHTML]="resposta"></div>
+        <button *ngIf="!this.isReplicaTopico" mat-stroked-button color="primary" (click)="replicaForumTopico()">
+            <mat-icon class="material-symbols-outlined">record_voice_over</mat-icon>
+            Replica
+        </button>
+        <div *ngIf="this.isReplicaTopico">
+            <ckeditor class="ckeditor-responder-topico" 
+                [formControl]="formConteudoReplicaTopico" #ckEditorTagEditar [editor]="ckEditor" data="<p>Hello, world!</p>">
+            </ckeditor>
+            <div fxLayout="row" fxLayoutAlign="space-around center" class="container-buttons">
+                <button mat-stroked-button color="warn" (click)="replicaForumTopico()">
+                    <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
+                    Cancelar
+                </button>
+                <button mat-stroked-button color="primary" (click)="requestReplicaForumTopico(resposta.forumTopicoComentario)">
+                    <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
+                    Adicionar replica
+                </button>
+            </div>
+        </div>
+        <div *ngFor="let replica of this.forumTopicoReplicaMany" fxLayout="row" fxLayoutAlign="start center" 
+        class="container-descricao">
+            <div fxFlex="100px" fxLayout="column">
+                <div>Usuário foto</div>
+                <div>Usuário nome</div>
+            </div>
+            <div fxLayout="column"[innerHTML]="replica.trustedHtml"></div>
+            <div *ngIf="replica.forumTopicoComentario.usuarioId == this.usuarioLogado.id" 
+                fxLayout="row" fxLayoutAlign="space-around center" class="container-buttons-topico">
+                <button mat-stroked-button color="warn" (click)="excluirReplicaForumTopico(replica.forumTopicoComentario)">
+                    <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
+                    Excluir replica
+                </button>
+                <button mat-stroked-button color="primary" (click)="editarReplicaForumTopico(replica.forumTopicoComentario)">
+                    <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
+                    Editar replica
+                </button>
+            </div>
+        </div>
     </div>
 </div>
 <ng-template #loading>

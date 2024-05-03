@@ -1,0 +1,92 @@
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Store } from '@ngrx/store';
+import { Observable, Subscription } from 'rxjs';
+
+import { 
+  ForumTopicoReplicaModel, 
+  UsuarioModel 
+} from 'src/app/models';
+
+import { 
+  atualizarForumTopicoReplica, 
+  getOneUsuarioLogado 
+} from 'src/app/store';
+
+import Editor from 'src/app/componentes/genericos/ckeditor/build/ckeditor';
+
+@Component({
+  selector: 'app-atualizar-forum-topico-replica',
+  templateUrl: './atualizar-forum-topico-replica.component.html',
+  styleUrls: ['./atualizar-forum-topico-replica.component.css']
+})
+export class AtualizarForumTopicoReplicaComponent implements OnInit {
+
+  formGroupForumTopicoReplica: FormGroup = null as any;
+
+  formConteudoReplica = new FormControl('', [Validators.required, Validators.maxLength(8000)]);
+
+  usuarioLogadoSubscription$: Subscription = new Subscription();
+  usuarioLogado$: Observable<UsuarioModel> = new Observable<UsuarioModel>();
+  usuarioLogado: UsuarioModel | undefined = undefined ;
+
+  public ckEditor = Editor;
+
+  constructor(
+    public dialog: MatDialog,
+    public dialogRef: MatDialogRef<AtualizarForumTopicoReplicaComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: { forumTopicoReplica: ForumTopicoReplicaModel },
+    public store: Store,
+  ) { }
+
+  ngOnInit(): void {
+    this.criarFormulario();
+    this.setupFormulario();
+    this.setupUsuarioLogado();
+  }
+
+  ngOnDestroy() {
+    this.usuarioLogadoSubscription$.unsubscribe();
+  }
+
+  setupUsuarioLogado() {
+    this.usuarioLogado$ = this.store.select(getOneUsuarioLogado);
+    this.usuarioLogadoSubscription$ = this.usuarioLogado$.subscribe(item => {
+      if(item) {
+        this.usuarioLogado = item;
+      }  
+    });
+  }
+
+  criarFormulario() {
+    this.formGroupForumTopicoReplica = new FormGroup({
+      formConteudoReplica: this.formConteudoReplica,
+    });
+  }
+
+  setupFormulario() {
+    this.formGroupForumTopicoReplica.get("formConteudoReplica")!.setValue(this.data.forumTopicoReplica.descricao);
+  }
+
+  requestAtualizarForumTopico() {
+    if (this.usuarioLogado)  {
+      let request: ForumTopicoReplicaModel = new ForumTopicoReplicaModel();
+      request.id = this.data.forumTopicoReplica.id;
+      request.descricao = this.formGroupForumTopicoReplica.get("formConteudoReplica")?.value;
+      request.usuarioId = this.usuarioLogado.id;
+      request.dataCadastro = this.data.forumTopicoReplica.dataCadastro;
+      request.forumTopicoId = this.data.forumTopicoReplica.forumTopicoId;
+
+      this.formGroupForumTopicoReplica.reset();
+
+      this.store.dispatch(atualizarForumTopicoReplica({ forumTopicoReplica: request }));
+      this.dialogRef.close();
+    }
+  }
+
+  fecharModal() {
+    this.dialogRef.close();
+  }
+
+}

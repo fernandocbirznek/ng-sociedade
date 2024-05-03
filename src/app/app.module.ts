@@ -67,7 +67,9 @@ import {
   ForumTopicoComponent,
   InserirForumTopicoComponent,
   VisualizarForumTopicoComponent,
-  AtualizarForumTopicoComponent
+  AtualizarForumTopicoComponent,
+  AtualizarForumTopicoRespostaComponent,
+  AtualizarForumTopicoReplicaComponent
 } from './componentes';
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -83,6 +85,7 @@ import {
   ForumStoreModule,
   ForumTagStoreModule,
   ForumTopicoStoreModule,
+  ForumTopicoReplicaStoreModule,
   ForumTopicoRespostaStoreModule,
   ManipularContaModule, 
   NoticiaModule,
@@ -156,6 +159,8 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     InserirForumTopicoComponent,
     VisualizarForumTopicoComponent,
     AtualizarForumTopicoComponent,
+    AtualizarForumTopicoRespostaComponent,
+    AtualizarForumTopicoReplicaComponent,
   ],
   imports: [
     BrowserModule,
@@ -195,6 +200,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     ForumStoreModule,
     ForumTagStoreModule,
     ForumTopicoStoreModule,
+    ForumTopicoReplicaStoreModule,
     ForumTopicoRespostaStoreModule,
     NoticiaModule,
     UsuarioModule,
