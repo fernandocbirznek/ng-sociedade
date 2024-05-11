@@ -43,6 +43,10 @@
     gap: 5px;
 }
 
+.favoritou {
+    color: rgb(64, 148, 64);
+}
+
 .usuario-nome:hover {
     text-decoration: underline;
     cursor: pointer;

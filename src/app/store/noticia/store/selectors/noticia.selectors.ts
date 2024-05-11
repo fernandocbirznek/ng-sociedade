@@ -2,13 +2,16 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as fromNoticia from '../reducers/noticia.reducers';
 
 import * as areaInteresseFeature from '../../../area-interesse/store';
+import * as manipularContaFeature from '../../../manipular-conta/store';
 
 import moment from 'moment';
 
 import { 
   AreaInteresseModel, 
   NoticiaFilterModel, 
-  NoticiaModel 
+  NoticiaModel, 
+  NoticiaViewModel, 
+  UsuarioNoticiaFavoritadoModel
 } from 'src/app/models';
 
 export const selecionarNoticiaState = createFeatureSelector<fromNoticia.NoticiaState>(
@@ -26,10 +29,12 @@ export const getNoticiaFilter = createSelector(
 
 export const getManyNoticia = createSelector(
   selecionarNoticiaState,
-  areaInteresseFeature.getAreaInteresseMany, (
+  areaInteresseFeature.getAreaInteresseMany,
+  manipularContaFeature.getManyUsuarioNoticiaFavoritado, (
     state,
     areaInteresseMany: AreaInteresseModel[],
-  ): NoticiaModel[] => {
+    usuarioNoticiaFavoritadoMany: UsuarioNoticiaFavoritadoModel[]
+  ): NoticiaViewModel[] => {
   let itens = 
       state
       .itens
@@ -44,19 +49,22 @@ export const getManyNoticia = createSelector(
             )
         }
         
-        let noticia: NoticiaModel = new NoticiaModel();
-        noticia.conteudo = item.conteudo;
-        noticia.dataAtualizacao = item.dataAtualizacao;
-        noticia.dataCadastro = item.dataCadastro;
-        noticia.id = item.id;
-        noticia.resumo = item.resumo;
-        noticia.titulo = item.titulo;
-        noticia.favoritado = item.favoritado;
-        noticia.usuarioCadastroId = item.usuarioCadastroId;
-        noticia.usuarioCadastroNome = item.usuarioCadastroNome;
-        noticia.areaInteresseMany = areaInteresse;
+        let usuarioNoticiaFavoritado = usuarioNoticiaFavoritadoMany.find(usuarioNoticiaFavoritado => usuarioNoticiaFavoritado.noticiaId == item.id);
 
-        return noticia;
+        let noticiaViewModel: NoticiaViewModel = new NoticiaViewModel();
+        noticiaViewModel.areaInteresseMany = areaInteresse;
+        noticiaViewModel.conteudo = item.conteudo;
+        noticiaViewModel.dataAtualizacao = item.dataAtualizacao;
+        noticiaViewModel.dataCadastro = item.dataCadastro;
+        noticiaViewModel.favoritado = item.favoritado;
+        noticiaViewModel.id = item.id;
+        noticiaViewModel.resumo = item.resumo;
+        noticiaViewModel.titulo = item.titulo;
+        noticiaViewModel.usuarioCadastroId = item.usuarioCadastroId;
+        noticiaViewModel.usuarioCadastroNome = item.usuarioCadastroNome;
+        noticiaViewModel.usuarioLogadoCurtiu = usuarioNoticiaFavoritado ? true : false
+
+        return noticiaViewModel;
       });
 
     return itens;
@@ -66,8 +74,8 @@ export const getManyNoticiaFilter = createSelector(
   getNoticiaFilter,
   getManyNoticia, (
     noticiaFilter: NoticiaFilterModel,
-    noticiaMany: NoticiaModel[],
-  ) => {
+    noticiaMany: NoticiaViewModel[],
+  ): NoticiaViewModel[] => {
 
     let itens = noticiaMany;
 
@@ -109,8 +117,8 @@ export const getManyNoticiaByProfessorId = (professorId: number) => createSelect
 
 export const getManyNoticiaHome = createSelector(
   getManyNoticia, (
-    itens: NoticiaModel[]
-  ) => {
+    itens: NoticiaViewModel[],
+  ): NoticiaViewModel[] => {
 
     return itens.slice(0, 5).sort((a, b) => {
       return <any>new Date(b.dataCadastro!) - <any>new Date(a.dataCadastro!);

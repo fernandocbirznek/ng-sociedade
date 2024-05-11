@@ -16,7 +16,8 @@ import {
   AulaModel,
   NoticiaFilterModel,
   NoticiaFilterSelectedModel,
-  NoticiaModel 
+  NoticiaModel, 
+  NoticiaViewModel
 } from 'src/app/models';
 
 import { 
@@ -45,8 +46,8 @@ export class PainelNoticiaComponent implements OnInit {
   noticiaFilterSelectedMany: NoticiaFilterSelectedModel[] = [];
 
   noticiaManySubscription$: Subscription = new Subscription();
-  noticiaMany$: Observable<NoticiaModel[]> = new Observable<NoticiaModel[]>();
-  noticiaMany: NoticiaModel[] = [];
+  noticiaMany$: Observable<NoticiaViewModel[]> = new Observable<NoticiaViewModel[]>();
+  noticiaMany: NoticiaViewModel[] = [];
 
   formControlTitulo = new FormControl('');
   formControlNome = new FormControl('');
@@ -96,7 +97,7 @@ export class PainelNoticiaComponent implements OnInit {
     });
   }
 
-  visualizarNoticia(item: NoticiaModel) {
+  visualizarNoticia(item: NoticiaViewModel) {
     this.dialog.open(VisualizarNoticiaComponent, {
       data: item.id,
       width: '90%',
@@ -104,7 +105,7 @@ export class PainelNoticiaComponent implements OnInit {
     });
   }
 
-  visualizarUsuario(item: NoticiaModel) {
+  visualizarUsuario(item: NoticiaViewModel) {
     this.dialog.open(ProfessorPerfilVisualizarComponent, {
       data: item.usuarioCadastroId,
       width: '80%',

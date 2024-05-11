@@ -48,7 +48,7 @@
             <div class="noticia-titulo" (click)="visualizarNoticia(noticia)">{{ noticia.titulo }}</div>
             <div fxLayout="row" fxLayoutAlign="space-between center" class="container-usuario">
                 <span class="usuario-nome" (click)="visualizarUsuario(noticia)">@{{noticia.usuarioCadastroNome}}</span>
-                <div  fxLayout="row" fxLayoutAlign="center center" class="container-curtido">
+                <div  fxLayout="row" fxLayoutAlign="center center" class="container-curtido" [ngClass]="{'favoritou': this.noticia.usuarioLogadoCurtiu}">
                     <mat-icon class="material-symbols-outlined">thumb_up</mat-icon>
                     <div>{{ noticia.favoritado }}</div>
                 </div>

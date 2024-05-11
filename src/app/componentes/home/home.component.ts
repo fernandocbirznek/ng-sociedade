@@ -9,7 +9,7 @@ import {
 
 import { 
   AulaModel,
-  NoticiaModel 
+  NoticiaViewModel
 } from 'src/app/models';
 
 import { 
@@ -29,8 +29,8 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   noticiaManySubscription$: Subscription = new Subscription();
-  noticiaMany$: Observable<NoticiaModel[]> = new Observable<NoticiaModel[]>();
-  noticiaMany: NoticiaModel[] = [];
+  noticiaMany$: Observable<NoticiaViewModel[]> = new Observable<NoticiaViewModel[]>();
+  noticiaMany: NoticiaViewModel[] = [];
 
   constructor(
     public store: Store,
@@ -56,7 +56,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  visualizarNoticia(item: NoticiaModel) {
+  visualizarNoticia(item: NoticiaViewModel) {
     this.dialog.open(VisualizarNoticiaComponent, {
       data: item.id,
       width: '90%',
@@ -64,7 +64,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  visualizarUsuario(item: NoticiaModel) {
+  visualizarUsuario(item: NoticiaViewModel) {
     this.dialog.open(ProfessorPerfilVisualizarComponent, {
       data: item.usuarioCadastroId,
       width: '80%',

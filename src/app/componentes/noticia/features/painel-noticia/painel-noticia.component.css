@@ -72,6 +72,10 @@
     gap: 5px;
 }
 
+.favoritou {
+    color: rgb(64, 148, 64);
+}
+
 .noticia-resumo {
     margin-top: 10px;
     font-size: 12px;
