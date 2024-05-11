@@ -156,7 +156,7 @@ export class VisualizarForumTopicoComponent implements OnInit {
   }
 
   requestForumTopico() {
-    if (this.usuarioLogado) {
+    if (this.usuarioLogado && this.usuarioLogado.id > 0) {
       let forumTopicoResposta = new ForumTopicoRespostaModel();
       forumTopicoResposta.descricao = this.formConteudoResponderTopico.value;
       forumTopicoResposta.forumTopicoId = this.forumTopicoId;
@@ -205,7 +205,7 @@ export class VisualizarForumTopicoComponent implements OnInit {
   }
 
   requestReplicaForumTopico(item: any) {
-    if (this.usuarioLogado) {
+    if (this.usuarioLogado && this.usuarioLogado.id > 0) {
       let forumTopicoReplica = new ForumTopicoReplicaModel();
       forumTopicoReplica.descricao = this.formConteudoReplicaTopico.value;
       forumTopicoReplica.forumTopicoId = this.forumTopicoId;

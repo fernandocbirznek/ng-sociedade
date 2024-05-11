@@ -1,0 +1,65 @@
+<div fxLayout="column">
+    <fieldset fxLayout="column" class="g-fieldset">
+        <div class="g-fieldset-titulo">Filtros</div>
+        <div fxLayout="row" fxLayoutAlign="start start" class="fieldset">
+            <div fxFlex="100%" fxLayout="row wrap" fxLayoutAlign="start start" class="fieldset">
+                <mat-form-field fxFlex="300px" appearance="outline">
+                    <mat-label>Título notícia</mat-label>
+                    <input [formControl]="formControlTitulo" matInput (change)="filtroTitulo()">
+                </mat-form-field> 
+                <mat-form-field fxFlex="300px" appearance="outline">
+                    <mat-label>Nome usuário</mat-label>
+                    <input [formControl]="formControlNome" matInput (change)="filtroNomeUsuario()">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Data início</mat-label>
+                    <input [formControl]="formControlDataInicio" matInput [matDatepicker]="pickerDataInicio" (dateChange)="filtroDataInicio()">
+                    <mat-datepicker-toggle matIconSuffix [for]="pickerDataInicio" class="m-datapicker-toggle"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerDataInicio></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Data fim</mat-label>
+                    <input [formControl]="formControlDataFim" matInput [matDatepicker]="pickerDataFim" (dateChange)="filtroDataFim()">
+                    <mat-datepicker-toggle matIconSuffix [for]="pickerDataFim" class="m-datapicker-toggle"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerDataFim></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div fxFlex="400px" fxLayout="column">
+                <h3>Filtrar por tags</h3>
+                <div fxLayout="row wrap" fxLayoutAlign="start start" class="container-tag-filter">
+                    <div *ngFor="let areaInteresse of this.areaInteresseMany">
+                        <mat-slide-toggle (click)="filtroTag(areaInteresse)">{{ areaInteresse.nome }}</mat-slide-toggle>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div fxLayout="row" fxLayoutAlign="center center" class="container-filter-many">
+            <div *ngFor="let item of this.noticiaFilterSelectedMany" fxLayout="row" fxLayoutAlign="space-between center" class="container-filter">
+                <mat-icon class="material-symbols-outlined">{{ item.matIconName }}</mat-icon>
+                <div fxFlex="100%">{{ item.filtroNome }}</div>
+                <mat-icon class="icone-filter-close material-symbols-outlined" (click)="retirarFiltro(item)">cancel</mat-icon>
+            </div>
+        </div>
+    </fieldset>
+    <div fxFlex="100%" fxLayout="row wrap" fxLayoutAlign="start start" class="container-card-noticia">
+        <div *ngFor="let noticia of this.noticiaMany" fxLayout="column"
+            class="card-noticia">
+            <div class="noticia-titulo" (click)="visualizarNoticia(noticia)">{{ noticia.titulo }}</div>
+            <div fxLayout="row" fxLayoutAlign="space-between center" class="container-usuario">
+                <span class="usuario-nome" (click)="visualizarUsuario(noticia)">@{{noticia.usuarioCadastroNome}}</span>
+                <div  fxLayout="row" fxLayoutAlign="center center" class="container-curtido">
+                    <mat-icon class="material-symbols-outlined">thumb_up</mat-icon>
+                    <div>{{ noticia.favoritado }}</div>
+                </div>
+                <span fxLayoutAlign="end center">{{noticia.dataCadastro | date: 'dd/MM/yyyy HH:mm' }}</span>
+            </div>
+            <div fxFlex="100%" class="noticia-resumo">{{ noticia.resumo }}</div>
+            <div fxLayout="row" fxLayoutAlign="center center" class="container-tags">
+                <div *ngFor="let item of noticia.areaInteresseMany">
+                    <span class="g-tag">{{item.nome}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -15,5 +15,6 @@ export * from './noticia';
 export * from './usuario';
 export * from './usuario-area-interesse';
 export * from './usuario-aula-sessao-favoritado';
+export * from './usuario-noticia-favoritado';
 export * from './usuario-perfil';
 export * from './widget';

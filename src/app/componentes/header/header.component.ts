@@ -1,19 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { LoginCriarContaComponent } from '../topicos';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 
 import { 
-  AreaFisicaModel, TipoUsuarioEnum, UsuarioModel 
+  AreaFisicaModel, 
+  TipoUsuarioEnum, 
+  UsuarioModel 
 } from 'src/app/models';
 
 import { 
+  alterarTituloPagina,
   getManyAreaFisica,
   getOneUsuarioLogado,
+  getTituloPagina,
   selecionarManyAreaFisica 
 } from 'src/app/store';
+
+import { 
+  LoginCriarContaComponent 
+} from '../topicos';
+import { HeaderHelpers } from './helpers/header.helpers';
 
 @Component({
   selector: 'app-header',
@@ -25,34 +33,35 @@ export class HeaderComponent implements OnInit {
   areaFisicaMany$: Observable<AreaFisicaModel[]> = new Observable<AreaFisicaModel[]>();
   areaFisicaMany: AreaFisicaModel[] = [];
 
+  headerTituloSubscription$: Subscription = new Subscription();
+  headerTitulo$: Observable<string> = new Observable<string>();
+  headerTitulo: string = 'Home';
+
   usuarioLogadoSubscription$: Subscription = new Subscription();
   usuarioLogado$: Observable<UsuarioModel> = new Observable<UsuarioModel>();
   usuarioLogado: UsuarioModel | undefined = undefined;
   
-  public imagem: string;
-  public resumoTopico: string;
-  public tituloTopico: string = "Home";
-  public telaInicial: boolean = true;
+  public imagem: string = "../../../assets/imagens/header/home.png";
+  public resumoTopico: string = "Aqui é a página principal, nela temos um resumo sobre a Física," 
+  + "na esquerda temos as últimas postagens...";
 
   constructor(
     public dialog: MatDialog,
     public router: Router,
     public store: Store,
   ) { 
-    this.imagem = "../../../assets/imagens/header/home.png";
-    this.resumoTopico = "Aqui é a página principal, nela temos um resumo sobre a Física," 
-                        + "na esquerda temos as últimas postagens...";
-
     this.store.dispatch(selecionarManyAreaFisica());
   }
 
   ngOnInit(): void {
     this.setupAreaFisica();
+    this.setupHeaderTitulo();
     this.setupUsuarioLogado();
   }
 
   ngOnDestroy() {
     this.areaFisicaManySubscription$.unsubscribe();
+    this.headerTituloSubscription$.unsubscribe();
     this.usuarioLogadoSubscription$.unsubscribe();
   }
 
@@ -60,6 +69,13 @@ export class HeaderComponent implements OnInit {
     this.areaFisicaMany$ = this.store.select(getManyAreaFisica);
     this.areaFisicaManySubscription$ = this.areaFisicaMany$.subscribe(itens => {
       this.areaFisicaMany = itens;
+    });
+  }
+
+  setupHeaderTitulo() {
+    this.headerTitulo$ = this.store.select(getTituloPagina);
+    this.headerTituloSubscription$ = this.headerTitulo$.subscribe(item => {
+      this.headerTitulo = item;
     });
   }
 
@@ -75,24 +91,31 @@ export class HeaderComponent implements OnInit {
   areaSelecionada(areaFisica: AreaFisicaModel) {
     switch(areaFisica.id) {
       case 1:
+        this.store.dispatch(alterarTituloPagina({ titulo: 'Cosmologia' }));
         this.router.navigate([`cosmologia`]);
         break;
       case 2:
+        this.store.dispatch(alterarTituloPagina({ titulo: 'Mecânica' }));
         this.router.navigate(['mecanica'], { queryParams: { areaFisicaId: areaFisica.id }});
         break;
       case 3:
+        this.store.dispatch(alterarTituloPagina({ titulo: 'Termodinâmica' }));
         this.router.navigate([`termodinamica`]);
         break;
       case 4:
+        this.store.dispatch(alterarTituloPagina({ titulo: 'Eletromagnetismo' }));
         this.router.navigate([`eletromagnetismo`]);
         break;
       case 5:
+        this.store.dispatch(alterarTituloPagina({ titulo: 'Física moderna' }));
         this.router.navigate([`fisica-moderna`]);
         break;
       case 6:
+        this.store.dispatch(alterarTituloPagina({ titulo: 'Óptica' }));
         this.router.navigate([`optica`]);
         break;
       case 7:
+        this.store.dispatch(alterarTituloPagina({ titulo: 'Mecânica quântica' }));
         this.router.navigate([`mecanica-quantica`]);
         break;
     }
@@ -106,10 +129,10 @@ export class HeaderComponent implements OnInit {
   }
 
   acessarPerfil() {
-    if (this.usuarioLogado)
+    if (this.usuarioLogado && this.usuarioLogado.id > 0)
       switch(this.usuarioLogado.tipoUsuario) { 
         case TipoUsuarioEnum.UsuarioAdministrador: { 
-          //TODO, rota administrador
+          this.router.navigate([`administrador-home/${this.usuarioLogado.email}`])
           break; 
         } 
         case TipoUsuarioEnum.UsuarioComum: { 
@@ -125,67 +148,19 @@ export class HeaderComponent implements OnInit {
         break; 
         } 
         default: { 
-          //TODO, rota home; 
+          this.router.navigate(['']);
           break; 
         } 
       }
   }
 
-  mudaFoto (foto: string)
-	{
-		switch(foto) {
-      case "2":
-        this.tituloTopico = "Mecânica";
-        this.imagem = "../../../assets/imagens/header/mecanica.png";
-        this.resumoTopico = "O que é a velocidade? Podemos prever o movimento dos planetas?" 
-                            + " Essas e outras perguntas serão respondidas aqui.";
-        break;
-      case "3":
-        this.tituloTopico = "Termodinâmica";
-        this.imagem = "../../../assets/imagens/header/termodinamica.png";
-        this.resumoTopico = "Aqui descobriremos o que é o calor, a diferença entre calor" 
-                            + " e temperatura e muitos outros conceitos.";
-        break;
-      case "6":
-        this.tituloTopico = "Ondulatória";
-        this.imagem = "../../../assets/imagens/header/ondulatoria.png";
-        this.resumoTopico = "Vamos compreender juntos como o som se propaga e porquê não existe som no espaço.";
-        break;
-      case "4":
-        this.tituloTopico = "Eletromagnetismo";
-        this.imagem = "../../../assets/imagens/header/eletromagnetismo.png";
-        this.resumoTopico = "O que é corrente alternada? Encostar em 20 mil volts é seguro?" 
-                            + " Vamos juntos compreender as leis do eletromagnetismo.";
-        break;
-      case "5":
-        this.tituloTopico = "Física moderna";
-        this.imagem = "../../../assets/imagens/header/fisicamoderna.png";
-        this.resumoTopico = "Podemos viajar mais rápido que a luz? Qual o tamanho do átomo?" 
-                            + " Nesse tópico vamos movimento relativístico e as pequenas partículas";
-        break;
-      case "6":
-        this.tituloTopico = "Matemática";
-        this.imagem = "../../../assets/imagens/header/matematica.png";
-        this.resumoTopico = "Para descrevermos a natureza precisamos compreender sua linguagem." 
-                            + " Essa linguagem é a matemática.";
-        break;
-      case "7":
-        this.tituloTopico = "Especiais";
-        this.imagem = "../../../assets/imagens/header/especiais.png";
-        this.resumoTopico = "Aqui vamos trabalhar alguns tópicos especiais como: história da física," 
-                            + " cosmologia, experimentos, etc.";
-        break;
-      case "8":
-        this.tituloTopico = "Vestibular";
-        this.imagem = "../../../assets/imagens/header/vestibular.png";
-        this.resumoTopico = "Se você quer praticar exercícios de vestibular e se preparar para" 
-                            + " ingressar numa universidade, aqui é o lugar certo.";
-        break;
-      default:
-        this.tituloTopico = "Home";
-        this.imagem = "../../../assets/imagens/header/home.png";
-        this.resumoTopico = "Aqui é a página principal, nela temos um resumo sobre a Física," 
-                            + "na esquerda temos as últimas postagens...";
-    }
+  home() {
+    this.router.navigate(['']);
+  }
+
+  mudaFoto (foto: string) {
+		let item = HeaderHelpers.mudaFoto(foto);
+    this.imagem = item.imagem;
+    this.resumoTopico = item.resumoTopico;
 	}
 }

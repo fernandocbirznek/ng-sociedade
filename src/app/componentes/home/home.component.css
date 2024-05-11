@@ -3,8 +3,8 @@
 }
 
 .postagens {
-    background-color: #FFCCB6;
-    border: 2px solid black;
+    background-color: #D1D1D1;
+    border: 2px solid #919191;
     border-radius: 10px;
     box-shadow: 5px 5px 5px rgba(131, 131, 131, 0.589);
     padding: 0 10px 10px 10px;
@@ -14,32 +14,45 @@
     padding: 10px 0;
     font-weight: bolder;
     font-size: 20px;
-    border-bottom: 2px solid rgb(168, 102, 102);
-    color: rgb(168, 102, 102);
+    border-bottom: 2px solid #5d5dff;
+    color: #5d5dff;
 }
 
 .container-noticia {
-    border-bottom: 2px dotted rgb(168, 102, 102);
+    border-bottom: 2px dotted #5d5dff;
+    height: 220px;
 }
 
 .titulo-noticia {
     font-weight: bold;
-    font-size: 18px;
+    font-size: 22px;
     margin: 8px 0;
+    cursor: pointer;
+}
+
+.container-usuario {
+    font-size: 11px;
 }
 
 .usuario-nome {
-    font-size: 12px;
     color: #6060ff;
 }
 
-.data-postagem {
-    font-size: 12px;
+.container-curtido {
+    font-size: 18px;
+    gap: 5px;
+}
+
+.usuario-nome:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: bold;
 }
 
 .postagem-resumo {
-    margin-top: 5px;
+    margin-top: 10px;
     font-size: 15px;
+    font-weight: 500;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -52,6 +65,16 @@
     margin: 8px 0;
 }
 
+.button-noticias {
+    margin: 8px 0;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.button-noticias:hover {
+    font-weight: bold;
+}
+
 .postagem-geral {
     margin-left: 20px;
 }
@@ -61,8 +84,8 @@
     font-size: 0.9em;
     margin: 0 auto;
     padding: 10px;
-    border: 2px solid #FBC78D;
-    background-color: #A8DEE0;
+    border: 2px solid #919191;
+    background-color: #E9E9E9;
     border-radius: 10px;
     box-shadow: 5px 5px 5px rgba(131, 131, 131, 0.589);
     min-height: 300px;
@@ -75,6 +98,7 @@
 .postagem-geral-conteudos {
     margin-bottom: 20px;
     height: auto;
+    gap: 20px;
 }
 
 .topicos {
@@ -89,4 +113,5 @@
 .postagem-geral-card-paragrafo {
     line-height: 1.5;
     padding-top: 10px;
+    font-weight: 500;
 }

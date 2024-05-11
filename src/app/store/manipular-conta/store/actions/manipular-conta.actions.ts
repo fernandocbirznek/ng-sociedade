@@ -6,6 +6,7 @@ import {
   Login,
   UsuarioAreaInteresseModel,
   UsuarioModel,
+  UsuarioNoticiaFavoritadoModel,
   UsuarioPerfilModel
 } from 'src/app/models';
 
@@ -109,5 +110,58 @@ export const removerUsuarioAreaInteresseSuccess = createAction(
 
 export const removerUsuarioAreaInteresseFailure = createAction(
   '[UsuarioAreaInteresse] removerUsuarioAreaInteresse Failure',
+  props<{ error: any }>()
+);
+
+
+
+export const selecionarManyUsuarioNoticiaFavoritado = createAction(
+  '[UsuarioNoticiaFavoritado] selecionarManyUsuarioNoticiaFavoritado',
+  props<{ usuarioId: number }>()
+);
+
+export const selecionarManyUsuarioNoticiaFavoritadoSuccess = createAction(
+  '[UsuarioNoticiaFavoritado] selecionarManyUsuarioNoticiaFavoritado Success',
+  props<{ 
+    response: UsuarioNoticiaFavoritadoModel[],
+  }>()
+);
+
+export const selecionarManyUsuarioNoticiaFavoritadoFailure = createAction(
+  '[UsuarioNoticiaFavoritado] selecionarManyUsuarioNoticiaFavoritado Failure',
+  props<{ error: any }>()
+);
+
+export const inserirUsuarioNoticiaFavoritado = createAction(
+  '[UsuarioNoticiaFavoritado] inserirUsuarioNoticiaFavoritado',
+  props<{ usuarioNoticiaFavoritado: UsuarioNoticiaFavoritadoModel }>()
+);
+
+export const inserirUsuarioNoticiaFavoritadoSuccess = createAction(
+  '[UsuarioNoticiaFavoritado] inserirUsuarioNoticiaFavoritado Success',
+  props<{ 
+    response: UsuarioNoticiaFavoritadoModel,
+  }>()
+);
+
+export const inserirUsuarioNoticiaFavoritadoFailure = createAction(
+  '[UsuarioNoticiaFavoritado] inserirUsuarioNoticiaFavoritado Failure',
+  props<{ error: any }>()
+);
+
+export const removerUsuarioNoticiaFavoritado = createAction(
+  '[UsuarioNoticiaFavoritado] removerUsuarioNoticiaFavoritado',
+  props<{ usuarioNoticiaFavoritado: UsuarioNoticiaFavoritadoModel }>()
+);
+
+export const removerUsuarioNoticiaFavoritadoSuccess = createAction(
+  '[UsuarioNoticiaFavoritado] removerUsuarioNoticiaFavoritado Success',
+  props<{ 
+    response: number,
+  }>()
+);
+
+export const removerUsuarioNoticiaFavoritadoFailure = createAction(
+  '[UsuarioNoticiaFavoritado] removerUsuarioNoticiaFavoritado Failure',
   props<{ error: any }>()
 );

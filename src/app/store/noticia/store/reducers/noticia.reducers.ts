@@ -1,11 +1,17 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import * as actions from '../actions/noticia.actions';
-import { AreaInteresseModel, NoticiaModel } from 'src/app/models';
+
+import { 
+  AreaInteresseModel, 
+  NoticiaFilterModel, 
+  NoticiaModel 
+} from 'src/app/models';
 
 export const noticiaFeatureKey = 'noticia';
 
 export interface NoticiaState {
     itens: NoticiaModel[];
+    noticiaFilter: NoticiaFilterModel
     isSuccess: boolean;
     isLoading: boolean;
     isFailure: boolean;
@@ -14,6 +20,7 @@ export interface NoticiaState {
 
 export const noticiaInitialState: NoticiaState = {
     itens: [],
+    noticiaFilter: new NoticiaFilterModel(),
     isSuccess: false,
     isLoading: false,
     isFailure: false,
@@ -69,11 +76,10 @@ export const noticiaReducer = createReducer(
     };
   }),
   on(actions.selecionarManyNoticiaSuccess, (state, action) => {
-    let itens = action.response;
 
     return { 
         ...state, 
-        itens: itens,
+        itens: action.response,
         isLoading: false, 
         isSuccess: true, 
         isFailure: false,
@@ -172,6 +178,8 @@ export const noticiaReducer = createReducer(
           noticia.titulo = action.request.titulo;
           noticia.resumo = action.request.resumo;
           noticia.conteudo = action.request.conteudo;
+          noticia.usuarioCadastroNome = item.usuarioCadastroNome;
+          noticia.favoritado = item.favoritado;
           noticia.usuarioCadastroId = item.usuarioCadastroId;
           noticia.dataAtualizacao = action.response.dataAtualizacao;
           noticia.areaInteresseMany = action.response.areaInteresseMany;
@@ -252,6 +260,7 @@ export const noticiaReducer = createReducer(
         noticia.id = item.id;
         noticia.usuarioCadastroNome = item.usuarioCadastroNome;
         noticia.resumo = item.resumo;
+        noticia.favoritado = item.favoritado;
         noticia.titulo = item.titulo;
         noticia.usuarioCadastroId = item.usuarioCadastroId;
         noticia.areaInteresseMany = areaInteresses;
@@ -276,6 +285,70 @@ export const noticiaReducer = createReducer(
         isSuccess: false, 
         isFailure: true, 
         mensagem: "Falha em buscar as tags das notícias" 
+    };
+  }),
+
+  on(actions.filtrarNoticia, (state, action) => {
+    return { 
+        ...state,
+        noticiaFilter: action.noticiaFilter,
+    };
+  }),
+
+  on(actions.atualizarAdicaoNoticiaFavoritado, (state, action) => {
+    let itens = [...state.itens].map(item => {
+        if(item.id == action.noticiaId) {
+          let noticia: NoticiaModel = new NoticiaModel();
+          noticia.id = item.id;
+          noticia.dataCadastro = item.dataCadastro;
+          noticia.titulo = item.titulo;
+          noticia.resumo = item.resumo;
+          noticia.usuarioCadastroNome = item.usuarioCadastroNome;
+          noticia.conteudo = item.conteudo;
+          noticia.favoritado = item.favoritado + 1;
+          noticia.usuarioCadastroId = item.usuarioCadastroId;
+          noticia.dataAtualizacao = item.dataAtualizacao;
+          noticia.areaInteresseMany = item.areaInteresseMany;
+          return noticia;
+        }
+        return item;
+    });
+    
+    return { 
+        ...state, 
+        itens: itens,
+        isLoading: false, 
+        isSuccess: true, 
+        isFailure: false, 
+        error: ""
+    };
+  }),
+  on(actions.atualizarRemocaoNoticiaFavoritado, (state, action) => {
+    let itens = [...state.itens].map(item => {
+        if(item.id == action.noticiaId) {
+          let noticia: NoticiaModel = new NoticiaModel();
+          noticia.id = item.id;
+          noticia.dataCadastro = item.dataCadastro;
+          noticia.titulo = item.titulo;
+          noticia.resumo = item.resumo;
+          noticia.usuarioCadastroNome = item.usuarioCadastroNome;
+          noticia.conteudo = item.conteudo;
+          noticia.favoritado = item.favoritado - 1;
+          noticia.usuarioCadastroId = item.usuarioCadastroId;
+          noticia.dataAtualizacao = item.dataAtualizacao;
+          noticia.areaInteresseMany = item.areaInteresseMany;
+          return noticia;
+        }
+        return item;
+    });
+    
+    return { 
+        ...state, 
+        itens: itens,
+        isLoading: false, 
+        isSuccess: true, 
+        isFailure: false, 
+        error: ""
     };
   }),
 );

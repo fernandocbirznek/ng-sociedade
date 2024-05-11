@@ -107,7 +107,7 @@ export class AtualizarForumTopicoComponent implements OnInit {
   }
 
   requestCriarForumTopico() {
-    if (this.usuarioLogado)  {
+    if (this.usuarioLogado && this.usuarioLogado.id > 0)  {
       let request: ForumTopicoModel = new ForumTopicoModel();
       request.id = this.data.forumTopico.id;
       request.titulo = this.formGroupForumTopico.get("formTitulo")?.value;

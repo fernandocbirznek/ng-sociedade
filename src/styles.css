@@ -30,9 +30,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .g-tag {
     font-size: 0.7em;
-    border: 1px solid rgb(144, 144, 214);
+    border: 1px solid #5d5dff;
     border-radius: 20px;
-    background-color: #d1d1d1;
+    background-color: #d9e39c;
     padding: 3px 5px;
     margin: 0 2px;
 }

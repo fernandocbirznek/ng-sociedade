@@ -92,7 +92,7 @@ export class AlunoAulaComponent implements OnInit {
   }
 
   getWidget(widget: WidgetModel): WidgetModel | undefined {
-    if (this.usuarioLogado) {
+    if (this.usuarioLogado && this.usuarioLogado.id > 0) {
       let widgetAlterado: WidgetModel = new WidgetModel();
       widgetAlterado.aula = widget.aula;
       widgetAlterado.usuarioId = this.usuarioLogado.id

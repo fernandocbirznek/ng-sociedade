@@ -2,25 +2,30 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as fromUsuario from '../reducers/usuario.reducers';
 
 import { 
-  AreaInteresseModel,
-  TipoUsuarioEnum 
+  TipoUsuarioEnum, 
+  UsuarioModel
 } from 'src/app/models';
-
-import * as areaInteresseFeature from '../../../area-interesse/store';
 
 export const getUsuarioState = createFeatureSelector<fromUsuario.UsuarioState>(
   fromUsuario.usuarioFeatureKey
 );
 
-export const getUsuarioById = (usuarioId: number) => createSelector(
+export const getUsuarioMany = createSelector(
   getUsuarioState, (
     state
+  ): UsuarioModel[] => {
+
+    return state.itens;
+  }
+)
+
+export const getUsuarioById = (usuarioId: number) => createSelector(
+  getUsuarioMany, (
+    itens: UsuarioModel[]
   ) => {
-    let item = 
-      state
-      .itens
+    let item = itens
       .find(item => item.id == usuarioId)
-    
+
     return item;
   }
 )

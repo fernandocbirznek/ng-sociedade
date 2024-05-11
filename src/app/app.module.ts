@@ -22,6 +22,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 
 import { 
@@ -57,6 +58,7 @@ import {
   AdministradorHomeComponent,
   AdministradorRoutingModule,
   ForumTopicoRoutingModule,
+  NoticiaRoutingModule,
   AdministradorTabelaAlunoComponent,
   AdministradorTabelaProfessorComponent,
   AdministradorModalCriarUsuarioComponent,
@@ -69,7 +71,8 @@ import {
   VisualizarForumTopicoComponent,
   AtualizarForumTopicoComponent,
   AtualizarForumTopicoRespostaComponent,
-  AtualizarForumTopicoReplicaComponent
+  AtualizarForumTopicoReplicaComponent,
+  PainelNoticiaComponent
 } from './componentes';
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -87,6 +90,7 @@ import {
   ForumTopicoStoreModule,
   ForumTopicoReplicaStoreModule,
   ForumTopicoRespostaStoreModule,
+  HeaderStoreModule,
   ManipularContaModule, 
   NoticiaModule,
   UsuarioModule,
@@ -161,6 +165,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     AtualizarForumTopicoComponent,
     AtualizarForumTopicoRespostaComponent,
     AtualizarForumTopicoReplicaComponent,
+    PainelNoticiaComponent,
   ],
   imports: [
     BrowserModule,
@@ -169,6 +174,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     AppRoutingModule,
     AppRoutingModuleMecanica,
     PerfilRoutingModule,
+    NoticiaRoutingModule,
     BrowserAnimationsModule,
     DragDropModule,
     FlexLayoutModule,
@@ -187,6 +193,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     MatTabsModule,
     MatDatepickerModule,
     MatIconModule,
+    MatSlideToggleModule,
     MatTableModule,
     MatPaginatorModule,
     MatNativeDateModule,
@@ -202,6 +209,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     ForumTopicoStoreModule,
     ForumTopicoReplicaStoreModule,
     ForumTopicoRespostaStoreModule,
+    HeaderStoreModule,
     NoticiaModule,
     UsuarioModule,
     UsuarioAulaSessaoFavoritadoModule,

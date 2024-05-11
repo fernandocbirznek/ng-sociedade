@@ -37,6 +37,7 @@ export const usuarioReducer = createReducer(
     };
   }),
   on(actions.selecionarUsuarioByIdSuccess, (state, action) => {
+    
     let itens = [...state.itens].map(item => {
       if (item.id == action.response.id) {
         let novoUsuario = new UsuarioModel();
@@ -59,6 +60,9 @@ export const usuarioReducer = createReducer(
       return item;
     });
     
+    if (!state.itens.find(item => item.id == action.response.id))
+      itens.push(action.response);
+
     return { 
         ...state, 
         itens: itens,

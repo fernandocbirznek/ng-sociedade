@@ -92,7 +92,7 @@ export class InserirForumTopicoComponent implements OnInit {
   }
 
   requestCriarForumTopico() {
-    if (this.usuarioLogado)  {
+    if (this.usuarioLogado && this.usuarioLogado.id > 0)  {
       let request: ForumTopicoModel = new ForumTopicoModel();
       request.titulo = this.formGroupForumTopico.get("formTitulo")?.value;
       request.descricao = this.formGroupForumTopico.get("formConteudo")?.value;

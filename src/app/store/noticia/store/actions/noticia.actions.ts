@@ -1,6 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 
 import { 
+    NoticiaFilterModel,
     NoticiaModel, 
     NoticiaRequestModel
 } from 'src/app/models';
@@ -106,4 +107,19 @@ export const selecionarManyAreaInteresseByNoticiaIdSuccess = createAction(
 export const selecionarManyAreaInteresseByNoticiaIdFailure = createAction(
     '[AreaInteresse] selecionarManyAreaInteresseByNoticiaById Failure',
     props<{ error: any }>()
+);
+
+export const filtrarNoticia = createAction(
+    '[Noticia] selecionarNoticiaManyHome',
+    props<{ noticiaFilter: NoticiaFilterModel }>()
+);
+
+export const atualizarAdicaoNoticiaFavoritado = createAction(
+    '[Noticia] atualizarAdicaoNoticiaFavoritado',
+    props<{ noticiaId: number }>()
+);
+
+export const atualizarRemocaoNoticiaFavoritado = createAction(
+    '[Noticia] atualizarRemocaoNoticiaFavoritado',
+    props<{ noticiaId: number }>()
 );

@@ -9,6 +9,7 @@ export * from './forum-tag';
 export * from './forum-topico';
 export * from './forum-topico-replica';
 export * from './forum-topico-resposta';
+export * from './header';
 export * from './manipular-conta';
 export * from './noticia';
 export * from './usuario';

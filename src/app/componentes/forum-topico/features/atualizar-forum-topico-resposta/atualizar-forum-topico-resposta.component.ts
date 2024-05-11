@@ -70,7 +70,7 @@ export class AtualizarForumTopicoRespostaComponent implements OnInit {
   }
 
   requestAtualizarForumTopico() {
-    if (this.usuarioLogado)  {
+    if (this.usuarioLogado && this.usuarioLogado.id > 0)  {
       let request: ForumTopicoRespostaModel = new ForumTopicoRespostaModel();
       request.id = this.data.forumTopicoResposta.id;
       request.descricao = this.formGroupForumTopicoResposta.get("formConteudoResposta")?.value;

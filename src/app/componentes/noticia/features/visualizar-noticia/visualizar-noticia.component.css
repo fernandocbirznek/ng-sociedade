@@ -25,6 +25,17 @@
     font-style: italic;
 }
 
+.container-curtido {
+    font-size: 18px;
+    gap: 5px;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.favoritou {
+    color: rgb(64, 148, 64);
+}
+
 .divisoria {
     height: 1px;
     background-color: #ccc;

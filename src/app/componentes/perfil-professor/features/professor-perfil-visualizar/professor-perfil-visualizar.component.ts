@@ -53,7 +53,6 @@ export class ProfessorPerfilVisualizarComponent implements OnInit {
   }
 
   setupNoticia() {
-    console.log("this.data = ", this.data);
     this.store.dispatch(selecionarNoticiaManyByProfessorId({ professorId: this.data }));
     this.noticiaManyByUsuarioId$ = this.store.select(getManyNoticiaByProfessorId(this.data));
     this.noticiaManyByUsuarioIdSubscription$ = this.noticiaManyByUsuarioId$.subscribe(itens => {

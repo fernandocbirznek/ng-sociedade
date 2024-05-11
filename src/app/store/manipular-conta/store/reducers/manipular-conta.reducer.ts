@@ -1,11 +1,19 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import * as actions from '../actions/manipular-conta.actions';
-import { AreaInteresseModel, TipoUsuarioEnum, UsuarioModel } from 'src/app/models';
+
+import { 
+  AreaInteresseModel, 
+  TipoUsuarioEnum, 
+  UsuarioModel, 
+  UsuarioNoticiaFavoritadoModel 
+} from 'src/app/models';
 
 export const manipularContaFeatureKey = 'manipularConta';
 
 export interface ManipularContaState {
   usuario: UsuarioModel;
+  usuarioNoticiaFavoritado: UsuarioNoticiaFavoritadoModel[];
+
   isSuccess: boolean;
   isLoading: boolean;
   isFailure: boolean;
@@ -14,6 +22,8 @@ export interface ManipularContaState {
 
 export const manipularContaInitialState: ManipularContaState = {
   usuario: new UsuarioModel(),
+  usuarioNoticiaFavoritado: [],
+
   isSuccess: false,
   isLoading: false,
   isFailure: false,
@@ -283,6 +293,97 @@ export const manipularContaReducer = createReducer(
         isSuccess: false, 
         isFailure: true, 
         mensagem: "Falha em remover area de interesse do usuário" 
+    };
+  }),
+
+
+
+  
+  on(actions.inserirUsuarioNoticiaFavoritado, state => {
+    return { 
+        ...state, 
+        isLoading: true, 
+        isSuccess: false, 
+        isFailure: false, 
+        error: "" };
+  }),
+  on(actions.inserirUsuarioNoticiaFavoritadoSuccess, (state, action) => {
+    let itens = [...state.usuarioNoticiaFavoritado, action.response];
+    
+    return { 
+        ...state, 
+        usuarioNoticiaFavoritado: itens,
+        isLoading: false, 
+        isSuccess: true, 
+        isFailure: false, 
+        error: ""
+    };
+  }),
+  on(actions.inserirUsuarioNoticiaFavoritadoFailure, (state, action) => {
+    return { 
+        ...state, 
+        isLoading: false, 
+        isSuccess: false, 
+        isFailure: true, 
+        error: "Erro ao buscar as notícias favoritadas do usuário logado"};
+  }),
+
+  on(actions.removerUsuarioNoticiaFavoritado, state => {
+    return { 
+        ...state, 
+        isLoading: true, 
+        isSuccess: false, 
+        isFailure: false, 
+        error: "" };
+  }),
+  on(actions.removerUsuarioNoticiaFavoritadoSuccess, (state, action) => {
+    let itens = [...state.usuarioNoticiaFavoritado].filter(item => item.id != action.response);
+    
+    return { 
+        ...state, 
+        usuarioNoticiaFavoritado: itens,
+        isLoading: false, 
+        isSuccess: true, 
+        isFailure: false, 
+        error: ""
+    };
+  }),
+  on(actions.removerUsuarioNoticiaFavoritadoFailure, (state, action) => {
+    return { 
+        ...state, 
+        isLoading: false, 
+        isSuccess: false, 
+        isFailure: true, 
+        error: "Falha ao remover favoritado da notícia"};
+  }),
+
+  on(actions.selecionarManyUsuarioNoticiaFavoritado, state => {
+    return { 
+        ...state, 
+        isLoading: true, 
+        isSuccess: false, 
+        isFailure: false, 
+        error: "" 
+    };
+  }),
+  on(actions.selecionarManyUsuarioNoticiaFavoritadoSuccess, (state, action) => {
+
+    return { 
+        ...state, 
+        usuarioNoticiaFavoritado: action.response,
+        isLoading: false, 
+        isSuccess: true, 
+        isFailure: false,
+        error: ""
+    };
+  }),
+  on(actions.selecionarManyUsuarioNoticiaFavoritadoFailure, (state) => {
+    return { 
+        ...state, 
+        isLoading: false, 
+        isSuccess: false, 
+        isFailure: true, 
+        mensagem: "Falha em buscar as todas as notícias favoritadas do usuário logado" 
     };
   }),
 );

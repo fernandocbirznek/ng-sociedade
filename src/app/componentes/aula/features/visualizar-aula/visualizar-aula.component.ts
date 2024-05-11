@@ -199,7 +199,7 @@ export class VisualizarAulaComponent implements OnInit {
   }
 
   salvarSessaoFavoritado(item: AulaSessaoModel) {
-    if (this.usuarioLogado) {
+    if (this.usuarioLogado && this.usuarioLogado.id > 0) {
       let request: UsuarioAulaSessaoFavoritadoModel = new UsuarioAulaSessaoFavoritadoModel();
       request.aulaSessaoId = item.id;
       request.usuarioId = this.usuarioLogado.id;
@@ -209,7 +209,7 @@ export class VisualizarAulaComponent implements OnInit {
   }
 
   removerSessaoFavoritado(item: AulaSessaoModel) {
-    if (this.usuarioLogado)
+    if (this.usuarioLogado && this.usuarioLogado.id > 0)
       this.store.dispatch(removerUsuarioAulaSessaoFavoritado({ usuarioId: this.usuarioLogado.id, aulaSessaoId: item.id }));
   }
 
@@ -246,7 +246,7 @@ export class VisualizarAulaComponent implements OnInit {
 
   cadastrarComentario() {
     let aulaComentario: AulaComentarioModel = new AulaComentarioModel();
-    if (this.usuarioLogado) {
+    if (this.usuarioLogado && this.usuarioLogado.id > 0) {
       aulaComentario.aulaId = this.aula.id;
       aulaComentario.usuarioId = this.usuarioLogado.id;
       aulaComentario.descricao = this.formComentario.get("comentario")?.value;
@@ -257,7 +257,7 @@ export class VisualizarAulaComponent implements OnInit {
   }
 
   editarComentario(item: AulaComentarioModel) {
-    if (this.usuarioLogado)
+    if (this.usuarioLogado && this.usuarioLogado.id > 0)
       this.dialog.open(EditarAulaComentarioComponent, {
         data: {
           aulaComentario: item,
@@ -304,7 +304,7 @@ export class VisualizarAulaComponent implements OnInit {
   }
 
   getWidget(): WidgetModel | undefined {
-    if (this.usuarioLogado) {
+    if (this.usuarioLogado && this.usuarioLogado.id > 0) {
       let widget: WidgetModel = new WidgetModel();
       widget.aula = this.aula;
       widget.usuarioId = this.usuarioLogado.id

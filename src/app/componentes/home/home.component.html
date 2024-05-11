@@ -1,20 +1,26 @@
 <div fxLayout="row" fxLayoutAlign="space-between start" class="container-home">
-    <div fxFlex="300px" class="postagens">
-        <div fxLayoutAlign="center center" class="postagens-titulo">Ultimas Postagens</div>
+    <div fxFlex="400px" class="postagens">
+        <div fxLayoutAlign="center center" class="postagens-titulo">Últimas postagens</div>
         <div *ngFor="let noticia of this.noticiaMany" fxLayout="column" class="container-noticia">
-            <span class="titulo-noticia">{{noticia.titulo}}</span>
-            <div fxLayout="row" fxLayoutAlign="space-between center">
-                <span class="usuario-nome">@{{noticia.usuarioCadastroNome}}</span>
-                <span fxLayoutAlign="end center" class="data-postagem">{{noticia.dataCadastro | date: 'dd/MM/yyyy HH:mm' }}</span>
+            <span fxLayoutAlign="center center" class="titulo-noticia" (click)="visualizarNoticia(noticia)">{{noticia.titulo}}</span>
+            <div fxLayout="row" fxLayoutAlign="space-between center" class="container-usuario">
+                <span class="usuario-nome" (click)="visualizarUsuario(noticia)">@{{noticia.usuarioCadastroNome}}</span>
+                <div  fxLayout="row" fxLayoutAlign="center center" class="container-curtido">
+                    <mat-icon class="material-symbols-outlined">thumb_up</mat-icon>
+                    <div>{{ noticia.favoritado }}</div>
+                </div>
+                <span fxLayoutAlign="end center">{{noticia.dataCadastro | date: 'dd/MM/yyyy HH:mm' }}</span>
             </div>
-            
-            <!-- <div class="postagem-texto" [innerHTML]="noticia.conteudo"></div> -->
-            <div class="postagem-resumo">{{noticia.resumo}}</div>
+            <div fxFlex="100%" class="postagem-resumo">{{noticia.resumo}}</div>
             <div fxLayout="row" fxLayoutAlign="center center" class="container-tags">
                 <div *ngFor="let item of noticia.areaInteresseMany">
                     <span class="g-tag">{{item.nome}}</span>
                 </div>
             </div>
+        </div>
+        <div fxLayoutAlign="center center" class="button-noticias" (click)="acessarNoticias()">
+            <mat-icon fxLayoutAlign="center center" class="material-symbols-outlined">full_coverage</mat-icon>
+            Acessar todas as notícias
         </div>
     </div>
 
@@ -37,33 +43,33 @@
             dos diversos conceitos, leis e teorias que a Física construiu ao longo dos anos. E para compreender 
             cada uma delas temos algumas área que esses conceitos estão:</p>
         <div fxLayout="row" fxLayoutAlign="center center" class="postagem-geral-conteudos">
-            <div class="postagem-geral-card" fxFlex="18%">
+            <div fxFlex="20%" class="postagem-geral-card">
                 <div class="topicos">Mecânica</div>
                 <p class="postagem-geral-card-paragrafo">Estuda sobre o movimento dos corpos, como exemplo, a queda 
                     dos corpos, a trajetória, colisões, 
                     movimento de planetas, etc.
                 </p>
             </div>
-            <div class="postagem-geral-card" fxFlex="18%">
+            <div fxFlex="20%" class="postagem-geral-card">
                 <div class="topicos">Termodinâmica</div>
                 <p class="postagem-geral-card-paragrafo">estuda o calor e seu movimento, está relacionado com a energia 
                     em trânsito, outros conceitos 
                     estudados são: temperatura, equilíbrio térmico, etc.
                 </p>
             </div>
-            <div class="postagem-geral-card" fxFlex="18%">
+            <div fxFlex="20%" class="postagem-geral-card">
                 <div class="topicos">Ondulatória</div>
                 <p class="postagem-geral-card-paragrafo">engloba propagação de ondas, seja sonora, eletromagnética, ou 
                     ondulações mecânicas. Estuda também 
                     os fenômenos da luz e acústica.
                 </p>
             </div>
-            <div class="postagem-geral-card" fxFlex="18%">
+            <div fxFlex="20%" class="postagem-geral-card">
                 <div class="topicos">Eletromagnetismo</div>
                 <p class="postagem-geral-card-paragrafo">Estuda fenômenos elétricos e magnéticos.
                 </p>
             </div>
-            <div class="postagem-geral-card" fxFlex="18%">
+            <div fxFlex="20%" class="postagem-geral-card">
                 <div class="topicos">Física Moderna</div>
                 <p class="postagem-geral-card-paragrafo">descrição dos fenômenos microscópicos ou fenômenos a velocidades
                         relativísticas.

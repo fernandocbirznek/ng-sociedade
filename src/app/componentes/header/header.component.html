@@ -1,47 +1,22 @@
-<div class="container-header">
-    <div *ngIf="this.telaInicial" fxLayout="row" fxLayoutAlign="space-between center">
-        <div fxFlex="35%" fxLayout="column" fxLayoutAlign="center center">
+<div fxLayout="column">
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="container-header">
+        <div fxFlex="400px" fxLayout="column" fxLayoutAlign="center center">
             <img class="logo-site" src="../../../assets/imagens/header/logosite.png">
-            <h2>Compreendendo a natureza desde a sua origem</h2>
         </div>
-        <div fxFlex="40%" fxLayout="row" fxLayoutAlign="space-between start" class="menu-navegacao">
-            <div fxFlex="30%" fxLayout="column" fxLayoutAlign="center center">
-                <a routerLink="">Home</a>
-                <a *ngIf="this.usuarioLogado && this.usuarioLogado.id == 0" (click)="conta()">Criar Conta / Login</a>
-                <a *ngIf="this.usuarioLogado && this.usuarioLogado.id != 0" (click)="acessarPerfil()">Acessar perfil</a>
-                <a routerLink="/forum">Fórum</a>
-            </div>
-            <div fxFlex="70%" fxLayout="row wrap" fxLayoutAlign="space-between center">
-                <a *ngFor="let areaFisica of this.areaFisicaMany" class="g-full-width" (mouseover)="mudaFoto(areaFisica.id.toString())" 
-                    (mouseout)="mudaFoto('0')" (click)="areaSelecionada(areaFisica)" routerLink="/mecanica">
-                    {{areaFisica.descricao}}
-                </a>
-            </div>
+        <div fxFlex="100%" fxLayout="row wrap" fxLayoutAlign="space-around center" class="menu-navegacao">
+            <a (click)="home()">Home</a>
+            <a *ngIf="this.usuarioLogado && this.usuarioLogado.id == 0" (click)="conta()">Criar Conta / Login</a>
+            <a *ngIf="this.usuarioLogado && this.usuarioLogado.id != 0" (click)="acessarPerfil()">Acessar perfil</a>
+            <a routerLink="/forum">Fórum</a>
+            <a *ngFor="let areaFisica of this.areaFisicaMany" class="g-full-width" (mouseover)="mudaFoto(areaFisica.id.toString())" 
+                (mouseout)="mudaFoto('0')" (click)="areaSelecionada(areaFisica)" routerLink="/mecanica">
+                {{areaFisica.descricao}}
+            </a>
         </div>
         <div fxFlex="20%" fxLayout="column" fxLayoutAlign="center center">
-            <h2>{{this.tituloTopico}}</h2>
             <img class="img-topico" [src]="imagem">
             <p class="paragrafo-topico">{{ this.resumoTopico }}</p>
         </div> 
     </div>
-    <div *ngIf="!this.telaInicial" fxLayout="row wrap" class="menu-navegacao menu-navegacao-topico" fxLayoutAlign="center center">
-        <a routerLink="">Home</a>
-        <a (mouseover)="mudaFoto('1')" (mouseout)="mudaFoto('0')"
-            routerLink="/mecanica">Mecânica</a>
-        <a (mouseover)="mudaFoto('2')" (mouseout)="mudaFoto('0')"
-            routerLink="/termodinamica">Termodinâmica</a>
-        <a (mouseover)="mudaFoto('3')" (mouseout)="mudaFoto('0')" 
-            routerLink="/ondulatoria">Ondulatória</a>
-        <a (mouseover)="mudaFoto('4')" (mouseout)="mudaFoto('0')" 
-            routerLink="/eletormagnetismo">Eletromagnetismo</a>
-        <a (mouseover)="mudaFoto('5')" (mouseout)="mudaFoto('0')"
-            routerLink="/fisicamoderna">Física Moderna</a>
-        <a (mouseover)="mudaFoto('6')" (mouseout)="mudaFoto('0')"
-            routerLink="/matematica">Matemática</a>
-        <a (mouseover)="mudaFoto('7')" (mouseout)="mudaFoto('0')"
-            routerLink="/especiais">Especiais</a>
-        <a (mouseover)="mudaFoto('8')" (mouseout)="mudaFoto('0')"
-            routerLink="/vestibular">Exercícios vestibulares</a>
-        <a (click)="conta()">Criar Conta</a>
-    </div>
+    <div fxLayoutAlign="center center" class="menu-selecionado">{{ this.headerTitulo }}</div>
 </div>

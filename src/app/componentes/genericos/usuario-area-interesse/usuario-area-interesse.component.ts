@@ -25,7 +25,7 @@ export class UsuarioAreaInteresseComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if (this.usuarioLogado)
+    if (this.usuarioLogado && this.usuarioLogado.id > 0)
       this.areaInteresseMany = this.usuarioLogado.usuarioAreaInteresses;
   }
 

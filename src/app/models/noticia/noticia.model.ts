@@ -5,6 +5,7 @@ export class NoticiaModel {
 	titulo: string = "";
 	resumo: string = "";
 	conteudo: string = "";
+	favoritado: number = 0;
     usuarioCadastroId: number = 0;
 	usuarioCadastroNome: string = "";
 	dataCadastro: Date | undefined = undefined;

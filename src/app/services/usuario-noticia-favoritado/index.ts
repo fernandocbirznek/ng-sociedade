@@ -1,0 +1,1 @@
+export * from './usuario-noticia-favoritado.service';
