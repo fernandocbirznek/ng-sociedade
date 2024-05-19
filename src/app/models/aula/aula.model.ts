@@ -1,5 +1,7 @@
 import { AulaComentarioModel } from "../aula-comentario";
 import { AulaSessaoModel } from "../aula-sessao";
+import { AulaTagModel } from "../aula-tag";
+import { TagModel } from "../tag";
 
 export class AulaModel {
     id: number = 0;
@@ -8,6 +10,7 @@ export class AulaModel {
 
 	titulo: string = "";
     resumo: string = "";
+    aulaTagMany: AulaTagModel[] = [];
     aulaComentarioMany: AulaComentarioModel[] = [];
     aulaSessaoMany: AulaSessaoModel[] = [];
     comentario: number = 0;
@@ -18,4 +21,5 @@ export class AulaModel {
     areaFisicaDescricao: string = '';
 
     professorNome: string = '';
+    tagMany: TagModel[] = [];
 }

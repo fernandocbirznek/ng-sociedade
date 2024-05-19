@@ -3,39 +3,9 @@
     gap: 20px;
 }
 
-.container-titulo {
-    width: 100%;
-}
-
-.dot-mecanica {
-    background-color: #e07a5f;
-    border-radius: 20px;
-    padding: 15px;
-    margin-right: 10px;
-}
-
-.titulo {
-    letter-spacing: 2px;
-    font-weight: 700;
-    font-size: 30px;
-}
-
 .container-descricao {
     gap: 20px;
-}
-
-.container-descricao-topico {
-    border: 2px solid #e07a5f;
-    background-color: #abb6c8;
-    border-radius: 20px;
-    min-height: 350px;
-}
-
-.sub-titulo {
-    margin: 10px 0;
-    font-size: 24px;
-    font-weight: 700;
-    border-bottom: 2px solid #e07a5f;
+    margin-top: 50px;
 }
 
 .paragrafo {
@@ -46,49 +16,56 @@
     line-height: 26px;
 }
 
-.container-divisao {
-    border: 2px solid #e07a5f;
-    background-color: #5fabd4;
-    border-radius: 20px;
-    box-shadow: 6px 6px 6px rgba(128, 128, 128, 0.658);
-    min-height: 400px;
+.titulo {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.card-divisao {
+    background-color: #8e98ff;
+    border: 2px solid black;
 }
 
 .imagem {
     width: 90%;
     height: auto;
     background-size: cover;
+    margin-bottom: 20px;
+    border: 1px solid black;
 }
 
-.card-geral {
-    border: 2px solid #e07a5f;
-    background-color: #a7dbd8;
+.painel-aula-many {
+    border: 2px solid black;
+    background-color: #FFFAE0;
     border-radius: 20px;
     position: relative;
     padding: 20px;
     width: 100%;
-    height: 600px;
+    min-height: 600px;
 }
 
-.divisor {
+.container-aula-many {
+    padding: 30px 20px 0 20px;
     height: 100%;
-    width: 1px;
-    background-color: #e07a5f;
 }
 
 .container-aulas {
-    gap: 20px;
+    width: 100%;
 }
 
 .card-aula {
-    border: 2px solid #e07a5f;
-    background-color: #f4b076;
-    border-radius: 20px;
-    box-shadow: 6px 6px 6px rgba(128, 128, 128, 0.658);
+    background-color: #ffe280;
+    min-height: 200px;
+    padding: 10px;
     width: 500px;
-    padding: 15px;
-    gap: 10px;
-    height: 250px;
+    margin: 0 80px 100px 0;
+}
+
+.card-titulo {
+    top: -49px;
+    font-size: 16px;
+    background-color: #ffe280;
 }
 
 .card-aula-descricao {
@@ -101,14 +78,27 @@
     height: 100%;
 }
 
+.sessao {
+    font-size: 18px;
+    font-weight: bold;
+}
+
 .sessao-text {
     font-size: 12px;
     margin-left: 5px;
 }
 
+.card-icone-many {
+    background-color: #ffe280;
+}
+
+.icone {
+    margin-right: 5px;
+}
+
 .card-aula-acessar {
     border: 1px solid black;
-    background-color: rgb(106, 199, 30);
+    background-color: rgb(239 239 239);
     padding: 4px 15px;
     border-radius: 20px;
     display: inline-block;
@@ -118,8 +108,7 @@
 }
 
 .card-aula-acessar:hover {
-    background-color: rgb(76, 141, 23);
-    color: white;
+    background-color: rgb(230, 230, 230);
 }
 
 .container-paginacao {

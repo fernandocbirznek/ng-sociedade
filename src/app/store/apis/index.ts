@@ -15,6 +15,7 @@ import { forumTagReducer, ForumTagState } from "../forum-tag";
 import { forumTopicoRespostaReducer, ForumTopicoRespostaState } from "../forum-topico-resposta";
 import { forumTopicoReplicaReducer, ForumTopicoReplicaState } from "../forum-topico-replica";
 import { headerReducer, HeaderState } from "../header";
+import { tagReducer, TagState } from "../tag";
 
 export interface AppState {
     areaFisica: AreaFisicaState,
@@ -30,6 +31,7 @@ export interface AppState {
     header: HeaderState,
     manipularConta: ManipularContaState,
     noticia: NoticiaState,
+    tag: TagState,
     usuario: UsuarioState,
     usuarioAulaSessaoFavoritado: UsuarioAulaSessaoFavoritadoState
 };
@@ -48,6 +50,7 @@ export const reducers: ActionReducerMap<AppState> = {
     header: headerReducer,
     manipularConta: manipularContaReducer,
     noticia: noticiaReducer,
+    tag: tagReducer,
     usuario: usuarioReducer,
     usuarioAulaSessaoFavoritado: usuarioAulaSessaoFavoritadoReducer
 }

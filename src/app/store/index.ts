@@ -12,6 +12,7 @@ export * from './forum-topico-resposta';
 export * from './header';
 export * from './manipular-conta';
 export * from './noticia';
+export * from './tag';
 export * from './usuario';
 export * from './usuario-aula-sessao-favoritado';
 export * from './widget';

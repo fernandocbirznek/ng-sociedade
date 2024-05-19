@@ -15,7 +15,8 @@ import {
   getManyAreaFisica,
   getOneUsuarioLogado,
   getTituloPagina,
-  selecionarManyAreaFisica 
+  selecionarManyAreaFisica, 
+  selecionarManyTag
 } from 'src/app/store';
 
 import { 
@@ -50,7 +51,9 @@ export class HeaderComponent implements OnInit {
     public router: Router,
     public store: Store,
   ) { 
+    //TODO, colocar no resolver global
     this.store.dispatch(selecionarManyAreaFisica());
+    this.store.dispatch(selecionarManyTag());
   }
 
   ngOnInit(): void {

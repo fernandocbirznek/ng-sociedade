@@ -1,0 +1,56 @@
+<div fxLayout="column" class="g-full-width">
+    <div class="text-filtro">Filtros</div>
+    <mat-form-field appearance="outline">
+        <mat-label>Nome do professor</mat-label>
+        <input [formControl]="formControlNomeProfessor" matInput (change)="filtroNomeProfessor()">
+    </mat-form-field> 
+    <mat-form-field appearance="outline">
+        <mat-label>Título da aula</mat-label>
+        <input [formControl]="formControlTitulo" matInput (change)="filtroTitulo()">
+    </mat-form-field>    
+    <mat-form-field appearance="outline">
+        <mat-label>Data início</mat-label>
+        <input [formControl]="formControlDataInicio" matInput [matDatepicker]="pickerDataInicio" (dateChange)="filtroDataInicio()">
+        <mat-datepicker-toggle matIconSuffix [for]="pickerDataInicio" class="m-datapicker-toggle"></mat-datepicker-toggle>
+        <mat-datepicker #pickerDataInicio></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Data fim</mat-label>
+        <input [formControl]="formControlDataFim" matInput [matDatepicker]="pickerDataFim" (dateChange)="filtroDataFim()">
+        <mat-datepicker-toggle matIconSuffix [for]="pickerDataFim" class="m-datapicker-toggle"></mat-datepicker-toggle>
+        <mat-datepicker #pickerDataFim></mat-datepicker>
+    </mat-form-field>
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="container-ordenar">
+        <div class="text-ordenar">Ordenar por</div>
+        <div fxLayout="row" class="icone-resetar" [ngClass]="{'icone-resetar-on': this.formControlOrdenar.value}" (click)="resetOrdenar()">
+            <div>reset</div>
+            <mat-icon fxLayoutAlign="center center" class="icone-resetar material-symbols-outlined" 
+                [ngClass]="{'icone-resetar-on': this.formControlOrdenar.value}">
+                tab_close
+            </mat-icon>
+        </div>
+    </div>
+    <mat-radio-group fxLayout="row wrap" [formControl]="formControlOrdenar" class="container-radio">
+        <mat-radio-button value="1" (click)="ordenar(tipoOrdenarAulaFiltroEnum.Curtida)">Curtidas</mat-radio-button>
+        <mat-radio-button value="2" (click)="ordenar(tipoOrdenarAulaFiltroEnum.Favorito)">Favoritados</mat-radio-button>
+        <mat-radio-button value="3" (click)="ordenar(tipoOrdenarAulaFiltroEnum.Comentario)">Comentarios</mat-radio-button>
+    </mat-radio-group>
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="container-ordenar">
+        <div class="text-ordenar">Filtrar por tag</div>
+        <div fxLayout="row" class="icone-resetar" [ngClass]="{'icone-resetar-on': this.formControlOrdenar.value}" (click)="resetOrdenar()">
+            <div>reset</div>
+            <mat-icon fxLayoutAlign="center center" class="icone-resetar material-symbols-outlined" 
+                [ngClass]="{'icone-resetar-on': this.formControlOrdenar.value}">
+                tab_close
+            </mat-icon>
+        </div>
+    </div>
+    <div class="window-tag">
+        <div fxLayout="row wrap" class="container-tag">
+            <div *ngFor="let tag of this.tagMany" class="tag" [ngClass]="{'tag-selecionada': this.tagSelectedId.includes(tag.id)}"
+                (click)="selecionarTag(tag)">
+                {{ tag.nome }}
+            </div>
+        </div>
+    </div>
+</div>

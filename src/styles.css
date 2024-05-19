@@ -67,6 +67,58 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     gap: 20px;
 }
 
+.g-card {
+    border: 2px solid #737b86;
+    background-color: #fff4ad;
+    border-radius: 20px;
+    position: relative;
+}
+
+.g-card-titulo {
+    position: absolute;
+    top: -57px;
+    left: 40px;
+    background-color: #fff4ad;
+    border-top: 2px solid #737b86;
+    border-left: 2px solid #737b86;
+    border-right: 2px solid #737b86;
+    margin: 10px 0;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    padding: 8px 20px;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.g-card-icone-many {
+    position: absolute;
+    width: 70px;
+    top: 25px;
+    right: -72px;
+    background-color: #fff4ad;
+    border-top: 2px solid #737b86;
+    border-bottom: 2px solid #737b86;
+    border-right: 2px solid #737b86;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 12px 5px;
+    gap: 10px;
+}
+
+.g-card-tags {
+    position: absolute;
+    bottom: -50px;
+    left: 20px;
+    background-color: #fff4ad;
+    border-left: 2px solid #737b86;
+    border-bottom: 2px solid #737b86;
+    border-right: 2px solid #737b86;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 12px 5px;
+    gap: 10px;
+}
+
 /* Altera o overflow da modal, faz aparecer scroll*/
 .cdk-overlay-pane {
     overflow-y: auto;

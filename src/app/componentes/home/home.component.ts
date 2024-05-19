@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 import {
+  ProfessorPerfilVisualizarComponent,
   VisualizarNoticiaComponent
 } from 'src/app/componentes';
 
@@ -16,11 +18,6 @@ import {
   getManyNoticiaHome,
   selecionarNoticiaManyHome 
 } from 'src/app/store';
-
-import { 
-  ProfessorPerfilVisualizarComponent 
-} from '../perfil-professor';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',

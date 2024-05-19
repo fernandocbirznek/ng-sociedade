@@ -5,6 +5,7 @@ import { Observable } from "rxjs";
 
 import { 
     AulaModel,
+    AulaTagModel,
 } from "src/app/models";
 
 @Injectable({
@@ -21,6 +22,9 @@ export class AulaService {
     urlSelecionarManyAulaAreaFisica = 'https://localhost:44303/api/Aula/selecionar-aulas-area-fisica';
     urlSelecionarAulaByProfessorId = 'https://localhost:44303/api/Aula/selecionar-aulas-professor';
     urlSelecionarManyAula = 'https://localhost:44303/api/Aula/selecionar-aulas-sistema';
+
+    urlInserirManyAulaTag = 'https://localhost:44303/api/AulaTag/inserir';
+    urlExcluirAulaTag = 'https://localhost:44303/api/AulaTag/excluir';
 
     constructor(
         private httpClient: HttpClient,
@@ -60,6 +64,15 @@ export class AulaService {
 
     selecionarManyAula(): Observable<AulaModel[]> {
         return this.httpClient.get<AulaModel[]>(this.urlSelecionarManyAula, this.buildHttpOptions());
+    }
+
+
+    inserirManyAulaTag(aulaTagMany: AulaTagModel[]): Observable<AulaTagModel[]> {
+        return this.httpClient.post<AulaTagModel[]>(this.urlInserirManyAulaTag, JSON.stringify(aulaTagMany), this.buildHttpOptions());
+    }
+
+    excluirAulaTag(aulaTagId: number): Observable<number> {
+        return this.httpClient.delete<number>(this.urlExcluirAulaTag + `/${aulaTagId}`, this.buildHttpOptions());
     }
 
     private buildHttpOptions() {

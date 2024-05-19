@@ -28,7 +28,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { 
   HeaderComponent, FooterComponent, MecanicaUmComponent, AppRoutingModuleMecanica, MecanicaDoisComponent, 
   MecanicaTresComponent, HomeComponent, MecanicaComponent, TermodinamicaComponent, LoginCriarContaComponent,
-  EquipeContatoComponent, ForumComponent, ForumMecanicaComponent, DuvidaMecanicaComponent, PerfilComponent,
+  EquipeContatoComponent, ForumComponent, PerfilComponent,
   MecanicaQuatroComponent, AulaTresExercicioComponent, PerfilRoutingModule, ToastComponent, ModalExcluirComponent,
   CriarContaComponent, CriarPerfilComponent, UsuarioInformacaoComponent, PerfilProfessorRoutingModule, ProfessorHomeComponent,
   UsuarioConquistasComponent, ProfessorTabelaAulaComponent,
@@ -72,7 +72,8 @@ import {
   AtualizarForumTopicoComponent,
   AtualizarForumTopicoRespostaComponent,
   AtualizarForumTopicoReplicaComponent,
-  PainelNoticiaComponent
+  PainelNoticiaComponent,
+  AulaFiltroComponent
 } from './componentes';
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -93,6 +94,7 @@ import {
   HeaderStoreModule,
   ManipularContaModule, 
   NoticiaModule,
+  TagStoreModule,
   UsuarioModule,
   UsuarioAulaSessaoFavoritadoModule,
   WidgetModule,
@@ -115,8 +117,6 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     LoginCriarContaComponent,
     EquipeContatoComponent,
     ForumComponent,
-    ForumMecanicaComponent,
-    DuvidaMecanicaComponent,
     PerfilComponent,
     MecanicaUmComponent,
     MecanicaDoisComponent,
@@ -166,6 +166,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     AtualizarForumTopicoRespostaComponent,
     AtualizarForumTopicoReplicaComponent,
     PainelNoticiaComponent,
+    AulaFiltroComponent,
   ],
   imports: [
     BrowserModule,
@@ -211,6 +212,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     ForumTopicoRespostaStoreModule,
     HeaderStoreModule,
     NoticiaModule,
+    TagStoreModule,
     UsuarioModule,
     UsuarioAulaSessaoFavoritadoModule,
     WidgetModule,

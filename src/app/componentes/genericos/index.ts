@@ -1,3 +1,4 @@
+export * from './aula-filtro';
 export * from './aula-icone';
 export * from './editar-usuario-area-interesse';
 export * from './modal-excluir';

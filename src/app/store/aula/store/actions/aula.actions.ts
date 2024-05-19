@@ -1,7 +1,9 @@
 import { createAction, props } from '@ngrx/store';
 
 import { 
-  AulaModel 
+  AulaFilterModel,
+  AulaModel, 
+  AulaTagModel
 } from 'src/app/models';
 
 export const selecionarOneAulaById = createAction(
@@ -150,5 +152,42 @@ export const excluirAulaSuccess = createAction(
 
 export const excluirAulaFailure = createAction(
   '[Aula] excluirAula Failure',
+  props<{ error: any }>()
+);
+
+export const filtrarAula = createAction(
+  '[Aula] filtrarAula',
+  props<{ aulaFilter: AulaFilterModel }>()
+);
+
+
+
+export const inserirManyAulaTag = createAction(
+  '[AulaTag] inserirManyAulaTag',
+  props<{ aulaTagMany: AulaTagModel[] }>()
+);
+
+export const inserirManyAulaTagSuccess = createAction(
+  '[AulaTag] inserirManyAulaTag Success',
+  props<{ response: AulaTagModel[] }>()
+);
+
+export const inserirManyAulaTagFailure = createAction(
+  '[AulaTag] inserirManyAulaTag Failure',
+  props<{ error: any }>()
+);
+
+export const excluirAulaTag = createAction(
+  '[AulaTag] excluirAulaTag',
+  props<{ aulaId: number, aulaTagId: number }>()
+);
+
+export const excluirAulaTagSuccess = createAction(
+  '[AulaTag] excluirAulaTag Success',
+  props<{ aulaId: number, aulaTagId: number }>()
+);
+
+export const excluirAulaTagFailure = createAction(
+  '[AulaTag] excluirAulaTag Failure',
   props<{ error: any }>()
 );

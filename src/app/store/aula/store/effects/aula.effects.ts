@@ -124,4 +124,28 @@ export class AulaEffects {
      )
    );
   });
+
+
+
+  inserirManyAulaTag$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(actions.inserirManyAulaTag),
+      concatMap((action) =>
+        this.aulaService.inserirManyAulaTag(action.aulaTagMany).pipe(
+          map(response => actions.inserirManyAulaTagSuccess({ response: response })),
+          catchError(error => of(actions.inserirManyAulaTagFailure({ error }))))
+      )
+    );
+  });
+
+  excluirAulaTag$ = createEffect(() => {
+    return this.actions$.pipe( 
+      ofType(actions.excluirAulaTag),
+      concatMap((action) =>
+        this.aulaService.excluirAulaTag(action.aulaTagId).pipe(
+          map(response => actions.excluirAulaTagSuccess({ aulaId: action.aulaId, aulaTagId: action.aulaTagId })),
+          catchError(error => of(actions.excluirAulaTagFailure({ error }))))
+      )
+    );
+   });
 }

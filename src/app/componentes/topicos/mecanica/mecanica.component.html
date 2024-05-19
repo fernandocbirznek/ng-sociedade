@@ -1,12 +1,7 @@
 <div fxLayout="column" fxLayoutAlign="center center" class="container">
-    <div fxLayout="row" fxLayoutAlign="start center" class="container-titulo">
-        <div class="dot-mecanica"></div>
-        <div class="titulo">Mecânica</div>
-    </div>
-
     <div fxLayout="row" fxLayoutAlign="space-around start" class="container-descricao">
-        <div fxFlex="50%" fxLayout="column" fxLayoutAlign="start center" class="container-descricao-topico">
-            <div class="sub-titulo">Descrição</div>
+        <div fxFlex="50%" fxLayoutAlign="start start" class="g-card">
+            <div class="g-card-titulo">Descrição</div>
             <div class="paragrafo">A Mecânica é o ramo da Física que estudo o movimento e suas causas, 
                 tudo ao nosso redor está em movimento, até mesmo você que possivelmente pode estar sentado 
                 lendo esse texto, claro que devemos fazer a ressalva que devemos ressaltar qual é o referencial 
@@ -14,8 +9,8 @@
                 da Mecânica.
             </div>
         </div>
-        <div fxFlex="50%" fxLayout="column" fxLayoutAlign="start center" class="container-descricao-topico"> 
-            <div class="sub-titulo">Aplicações</div>
+        <div fxFlex="50%" fxLayoutAlign="start start" class="g-card"> 
+            <div class="g-card-titulo">Aplicações</div>
             <div class="paragrafo">O movimento está presente em básicamente tudo, nisso as aplicações são as mais 
                 variaveis possiveis. Geologos podem estudar o movimento de placas tectonicas para prever terremotos. 
                 Sinalizações de velocidade máxima nas vias e radares, estipulando valores importantes para prevenir 
@@ -24,58 +19,65 @@
             </div>
         </div>
     </div>
-
-    <div fxLayout="row" fxLayoutAlign="start center" class="container-titulo">
-        <div class="titulo">Divisões da Mecânica</div>
-    </div>
+    <div class="titulo">Divisões da Mecânica</div>
     <div fxLayout="row" fxLayoutAlign="space-between start" class="container-descricao">
-        <div fxFlex="33%" fxLayout="column" fxLayoutAlign="start center" class="container-divisao">
-            <div class="sub-titulo">Cinemática</div>
+        <div fxFlex="33%" fxLayout="column" fxLayoutAlign="start center" class="g-card card-divisao">
+            <div class="g-card-titulo card-divisao">Cinemática</div>
             <div class="paragrafo">Estuda o movimento dos corpos sem levar em consideração as suas causas. Alguns conceitos 
                 bases são: eixo de coordenadas, posição, deslocamento, velocidade, aceleração, etc.
             </div>
             <img class="imagem" src="../../../../assets/imagens/mecanica/topico/cinematica.png">
         </div>
-        <div fxFlex="33%" fxLayout="column" fxLayoutAlign="start center" class="container-divisao">
-            <div class="sub-titulo">Dinâmica</div>
+        <div fxFlex="33%" fxLayout="column" fxLayoutAlign="start center" class="g-card card-divisao">
+            <div class="g-card-titulo card-divisao">Dinâmica</div>
             <div class="paragrafo">Estuda o que causa o movimento, a origem do corpo se mover ou o que altera a direção 
                 do movimento. Exemplos dos conceitos bases são: as três leis de Newton e conservação de energia.
             </div>
         </div>
-        <div fxFlex="33%" fxLayout="column" fxLayoutAlign="start center" class="container-divisao">
-            <div class="sub-titulo">Estática</div>
+        <div fxFlex="33%" fxLayout="column" fxLayoutAlign="start center" class="g-card card-divisao">
+            <div class="g-card-titulo card-divisao">Estática</div>
             <div class="paragrafo">Estuda as condições de equilibrios dos corpos extensos, como exemplo de conceito temos: torque 
                 e somátoria de forças.
             </div>
             <img class="imagem" src="../../../../assets/imagens/mecanica/topico/estatica.png">
         </div>
     </div>
+    <div class="titulo">Painel de aulas</div>
+    <div fxLayout="row" fxLayoutAlign="space-between start" class="painel-aula-many">
+
+        <app-aula-filtro fxFlex="400px"></app-aula-filtro>
         
-    <div fxLayout="row" fxLayoutAlign="start center" class="container-titulo">
-        <div class="titulo">Painel de aulas</div>
-    </div>
-    <div fxLayout="row" fxLayoutAlign="space-between start" class="card-geral">
-        <div fxFlex="400px" fxLayout="column" fxLayoutAlign="start start">
-            <div>Filtros</div>
-        </div>
-        <div fxFlex="1px" class="divisor"></div>
-        <div fxFlex="100%" fxLayout="column" fxLayoutAlign="space-between center" class="g-full-height">
-            <div fxFlex="100%" fxLayout="row wrap" fxLayoutAlign="space-around start" class="container-aulas">
+        <div fxFlex="100%" fxLayout="column" fxLayoutAlign="space-between center" class="container-aula-many">
+            <div fxFlex="100%" fxLayout="row wrap" fxLayoutAlign="start start" class="container-aulas">
                 <div *ngFor="let aula of this.pageAulaMany">
-                    <div fxLayout="column" fxLayoutAlign="space-between space-between" class="card-aula">
-                        <div fxLayout="row" fxLayoutAlign="center center" class="g-full-width">
-                            <div>{{ aula.titulo }}</div>
+                    <div fxLayout="column" fxLayoutAlign="space-between space-between" class="g-card card-aula">
+                        <div class="g-card-titulo card-titulo">{{ aula.titulo }}</div>
+                        <div fxLayout="column" fxLayoutAlign="space-between start" class="g-card-icone-many card-icone-many">
+                            <div fxLayout="row" fxLayoutAlign="start center" class="g-full-width">
+                                <mat-icon fxFlex="25px" class="icone material-symbols-outlined">thumb_up</mat-icon>
+                                <div fxFlex="100%" fxLayoutAlign="center center">{{ aula.curtido }}</div>
+                            </div>
+                            <div fxLayout="row" fxLayoutAlign="start center" class="g-full-width">
+                                <mat-icon fxFlex="25px" class="icone material-symbols-outlined">star</mat-icon>
+                                <div fxFlex="100%" fxLayoutAlign="center center">{{ aula.favoritado }}</div>
+                            </div>
+                            <div fxLayout="row" fxLayoutAlign="start center" class="g-full-width">
+                                <mat-icon fxFlex="25px" class="icone material-symbols-outlined">chat</mat-icon>
+                                <div fxFlex="100%" fxLayoutAlign="center center">{{ aula.aulaComentarioMany.length }}</div>
+                            </div>
+                        </div>
+                        <div *ngIf="aula.tagMany.length > 0" fxLayout="row" fxLayoutAlign="start center" class="g-card-tags">
+                            <div *ngFor="let tag of aula.tagMany"class="g-tag">{{ tag.nome }}</div>
                         </div>
                         <div fxFlex="100%" fxLayout="row" fxLayoutAlign="space-between start" class="card-aula-descricao">
-                            <div fxFlex="30%" fxLayout="column" fxLayoutAlign="space-between center" class="aula-autor">
+                            <div fxFlex="100px" fxLayout="column" fxLayoutAlign="space-between center" class="aula-autor">
                                 <div>Professor</div>
                                 <div>{{ aula.professorNome }}</div>
                                 <div>FOTO</div>
                             </div>
-                            <div fxFlex="1px" class="divisor"></div>
-                            <div fxFlex="70%" fxLayout="column" fxLayoutAlign="space-around start" class="descricao">
+                            <div fxFlex="100%" fxLayout="column" fxLayoutAlign="space-around start" class="descricao">
                                 <div fxLayout="column" fxLayoutAlign="space-between start" class="g-full-width">
-                                    <div>Sessões</div>
+                                    <div class="sessao">Sessões</div>
                                     <div fxLayout="row wrap" fxLayoutAlign="start center" class="g-full-width">
                                         <div *ngFor="let sessao of aula.aulaSessaoMany" fxLayout="row" fxLayoutAlign="start center"
                                             class="sessao-text">
@@ -84,27 +86,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div fxLayout="row wrap" fxLayoutAlign="center center" class="g-full-width">
-                                    <div class="g-tag">Velocidade média</div>
-                                    <div class="g-tag">Mecânica</div>
-                                </div>
                             </div>
                         </div>
                         <div fxLayout="row" fxLayoutAlign="space-around center">
-                            <div fxFlex="100px" fxLayout="row" fxLayoutAlign="space-between center">
-                                <div fxLayout="column" fxLayoutAlign="center space-between">
-                                    <mat-icon class="material-symbols-outlined">thumb_up</mat-icon>
-                                    <div>{{ aula.curtido }}</div>
-                                </div>
-                                <div fxLayout="column" fxLayoutAlign="start start">
-                                    <mat-icon class="material-symbols-outlined">star</mat-icon>
-                                    <div>{{ aula.favoritado }}</div>
-                                </div>
-                                <div fxLayout="column" fxLayoutAlign="start start">
-                                    <mat-icon class="material-symbols-outlined">chat</mat-icon>
-                                    <div>{{ aula.aulaComentarioMany.length }}</div>
-                                </div>
-                            </div>
                             <div fxLayout="row" fxLayoutAlign="center center" class="card-aula-acessar" 
                                 (click)="visualizarAula(aula)">
                                 <div>Acessar aula</div>
@@ -125,32 +109,4 @@
             </div>
         </div>
     </div>
-    <!--FIM TESTE-->
-    <div fxLayout="row" fxLayoutAlign="center start" class="card-geral">
-        <div fxFlex="35%" fxLayout="row" fxLayoutAlign="space-around center" class="divisão-cards">
-            <h4 class="tamanho-horizontal">Principais Conceitos</h4>
-            <p class="tags"><a href="###">Velocidade</a></p>
-            <p class="tags"><a href="###">Aceleração</a></p>
-            <p class="tags"><a href="###">Eixo de coordenadas</a></p>
-            <p class="tags"><a href="###">MRU</a></p>
-            <p class="tags"><a href="###">MUV</a></p>
-            <p class="tags"><a href="###">Lançamento de projéteis</a></p>
-            <p class="tags"><a href="###">Queda dos corpos</a></p>
-            <p class="tags"><a href="###">Etc...</a></p>
-        </div>
-        <div fxFlex="65%" fxLayout="row" fxLayoutAlign="space-around center" class="alinhar-formulas">
-            <h4 class="tamanho-horizontal">Formulas, Equações e Leis</h4>
-            <p class="tags"><a href="###">Velocidade</a></p>
-            <p class="tags"><a href="###">Aceleração</a></p>
-            <p class="tags"><a href="###">Eixo de coordenadas</a></p>
-            <p class="tags"><a href="###">MRU</a></p>
-        </div>
-    </div>
-
-    <div fxLayout="row" fxLayoutAlign="space-between center" class="card-geral">
-
-        <h6>Exercícios vestibulares</h6>
-
-    </div>
-
 </div>

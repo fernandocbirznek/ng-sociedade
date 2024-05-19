@@ -2,6 +2,7 @@ import { Action, createReducer, on } from '@ngrx/store';
 import * as actions from '../actions/aula.actions';
 
 import { 
+  AulaFilterModel,
   AulaModel 
 } from 'src/app/models';
 
@@ -10,6 +11,8 @@ export const aulaFeatureKey = 'aula';
 
 export interface AulaState {
   aulas: AulaModel[];
+  aulaFilter: AulaFilterModel;
+
   isSuccess: boolean;
   isLoading: boolean;
   isFailure: boolean;
@@ -18,6 +21,8 @@ export interface AulaState {
 
 export const aulaInitialState: AulaState = {
   aulas: [],
+  aulaFilter: new AulaFilterModel,
+
   isSuccess: false,
   isLoading: false,
   isFailure: false,
@@ -362,6 +367,117 @@ export const aulaReducer = createReducer(
    };
   }),
   on(actions.excluirAulaFailure, (state, action) => {
+    return { 
+      ...state, 
+      isLoading: false, 
+      isSuccess: false, 
+      isFailure: true, 
+      mensagem: "Erro ao excluir aula"
+    };
+  }),
+  on(actions.filtrarAula, (state, action) => {
+    return { 
+        ...state,
+        aulaFilter: action.aulaFilter,
+    };
+  }),
+
+
+  on(actions.inserirManyAulaTag, state => {
+    return { 
+      ...state, 
+      isLoading: true, 
+      isSuccess: false, 
+      isFailure: false, 
+      error: "" 
+    };
+  }),
+  on(actions.inserirManyAulaTagSuccess, (state, action) => {
+    let itens = [...state.aulas].map(item => {
+      if (item.id == action.response[0].id) {
+        let aula = new AulaModel();
+        aula.areaFisicaId = item.areaFisicaId;
+        aula.curtido = item.curtido;
+        aula.favoritado = item.favoritado;
+        aula.id = item.id;
+        aula.professorId = item.professorId;
+        aula.resumo = item.resumo;
+        aula.titulo = item.titulo;
+        aula.areaFisicaDescricao = item.areaFisicaDescricao;
+        aula.aulaComentarioMany = item.aulaComentarioMany;
+        aula.aulaSessaoMany = item.aulaSessaoMany;
+        aula.aulaTagMany = action.response;
+        aula.comentario = item.comentario;
+        aula.dataAtualizacao = action.response[0].dataCadastro;
+        aula.professorNome = item.professorNome;
+
+        return aula;
+      }
+      return item;
+    });
+
+    return {
+      ...state,
+      aulas: itens,
+      isLoading: false,
+      isSuccess: true,
+      isFailure: false,
+    };
+  }),
+  on(actions.inserirManyAulaTagFailure, (state, action) => {
+    return { 
+      ...state, 
+      isLoading: false, 
+      isSuccess: false, 
+      isFailure: true, 
+      mensagem: "Erro ao inserir tag na aula." 
+    };
+  }),
+
+  on(actions.excluirAulaTag, state => {
+    return { 
+      ...state, 
+      isLoading: true, 
+      isSuccess: false, 
+      isFailure: false, 
+      error: "" 
+    };
+  }),
+  on(actions.excluirAulaTagSuccess, (state, action) => {
+    let itens = [...state.aulas].map(item => {
+      if (item.id == action.aulaId) {
+        let aulaTagMany = [...item.aulaTagMany].filter(aulaTag => aulaTag.id != action.aulaTagId);
+
+        let aula = new AulaModel();
+        aula.areaFisicaId = item.areaFisicaId;
+        aula.curtido = item.curtido;
+        aula.favoritado = item.favoritado;
+        aula.id = item.id;
+        aula.professorId = item.professorId;
+        aula.resumo = item.resumo;
+        aula.titulo = item.titulo;
+        aula.areaFisicaDescricao = item.areaFisicaDescricao;
+        aula.aulaComentarioMany = item.aulaComentarioMany;
+        aula.aulaSessaoMany = item.aulaSessaoMany;
+        aula.aulaTagMany = aulaTagMany;
+        aula.comentario = item.comentario;
+        aula.dataAtualizacao = item.dataCadastro;
+        aula.professorNome = item.professorNome;
+
+        return aula;
+      }
+      return item;
+    });
+  
+   return { 
+     ...state, 
+     aulas: itens,
+     isLoading: false, 
+     isSuccess: true, 
+     isFailure: false, 
+   };
+  }),
+  on(actions.excluirAulaTagFailure, (state, action) => {
     return { 
       ...state, 
       isLoading: false, 

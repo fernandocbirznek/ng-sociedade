@@ -1,0 +1,62 @@
+.text-filtro {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.m-datapicker-toggle {
+    position: absolute;
+    right: -5px;
+    top: 0px;
+}
+
+.container-ordenar {
+    padding: 20px 0;
+    border-top: 2px solid #CCCCCC;
+}
+
+.text-ordenar {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.icone-resetar {
+    font-size: 16px;
+    color: #CECECE;
+    pointer-events: none;
+}
+
+.icone-resetar-on {
+    color: #be4a4a;
+    cursor: pointer;
+    pointer-events: all;
+}
+
+.container-radio {
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.window-tag {
+    height: 200px;
+    overflow-y: auto;
+}
+
+.container-tag {
+    gap: 15px;
+}
+
+.tag {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 8px 10px;
+}
+
+.tag:hover {
+    box-shadow: 2px 2px 3px #9e9e9e;
+    cursor: pointer;
+}
+
+.tag-selecionada {
+    background-color: #ade678;
+}
