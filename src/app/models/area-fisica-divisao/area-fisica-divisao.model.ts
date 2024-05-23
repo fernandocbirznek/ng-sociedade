@@ -1,9 +1,10 @@
-export class AreaFisicaModel {
+export class AreaFisicaDivisaoModel {
 	id: number = 0;
 	dataCadastro: Date | undefined = undefined;
 	dataAtualizacao: Date | undefined = undefined;
 
 	descricao: string = "";
 	titulo: string = '';
-	aplicacao: string = '';
+	areaFisicaId: number = 0;
+    foto: File | undefined = undefined;
 }

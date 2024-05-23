@@ -6,6 +6,7 @@
 .container-descricao {
     gap: 20px;
     margin-top: 50px;
+    width: 100%;
 }
 
 .paragrafo {
@@ -14,6 +15,12 @@
     font-size: 16px;
     text-align: justify;
     line-height: 26px;
+}
+
+.imagem {
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
 }
 
 .titulo {
@@ -48,10 +55,6 @@
 .container-aula-many {
     padding: 30px 20px 0 20px;
     height: 100%;
-}
-
-.container-aulas {
-    width: 100%;
 }
 
 .card-aula {
@@ -130,60 +133,4 @@
 
 .botao-config:hover {
     color: rgb(59, 59, 59);
-}
-
-
-
-
-
-
-.card-aula-paragrafo {
-    margin: 0;
-    padding: 0;
-}
-
-.divisão-cards {
-    border-right: 2px solid #e07a5f;
-    flex-wrap: wrap;
-    padding: 10px;
-}
-
-.alinhar-formulas {
-    flex-wrap: wrap;
-    padding: 10px;
-}
-
-.tamanho-horizontal {
-    width: 100%;
-    text-align: center;
-}
-
-/* TAGS */
-.tags {
-    border: 1px solid rgb(144, 144, 214);
-    border-radius: 20px;
-    background-color: cornflowerblue;
-    padding: 8px;
-    display: inline-block;
-    font-weight: 500;
-}
-
-.tags:hover, .tags a:hover {
-    background-color: rgb(144, 144, 214);
-    color: white;
-    cursor: pointer;
-}
-
-
-.links-problemas {
-    border-radius: 10px;
-    background-color: #AC92EC;
-    padding: 15px;
-    color: black;
-    cursor: pointer;
-}
-
-.links-problemas:hover {
-    color: white;
-    background-color: #9d7fe9;
 }

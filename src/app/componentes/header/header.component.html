@@ -9,8 +9,8 @@
             <a *ngIf="this.usuarioLogado && this.usuarioLogado.id != 0" (click)="acessarPerfil()">Acessar perfil</a>
             <a routerLink="/forum">Fórum</a>
             <a *ngFor="let areaFisica of this.areaFisicaMany" class="g-full-width" (mouseover)="mudaFoto(areaFisica.id.toString())" 
-                (mouseout)="mudaFoto('0')" (click)="areaSelecionada(areaFisica)" routerLink="/mecanica">
-                {{areaFisica.descricao}}
+                (mouseout)="mudaFoto('0')" (click)="areaSelecionada(areaFisica)">
+                {{areaFisica.titulo}}
             </a>
         </div>
         <div fxFlex="20%" fxLayout="column" fxLayoutAlign="center center">

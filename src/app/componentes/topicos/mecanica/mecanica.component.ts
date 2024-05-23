@@ -4,11 +4,17 @@ import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 
 import { 
+  AreaFisicaDivisaoModel,
+  AreaFisicaModel,
   AulaModel 
 } from 'src/app/models';
 
 import { 
+  getManyAreaFisicaDivisaoByAreaFisicaId,
   getManyAulaByAreaFisicaId,
+  getOneAreaFisicaByAreaFisicaId,
+  getTituloPagina,
+  selecionarManyAreaFisicaDivisaoByAreaFisicaId,
   selecionarManyAulaByAreaFisicaId 
 } from 'src/app/store';
 
@@ -18,6 +24,14 @@ import {
   styleUrls: ['./mecanica.component.css']
 })
 export class MecanicaComponent implements OnInit {
+
+  areaFisicaSubscription$: Subscription = new Subscription();
+  areaFisica$: Observable<AreaFisicaModel | undefined> = new Observable<AreaFisicaModel | undefined>();
+  areaFisica: AreaFisicaModel | undefined = undefined;
+
+  areaFisicaDivisaoManySubscription$: Subscription = new Subscription();
+  areaFisicaDivisaoMany$: Observable<AreaFisicaDivisaoModel[]> = new Observable<AreaFisicaDivisaoModel[]>();
+  areaFisicaDivisaoMany: AreaFisicaDivisaoModel[] = [];
 
   aulaManySubscription$: Subscription = new Subscription();
   aulaMany$: Observable<AulaModel[]> = new Observable<AulaModel[]>();
@@ -32,13 +46,19 @@ export class MecanicaComponent implements OnInit {
 
   constructor(
     public store: Store,
-    private activatedRoute : ActivatedRoute,
     public router: Router
   ) { }
 
   ngOnInit(): void {
-    this.areaFisicaId = +this.activatedRoute.snapshot.queryParamMap.get("areaFisicaId")!;
+    this.setupAreaFisica();
+    this.setupAreaFisicaDivisao();
     this.setupAula();
+  }
+
+  ngOnDestroy(): void {
+    this.areaFisicaSubscription$.unsubscribe();
+    this.areaFisicaDivisaoManySubscription$.unsubscribe();
+    this.aulaManySubscription$.unsubscribe();
   }
 
   mudarPagina(page: number) {
@@ -48,6 +68,24 @@ export class MecanicaComponent implements OnInit {
       this.pageAtual++;
 
     this.pageAulaMany = this.aulaMany.slice(this.pageSize * this.pageAtual, (this.pageAtual + 1) * this.pageSize);
+  }
+
+  setupAreaFisica() {
+    this.areaFisica$ = this.store.select(getOneAreaFisicaByAreaFisicaId);
+    this.areaFisicaSubscription$ = this.areaFisica$.subscribe(item => {
+      if (item)
+        this.areaFisica = item;
+    });
+  }
+
+  setupAreaFisicaDivisao() {
+    //TODO, colocar no resolver
+    this.store.dispatch(selecionarManyAreaFisicaDivisaoByAreaFisicaId({ areaFisicaId: this.areaFisicaId}));
+
+    this.areaFisicaDivisaoMany$ = this.store.select(getManyAreaFisicaDivisaoByAreaFisicaId);
+    this.areaFisicaDivisaoManySubscription$ = this.areaFisicaDivisaoMany$.subscribe(itens => {
+      this.areaFisicaDivisaoMany = itens;
+    });
   }
 
   setupAula() {

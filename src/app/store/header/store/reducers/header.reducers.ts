@@ -5,6 +5,7 @@ export const headerFeatureKey = 'header';
 
 export interface HeaderState {
     tituloPagina: string;
+    areaFisicaId: number;
     isSuccess: boolean;
     isLoading: boolean;
     isFailure: boolean;
@@ -13,6 +14,7 @@ export interface HeaderState {
 
 export const headerInitialState: HeaderState = {
     tituloPagina: 'Home',
+    areaFisicaId: 2,
     isSuccess: false,
     isLoading: false,
     isFailure: false,
@@ -27,10 +29,7 @@ export const headerReducer = createReducer(
     return { 
         ...state, 
         tituloPagina: action.titulo,
-        isLoading: true, 
-        isSuccess: false, 
-        isFailure: false, 
-        error: "" 
+        areaFisicaId: action.areaFisicaId,
     };
   }),
 );

@@ -22,6 +22,7 @@ import {
 import { 
   LoginCriarContaComponent 
 } from '../topicos';
+
 import { HeaderHelpers } from './helpers/header.helpers';
 
 @Component({
@@ -94,34 +95,28 @@ export class HeaderComponent implements OnInit {
   areaSelecionada(areaFisica: AreaFisicaModel) {
     switch(areaFisica.id) {
       case 1:
-        this.store.dispatch(alterarTituloPagina({ titulo: 'Cosmologia' }));
-        this.router.navigate([`cosmologia`]);
+        this.store.dispatch(alterarTituloPagina({ titulo: 'Cosmologia', areaFisicaId: 1 }));
         break;
       case 2:
-        this.store.dispatch(alterarTituloPagina({ titulo: 'Mecânica' }));
-        this.router.navigate(['mecanica'], { queryParams: { areaFisicaId: areaFisica.id }});
+        this.store.dispatch(alterarTituloPagina({ titulo: 'Mecânica', areaFisicaId: 2 }));
         break;
       case 3:
-        this.store.dispatch(alterarTituloPagina({ titulo: 'Termodinâmica' }));
-        this.router.navigate([`termodinamica`]);
+        this.store.dispatch(alterarTituloPagina({ titulo: 'Termodinâmica', areaFisicaId: 3 }));
         break;
       case 4:
-        this.store.dispatch(alterarTituloPagina({ titulo: 'Eletromagnetismo' }));
-        this.router.navigate([`eletromagnetismo`]);
+        this.store.dispatch(alterarTituloPagina({ titulo: 'Eletromagnetismo', areaFisicaId: 4 }));
         break;
       case 5:
-        this.store.dispatch(alterarTituloPagina({ titulo: 'Física moderna' }));
-        this.router.navigate([`fisica-moderna`]);
+        this.store.dispatch(alterarTituloPagina({ titulo: 'Física moderna', areaFisicaId: 5 }));
         break;
       case 6:
-        this.store.dispatch(alterarTituloPagina({ titulo: 'Óptica' }));
-        this.router.navigate([`optica`]);
+        this.store.dispatch(alterarTituloPagina({ titulo: 'Óptica', areaFisicaId: 6 }));
         break;
       case 7:
-        this.store.dispatch(alterarTituloPagina({ titulo: 'Mecânica quântica' }));
-        this.router.navigate([`mecanica-quantica`]);
+        this.store.dispatch(alterarTituloPagina({ titulo: 'Mecânica quântica', areaFisicaId: 7 }));
         break;
     }
+    this.router.navigate(['mecanica'], { queryParams: { areaFisicaId: areaFisica.titulo }});
   }
 
   conta() {

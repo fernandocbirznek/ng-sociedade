@@ -16,9 +16,11 @@ import { forumTopicoRespostaReducer, ForumTopicoRespostaState } from "../forum-t
 import { forumTopicoReplicaReducer, ForumTopicoReplicaState } from "../forum-topico-replica";
 import { headerReducer, HeaderState } from "../header";
 import { tagReducer, TagState } from "../tag";
+import { areaFisicaDivisaoReducer, AreaFisicaDivisaoState } from "../area-fisica-divisao";
 
 export interface AppState {
     areaFisica: AreaFisicaState,
+    areaFisicaDivisao: AreaFisicaDivisaoState,
     areaInteresse: AreaInteresseState,
     aula: AulaState,
     aulaComentario: AulaComentarioState,
@@ -38,6 +40,7 @@ export interface AppState {
 
 export const reducers: ActionReducerMap<AppState> = {
     areaFisica: areaFisicaReducer,
+    areaFisicaDivisao: areaFisicaDivisaoReducer,
     areaInteresse: areaInteresseReducer,
     aula: aulaReducer,
     aulaComentario: aulaComentarioReducer,

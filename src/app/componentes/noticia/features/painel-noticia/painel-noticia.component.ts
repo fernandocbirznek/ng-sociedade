@@ -60,7 +60,7 @@ export class PainelNoticiaComponent implements OnInit {
     public store: Store,
   ) { 
     this.store.dispatch(selecionarManyNoticia());
-    this.store.dispatch(alterarTituloPagina({ titulo: 'Painel de notícias' }));
+    this.store.dispatch(alterarTituloPagina({ titulo: 'Painel de notícias', areaFisicaId: 0 }));
   }
 
   ngOnInit(): void {

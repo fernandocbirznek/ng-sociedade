@@ -1,4 +1,5 @@
 export * from './area-fisica';
+export * from './area-fisica-divisao';
 export * from './area-interesse';
 export * from './aula';
 export * from './aula-comentario';

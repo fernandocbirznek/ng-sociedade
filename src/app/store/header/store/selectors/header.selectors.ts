@@ -12,4 +12,13 @@ export const getTituloPagina = createSelector(
 
     return state.tituloPagina;
   }
+);
+
+export const getAreaFisicaId = createSelector(
+  selecionarHeaderState, (
+  state
+) => {
+
+  return state.areaFisicaId;
+}
 )

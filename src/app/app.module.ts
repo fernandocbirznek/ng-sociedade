@@ -82,6 +82,7 @@ import { KatexModule } from 'ng-katex';
 
 import {
   AreaFisicaStoreModule,
+  AreaFisicaDivisaoStoreModule,
   AreaInteresseStoreModule,
   AulaComentarioStoreModule,
   AulaSessaoStoreModule,
@@ -201,6 +202,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     HttpClientModule,
     ManipularContaModule,
     AreaFisicaStoreModule,
+    AreaFisicaDivisaoStoreModule,
     AreaInteresseStoreModule,
     AulaStoreModule,
     AulaComentarioStoreModule,

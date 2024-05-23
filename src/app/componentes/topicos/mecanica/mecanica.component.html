@@ -1,45 +1,29 @@
-<div fxLayout="column" fxLayoutAlign="center center" class="container">
+<div *ngIf="this.areaFisica; else loading" fxLayout="column" fxLayoutAlign="center center" class="container">
     <div fxLayout="row" fxLayoutAlign="space-around start" class="container-descricao">
         <div fxFlex="50%" fxLayoutAlign="start start" class="g-card">
             <div class="g-card-titulo">Descrição</div>
-            <div class="paragrafo">A Mecânica é o ramo da Física que estudo o movimento e suas causas, 
-                tudo ao nosso redor está em movimento, até mesmo você que possivelmente pode estar sentado 
-                lendo esse texto, claro que devemos fazer a ressalva que devemos ressaltar qual é o referencial 
-                que estamos tomando como origem do sistemas de coordenadas. Conceito esse essencial para o estudo 
-                da Mecânica.
+            <div class="paragrafo">
+                {{ this.areaFisica.descricao }}
             </div>
         </div>
         <div fxFlex="50%" fxLayoutAlign="start start" class="g-card"> 
             <div class="g-card-titulo">Aplicações</div>
-            <div class="paragrafo">O movimento está presente em básicamente tudo, nisso as aplicações são as mais 
-                variaveis possiveis. Geologos podem estudar o movimento de placas tectonicas para prever terremotos. 
-                Sinalizações de velocidade máxima nas vias e radares, estipulando valores importantes para prevenir 
-                acidentes. Velocidade que um objeto precisa ter para escapar da atmosfera terreste e ir para o espaço 
-                sideral. Montanha-russa em parques de diversões. Entre muitas outras que podemos discutir ao longo das aulas.
+            <div class="paragrafo">
+                {{ this.areaFisica.aplicacao }}
             </div>
         </div>
     </div>
     <div class="titulo">Divisões da Mecânica</div>
-    <div fxLayout="row" fxLayoutAlign="space-between start" class="container-descricao">
-        <div fxFlex="33%" fxLayout="column" fxLayoutAlign="start center" class="g-card card-divisao">
-            <div class="g-card-titulo card-divisao">Cinemática</div>
-            <div class="paragrafo">Estuda o movimento dos corpos sem levar em consideração as suas causas. Alguns conceitos 
-                bases são: eixo de coordenadas, posição, deslocamento, velocidade, aceleração, etc.
-            </div>
-            <img class="imagem" src="../../../../assets/imagens/mecanica/topico/cinematica.png">
-        </div>
-        <div fxFlex="33%" fxLayout="column" fxLayoutAlign="start center" class="g-card card-divisao">
-            <div class="g-card-titulo card-divisao">Dinâmica</div>
-            <div class="paragrafo">Estuda o que causa o movimento, a origem do corpo se mover ou o que altera a direção 
-                do movimento. Exemplos dos conceitos bases são: as três leis de Newton e conservação de energia.
-            </div>
-        </div>
-        <div fxFlex="33%" fxLayout="column" fxLayoutAlign="start center" class="g-card card-divisao">
-            <div class="g-card-titulo card-divisao">Estática</div>
-            <div class="paragrafo">Estuda as condições de equilibrios dos corpos extensos, como exemplo de conceito temos: torque 
-                e somátoria de forças.
-            </div>
-            <img class="imagem" src="../../../../assets/imagens/mecanica/topico/estatica.png">
+    <div fxLayout="row wrap" fxLayoutAlign="space-between start" class="container-descricao">
+        <div *ngFor="let areaFisicaDivisao of this.areaFisicaDivisaoMany" fxFlex="500px" fxLayout="column" fxLayoutAlign="start center" 
+            class="g-card card-divisao">
+                <div class="g-card-titulo card-divisao">{{ areaFisicaDivisao.titulo }}</div>
+                <div class="paragrafo">
+                    {{ areaFisicaDivisao.descricao }}
+                </div>
+                <div *ngIf="areaFisicaDivisao.foto" fxLayout="column" fxLayoutAlign="space-between center">
+                    <img fxFlex="100px" [src]="'data:image/png;base64,' + areaFisicaDivisao.foto" alt="Imagem" class="imagem">
+                </div>
         </div>
     </div>
     <div class="titulo">Painel de aulas</div>
@@ -48,7 +32,7 @@
         <app-aula-filtro fxFlex="400px"></app-aula-filtro>
         
         <div fxFlex="100%" fxLayout="column" fxLayoutAlign="space-between center" class="container-aula-many">
-            <div fxFlex="100%" fxLayout="row wrap" fxLayoutAlign="start start" class="container-aulas">
+            <div fxFlex="100%" fxLayout="row wrap" fxLayoutAlign="start start" class="g-full-width">
                 <div *ngFor="let aula of this.pageAulaMany">
                     <div fxLayout="column" fxLayoutAlign="space-between space-between" class="g-card card-aula">
                         <div class="g-card-titulo card-titulo">{{ aula.titulo }}</div>
@@ -110,3 +94,7 @@
         </div>
     </div>
 </div>
+
+<ng-template #loading>
+    Carregando
+</ng-template>

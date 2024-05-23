@@ -1,0 +1,1 @@
+export * from './area-fisica-divisao.model';
