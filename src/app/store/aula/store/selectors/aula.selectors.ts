@@ -10,6 +10,7 @@ import {
 } from 'src/app/models';
 
 import * as areaFisicaFeature from '../../../area-fisica/store';
+import * as headerFeature from '../../../header/store';
 import * as tagFeature from '../../../tag/store';
 
 import moment from 'moment';
@@ -122,9 +123,11 @@ export const getManyAulaByProfessorId = (professorId: number) => createSelector(
   }
 )
 
-export const getManyAulaByAreaFisicaId = (areaFisicaId: number) => createSelector(
-  getManyAulaByFilter, (
+export const getManyAulaByAreaFisicaId = createSelector(
+  getManyAulaByFilter,
+  headerFeature.getAreaFisicaId, (
     aulaMany,
+    areaFisicaId: number
   ): AulaModel[] => {
   let itens = aulaMany.filter(item => item.areaFisicaId == areaFisicaId);
 

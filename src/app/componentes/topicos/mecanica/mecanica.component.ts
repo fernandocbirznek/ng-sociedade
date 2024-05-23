@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 
@@ -10,6 +10,7 @@ import {
 } from 'src/app/models';
 
 import { 
+  getAreaFisicaId,
   getManyAreaFisicaDivisaoByAreaFisicaId,
   getManyAulaByAreaFisicaId,
   getOneAreaFisicaByAreaFisicaId,
@@ -37,12 +38,14 @@ export class MecanicaComponent implements OnInit {
   aulaMany$: Observable<AulaModel[]> = new Observable<AulaModel[]>();
   aulaMany: AulaModel[] = [];
 
+  headerAreaFisicaIdSubscription$: Subscription = new Subscription();
+  headerAreaFisicaId$: Observable<number> = new Observable<number>();
+  headerAreaFisicaId: number = 0;
+
   pageAulaMany: AulaModel[] = [];
   pageSize: number = 4;
   pageMax: number = 1;
   pageAtual: number = 0;
-
-  areaFisicaId: number = 0;
 
   constructor(
     public store: Store,
@@ -53,6 +56,7 @@ export class MecanicaComponent implements OnInit {
     this.setupAreaFisica();
     this.setupAreaFisicaDivisao();
     this.setupAula();
+    this.setupAreaFisicaId();
   }
 
   ngOnDestroy(): void {
@@ -79,9 +83,6 @@ export class MecanicaComponent implements OnInit {
   }
 
   setupAreaFisicaDivisao() {
-    //TODO, colocar no resolver
-    this.store.dispatch(selecionarManyAreaFisicaDivisaoByAreaFisicaId({ areaFisicaId: this.areaFisicaId}));
-
     this.areaFisicaDivisaoMany$ = this.store.select(getManyAreaFisicaDivisaoByAreaFisicaId);
     this.areaFisicaDivisaoManySubscription$ = this.areaFisicaDivisaoMany$.subscribe(itens => {
       this.areaFisicaDivisaoMany = itens;
@@ -89,13 +90,18 @@ export class MecanicaComponent implements OnInit {
   }
 
   setupAula() {
-    //TODO, colocar no resolver
-    this.store.dispatch(selecionarManyAulaByAreaFisicaId({ areaFisicaId: this.areaFisicaId}));
-
-    this.aulaMany$ = this.store.select(getManyAulaByAreaFisicaId(this.areaFisicaId));
+    this.aulaMany$ = this.store.select(getManyAulaByAreaFisicaId);
     this.aulaManySubscription$ = this.aulaMany$.subscribe(itens => {
       this.aulaMany = itens;
       this.setupPage();
+    });
+  }
+
+  setupAreaFisicaId() {
+    this.headerAreaFisicaId$ = this.store.select(getAreaFisicaId);
+    this.headerAreaFisicaIdSubscription$ = this.headerAreaFisicaId$.subscribe(item => {
+      this.store.dispatch(selecionarManyAulaByAreaFisicaId({ areaFisicaId: item}));
+      this.store.dispatch(selecionarManyAreaFisicaDivisaoByAreaFisicaId({ areaFisicaId: item}));
     });
   }
 

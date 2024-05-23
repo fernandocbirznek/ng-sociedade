@@ -54,7 +54,7 @@ export class TermodinamicaComponent implements OnInit {
     //TODO, colocar no resolver
     this.store.dispatch(selecionarManyAulaByAreaFisicaId({ areaFisicaId: this.areaFisicaId}));
 
-    this.aulaMany$ = this.store.select(getManyAulaByAreaFisicaId(this.areaFisicaId));
+    this.aulaMany$ = this.store.select(getManyAulaByAreaFisicaId);
     this.aulaManySubscription$ = this.aulaMany$.subscribe(itens => {
       this.aulaMany = itens;
       this.setupPage();
