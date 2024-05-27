@@ -38,11 +38,15 @@
                         <div class="g-card-titulo card-titulo">{{ aula.titulo }}</div>
                         <div fxLayout="column" fxLayoutAlign="space-between start" class="g-card-icone-many card-icone-many">
                             <div fxLayout="row" fxLayoutAlign="start center" class="g-full-width">
-                                <mat-icon fxFlex="25px" class="icone material-symbols-outlined">thumb_up</mat-icon>
+                                <mat-icon fxFlex="25px" class="icone material-symbols-outlined" [ngClass]="{'icone-ativo': aula.usuarioLogadoCurtiu}">
+                                    thumb_up
+                                </mat-icon>
                                 <div fxFlex="100%" fxLayoutAlign="center center">{{ aula.curtido }}</div>
                             </div>
                             <div fxLayout="row" fxLayoutAlign="start center" class="g-full-width">
-                                <mat-icon fxFlex="25px" class="icone material-symbols-outlined">star</mat-icon>
+                                <mat-icon fxFlex="25px" class="icone material-symbols-outlined" [ngClass]="{'icone-ativo': aula.usuarioLogadoFavoritada}">
+                                    star
+                                </mat-icon>
                                 <div fxFlex="100%" fxLayoutAlign="center center">{{ aula.favoritado }}</div>
                             </div>
                             <div fxLayout="row" fxLayoutAlign="start center" class="g-full-width">

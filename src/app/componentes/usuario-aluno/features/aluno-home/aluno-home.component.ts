@@ -12,7 +12,7 @@ import {
 } from 'src/app/models';
 
 import { 
-  getOneUsuarioLogado 
+  getOneUsuarioLogado
 } from 'src/app/store';
 
 @Component({
@@ -23,7 +23,7 @@ import {
 export class AlunoHomeComponent implements OnInit {
 
   usuarioLogadoSubscription$: Subscription = new Subscription();
-  usuarioLogado$: Observable<UsuarioModel> = new Observable<UsuarioModel>();
+  usuarioLogado$: Observable<UsuarioModel | undefined> = new Observable<UsuarioModel | undefined>();
   usuarioLogado: UsuarioModel | undefined = undefined ;
 
   constructor(

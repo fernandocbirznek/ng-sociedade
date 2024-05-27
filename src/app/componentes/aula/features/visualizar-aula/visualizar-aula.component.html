@@ -1,80 +1,106 @@
-<div fxLayout="column">
-    <div fxLayout="row" fxLayoutAlign="space-between center">
-        <div fxLayout="row" fxLayoutAlign="start center">
-            <div class="g-dot-mecanica"></div>
-            <div class="titulo">Mecânica</div>
-        </div>
-        <div fxLayout="row" fxLayoutAlign="center center" class="container-voltar" (click)="voltarPaginaMecanica()">
-            <mat-icon class="material-symbols-outlined">undo</mat-icon>
-            <span>Voltar</span>
-        </div>
+<div fxLayout="column" class="container-aula">
+    <div fxLayout="row" fxLayoutAlign="center center" class="container-voltar" (click)="voltarPaginaMecanica()">
+        <mat-icon class="material-symbols-outlined">undo</mat-icon>
+        <span>Voltar</span>
     </div>
-    
-    <div class="titulo-aula">{{ this.aula.titulo }}</div>
 
-    <div fxLayout="column" fxLayoutAlign="center end">
-        <div class="aula-autor" (click)="visualizarPerfil()">
-            Nome do professor
-        </div>
-        <div class="aula-data-cadastro">{{ this.aula.dataCadastro | date : 'dd/MM/yyyy HH:mm' }}</div>
-        <div fxLayout="row" fxLayoutAlign="space-between center" class="container-icones">
-            <div fxLayout="row" fxLayoutAlign="space-between center" class="icone" (click)="curtirAula()">
-                <mat-icon class="material-symbols-outlined">thumb_up</mat-icon>
-                <div>{{ this.aula.curtido }}</div>
+    <div fxLayout="row" fxLayoutAlign="start start" class="g-card card">
+        <div class="g-card-titulo">Informações da aula</div>
+        <div fxLayout="column" fxLayoutAlign="space-between start" class="g-card-icone-many">
+            <div *ngIf="!this.usuarioAulaCurtido" fxLayout="row" fxLayoutAlign="start center" class="g-full-width" 
+                [ngClass]="{'g-disable-event': !this.usuarioLogado}" (click)="curtirAula()">
+                <mat-icon fxFlex="25px" class="icone material-symbols-outlined" [ngClass]="{'g-disable-event': !this.usuarioLogado}">
+                    thumb_up
+                </mat-icon>
+                <div fxFlex="100%" fxLayoutAlign="center center">{{ aula.curtido }}</div>
             </div>
-            <div fxLayout="row" fxLayoutAlign="space-between center" class="icone" (click)="favoritarAula()">
-                <mat-icon class="material-symbols-outlined">star</mat-icon>
-                <div>{{ this.aula.favoritado }}</div>
+            <div *ngIf="this.usuarioAulaCurtido" fxLayout="row" fxLayoutAlign="start center" class="g-full-width" 
+                (click)="removerCurtirAula()">
+                <mat-icon fxFlex="25px" class="icone icone-curtido material-symbols-outlined">thumb_up</mat-icon>
+                <div fxFlex="100%" fxLayoutAlign="center center">{{ aula.curtido }}</div>
+            </div>
+            <div *ngIf="!this.usuarioAulaFavoritada" fxLayout="row" fxLayoutAlign="start center" class="g-full-width" 
+                [ngClass]="{'g-disable-event': !this.usuarioLogado}" (click)="favoritarAula()">
+                <mat-icon fxFlex="25px" class="icone material-symbols-outlined" [ngClass]="{'g-disable-event': !this.usuarioLogado}">star</mat-icon>
+                <div fxFlex="100%" fxLayoutAlign="center center">{{ aula.favoritado }}</div>
+            </div>
+            <div *ngIf="this.usuarioAulaFavoritada" fxLayout="row" fxLayoutAlign="start center" class="g-full-width" 
+                (click)="removerAulaFavoritada()">
+                <mat-icon fxFlex="25px" class="icone icone-curtido material-symbols-outlined">star</mat-icon>
+                <div fxFlex="100%" fxLayoutAlign="center center">{{ aula.favoritado }}</div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start center" class="g-full-width">
+                <mat-icon fxFlex="25px" class="icone-chat material-symbols-outlined" 
+                    [ngClass]="{'icone-curtido': this.isUsuarioAulaComentado}">
+                    chat
+                </mat-icon>
+                <div fxFlex="100%" fxLayoutAlign="center center">{{ aula.aulaComentarioMany.length }}</div>
+            </div>
+        </div>
+        <div *ngIf="this.usuarioLogado && this.usuarioLogado.tipoUsuario == 1" class="g-card-tags card-tags">
+            <div *ngIf="this.usuarioLogado && this.usuarioLogado.tipoUsuario == 1" fxLayout="row" fxLayoutAlign="start center" 
+                class="container-salvar-aula">
+                <span>salvar em:</span>
+                <div class="salvar-aula para-cursar" [ngClass]="{'para-cursar-selecionado': this.widgetCursar }" 
+                    (click)="cursar()">
+                    Para cursar
+                </div>
+                <div class="salvar-aula cursando"  [ngClass]="{'para-cursando-selecionado': this.widgetCursando }" 
+                    (click)="cursando()">
+                    Cursando
+                </div>
+                <div class="salvar-aula concluido" [ngClass]="{'para-concluido-selecionado': this.widgetConcluido }" 
+                    (click)="concluido()">
+                    Concluído
+                </div>
+            </div>
+        </div>
+        <div fxLayout="column" fxLayoutAlign="start center">
+            <div class="aula-autor" (click)="visualizarPerfil()">Nome do professor</div>
+            <div>Foto professor</div>
+        </div>
+        <div fxLayout="column" fxLayoutAlign="start start">
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <span class="aula-informacao">Data cadastro: </span>
+                <div class="informacao">{{ this.aula.dataCadastro | date : 'dd/MM/yyyy HH:mm' }}</div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <span class="aula-informacao">Resumo: </span>
+                <div class="informacao">{{ this.aula.resumo }}</div>
             </div>
         </div>
     </div>
 
-    <div *ngIf="this.usuarioLogado && this.usuarioLogado.tipoUsuario == 1" fxLayout="row" fxLayoutAlign="start center" 
-        class="container-salvar-aula">
-        <span>salvar em:</span>
-        <div class="salvar-aula para-cursar" [ngClass]="{'para-cursar-selecionado': this.widgetCursar }" 
-            (click)="cursar()">
-            Para cursar
-        </div>
-        <div class="salvar-aula cursando"  [ngClass]="{'para-cursando-selecionado': this.widgetCursando }" 
-            (click)="cursando()">
-            Cursando
-        </div>
-        <div class="salvar-aula concluido" [ngClass]="{'para-concluido-selecionado': this.widgetConcluido }" 
-            (click)="concluido()">
-            Concluído
-        </div>
-    </div>
-    
-    <fieldset class="g-fieldset">
-        <div class="g-fieldset-titulo">Resumo</div>
-        <div>{{ this.aula.resumo }}</div>
-    </fieldset>
-
-    <div *ngFor="let sessao of this.aula.aulaSessaoMany; index as i" fxLayout="column" class="container-sessao-many">
-        <div *ngIf="this.usuarioLogado && this.usuarioLogado.tipoUsuario != 0" class="salvar-sessao">
-            <div *ngIf="!this.usuarioAulaSessaoFavoritado.includes(sessao.id)" (click)="salvarSessaoFavoritado(sessao)"
-                matTooltip="Adicionar aos favoritos">
+    <div *ngFor="let sessao of this.aula.aulaSessaoMany; index as i" fxLayout="column" fxLayoutAlign="center center" 
+        class="g-card card-sessao">
+        <div class="g-card-titulo">{{ sessao.titulo }}</div>
+        <div *ngIf="this.usuarioLogado && this.usuarioLogado.tipoUsuario != 0" 
+            fxLayout="column" fxLayoutAlign="space-between start" class="g-card-icone-many" 
+            [ngClass]="{'card-icone-many': this.usuarioAulaSessaoFavoritado.includes(sessao.id)}">
+            <div *ngIf="!this.usuarioAulaSessaoFavoritado.includes(sessao.id)" fxLayoutAlign="center center" class="adicionar-favorito"
+                (click)="salvarSessaoFavoritado(sessao)" matTooltip="Adicionar aos favoritos">
                 <mat-icon class="material-symbols-outlined">bookmark_add</mat-icon>
             </div>
-            <div *ngIf="this.usuarioAulaSessaoFavoritado.includes(sessao.id)" (click)="removerSessaoFavoritado(sessao)"
-                matTooltip="Remover dos favoritos" class="sessao-favoritado">
+            <div *ngIf="this.usuarioAulaSessaoFavoritado.includes(sessao.id)"  fxLayoutAlign="center center" class="remover-favorito"
+                (click)="removerSessaoFavoritado(sessao)" matTooltip="Remover dos favoritos">
                 <mat-icon class="material-symbols-outlined">bookmark_added</mat-icon>
             </div>
         </div>
-        <div fxLayout="column" fxLayoutAlign="center center" class="titulo-sessao">
-            {{ sessao.titulo }}
+
+        <div *ngIf="sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Conceito" 
+            fxLayout="column" fxLayoutAlign="center center" class="conceito" [innerHTML]="this.trustedVisualizarAulaHtml[i]">
         </div>
-        <div *ngIf="sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Conceito || sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Texto" 
+        <div *ngIf="sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Texto" 
             fxLayout="column" fxLayoutAlign="center center" [innerHTML]="this.trustedVisualizarAulaHtml[i]">
         </div>
         <div *ngIf="sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Equacao"> 
             <ng-katex [equation]="sessao.conteudo"></ng-katex>
         </div>
-        <div *ngIf="sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Imagem">
-            <img fxFlex="100%" [src]="this.trustedUrlImageHtml[i]" alt="Imagem" class="imagem">
+        <div *ngIf="sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Imagem" fxLayoutAlign="center start">
+            <img [src]="this.trustedUrlImageHtml[i]" alt="Imagem" class="imagem">
         </div>
     </div>
+ 
     <div fxLayout="column" class="container-comentario-cards">
         <div class="text-comentarios">Comentários</div>
         <div *ngIf="this.usuarioLogado && this.usuarioLogado.tipoUsuario != 0 && !escreverComentario" fxLayout="column" 
@@ -94,7 +120,7 @@
             </div>
         </div>
         <div fxLayout="row wrap" class="g-gap-20">
-            <div *ngFor="let aulaComentario of  this.aulaComentarioMany; index as i" fxLayout="row wrap" 
+            <div *ngFor="let aulaComentario of this.aulaComentarioMany; index as i" fxLayout="row wrap" 
                 class="container-comentario-many">
                 <div fxLayout="row" fxLayoutAlign="space-between start" class="container-comentario">
                     <div class="comentario-data-cadastro">
@@ -116,8 +142,10 @@
                         <div>Nome</div>
                     </div>
                     <div fxFlex="1px" class="divisoria"></div>
-                    <div fxFlex="100%" fxLayout="column" fxLayoutAlign="start center" class="comentario"
-                        [innerHTML]="this.trustedAulaComentarioHtml[i]">
+                    <div fxFlex="100%" class="container-comentario-usuario">
+                        <div fxFlex="100%" fxLayout="column" fxLayoutAlign="start center" class="comentario"
+                            [innerHTML]="this.trustedAulaComentarioHtml[i]">
+                        </div>
                     </div>
                 </div>
             </div>

@@ -13,6 +13,8 @@ export * from './forum-topico-resposta';
 export * from './manipular-conta';
 export * from './noticia';
 export * from './noticia-area-interesse';
+export * from './usuario-aula-curtido';
+export * from './usuario-aula-favoritada';
 export * from './tag';
 export * from './usuario';
 export * from './usuario-area-interesse';

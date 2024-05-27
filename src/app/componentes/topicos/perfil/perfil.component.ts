@@ -27,7 +27,7 @@ import {
 })
 export class PerfilComponent implements OnInit {
 
-  usuarioLogado$: Observable<UsuarioModel>;
+  usuarioLogado$: Observable<UsuarioModel | undefined>;
   conta: any;
 
   constructor(
@@ -38,7 +38,8 @@ export class PerfilComponent implements OnInit {
   ) { 
     this.usuarioLogado$ = this.store.select(getOneUsuarioLogado);
     this.usuarioLogado$.subscribe(item => {
-      this.conta = item;
+      if (item)
+        this.conta = item;
     })
   }
 

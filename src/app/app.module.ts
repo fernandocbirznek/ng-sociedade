@@ -27,7 +27,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 import { 
   HeaderComponent, FooterComponent, MecanicaUmComponent, AppRoutingModuleMecanica, MecanicaDoisComponent, 
-  MecanicaTresComponent, HomeComponent, MecanicaComponent, TermodinamicaComponent, LoginCriarContaComponent,
+  MecanicaTresComponent, HomeComponent, MecanicaComponent, LoginCriarContaComponent,
   EquipeContatoComponent, ForumComponent, PerfilComponent,
   MecanicaQuatroComponent, AulaTresExercicioComponent, PerfilRoutingModule, ToastComponent, ModalExcluirComponent,
   CriarContaComponent, CriarPerfilComponent, UsuarioInformacaoComponent, PerfilProfessorRoutingModule, ProfessorHomeComponent,
@@ -113,7 +113,6 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     FooterComponent,
     HomeComponent,
     MecanicaComponent,
-    TermodinamicaComponent,
     CriarContaComponent,
     LoginCriarContaComponent,
     EquipeContatoComponent,

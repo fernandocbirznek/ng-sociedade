@@ -5,6 +5,8 @@ import {
   DeletarConta, 
   Login,
   UsuarioAreaInteresseModel,
+  UsuarioAulaCurtidoModel,
+  UsuarioAulaFavoritadaModel,
   UsuarioModel,
   UsuarioNoticiaFavoritadoModel,
   UsuarioPerfilModel
@@ -163,5 +165,112 @@ export const removerUsuarioNoticiaFavoritadoSuccess = createAction(
 
 export const removerUsuarioNoticiaFavoritadoFailure = createAction(
   '[UsuarioNoticiaFavoritado] removerUsuarioNoticiaFavoritado Failure',
+  props<{ error: any }>()
+);
+
+
+
+export const selecionarManyUsuarioAulaCurtido = createAction(
+  '[UsuarioAulaCurtido] selecionarManyUsuarioAulaCurtido',
+  props<{ usuarioId: number }>()
+);
+
+export const selecionarManyUsuarioAulaCurtidoSuccess = createAction(
+  '[UsuarioAulaCurtido] selecionarManyUsuarioAulaCurtido Success',
+  props<{ 
+    response: UsuarioAulaCurtidoModel[],
+  }>()
+);
+
+export const selecionarManyUsuarioAulaCurtidoFailure = createAction(
+  '[UsuarioAulaCurtido] selecionarManyUsuarioAulaCurtido Failure',
+  props<{ error: any }>()
+);
+
+export const inserirUsuarioAulaCurtido = createAction(
+  '[UsuarioAulaCurtido] inserirUsuarioAulaCurtido',
+  props<{ usuarioAulaCurtido: UsuarioAulaCurtidoModel }>()
+);
+
+export const inserirUsuarioAulaCurtidoSuccess = createAction(
+  '[UsuarioAulaCurtido] inserirUsuarioAulaCurtido Success',
+  props<{ 
+    response: UsuarioAulaCurtidoModel,
+  }>()
+);
+
+export const inserirUsuarioAulaCurtidoFailure = createAction(
+  '[UsuarioAulaCurtido] inserirUsuarioAulaCurtido Failure',
+  props<{ error: any }>()
+);
+
+export const removerUsuarioAulaCurtido = createAction(
+  '[UsuarioAulaCurtido] removerUsuarioAulaCurtido',
+  props<{ usuarioAulaCurtido: UsuarioAulaCurtidoModel }>()
+);
+
+export const removerUsuarioAulaCurtidoSuccess = createAction(
+  '[UsuarioAulaCurtido] removerUsuarioAulaCurtido Success',
+  props<{ 
+    response: number,
+  }>()
+);
+
+export const removerUsuarioAulaCurtidoFailure = createAction(
+  '[UsuarioAulaCurtido] removerUsuarioAulaCurtido Failure',
+  props<{ error: any }>()
+);
+
+
+
+
+export const selecionarManyUsuarioAulaFavoritada = createAction(
+  '[UsuarioAulaFavoritada] selecionarManyUsuarioAulaFavoritada',
+  props<{ usuarioId: number }>()
+);
+
+export const selecionarManyUsuarioAulaFavoritadaSuccess = createAction(
+  '[UsuarioAulaFavoritada] selecionarManyUsuarioAulaFavoritada Success',
+  props<{ 
+    response: UsuarioAulaFavoritadaModel[],
+  }>()
+);
+
+export const selecionarManyUsuarioAulaFavoritadaFailure = createAction(
+  '[UsuarioAulaFavoritada] selecionarManyUsuarioAulaFavoritada Failure',
+  props<{ error: any }>()
+);
+
+export const inserirUsuarioAulaFavoritada = createAction(
+  '[UsuarioAulaFavoritada] inserirUsuarioAulaFavoritada',
+  props<{ usuarioAulaFavoritada: UsuarioAulaFavoritadaModel }>()
+);
+
+export const inserirUsuarioAulaFavoritadaSuccess = createAction(
+  '[UsuarioAulaFavoritada] inserirUsuarioAulaFavoritada Success',
+  props<{ 
+    response: UsuarioAulaCurtidoModel,
+  }>()
+);
+
+export const inserirUsuarioAulaFavoritadaFailure = createAction(
+  '[UsuarioAulaFavoritada] inserirUsuarioAulaFavoritada Failure',
+  props<{ error: any }>()
+);
+
+export const removerUsuarioAulaFavoritada = createAction(
+  '[UsuarioAulaFavoritada] removerUsuarioAulaFavoritada',
+  props<{ usuarioAulaFavoritada: UsuarioAulaFavoritadaModel }>()
+);
+
+export const removerUsuarioAulaFavoritadaSuccess = createAction(
+  '[UsuarioAulaFavoritada] removerUsuarioAulaFavoritada Success',
+  props<{ 
+    response: number,
+  }>()
+);
+
+export const removerUsuarioAulaFavoritadaFailure = createAction(
+  '[UsuarioAulaFavoritada] removerUsuarioAulaFavoritada Failure',
   props<{ error: any }>()
 );

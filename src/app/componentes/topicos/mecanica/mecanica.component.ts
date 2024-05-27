@@ -6,10 +6,12 @@ import { Observable, Subscription } from 'rxjs';
 import { 
   AreaFisicaDivisaoModel,
   AreaFisicaModel,
-  AulaModel 
+  AulaModel, 
+  AulaViewModel
 } from 'src/app/models';
 
 import { 
+  alterarTituloPagina,
   getAreaFisicaId,
   getManyAreaFisicaDivisaoByAreaFisicaId,
   getManyAulaByAreaFisicaId,
@@ -35,14 +37,14 @@ export class MecanicaComponent implements OnInit {
   areaFisicaDivisaoMany: AreaFisicaDivisaoModel[] = [];
 
   aulaManySubscription$: Subscription = new Subscription();
-  aulaMany$: Observable<AulaModel[]> = new Observable<AulaModel[]>();
-  aulaMany: AulaModel[] = [];
+  aulaMany$: Observable<AulaViewModel[]> = new Observable<AulaViewModel[]>();
+  aulaMany: AulaViewModel[] = [];
 
   headerAreaFisicaIdSubscription$: Subscription = new Subscription();
   headerAreaFisicaId$: Observable<number> = new Observable<number>();
   headerAreaFisicaId: number = 0;
 
-  pageAulaMany: AulaModel[] = [];
+  pageAulaMany: AulaViewModel[] = [];
   pageSize: number = 4;
   pageMax: number = 1;
   pageAtual: number = 0;
@@ -111,6 +113,7 @@ export class MecanicaComponent implements OnInit {
   }
 
   visualizarAula(item: AulaModel) {
+    this.store.dispatch(alterarTituloPagina({ titulo: `${item.titulo}`, areaFisicaId: item.areaFisicaId }));
     this.router.navigate([`visualizar-aula/${item.id}`]);
   }
 }

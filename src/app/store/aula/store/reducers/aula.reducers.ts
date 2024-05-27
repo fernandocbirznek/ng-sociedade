@@ -486,4 +486,141 @@ export const aulaReducer = createReducer(
       mensagem: "Erro ao excluir aula"
     };
   }),
+
+
+  on(actions.atualizarAdicaoAulaCurtido, (state, action) => {
+    let itens = [...state.aulas].map(item => {
+        if(item.id == action.aulaId) {
+          let aula = new AulaModel();
+          aula.areaFisicaId = item.areaFisicaId;
+          aula.curtido = item.curtido + 1;
+          aula.favoritado = item.favoritado;
+          aula.id = item.id;
+          aula.professorId = item.professorId;
+          aula.resumo = item.resumo;
+          aula.titulo = item.titulo;
+          aula.areaFisicaDescricao = item.areaFisicaDescricao;
+          aula.aulaComentarioMany = item.aulaComentarioMany;
+          aula.aulaSessaoMany = item.aulaSessaoMany;
+          aula.aulaTagMany = item.aulaTagMany;
+          aula.comentario = item.comentario;
+          aula.dataAtualizacao = item.dataCadastro;
+          aula.professorNome = item.professorNome;
+
+          return aula;
+        }
+        return item;
+    });
+    
+    return { 
+        ...state, 
+        aulas: itens,
+        isLoading: false, 
+        isSuccess: true, 
+        isFailure: false, 
+        error: ""
+    };
+  }),
+  on(actions.atualizarRemocaoAulaCurtido, (state, action) => {
+    let itens = [...state.aulas].map(item => {
+        if(item.id == action.aulaId) {
+          let aula = new AulaModel();
+          aula.areaFisicaId = item.areaFisicaId;
+          aula.curtido = item.curtido -1;
+          aula.favoritado = item.favoritado;
+          aula.id = item.id;
+          aula.professorId = item.professorId;
+          aula.resumo = item.resumo;
+          aula.titulo = item.titulo;
+          aula.areaFisicaDescricao = item.areaFisicaDescricao;
+          aula.aulaComentarioMany = item.aulaComentarioMany;
+          aula.aulaSessaoMany = item.aulaSessaoMany;
+          aula.aulaTagMany = item.aulaTagMany;
+          aula.comentario = item.comentario;
+          aula.dataAtualizacao = item.dataCadastro;
+          aula.professorNome = item.professorNome;
+
+          return aula;
+        }
+        return item;
+    });
+    
+    return { 
+        ...state, 
+        aulas: itens,
+        isLoading: false, 
+        isSuccess: true, 
+        isFailure: false, 
+        error: ""
+    };
+  }),
+
+
+
+  on(actions.atualizarAdicaoAulaFavoritada, (state, action) => {
+    let itens = [...state.aulas].map(item => {
+        if(item.id == action.aulaId) {
+          let aula = new AulaModel();
+          aula.areaFisicaId = item.areaFisicaId;
+          aula.curtido = item.curtido;
+          aula.favoritado = item.favoritado + 1;
+          aula.id = item.id;
+          aula.professorId = item.professorId;
+          aula.resumo = item.resumo;
+          aula.titulo = item.titulo;
+          aula.areaFisicaDescricao = item.areaFisicaDescricao;
+          aula.aulaComentarioMany = item.aulaComentarioMany;
+          aula.aulaSessaoMany = item.aulaSessaoMany;
+          aula.aulaTagMany = item.aulaTagMany;
+          aula.comentario = item.comentario;
+          aula.dataAtualizacao = item.dataCadastro;
+          aula.professorNome = item.professorNome;
+
+          return aula;
+        }
+        return item;
+    });
+    
+    return { 
+        ...state, 
+        aulas: itens,
+        isLoading: false, 
+        isSuccess: true, 
+        isFailure: false, 
+        error: ""
+    };
+  }),
+  on(actions.atualizarRemocaoAulaFavoritada, (state, action) => {
+    let itens = [...state.aulas].map(item => {
+        if(item.id == action.aulaId) {
+          let aula = new AulaModel();
+          aula.areaFisicaId = item.areaFisicaId;
+          aula.curtido = item.curtido;
+          aula.favoritado = item.favoritado - 1;
+          aula.id = item.id;
+          aula.professorId = item.professorId;
+          aula.resumo = item.resumo;
+          aula.titulo = item.titulo;
+          aula.areaFisicaDescricao = item.areaFisicaDescricao;
+          aula.aulaComentarioMany = item.aulaComentarioMany;
+          aula.aulaSessaoMany = item.aulaSessaoMany;
+          aula.aulaTagMany = item.aulaTagMany;
+          aula.comentario = item.comentario;
+          aula.dataAtualizacao = item.dataCadastro;
+          aula.professorNome = item.professorNome;
+
+          return aula;
+        }
+        return item;
+    });
+    
+    return { 
+        ...state, 
+        aulas: itens,
+        isLoading: false, 
+        isSuccess: true, 
+        isFailure: false, 
+        error: ""
+    };
+  }),
 );

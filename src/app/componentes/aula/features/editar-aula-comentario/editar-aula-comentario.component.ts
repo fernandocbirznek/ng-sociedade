@@ -50,10 +50,9 @@ export class EditarAulaComentarioComponent implements OnInit {
   editarComentario() {
     let aulaComentario: AulaComentarioModel = new AulaComentarioModel();
     aulaComentario.id = this.data.aulaComentario.id;
-    aulaComentario.aulaId = this.data.aulaComentario.id;
+    aulaComentario.aulaId = this.data.aulaComentario.aulaId;
     aulaComentario.usuarioId = this.data.usuarioLogado.id;
     aulaComentario.descricao = this.formComentario.get("comentario")?.value;
-    console.log("request = ", aulaComentario);
     this.store.dispatch(atualizarAulaComentario({ aulaComentario: aulaComentario }));
     this.dialogRef.close();
   }

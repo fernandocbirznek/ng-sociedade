@@ -49,7 +49,7 @@ export class EditarAulaComponent implements OnInit {
   aulaSessaoMany: AulaSessaoModel[] = [];
 
   usuarioLogadoSubscription$: Subscription = new Subscription();
-  usuarioLogado$: Observable<UsuarioModel> = new Observable<UsuarioModel>();
+  usuarioLogado$: Observable<UsuarioModel | undefined> = new Observable<UsuarioModel | undefined>();
   usuarioLogado: UsuarioModel | undefined = undefined;
 
   trustedDashboardHtml : SafeHtml[] = [];

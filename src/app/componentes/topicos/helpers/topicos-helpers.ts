@@ -1,10 +1,10 @@
 import { 
-    AulaModel,
+    AulaViewModel,
     TipoOrdenarAulaFiltroEnum 
 } from "src/app/models";
 
 export class TopicoHelpers {
-    static ordernarByTipoAulaFiltroEnum(itens: AulaModel[], tipoEnum: TipoOrdenarAulaFiltroEnum): AulaModel[] {
+    static ordernarByTipoAulaFiltroEnum(itens: AulaViewModel[], tipoEnum: TipoOrdenarAulaFiltroEnum): AulaViewModel[] {
         switch (tipoEnum) {
             case TipoOrdenarAulaFiltroEnum.Curtida:
                 return itens.sort((a, b) => { 

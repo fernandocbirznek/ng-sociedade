@@ -2,8 +2,11 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as fromAulaComentario from '../reducers/aula-comentario.reducers';
 
 import { 
-  AulaComentarioModel 
+  AulaComentarioModel, 
+  UsuarioModel
 } from 'src/app/models';
+
+import * as manipularContaFeature from '../../../manipular-conta/store';
 
 export const getAulaComentarioState = createFeatureSelector<fromAulaComentario.AulaComentarioState>(
     fromAulaComentario.aulaComentarioFeatureKey
@@ -19,5 +22,19 @@ export const getManyAulaComentarioByAulaId = (aulaId: number) => createSelector(
   ) => {
 
     return aulaComentarioMany.filter(item => item.aulaId == aulaId);
+  }
+)
+
+export const getIsUsuarioLogadoAulaComentario = createSelector(
+    getAulaComentarioMany,
+    manipularContaFeature.getOneUsuarioLogado, (
+    aulaComentarioMany: AulaComentarioModel[],
+    usuarioLogado: UsuarioModel | undefined
+  ): boolean => {
+
+    if (usuarioLogado)
+      return aulaComentarioMany.some(item => item.usuarioId == usuarioLogado.id);
+
+    return false;
   }
 )

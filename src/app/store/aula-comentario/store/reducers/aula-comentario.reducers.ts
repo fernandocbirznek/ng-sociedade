@@ -112,11 +112,11 @@ export const aulaComentarioReducer = createReducer(
     let itens = [...state.itens].map(item => {
       if(item.id == action.aulaComentario.id) {
         let aulaComentario: AulaComentarioModel = new AulaComentarioModel();
-        aulaComentario.dataCadastro = action.aulaComentario.dataCadastro;
+        aulaComentario.dataCadastro = item.dataCadastro;
         aulaComentario.dataAtualizacao = action.response.dataAtualizacao;
         aulaComentario.aulaId = action.aulaComentario.aulaId;
         aulaComentario.descricao = action.aulaComentario.descricao;
-        aulaComentario.id = action.response.id;
+        aulaComentario.id = item.id;
         aulaComentario.usuarioId = action.aulaComentario.usuarioId;
 
         return aulaComentario;

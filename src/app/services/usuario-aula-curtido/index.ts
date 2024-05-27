@@ -1,0 +1,1 @@
+export * from './usuario-aula-curtido.service';

@@ -33,7 +33,7 @@ export class AtualizarForumTopicoComponent implements OnInit {
   formTipoTopico = new FormControl('', [Validators.required]);
 
   usuarioLogadoSubscription$: Subscription = new Subscription();
-  usuarioLogado$: Observable<UsuarioModel> = new Observable<UsuarioModel>();
+  usuarioLogado$: Observable<UsuarioModel | undefined> = new Observable<UsuarioModel | undefined>();
   usuarioLogado: UsuarioModel | undefined = undefined ;
 
   forumTagManySubscription$: Subscription = new Subscription();

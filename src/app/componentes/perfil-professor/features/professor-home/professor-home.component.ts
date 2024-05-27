@@ -23,7 +23,7 @@ import {
 export class ProfessorHomeComponent implements OnInit {
 
   usuarioLogadoSubscription$: Subscription = new Subscription();
-  usuarioLogado$: Observable<UsuarioModel> = new Observable<UsuarioModel>();
+  usuarioLogado$: Observable<UsuarioModel | undefined> = new Observable<UsuarioModel | undefined>();
   usuarioLogado: UsuarioModel | undefined = undefined ;
 
   constructor(

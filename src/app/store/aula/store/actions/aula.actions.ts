@@ -191,3 +191,27 @@ export const excluirAulaTagFailure = createAction(
   '[AulaTag] excluirAulaTag Failure',
   props<{ error: any }>()
 );
+
+
+
+export const atualizarAdicaoAulaCurtido = createAction(
+  '[AulaCurtido] atualizarAdicaoAulaCurtido',
+  props<{ aulaId: number }>()
+);
+
+export const atualizarRemocaoAulaCurtido = createAction(
+  '[AulaCurtido] atualizarRemocaoAulaCurtido',
+  props<{ aulaId: number }>()
+);
+
+
+
+export const atualizarAdicaoAulaFavoritada = createAction(
+  '[AulaFavoritada] atualizarAdicaoAulaFavoritada',
+  props<{ aulaId: number }>()
+);
+
+export const atualizarRemocaoAulaFavoritada = createAction(
+  '[AulaFavoritada] atualizarRemocaoAulaFavoritada',
+  props<{ aulaId: number }>()
+);

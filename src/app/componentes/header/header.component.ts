@@ -40,7 +40,7 @@ export class HeaderComponent implements OnInit {
   headerTitulo: string = 'Home';
 
   usuarioLogadoSubscription$: Subscription = new Subscription();
-  usuarioLogado$: Observable<UsuarioModel> = new Observable<UsuarioModel>();
+  usuarioLogado$: Observable<UsuarioModel | undefined> = new Observable<UsuarioModel | undefined>();
   usuarioLogado: UsuarioModel | undefined = undefined;
   
   public imagem: string = "../../../assets/imagens/header/home.png";

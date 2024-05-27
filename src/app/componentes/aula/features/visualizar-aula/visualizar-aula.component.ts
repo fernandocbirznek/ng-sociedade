@@ -17,6 +17,8 @@ import {
   AulaModel, 
   AulaSessaoModel, 
   TipoSessaoAulaEnum, 
+  UsuarioAulaCurtidoModel, 
+  UsuarioAulaFavoritadaModel, 
   UsuarioAulaSessaoFavoritadoModel, 
   UsuarioModel, 
   WidgetModel,
@@ -24,18 +26,24 @@ import {
 } from 'src/app/models';
 
 import { 
-  atualizarAulaCurtir, 
   excluirAulaComentario, 
+  getIsUsuarioAulaCurtida, 
+  getIsUsuarioAulaFavoritada, 
+  getIsUsuarioLogadoAulaComentario, 
   getManyAulaComentarioByAulaId, 
   getManySessaoIdInUsuarioAulaSessaoFavoritado, 
   getOneAulaById, 
   getOneUsuarioLogado, 
   getWidgetMany, 
   inserirAulaComentario, 
+  inserirUsuarioAulaCurtido, 
+  inserirUsuarioAulaFavoritada, 
   inserirUsuarioAulaSessaoFavoritado, 
   inserirWidgetConcluido, 
   inserirWidgetCursando, 
   inserirWidgetCursar, 
+  removerUsuarioAulaCurtido, 
+  removerUsuarioAulaFavoritada, 
   removerUsuarioAulaSessaoFavoritado, 
   removerWidgetConcluido, 
   removerWidgetCursando, 
@@ -61,12 +69,24 @@ export class VisualizarAulaComponent implements OnInit {
   aulaComentarioMany$: Observable<AulaComentarioModel[]> = new Observable<AulaComentarioModel[]>();
   aulaComentarioMany: AulaComentarioModel[] = [];
 
+  isUsuarioAulaComentadoSubscription$: Subscription = new Subscription();
+  isUsuarioAulaComentado$: Observable<boolean> = new Observable<boolean>();
+  isUsuarioAulaComentado: boolean = false;
+
+  usuarioAulaCurtidoSubscription$: Subscription = new Subscription();
+  usuarioAulaCurtido$: Observable<UsuarioAulaCurtidoModel | undefined> = new Observable<UsuarioAulaCurtidoModel | undefined>();
+  usuarioAulaCurtido: UsuarioAulaCurtidoModel | undefined = undefined;
+
+  usuarioAulaFavoritadaSubscription$: Subscription = new Subscription();
+  usuarioAulaFavoritada$: Observable<UsuarioAulaFavoritadaModel | undefined> = new Observable<UsuarioAulaFavoritadaModel | undefined>();
+  usuarioAulaFavoritada: UsuarioAulaFavoritadaModel | undefined = undefined;
+
   usuarioAulaSessaoFavoritadoSubscription$: Subscription = new Subscription();
   usuarioAulaSessaoFavoritado$: Observable<number[]> = new Observable<number[]>();
   usuarioAulaSessaoFavoritado: number[] = [];
 
   usuarioLogadoSubscription$: Subscription = new Subscription();
-  usuarioLogado$: Observable<UsuarioModel> = new Observable<UsuarioModel>();
+  usuarioLogado$: Observable<UsuarioModel | undefined> = new Observable<UsuarioModel | undefined>();
   usuarioLogado: UsuarioModel | undefined = undefined;
 
   widgetSubscription$: Subscription = new Subscription();
@@ -105,16 +125,24 @@ export class VisualizarAulaComponent implements OnInit {
     this.store.dispatch(selecionarOneAulaById({ aulaId: this.aulaId }));
     this.setupAulaComentario();
     this.setupAula();
+    this.setupUsuarioAulaComentado();
     this.setupUsuarioAulaSessaoFavoritado();
+    this.setupUsuarioAulaCurtido();
+    this.setupUsuarioAulaFavoritada();
     this.setupUsuarioLogado();
     this.setupWidget();
+
+    this.scrollToTop();
   }
 
   ngOnDestroy() {
     this.aulaSubscription$.unsubscribe();
+    this.aulaComentarioManySubscription$.unsubscribe();
     this.usuarioAulaSessaoFavoritadoSubscription$.unsubscribe();
+    this.usuarioAulaCurtidoSubscription$.unsubscribe();
+    this.usuarioAulaFavoritadaSubscription$.unsubscribe();
     this.usuarioLogadoSubscription$.unsubscribe();
-    this.widgetSubscription$.unsubscribe();
+    this.widgetSubscription$.unsubscribe();    
   }
 
   private criarFormularioComentario() {
@@ -147,10 +175,31 @@ export class VisualizarAulaComponent implements OnInit {
     })
   }
 
+  setupUsuarioAulaComentado() {
+    this.isUsuarioAulaComentado$ = this.store.select(getIsUsuarioLogadoAulaComentario);
+    this.isUsuarioAulaComentadoSubscription$ = this.isUsuarioAulaComentado$.subscribe(item => {
+      this.isUsuarioAulaComentado = item;
+    });
+  }
+
   setupUsuarioAulaSessaoFavoritado() {
     this.usuarioAulaSessaoFavoritado$ = this.store.select(getManySessaoIdInUsuarioAulaSessaoFavoritado);
     this.usuarioAulaSessaoFavoritadoSubscription$ = this.usuarioAulaSessaoFavoritado$.subscribe(itens => {
       this.usuarioAulaSessaoFavoritado = itens;
+    });
+  }
+
+  setupUsuarioAulaCurtido() {
+    this.usuarioAulaCurtido$ = this.store.select(getIsUsuarioAulaCurtida(this.aulaId));
+    this.usuarioAulaCurtidoSubscription$ = this.usuarioAulaCurtido$.subscribe(item => {
+      this.usuarioAulaCurtido = item;
+    });
+  }
+
+  setupUsuarioAulaFavoritada() {
+    this.usuarioAulaFavoritada$ = this.store.select(getIsUsuarioAulaFavoritada(this.aulaId));
+    this.usuarioAulaFavoritadaSubscription$ = this.usuarioAulaFavoritada$.subscribe(item => {
+      this.usuarioAulaFavoritada = item;
     });
   }
 
@@ -174,15 +223,45 @@ export class VisualizarAulaComponent implements OnInit {
   }
 
   curtirAula() {
-    //TODO, precisa criar nova tabela para impedir usuário de curtir mais de uma vez
-    let request: AulaModel = {...this.aula};
-    request.curtido = this.aula.curtido + 1;
+    if (this.usuarioLogado) {
+      let request: UsuarioAulaCurtidoModel = new UsuarioAulaCurtidoModel();
+      request.aulaId = this.aula.id;
+      request.usuarioId = this.usuarioLogado?.id;
 
-    this.store.dispatch(atualizarAulaCurtir({ aula: request }));
+      this.store.dispatch(inserirUsuarioAulaCurtido({ usuarioAulaCurtido: request }));
+    }
+  }
+
+  removerCurtirAula() {
+    if (this.usuarioLogado && this.usuarioAulaCurtido) {
+      let request: UsuarioAulaCurtidoModel = new UsuarioAulaCurtidoModel();
+      request.id = this.usuarioAulaCurtido.id;
+      request.aulaId = this.aula.id;
+      request.usuarioId = this.usuarioLogado?.id;
+
+      this.store.dispatch(removerUsuarioAulaCurtido({ usuarioAulaCurtido: request }));
+    }
   }
 
   favoritarAula() {
-    //TODO, fazer depois que criar perfil usuario Aluno
+    if (this.usuarioLogado) {
+      let request: UsuarioAulaFavoritadaModel = new UsuarioAulaFavoritadaModel();
+      request.aulaId = this.aula.id;
+      request.usuarioId = this.usuarioLogado?.id;
+
+      this.store.dispatch(inserirUsuarioAulaFavoritada({ usuarioAulaFavoritada: request }));
+    }
+  }
+
+  removerAulaFavoritada() {
+    if (this.usuarioLogado && this.usuarioAulaFavoritada) {
+      let request: UsuarioAulaFavoritadaModel = new UsuarioAulaFavoritadaModel();
+      request.id = this.usuarioAulaFavoritada.id;
+      request.aulaId = this.aula.id;
+      request.usuarioId = this.usuarioLogado?.id;
+
+      this.store.dispatch(removerUsuarioAulaFavoritada({ usuarioAulaFavoritada: request }));
+    }
   }
 
   visualizarPerfil() {
@@ -246,7 +325,7 @@ export class VisualizarAulaComponent implements OnInit {
 
   cadastrarComentario() {
     let aulaComentario: AulaComentarioModel = new AulaComentarioModel();
-    if (this.usuarioLogado && this.usuarioLogado.id > 0) {
+    if (this.usuarioLogado) {
       aulaComentario.aulaId = this.aula.id;
       aulaComentario.usuarioId = this.usuarioLogado.id;
       aulaComentario.descricao = this.formComentario.get("comentario")?.value;
@@ -257,7 +336,7 @@ export class VisualizarAulaComponent implements OnInit {
   }
 
   editarComentario(item: AulaComentarioModel) {
-    if (this.usuarioLogado && this.usuarioLogado.id > 0)
+    if (this.usuarioLogado)
       this.dialog.open(EditarAulaComentarioComponent, {
         data: {
           aulaComentario: item,
@@ -348,5 +427,13 @@ export class VisualizarAulaComponent implements OnInit {
         this.widgetConcluido = false;
         break;
     }
+  }
+
+  scrollToTop() {
+    window.scroll({ 
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth' 
+    });
   }
 }

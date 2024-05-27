@@ -119,6 +119,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     gap: 10px;
 }
 
+.g-disable-event {
+    pointer-events: none;
+}
+
 /* Altera o overflow da modal, faz aparecer scroll*/
 .cdk-overlay-pane {
     overflow-y: auto;

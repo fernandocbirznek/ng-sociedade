@@ -36,7 +36,7 @@ export class VisualizarNoticiaComponent implements OnInit {
   noticia: NoticiaModel | undefined = undefined ;
 
   usuarioLogadoSubscription$: Subscription = new Subscription();
-  usuarioLogado$: Observable<UsuarioModel> = new Observable<UsuarioModel>();
+  usuarioLogado$: Observable<UsuarioModel | undefined> = new Observable<UsuarioModel | undefined>();
   usuarioLogado: UsuarioModel | undefined = undefined ;
 
   usuarioNoticiaFavoritadoSubscription$: Subscription = new Subscription();

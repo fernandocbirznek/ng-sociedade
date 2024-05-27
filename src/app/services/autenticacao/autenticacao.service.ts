@@ -15,7 +15,7 @@ import {
 
 export class AutenticacaoService implements CanActivate {
 
-    usuarioLogado$: Observable<UsuarioModel> = new Observable<UsuarioModel>();
+    usuarioLogado$: Observable<UsuarioModel | undefined> = new Observable<UsuarioModel | undefined>();
 
     constructor(
         private store: Store<AppState>,
@@ -29,7 +29,7 @@ export class AutenticacaoService implements CanActivate {
         state: RouterStateSnapshot
     ): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
         this.usuarioLogado$.subscribe(item => {
-            if(item.token == "") {
+            if(item && item.token == "") {
                 this.router.navigate([""]);
             } 
         }).unsubscribe();

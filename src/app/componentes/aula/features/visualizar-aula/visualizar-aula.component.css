@@ -1,19 +1,53 @@
-.titulo {
-    font-size: 20px;
+.container-aula {
+    position: relative;
 }
 
 .container-voltar {
-    top: 10px;
-    right: 20px;
     z-index: 1;
     border-radius: 5px;
     cursor: pointer;
     padding: 8px;
+    background-color: #22a74a;
+    color: white;
+    width: 120px;
+    right: 0;
+    position: absolute;
 }
 
 .container-voltar:hover {
-    background-color: #f0f0f0;
+    filter: brightness(0.95);
 } 
+
+.card {
+    margin-top: 50px;
+    min-height: 200px;
+    width: calc(100% - 80px);
+    padding: 20px;
+    gap: 10px;
+}
+
+.aula-informacao {
+    font-size: 20px;
+    font-weight: 500;
+    margin-right: 8px;
+}
+
+.informacao {
+    font-size: 18px;
+}
+
+.card-sessao {
+    margin-top: 70px;
+    min-height: 200px;
+    width: calc(100% - 80px);
+    padding: 20px;
+    background-color: #F5F5F5;
+}
+
+.card-icone-many {
+    background-color: #59c229;
+    color: white;
+}
 
 .titulo-aula {
     margin-top: 20px;
@@ -35,7 +69,7 @@
 }
 
 .salvar-aula:hover {
-    fill: 50%;
+    background-color: #ededed;
 }
 
 .para-cursar {
@@ -84,15 +118,25 @@
     margin-top: 10px;
 }
 
-.icone {
-    gap: 5px;
-    padding: 4px 6px;
+.icone,
+.icone-chat {
+    margin-right: 5px;
 }
 
 .icone:hover {
     cursor: pointer;
-    background-color: #ececec;
-    border-radius: 5px;
+    color: #001aff;
+}
+
+.icone-curtido {
+    color: rgb(0, 204, 0);
+}
+
+.card-tags {
+    bottom: -62px;
+    left: unset;
+    right: 40px;
+    padding: 12px 5px 0px 5px;
 }
 
 .container-sessao-many {
@@ -117,15 +161,16 @@
     right: 5px;
 }
 
-.sessao-favoritado {
-    color: rgb(91, 163, 91);
-    background-color: #ebebeb;
-}
-
 .salvar-sessao:hover {
     cursor: pointer;
     background-color: #ececec;
     border-radius: 5px;
+}
+
+.adicionar-favorito,
+.remover-favorito {
+    cursor: pointer;
+    width: 100%;
 }
 
 .titulo-sessao {
@@ -183,8 +228,8 @@
 }
 
 .container-comentario {
-    width: 400px;
-    height: 180px;
+    width: 600px;
+    height: 200px;
     border: 1px solid #919191;
     box-shadow: 3px 3px 5px #CCC;
     border-radius: 10px;
@@ -231,8 +276,34 @@
     margin: 0 10px;
 }
 
+.conceito {
+    background-color: white;
+    border: 2px solid black;
+    font-size: 18px;
+    border-radius: 10px;
+    padding: 0px 20px;
+}
+
+.imagem {
+    background-size: cover;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin: 10px;
+
+    /* TODO, trocar por resize element, precisa pesquisar e ver como implementar */
+    max-height: 500px;
+}
+
+.container-comentario-usuario {
+    max-height: 180px;
+    overflow: auto;
+    margin-top: 10px;
+}
+
 .comentario {
     font-weight: 500;
     font-size: 16px;
     margin: 0 !important;
+    transform: translateY(-10px);
+
 }

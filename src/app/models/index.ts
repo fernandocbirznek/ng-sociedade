@@ -20,6 +20,8 @@ export * from './noticia-area-interesse';
 export * from './tag';
 export * from './usuario';
 export * from './usuario-area-interesse';
+export * from './usuario-aula-curtido';
+export * from './usuario-aula-favoritada';
 export * from './usuario-aula-sessao-favoritado';
 export * from './usuario-noticia-favoritado';
 export * from './usuario-perfil';

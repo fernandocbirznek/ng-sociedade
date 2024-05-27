@@ -2,6 +2,8 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as fromManipularConta from '../reducers/manipular-conta.reducer';
 
 import {
+  UsuarioAulaCurtidoModel,
+  UsuarioAulaFavoritadaModel,
   UsuarioNoticiaFavoritadoModel 
 } from 'src/app/models';
 
@@ -11,11 +13,11 @@ export const selectManipularContaState = createFeatureSelector<fromManipularCont
 
 export const getOneUsuarioLogado = createSelector(selectManipularContaState, (state) => {
   return state.usuario;
-})
+});
 
 export const getManyUsuarioNoticiaFavoritado = createSelector(selectManipularContaState, (state) => {
   return state.usuarioNoticiaFavoritado;
-})
+});
 
 export const getOneUsuarioNoticiaFavoritadoByNoticiaId = (noticiaId: number) => createSelector(
   selectManipularContaState, (
@@ -23,4 +25,51 @@ export const getOneUsuarioNoticiaFavoritadoByNoticiaId = (noticiaId: number) => 
   ): UsuarioNoticiaFavoritadoModel | undefined => {
 
   return state.usuarioNoticiaFavoritado.find(item => item.noticiaId == noticiaId);
-})
+});
+
+export const getManyUsuarioAulaCurtido = createSelector(selectManipularContaState, (state) => {
+  return state.usuarioAulaCurtido;
+});
+
+export const getOneUsuarioAulaCurtidoByNoticiaId = (aulaId: number) => createSelector(
+  getManyUsuarioAulaCurtido, (
+    itens
+  ): UsuarioAulaCurtidoModel | undefined => {
+
+  return itens.find(item => item.aulaId == aulaId);
+});
+
+export const getIsUsuarioAulaCurtida = (aulaId: number) => createSelector(
+  getManyUsuarioAulaCurtido, (
+    usuarioAulaCurtidoMany: UsuarioAulaCurtidoModel[]
+  ): UsuarioAulaCurtidoModel | undefined=> {
+    let item = usuarioAulaCurtidoMany.find(item => item.aulaId == aulaId);
+
+    if (item)
+      return item;
+
+    return undefined;
+  }
+);
+
+export const getManyUsuarioAulaFavoritada = createSelector(
+  selectManipularContaState, (
+    state
+  ): UsuarioAulaFavoritadaModel[] => {
+
+    return state.usuarioAulaFavoritada;
+  }
+);
+
+export const getIsUsuarioAulaFavoritada = (aulaId: number) => createSelector(
+  getManyUsuarioAulaFavoritada, (
+    usuarioAulaFavoritadaMany: UsuarioAulaFavoritadaModel[]
+  ): UsuarioAulaFavoritadaModel | undefined=> {
+    let item = usuarioAulaFavoritadaMany.find(item => item.aulaId == aulaId);
+
+    if (item)
+      return item;
+
+    return undefined;
+  }
+);

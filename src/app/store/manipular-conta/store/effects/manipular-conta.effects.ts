@@ -10,6 +10,8 @@ import * as actions from '../actions/manipular-conta.actions';
 import { 
   ManipularContaService, 
   UsuarioAreaInteresseService, 
+  UsuarioAulaCurtidoService, 
+  UsuarioAulaFavoritadaService, 
   UsuarioNoticiaFavoritadoService, 
   UsuarioPerfilService 
 } from 'src/app/services';
@@ -18,8 +20,23 @@ import {
   TipoUsuarioEnum 
 } from 'src/app/models';
 
-import { selecionarManyUsuarioNoticiaFavoritado } from '../actions/manipular-conta.actions';
-import { atualizarAdicaoNoticiaFavoritado, atualizarRemocaoNoticiaFavoritado } from 'src/app/store/noticia';
+import { 
+  selecionarManyUsuarioAulaCurtido, 
+  selecionarManyUsuarioAulaFavoritada, 
+  selecionarManyUsuarioNoticiaFavoritado 
+} from '../actions/manipular-conta.actions';
+
+import { 
+  atualizarAdicaoNoticiaFavoritado, 
+  atualizarRemocaoNoticiaFavoritado 
+} from 'src/app/store/noticia';
+
+import { 
+  atualizarAdicaoAulaCurtido, 
+  atualizarAdicaoAulaFavoritada, 
+  atualizarRemocaoAulaCurtido, 
+  atualizarRemocaoAulaFavoritada
+} from 'src/app/store';
 
 @Injectable()
 export class ManipularContaEffects {
@@ -31,6 +48,8 @@ export class ManipularContaEffects {
     private usuarioPerfilService: UsuarioPerfilService,
     private usuarioAreaInteresseService: UsuarioAreaInteresseService,
     private usuarioNoticiaFavoritadoService: UsuarioNoticiaFavoritadoService,
+    private usuarioAulaCurtidoService: UsuarioAulaCurtidoService,
+    private usuarioAulaFavoritadaService: UsuarioAulaFavoritadaService,
     private router: Router,
     public store: Store,
     ) 
@@ -60,10 +79,16 @@ export class ManipularContaEffects {
               } 
               case TipoUsuarioEnum.UsuarioComum: { 
                 this.router.navigate([`aluno-home/${response.email}`]);
+                //TODO, colocar num resolver
+                this.store.dispatch(selecionarManyUsuarioAulaCurtido({ usuarioId: response.id }));
+                this.store.dispatch(selecionarManyUsuarioAulaFavoritada({ usuarioId: response.id }));
                 break; 
               } 
               case TipoUsuarioEnum.UsuarioProfessor: { 
                 this.router.navigate([`perfil-professor/${response.email}`]);
+                //TODO, colocar num resolver
+                this.store.dispatch(selecionarManyUsuarioAulaCurtido({ usuarioId: response.id }));
+                this.store.dispatch(selecionarManyUsuarioAulaFavoritada({ usuarioId: response.id }));
                 break; 
               } 
               case TipoUsuarioEnum.UsuarioProfessorAdministrador: { 
@@ -181,6 +206,92 @@ export class ManipularContaEffects {
             return actions.removerUsuarioNoticiaFavoritadoSuccess({ response: response })
           }),
           catchError(error => of(actions.removerUsuarioNoticiaFavoritadoFailure({ error }))))
+      )
+    );
+  });
+
+
+
+  selecionarManyUsuarioAulaCurtido$ = createEffect(() => {
+    return this.actions$.pipe( 
+      ofType(actions.selecionarManyUsuarioAulaCurtido),
+      concatMap((action) =>
+        this.usuarioAulaCurtidoService.selecionarManyAulaCurtidoByUsuarioId(action.usuarioId).pipe(
+          map(response => {
+            return actions.selecionarManyUsuarioAulaCurtidoSuccess({ response: response })
+          }),
+          catchError(error => of(actions.selecionarManyUsuarioAulaCurtidoFailure({ error }))))
+      )
+    );
+  });
+
+  inserirUsuarioAulaCurtido$ = createEffect(() => {
+    return this.actions$.pipe( 
+      ofType(actions.inserirUsuarioAulaCurtido),
+      concatMap((action) =>
+        this.usuarioAulaCurtidoService.inserirUsuarioAulaCurtido(action.usuarioAulaCurtido).pipe(
+          map(response => {
+            this.store.dispatch(atualizarAdicaoAulaCurtido({ aulaId: action.usuarioAulaCurtido.aulaId }));
+            return actions.inserirUsuarioAulaCurtidoSuccess({ response: response })
+          }),
+          catchError(error => of(actions.inserirUsuarioAulaCurtidoFailure({ error }))))
+      )
+    );
+  });
+
+  removerUsuarioAulaCurtido$ = createEffect(() => {
+    return this.actions$.pipe( 
+      ofType(actions.removerUsuarioAulaCurtido),
+      concatMap((action) =>
+        this.usuarioAulaCurtidoService.removerUsuarioAulaCurtido(action.usuarioAulaCurtido.id, action.usuarioAulaCurtido.aulaId).pipe(
+          map(response => {
+            this.store.dispatch(atualizarRemocaoAulaCurtido({ aulaId: action.usuarioAulaCurtido.aulaId }));
+            return actions.removerUsuarioAulaCurtidoSuccess({ response: response })
+          }),
+          catchError(error => of(actions.removerUsuarioAulaCurtidoFailure({ error }))))
+      )
+    );
+  });
+
+
+
+  selecionarManyUsuarioAulaFavoritada$ = createEffect(() => {
+    return this.actions$.pipe( 
+      ofType(actions.selecionarManyUsuarioAulaFavoritada),
+      concatMap((action) =>
+        this.usuarioAulaFavoritadaService.selecionarManyAulaFavoritadaByUsuarioId(action.usuarioId).pipe(
+          map(response => {
+            return actions.selecionarManyUsuarioAulaFavoritadaSuccess({ response: response })
+          }),
+          catchError(error => of(actions.selecionarManyUsuarioAulaFavoritadaFailure({ error }))))
+      )
+    );
+  });
+
+  inserirUsuarioAulaFavoritada$ = createEffect(() => {
+    return this.actions$.pipe( 
+      ofType(actions.inserirUsuarioAulaFavoritada),
+      concatMap((action) =>
+        this.usuarioAulaFavoritadaService.inserirUsuarioAulaFavoritada(action.usuarioAulaFavoritada).pipe(
+          map(response => {
+            this.store.dispatch(atualizarAdicaoAulaFavoritada({ aulaId: action.usuarioAulaFavoritada.aulaId }));
+            return actions.inserirUsuarioAulaFavoritadaSuccess({ response: response })
+          }),
+          catchError(error => of(actions.inserirUsuarioAulaFavoritadaFailure({ error }))))
+      )
+    );
+  });
+
+  removerUsuarioAulaFavoritada$ = createEffect(() => {
+    return this.actions$.pipe( 
+      ofType(actions.removerUsuarioAulaFavoritada),
+      concatMap((action) =>
+        this.usuarioAulaFavoritadaService.removerUsuarioAulaFavoritada(action.usuarioAulaFavoritada.id).pipe(
+          map(response => {
+            this.store.dispatch(atualizarRemocaoAulaFavoritada({ aulaId: action.usuarioAulaFavoritada.aulaId }));
+            return actions.removerUsuarioAulaFavoritadaSuccess({ response: response })
+          }),
+          catchError(error => of(actions.removerUsuarioAulaFavoritadaFailure({ error }))))
       )
     );
   });

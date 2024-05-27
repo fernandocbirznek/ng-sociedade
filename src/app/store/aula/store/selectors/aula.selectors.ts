@@ -5,12 +5,16 @@ import {
   AreaFisicaModel,
   AulaFilterModel,
   AulaModel, 
+  AulaViewModel, 
   TagModel,
-  TipoOrdenarAulaFiltroEnum
+  TipoOrdenarAulaFiltroEnum,
+  UsuarioAulaCurtidoModel,
+  UsuarioAulaFavoritadaModel
 } from 'src/app/models';
 
 import * as areaFisicaFeature from '../../../area-fisica/store';
 import * as headerFeature from '../../../header/store';
+import * as manipularContaFeature from '../../../manipular-conta/store';
 import * as tagFeature from '../../../tag/store';
 
 import moment from 'moment';
@@ -32,21 +36,41 @@ export const getOneAulaFilter = createSelector(
 export const getManyAula = createSelector(
   selectAulaState, 
   areaFisicaFeature.getManyAreaFisica,
+  manipularContaFeature.getManyUsuarioAulaCurtido,
+  manipularContaFeature.getManyUsuarioAulaFavoritada,
   tagFeature.getManyTag, (
     state,
     areaFisicaMany: AreaFisicaModel[],
+    usuarioAulaCurtidoMany: UsuarioAulaCurtidoModel[],
+    usuarioAulaFavoritadaMany: UsuarioAulaFavoritadaModel[],
     tagMany: TagModel[]
-  ) => {
+  ): AulaViewModel[] => {
 
-    let itens: AulaModel[] = 
+    let itens: AulaViewModel[] = 
     state
       .aulas
       .map(item => {
         let areaFisica = areaFisicaMany.find(areaFisica => areaFisica.id == item.areaFisicaId);
         let tags: TagModel[] = [];
-        let aulaModel: AulaModel = {...item};
+
+        let aulaViewModel: AulaViewModel = new AulaViewModel;
+        aulaViewModel.areaFisicaId = item.areaFisicaId;
+        aulaViewModel.curtido = item.curtido;
+        aulaViewModel.favoritado = item.favoritado;
+        aulaViewModel.id = item.id;
+        aulaViewModel.professorId = item.professorId;
+        aulaViewModel.resumo = item.resumo;
+        aulaViewModel.titulo = item.titulo;
+        aulaViewModel.areaFisicaDescricao = item.areaFisicaDescricao;
+        aulaViewModel.aulaComentarioMany = item.aulaComentarioMany;
+        aulaViewModel.aulaSessaoMany = item.aulaSessaoMany;
+        aulaViewModel.aulaTagMany = item.aulaTagMany;
+        aulaViewModel.comentario = item.comentario;
+        aulaViewModel.dataAtualizacao = item.dataCadastro;
+        aulaViewModel.professorNome = item.professorNome;
+
         if (areaFisica)
-          aulaModel.areaFisicaDescricao = areaFisica.descricao;
+          aulaViewModel.areaFisicaDescricao = areaFisica.descricao;
 
         if (item.aulaTagMany.length > 0) {
           item.aulaTagMany.forEach(aulaTag => {
@@ -56,11 +80,17 @@ export const getManyAula = createSelector(
           });
         }
 
-        aulaModel.tagMany = tags;
-        aulaModel.comentario = item.aulaComentarioMany.length;
-        return aulaModel;
-      });
+        let usuarioAulaCurtido = usuarioAulaCurtidoMany.find(usuarioAulaCurtido => usuarioAulaCurtido.aulaId == item.id);
+        let usuarioAulaFavoritada = usuarioAulaFavoritadaMany.find(usuarioAulaFavoritada => usuarioAulaFavoritada.aulaId == item.id);
 
+        aulaViewModel.tagMany = tags;
+        aulaViewModel.comentario = item.aulaComentarioMany.length;
+        aulaViewModel.usuarioLogadoCurtiu = usuarioAulaCurtido ? true : false;
+        aulaViewModel.usuarioLogadoFavoritada = usuarioAulaFavoritada ? true : false;
+        return aulaViewModel;
+      });
+      console.log("usuarioAulaFavoritadaMany = ", usuarioAulaFavoritadaMany);
+      console.log("itens = ", itens);
     return itens;
   }
 )
@@ -69,8 +99,8 @@ export const getManyAulaByFilter = createSelector(
   getOneAulaFilter,
   getManyAula, (
     aulaFilter: AulaFilterModel,
-    aulaMany: AulaModel[],
-  ): AulaModel[] => {
+    aulaMany: AulaViewModel[],
+  ): AulaViewModel[] => {
 
     let itens = aulaMany;
 
@@ -126,9 +156,9 @@ export const getManyAulaByProfessorId = (professorId: number) => createSelector(
 export const getManyAulaByAreaFisicaId = createSelector(
   getManyAulaByFilter,
   headerFeature.getAreaFisicaId, (
-    aulaMany,
+    aulaMany: AulaViewModel[],
     areaFisicaId: number
-  ): AulaModel[] => {
+  ): AulaViewModel[] => {
   let itens = aulaMany.filter(item => item.areaFisicaId == areaFisicaId);
 
     return itens;

@@ -4,6 +4,8 @@ import * as actions from '../actions/manipular-conta.actions';
 import { 
   AreaInteresseModel, 
   TipoUsuarioEnum, 
+  UsuarioAulaCurtidoModel, 
+  UsuarioAulaFavoritadaModel, 
   UsuarioModel, 
   UsuarioNoticiaFavoritadoModel 
 } from 'src/app/models';
@@ -11,8 +13,10 @@ import {
 export const manipularContaFeatureKey = 'manipularConta';
 
 export interface ManipularContaState {
-  usuario: UsuarioModel;
+  usuario: UsuarioModel | undefined;
   usuarioNoticiaFavoritado: UsuarioNoticiaFavoritadoModel[];
+  usuarioAulaCurtido: UsuarioAulaCurtidoModel[];
+  usuarioAulaFavoritada: UsuarioAulaFavoritadaModel[];
 
   isSuccess: boolean;
   isLoading: boolean;
@@ -21,8 +25,10 @@ export interface ManipularContaState {
 }
 
 export const manipularContaInitialState: ManipularContaState = {
-  usuario: new UsuarioModel(),
+  usuario: undefined,
   usuarioNoticiaFavoritado: [],
+  usuarioAulaCurtido: [],
+  usuarioAulaFavoritada: [],
 
   isSuccess: false,
   isLoading: false,
@@ -188,12 +194,14 @@ export const manipularContaReducer = createReducer(
     };
   }),
   on(actions.atualizarUsuarioPerfilSuccess, (state, action) => {
-    let usuario: UsuarioModel = {...state.usuario};
-    
-    usuario.foto = action.usuarioPerfil.foto ? action.usuarioPerfil.foto : undefined;
-    usuario.hobbie = action.usuarioPerfil.hobbie ? action.usuarioPerfil.hobbie : '';
-    usuario.dataNascimento = action.usuarioPerfil.dataNascimento ? action.usuarioPerfil.dataNascimento : undefined;
-      
+    let usuario: UsuarioModel | undefined = undefined;
+    if (state.usuario) {
+      usuario = {...state.usuario};
+      usuario.foto = action.usuarioPerfil.foto ? action.usuarioPerfil.foto : undefined;
+      usuario.hobbie = action.usuarioPerfil.hobbie ? action.usuarioPerfil.hobbie : '';
+      usuario.dataNascimento = action.usuarioPerfil.dataNascimento ? action.usuarioPerfil.dataNascimento : undefined;
+    }
+   
     return { 
         ...state, 
         usuario: usuario,
@@ -223,23 +231,26 @@ export const manipularContaReducer = createReducer(
     };
   }),
   on(actions.inserirUsuarioAreaInteresseSuccess, (state, action) => {
-    let usuario: UsuarioModel = new UsuarioModel();
-    usuario.id = state.usuario.id;
-    usuario.nome = state.usuario.nome;
-    usuario.comentarioAula = state.usuario.comentarioAula;
-    usuario.comentarioForum = state.usuario.comentarioForum;
-    usuario.curtirAula = state.usuario.curtirAula;
-    usuario.dataNascimento = state.usuario.dataNascimento;
-    usuario.email = state.usuario.email;
-    usuario.hobbie = state.usuario.hobbie;
-    usuario.noticiaVisualizada = state.usuario.noticiaVisualizada;
-    usuario.sociedadeId = state.usuario.sociedadeId;
-    
-    let usuarioAreaInteresse: AreaInteresseModel = new AreaInteresseModel();
-    usuarioAreaInteresse.id = action.usuarioAreaInteresse.areaInteresseId;
-    usuarioAreaInteresse.nome = action.usuarioAreaInteresse.areaInteresseNome;
+    let usuario: UsuarioModel | undefined = undefined;
+    if (state.usuario) {
+      usuario = new UsuarioModel();
+      usuario.id = state.usuario.id;
+      usuario.nome = state.usuario.nome;
+      usuario.comentarioAula = state.usuario.comentarioAula;
+      usuario.comentarioForum = state.usuario.comentarioForum;
+      usuario.curtirAula = state.usuario.curtirAula;
+      usuario.dataNascimento = state.usuario.dataNascimento;
+      usuario.email = state.usuario.email;
+      usuario.hobbie = state.usuario.hobbie;
+      usuario.noticiaVisualizada = state.usuario.noticiaVisualizada;
+      usuario.sociedadeId = state.usuario.sociedadeId;
+      
+      let usuarioAreaInteresse: AreaInteresseModel = new AreaInteresseModel();
+      usuarioAreaInteresse.id = action.usuarioAreaInteresse.areaInteresseId;
+      usuarioAreaInteresse.nome = action.usuarioAreaInteresse.areaInteresseNome;
 
-    usuario.usuarioAreaInteresses.push(usuarioAreaInteresse);
+      usuario.usuarioAreaInteresses.push(usuarioAreaInteresse);
+    }
 
     return { 
         ...state, 
@@ -270,12 +281,16 @@ export const manipularContaReducer = createReducer(
     };
   }),
   on(actions.removerUsuarioAreaInteresseSuccess, (state, action) => {
-    let usuario: UsuarioModel = {...state.usuario};
+    let usuario: UsuarioModel | undefined = undefined;
     
-    usuario.usuarioAreaInteresses = 
-      usuario
-        .usuarioAreaInteresses
-        .filter(item => item.id == action.usuarioAreaInteresse.areaInteresseId);
+    if (state.usuario) {
+      usuario = {...state.usuario};
+    
+      usuario.usuarioAreaInteresses = 
+        usuario
+          .usuarioAreaInteresses
+          .filter(item => item.id == action.usuarioAreaInteresse.areaInteresseId);
+    }
 
     return { 
         ...state, 
@@ -384,6 +399,186 @@ export const manipularContaReducer = createReducer(
         isSuccess: false, 
         isFailure: true, 
         mensagem: "Falha em buscar as todas as notícias favoritadas do usuário logado" 
+    };
+  }),
+
+
+
+  on(actions.inserirUsuarioAulaCurtido, state => {
+    return { 
+        ...state, 
+        isLoading: true, 
+        isSuccess: false, 
+        isFailure: false, 
+        error: "" };
+  }),
+  on(actions.inserirUsuarioAulaCurtidoSuccess, (state, action) => {
+    let itens = [...state.usuarioAulaCurtido, action.response];
+    
+    return { 
+        ...state, 
+        usuarioAulaCurtido: itens,
+        isLoading: false, 
+        isSuccess: true, 
+        isFailure: false, 
+        error: ""
+    };
+  }),
+  on(actions.inserirUsuarioAulaCurtidoFailure, (state, action) => {
+    return { 
+        ...state, 
+        isLoading: false, 
+        isSuccess: false, 
+        isFailure: true, 
+        error: "Erro ao buscar as aulas curtidas do usuário logado"};
+  }),
+
+  on(actions.removerUsuarioAulaCurtido, state => {
+    return { 
+        ...state, 
+        isLoading: true, 
+        isSuccess: false, 
+        isFailure: false, 
+        error: "" };
+  }),
+  on(actions.removerUsuarioAulaCurtidoSuccess, (state, action) => {
+    let itens = [...state.usuarioAulaCurtido].filter(item => item.id != action.response);
+    
+    return { 
+        ...state, 
+        usuarioAulaCurtido: itens,
+        isLoading: false, 
+        isSuccess: true, 
+        isFailure: false, 
+        error: ""
+    };
+  }),
+  on(actions.removerUsuarioAulaCurtidoFailure, (state, action) => {
+    return { 
+        ...state, 
+        isLoading: false, 
+        isSuccess: false, 
+        isFailure: true, 
+        error: "Falha ao remover aula curtida"};
+  }),
+
+  on(actions.selecionarManyUsuarioAulaCurtido, state => {
+    return { 
+        ...state, 
+        isLoading: true, 
+        isSuccess: false, 
+        isFailure: false, 
+        error: "" 
+    };
+  }),
+  on(actions.selecionarManyUsuarioAulaCurtidoSuccess, (state, action) => {
+
+    return { 
+        ...state, 
+        usuarioAulaCurtido: action.response,
+        isLoading: false, 
+        isSuccess: true, 
+        isFailure: false,
+        error: ""
+    };
+  }),
+  on(actions.selecionarManyUsuarioAulaCurtidoFailure, (state) => {
+    return { 
+        ...state, 
+        isLoading: false, 
+        isSuccess: false, 
+        isFailure: true, 
+        mensagem: "Falha em buscar as todas as aulas curtidas do usuário logado" 
+    };
+  }),
+
+
+
+  on(actions.inserirUsuarioAulaFavoritada, state => {
+    return { 
+        ...state, 
+        isLoading: true, 
+        isSuccess: false, 
+        isFailure: false, 
+        error: "" };
+  }),
+  on(actions.inserirUsuarioAulaFavoritadaSuccess, (state, action) => {
+    let itens = [...state.usuarioAulaFavoritada, action.response];
+    
+    return { 
+        ...state, 
+        usuarioAulaFavoritada: itens,
+        isLoading: false, 
+        isSuccess: true, 
+        isFailure: false, 
+        error: ""
+    };
+  }),
+  on(actions.inserirUsuarioAulaFavoritadaFailure, (state, action) => {
+    return { 
+        ...state, 
+        isLoading: false, 
+        isSuccess: false, 
+        isFailure: true, 
+        error: "Erro ao inserir a aula favoritada"};
+  }),
+
+  on(actions.removerUsuarioAulaFavoritada, state => {
+    return { 
+        ...state, 
+        isLoading: true, 
+        isSuccess: false, 
+        isFailure: false, 
+        error: "" };
+  }),
+  on(actions.removerUsuarioAulaFavoritadaSuccess, (state, action) => {
+    let itens = [...state.usuarioAulaFavoritada].filter(item => item.id != action.response);
+    
+    return { 
+        ...state, 
+        usuarioAulaFavoritada: itens,
+        isLoading: false, 
+        isSuccess: true, 
+        isFailure: false, 
+        error: ""
+    };
+  }),
+  on(actions.removerUsuarioAulaFavoritadaFailure, (state, action) => {
+    return { 
+        ...state, 
+        isLoading: false, 
+        isSuccess: false, 
+        isFailure: true, 
+        error: "Falha ao remover aula favoritada"};
+  }),
+
+  on(actions.selecionarManyUsuarioAulaFavoritada, state => {
+    return { 
+        ...state, 
+        isLoading: true, 
+        isSuccess: false, 
+        isFailure: false, 
+        error: "" 
+    };
+  }),
+  on(actions.selecionarManyUsuarioAulaFavoritadaSuccess, (state, action) => {
+
+    return { 
+        ...state, 
+        usuarioAulaFavoritada: action.response,
+        isLoading: false, 
+        isSuccess: true, 
+        isFailure: false,
+        error: ""
+    };
+  }),
+  on(actions.selecionarManyUsuarioAulaFavoritadaFailure, (state) => {
+    return { 
+        ...state, 
+        isLoading: false, 
+        isSuccess: false, 
+        isFailure: true, 
+        mensagem: "Falha em buscar as aulas favoritadas do usuário logado" 
     };
   }),
 );

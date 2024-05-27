@@ -28,7 +28,7 @@ export class AtualizarForumTopicoReplicaComponent implements OnInit {
   formConteudoReplica = new FormControl('', [Validators.required, Validators.maxLength(8000)]);
 
   usuarioLogadoSubscription$: Subscription = new Subscription();
-  usuarioLogado$: Observable<UsuarioModel> = new Observable<UsuarioModel>();
+  usuarioLogado$: Observable<UsuarioModel | undefined> = new Observable<UsuarioModel | undefined>();
   usuarioLogado: UsuarioModel | undefined = undefined ;
 
   public ckEditor = Editor;
