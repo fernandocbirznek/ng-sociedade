@@ -66,7 +66,8 @@ export const getManyAula = createSelector(
         aulaViewModel.aulaSessaoMany = item.aulaSessaoMany;
         aulaViewModel.aulaTagMany = item.aulaTagMany;
         aulaViewModel.comentario = item.comentario;
-        aulaViewModel.dataAtualizacao = item.dataCadastro;
+        aulaViewModel.dataCadastro = item.dataCadastro;
+        aulaViewModel.dataAtualizacao = item.dataAtualizacao;
         aulaViewModel.professorNome = item.professorNome;
 
         if (areaFisica)
@@ -131,25 +132,12 @@ export const getManyAulaByFilter = createSelector(
 )
 
 export const getManyAulaByProfessorId = (professorId: number) => createSelector(
-  selectAulaState,
-  areaFisicaFeature.getManyAreaFisica, (
-    state,
-    areaFisicaMany: AreaFisicaModel[]
+  getManyAulaByFilter, (
+    aulaMany: AulaViewModel[],
   ) => {
-  let itens: AulaModel[] = 
-    state
-      .aulas
-      .filter(item => item.professorId == professorId)
-      .map(item => {
-        let areaFisica = areaFisicaMany.find(areaFisica => areaFisica.id == item.areaFisicaId);
-        let aulaModel = {...item};
-        if (areaFisica)
-          aulaModel.areaFisicaDescricao = areaFisica.descricao;
-        aulaModel.comentario = item.aulaComentarioMany.length;
-        return aulaModel;
-      });
 
-    return itens;
+    return aulaMany
+      .filter(item => item.professorId == professorId);
   }
 )
 

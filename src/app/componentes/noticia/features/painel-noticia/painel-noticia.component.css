@@ -12,24 +12,6 @@
     gap: 10px;
 }
 
-.container-filter-many {
-    gap: 15px;
-}
-
-.container-filter {
-    background-color: #bdefc7;
-    padding: 5px 10px;
-    border-radius: 10px;
-    font-weight: bold;
-    font-size: 18px;
-    gap: 5px;
-}
-
-.icone-filter-close:hover {
-    color: rgb(223, 96, 96);
-    cursor: pointer;
-}
-
 .container-card-noticia {
     gap: 20px;
     margin: 20px 0;

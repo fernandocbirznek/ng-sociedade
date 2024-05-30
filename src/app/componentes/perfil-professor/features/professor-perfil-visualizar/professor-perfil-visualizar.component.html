@@ -1,38 +1,41 @@
 <div *ngIf="this.usuario; else loading" fxLayout="column" class="container-perfil">
     <mat-icon class="icone-close material-symbols-outlined" (click)="this.fecharModal()">close</mat-icon>
-    <fieldset class="g-fieldset fieldset-perfil-informacao">
-        <div class="g-fieldset-titulo">Informações do professor</div>
-        <div fxLayout="row" fxLayoutAlign="start start" class="container-informacao">
+
+    <div fxLayout="row" fxLayoutAlign="start start" class="g-card card">
+        <div class="g-card-titulo card-titulo">Informações do professor</div>
+        <div fxFlex="150px" fxLayout="column" fxLayoutAlign="start center">
             <div *ngIf="this.usuario.foto" fxLayout="column" fxLayoutAlign="space-between center">
                 <img fxFlex="100px" [src]="'data:image/png;base64,' + this.usuario.foto" alt="Imagem" class="imagem">
-                <div>{{ this.usuario.nome }}</div>
+                <div class="usuario-nome">{{ this.usuario.nome }}</div>
             </div>
             <div *ngIf="!this.usuario.foto">
                 Sem foto
             </div>
-            <div fxLayout="column" fxLayoutAlign="start start">
-                <div fxLayout="row" fxLayoutAlign="start start" class="informacao">
-                    <mat-icon class="material-symbols-outlined">mail</mat-icon>
-                    <div><b>email: </b></div>
-                    <div>{{ this.usuario.email }}</div>
-                </div>
-                <div fxLayout="row" fxLayoutAlign="start start" class="informacao">
-                    <mat-icon class="material-symbols-outlined">surfing</mat-icon>
-                    <div><b>Hobbie: </b></div>
+        </div>
+        <div fxFlex="100%" fxLayout="column" fxLayoutAlign="start start" class="g-full-height">
+            <div fxLayout="row" fxLayoutAlign="start start" class="informacao">
+                <mat-icon class="material-symbols-outlined">mail</mat-icon>
+                <div><b>email: </b></div>
+                <div>{{ this.usuario.email }}</div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start start" class="g-full-height">
+                <mat-icon class="material-symbols-outlined">surfing</mat-icon>
+                <div class="hobbie-legend">Hobbie:</div>
+                <div fxLayout="row" fxLayoutAlign="start start" class="informacao hobbie">
                     <div>{{ this.usuario.hobbie }}</div>
-                </div>
-                <div fxLayout="row" fxLayoutAlign="start start" class="informacao">
-                    <mat-icon class="material-symbols-outlined">stars</mat-icon>
-                    <div><b>Áreas de interesse</b></div>
-                    <div *ngFor="let areaInteresse of this.usuario.usuarioAreaInteresses ">
-                        <div>
-                            {{ areaInteresse.nome }}
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
-    </fieldset>
+        <div fxFlex="190px" fxLayout="column" fxLayoutAlign="start start" class="container-tag-many">
+            <div fxLayout="row" fxLayoutAlign="start center" class="informacao">
+                <mat-icon class="material-symbols-outlined">stars</mat-icon>
+                <div><b>Áreas de interesse</b></div>
+            </div>
+            <div *ngFor="let areaInteresse of this.usuario.usuarioAreaInteresses" fxLayoutAlign="center center" class="g-full-width">
+                <div class="g-tag tag">{{ areaInteresse.nome }}</div>     
+            </div> 
+        </div>
+    </div>
     
     <app-professor-perfil-visualizar-card-aula [professorId]="this.data" (ngAcessarAula)="acessarAula($event)">
     </app-professor-perfil-visualizar-card-aula>

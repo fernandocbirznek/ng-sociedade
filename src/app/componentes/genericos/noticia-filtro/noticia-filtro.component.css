@@ -1,0 +1,50 @@
+.text-filtro {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* important usado para sobscrever o flexLayout */
+.flex-column {
+    flex-direction: column !important;
+}
+
+.container-inputs {
+    gap: 15px;
+    width: 100%;
+}
+
+/* important usado para sobscrever o flexLayout */
+.full-width {
+    width: 100% !important;
+    flex: auto !important;
+}
+
+.m-datapicker-toggle {
+    position: absolute;
+    right: -5px;
+    top: 0px;
+}
+
+.container-tag-filter {
+    gap: 10px;
+}
+
+
+.container-filter-many {
+    gap: 15px;
+}
+
+.container-filter {
+    background-color: #bdefc7;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 18px;
+    gap: 5px;
+}
+
+.icone-filter-close:hover {
+    color: rgb(223, 96, 96);
+    cursor: pointer;
+}

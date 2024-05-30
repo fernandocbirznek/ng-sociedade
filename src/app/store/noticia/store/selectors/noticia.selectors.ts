@@ -91,7 +91,8 @@ export const getManyNoticiaFilter = createSelector(
     if (noticiaFilter && noticiaFilter.dataFim)
       itens = itens.filter(item => moment(item.dataCadastro!).startOf('day') <= moment(noticiaFilter.dataFim!).startOf('day'));
 
-    if (noticiaFilter && noticiaFilter.areaInteresseMany.length > 0) {
+
+    if (noticiaFilter && noticiaFilter.areaInteresseMany && noticiaFilter.areaInteresseMany.length > 0) {
       itens = itens.filter(item => item
         .areaInteresseMany
         .some(areaInteresse => noticiaFilter.areaInteresseMany.some(area => area.id == areaInteresse.id))
@@ -107,9 +108,9 @@ export const getOneNoticiaById = (noticiaId: number) => createSelector(seleciona
 })
 
 export const getManyNoticiaByProfessorId = (professorId: number) => createSelector(
-  getManyNoticia, (
-    itens: NoticiaModel[]
-  ) => {
+  getManyNoticiaFilter, (
+    itens: NoticiaViewModel[]
+  ): NoticiaViewModel[] => {
 
     return itens.filter(item => item.usuarioCadastroId == professorId);
   }

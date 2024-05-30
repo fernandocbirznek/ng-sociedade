@@ -55,11 +55,11 @@
                 </div>
             </div>
         </div>
-        <div fxLayout="column" fxLayoutAlign="start center">
+        <div fxFlex="150px" fxLayout="column" fxLayoutAlign="start center">
             <div class="aula-autor" (click)="visualizarPerfil()">Nome do professor</div>
             <div>Foto professor</div>
         </div>
-        <div fxLayout="column" fxLayoutAlign="start start">
+        <div fxFlex="100%" fxLayout="column" fxLayoutAlign="start start">
             <div fxLayout="row" fxLayoutAlign="start center">
                 <span class="aula-informacao">Data cadastro: </span>
                 <div class="informacao">{{ this.aula.dataCadastro | date : 'dd/MM/yyyy HH:mm' }}</div>

@@ -269,6 +269,7 @@ export class VisualizarAulaComponent implements OnInit {
       data: this.aula.professorId,
       width: '80%',
       height: 'auto',
+      autoFocus: false
     }).afterClosed().subscribe((aula: AulaModel) => {
       if(aula) {
         this.router.navigate([`visualizar-aula/${aula.id}`]);

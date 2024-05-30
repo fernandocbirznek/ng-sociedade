@@ -8,7 +8,7 @@ import {
 } from 'src/app/componentes';
 
 import { 
-  NoticiaModel 
+  NoticiaViewModel
 } from 'src/app/models';
 
 import { 
@@ -25,10 +25,10 @@ export class ProfessorPerfilVisualizarCardNoticiaComponent implements OnInit {
   @Input() professorId: number = 0;
 
   noticiaManyByUsuarioIdSubscription$: Subscription = new Subscription();
-  noticiaManyByUsuarioId$: Observable<NoticiaModel[]> = new Observable<NoticiaModel[]>();
-  noticiaManyByUsuarioId: NoticiaModel[] = [];
+  noticiaManyByUsuarioId$: Observable<NoticiaViewModel[]> = new Observable<NoticiaViewModel[]>();
+  noticiaManyByUsuarioId: NoticiaViewModel[] = [];
 
-  pageNoticiaMany: NoticiaModel[] = [];
+  pageNoticiaMany: NoticiaViewModel[] = [];
   pageSize: number = 4;
   pageMax: number = 1;
   pageAtual: number = 0;
@@ -69,9 +69,9 @@ export class ProfessorPerfilVisualizarCardNoticiaComponent implements OnInit {
     this.pageNoticiaMany = this.noticiaManyByUsuarioId.slice(this.pageAtual, this.pageSize);
   }
 
-  visualizarNoticia(item: NoticiaModel) {
+  visualizarNoticia(item: NoticiaViewModel) {
     this.dialog.open(VisualizarNoticiaComponent, {
-      data: item,
+      data: item.id,
       width: '90%',
       height: 'auto',
     });

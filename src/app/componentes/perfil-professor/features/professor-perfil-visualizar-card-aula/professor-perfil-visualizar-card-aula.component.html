@@ -1,14 +1,13 @@
-<fieldset class="g-fieldset" fxLayout="column">
-    <div class="g-fieldset-titulo">Aulas postadas</div>
+<div fxLayout="row" fxLayoutAlign="start start" class="g-card card">
+    <div class="g-card-titulo card-titulo">Aulas postadas</div>
     <div fxLayout="row" fxLayoutAlign="space-between start" class="container-aulas">
-        <div fxFlex="200px">
-            Filtros
-        </div>
-        <div fxLayout="column">
+        <app-aula-filtro fxFlex="300px" class="app-aula-filtro"></app-aula-filtro>
+        <div fxLayout="column" fxLayoutAlign="space-between center" class="g-full-height">
             <div fxFlex="100%" fxLayout="row wrap" fxLayoutAlign="space-around start" class="container-card-aula">
                 <div *ngFor="let aula of this.pageAulaMany" fxLayout="column"
                     class="card-aula">
                     <app-aula-icone [areaFisicaId]="aula.areaFisicaId" class="aula-area-fisica"></app-aula-icone>
+                    <div class="data-cadastro">{{ aula.dataCadastro | date : 'dd/MM/yyyy HH:mm' }}</div>
                     <div fxFlex="100%">
                         <div class="aula-titulo">{{ aula.titulo }}</div>
                         <div fxLayout="row" fxLayoutAlign="start center">
@@ -17,11 +16,15 @@
                     </div>
                     <div fxFlex="50px" fxLayout="row" fxLayoutAlign="space-around center">
                         <div fxLayout="column" fxLayoutAlign="center center">
-                            <mat-icon class="material-symbols-outlined">thumb_up</mat-icon>
+                            <mat-icon class="material-symbols-outlined" [ngClass]="{'icone-ativo': aula.usuarioLogadoCurtiu}">
+                                thumb_up
+                            </mat-icon>
                             <div>{{ aula.curtido }}</div>
                         </div>
                         <div fxLayout="column" fxLayoutAlign="center center">
-                            <mat-icon class="material-symbols-outlined">star</mat-icon>
+                            <mat-icon class="material-symbols-outlined" [ngClass]="{'icone-ativo': aula.usuarioLogadoFavoritada}">
+                                star
+                            </mat-icon>
                             <div>{{ aula.favoritado }}</div>
                         </div>
                         <div fxLayout="column" fxLayoutAlign="center center">
@@ -47,4 +50,4 @@
             </div>
         </div>
     </div>
-</fieldset>
+</div>

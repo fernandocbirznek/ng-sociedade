@@ -2,12 +2,35 @@
     height: 460px;
 }
 
+.card-titulo {
+    background-color: #b5adff;
+}
+
+.card {
+    margin-top: 50px;
+    min-height: 200px;
+    padding: 20px;
+    gap: 10px;
+    background-color: #b5adff;
+}
+
+.app-aula-filtro {
+    overflow-y: auto;
+    height: 450px;
+    padding: 10px;
+    margin-right: 10px;
+    background-color: #FFFFFF;
+    border: 2px solid black;
+    border-radius: 10px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
 .container-card-aula {
     gap: 20px;
 }
 
 .card-aula {
-    border: 1px solid rgb(235, 235, 235);
     box-shadow: 2px 2px 5px black;
     border-radius: 15px;
     padding: 25px 15px 15px 15px;
@@ -15,12 +38,22 @@
     width: 400px;
     height: 200px;
     position: relative;
+    background-color: #fff4ad;
 }
 
 .aula-area-fisica {
     position: absolute;
     right: 5px;
     top: 5px;
+}
+
+.data-cadastro {
+    position: absolute;
+    top: 5px;
+    left: 20px;
+    color: #616161;
+    font-size: 12px;
+    font-style: italic;
 }
 
 .aula-titulo {
@@ -31,6 +64,12 @@
 .aula-resumo {
     margin-top: 10px;
     font-size: 12px;
+    max-height: 75px;
+    overflow-y: auto;
+}
+
+.icone-ativo {
+    color: rgb(0, 204, 0);
 }
 
 .card-aula-acessar {
@@ -52,6 +91,7 @@
 .container-paginacao {
     margin-top: 20px;
     gap: 10px;
+    transform: translateY(10px);
 }
 
 .button-page {

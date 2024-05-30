@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 
 import { 
-  AulaModel, 
+  AulaViewModel, 
 } from 'src/app/models';
 
 import { 
@@ -18,13 +18,13 @@ import {
 })
 export class ProfessorPerfilVisualizarCardAulaComponent implements OnInit {
   @Input() professorId: number = 0;
-  @Output() ngAcessarAula = new EventEmitter<AulaModel>();
+  @Output() ngAcessarAula = new EventEmitter<AulaViewModel>();
 
   aulaManyByUsuarioIdSubscription$: Subscription = new Subscription();
-  aulaManyByUsuarioId$: Observable<AulaModel[]> = new Observable<AulaModel[]>();
-  aulaManyByUsuarioId: AulaModel[] = [];
+  aulaManyByUsuarioId$: Observable<AulaViewModel[]> = new Observable<AulaViewModel[]>();
+  aulaManyByUsuarioId: AulaViewModel[] = [];
 
-  pageAulaMany: AulaModel[] = [];
+  pageAulaMany: AulaViewModel[] = [];
   pageSize: number = 4;
   pageMax: number = 1;
   pageAtual: number = 0;
@@ -64,7 +64,7 @@ export class ProfessorPerfilVisualizarCardAulaComponent implements OnInit {
     this.pageAulaMany = this.aulaManyByUsuarioId.slice(this.pageAtual, this.pageSize);
   }
 
-  visualizarAula(item: AulaModel) {
+  visualizarAula(item: AulaViewModel) {
     this.ngAcessarAula.emit(item);
   }
 }

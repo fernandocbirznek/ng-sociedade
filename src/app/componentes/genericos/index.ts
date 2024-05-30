@@ -2,6 +2,7 @@ export * from './aula-filtro';
 export * from './aula-icone';
 export * from './editar-usuario-area-interesse';
 export * from './modal-excluir';
+export * from './noticia-filtro';
 export * from './toast';
 export * from './usuario-area-interesse';
 export * from './usuario-conquistas';
