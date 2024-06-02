@@ -1,10 +1,52 @@
 <div fxLayout="column" fxLayoutAlign="start start" class="container-favoritado-many">
-    <div fxLayout="row wrap" fxLayoutAlign="start start" class="container-filtro">
-        <span>Conceito</span>
-        <span>Texto</span>
-        <span>Imagem</span>
-        <span>Equação</span>
-        <span>Aula</span>
+    <!-- TODO, separar componente ou pensar num For -->
+    <div fxLayout="row wrap" fxLayoutAlign="center center"class="container-filtro">
+        <div class="filtro-text">Filtros: </div>
+        <div fxLayout="row" fxLayoutAlign="center center" class="filtro-item"
+            [ngClass]="{'filtro-item-selecionado': this.filtroSessaoAulaEnum == this.tipoFiltroFavoritadoEnum.Conceito}"
+            (click)="selecionouFiltro(this.tipoFiltroFavoritadoEnum.Conceito)">
+            <mat-icon fxLayoutAlign="center center" class="filtro-icone material-symbols-outlined" 
+                [ngClass]="{'filtro-icone-aparecer': this.filtroSessaoAulaEnum == this.tipoFiltroFavoritadoEnum.Conceito}">
+                check
+            </mat-icon>
+            Conceito
+        </div>
+        <div fxLayout="row" fxLayoutAlign="center center" class="filtro-item"
+            [ngClass]="{'filtro-item-selecionado': this.filtroSessaoAulaEnum == this.tipoFiltroFavoritadoEnum.Texto}"
+            (click)="selecionouFiltro(this.tipoFiltroFavoritadoEnum.Texto)">
+            <mat-icon fxLayoutAlign="center center" class="filtro-icone material-symbols-outlined" 
+                [ngClass]="{'filtro-icone-aparecer': this.filtroSessaoAulaEnum == this.tipoFiltroFavoritadoEnum.Texto}">
+                check
+            </mat-icon>
+            Texto
+        </div>
+        <div fxLayout="row" fxLayoutAlign="center center" class="filtro-item"
+            [ngClass]="{'filtro-item-selecionado': this.filtroSessaoAulaEnum == this.tipoFiltroFavoritadoEnum.Imagem}"
+            (click)="selecionouFiltro(this.tipoFiltroFavoritadoEnum.Imagem)">
+            <mat-icon fxLayoutAlign="center center" class="filtro-icone material-symbols-outlined" 
+                [ngClass]="{'filtro-icone-aparecer': this.filtroSessaoAulaEnum == this.tipoFiltroFavoritadoEnum.Imagem}">
+                check
+            </mat-icon>
+            Imagem
+        </div>
+        <div fxLayout="row" fxLayoutAlign="center center" class="filtro-item"
+            [ngClass]="{'filtro-item-selecionado': this.filtroSessaoAulaEnum == this.tipoFiltroFavoritadoEnum.Equacao}"
+            (click)="selecionouFiltro(this.tipoFiltroFavoritadoEnum.Equacao)">
+            <mat-icon fxLayoutAlign="center center" class="filtro-icone material-symbols-outlined" 
+                [ngClass]="{'filtro-icone-aparecer': this.filtroSessaoAulaEnum == this.tipoFiltroFavoritadoEnum.Equacao}">
+                check
+            </mat-icon>
+            Equação
+        </div>
+        <div fxLayout="row" fxLayoutAlign="center center" class="filtro-item"
+            [ngClass]="{'filtro-item-selecionado': this.filtroSessaoAulaEnum == this.tipoFiltroFavoritadoEnum.Aula}"
+            (click)="selecionouFiltro(this.tipoFiltroFavoritadoEnum.Aula)">
+            <mat-icon fxLayoutAlign="center center" class="filtro-icone material-symbols-outlined" 
+                [ngClass]="{'filtro-icone-aparecer': this.filtroSessaoAulaEnum == this.tipoFiltroFavoritadoEnum.Aula}">
+                check
+            </mat-icon>
+            Aula
+        </div>
     </div>
     <div fxLayout="row wrap" fxLayoutAlign="start start" class="container-favoritado-many">
         <div *ngFor="let item of this.usuarioAulaSessaoFavoritado; index as i" fxLayout="row wrap" fxLayoutAlign="space-aroud start">

@@ -1,9 +1,9 @@
-export enum TipoSessaoAulaEnum {
+export enum TipoFiltroFavoritadoEnum {
 	None = 0,
     Conceito,
     Equacao,
     Imagem,
     Video,
     Texto,
-    Aula
+    Noticia
 }

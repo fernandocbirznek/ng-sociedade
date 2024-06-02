@@ -14,6 +14,7 @@ export * from './forum-tag';
 export * from './forum-topico';
 export * from './forum-topico-replica';
 export * from './forum-topico-resposta';
+export * from './home-professor';
 export * from './login';
 export * from './noticia';
 export * from './noticia-area-interesse';

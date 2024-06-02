@@ -127,7 +127,8 @@ export class HeaderComponent implements OnInit {
   }
 
   acessarPerfil() {
-    if (this.usuarioLogado && this.usuarioLogado.id > 0)
+    if (this.usuarioLogado) {
+      this.store.dispatch(alterarTituloPagina({ titulo: '', areaFisicaId: 0 }));
       switch(this.usuarioLogado.tipoUsuario) { 
         case TipoUsuarioEnum.UsuarioAdministrador: { 
           this.router.navigate([`administrador-home/${this.usuarioLogado.email}`])
@@ -138,7 +139,7 @@ export class HeaderComponent implements OnInit {
           break; 
         } 
         case TipoUsuarioEnum.UsuarioProfessor: { 
-          this.router.navigate([`perfil-professor/${this.usuarioLogado.email}`])
+          this.router.navigate([`perfil-professor/${this.usuarioLogado.email}/${this.usuarioLogado.id}`])
           break; 
         } 
         case TipoUsuarioEnum.UsuarioProfessorAdministrador: { 
@@ -150,6 +151,7 @@ export class HeaderComponent implements OnInit {
           break; 
         } 
       }
+    }
   }
 
   home() {

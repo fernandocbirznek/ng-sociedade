@@ -38,6 +38,9 @@ export class ProfessorEditarPerfilComponent implements OnInit {
 
   request: UsuarioPerfilModel = new UsuarioPerfilModel();
 
+  isImagemAlterada: boolean = false;
+  fotoEscolhida: File | undefined = undefined;
+
   constructor(
     public store: Store,
     public dialogRef: MatDialogRef<ProfessorEditarPerfilComponent>,
@@ -48,6 +51,7 @@ export class ProfessorEditarPerfilComponent implements OnInit {
     this.criarFormularioPerfil();
     this.setupAreaInteresse();
     this.setupAreaInteresseSelecionado();
+    this.setupFormulario();
   }
 
   criarFormularioPerfil() {
@@ -67,7 +71,6 @@ export class ProfessorEditarPerfilComponent implements OnInit {
 
   setupFormulario() {
     this.formPerfil.get("formData")!.setValue(this.data.dataNascimento);
-    this.formPerfil.get("formFoto")!.setValue(this.data.foto);
     this.formPerfil.get("formHobbie")!.setValue(this.data.hobbie);
     this.setupAreaInteresseSelecionado();
   }
@@ -94,18 +97,19 @@ export class ProfessorEditarPerfilComponent implements OnInit {
     reader.onload = (e: any) => {
       const bytes = e.target.result.split('base64,')[1];
       this.request.foto = bytes;
+      this.isImagemAlterada = true;
+      this.fotoEscolhida = bytes;
     };
     reader.readAsDataURL(event.target.files[0]);
-  }
-
-  hobbieAlterado() {
-    this.request.hobbie = this.formHobbie.value;
   }
 
   requestCriarPerfil () {
     this.request.id = this.data.usuarioPerfilId;
     this.request.usuarioId = this.data.id;
     this.request.dataNascimento = this.formData.value;
+    this.request.hobbie = this.formHobbie.value;
+    if (!this.isImagemAlterada)
+      this.request.foto = this.data.foto;
     this.store.dispatch(atualizarUsuarioPerfil({ usuarioPerfil: this.request }));
     this.fecharModal();
   }

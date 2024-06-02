@@ -1,30 +1,29 @@
 <div *ngIf="this.usuarioLogado; else usuarioVazio" fxLayout="column" class="container-professor-home">
-    <div fxLayout="row" fxLayoutAlign="space-between center">
-        <div class="titulo">Olá {{this.usuarioLogado.nome}}</div>
-        <div fxLayout="row" fxLayoutAlign="center center" class="editar-perfil" (click)="editarPerfil()">
-            <mat-icon class="material-symbols-outlined">edit_document</mat-icon>
-            <div>Editar perfil</div>
+    <div class="deslogar" (click)="deslogar()">Deslogar</div>
+    <div fxLayout="row wrap" fxLayoutAlign="space-between start" class="container-informacao">
+        <app-professor-perfil [usuarioLogado]="this.usuarioLogado"></app-professor-perfil>
+        <app-usuario-informacao [usuarioLogado]="this.usuarioLogado"></app-usuario-informacao>
+    </div>
+
+    <app-usuario-conquistas [usuarioLogado]="this.usuarioLogado"></app-usuario-conquistas>
+
+    <div fxLayout="column" fxLayoutAlign="space-between space-between" class="g-card card"
+        [ngClass]="{'card-noticia': this.abaSelecionada == 2, 'card-favorito': this.abaSelecionada == 3}">
+        <div class="g-card-titulo card-titulo" fxLayout="row" fxLayoutAlign="start center">
+            <div fxLayout="row" fxLayoutAlign="center center" class="card-titulo-aba card-titulo-aba-1" (click)="selecionarAba(1)">
+                <span class="perfil-text">Aulas</span>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="center center" class="card-titulo-aba card-titulo-aba-2" (click)="selecionarAba(2)">
+                <span class="perfil-text">Notícias</span>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="center center" class="card-titulo-aba card-titulo-aba-3" (click)="selecionarAba(3)">
+                <span class="perfil-text">Informações favoritadas</span>
+            </div>
         </div>
+        <app-professor-tabela-aula *ngIf="this.abaSelecionada == 1" [professorId]="this.usuarioLogado.id"></app-professor-tabela-aula>
+        <app-professor-tabela-noticia *ngIf="this.abaSelecionada == 2" [professorId]="this.usuarioLogado.id"></app-professor-tabela-noticia>
+        <app-aluno-favoritado *ngIf="this.abaSelecionada == 3" [usuarioLogado]="this.usuarioLogado"></app-aluno-favoritado>
     </div>
-    
-    <div fxLayout="row" fxLayoutAlign="space-between start" class="container-informacao">
-        <app-usuario-informacao fxFlex="50%" [usuarioLogado]="this.usuarioLogado"></app-usuario-informacao>
-        <app-usuario-conquistas fxFlex="50%"></app-usuario-conquistas>
-    </div>
-
-    <app-usuario-area-interesse [usuarioLogado]="this.usuarioLogado"></app-usuario-area-interesse>
-
-    <mat-tab-group>
-        <mat-tab label="Aulas">
-            <app-professor-tabela-aula [professorId]="this.usuarioLogado.id"></app-professor-tabela-aula>
-        </mat-tab>
-        <mat-tab label="Noticias">
-            <app-professor-tabela-noticia [professorId]="this.usuarioLogado.id"></app-professor-tabela-noticia>
-        </mat-tab>
-        <mat-tab label="Sessões favoritadas">
-            <app-aluno-favoritado [usuarioLogado]="this.usuarioLogado"></app-aluno-favoritado>
-        </mat-tab>
-    </mat-tab-group>
 </div>
 <ng-template #usuarioVazio>
     Carregando informações...

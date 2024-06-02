@@ -1,6 +1,27 @@
 .container-aula {
-    margin-top: 30px;
+    margin: 30px 0;
     position: relative;
+}
+
+.card {
+    padding: 15px;
+    gap: 15px;
+    margin: 50px 0;
+    min-height: 100px;
+}
+
+.card-titulo {
+    top: -58px;
+}
+
+.icone-edit {
+    font-size: 22px;
+    margin-left: 10px;
+}
+
+.icone-edit:hover {
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .container-voltar {
@@ -42,6 +63,7 @@
 .button-nova-sessao {
     width: 150px;
     margin-bottom: 20px;
+    gap: 10px;
 }
 
 .container-sessao-many {
@@ -58,6 +80,22 @@
     box-sizing: border-box;
     background: white;
     font-size: 14px;
+}
+
+.card {
+    margin-top: 50px;
+    min-height: 200px;
+    width: calc(100% - 80px);
+    padding: 20px;
+    gap: 10px;
+}
+
+.card-sessao {
+    margin-top: 70px;
+    min-height: 200px;
+    width: calc(100% - 80px);
+    padding: 20px;
+    background-color: #F5F5F5;
 }
 
 .container-move {
@@ -127,4 +165,22 @@
     border: dotted 3px #999;
     height: 100px;
     transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.conceito {
+    background-color: white;
+    border: 2px solid black;
+    font-size: 18px;
+    border-radius: 10px;
+    padding: 0px 20px;
+}
+
+.imagem {
+    background-size: cover;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin: 10px;
+
+    /* TODO, trocar por resize element, precisa pesquisar e ver como implementar */
+    max-height: 500px;
 }

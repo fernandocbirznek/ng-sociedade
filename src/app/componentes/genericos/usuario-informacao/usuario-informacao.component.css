@@ -1,3 +1,11 @@
+.card {
+    padding: 15px;
+    gap: 15px;
+    margin: 50px 0;
+    width: 800px;
+    height: 200px;
+}
+
 .container-email {
     margin-bottom: 15px;
     gap: 10px;

@@ -1,24 +1,23 @@
-<div fxLayout="column" class="container-tabela-aula">
-    <div fxLayout="row" fxLayoutAlign="start center" class="container-filtro">
-        <button mat-stroked-button color="accent" (click)="criarAula()">
+<div fxLayout="column">
+    <div fxLayout="row" fxLayoutAlign="start center" class="container-criar-aula">
+        <div fxLayout="row" fxLayoutAlign="center center" class="g-button-adicionar button-adicionar" (click)="criarAula()">
             <mat-icon class="material-symbols-outlined">note_add</mat-icon>
-            Novo aula
-        </button>
-        <mat-form-field fxFlex="100%">
+            <div>Criar aula</div>
+        </div>
+        <mat-form-field appearance="outline" fxFlex="100%">
             <mat-label>Filtrar aulas</mat-label>
             <input matInput (keyup)="aplicarFiltro($event)" placeholder="Ex: termodinâmica" #input>
         </mat-form-field>
     </div>
-    <fieldset class="g-fieldset">
-        <div class="g-fieldset-titulo">Gerenciar aulas</div>
-        <table mat-table [dataSource]="dataSource" class="container-tabela" matSort>
+    <div fxLayout="column" class="container-tabela">
+        <table mat-table [dataSource]="dataSource" matSort>
             <ng-container matColumnDef="titulo">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header  fxFlex="25%" fxLayoutAlign="start center" 
                     class="tabela-header"> 
                     Título da aula
                 </th>
                 <td mat-cell *matCellDef="let element" fxFlex="40%" fxLayoutAlign="start center" class="coluna"
-                (click)="acessarAula(element.id)"> 
+                (click)="acessarAula(element)"> 
                     {{element.titulo}} 
                 </td>
             </ng-container>
@@ -29,7 +28,7 @@
                     Resumo da aula
                 </th>
                 <td mat-cell *matCellDef="let element" fxFlex="40%" fxLayoutAlign="start center" class="coluna"
-                    (click)="acessarAula(element.id)"> 
+                    (click)="acessarAula(element)"> 
                     <span class="g-text-overflow-2">{{element.resumo}}</span>
                 </td>
             </ng-container>
@@ -40,8 +39,8 @@
                     Área da Física
                 </th>
                 <td mat-cell *matCellDef="let element" fxFlex="10%" fxLayoutAlign="center center" class="coluna"
-                    (click)="acessarAula(element.id)"> 
-                    {{element.areaFisicaDescricao}} 
+                    (click)="acessarAula(element)"> 
+                    {{element.areaFisicaTitulo}} 
                 </td>
             </ng-container>
         
@@ -51,7 +50,7 @@
                     Data postagem 
                 </th>
                 <td mat-cell *matCellDef="let element" fxFlex="10%" fxLayoutAlign="center center" class="coluna"
-                    (click)="acessarAula(element.id)"> 
+                    (click)="acessarAula(element)"> 
                     {{element.dataCadastro | date: 'dd/MM/yyyy HH:mm'}} 
                 </td>
             </ng-container>
@@ -62,7 +61,7 @@
                     Comentários 
                 </th>
                 <td mat-cell *matCellDef="let element" fxFlex="10%" fxLayoutAlign="center center" class="coluna"
-                    (click)="acessarAula(element.id)"> 
+                    (click)="acessarAula(element)"> 
                     {{element.comentario}} 
                 </td>
             </ng-container>
@@ -73,7 +72,7 @@
                     Curtido 
                 </th>
                 <td mat-cell *matCellDef="let element" fxFlex="10%" fxLayoutAlign="center center" class="coluna"
-                    (click)="acessarAula(element.id)"> 
+                    (click)="acessarAula(element)"> 
                     {{element.curtido}} 
                 </td>
             </ng-container>
@@ -84,7 +83,7 @@
                     Favoritado 
                 </th>
                 <td mat-cell *matCellDef="let element" fxFlex="10%" fxLayoutAlign="center center" class="coluna"
-                    (click)="acessarAula(element.id)"> 
+                    (click)="acessarAula(element)"> 
                     {{element.favoritado}} 
                 </td>
             </ng-container>
@@ -115,5 +114,5 @@
             </tr>
         </table>
         <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-    </fieldset>
+    </div>
 </div>

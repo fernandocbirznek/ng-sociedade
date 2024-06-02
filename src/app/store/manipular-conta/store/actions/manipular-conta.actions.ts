@@ -48,17 +48,31 @@ export const deletarConta = createAction(
 );
 
 export const deletarContaSuccess = createAction(
-    '[DeletarConta] DeletarConta Success',
-    props<{ response: any }>()
+  '[DeletarConta] DeletarConta Success',
+  props<{ response: any }>()
 );
 
 export const deletarContaFailure = createAction(
-    '[DeletarConta] DeletarConta Failure',
-    props<{ response: any }>()
+  '[DeletarConta] DeletarConta Failure',
+  props<{ response: any }>()
 );
 
 export const deslogarConta = createAction(
   '[DeslogarConta] DeslogarConta',
+);
+
+export const loginAutomaticoWhitToken = createAction(
+  '[LoginAutomatico] loginAutomaticoWhitToken',
+  props<{ token: string }>()
+);
+
+export const loginAutomaticoWhitTokenSuccess = createAction(
+  '[LoginAutomatico] loginAutomaticoWhitToken Success',
+  props<{ response: UsuarioModel }>()
+);
+
+export const loginAutomaticoWhitTokenFailure = createAction(
+  '[LoginAutomatico] loginAutomaticoWhitToken Failure',
 );
 
 export const atualizarUsuarioPerfil = createAction(

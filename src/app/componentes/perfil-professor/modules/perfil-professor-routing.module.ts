@@ -3,16 +3,14 @@ import { RouterModule, Routes } from "@angular/router";
 import { AutenticacaoService } from "src/app/services";
 
 import { 
-    PerfilProfessorResolver 
-} from "../resolver";
-
-import { 
     ProfessorHomeComponent, 
 } from "../features";
 
+import { PerfilProfessorResolver } from "./perfil-professor.resolve";
+
 const perfilProfessorRoutes: Routes = [
     {
-        path: "perfil-professor/:email",
+        path: "perfil-professor/:email/:id",
         component: ProfessorHomeComponent,
         canActivate: [AutenticacaoService],
         resolve: {

@@ -6,6 +6,7 @@ import {
   AulaFilterModel,
   AulaModel, 
   AulaViewModel, 
+  InformacaoAulaViewModel, 
   TagModel,
   TipoOrdenarAulaFiltroEnum,
   UsuarioAulaCurtidoModel,
@@ -61,7 +62,6 @@ export const getManyAula = createSelector(
         aulaViewModel.professorId = item.professorId;
         aulaViewModel.resumo = item.resumo;
         aulaViewModel.titulo = item.titulo;
-        aulaViewModel.areaFisicaDescricao = item.areaFisicaDescricao;
         aulaViewModel.aulaComentarioMany = item.aulaComentarioMany;
         aulaViewModel.aulaSessaoMany = item.aulaSessaoMany;
         aulaViewModel.aulaTagMany = item.aulaTagMany;
@@ -71,7 +71,7 @@ export const getManyAula = createSelector(
         aulaViewModel.professorNome = item.professorNome;
 
         if (areaFisica)
-          aulaViewModel.areaFisicaDescricao = areaFisica.descricao;
+          aulaViewModel.areaFisicaTitulo = areaFisica.titulo;
 
         if (item.aulaTagMany.length > 0) {
           item.aulaTagMany.forEach(aulaTag => {
@@ -90,8 +90,6 @@ export const getManyAula = createSelector(
         aulaViewModel.usuarioLogadoFavoritada = usuarioAulaFavoritada ? true : false;
         return aulaViewModel;
       });
-      console.log("usuarioAulaFavoritadaMany = ", usuarioAulaFavoritadaMany);
-      console.log("itens = ", itens);
     return itens;
   }
 )
@@ -180,9 +178,32 @@ export const getOneAulaById = (aulaId: number) => createSelector(
       item.professorNome = aula.professorNome;
       item.resumo = aula.resumo;
       item.titulo = aula.titulo;
-      item.areaFisicaDescricao = areaFisica.descricao;
+      item.areaFisicaTitulo = areaFisica.titulo;
     }
 
     return item;
+  }
+)
+
+export const getProfessorInformacaoAulaMany = (professorId: number) => createSelector(
+  getManyAulaByProfessorId(professorId), (
+    aulaMany: AulaViewModel[],
+  ): InformacaoAulaViewModel => {
+    let informacaoAulaView = new InformacaoAulaViewModel();
+
+    informacaoAulaView.aulaCriadaMany = aulaMany.length;
+
+    let comentario: number = 0;
+    let curtido: number = 0;
+
+    aulaMany.forEach(item => {
+      comentario += item.comentario;
+      curtido += item.curtido;
+    });
+
+    informacaoAulaView.aulaComentarioMany = comentario;
+    informacaoAulaView.aulaCurtidoMany = curtido;
+
+    return informacaoAulaView;
   }
 )

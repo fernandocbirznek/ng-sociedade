@@ -1,15 +1,34 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as fromUsuarioAulaSessaoFavoritado from '../reducers/usuario-aula-sessao-favoritado.reducers';
 
+import { 
+  TipoFiltroFavoritadoEnum, 
+  TipoSessaoAulaEnum
+} from 'src/app/models';
+
 export const getUsuarioAulaSessaoFavoritadoState = createFeatureSelector<
     fromUsuarioAulaSessaoFavoritado.UsuarioAulaSessaoFavoritadoState>(
     fromUsuarioAulaSessaoFavoritado.usuarioAulaSessaoFavoritadoFeatureKey
 );
 
+export const getOneTipoFiltroFavoritadoEnum = createSelector(
+  getUsuarioAulaSessaoFavoritadoState, (
+  state
+): TipoSessaoAulaEnum => {
+
+    return state.tipoSessaoAulaEnum;
+  }
+)
+
 export const getManyUsuarioAulaSessaoFavoritado = createSelector(
-    getUsuarioAulaSessaoFavoritadoState, (
-    state
+    getUsuarioAulaSessaoFavoritadoState,
+    getOneTipoFiltroFavoritadoEnum, (
+      state,
+      tipoSessaoAulaEnum: TipoSessaoAulaEnum,
   ) => {
+
+    if (tipoSessaoAulaEnum != TipoSessaoAulaEnum.None)
+      return state.itens.filter(item => item.aulaSessaoTipo == tipoSessaoAulaEnum);
 
     return state.itens;
   }

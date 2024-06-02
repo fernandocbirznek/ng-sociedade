@@ -11,6 +11,7 @@ import {
 } from 'src/app/models';
 
 import { 
+  alterarTipoSessaoAulaEnum,
   getManyUsuarioAulaSessaoFavoritado, 
   selecionarManyUsuarioAulaSessaoFavoritadoByUsuarioId 
 } from 'src/app/store';
@@ -32,6 +33,9 @@ export class AlunoFavoritadoComponent implements OnInit {
 
   cardExpandidoMany: boolean[] = [];
 
+  filtroSessaoAulaEnum: TipoSessaoAulaEnum = TipoSessaoAulaEnum.None;
+
+  readonly tipoFiltroFavoritadoEnum = TipoSessaoAulaEnum;
   readonly tipoSessaoAulaEnum = TipoSessaoAulaEnum;
 
   constructor(
@@ -68,6 +72,15 @@ export class AlunoFavoritadoComponent implements OnInit {
         }
       });
     });
+  }
+
+  selecionouFiltro(item: TipoSessaoAulaEnum) {
+    if (this.filtroSessaoAulaEnum == item)
+      this.filtroSessaoAulaEnum = TipoSessaoAulaEnum.None;
+    else
+      this.filtroSessaoAulaEnum = item;
+
+    this.store.dispatch(alterarTipoSessaoAulaEnum({ tipoSessaoAulaEnum: this.filtroSessaoAulaEnum }));
   }
 
   acessarAula(item: UsuarioAulaSessaoFavoritadoModel) {

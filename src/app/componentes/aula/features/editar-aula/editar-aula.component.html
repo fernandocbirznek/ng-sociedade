@@ -1,17 +1,20 @@
 <div fxLayout="column" class="container-aula">
-  <div fxLayout="row" fxLayoutAlign="center center" class="container-voltar" (click)="voltarPaginaPainelProfessor()">
+  <div fxLayout="row" fxLayoutAlign="center center" class="g-container-voltar" (click)="voltarPaginaPainelProfessor()">
     <mat-icon class="material-symbols-outlined">undo</mat-icon>
     <span>Voltar</span>
   </div>
-  <fieldset class="g-fieldset">
-    <div fxLayout="row" fxLayoutAlign="center center" class="g-fieldset-titulo">
-      Informações da Aula
-      <mat-icon class="icone-editar material-symbols-outlined" (click)="editarAulaInformacao()">edit</mat-icon>
+  <div fxLayout="column" fxLayoutAlign="space-between space-between" class="g-card card">
+    <div class="g-card-titulo card-titulo" fxLayout="row" fxLayoutAlign="center center">
+        Informações da Aula
+        <mat-icon class="icone-edit material-symbols-outlined" (click)="editarAulaInformacao()" 
+          matTooltip="Editar informações">
+          edit_document
+        </mat-icon>
     </div>
     <div fxLayout="column" fxLayoutAlign="start start" class="container-informacao">
       <div fxLayout="row" fxLayoutAlign="start center">
         <span class="label">Área da Física: </span>
-        <span>{{ this.aula.areaFisicaDescricao }}</span>
+        <span>{{ this.aula.areaFisicaTitulo }}</span>
       </div>
       <div fxLayout="row" fxLayoutAlign="start center">
         <span class="label">Título: </span>
@@ -22,33 +25,43 @@
         <span>{{ this.aula.resumo }}</span>
       </div>
     </div>
-  </fieldset>
-  <h3 class="titulo-bloco titulo-espacado">Sessões</h3>
-  <button mat-stroked-button color="primary" (click)="novaSessao()" class="button-nova-sessao">
-    <mat-icon class="material-symbols-outlined">list_alt_add</mat-icon>
-    Nova sessão
-  </button>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center center" class="g-button-adicionar button-nova-sessao" (click)="novaSessao()">
+    <mat-icon class="material-symbols-outlined">note_add</mat-icon>
+    <div>Criar sessão</div>
+  </div>
   <div cdkDropList (cdkDropListDropped)="ordenarSessao($event)">
-    <div cdkDrag *ngFor="let sessao of this.aulaSessaoMany; index as i" fxLayout="column" class="container-sessao-many">
+    <div cdkDrag *ngFor="let sessao of this.aulaSessaoMany; index as i" fxLayout="column" fxLayoutAlign="center center"  
+      class="g-card card-sessao">
       <div cdkDragHandle class="container-move">
-        <mat-icon class="icone-move material-symbols-outlined">open_with</mat-icon>
+        <mat-icon class="icone-move material-symbols-outlined" matTooltip="Ordenar sessão. Clique, segure e arraste">
+          open_with
+        </mat-icon>
       </div>
       <div class="container-icones">
-        <mat-icon class="icone material-symbols-outlined" (click)="editarSessao(sessao)">edit</mat-icon>
-        <mat-icon class="icone material-symbols-outlined" (click)="deletarSessao(sessao)">delete</mat-icon>
+        <mat-icon class="icone material-symbols-outlined" (click)="deletarSessao(sessao)" matTooltip="Deletar sessão">
+          delete
+        </mat-icon>
       </div>
       <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
-      <div fxLayout="column" fxLayoutAlign="center center" class="titulo-sessao">
+      <div class="g-card-titulo" fxLayout="row" fxLayoutAlign="center center">
         {{ sessao.titulo }}
+        <mat-icon class="icone-edit material-symbols-outlined" (click)="editarSessao(sessao)" 
+          matTooltip="Editar sessão">
+          edit_document
+        </mat-icon>
       </div>
-      <div *ngIf="sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Conceito || sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Texto" 
+      <div *ngIf="sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Conceito" 
+          fxLayout="column" fxLayoutAlign="center center" class="conceito" [innerHTML]="this.trustedDashboardHtml[i]">
+        </div>
+      <div *ngIf="sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Texto" 
         fxLayout="column" fxLayoutAlign="center center" [innerHTML]="this.trustedDashboardHtml[i]">
       </div>
       <div *ngIf="sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Equacao"> 
         <ng-katex [equation]="sessao.conteudo"></ng-katex>
       </div>
-      <div *ngIf="sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Imagem">
-        <img fxFlex="100%" [src]="this.trustedUrlImageHtml[i]" alt="Imagem" class="imagem">
+      <div *ngIf="sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Imagem" fxLayoutAlign="center start">
+        <img [src]="this.trustedUrlImageHtml[i]" alt="Imagem" class="imagem">
       </div>
     </div>
   </div>

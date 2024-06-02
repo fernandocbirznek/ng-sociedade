@@ -20,6 +20,7 @@ import { getOneUsuarioLogado } from "src/app/store";
 export class ManipularContaService {
     urlCriarConta = 'https://localhost:44362/api/Usuario/inserir';
     urlLoginConta = 'https://localhost:44362/api/Usuario/login';
+    urlLoginAutomaticoWhitToken = 'https://localhost:44362/api/Usuario/login-automatico';
     urlDeletarConta = 'http://localhost:3000/criarConta/deletarConta';
 
     usuariologado$: Observable<any>;
@@ -37,6 +38,11 @@ export class ManipularContaService {
 
     loginConta(loginConta: Login): Observable<UsuarioModel> {
         return this.httpClient.post<UsuarioModel>(this.urlLoginConta, JSON.stringify(loginConta), this.buildHttpOptions());
+    }
+    
+
+    loginAutomaticoWhitToken(token: string): Observable<UsuarioModel> {
+        return this.httpClient.post<UsuarioModel>(this.urlLoginAutomaticoWhitToken, JSON.stringify({token: token }), this.buildHttpOptions());
     }
 
     deletarConta(deletarConta: DeletarConta): Observable<any> {

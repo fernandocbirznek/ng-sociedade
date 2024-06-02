@@ -71,6 +71,8 @@ export class EditarAulaComponent implements OnInit {
     this.setupAula();
     this.setupAulaSessao();
     this.setupUsuarioLogado();
+
+    this.scrollToTop();
   }
 
   ngOnDestroy() {
@@ -189,6 +191,14 @@ export class EditarAulaComponent implements OnInit {
   }
 
   voltarPaginaPainelProfessor() {
-    this.router.navigate([`perfil-professor/${this.usuarioLogado?.email}`]);
+    this.router.navigate([`perfil-professor/${this.usuarioLogado?.email}/${this.usuarioLogado?.id}`]);
+  }
+
+  scrollToTop() {
+    window.scroll({ 
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth' 
+    });
   }
 }

@@ -10,7 +10,8 @@ import { Observable, Subscription } from 'rxjs';
 import { 
   EditarNoticiaComponent,
   ModalExcluirComponent, 
-  NovaNoticiaComponent
+  NovaNoticiaComponent,
+  VisualizarNoticiaComponent
 } from 'src/app/componentes';
 
 import { 
@@ -22,7 +23,6 @@ import {
   excluirNoticia,
   getAreaInteresseMany,
   getManyNoticiaByProfessorId, 
-  selecionarNoticiaManyByProfessorId
 } from 'src/app/store';
 
 @Component({
@@ -76,9 +76,6 @@ export class ProfessorTabelaNoticiaComponent implements OnInit {
   }
 
   setupProfessorNoticia() {
-    //TODO, colocar no resolver
-    this.store.dispatch(selecionarNoticiaManyByProfessorId({ professorId: this.professorId}));
-
     this.noticiaMany$ = this.store.select(getManyNoticiaByProfessorId(this.professorId));
     this.noticiaManySubscription$ = this.noticiaMany$.subscribe(itens => {
       this.dataSource = new MatTableDataSource(itens);
@@ -99,7 +96,11 @@ export class ProfessorTabelaNoticiaComponent implements OnInit {
   }
 
   acessarNoticia(item: NoticiaModel) {
-    //TODO, fazer depois que fizer a parte da sessão
+    this.dialog.open(VisualizarNoticiaComponent, {
+      data: item.id,
+      width: '90%',
+      height: 'auto',
+    });
   }
 
   editarNoticia(item: NoticiaModel) {

@@ -1,6 +1,16 @@
-.container-filtro,
-.container-tabela {
+.container-criar-noticia {
+    gap: 15px;
     width: 100%;
+    margin-bottom: 15px;
+}
+
+.button-adicionar {
+    gap: 10px;
+    text-wrap: nowrap;
+}
+
+.container-tabela {
+    border: 2px solid black;
 }
 
 .coluna:hover ~ .coluna, .coluna:hover, .coluna:has(~ .coluna:hover) {
@@ -19,8 +29,8 @@
     font-size: 16px;
 }
 
-.container-area-interesse {
-    gap: 20px;
+.tag {
+    background-color: #ffb872;
 }
 
 .container-buttons {

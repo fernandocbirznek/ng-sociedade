@@ -8,6 +8,7 @@ import moment from 'moment';
 
 import { 
   AreaInteresseModel, 
+  InformacaoNoticiaViewModel, 
   NoticiaFilterModel, 
   NoticiaModel, 
   NoticiaViewModel, 
@@ -124,5 +125,25 @@ export const getManyNoticiaHome = createSelector(
     return itens.slice(0, 5).sort((a, b) => {
       return <any>new Date(b.dataCadastro!) - <any>new Date(a.dataCadastro!);
     });
+  }
+)
+
+export const getProfessorInformacaoNoticiaMany = (professorId: number) => createSelector(
+  getManyNoticiaByProfessorId(professorId), (
+    noticiaMany: NoticiaViewModel[],
+  ): InformacaoNoticiaViewModel => {
+    let informacaoNoticiaView = new InformacaoNoticiaViewModel();
+
+    informacaoNoticiaView.noticiaCriadaMany = noticiaMany.length;
+
+    let curtido: number = 0;
+
+    noticiaMany.forEach(item => {
+      curtido += item.favoritado;
+    });
+
+    informacaoNoticiaView.noticiaCurtidoMany = curtido;
+
+    return informacaoNoticiaView;
   }
 )

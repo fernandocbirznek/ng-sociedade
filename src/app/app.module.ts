@@ -74,7 +74,8 @@ import {
   AtualizarForumTopicoReplicaComponent,
   PainelNoticiaComponent,
   AulaFiltroComponent,
-  NoticiaFiltroComponent
+  NoticiaFiltroComponent,
+  ProfessorPerfilComponent
 } from './componentes';
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -169,6 +170,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     PainelNoticiaComponent,
     AulaFiltroComponent,
     NoticiaFiltroComponent,
+    ProfessorPerfilComponent,
   ],
   imports: [
     BrowserModule,

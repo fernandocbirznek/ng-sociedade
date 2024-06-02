@@ -32,11 +32,14 @@ import {
 } from 'src/app/store/noticia';
 
 import { 
+  alterarTituloPagina,
   atualizarAdicaoAulaCurtido, 
   atualizarAdicaoAulaFavoritada, 
   atualizarRemocaoAulaCurtido, 
   atualizarRemocaoAulaFavoritada
 } from 'src/app/store';
+
+import { GenericoHelpers } from 'src/app/componentes/genericos/helpers/generico.helper';
 
 @Injectable()
 export class ManipularContaEffects {
@@ -85,7 +88,7 @@ export class ManipularContaEffects {
                 break; 
               } 
               case TipoUsuarioEnum.UsuarioProfessor: { 
-                this.router.navigate([`perfil-professor/${response.email}`]);
+                this.router.navigate([`perfil-professor/${response.email}/${response.id}`]);
                 //TODO, colocar num resolver
                 this.store.dispatch(selecionarManyUsuarioAulaCurtido({ usuarioId: response.id }));
                 this.store.dispatch(selecionarManyUsuarioAulaFavoritada({ usuarioId: response.id }));
@@ -99,13 +102,59 @@ export class ManipularContaEffects {
                 this.router.navigate(['']);
               } 
             }
-
+            this.store.dispatch(alterarTituloPagina({ titulo: '', areaFisicaId: 0 }));
             this.store.dispatch(selecionarManyUsuarioNoticiaFavoritado({ usuarioId: response.id }));
+
+            GenericoHelpers.saveLocalStorage(response);
 
             return actions.loginContaSuccess({ login: action.login, response: response })
           }),
           catchError(response => {
             return of(actions.loginContaFailure({ response }))
+          }))
+      )
+    );
+  });
+
+  loginAutomaticoWhitToken$ = createEffect(() => {
+    return this.actions$.pipe( 
+      ofType(actions.loginAutomaticoWhitToken),
+      concatMap((action) =>
+        this.manipularContaService.loginAutomaticoWhitToken(action.token).pipe(
+          map(response => {
+            switch(response.tipoUsuario) { 
+              case TipoUsuarioEnum.UsuarioAdministrador: { 
+                this.router.navigate([`administrador-home/${response.email}`]);
+                break; 
+              } 
+              case TipoUsuarioEnum.UsuarioComum: { 
+                this.router.navigate([`aluno-home/${response.email}`]);
+                //TODO, colocar num resolver
+                this.store.dispatch(selecionarManyUsuarioAulaCurtido({ usuarioId: response.id }));
+                this.store.dispatch(selecionarManyUsuarioAulaFavoritada({ usuarioId: response.id }));
+                break; 
+              } 
+              case TipoUsuarioEnum.UsuarioProfessor: { 
+                this.router.navigate([`perfil-professor/${response.email}/${response.id}`]);
+                break; 
+              } 
+              case TipoUsuarioEnum.UsuarioProfessorAdministrador: { 
+                //TODO, professor administrador; 
+              break; 
+              } 
+              default: { 
+                this.router.navigate(['']);
+              } 
+            }
+            this.store.dispatch(alterarTituloPagina({ titulo: '', areaFisicaId: 0 }));
+            this.store.dispatch(selecionarManyUsuarioNoticiaFavoritado({ usuarioId: response.id }));
+
+            GenericoHelpers.saveLocalStorage(response);
+
+            return actions.loginAutomaticoWhitTokenSuccess({ response: response })
+          }),
+          catchError(response => {
+            return of(actions.loginAutomaticoWhitTokenFailure())
           }))
       )
     );

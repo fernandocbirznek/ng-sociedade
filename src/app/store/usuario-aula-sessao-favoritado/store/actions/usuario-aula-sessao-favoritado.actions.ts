@@ -1,6 +1,8 @@
 import { createAction, props } from '@ngrx/store';
 
 import { 
+    TipoFiltroFavoritadoEnum,
+    TipoSessaoAulaEnum,
     UsuarioAulaSessaoFavoritadoModel,
 } from 'src/app/models';
 
@@ -47,4 +49,9 @@ export const removerUsuarioAulaSessaoFavoritadoSuccess = createAction(
 export const removerUsuarioAulaSessaoFavoritadoFailure = createAction(
     '[UsuarioAulaSessaoFavoritadoModel] removerUsuarioAulaSessaoFavoritado Failure',
     props<{ error: any }>()
+);
+
+export const alterarTipoSessaoAulaEnum = createAction(
+    '[UsuarioAulaSessaoFavoritadoModel] alterarTipoSessaoAulaEnum',
+    props<{ tipoSessaoAulaEnum: TipoSessaoAulaEnum }>()
 );

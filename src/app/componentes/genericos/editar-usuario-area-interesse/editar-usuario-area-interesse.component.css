@@ -1,4 +1,28 @@
+.container-area-interesse {
+    gap: 20px;
+    min-width: 600px;
+}
+
+.titulo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.texto {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.container-check {
+    gap: 25px;
+}
+
+.check-ativo {
+    font-weight: bold;
+}
+
 .container-buttons {
+    width: 100%;
     margin-top: 20px;
     gap: 20px;
 }

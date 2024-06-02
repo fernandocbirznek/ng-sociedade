@@ -1,17 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
-
-import { 
-  ProfessorEditarPerfilComponent 
-} from 'src/app/componentes';
 
 import { 
   UsuarioModel 
 } from 'src/app/models';
 
 import { 
+  deslogarConta,
   getOneUsuarioLogado 
 } from 'src/app/store';
 
@@ -24,10 +21,12 @@ export class ProfessorHomeComponent implements OnInit {
 
   usuarioLogadoSubscription$: Subscription = new Subscription();
   usuarioLogado$: Observable<UsuarioModel | undefined> = new Observable<UsuarioModel | undefined>();
-  usuarioLogado: UsuarioModel | undefined = undefined ;
+  usuarioLogado: UsuarioModel | undefined = undefined;
+
+  abaSelecionada: number = 1;
 
   constructor(
-    private dialog: MatDialog,
+    public router: Router,
     public store: Store,
   ) { }
 
@@ -48,9 +47,12 @@ export class ProfessorHomeComponent implements OnInit {
     });
   }
 
-  editarPerfil() {
-    this.dialog.open(ProfessorEditarPerfilComponent, {
-      data: this.usuarioLogado
-    });
+  selecionarAba(item: number) {
+    this.abaSelecionada = item;
+  }
+
+  deslogar() {
+    this.store.dispatch(deslogarConta());
+    this.router.navigate(['']);
   }
 }

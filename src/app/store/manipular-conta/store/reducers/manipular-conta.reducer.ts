@@ -10,6 +10,8 @@ import {
   UsuarioNoticiaFavoritadoModel 
 } from 'src/app/models';
 
+import { GenericoHelpers } from 'src/app/componentes/genericos/helpers/generico.helper';
+
 export const manipularContaFeatureKey = 'manipularConta';
 
 export interface ManipularContaState {
@@ -141,6 +143,75 @@ export const manipularContaReducer = createReducer(
       mensagem: action.response.mensagem 
     };
   }),
+  on(actions.loginAutomaticoWhitToken, state => {
+    return { 
+      ...state, 
+      isLoading: true, 
+      isSuccess: false, 
+      isFailure: false, 
+      error: "" 
+    };
+  }),
+  on(actions.loginAutomaticoWhitTokenSuccess, (state, action) => {
+    let usuario = new UsuarioModel();
+    usuario.id = action.response.id;
+    usuario.nome = action.response.nome;
+    usuario.comentarioAula = action.response.comentarioAula;
+    usuario.comentarioForum = action.response.comentarioForum;
+    usuario.curtirAula = action.response.curtirAula;
+    usuario.dataNascimento = action.response.dataNascimento;
+    usuario.email = action.response.email;
+    usuario.hobbie = action.response.hobbie;
+    usuario.noticiaVisualizada = action.response.noticiaVisualizada;
+    usuario.usuarioAreaInteresses = action.response.usuarioAreaInteresses;
+    usuario.sociedadeId = action.response.sociedadeId;
+    usuario.tipoUsuario = action.response.tipoUsuario;
+
+    switch(action.response.tipoUsuario) { 
+      case TipoUsuarioEnum.UsuarioAdministrador: { 
+        usuario.tipoUsuarioEnum = TipoUsuarioEnum.UsuarioAdministrador;
+        break; 
+      } 
+      case TipoUsuarioEnum.UsuarioProfessor: { 
+        usuario.tipoUsuarioEnum = TipoUsuarioEnum.UsuarioProfessor;
+        break; 
+      } 
+      case TipoUsuarioEnum.UsuarioProfessorAdministrador: { 
+        usuario.tipoUsuarioEnum = TipoUsuarioEnum.UsuarioProfessorAdministrador;
+        break; 
+      } 
+      case TipoUsuarioEnum.UsuarioComum: { 
+        usuario.tipoUsuarioEnum = TipoUsuarioEnum.UsuarioComum;
+        break; 
+      } 
+      default: { 
+        usuario.tipoUsuarioEnum = TipoUsuarioEnum.None;
+        break; 
+      } 
+    }
+
+    usuario.tipoUsuarioEnum = action.response.tipoUsuarioEnum;
+    usuario.token = action.response.token;
+    usuario.topicoForum = action.response.topicoForum;
+    usuario.usuarioPerfilId = action.response.usuarioPerfilId;
+    usuario.foto = action.response.foto;
+
+    return { 
+      ...state, 
+      usuario: usuario,
+      isLoading: false, 
+      isSuccess: true, 
+      isFailure: false
+    };
+  }),
+  on(actions.loginAutomaticoWhitTokenFailure, (state, action) => {
+    return { 
+      ...state, 
+      isLoading: false, 
+      isSuccess: false, 
+      isFailure: true,
+    };
+  }),
   on(actions.deletarConta, state => {
     return { 
       ...state, 
@@ -172,15 +243,15 @@ export const manipularContaReducer = createReducer(
     };
   }),
   on(actions.deslogarConta, state => {
+    GenericoHelpers.logout();
+
     return { 
       ...state, 
-      email: "", 
-      nome: "", 
+      usuario: undefined,
       isLoading: false, 
       isSuccess: true, 
       isFailure: false, 
       mensagem: "Conta deslogada com sucesso",
-      token: ""
     };
   }),
 
@@ -201,7 +272,7 @@ export const manipularContaReducer = createReducer(
       usuario.hobbie = action.usuarioPerfil.hobbie ? action.usuarioPerfil.hobbie : '';
       usuario.dataNascimento = action.usuarioPerfil.dataNascimento ? action.usuarioPerfil.dataNascimento : undefined;
     }
-   
+
     return { 
         ...state, 
         usuario: usuario,
@@ -244,6 +315,15 @@ export const manipularContaReducer = createReducer(
       usuario.hobbie = state.usuario.hobbie;
       usuario.noticiaVisualizada = state.usuario.noticiaVisualizada;
       usuario.sociedadeId = state.usuario.sociedadeId;
+      usuario.dataAtualizacao = state.usuario.dataAtualizacao;
+      usuario.dataCadastro = state.usuario.dataCadastro;
+      usuario.foto = state.usuario.foto;
+      usuario.tipoUsuario = state.usuario.tipoUsuario;
+      usuario.tipoUsuarioEnum = state.usuario.tipoUsuarioEnum;
+      usuario.token = state.usuario.token;
+      usuario.topicoForum = state.usuario.topicoForum;
+      usuario.usuarioPerfilId = state.usuario.usuarioPerfilId;
+      usuario.usuarioAreaInteresses = [...state.usuario.usuarioAreaInteresses];
       
       let usuarioAreaInteresse: AreaInteresseModel = new AreaInteresseModel();
       usuarioAreaInteresse.id = action.usuarioAreaInteresse.areaInteresseId;
@@ -289,7 +369,7 @@ export const manipularContaReducer = createReducer(
       usuario.usuarioAreaInteresses = 
         usuario
           .usuarioAreaInteresses
-          .filter(item => item.id == action.usuarioAreaInteresse.areaInteresseId);
+          .filter(item => item.id != action.usuarioAreaInteresse.areaInteresseId);
     }
 
     return { 

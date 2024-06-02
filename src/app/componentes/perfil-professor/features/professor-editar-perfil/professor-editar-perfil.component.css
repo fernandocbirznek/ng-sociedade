@@ -1,5 +1,12 @@
 .container-criar-perfil {
     margin-top: 20px;
+    width: 500px;
+    gap: 20px;
+}
+
+.titulo {
+    font-size: 24px;
+    font-weight: bold;
 }
 
 .container-form{
@@ -14,4 +21,19 @@
     position: absolute;
     right: 0;
     top: -10px;
+}
+
+.imagem {
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.container-escolher-foto {
+    margin-top: -30px;
+    gap: 10px;
+}
+
+.container-buttons {
+    width: 100%;
+    gap: 20px;
 }

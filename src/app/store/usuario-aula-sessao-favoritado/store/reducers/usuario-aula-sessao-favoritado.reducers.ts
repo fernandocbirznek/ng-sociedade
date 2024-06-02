@@ -2,13 +2,16 @@ import { Action, createReducer, on } from '@ngrx/store';
 import * as actions from '../actions/usuario-aula-sessao-favoritado.actions';
 
 import { 
-    UsuarioAulaSessaoFavoritadoModel
+  TipoSessaoAulaEnum,
+  UsuarioAulaSessaoFavoritadoModel
 } from 'src/app/models';
 
 export const usuarioAulaSessaoFavoritadoFeatureKey = 'usuario-aula-sessao-favorita';
 
 export interface UsuarioAulaSessaoFavoritadoState {
     itens: UsuarioAulaSessaoFavoritadoModel[];
+    tipoSessaoAulaEnum: TipoSessaoAulaEnum;
+
     isSuccess: boolean;
     isLoading: boolean;
     isFailure: boolean;
@@ -17,6 +20,8 @@ export interface UsuarioAulaSessaoFavoritadoState {
 
 export const usuarioAulaSessaoFavoritadoInitialState: UsuarioAulaSessaoFavoritadoState = {
     itens: [],
+    tipoSessaoAulaEnum: TipoSessaoAulaEnum.None,
+
     isSuccess: false,
     isLoading: false,
     isFailure: false,
@@ -116,6 +121,13 @@ export const usuarioAulaSessaoFavoritadoReducer = createReducer(
         isSuccess: false, 
         isFailure: true, 
         mensagem: "Falha ao remover a sessão dos favoritados" 
+    };
+  }),
+
+  on(actions.alterarTipoSessaoAulaEnum, (state, action) => {
+    return { 
+        ...state, 
+        tipoSessaoAulaEnum: action.tipoSessaoAulaEnum
     };
   }),
 );

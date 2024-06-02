@@ -18,5 +18,7 @@
             <p class="paragrafo-topico">{{ this.resumoTopico }}</p>
         </div> 
     </div>
-    <div fxLayoutAlign="center center" class="menu-selecionado">{{ this.headerTitulo }}</div>
+    <div *ngIf="this.headerTitulo" fxLayoutAlign="center center" class="menu-selecionado">
+        {{ this.headerTitulo }}
+    </div>
 </div>

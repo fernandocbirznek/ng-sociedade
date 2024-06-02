@@ -18,10 +18,10 @@ import {
 } from 'src/app/models';
 
 import { 
+  alterarTituloPagina,
   excluirAula,
   getManyAreaFisica,
   getManyAulaByProfessorId, 
-  selecionarManyAulaByProfessorId 
 } from 'src/app/store';
 
 
@@ -74,9 +74,6 @@ export class ProfessorTabelaAulaComponent implements OnInit, AfterViewInit {
   }
 
   setupProfessorAula() {
-    //TODO, colocar no resolver
-    this.store.dispatch(selecionarManyAulaByProfessorId({ professorId: this.professorId}));
-
     this.aulaMany$ = this.store.select(getManyAulaByProfessorId(this.professorId));
     this.aulaManySubscription$ = this.aulaMany$.subscribe(itens => {
       this.dataSource = new MatTableDataSource(itens);
@@ -97,7 +94,8 @@ export class ProfessorTabelaAulaComponent implements OnInit, AfterViewInit {
   }
 
   acessarAula(item: AulaModel) {
-    //TODO, fazer depois que fizer a parte da sessão
+    this.store.dispatch(alterarTituloPagina({ titulo: `${item.titulo}`, areaFisicaId: item.areaFisicaId }));
+    this.router.navigate([`visualizar-aula/${item.id}`]);
   }
 
   editarAula(item: AulaModel) {
