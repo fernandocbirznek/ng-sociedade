@@ -21,6 +21,7 @@
 
 .container-inputs {
     width: 100%;
+    gap: 20px;
 }
 
 .criar-conta {

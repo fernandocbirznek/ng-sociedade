@@ -160,6 +160,20 @@ export const filtrarAula = createAction(
   props<{ aulaFilter: AulaFilterModel }>()
 );
 
+export const atualizarAulaPublicado = createAction(
+  '[Aula] atualizarAulaPublicado',
+  props<{ aula: AulaModel }>()
+);
+
+export const atualizarAulaPublicadoSuccess = createAction(
+  '[Aula] atualizarAulaPublicado Success',
+  props<{ aula: AulaModel, response: AulaModel }>()
+);
+
+export const atualizarAulaPublicadoFailure = createAction(
+  '[Aula] atualizarAulaPublicado Failure',
+  props<{ error: any }>()
+);
 
 
 export const inserirManyAulaTag = createAction(

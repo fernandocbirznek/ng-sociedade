@@ -170,3 +170,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mat-input-element {
     transform: translateY(2px);
 }
+
+/* Arrow dropdown input */
+.mat-form-field-appearance-outline .mat-select-arrow-wrapper {
+    transform: translateY(5px) !important;
+}

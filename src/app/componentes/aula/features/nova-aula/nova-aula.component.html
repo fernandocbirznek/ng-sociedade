@@ -1,13 +1,10 @@
 <div fxLayout="column" class="container-aula">
     <h2 >Criando nova Aula</h2>
-    <form [formGroup]="this.formGroupAula" fxLayout="column" fxLayoutAlign="start center">   
-      <mat-form-field appearance="outline" class="g-full-width">
-        <mat-label>Área da Física</mat-label>
-        <mat-select formControlName="formAreaFisica" matInput>
-          <mat-option *ngFor="let area of this.areaFisicaMany" [value]="area.id">{{ area.descricao }}</mat-option>
-        </mat-select>
-        <mat-error *ngIf="formAreaFisica.invalid">Área da Física é obrigatória</mat-error>
-      </mat-form-field>
+    <form [formGroup]="this.formGroupAula" fxLayout="column" fxLayoutAlign="start start" class="container-inputs">   
+      <div class="area-fisica-text">Área da física:</div>
+      <mat-radio-group formControlName="formAreaFisica" fxLayout="row wrap" fxLayoutAlign="start center" class="container-radio">
+        <mat-radio-button *ngFor="let area of this.areaFisicaMany" [value]="area.id">{{ area.titulo }}</mat-radio-button>
+      </mat-radio-group>
       <mat-form-field  appearance="outline" class="g-full-width">
         <mat-label>Título</mat-label>
         <input formControlName="formTitulo" matInput required>
@@ -20,13 +17,13 @@
       </mat-form-field>
     </form>
     <div fxLayout="row" fxLayoutAlign="space-around center" class="container-buttons">
-      <button mat-stroked-button color="primary" (click)="requestCriarAula()">
-        <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
-        Nova aula
-      </button>
       <button mat-stroked-button color="warn" (click)="fecharModal()">
         <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
         Cancelar
+      </button>
+      <button mat-stroked-button color="primary" (click)="requestCriarAula()">
+        <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
+        Nova aula
       </button>
     </div>
 </div>

@@ -375,6 +375,61 @@ export const aulaReducer = createReducer(
       mensagem: "Erro ao excluir aula"
     };
   }),
+
+  on(actions.atualizarAulaPublicado, state => {
+    return { 
+      ...state, 
+      isLoading: true, 
+      isSuccess: false, 
+      isFailure: false, 
+      error: "" 
+    };
+  }),
+  on(actions.atualizarAulaPublicadoSuccess, (state, action) => {
+    let itens = [...state.aulas].map(item => {
+        if(item.id == action.aula.id) {
+          let aula = new AulaModel();
+          aula.areaFisicaId = item.areaFisicaId;
+          aula.curtido = item.curtido;
+          aula.favoritado = item.favoritado;
+          aula.id = item.id;
+          aula.professorId = item.professorId;
+          aula.resumo = item.resumo;
+          aula.titulo = item.titulo;
+          aula.areaFisicaTitulo = item.areaFisicaTitulo;
+          aula.aulaComentarioMany = item.aulaComentarioMany;
+          aula.aulaSessaoMany = item.aulaSessaoMany;
+          aula.aulaTagMany = item.aulaTagMany;
+          aula.comentario = item.comentario;
+          aula.dataCadastro = item.dataCadastro;
+          aula.dataAtualizacao = item.dataCadastro;
+          aula.professorNome = item.professorNome;
+          aula.publicado = action.aula.publicado;
+
+          return aula;
+        }
+        return item;
+    });
+    
+    return { 
+        ...state, 
+        aulas: itens,
+        isLoading: false, 
+        isSuccess: true, 
+        isFailure: false, 
+        error: ""
+    };
+  }),
+  on(actions.atualizarAulaPublicadoFailure, (state, action) => {
+    return { 
+      ...state, 
+      isLoading: false, 
+      isSuccess: false, 
+      isFailure: true, 
+      mensagem: "Erro ao alterar publicação aula"
+    };
+  }),
+  
   on(actions.filtrarAula, (state, action) => {
     return { 
         ...state,
@@ -408,6 +463,7 @@ export const aulaReducer = createReducer(
         aula.aulaSessaoMany = item.aulaSessaoMany;
         aula.aulaTagMany = action.response;
         aula.comentario = item.comentario;
+        aula.dataCadastro = item.dataCadastro;
         aula.dataAtualizacao = action.response[0].dataCadastro;
         aula.professorNome = item.professorNome;
 
@@ -461,6 +517,7 @@ export const aulaReducer = createReducer(
         aula.aulaSessaoMany = item.aulaSessaoMany;
         aula.aulaTagMany = aulaTagMany;
         aula.comentario = item.comentario;
+        aula.dataCadastro = item.dataCadastro;
         aula.dataAtualizacao = item.dataCadastro;
         aula.professorNome = item.professorNome;
 
@@ -504,6 +561,7 @@ export const aulaReducer = createReducer(
           aula.aulaSessaoMany = item.aulaSessaoMany;
           aula.aulaTagMany = item.aulaTagMany;
           aula.comentario = item.comentario;
+          aula.dataCadastro = item.dataCadastro;
           aula.dataAtualizacao = item.dataCadastro;
           aula.professorNome = item.professorNome;
 
@@ -573,6 +631,7 @@ export const aulaReducer = createReducer(
           aula.aulaSessaoMany = item.aulaSessaoMany;
           aula.aulaTagMany = item.aulaTagMany;
           aula.comentario = item.comentario;
+          aula.dataCadastro = item.dataCadastro;
           aula.dataAtualizacao = item.dataCadastro;
           aula.professorNome = item.professorNome;
 
@@ -606,6 +665,7 @@ export const aulaReducer = createReducer(
           aula.aulaSessaoMany = item.aulaSessaoMany;
           aula.aulaTagMany = item.aulaTagMany;
           aula.comentario = item.comentario;
+          aula.dataCadastro = item.dataCadastro;
           aula.dataAtualizacao = item.dataCadastro;
           aula.professorNome = item.professorNome;
 

@@ -125,6 +125,17 @@ export class AulaEffects {
    );
   });
 
+  atualizarAulaPublicado$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(actions.atualizarAulaPublicado),
+      concatMap((action) =>
+        this.aulaService.atualizarAulaPublicado(action.aula).pipe(
+          map(response => actions.atualizarAulaPublicadoSuccess({ aula: action.aula, response: response })),
+          catchError(error => of(actions.atualizarAulaPublicadoFailure({ error }))))
+      )
+    );
+  });
+
 
 
   inserirManyAulaTag$ = createEffect(() => {

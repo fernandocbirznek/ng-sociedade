@@ -86,9 +86,7 @@ export class HeaderComponent implements OnInit {
   setupUsuarioLogado() {
     this.usuarioLogado$ = this.store.select(getOneUsuarioLogado);
     this.usuarioLogadoSubscription$ = this.usuarioLogado$.subscribe(item => {
-      if(item) {
-        this.usuarioLogado = item;
-      }  
+      this.usuarioLogado = item;
     });
   }
 

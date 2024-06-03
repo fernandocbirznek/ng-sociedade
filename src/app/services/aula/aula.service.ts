@@ -18,6 +18,7 @@ export class AulaService {
     urlAtualizarAulaCurtir = 'https://localhost:44303/api/Aula/atualizar-curtir';
     urlAtualizarAulaFavoritada = 'https://localhost:44303/api/Aula/atualizar-favoritada';
     urlExcluirAula = 'https://localhost:44303/api/Aula/excluir';
+    urlAtualizarAulaPublicado = 'https://localhost:44303/api/Aula/atualizar-publicado';
     urlSelecionarAulaById = 'https://localhost:44303/api/Aula/selecionar-aula';
     urlSelecionarManyAulaAreaFisica = 'https://localhost:44303/api/Aula/selecionar-aulas-area-fisica';
     urlSelecionarAulaByProfessorId = 'https://localhost:44303/api/Aula/selecionar-aulas-professor';
@@ -48,6 +49,10 @@ export class AulaService {
 
     excluirAula(aulaId: number): Observable<AulaModel> {
         return this.httpClient.delete<AulaModel>(this.urlExcluirAula + `/${aulaId}`, this.buildHttpOptions());
+    }
+
+    atualizarAulaPublicado(aula: AulaModel): Observable<AulaModel> {
+        return this.httpClient.put<AulaModel>(this.urlAtualizarAulaPublicado, JSON.stringify(aula), this.buildHttpOptions());
     }
 
     selecionarManyAulaByAreaFisicaId(aulaFisicaId: number): Observable<AulaModel[]> {

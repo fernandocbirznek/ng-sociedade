@@ -69,6 +69,7 @@ export const getManyAula = createSelector(
         aulaViewModel.dataCadastro = item.dataCadastro;
         aulaViewModel.dataAtualizacao = item.dataAtualizacao;
         aulaViewModel.professorNome = item.professorNome;
+        aulaViewModel.publicado = item.publicado;
 
         if (areaFisica)
           aulaViewModel.areaFisicaTitulo = areaFisica.titulo;
@@ -90,6 +91,7 @@ export const getManyAula = createSelector(
         aulaViewModel.usuarioLogadoFavoritada = usuarioAulaFavoritada ? true : false;
         return aulaViewModel;
       });
+
     return itens;
   }
 )
@@ -125,12 +127,12 @@ export const getManyAulaByFilter = createSelector(
     if (aulaFilter && aulaFilter.tipoOrdenarAulaFiltroEnum != TipoOrdenarAulaFiltroEnum.None)
       itens = TopicoHelpers.ordernarByTipoAulaFiltroEnum(itens, aulaFilter.tipoOrdenarAulaFiltroEnum);
 
-    return itens;
+    return itens.filter(item => item.publicado);
   }
 )
 
 export const getManyAulaByProfessorId = (professorId: number) => createSelector(
-  getManyAulaByFilter, (
+  getManyAula, (
     aulaMany: AulaViewModel[],
   ) => {
 
@@ -178,6 +180,7 @@ export const getOneAulaById = (aulaId: number) => createSelector(
       item.professorNome = aula.professorNome;
       item.resumo = aula.resumo;
       item.titulo = aula.titulo;
+      item.publicado = aula.publicado;
       item.areaFisicaTitulo = areaFisica.titulo;
     }
 

@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
@@ -19,6 +20,7 @@ import {
 
 import { 
   alterarTituloPagina,
+  atualizarAulaPublicado,
   excluirAula,
   getManyAreaFisica,
   getManyAulaByProfessorId, 
@@ -33,7 +35,7 @@ import {
 export class ProfessorTabelaAulaComponent implements OnInit, AfterViewInit {
   @Input() professorId: number = 0;
 
-  displayedColumns: string[] = ['titulo', 'resumo', 'areaFisica', 'data-postagem', 'comentarios', 'curtido', 'favoritado', 'acao'];
+  displayedColumns: string[] = ['titulo', 'resumo', 'areaFisica', 'data-postagem', 'comentarios', 'curtido', 'favoritado', 'publicado', 'acao'];
   dataSource: any;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -110,5 +112,13 @@ export class ProfessorTabelaAulaComponent implements OnInit, AfterViewInit {
         this.store.dispatch(excluirAula({ aulaId: item.id! }));
       }
     });
+  }
+
+  publicar(item: AulaModel, check: MatSlideToggleChange ) {
+    let request: AulaModel = new AulaModel();
+    request.id = item.id;
+    request.publicado = check.checked;
+
+    this.store.dispatch(atualizarAulaPublicado({ aula: request }))
   }
 }
