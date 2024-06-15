@@ -171,6 +171,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     transform: translateY(2px);
 }
 
+.mat-select-panel {
+    min-width: 100% !important;
+}
+
 /* Arrow dropdown input */
 .mat-form-field-appearance-outline .mat-select-arrow-wrapper {
     transform: translateY(5px) !important;

@@ -107,7 +107,17 @@ export const aulaSessaoReducer = createReducer(
     };
   }),
   on(actions.inserirAulaSessaoSuccess, (state, action) => {
-    let itens = [...state.aulaSessao, action.aulaSessao];
+    let aulaSessao = new AulaSessaoModel();
+    aulaSessao.aulaId = action.aulaSessao.aulaId;
+    aulaSessao.titulo = action.aulaSessao.titulo;
+    aulaSessao.ordem = action.aulaSessao.ordem;
+    aulaSessao.id = action.response.id;
+    aulaSessao.conteudo = action.aulaSessao.conteudo;
+    aulaSessao.favoritado = action.aulaSessao.favoritado;
+    aulaSessao.aulaSessaoTipo = action.aulaSessao.aulaSessaoTipo;
+    aulaSessao.dataCadastro = action.response.dataCadastro;
+
+    let itens = [...state.aulaSessao, aulaSessao];
 
     return {
       ...state,

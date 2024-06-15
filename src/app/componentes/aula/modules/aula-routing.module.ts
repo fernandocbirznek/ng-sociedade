@@ -22,10 +22,16 @@ const aulaRoutes: Routes = [
         path: "editar-aula/:id",
         component: EditarAulaComponent,
         canActivate: [AutenticacaoService],
+        resolve: {
+            aulaResolver: AulaResolver
+        }
     },
     {
         path: "visualizar-aula/:id",
-        component: VisualizarAulaComponent
+        component: VisualizarAulaComponent,
+        resolve: {
+            aulaResolver: AulaResolver
+        }
     }
 ];
 

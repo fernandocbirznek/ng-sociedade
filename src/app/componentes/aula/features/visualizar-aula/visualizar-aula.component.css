@@ -22,7 +22,7 @@
 
 .card-sessao {
     margin-top: 70px;
-    min-height: 200px;
+    min-height: 400px;
     width: calc(100% - 80px);
     padding: 20px;
     background-color: #F5F5F5;
@@ -161,6 +161,11 @@
     font-size: 24px;
     font-weight: bolder;
     margin-bottom: 10px;
+}
+
+.pdf {
+    min-height: 800px;
+    width: 100%;
 }
 
 .container-comentario-cards {

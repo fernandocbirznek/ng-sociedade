@@ -1,6 +1,7 @@
 export * from './area-fisica';
 export * from './area-fisica-divisao';
 export * from './area-interesse';
+export * from './arquivo-pdf';
 export * from './aula';
 export * from './aula-comentario';
 export * from './aula-sessao';
@@ -15,6 +16,7 @@ export * from './forum-topico';
 export * from './forum-topico-replica';
 export * from './forum-topico-resposta';
 export * from './home-professor';
+export * from './link-youtube';
 export * from './login';
 export * from './noticia';
 export * from './noticia-area-interesse';

@@ -17,7 +17,8 @@ import {
   AulaSessaoOrdemRequestModel,
   AulaSessaoModel, 
   UsuarioModel, 
-  TipoSessaoAulaEnum
+  TipoSessaoAulaEnum,
+  LinkYoutubeModel
 } from 'src/app/models';
 
 import { 
@@ -29,7 +30,9 @@ import {
   selecionarManyAulaSessaoByAulaId
 } from 'src/app/store';
 
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-browser';
+
+import { AulaHelpers } from '../../helpers';
 
 @Component({
   selector: 'app-editar-aula',
@@ -54,9 +57,11 @@ export class EditarAulaComponent implements OnInit {
 
   trustedDashboardHtml : SafeHtml[] = [];
   trustedUrlImageHtml: SafeHtml[] = [];
+  trustedPdfUrl: SafeResourceUrl[] = [];
+  linkYoutubeMany: LinkYoutubeModel[] = [];
 
   readonly tipoSessaoAulaEnum = TipoSessaoAulaEnum;
-
+  
   constructor(
     public dialog: MatDialog,
     public store: Store,
@@ -96,16 +101,36 @@ export class EditarAulaComponent implements OnInit {
     this.aulaSessaoSubscription$ = this.aulaSessao$.subscribe(itens => {
       this.trustedDashboardHtml = [];
       this.trustedUrlImageHtml = [];
+      this.linkYoutubeMany = [];
+      this.trustedPdfUrl = [];
       this.aulaSessaoMany = itens;
       this.aulaSessaoMany.sort((a, b) => (a.ordem < b.ordem) ? -1 : 1);
       this.aulaSessaoMany.forEach(item => {
-        if (item.aulaSessaoTipo != this.tipoSessaoAulaEnum.Imagem) {
+        if (item.aulaSessaoTipo == this.tipoSessaoAulaEnum.Video) {
+          this.linkYoutubeMany.push(AulaHelpers.getLinkYoutube(item.conteudo, this.sanitizer));
+          this.trustedUrlImageHtml.push('');
+          this.trustedDashboardHtml.push('');
+          this.trustedPdfUrl.push('');
+        }
+        else if (item.aulaSessaoTipo == this.tipoSessaoAulaEnum.Pdf && item.arquivoPdf && item.arquivoPdf.conteudo) {
+          let conteudo = URL.createObjectURL(item.arquivoPdf.conteudo);
+
+          this.trustedPdfUrl.push(this.sanitizer.bypassSecurityTrustResourceUrl(conteudo));
+          this.trustedUrlImageHtml.push('');
+          this.trustedDashboardHtml.push('');
+          this.linkYoutubeMany.push(new LinkYoutubeModel());
+        }
+        else if (item.aulaSessaoTipo != this.tipoSessaoAulaEnum.Imagem) {
           this.trustedDashboardHtml.push(this.sanitizer.bypassSecurityTrustHtml(item.conteudo));
           this.trustedUrlImageHtml.push('');
+          this.linkYoutubeMany.push(new LinkYoutubeModel());
+          this.trustedPdfUrl.push('');
         }
-        if (item.aulaSessaoTipo == this.tipoSessaoAulaEnum.Imagem) {
+        else if (item.aulaSessaoTipo == this.tipoSessaoAulaEnum.Imagem) {
           this.trustedDashboardHtml.push('');
+          this.linkYoutubeMany.push(new LinkYoutubeModel());
           this.trustedUrlImageHtml.push(this.sanitizer.bypassSecurityTrustUrl('data:image/png;base64,' + item.conteudo));
+          this.trustedPdfUrl.push('');
         }
       });
     });
@@ -132,8 +157,8 @@ export class EditarAulaComponent implements OnInit {
 
   novaSessao() {
     this.dialog.open(NovaSessaoComponent, {
-      minWidth: '500px',
-      height: 'auto',
+      minWidth: '80%',
+      height: '90%',
       data: {
         aula: this.aula, 
         sessaoMany: this.aulaSessaoMany
@@ -180,13 +205,11 @@ export class EditarAulaComponent implements OnInit {
   }
 
   deletarSessao(sessao: AulaSessaoModel) {
-    //TODO, precisa retornar o id ao cadastrar uma sessão nova, assim conseguimos excluir no back
     this.dialog.open(ModalExcluirComponent, {
       data: `Sessão: ${sessao.titulo}`
     }).afterClosed().subscribe((evento) => {
-      if(evento) {
+      if(evento)
         this.store.dispatch(excluirAulaSessao({ aulaSessaoId: sessao.id }));
-      }
     });
   }
 

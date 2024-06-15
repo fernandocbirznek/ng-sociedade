@@ -1,7 +1,8 @@
-<div class="cadastro-sessao-component">
+<div fxLayout="column" fxLayoutAlign="start start" class="cadastro-sessao-component">
     <div fxLayoutAlign="end end" class="fechar" (click)="fecharModal()">X</div>
-    <div fxLayout="column" fxLayoutAlign="center center">
-      <form [formGroup]="this.formSessao" fxLayout="column" fxLayoutAlign="center center" class="g-full-width">
+    <div class="titulo">Criar nova sessão</div>
+    <div fxFlex="100%" fxLayout="column" fxLayoutAlign="start center" class="g-full-width">
+      <form [formGroup]="this.formSessao" fxLayout="column" fxLayoutAlign="start center" class="container-inputs">
         <mat-form-field class="g-full-width" appearance="outline">
           <mat-label>Titulo</mat-label>
           <input formControlName="titulo_sessao" matInput required />
@@ -9,21 +10,28 @@
         <mat-form-field class="g-full-width" appearance="outline">
           <mat-label>Tipo da Sessão</mat-label>
           <mat-select formControlName="tipo_sessao" matInput required>
-            <mat-option value="1">Conceito</mat-option>
-            <mat-option value="2">Equação</mat-option>
-            <mat-option value="3">Imagem</mat-option>
-            <mat-option value="4">Vídeo</mat-option>
-            <mat-option value="5">Texto</mat-option>
+            <mat-option [value]="this.tipoSessaoAulaEnum.Conceito">Conceito</mat-option>
+            <mat-option [value]="this.tipoSessaoAulaEnum.Equacao">Equação</mat-option>
+            <mat-option [value]="this.tipoSessaoAulaEnum.Imagem">Imagem</mat-option>
+            <mat-option [value]="this.tipoSessaoAulaEnum.Video">Vídeo</mat-option>
+            <mat-option [value]="this.tipoSessaoAulaEnum.Texto">Texto</mat-option>
+            <mat-option [value]="this.tipoSessaoAulaEnum.Pdf">Pdf</mat-option>
           </mat-select>
           <mat-error *ngIf="tipoSessao.invalid">Sessão é obrigatória</mat-error>
         </mat-form-field>
 
-        <ckeditor *ngIf="this.tipoSessao.value == 1 || this.tipoSessao.value == 5" class="ckeditor-nova-sessao" 
-          #ckEditorTag [editor]="ckEditor" data="<p>Hello, world!</p>">
+        <ckeditor *ngIf="this.tipoSessao.value == this.tipoSessaoAulaEnum.Conceito || this.tipoSessao.value == this.tipoSessaoAulaEnum.Texto" 
+          fxFlex="100%" class="ckeditor-nova-sessao" #ckEditorTag [editor]="ckEditor" data="<p>Hello, world!</p>">
         </ckeditor>
 
-        <div *ngIf="this.tipoSessao.value == 2" fxLayout="column" fxLayoutAlign="start center" class="g-full-width">
-          <div fxLayout="column" class="container-exemplo">
+        <div *ngIf="this.tipoSessao.value == this.tipoSessaoAulaEnum.Equacao" fxFlex="100%" fxLayout="column" fxLayoutAlign="start center" 
+          class="g-full-width">
+
+          <div fxLayout="column" fxLayoutAlign="start start" class="g-card card card-latex">
+            <div fxLayout="row" fxLayoutAlign="start center" class="alerta-link">
+              <mat-icon class="material-symbols-outlined">warning</mat-icon>
+              Formato em Latex
+            </div>
             <div fxLayout="row" fxLayoutAlign="start center">
               Aceita formato Latex. Para aprender latex clique em: 
               <a href="https://edisciplinas.usp.br/pluginfile.php/5567087/mod_resource/content/1/Tutorial_TEX.pdf">Tutorial Latex</a>
@@ -31,6 +39,7 @@
             <span>Exemplo, em Latex: {{ this.exemploEquacao }}</span>
             <div>fica: <ng-katex [equation]="exemploEquacao"></ng-katex></div>
           </div>
+          
           <mat-form-field class="g-full-width" appearance="outline">
             <mat-label>Conteúdo</mat-label>
             <textarea style="resize: none" [rows]="this.rows" maxlength="500" formControlName="conteudo_sessao" matInput>
@@ -39,8 +48,53 @@
           </mat-form-field>
         </div>
 
-        <div *ngIf="this.tipoSessao.value == 3" fxLayout="column" fxLayoutAlign="start center" class="g-full-width">
+        <div *ngIf="this.tipoSessao.value == this.tipoSessaoAulaEnum.Imagem" fxFlex="100%" fxLayout="column" fxLayoutAlign="start center" 
+          class="g-full-width">
           <input type="file" formControlName="formFoto" (change)="imagemAlterada($event)" accept="image/*">
+        </div>
+
+        <div *ngIf="this.tipoSessao.value == this.tipoSessaoAulaEnum.Pdf" fxFlex="100%" fxLayout="column" class="g-full-width">
+          <input type="file" (change)="selecionarPdf($event)" #fileUpload />
+          <embed *ngIf="pdfUrl" [src]="pdfUrl" type="application/pdf" class="g-full-height">
+        </div>
+
+        <div *ngIf="this.tipoSessao.value == this.tipoSessaoAulaEnum.Video" fxFlex="100%" class="g-full-width">
+          <div fxLayout="column" fxLayoutAlign="start start" class="g-card card">
+            <div *ngIf="!this.isVisualizarTutorial" class="visualizar-tutorial" (click)="visualizarTutorial()">Visualizar tutorial</div>
+            <div *ngIf="this.isVisualizarTutorial" class="ocultar-tutorial" (click)="visualizarTutorial()">Ocultar tutorial</div>
+            <div fxLayout="column" class="container-tutorial" [ngClass]="{'container-tutorial-open': this.isVisualizarTutorial}">
+              <div fxLayout="row" fxLayoutAlign="start center" class="alerta-link">
+                <mat-icon class="material-symbols-outlined">warning</mat-icon>
+                Somente será aceito vídeo do youtube
+              </div>
+              <div>Para colocar o vídeo siga os seguintes passos:</div>
+              <div fxLayout="row" fxLayoutAlign="center center">
+                <div fxLayout="column" fxLayoutAlign="start center">
+                  <div fxFlex="40px" fxLayout="row" fxLayoutAlign="center center" class="text-tutorial">
+                    <mat-icon class="material-symbols-outlined">looks_one</mat-icon>
+                    <div>Acesse o vídeo no youtube</div>
+                  </div>
+                  <img src="../../../../../assets/imagens/diversos/tutorial-youtube-1.png" alt="Imagem" class="imagem">
+                </div>
+                <div fxLayout="column" fxLayoutAlign="start center">
+                  <div fxFlex="40px" fxLayout="row" fxLayoutAlign="center center" class="text-tutorial">
+                    <mat-icon class="material-symbols-outlined">looks_two</mat-icon>
+                    <div>Clique com o botão direito do mouse sobre o vídeo <br> selecione a opção em laranja na imagem</div>
+                  </div>
+                  <img src="../../../../../assets/imagens/diversos/tutorial-youtube-2.png" alt="Imagem" class="imagem">
+                </div>
+                <div fxLayout="column" fxLayoutAlign="center center" class="text-tutorial">
+                  <mat-icon class="material-symbols-outlined">looks_3</mat-icon>
+                  <div>Agora cole o link cópiado no campo abaixo</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <mat-form-field appearance="outline" class="g-full-width">
+            <mat-label>Insira o link cópiado do youtube</mat-label>
+            <textarea formControlName="linkYoutube" class="text-area-link" matInput></textarea>
+          </mat-form-field>
         </div>
 
       </form>

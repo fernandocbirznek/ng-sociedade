@@ -54,7 +54,7 @@ export class PainelNoticiaComponent implements OnInit {
       this.noticiaMany = itens;
     });
   }
-
+ 
   visualizarNoticia(item: NoticiaViewModel) {
     this.dialog.open(VisualizarNoticiaComponent, {
       data: item.id,

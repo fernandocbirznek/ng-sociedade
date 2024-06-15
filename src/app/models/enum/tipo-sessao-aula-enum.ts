@@ -5,5 +5,6 @@ export enum TipoSessaoAulaEnum {
     Imagem,
     Video,
     Texto,
-    Aula
+    Aula,
+    Pdf
 }

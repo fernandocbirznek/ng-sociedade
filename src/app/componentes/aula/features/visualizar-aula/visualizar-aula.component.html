@@ -99,6 +99,14 @@
         <div *ngIf="sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Imagem" fxLayoutAlign="center start">
             <img [src]="this.trustedUrlImageHtml[i]" alt="Imagem" class="imagem">
         </div>
+        <iframe *ngIf="sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Video" fxLayout="column" fxLayoutAlign="center center" 
+            [width]="this.linkYoutubeMany[i].width" [height]="this.linkYoutubeMany[i].height" 
+            [src]="this.linkYoutubeMany[i].src">
+        </iframe>
+        <iframe *ngIf="sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Pdf && sessao.arquivoPdf && sessao.arquivoPdf.conteudo" 
+            fxFlex="100%" fxLayout="column" class="pdf" 
+            [src]="this.trustedPdfUrl[i]" type="application/pdf">
+        </iframe>
     </div>
  
     <div fxLayout="column" class="container-comentario-cards">

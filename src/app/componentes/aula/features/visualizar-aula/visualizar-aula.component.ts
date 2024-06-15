@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
@@ -16,6 +16,7 @@ import {
   AulaComentarioModel,
   AulaModel, 
   AulaSessaoModel, 
+  LinkYoutubeModel, 
   TipoSessaoAulaEnum, 
   UsuarioAulaCurtidoModel, 
   UsuarioAulaFavoritadaModel, 
@@ -53,6 +54,7 @@ import {
 } from 'src/app/store';
 
 import Editor from 'src/app/componentes/genericos/ckeditor/build/ckeditor';
+import { AulaHelpers } from '../../helpers/aula-helpers';
 
 @Component({
   selector: 'app-visualizar-aula',
@@ -102,6 +104,8 @@ export class VisualizarAulaComponent implements OnInit {
   trustedVisualizarAulaHtml : SafeHtml[] = [];
   trustedAulaComentarioHtml : SafeHtml[] = [];
   trustedUrlImageHtml: SafeHtml[] = [];
+  trustedPdfUrl: SafeResourceUrl[] = [];
+  linkYoutubeMany: LinkYoutubeModel[] = [];
 
   escreverComentario: boolean = false;
   formComentario: FormGroup = null as any;
@@ -300,17 +304,40 @@ export class VisualizarAulaComponent implements OnInit {
   setupAulaSessao(item: AulaModel) {
     this.aula = item;
     this.trustedVisualizarAulaHtml = [];
+    this.trustedUrlImageHtml = [];
+    this.linkYoutubeMany = [];
+    this.trustedPdfUrl = [];
+
     if (item.aulaSessaoMany.length > 0) {
       this.aulaSessaoMany = [...item.aulaSessaoMany];
       this.aulaSessaoMany.sort((a, b) => (a.ordem < b.ordem) ? -1 : 1);
       this.aulaSessaoMany.forEach(item => {
-        if (item.aulaSessaoTipo != this.tipoSessaoAulaEnum.Imagem) {
+
+        if (item.aulaSessaoTipo == this.tipoSessaoAulaEnum.Video) {
+          this.linkYoutubeMany.push(AulaHelpers.getLinkYoutube(item.conteudo, this.sanitizer));
+          this.trustedUrlImageHtml.push('');
+          this.trustedVisualizarAulaHtml.push('');
+          this.trustedPdfUrl.push('');
+        }
+        else if (item.aulaSessaoTipo == this.tipoSessaoAulaEnum.Pdf && item.arquivoPdf && item.arquivoPdf.conteudo) {
+          let conteudo = URL.createObjectURL(item.arquivoPdf.conteudo);
+
+          this.trustedPdfUrl.push(this.sanitizer.bypassSecurityTrustResourceUrl(conteudo));
+          this.trustedUrlImageHtml.push('');
+          this.trustedVisualizarAulaHtml.push('');
+          this.linkYoutubeMany.push(new LinkYoutubeModel());
+        }
+        else if (item.aulaSessaoTipo != this.tipoSessaoAulaEnum.Imagem) {
           this.trustedVisualizarAulaHtml.push(this.sanitizer.bypassSecurityTrustHtml(item.conteudo));
           this.trustedUrlImageHtml.push('');
+          this.trustedPdfUrl.push('');
+          this.linkYoutubeMany.push(new LinkYoutubeModel());
         }
-        if (item.aulaSessaoTipo == this.tipoSessaoAulaEnum.Imagem) {
+        else if (item.aulaSessaoTipo == this.tipoSessaoAulaEnum.Imagem) {
           this.trustedVisualizarAulaHtml.push('');
+          this.trustedPdfUrl.push('');
           this.trustedUrlImageHtml.push(this.sanitizer.bypassSecurityTrustUrl('data:image/png;base64,' + item.conteudo));
+          this.linkYoutubeMany.push(new LinkYoutubeModel());
         }
       });
     }

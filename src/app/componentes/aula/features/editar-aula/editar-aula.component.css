@@ -94,7 +94,7 @@
     margin-top: 70px;
     min-height: 200px;
     width: calc(100% - 80px);
-    padding: 20px;
+    padding: 40px;
     background-color: #F5F5F5;
 }
 
@@ -183,4 +183,9 @@
 
     /* TODO, trocar por resize element, precisa pesquisar e ver como implementar */
     max-height: 500px;
+}
+
+.pdf {
+    min-height: 800px;
+    width: 100%;
 }

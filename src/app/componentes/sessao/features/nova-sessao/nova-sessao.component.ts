@@ -6,14 +6,18 @@ import { Store } from '@ngrx/store';
 import Editor from 'src/app/componentes/genericos/ckeditor/build/ckeditor';
 
 import { 
+  ArquivoPdfCommandModel,
   AulaModel, 
   AulaSessaoModel, 
   TipoSessaoAulaEnum
 } from 'src/app/models';
 
 import { 
+  inserirArquivoPdf,
   inserirAulaSessao 
 } from 'src/app/store';
+import { SessaoHelpers } from '../../helpers/sessao-helpers';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-nova-sessao',
@@ -29,6 +33,8 @@ export class NovaSessaoComponent implements OnInit {
   conteudo = new FormControl('', [Validators.required, Validators.maxLength(8000)]);
   titulo = new FormControl('', [Validators.required, Validators.maxLength(200)]);
   formFoto = new FormControl('');
+  linkYoutube = new FormControl('');
+  filePdf: File | undefined = undefined;
 
   formSessao: FormGroup = null as any;
 
@@ -37,10 +43,16 @@ export class NovaSessaoComponent implements OnInit {
 
   selectedFile: File | null = null;
   conteudoImagem: string = '';
+  pdfUrl: SafeResourceUrl | null = null;
+
+  isVisualizarTutorial: boolean = false;
+
+  readonly tipoSessaoAulaEnum = TipoSessaoAulaEnum;
 
   constructor(
     public dialogRef: MatDialogRef<NovaSessaoComponent>,
     public store: Store,
+    private sanitizer: DomSanitizer,
     @Inject(MAT_DIALOG_DATA) public data: {aula: AulaModel, sessaoMany: AulaSessaoModel[]}
   ) { }
 
@@ -54,22 +66,28 @@ export class NovaSessaoComponent implements OnInit {
       conteudo_sessao: this.conteudo,
       titulo_sessao: this.titulo,
       formFoto: this.formFoto,
+      linkYoutube: this.linkYoutube
     })
   }
 
   public cadastrarSessao(): void {
     let conteudo: string = '';
     switch(this.formSessao.get("tipo_sessao")?.value) { 
-      case "1":
-      case "5":
+      case TipoSessaoAulaEnum.Conceito:
+      case TipoSessaoAulaEnum.Texto:
         conteudo = this.ckEditorTag.editorInstance.getData();
         break; 
-      case "2":
+      case TipoSessaoAulaEnum.Equacao:
         conteudo = this.formSessao.get("conteudo_sessao")?.value;
         break;
-      case "3":
+      case TipoSessaoAulaEnum.Imagem:
         conteudo = this.conteudoImagem;
         break;
+      case TipoSessaoAulaEnum.Video:
+        if (SessaoHelpers.isLinkYoutube(this.linkYoutube.value))
+          conteudo = this.linkYoutube.value;
+        else
+          conteudo = '';
     } 
 
     let request: AulaSessaoModel = new AulaSessaoModel();
@@ -79,31 +97,54 @@ export class NovaSessaoComponent implements OnInit {
     request.aulaId = this.data.aula.id;
     request.ordem = this.data.sessaoMany.length + 1;
 
-    this.store.dispatch(inserirAulaSessao({ aulaSessao: request }))
+    if (request.aulaSessaoTipo == TipoSessaoAulaEnum.Pdf) {
+      let arquivoPdfCommandModel: ArquivoPdfCommandModel = new ArquivoPdfCommandModel();
+      arquivoPdfCommandModel.aulaSessao = request;
+      arquivoPdfCommandModel.file = this.filePdf;
+
+      this.store.dispatch(inserirArquivoPdf({ arquivoPdfCommand: arquivoPdfCommandModel }));
+    } 
+    else {
+      this.store.dispatch(inserirAulaSessao({ aulaSessao: request }));
+    }
+    
     this.dialogRef.close();
     this.formSessao.reset();
+  }
+
+  selecionarPdf(event: any) {
+    const file: File = event.target.files[0];
+
+    if (file) {
+      this.filePdf = file;
+      const unsafeUrl = URL.createObjectURL(file);
+      this.pdfUrl = this.sanitizer.bypassSecurityTrustResourceUrl(unsafeUrl);
+    }
   }
 
   public fecharModal() {
     this.dialogRef.close();
   }
 
-  tipoSessaoValue(item: string): TipoSessaoAulaEnum {
+  tipoSessaoValue(item: number): TipoSessaoAulaEnum {
     switch(item) { 
-      case "1": { 
+      case 1: { 
         return TipoSessaoAulaEnum.Conceito;
       } 
-      case "2": { 
+      case 2: { 
         return TipoSessaoAulaEnum.Equacao;
       } 
-      case "3": { 
+      case 3: { 
         return TipoSessaoAulaEnum.Imagem;
       } 
-      case "4": { 
+      case 4: { 
         return TipoSessaoAulaEnum.Video;
       } 
-      case "5": { 
+      case 5: { 
         return TipoSessaoAulaEnum.Texto;
+      }
+      case 7: { 
+        return TipoSessaoAulaEnum.Pdf;
       } 
       default: { 
          return TipoSessaoAulaEnum.None;
@@ -119,5 +160,9 @@ export class NovaSessaoComponent implements OnInit {
       this.conteudoImagem = bytes;
     };
     reader.readAsDataURL(event.target.files[0]);
+  }
+
+  visualizarTutorial() {
+    this.isVisualizarTutorial = !this.isVisualizarTutorial;
   }
 }

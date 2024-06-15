@@ -1,7 +1,7 @@
 <div class="editar-sessao-component">
     <div fxLayoutAlign="end end" class="fechar" (click)="fecharModal()">X</div>
     <div fxLayout="column" fxLayoutAlign="center center">
-      <form [formGroup]="this.formSessao" fxLayout="column" fxLayoutAlign="center center" class="g-full-width">
+      <form [formGroup]="this.formSessao" fxLayout="column" fxLayoutAlign="center center" class="container-inputs">
         <mat-form-field class="g-full-width" appearance="outline">
           <mat-label>Titulo</mat-label>
           <input formControlName="titulo_sessao" matInput required />

@@ -3,17 +3,21 @@ import * as fromAula from '../reducers/aula.reducers';
 
 import { 
   AreaFisicaModel,
+  ArquivoPdfModel,
   AulaFilterModel,
   AulaModel, 
+  AulaSessaoModel, 
   AulaViewModel, 
   InformacaoAulaViewModel, 
   TagModel,
   TipoOrdenarAulaFiltroEnum,
+  TipoSessaoAulaEnum,
   UsuarioAulaCurtidoModel,
   UsuarioAulaFavoritadaModel
 } from 'src/app/models';
 
 import * as areaFisicaFeature from '../../../area-fisica/store';
+import * as arquivoPdfFeature from '../../../arquivo-pdf/store';
 import * as headerFeature from '../../../header/store';
 import * as manipularContaFeature from '../../../manipular-conta/store';
 import * as tagFeature from '../../../tag/store';
@@ -155,9 +159,11 @@ export const getManyAulaByAreaFisicaId = createSelector(
 
 export const getOneAulaById = (aulaId: number) => createSelector(
   selectAulaState, 
-  areaFisicaFeature.getManyAreaFisica, (
+  areaFisicaFeature.getManyAreaFisica,
+  arquivoPdfFeature.getManyArquivoPdfByAulaId(aulaId), (
     state,
-    areaFisicaMany: AreaFisicaModel[]
+    areaFisicaMany: AreaFisicaModel[],
+    arquivoPdfMany: ArquivoPdfModel[]
   ) => {
     let item = new AulaModel();
     let aula = state.aulas.find(item => item.id == aulaId);
@@ -182,6 +188,34 @@ export const getOneAulaById = (aulaId: number) => createSelector(
       item.titulo = aula.titulo;
       item.publicado = aula.publicado;
       item.areaFisicaTitulo = areaFisica.titulo;
+    }
+
+    if (aula && arquivoPdfMany.length > 0) {
+      let aulaSessaoMany: AulaSessaoModel[] = [];
+
+      aulaSessaoMany = aula.aulaSessaoMany.map(item => {
+        if (item.aulaSessaoTipo == TipoSessaoAulaEnum.Pdf) {
+          let arquivoPdf = arquivoPdfMany.find(arquivoPdf => arquivoPdf.id == +item.conteudo);
+
+          let aulaSessao: AulaSessaoModel = new AulaSessaoModel();
+          aulaSessao.aulaId = item.aulaId;
+          aulaSessao.aulaSessaoTipo = item.aulaSessaoTipo;
+          aulaSessao.conteudo = item.conteudo;
+          aulaSessao.dataAtualizacao = item.dataAtualizacao;
+          aulaSessao.dataCadastro = item.dataCadastro;
+          aulaSessao.favoritado = item.favoritado;
+          aulaSessao.id = item.id;
+          aulaSessao.ordem = item.ordem;
+          aulaSessao.titulo = item.titulo;
+          aulaSessao.arquivoPdf = arquivoPdf;
+
+          return aulaSessao;
+        }
+
+        return item;
+      });
+
+      item.aulaSessaoMany = aulaSessaoMany;
     }
 
     return item;

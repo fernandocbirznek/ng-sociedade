@@ -2,6 +2,7 @@ export * from './apis';
 export * from './area-fisica';
 export * from './area-fisica-divisao';
 export * from './area-interesse';
+export * from './arquivo-pdf';
 export * from './aula';
 export * from './aula-comentario';
 export * from './aula-sessao';
