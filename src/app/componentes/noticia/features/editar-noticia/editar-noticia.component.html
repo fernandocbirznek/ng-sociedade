@@ -1,7 +1,7 @@
 <div fxLayout="column" class="container-noticia">
     <h2>Editar notícia</h2>
-    <form [formGroup]="this.formGroupNoticia" fxLayout="column" fxLayoutAlign="start center">   
-        <mat-form-field  appearance="outline" class="g-full-width">
+    <form [formGroup]="this.formGroupNoticia" fxLayout="column" fxLayoutAlign="start center" class="g-gap-20">   
+        <mat-form-field appearance="outline" class="g-full-width">
             <mat-label>Título</mat-label>
             <input formControlName="formTitulo" matInput required>
             <mat-error *ngIf="formTitulo.invalid">Titulo é obrigatório</mat-error>

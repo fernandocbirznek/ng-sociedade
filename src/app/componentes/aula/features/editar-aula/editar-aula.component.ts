@@ -12,13 +12,13 @@ import {
   NovaSessaoComponent,
 } from 'src/app/componentes';
 
-import { 
-  AulaModel, 
+import {  
   AulaSessaoOrdemRequestModel,
   AulaSessaoModel, 
   UsuarioModel, 
   TipoSessaoAulaEnum,
-  LinkYoutubeModel
+  LinkYoutubeModel,
+  AulaViewModel
 } from 'src/app/models';
 
 import { 
@@ -44,8 +44,8 @@ export class EditarAulaComponent implements OnInit {
   aulaId: number = 0;
 
   aulaSubscription$: Subscription = new Subscription();
-  aula$: Observable<AulaModel | undefined> = new Observable<AulaModel | undefined>();
-  aula: AulaModel = new AulaModel();
+  aula$: Observable<AulaViewModel | undefined> = new Observable<AulaViewModel | undefined>();
+  aula: AulaViewModel | undefined = undefined;
 
   aulaSessaoSubscription$: Subscription = new Subscription();
   aulaSessao$: Observable<AulaSessaoModel[]> = new Observable<AulaSessaoModel[]>();
@@ -87,7 +87,7 @@ export class EditarAulaComponent implements OnInit {
   }
 
   setupAula() {
-    this.aula$ = this.store.select(getOneAulaById(this.aulaId));
+    this.aula$ = this.store.select(getOneAulaById);
     this.aulaSubscription$ = this.aula$.subscribe(item => {
       if(item) {
         this.aula = item;
@@ -96,7 +96,6 @@ export class EditarAulaComponent implements OnInit {
   }
 
   setupAulaSessao() {
-    this.store.dispatch(selecionarManyAulaSessaoByAulaId({ aulaId:  this.aulaId}));
     this.aulaSessao$ = this.store.select(getManyAulaSessaoByAulaId(this.aulaId));
     this.aulaSessaoSubscription$ = this.aulaSessao$.subscribe(itens => {
       this.trustedDashboardHtml = [];

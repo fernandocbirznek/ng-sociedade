@@ -6,7 +6,6 @@ import { EquipeContatoComponent, ForumComponent,
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'mecanica', component: MecanicaComponent },
   { path: 'equipe-contato', component: EquipeContatoComponent },
   { path: 'forum', component: ForumComponent },
   { path: 'perfil', component: PerfilComponent },

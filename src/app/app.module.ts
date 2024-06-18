@@ -34,6 +34,7 @@ import {
   UsuarioConquistasComponent, ProfessorTabelaAulaComponent,
   NovaSessaoComponent,
   AulaRoutingModule,
+  TopicoRoutingModule,
   EditarAulaComponent,
   NovaAulaComponent,
   VisualizarAulaComponent,
@@ -75,7 +76,8 @@ import {
   PainelNoticiaComponent,
   AulaFiltroComponent,
   NoticiaFiltroComponent,
-  ProfessorPerfilComponent
+  ProfessorPerfilComponent,
+  EditarAulaPosteriorAnteriorComponent
 } from './componentes';
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -172,6 +174,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     AulaFiltroComponent,
     NoticiaFiltroComponent,
     ProfessorPerfilComponent,
+    EditarAulaPosteriorAnteriorComponent,
   ],
   imports: [
     BrowserModule,
@@ -228,6 +231,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     ForumTopicoRoutingModule,
     AlunoRoutingModule,
     AulaRoutingModule,
+    TopicoRoutingModule,
     StoreModule.forRoot([]),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),

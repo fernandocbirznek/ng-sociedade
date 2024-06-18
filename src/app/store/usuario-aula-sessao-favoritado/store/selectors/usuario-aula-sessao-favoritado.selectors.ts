@@ -2,8 +2,9 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as fromUsuarioAulaSessaoFavoritado from '../reducers/usuario-aula-sessao-favoritado.reducers';
 
 import { 
-  TipoFiltroFavoritadoEnum, 
-  TipoSessaoAulaEnum
+  ArquivoPdfModel,
+  TipoSessaoAulaEnum,
+  UsuarioAulaSessaoFavoritadoModel
 } from 'src/app/models';
 
 export const getUsuarioAulaSessaoFavoritadoState = createFeatureSelector<
@@ -27,10 +28,39 @@ export const getManyUsuarioAulaSessaoFavoritado = createSelector(
       tipoSessaoAulaEnum: TipoSessaoAulaEnum,
   ) => {
 
-    if (tipoSessaoAulaEnum != TipoSessaoAulaEnum.None)
-      return state.itens.filter(item => item.aulaSessaoTipo == tipoSessaoAulaEnum);
+    let itens = state
+    .itens
+    .map(item => {
+      let aulaSessaoModel: UsuarioAulaSessaoFavoritadoModel = new UsuarioAulaSessaoFavoritadoModel();
+      aulaSessaoModel.aulaId = item.aulaId;
+      aulaSessaoModel.aulaSessaoTipo = item.aulaSessaoTipo;
+      aulaSessaoModel.conteudo = item.conteudo;
+      aulaSessaoModel.dataAtualizacao = item.dataAtualizacao;
+      aulaSessaoModel.dataCadastro = item.dataCadastro;
+      aulaSessaoModel.favoritado = item.favoritado;
+      aulaSessaoModel.id = item.id;
+      aulaSessaoModel.ordem = item.ordem;
+      aulaSessaoModel.titulo = item.titulo;
 
-    return state.itens;
+      if(item.arquivoConteudo) {
+        const byteArray = new Uint8Array(
+          atob(item.arquivoConteudo)
+            .split("")
+            .map(char => char.charCodeAt(0)));
+        
+        let arquivoPdf: ArquivoPdfModel = new ArquivoPdfModel();
+        arquivoPdf.conteudo = new Blob([byteArray], { type: 'application/pdf' }); 
+
+        aulaSessaoModel.arquivoPdf = arquivoPdf;
+      }
+
+      return aulaSessaoModel;
+    });
+
+    if (tipoSessaoAulaEnum != TipoSessaoAulaEnum.None)
+      return itens.filter(item => item.aulaSessaoTipo == tipoSessaoAulaEnum);
+
+    return itens;
   }
 )
 

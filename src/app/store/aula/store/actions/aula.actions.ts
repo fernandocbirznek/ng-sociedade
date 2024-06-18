@@ -140,6 +140,36 @@ export const atualizarAulaFavoritadaFailure = createAction(
   props<{ error: any }>()
 );
 
+export const atualizarAulaPosterior = createAction(
+  '[Aula] atualizarAulaPosterior',
+  props<{ aula: AulaModel }>()
+);
+
+export const atualizarAulaPosteriorSuccess = createAction(
+  '[Aula] atualizarAulaPosterior Success',
+  props<{ response: AulaModel }>()
+);
+
+export const atualizarAulaPosteriorFailure = createAction(
+  '[Aula] atualizarAulaPosterior Failure',
+  props<{ error: any }>()
+);
+
+export const atualizarAulaAnterior = createAction(
+  '[Aula] atualizarAulaAnterior',
+  props<{ aula: AulaModel }>()
+);
+
+export const atualizarAulaAnteriorSuccess = createAction(
+  '[Aula] atualizarAulaAnterior Success',
+  props<{ response: AulaModel }>()
+);
+
+export const atualizarAulaAnteriorFailure = createAction(
+  '[Aula] atualizarAulaAnterior Failure',
+  props<{ error: any }>()
+);
+
 export const excluirAula = createAction(
   '[Aula] excluirAula',
   props<{ aulaId: number }>()
@@ -227,5 +257,12 @@ export const atualizarAdicaoAulaFavoritada = createAction(
 
 export const atualizarRemocaoAulaFavoritada = createAction(
   '[AulaFavoritada] atualizarRemocaoAulaFavoritada',
+  props<{ aulaId: number }>()
+);
+
+
+
+export const atualizarAulaSelected = createAction(
+  '[Aula] atualizarAulaSelected',
   props<{ aulaId: number }>()
 );

@@ -168,6 +168,38 @@
     width: 100%;
 }
 
+.container-anterior-posterior {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.button-anterior-posterior {
+    padding: 5px 8px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.button-anterior-posterior:hover {
+    background-color: #e9e9e9;
+}
+
+.button-aula-anterior {
+    border: 2px solid #9fb53f;
+    color: #9fb53f;
+}
+
+.button-aula-posterior {
+    border: 2px solid #3f51b5;
+    color: #3f51b5;
+}
+
+.button-disabled {
+    pointer-events: none;
+    border: 2px solid #e9e9e9;
+    color: #e9e9e9;
+}
+
 .container-comentario-cards {
     padding-top: 30px;
     margin-top: 20px;

@@ -20,6 +20,8 @@ export class AulaModel {
     areaFisicaId: number = 0;
     areaFisicaTitulo: string = '';
     publicado: boolean = false;
+    aulaAnteriorId: number = 0;
+    aulaPosteriorId: number = 0;
 
     professorNome: string = '';
     tagMany: TagModel[] = [];

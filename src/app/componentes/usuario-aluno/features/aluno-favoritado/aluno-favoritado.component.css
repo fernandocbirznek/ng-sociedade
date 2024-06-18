@@ -56,8 +56,8 @@
 }
 
 .card-expandido {
-    width: 100em;
-    height: -webkit-fill-available;
+    width: calc(100vw - 160px);
+    height: calc(100vh - 160px);
     margin: 80px;
     top: 0;
     left: 0;
@@ -125,4 +125,9 @@
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
     border: 2px solid black;
+}
+
+.pdf {
+    width: 100%;
+    margin-bottom: 20px;
 }

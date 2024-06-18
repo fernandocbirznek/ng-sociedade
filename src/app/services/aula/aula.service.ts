@@ -17,6 +17,8 @@ export class AulaService {
     urlAtualizarAula = 'https://localhost:44303/api/Aula/atualizar';
     urlAtualizarAulaCurtir = 'https://localhost:44303/api/Aula/atualizar-curtir';
     urlAtualizarAulaFavoritada = 'https://localhost:44303/api/Aula/atualizar-favoritada';
+    urlAtualizarAulaPosterior = 'https://localhost:44303/api/Aula/atualizar-aula-posterior';
+    urlAtualizarAulaAnterior = 'https://localhost:44303/api/Aula/atualizar-aula-anterior';
     urlExcluirAula = 'https://localhost:44303/api/Aula/excluir';
     urlAtualizarAulaPublicado = 'https://localhost:44303/api/Aula/atualizar-publicado';
     urlSelecionarAulaById = 'https://localhost:44303/api/Aula/selecionar-aula';
@@ -45,6 +47,14 @@ export class AulaService {
 
     atualizarAulaFavoritada(aula: AulaModel): Observable<AulaModel> {
         return this.httpClient.put<AulaModel>(this.urlAtualizarAulaFavoritada, JSON.stringify(aula), this.buildHttpOptions());
+    }
+
+    atualizarAulaPosterior(aula: AulaModel): Observable<AulaModel> {
+        return this.httpClient.put<AulaModel>(this.urlAtualizarAulaPosterior, JSON.stringify(aula), this.buildHttpOptions());
+    }
+
+    atualizarAulaAnterior(aula: AulaModel): Observable<AulaModel> {
+        return this.httpClient.put<AulaModel>(this.urlAtualizarAulaAnterior, JSON.stringify(aula), this.buildHttpOptions());
     }
 
     excluirAula(aulaId: number): Observable<AulaModel> {

@@ -5,11 +5,11 @@
       <form [formGroup]="this.formSessao" fxLayout="column" fxLayoutAlign="start center" class="container-inputs">
         <mat-form-field class="g-full-width" appearance="outline">
           <mat-label>Titulo</mat-label>
-          <input formControlName="titulo_sessao" matInput required />
+          <input formControlName="titulo_sessao" matInput required (change)="alterouForm()" />
         </mat-form-field>
         <mat-form-field class="g-full-width" appearance="outline">
           <mat-label>Tipo da Sessão</mat-label>
-          <mat-select formControlName="tipo_sessao" matInput required>
+          <mat-select formControlName="tipo_sessao" matInput required (selectionChange)="alterouForm()">
             <mat-option [value]="this.tipoSessaoAulaEnum.Conceito">Conceito</mat-option>
             <mat-option [value]="this.tipoSessaoAulaEnum.Equacao">Equação</mat-option>
             <mat-option [value]="this.tipoSessaoAulaEnum.Imagem">Imagem</mat-option>
@@ -21,7 +21,8 @@
         </mat-form-field>
 
         <ckeditor *ngIf="this.tipoSessao.value == this.tipoSessaoAulaEnum.Conceito || this.tipoSessao.value == this.tipoSessaoAulaEnum.Texto" 
-          fxFlex="100%" class="ckeditor-nova-sessao" #ckEditorTag [editor]="ckEditor" data="<p>Hello, world!</p>">
+          fxFlex="100%" class="ckeditor-nova-sessao" #ckEditorTag [editor]="ckEditor"
+          (change)="alterouForm()">
         </ckeditor>
 
         <div *ngIf="this.tipoSessao.value == this.tipoSessaoAulaEnum.Equacao" fxFlex="100%" fxLayout="column" fxLayoutAlign="start center" 
@@ -42,7 +43,8 @@
           
           <mat-form-field class="g-full-width" appearance="outline">
             <mat-label>Conteúdo</mat-label>
-            <textarea style="resize: none" [rows]="this.rows" maxlength="500" formControlName="conteudo_sessao" matInput>
+            <textarea style="resize: none" [rows]="this.rows" maxlength="500" formControlName="conteudo_sessao" matInput
+              (change)="alterouForm()">
             </textarea>
             <mat-error *ngIf="conteudo.invalid">Conteúdo é obrigatório</mat-error>
           </mat-form-field>
@@ -51,10 +53,17 @@
         <div *ngIf="this.tipoSessao.value == this.tipoSessaoAulaEnum.Imagem" fxFlex="100%" fxLayout="column" fxLayoutAlign="start center" 
           class="g-full-width">
           <input type="file" formControlName="formFoto" (change)="imagemAlterada($event)" accept="image/*">
+          <div *ngIf="this.conteudoImagem" fxLayout="column" fxLayoutAlign="space-between center">
+            <img [src]="'data:image/png;base64,' + this.conteudoImagem" alt="Imagem" class="imagem">
+        </div>
         </div>
 
-        <div *ngIf="this.tipoSessao.value == this.tipoSessaoAulaEnum.Pdf" fxFlex="100%" fxLayout="column" class="g-full-width">
+        <div *ngIf="this.tipoSessao.value == this.tipoSessaoAulaEnum.Pdf" fxFlex="100%" fxLayout="column" class="container-input-pdf">
           <input type="file" (change)="selecionarPdf($event)" #fileUpload />
+          <div fxLayout="row" fxLayoutAlign="start center" class="alerta-link">
+            <mat-icon class="material-symbols-outlined">warning</mat-icon>
+            Tamanho máximo aceito 3MB!
+          </div>
           <embed *ngIf="pdfUrl" [src]="pdfUrl" type="application/pdf" class="g-full-height">
         </div>
 
@@ -93,7 +102,7 @@
           
           <mat-form-field appearance="outline" class="g-full-width">
             <mat-label>Insira o link cópiado do youtube</mat-label>
-            <textarea formControlName="linkYoutube" class="text-area-link" matInput></textarea>
+            <textarea formControlName="linkYoutube" class="text-area-link" matInput (change)="alterouForm()"></textarea>
           </mat-form-field>
         </div>
 
@@ -101,7 +110,7 @@
     </div>
     <div fxLayout="row" fxLayoutAlign="space-around center" class="container-buttons">
       <button mat-stroked-button color="accent" (click)="fecharModal()">Cancelar</button>
-      <button mat-stroked-button color="primary" (click)="cadastrarSessao()">
+      <button mat-stroked-button color="primary" (click)="cadastrarSessao()" [disabled]="!this.isFormValid">
         <mat-icon class="material-symbols-outlined">add_circle</mat-icon>
         Cadastrar sessão
       </button>

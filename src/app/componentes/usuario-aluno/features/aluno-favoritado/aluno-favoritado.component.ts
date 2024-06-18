@@ -1,10 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
+import { AulaHelpers } from 'src/app/componentes/aula/helpers/aula-helpers';
 
 import { 
+  LinkYoutubeModel,
   TipoSessaoAulaEnum, 
   UsuarioAulaSessaoFavoritadoModel, 
   UsuarioModel 
@@ -30,6 +32,8 @@ export class AlunoFavoritadoComponent implements OnInit {
 
   trustedDashboardHtml : SafeHtml[] = [];
   trustedUrlImageHtml: SafeHtml[] = [];
+  linkYoutubeMany: LinkYoutubeModel[] = [];
+  trustedPdfUrl: SafeResourceUrl[] = [];
 
   cardExpandidoMany: boolean[] = [];
 
@@ -59,16 +63,36 @@ export class AlunoFavoritadoComponent implements OnInit {
       this.trustedDashboardHtml = [];
       this.trustedUrlImageHtml = [];
       this.cardExpandidoMany = [];
+      this.linkYoutubeMany = [];
+      this.trustedPdfUrl = [];
       this.usuarioAulaSessaoFavoritado = itens;
       this.usuarioAulaSessaoFavoritado.forEach(item => {
         this.cardExpandidoMany.push(false);
-        if (item.aulaSessaoTipo != this.tipoSessaoAulaEnum.Imagem) {
+        if (item.aulaSessaoTipo == this.tipoSessaoAulaEnum.Video) {
+          this.linkYoutubeMany.push(AulaHelpers.getLinkYoutube(item.conteudo, this.sanitizer));
+          this.trustedUrlImageHtml.push('');
+          this.trustedDashboardHtml.push('');
+          this.trustedPdfUrl.push('');
+        }
+        else if (item.aulaSessaoTipo == this.tipoSessaoAulaEnum.Pdf && item.arquivoPdf && item.arquivoPdf.conteudo) {
+          let conteudo = URL.createObjectURL(item.arquivoPdf.conteudo);
+
+          this.trustedPdfUrl.push(this.sanitizer.bypassSecurityTrustResourceUrl(conteudo));
+          this.trustedUrlImageHtml.push('');
+          this.trustedDashboardHtml.push('');
+          this.linkYoutubeMany.push(new LinkYoutubeModel());
+        }
+        else if (item.aulaSessaoTipo != this.tipoSessaoAulaEnum.Imagem) {
           this.trustedDashboardHtml.push(this.sanitizer.bypassSecurityTrustHtml(item.conteudo));
           this.trustedUrlImageHtml.push('');
+          this.linkYoutubeMany.push(new LinkYoutubeModel());
+          this.trustedPdfUrl.push('');
         }
-        if (item.aulaSessaoTipo == this.tipoSessaoAulaEnum.Imagem) {
+        else if (item.aulaSessaoTipo == this.tipoSessaoAulaEnum.Imagem) {
           this.trustedDashboardHtml.push('');
           this.trustedUrlImageHtml.push(this.sanitizer.bypassSecurityTrustUrl('data:image/png;base64,' + item.conteudo));
+          this.linkYoutubeMany.push(new LinkYoutubeModel());
+          this.trustedPdfUrl.push('');
         }
       });
     });

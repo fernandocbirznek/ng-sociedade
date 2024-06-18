@@ -114,6 +114,48 @@
                     {{ this.cardExpandidoMany[i] ? 'Minimizar' : 'Expandir' }}
                 </div>
             </div>
+
+            <div *ngIf="item.aulaSessaoTipo == this.tipoSessaoAulaEnum.Video" fxLayout="column" fxLayoutAlign="center center"
+                class="card-favoritado" [ngClass]="{'card-expandido': this.cardExpandidoMany[i]}">
+                <div class="card-tipo-aula card-tipo">Video</div>
+                <div class="card-tipo-aula acessar-aula" (click)="acessarAula(item)">Acessar aula</div>
+                <div fxLayout="column" fxLayoutAlign="start center" class="card-conteudo">
+                    <div class="aba">
+                        <div class="titulo-sessao">{{ item.titulo }}</div>
+                    </div>
+                    
+                    <iframe *ngIf="!this.cardExpandidoMany[i]" fxLayout="column" fxLayoutAlign="center center" 
+                        [height]="this.linkYoutubeMany[i].height" 
+                        [src]="this.linkYoutubeMany[i].src">
+                    </iframe>
+                    <iframe *ngIf="this.cardExpandidoMany[i]" fxLayout="column" fxLayoutAlign="center center" 
+                        [width]="this.linkYoutubeMany[i].width" [height]="this.linkYoutubeMany[i].height" 
+                        [src]="this.linkYoutubeMany[i].src">
+                    </iframe>
+                </div>
+                <div class="card-expandir" (click)="expandirCard(i)">
+                    {{ this.cardExpandidoMany[i] ? 'Minimizar' : 'Expandir' }}
+                </div>
+            </div>
+
+            <div *ngIf="item.aulaSessaoTipo == this.tipoSessaoAulaEnum.Pdf" fxLayout="column" fxLayoutAlign="center center"
+                class="card-favoritado" [ngClass]="{'card-expandido': this.cardExpandidoMany[i]}">
+                <div class="card-tipo-aula card-tipo">PDF</div>
+                <div class="card-tipo-aula acessar-aula" (click)="acessarAula(item)">Acessar aula</div>
+                <div fxLayout="column" fxLayoutAlign="start center" class="card-conteudo">
+                    <div class="aba">
+                        <div class="titulo-sessao">{{ item.titulo }}</div>
+                    </div>
+                    
+                    <iframe *ngIf="item.aulaSessaoTipo == this.tipoSessaoAulaEnum.Pdf && item.arquivoPdf && item.arquivoPdf.conteudo" 
+                        fxFlex="100%" fxLayout="column" class="pdf" 
+                        [src]="this.trustedPdfUrl[i]" type="application/pdf">
+                    </iframe>
+                </div>
+                <div class="card-expandir" (click)="expandirCard(i)">
+                    {{ this.cardExpandidoMany[i] ? 'Minimizar' : 'Expandir' }}
+                </div>
+            </div>
         </div>
     </div>
 </div>

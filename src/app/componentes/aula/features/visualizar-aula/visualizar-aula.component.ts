@@ -27,11 +27,13 @@ import {
 } from 'src/app/models';
 
 import { 
+  atualizarAulaSelected,
   excluirAulaComentario, 
   getIsUsuarioAulaCurtida, 
   getIsUsuarioAulaFavoritada, 
   getIsUsuarioLogadoAulaComentario, 
   getManyAulaComentarioByAulaId, 
+  getManyAulaComentarioByAulaSelected, 
   getManySessaoIdInUsuarioAulaSessaoFavoritado, 
   getOneAulaById, 
   getOneUsuarioLogado, 
@@ -50,7 +52,6 @@ import {
   removerWidgetCursando, 
   removerWidgetCursar, 
   selecionarManyAulaComentarioByAulaId, 
-  selecionarOneAulaById 
 } from 'src/app/store';
 
 import Editor from 'src/app/componentes/genericos/ckeditor/build/ckeditor';
@@ -126,7 +127,6 @@ export class VisualizarAulaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.store.dispatch(selecionarOneAulaById({ aulaId: this.aulaId }));
     this.setupAulaComentario();
     this.setupAula();
     this.setupUsuarioAulaComentado();
@@ -156,7 +156,7 @@ export class VisualizarAulaComponent implements OnInit {
   }
 
   setupAula() {
-    this.aula$ = this.store.select(getOneAulaById(this.aulaId));
+    this.aula$ = this.store.select(getOneAulaById);
     this.aulaSubscription$ = this.aula$.subscribe(item => {
       if(item)
         this.setupAulaSessao(item);
@@ -164,8 +164,7 @@ export class VisualizarAulaComponent implements OnInit {
   }
 
   setupAulaComentario() {
-    this.store.dispatch(selecionarManyAulaComentarioByAulaId({ aulaId: this.aulaId }))
-    this.aulaComentarioMany$ = this.store.select(getManyAulaComentarioByAulaId(this.aulaId));
+    this.aulaComentarioMany$ = this.store.select(getManyAulaComentarioByAulaSelected);
     this.aulaComentarioManySubscription$ = this.aulaComentarioMany$.subscribe(itens => {
       this.aulaComentarioMany = itens;
       this.setupAulaComentarioTrustedHtml();
@@ -455,6 +454,16 @@ export class VisualizarAulaComponent implements OnInit {
         this.widgetConcluido = false;
         break;
     }
+  }
+
+  aulaPosterior() {
+    this.router.navigate([`visualizar-aula/${this.aula.aulaPosteriorId}`]);
+    this.store.dispatch(atualizarAulaSelected({ aulaId: this.aula.aulaPosteriorId }));
+  }
+
+  aulaAnterior() {
+    this.router.navigate([`visualizar-aula/${this.aula.aulaAnteriorId}`]);
+    this.store.dispatch(atualizarAulaSelected({ aulaId: this.aula.aulaAnteriorId }));
   }
 
   scrollToTop() {

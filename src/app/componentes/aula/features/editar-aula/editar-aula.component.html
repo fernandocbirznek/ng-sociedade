@@ -1,4 +1,4 @@
-<div fxLayout="column" class="container-aula">
+<div *ngIf="this.aula; else carregando" fxLayout="column" class="container-aula">
   <div fxLayout="row" fxLayoutAlign="center center" class="g-container-voltar" (click)="voltarPaginaPainelProfessor()">
     <mat-icon class="material-symbols-outlined">undo</mat-icon>
     <span>Voltar</span>
@@ -26,12 +26,13 @@
       </div>
     </div>
   </div>
-  <div>
-    <div *ngIf="this.aulaSessaoMany.length < 4" fxLayout="row" fxLayoutAlign="center center" class="g-button-adicionar button-nova-sessao" (click)="novaSessao()">
-      <mat-icon class="material-symbols-outlined">note_add</mat-icon>
-      <div>Criar sessão</div>
-    </div>
+
+  <div *ngIf="this.aula && this.usuarioLogado">
+    <app-editar-aula-posterior-anterior [aulaSessaoLength]="this.aulaSessaoMany.length" [aula]="this.aula" 
+      [usuarioLogado]="this.usuarioLogado" (onNovaSessao)="novaSessao()">
+    </app-editar-aula-posterior-anterior>
   </div>
+  
   <div cdkDropList (cdkDropListDropped)="ordenarSessao($event)">
     <div cdkDrag *ngFor="let sessao of this.aulaSessaoMany; index as i" fxLayout="column" fxLayoutAlign="center center"  
       class="g-card card-sessao">
@@ -78,3 +79,7 @@
     </div>
   </div>
 </div>
+
+<ng-template #carregando>
+  Carregando....
+</ng-template>

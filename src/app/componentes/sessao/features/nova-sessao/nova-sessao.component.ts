@@ -42,10 +42,12 @@ export class NovaSessaoComponent implements OnInit {
   rows = 10;
 
   selectedFile: File | null = null;
-  conteudoImagem: string = '';
+  conteudoImagem: string | undefined = undefined;
   pdfUrl: SafeResourceUrl | null = null;
 
   isVisualizarTutorial: boolean = false;
+
+  isFormValid: boolean = false;
 
   readonly tipoSessaoAulaEnum = TipoSessaoAulaEnum;
 
@@ -81,14 +83,14 @@ export class NovaSessaoComponent implements OnInit {
         conteudo = this.formSessao.get("conteudo_sessao")?.value;
         break;
       case TipoSessaoAulaEnum.Imagem:
-        conteudo = this.conteudoImagem;
+        conteudo = this.conteudoImagem!;
         break;
       case TipoSessaoAulaEnum.Video:
         if (SessaoHelpers.isLinkYoutube(this.linkYoutube.value))
           conteudo = this.linkYoutube.value;
         else
           conteudo = '';
-    } 
+    }
 
     let request: AulaSessaoModel = new AulaSessaoModel();
     request.titulo = this.formSessao.get("titulo_sessao")?.value;
@@ -120,6 +122,8 @@ export class NovaSessaoComponent implements OnInit {
       const unsafeUrl = URL.createObjectURL(file);
       this.pdfUrl = this.sanitizer.bypassSecurityTrustResourceUrl(unsafeUrl);
     }
+
+    this.alterouForm();
   }
 
   public fecharModal() {
@@ -158,11 +162,56 @@ export class NovaSessaoComponent implements OnInit {
     reader.onload = (e: any) => {
       const bytes = e.target.result.split('base64,')[1];
       this.conteudoImagem = bytes;
+      this.alterouForm();
     };
     reader.readAsDataURL(event.target.files[0]);
   }
 
   visualizarTutorial() {
     this.isVisualizarTutorial = !this.isVisualizarTutorial;
+  }
+
+  alterouForm() {
+    this.isFormValid = this.getIsFormValid();
+  }
+
+  getIsFormValid(): boolean {
+    if (this.formSessao.get("titulo_sessao")?.value == '' || !this.formSessao.get("titulo_sessao")?.value)
+      return false;
+
+    if (this.tipoSessaoValue(this.formSessao.get("tipo_sessao")?.value) == TipoSessaoAulaEnum.None || 
+      !this.tipoSessaoValue(this.formSessao.get("tipo_sessao")?.value)
+    )
+      return false;
+
+    if (this.tipoSessaoValue(this.formSessao.get("tipo_sessao")?.value) == TipoSessaoAulaEnum.Pdf)
+      if (!this.filePdf)
+        return false;
+      else if (this.filePdf.size > 3000000)
+        return false;
+
+    if (this.tipoSessaoValue(this.formSessao.get("tipo_sessao")?.value) == TipoSessaoAulaEnum.Imagem) {
+      if (!this.conteudoImagem)
+        return false;
+      else if (this.conteudoImagem.length < 1)
+        return false;
+    }
+      
+    if (this.tipoSessaoValue(this.formSessao.get("tipo_sessao")?.value) == TipoSessaoAulaEnum.Texto || 
+      this.tipoSessaoValue(this.formSessao.get("tipo_sessao")?.value) == TipoSessaoAulaEnum.Conceito
+    ) {
+      if (!this.ckEditorTag)
+        return false;
+      else if (!this.ckEditorTag.editorInstance)
+        return false;
+      else if (!this.ckEditorTag.editorInstance.getData())
+        return false;
+    }
+
+    if (this.tipoSessaoValue(this.formSessao.get("tipo_sessao")?.value) == TipoSessaoAulaEnum.Equacao)
+      if (this.formSessao.get("conteudo_sessao")?.value == '' || !this.formSessao.get("conteudo_sessao")?.value)
+        return false;
+
+    return true;
   }
 }

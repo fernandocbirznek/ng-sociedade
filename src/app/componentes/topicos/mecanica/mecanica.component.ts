@@ -12,11 +12,11 @@ import {
 
 import { 
   alterarTituloPagina,
+  atualizarAulaSelected,
   getAreaFisicaId,
   getManyAreaFisicaDivisaoByAreaFisicaId,
   getManyAulaByAreaFisicaId,
   getOneAreaFisicaByAreaFisicaId,
-  getTituloPagina,
   selecionarManyAreaFisicaDivisaoByAreaFisicaId,
   selecionarManyAulaByAreaFisicaId 
 } from 'src/app/store';
@@ -40,10 +40,6 @@ export class MecanicaComponent implements OnInit {
   aulaMany$: Observable<AulaViewModel[]> = new Observable<AulaViewModel[]>();
   aulaMany: AulaViewModel[] = [];
 
-  headerAreaFisicaIdSubscription$: Subscription = new Subscription();
-  headerAreaFisicaId$: Observable<number> = new Observable<number>();
-  headerAreaFisicaId: number = 0;
-
   pageAulaMany: AulaViewModel[] = [];
   pageSize: number = 4;
   pageMax: number = 1;
@@ -58,7 +54,6 @@ export class MecanicaComponent implements OnInit {
     this.setupAreaFisica();
     this.setupAreaFisicaDivisao();
     this.setupAula();
-    this.setupAreaFisicaId();
   }
 
   ngOnDestroy(): void {
@@ -99,14 +94,6 @@ export class MecanicaComponent implements OnInit {
     });
   }
 
-  setupAreaFisicaId() {
-    this.headerAreaFisicaId$ = this.store.select(getAreaFisicaId);
-    this.headerAreaFisicaIdSubscription$ = this.headerAreaFisicaId$.subscribe(item => {
-      this.store.dispatch(selecionarManyAulaByAreaFisicaId({ areaFisicaId: item}));
-      this.store.dispatch(selecionarManyAreaFisicaDivisaoByAreaFisicaId({ areaFisicaId: item}));
-    });
-  }
-
   setupPage() {
     this.pageMax = Math.ceil(this.aulaMany.length/this.pageSize);
     this.pageAulaMany = this.aulaMany.slice(this.pageAtual, this.pageSize);
@@ -114,6 +101,7 @@ export class MecanicaComponent implements OnInit {
 
   visualizarAula(item: AulaModel) {
     this.store.dispatch(alterarTituloPagina({ titulo: `${item.titulo}`, areaFisicaId: item.areaFisicaId }));
-    this.router.navigate([`visualizar-aula/${item.id}`]);
+    this.store.dispatch(atualizarAulaSelected({ aulaId: item.id }));
+    this.router.navigate([`visualizar-aula/${item.id}`], { queryParams: { aulaTitulo: item.titulo }});
   }
 }

@@ -12,7 +12,8 @@ export class AulaEffects {
 
   constructor(
     private actions$: Actions,
-    private aulaService: AulaService) 
+    private aulaService: AulaService
+  ) 
   {}
 
   selecionarProfessorAulas$ = createEffect(() => {
@@ -110,6 +111,28 @@ export class AulaEffects {
         this.aulaService.atualizarAulaFavoritada(action.aula).pipe(
           map(response => actions.atualizarAulaFavoritadaSuccess({ response: response })),
           catchError(error => of(actions.atualizarAulaFavoritadaFailure({ error }))))
+      )
+    );
+  });
+
+  atualizarAulaPosterior$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(actions.atualizarAulaPosterior),
+      concatMap((action) =>
+        this.aulaService.atualizarAulaPosterior(action.aula).pipe(
+          map(response => actions.atualizarAulaPosteriorSuccess({ response: response })),
+          catchError(error => of(actions.atualizarAulaPosteriorFailure({ error }))))
+      )
+    );
+  });
+
+  atualizarAulaAnterior$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(actions.atualizarAulaAnterior),
+      concatMap((action) =>
+        this.aulaService.atualizarAulaAnterior(action.aula).pipe(
+          map(response => actions.atualizarAulaAnteriorSuccess({ response: response })),
+          catchError(error => of(actions.atualizarAulaAnteriorFailure({ error }))))
       )
     );
   });

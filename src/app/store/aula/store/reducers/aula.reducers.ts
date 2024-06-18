@@ -12,6 +12,7 @@ export const aulaFeatureKey = 'aula';
 export interface AulaState {
   aulas: AulaModel[];
   aulaFilter: AulaFilterModel;
+  aulaSelected: number;
 
   isSuccess: boolean;
   isLoading: boolean;
@@ -22,6 +23,7 @@ export interface AulaState {
 export const aulaInitialState: AulaState = {
   aulas: [],
   aulaFilter: new AulaFilterModel,
+  aulaSelected: 0,
 
   isSuccess: false,
   isLoading: false,
@@ -343,6 +345,116 @@ export const aulaReducer = createReducer(
       isSuccess: false, 
       isFailure: true, 
       mensagem: "Erro ao atualizar favoritar Aula." 
+    };
+  }),
+
+  on(actions.atualizarAulaPosterior, state => {
+    return { 
+      ...state, 
+      isLoading: true, 
+      isSuccess: false, 
+      isFailure: false, 
+      error: "" 
+    };
+  }),
+  on(actions.atualizarAulaPosteriorSuccess, (state, action) => {
+    let aulas = [...state.aulas].map(item => {
+      if(item.id == action.response.id) {
+        let aula = new AulaModel();
+        aula.areaFisicaId = item.areaFisicaId;
+        aula.curtido = item.curtido;
+        aula.favoritado = item.favoritado;
+        aula.id = item.id;
+        aula.professorId = item.professorId;
+        aula.resumo = item.resumo;
+        aula.titulo = item.titulo;
+        aula.areaFisicaTitulo = item.areaFisicaTitulo;
+        aula.aulaComentarioMany = item.aulaComentarioMany;
+        aula.aulaSessaoMany = item.aulaSessaoMany;
+        aula.aulaTagMany = item.aulaTagMany;
+        aula.aulaPosteriorId = action.response.aulaPosteriorId;
+        aula.aulaAnteriorId = item.aulaAnteriorId;
+        aula.comentario = item.comentario;
+        aula.dataCadastro = item.dataCadastro;
+        aula.dataAtualizacao = action.response.dataAtualizacao;
+        aula.professorNome = item.professorNome;
+        aula.publicado = item.publicado;
+
+        return aula;
+      }
+      return item;
+    });
+
+    return {
+      ...state,
+      aulas: aulas,
+      isLoading: false,
+      isSuccess: true,
+      isFailure: false,
+    };
+  }),
+  on(actions.atualizarAulaPosteriorFailure, (state) => {
+    return { 
+      ...state, 
+      isLoading: false, 
+      isSuccess: false, 
+      isFailure: true, 
+      mensagem: "Erro ao atualizar aula posterior." 
+    };
+  }),
+
+  on(actions.atualizarAulaAnterior, state => {
+    return { 
+      ...state, 
+      isLoading: true, 
+      isSuccess: false, 
+      isFailure: false, 
+      error: "" 
+    };
+  }),
+  on(actions.atualizarAulaAnteriorSuccess, (state, action) => {
+    let aulas = [...state.aulas].map(item => {
+      if(item.id == action.response.id) {
+        let aula = new AulaModel();
+        aula.areaFisicaId = item.areaFisicaId;
+        aula.curtido = item.curtido;
+        aula.favoritado = item.favoritado;
+        aula.id = item.id;
+        aula.professorId = item.professorId;
+        aula.resumo = item.resumo;
+        aula.titulo = item.titulo;
+        aula.areaFisicaTitulo = item.areaFisicaTitulo;
+        aula.aulaComentarioMany = item.aulaComentarioMany;
+        aula.aulaSessaoMany = item.aulaSessaoMany;
+        aula.aulaTagMany = item.aulaTagMany;
+        aula.aulaPosteriorId = item.aulaPosteriorId;
+        aula.aulaAnteriorId = action.response.aulaAnteriorId;
+        aula.comentario = item.comentario;
+        aula.dataCadastro = item.dataCadastro;
+        aula.dataAtualizacao = action.response.dataAtualizacao;
+        aula.professorNome = item.professorNome;
+        aula.publicado = item.publicado;
+
+        return aula;
+      }
+      return item;
+    });
+
+    return {
+      ...state,
+      aulas: aulas,
+      isLoading: false,
+      isSuccess: true,
+      isFailure: false,
+    };
+  }),
+  on(actions.atualizarAulaAnteriorFailure, (state) => {
+    return { 
+      ...state, 
+      isLoading: false, 
+      isSuccess: false, 
+      isFailure: true, 
+      mensagem: "Erro ao atualizar aula anterior." 
     };
   }),
 
@@ -681,6 +793,14 @@ export const aulaReducer = createReducer(
         isSuccess: true, 
         isFailure: false, 
         error: ""
+    };
+  }),
+
+  on(actions.atualizarAulaSelected, (state, action) => {
+    
+    return { 
+        ...state, 
+        aulaSelected: action.aulaId,
     };
   }),
 );

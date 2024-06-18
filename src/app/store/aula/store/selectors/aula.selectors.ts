@@ -4,8 +4,8 @@ import * as fromAula from '../reducers/aula.reducers';
 import { 
   AreaFisicaModel,
   ArquivoPdfModel,
+  AulaComentarioModel,
   AulaFilterModel,
-  AulaModel, 
   AulaSessaoModel, 
   AulaViewModel, 
   InformacaoAulaViewModel, 
@@ -18,6 +18,7 @@ import {
 
 import * as areaFisicaFeature from '../../../area-fisica/store';
 import * as arquivoPdfFeature from '../../../arquivo-pdf/store';
+import * as aulaComentarioFeature from '../../../aula-comentario/store';
 import * as headerFeature from '../../../header/store';
 import * as manipularContaFeature from '../../../manipular-conta/store';
 import * as tagFeature from '../../../tag/store';
@@ -35,6 +36,15 @@ export const getOneAulaFilter = createSelector(
   ): AulaFilterModel => {
 
     return state.aulaFilter;
+  }
+)
+
+export const getOneAulaSelected = createSelector(
+  selectAulaState, (
+    state,
+  ): number => {
+
+    return state.aulaSelected;
   }
 )
 
@@ -74,6 +84,8 @@ export const getManyAula = createSelector(
         aulaViewModel.dataAtualizacao = item.dataAtualizacao;
         aulaViewModel.professorNome = item.professorNome;
         aulaViewModel.publicado = item.publicado;
+        aulaViewModel.aulaAnteriorId = item.aulaAnteriorId;
+        aulaViewModel.aulaPosteriorId = item.aulaPosteriorId;
 
         if (areaFisica)
           aulaViewModel.areaFisicaTitulo = areaFisica.titulo;
@@ -145,28 +157,41 @@ export const getManyAulaByProfessorId = (professorId: number) => createSelector(
   }
 )
 
+export const getManyAulaForEditarAulaSelectByAreaFisicaId = (professorId: number, areaFisicaId: number) => createSelector(
+  getManyAulaByProfessorId(professorId), (
+    aulaMany: AulaViewModel[],
+  ) => {
+
+    return aulaMany
+      .filter(item => item.areaFisicaId == areaFisicaId);
+  }
+)
+
 export const getManyAulaByAreaFisicaId = createSelector(
   getManyAulaByFilter,
   headerFeature.getAreaFisicaId, (
     aulaMany: AulaViewModel[],
     areaFisicaId: number
   ): AulaViewModel[] => {
+
   let itens = aulaMany.filter(item => item.areaFisicaId == areaFisicaId);
 
     return itens;
   }
 )
 
-export const getOneAulaById = (aulaId: number) => createSelector(
+export const getOneAulaById = createSelector(
   selectAulaState, 
+  getOneAulaSelected,
   areaFisicaFeature.getManyAreaFisica,
-  arquivoPdfFeature.getManyArquivoPdfByAulaId(aulaId), (
+  arquivoPdfFeature.getManyArquivoPdf, (
     state,
+    aulaSelected: number,
     areaFisicaMany: AreaFisicaModel[],
     arquivoPdfMany: ArquivoPdfModel[]
-  ) => {
-    let item = new AulaModel();
-    let aula = state.aulas.find(item => item.id == aulaId);
+  ): AulaViewModel => {
+    let item = new AulaViewModel();
+    let aula = state.aulas.find(item => item.id == aulaSelected);
     let areaFisica: AreaFisicaModel | undefined = undefined;
 
     if (aula)
@@ -188,14 +213,18 @@ export const getOneAulaById = (aulaId: number) => createSelector(
       item.titulo = aula.titulo;
       item.publicado = aula.publicado;
       item.areaFisicaTitulo = areaFisica.titulo;
+      item.aulaAnteriorId = aula.aulaAnteriorId;
+      item.aulaPosteriorId = aula.aulaPosteriorId;
     }
 
     if (aula && arquivoPdfMany.length > 0) {
       let aulaSessaoMany: AulaSessaoModel[] = [];
 
+      let arquivoPdfManyFiltrado = arquivoPdfMany.filter(item => item.aulaId == aulaSelected);
+
       aulaSessaoMany = aula.aulaSessaoMany.map(item => {
         if (item.aulaSessaoTipo == TipoSessaoAulaEnum.Pdf) {
-          let arquivoPdf = arquivoPdfMany.find(arquivoPdf => arquivoPdf.id == +item.conteudo);
+          let arquivoPdf = arquivoPdfManyFiltrado.find(arquivoPdf => arquivoPdf.id == +item.conteudo);
 
           let aulaSessao: AulaSessaoModel = new AulaSessaoModel();
           aulaSessao.aulaId = item.aulaId;
@@ -242,5 +271,17 @@ export const getProfessorInformacaoAulaMany = (professorId: number) => createSel
     informacaoAulaView.aulaCurtidoMany = curtido;
 
     return informacaoAulaView;
+  }
+)
+
+export const getManyAulaComentarioByAulaSelected = createSelector(
+  getOneAulaSelected,
+  aulaComentarioFeature.getAulaComentarioMany, (
+    aulaSelected: number,
+    aulaComentarioMany: AulaComentarioModel[],
+  ): AulaComentarioModel[] => {
+
+    return aulaComentarioMany
+      .filter(item => item.aulaId == aulaSelected);
   }
 )

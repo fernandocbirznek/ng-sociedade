@@ -44,6 +44,15 @@
   gap: 20px;
 }
 
+.imagem {
+  height: auto;
+}
+
+.container-input-pdf {
+  width: 100%;
+  gap: 10px;
+}
+
 .ocultar-tutorial {
   position: absolute;
   top: 15px;

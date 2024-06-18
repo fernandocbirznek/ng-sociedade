@@ -177,5 +177,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 /* Arrow dropdown input */
 .mat-form-field-appearance-outline .mat-select-arrow-wrapper {
-    transform: translateY(5px) !important;
+    transform: translateY(0px) !important;
+}
+
+.mat-select-trigger {
+    margin-top: 5px;
 }

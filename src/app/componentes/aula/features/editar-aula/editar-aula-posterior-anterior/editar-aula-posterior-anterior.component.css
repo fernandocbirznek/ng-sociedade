@@ -1,0 +1,33 @@
+.card-nova-sessao {
+    padding: 20px;
+    width: calc(100% - 80px);
+    position: relative;
+    gap: 20px;
+}
+
+.alerta-link {
+    color: rgb(184, 184, 184);
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.alerta-link-ativo {
+    color: rgb(255, 106, 106);
+}
+
+.button-nova-sessao {
+    width: 150px;
+    margin-right: 20px;
+    gap: 10px;
+}
+
+.button-disabled {
+    pointer-events: none;
+    color: rgb(184, 184, 184);
+    border-color: rgb(184, 184, 184);
+}
+
+.container-aula-anterior-posterior {
+    gap: 20px;
+    width: 100%;
+}

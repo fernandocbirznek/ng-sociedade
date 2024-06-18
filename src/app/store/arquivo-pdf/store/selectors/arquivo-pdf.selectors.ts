@@ -20,6 +20,6 @@ export const getManyArquivoPdfByAulaId = (aulaId: number) => createSelector(
   state,
 ): ArquivoPdfModel[] => {
 
-  return state.itens.filter(item => item.aulaId == aulaId);
-}
+    return state.itens.filter(item => item.aulaId == aulaId);
+  }
 )

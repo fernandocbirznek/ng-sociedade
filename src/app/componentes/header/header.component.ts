@@ -114,7 +114,7 @@ export class HeaderComponent implements OnInit {
         this.store.dispatch(alterarTituloPagina({ titulo: 'Mecânica quântica', areaFisicaId: 7 }));
         break;
     }
-    this.router.navigate(['mecanica'], { queryParams: { areaFisicaId: areaFisica.titulo }});
+    this.router.navigate([`mecanica/${areaFisica.id}`], { queryParams: { areaFisicaId: areaFisica.titulo }});
   }
 
   conta() {

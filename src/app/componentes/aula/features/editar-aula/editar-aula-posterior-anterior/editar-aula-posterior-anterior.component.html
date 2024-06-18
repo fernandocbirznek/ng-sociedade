@@ -1,0 +1,45 @@
+<div fxLayout="column" fxLayoutAlign="start start" class="g-card card-nova-sessao">
+    <div fxLayout="row" fxLayoutAlign="start center">
+        <div fxLayout="row" fxLayoutAlign="center center" class="g-button-adicionar button-nova-sessao" 
+            [ngClass]="{'button-disabled': this.aulaSessaoLength >= 4}" (click)="novaSessao()">
+            <mat-icon class="material-symbols-outlined">note_add</mat-icon>
+            <div>Criar sessão</div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center" class="alerta-link" [ngClass]="{'alerta-link-ativo': this.aulaSessaoLength >= 4}">
+            <mat-icon fxLayoutAlign="center center" class="material-symbols-outlined">warning</mat-icon>
+            <span>Aceito no máximo 4 sessões por aula!</span>
+        </div>
+    </div>
+
+    <form [formGroup]="this.formAulaPosteriorAnterior" fxLayout="row" fxLayoutAlign="space-around center" 
+        class="container-aula-anterior-posterior">
+        <div fxLayout="column" fxLayoutAlign="start center">
+            <mat-form-field class="g-full-width" appearance="outline">
+                <mat-label>Vincular aula anterior</mat-label>
+                <mat-select formControlName="aula_anterior" matInput (selectionChange)="alterouAulaAnteriorSelect()"
+                    [value]="this.aulaAnteriorSelectFormControl.value">
+                    <mat-option [value]="0">Nenhuma opção</mat-option>
+                    <mat-option *ngFor="let aula of this.aulaManyAnterior" [value]="aula.id">{{ aula.titulo }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <button mat-stroked-button color="primary" (click)="alterarAulaAnterior()" [disabled]="!this.isFormAulaAnteriorValid">
+                <mat-icon class="material-symbols-outlined">edit</mat-icon>
+                Alterar vinculo aula anterior
+            </button>
+        </div>
+        <div fxLayout="column" fxLayoutAlign="start center">
+            <mat-form-field class="g-full-width" appearance="outline">
+                <mat-label>Vincular aula posterior</mat-label>
+                <mat-select formControlName="aula_posterior" matInput (selectionChange)="alterouAulaPosteriorSelect()"
+                    [value]="this.aulaPosteriorSelectFormControl.value">
+                    <mat-option [value]="0">Nenhuma opção</mat-option>
+                    <mat-option *ngFor="let aula of this.aulaManyPosterior" [value]="aula.id">{{ aula.titulo }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <button mat-stroked-button color="primary" (click)="alterarAulaPosterior()" [disabled]="!this.isFormAulaPosteriorValid">
+                <mat-icon class="material-symbols-outlined">edit</mat-icon>
+                Alterar vinculo aula posterior
+            </button>
+        </div>
+    </form>
+  </div>

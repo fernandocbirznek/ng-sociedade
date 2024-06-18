@@ -105,7 +105,9 @@ export class ProfessorTabelaNoticiaComponent implements OnInit {
 
   editarNoticia(item: NoticiaModel) {
     this.dialog.open(EditarNoticiaComponent, {
-     data: item
+      data: item,
+      width: '90%',
+      height: '90%',
     });
   }
 

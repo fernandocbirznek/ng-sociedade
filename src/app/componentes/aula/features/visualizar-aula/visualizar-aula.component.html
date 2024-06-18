@@ -108,6 +108,17 @@
             [src]="this.trustedPdfUrl[i]" type="application/pdf">
         </iframe>
     </div>
+
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="container-anterior-posterior">
+        <div class="button-anterior-posterior button-aula-anterior" [ngClass]="{'button-disabled': !this.aula.aulaAnteriorId}"
+            (click)="aulaAnterior()">
+            Acessar aula anterior
+        </div>
+        <div class="button-anterior-posterior button-aula-posterior" [ngClass]="{'button-disabled': !this.aula.aulaPosteriorId}"
+            (click)="aulaPosterior()">
+            Acessar próxima aula
+        </div>
+    </div>
  
     <div fxLayout="column" class="container-comentario-cards">
         <div class="text-comentarios">Comentários</div>
