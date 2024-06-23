@@ -8,14 +8,15 @@ import {
 } from "src/app/models";
 
 import { 
-    selecionarManyAulaByProfessorId, 
-    selecionarManyUsuarioAulaCurtido, 
-    selecionarManyUsuarioAulaFavoritada, 
-    selecionarNoticiaManyByProfessorId 
+    selecionarManyUsuarioAulaSessaoFavoritadoByUsuarioId,
+    selecionarWidgetConcluidoByUsuarioId, 
+    selecionarWidgetCursandoByUsuarioId, 
+    selecionarWidgetCursarByUsuarioId 
 } from "src/app/store";
 
+
 @Injectable({ providedIn: 'root' })
-export class PerfilProfessorResolver implements Resolve<boolean> {
+export class UsuarioAlunoResolver implements Resolve<boolean> {
 
     usuarioLogadoSubscription$: Subscription = new Subscription();
     usuarioLogado$: Observable<UsuarioModel | undefined> = new Observable<UsuarioModel | undefined>();
@@ -30,10 +31,10 @@ export class PerfilProfessorResolver implements Resolve<boolean> {
     ): Observable<boolean>|Promise<boolean>|boolean {
         let id = route.paramMap.get('id');
         if (id) {
-            this.store.dispatch(selecionarManyAulaByProfessorId({ professorId: +id}));
-            this.store.dispatch(selecionarNoticiaManyByProfessorId({ professorId: +id}));
-            this.store.dispatch(selecionarManyUsuarioAulaCurtido({ usuarioId: +id }));
-            this.store.dispatch(selecionarManyUsuarioAulaFavoritada({ usuarioId: +id }));
+            this.store.dispatch(selecionarWidgetConcluidoByUsuarioId({ usuarioId: +id }));
+            this.store.dispatch(selecionarWidgetCursandoByUsuarioId({ usuarioId: +id }));
+            this.store.dispatch(selecionarWidgetCursarByUsuarioId({ usuarioId: +id }));
+            this.store.dispatch(selecionarManyUsuarioAulaSessaoFavoritadoByUsuarioId({ usuarioId: +id }));
             return true;
         }  
 

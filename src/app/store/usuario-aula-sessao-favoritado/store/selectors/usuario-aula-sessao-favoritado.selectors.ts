@@ -12,6 +12,15 @@ export const getUsuarioAulaSessaoFavoritadoState = createFeatureSelector<
     fromUsuarioAulaSessaoFavoritado.usuarioAulaSessaoFavoritadoFeatureKey
 );
 
+export const getManyUsuarioAulaSessaoFavoritadoItens = createSelector(
+  getUsuarioAulaSessaoFavoritadoState, (
+  state
+): UsuarioAulaSessaoFavoritadoModel[] => {
+
+    return state.itens;
+  }
+)
+
 export const getOneTipoFiltroFavoritadoEnum = createSelector(
   getUsuarioAulaSessaoFavoritadoState, (
   state

@@ -5,7 +5,6 @@ import { Observable } from "rxjs";
 
 import { 
     selecionarManyAreaFisicaDivisaoByAreaFisicaId,
-    selecionarManyArquivoPdfByAulaId, 
     selecionarManyAulaByAreaFisicaId
 } from "src/app/store";
 

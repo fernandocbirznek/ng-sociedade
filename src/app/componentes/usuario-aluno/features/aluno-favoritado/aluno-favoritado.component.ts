@@ -57,7 +57,6 @@ export class AlunoFavoritadoComponent implements OnInit {
   }
 
   setupUsuarioAulaSessaoFavoritado() {
-    this.store.dispatch(selecionarManyUsuarioAulaSessaoFavoritadoByUsuarioId({ usuarioId: this.usuarioLogado.id }));
     this.usuarioAulaSessaoFavoritado$ = this.store.select(getManyUsuarioAulaSessaoFavoritado);
     this.usuarioAulaSessaoFavoritadoSubscription$ = this.usuarioAulaSessaoFavoritado$.subscribe(itens => {
       this.trustedDashboardHtml = [];

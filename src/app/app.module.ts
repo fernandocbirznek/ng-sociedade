@@ -77,7 +77,8 @@ import {
   AulaFiltroComponent,
   NoticiaFiltroComponent,
   ProfessorPerfilComponent,
-  EditarAulaPosteriorAnteriorComponent
+  EditarAulaPosteriorAnteriorComponent,
+  AlunoPerfilComponent
 } from './componentes';
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -175,6 +176,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     NoticiaFiltroComponent,
     ProfessorPerfilComponent,
     EditarAulaPosteriorAnteriorComponent,
+    AlunoPerfilComponent,
   ],
   imports: [
     BrowserModule,

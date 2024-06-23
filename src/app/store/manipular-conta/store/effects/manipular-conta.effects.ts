@@ -81,7 +81,7 @@ export class ManipularContaEffects {
                 break; 
               } 
               case TipoUsuarioEnum.UsuarioComum: { 
-                this.router.navigate([`aluno-home/${response.email}`]);
+                this.router.navigate([`aluno-home/${response.email}/${response.id}`]);
                 //TODO, colocar num resolver
                 this.store.dispatch(selecionarManyUsuarioAulaCurtido({ usuarioId: response.id }));
                 this.store.dispatch(selecionarManyUsuarioAulaFavoritada({ usuarioId: response.id }));
@@ -128,7 +128,7 @@ export class ManipularContaEffects {
                 break; 
               } 
               case TipoUsuarioEnum.UsuarioComum: { 
-                this.router.navigate([`aluno-home/${response.email}`]);
+                this.router.navigate([`aluno-home/${response.email}/${response.id}`]);
                 //TODO, colocar num resolver
                 this.store.dispatch(selecionarManyUsuarioAulaCurtido({ usuarioId: response.id }));
                 this.store.dispatch(selecionarManyUsuarioAulaFavoritada({ usuarioId: response.id }));

@@ -65,6 +65,10 @@
     color: white;
 }
 
+.para-cursar-selecionado:hover {
+    background-color: rgb(54, 121, 54);;
+}
+
 .cursando {
     color: rgb(202, 202, 64);
 }
@@ -74,6 +78,10 @@
     color: white;
 }
 
+.para-cursando-selecionado:hover {
+    background-color: rgb(156, 156, 50);
+}
+
 .concluido {
     color: rgb(78, 78, 187);
 }
@@ -81,6 +89,10 @@
 .para-concluido-selecionado {
     background-color: rgb(78, 78, 187);
     color: white;
+}
+
+.para-concluido-selecionado:hover {
+    background-color: rgb(63, 63, 146);
 }
 
 .aula-autor {

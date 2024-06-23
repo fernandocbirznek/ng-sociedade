@@ -1,6 +1,11 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as fromWidget from '../reducers/widget.reducers';
-import { WidgetModel, WidgetViewModel } from 'src/app/models';
+
+import { 
+  InformacaoWidgetAlunoViewModel, 
+  WidgetModel, 
+  WidgetViewModel 
+} from 'src/app/models';
 
 export const getWidgetState = createFeatureSelector<fromWidget.WidgetState>(
   fromWidget.widgetFeatureKey
@@ -47,5 +52,22 @@ export const getWidgetMany = createSelector(
     widgetMany.widgetCursar = widgetCursarMany;
     
     return widgetMany;
+  }
+)
+
+export const getOneInformacaoAlunoWidget = createSelector( 
+  getManyAulaCursarByUsuarioById,
+  getManyAulaCursandoByUsuarioById, 
+  getManyAulaConcluidoByUsuarioById, (
+  widgetCursarMany: WidgetModel[],
+  widgetCursandoMany: WidgetModel[],
+  widgetConcluidoMany: WidgetModel[],
+  ):InformacaoWidgetAlunoViewModel => {
+    let informacaoAulaAluno : InformacaoWidgetAlunoViewModel = new InformacaoWidgetAlunoViewModel();
+    informacaoAulaAluno.aulaConcluidoMany = widgetConcluidoMany.length;
+    informacaoAulaAluno.aulaCursandoMany = widgetCursandoMany.length;
+    informacaoAulaAluno.aulaParaCursarMany = widgetCursarMany.length;
+    
+    return informacaoAulaAluno;
   }
 )

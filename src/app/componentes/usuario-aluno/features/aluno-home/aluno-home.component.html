@@ -1,27 +1,25 @@
-<div *ngIf="this.usuarioLogado; else usuarioVazio" fxLayout="column" class="container-professor-home">
-    <div fxLayout="row" fxLayoutAlign="space-between center">
-        <div class="titulo">Olá {{this.usuarioLogado.nome}}</div>
-        <div fxLayout="row" fxLayoutAlign="center center" class="editar-perfil" (click)="editarPerfil()">
-            <mat-icon class="material-symbols-outlined">edit_document</mat-icon>
-            <div>Editar perfil</div>
-        </div>
+<div *ngIf="this.usuarioLogado; else usuarioVazio" fxLayout="column" class="container-aluno-home">
+    <div class="deslogar" (click)="deslogar()">Deslogar</div>
+    <div fxLayout="row wrap" fxLayoutAlign="space-between start" class="container-informacao">
+        <app-professor-perfil [usuarioLogado]="this.usuarioLogado"></app-professor-perfil>
+        <app-usuario-informacao [usuarioLogado]="this.usuarioLogado"></app-usuario-informacao>
     </div>
+
+    <app-usuario-conquistas fxFlex="50%"></app-usuario-conquistas>
     
-    <div fxLayout="row" fxLayoutAlign="space-between start" class="container-informacao">
-        <app-usuario-informacao fxFlex="50%" [usuarioLogado]="this.usuarioLogado"></app-usuario-informacao>
-        <app-usuario-conquistas fxFlex="50%"></app-usuario-conquistas>
+    <div fxLayout="column" fxLayoutAlign="space-between space-between" class="g-card card"
+        [ngClass]="{'card-favorito': this.abaSelecionada == 2}">
+        <div class="g-card-titulo card-titulo" fxLayout="row" fxLayoutAlign="start center">
+            <div fxLayout="row" fxLayoutAlign="center center" class="card-titulo-aba card-titulo-aba-1" (click)="selecionarAba(1)">
+                <span class="perfil-text">Widget aulas</span>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="center center" class="card-titulo-aba card-titulo-aba-2" (click)="selecionarAba(2)">
+                <span class="perfil-text">Informações favoritadas</span>
+            </div>
+        </div>
+        <app-aluno-aula *ngIf="this.abaSelecionada == 1" [usuarioLogado]="this.usuarioLogado"></app-aluno-aula>
+        <app-aluno-favoritado *ngIf="this.abaSelecionada == 2" [usuarioLogado]="this.usuarioLogado"></app-aluno-favoritado>
     </div>
-
-    <app-usuario-area-interesse [usuarioLogado]="this.usuarioLogado"></app-usuario-area-interesse>
-
-    <mat-tab-group>
-        <mat-tab label="Widget aulas">
-            <app-aluno-aula [usuarioLogado]="this.usuarioLogado"></app-aluno-aula>
-        </mat-tab>
-        <mat-tab label="Sessões favoritadas">
-            <app-aluno-favoritado [usuarioLogado]="this.usuarioLogado"></app-aluno-favoritado>
-        </mat-tab>
-    </mat-tab-group>
 </div>
 <ng-template #usuarioVazio>
     Carregando informações...

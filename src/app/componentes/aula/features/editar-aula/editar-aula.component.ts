@@ -27,7 +27,6 @@ import {
   getManyAulaSessaoByAulaId, 
   getOneAulaById, 
   getOneUsuarioLogado, 
-  selecionarManyAulaSessaoByAulaId
 } from 'src/app/store';
 
 import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-browser';

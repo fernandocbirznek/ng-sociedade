@@ -1,0 +1,65 @@
+.container-aluno-home {
+    margin-top: 20px;
+    gap: 20px;
+}
+
+.deslogar {
+    position: absolute;
+    right: 30px;
+    border: 2px solid #ff7878;
+    background-color: #ffd7d7;
+    font-weight: 500;
+    padding: 8px 10px;
+    border-radius: 10px;
+}
+
+.deslogar:hover {
+    cursor: pointer;
+    background-color: #ffcdcd;
+}
+
+.container-informacao {
+    gap: 20px;
+}
+
+.card {
+    padding: 25px;
+    gap: 15px;
+    margin: 50px 0;
+    width: 100%;
+}
+
+.card-favorito {
+    background-color: #ffd2ad;
+}
+
+.card-titulo {
+    background-color: transparent;
+    border-top: unset;
+    border-left: unset;
+    border-right: unset;
+    top: -75px;
+    left: 10px;
+    gap: 10px;
+}
+
+.card-titulo-aba {
+    border-top: 2px solid #737b86;
+    border-left: 2px solid #737b86;
+    border-right: 2px solid #737b86;
+    margin: 10px 0;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    padding: 8px 20px;
+    font-size: 22px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.card-titulo-aba-1 {
+    background-color: #fff4ad;
+}
+
+.card-titulo-aba-2 {
+    background-color: #ffd2ad;
+}

@@ -67,6 +67,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     gap: 20px;
 }
 
+.g-gap-60 {
+    gap: 60px;
+}
+
 .g-card {
     border: 2px solid #737b86;
     background-color: #fff4ad;

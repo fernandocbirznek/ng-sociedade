@@ -3,38 +3,57 @@
     margin: 20px 0;
 }
 
-.fieldset {
-    min-height: 200px;
-    display: grid;
-    gap: 15px;
+.widget-titulo {
+    font-weight: bold;
+    font-size: 30px;
 }
 
-.container-aula-many {
-    margin-top: 30px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #CCC;
-    position: relative;
+.card {
+    height: 200px;
+    padding: 20px;
+    background-color: #ffcd76;
 }
 
-.container-aula {
-    margin-top: 30px;
-    position: relative;
+.card-titulo {
+    background-color: #ffcd76;
+    text-overflow: ellipsis;
 }
 
-.container-mover {
+.card-mover-direita {
+    right: 15px;
+    top: -57px;
+    left: unset;
+    width: 20px;
     font-size: 10px;
-    color: #CCC;
-    position: absolute;
-    top: -30px;
+    color: #5d5d5d;
+    background-color: #ffcd76;
 }
 
-.container-mover:hover {
+.card-titulo-cursando,
+.card-titulo-concluido {
+    margin-left: 55px;
+    max-width: 240px;
+}
+
+.card-mover-direita:hover,
+.card-mover-esquerda:hover {
     color: black;
     cursor: pointer;
 }
 
-.mover-direita {
-    right: 0;
+.card-mover-esquerda {
+    top: -57px;
+    left: 15px;
+    width: 20px;
+    font-size: 10px;
+    color: #5d5d5d;
+    background-color: #ffcd76;
+}
+
+
+.container-aula {
+    margin-top: 30px;
+    position: relative;
 }
 
 .mover-esquerda {
@@ -42,17 +61,14 @@
 }
 
 .card-aula-acessar {
-    position: absolute;
-    top: -30px;
-    right: 33%;
     border: 1px solid black;
     background-color: rgb(106, 199, 30);
     padding: 4px 15px;
     border-radius: 20px;
     display: inline-block;
     cursor: pointer;
-    margin-bottom: 10px;
     gap: 5px;
+    transform: translateY(10px);
 }
 
 .card-aula-acessar:hover {
@@ -66,11 +82,21 @@
 
 .descricao-titulo {
     font-size: 11px;
-    color: #CCC;
+    color: #5d5d5d;
 }
 
 .descricao {
     font-size: 18px;
     font-weight: 500;
     margin-left: 20px;
+    text-overflow: ellipsis;
+}
+
+.container-resumo {
+    margin-top: 10px;
+    overflow-y: auto;
+}
+
+.resumo {
+    height: 70px;
 }

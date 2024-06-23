@@ -3,36 +3,24 @@
         <span class="perfil-text">Informações gerais</span>
     </div>
     <div fxLayout="row" fxLayoutAlign="space-between start" class="container-informacao">
-        <div fxFlex="33%" fxLayout="column" fxLayoutAlign="start center" class="informacao">
-            <div fxLayout="row" fxLayoutAlign="center center" class="informacao-header">
-                <mat-icon class="icone-header material-symbols-outlined">school</mat-icon>
-                <div>Aulas</div>
-            </div>
-            <div fxLayout="row" fxLayoutAlign="start center">
-                <mat-icon class="material-symbols-outlined">full_coverage</mat-icon>
-                <div class="informacao-texto">Criadas: {{this.professorInformacaoAula.aulaCriadaMany}}</div>
-            </div>
-            <div fxLayout="row" fxLayoutAlign="start center">
-                <mat-icon class="material-symbols-outlined">thumb_up</mat-icon>
-                <div class="informacao-texto">Curtidas: {{this.professorInformacaoAula.aulaCurtidoMany}}</div>
-            </div>
-            <div fxLayout="row" fxLayoutAlign="start center">
-                <mat-icon class="material-symbols-outlined">edit_square</mat-icon>
-                <div class="informacao-texto">Comentários: {{this.professorInformacaoAula.aulaComentarioMany}}</div>
+        <div fxFlex="33%">
+            <div [ngSwitch]="this.usuarioLogado.tipoUsuario" class="tipo-topico">
+                <div *ngSwitchCase="this.tipoUsuarioEnum.UsuarioComum">
+                    <ng-container *ngTemplateOutlet="alunoWidget"></ng-container>
+                </div>
+                <div *ngSwitchCase="this.tipoUsuarioEnum.UsuarioProfessor">
+                    <ng-container *ngTemplateOutlet="professorAulas"></ng-container>
+                </div>
             </div>
         </div>
-        <div fxFlex="33%" fxLayout="column" fxLayoutAlign="start center" class="informacao">
-            <div fxLayout="row" fxLayoutAlign="center center" class="informacao-header">
-                <mat-icon class="icone-header material-symbols-outlined">full_coverage</mat-icon>
-                <div>Notícias</div>
-            </div>
-            <div fxLayout="row" fxLayoutAlign="start center">
-                <mat-icon class="material-symbols-outlined">newspaper</mat-icon>
-                <div class="informacao-texto">Notícias criadas: {{this.professorInformacaoNoticia.noticiaCriadaMany}}</div>
-            </div>
-            <div fxLayout="row" fxLayoutAlign="start center">
-                <mat-icon class="material-symbols-outlined">thumb_up</mat-icon>
-                <div class="informacao-texto">Curtidas: {{this.professorInformacaoNoticia.noticiaCurtidoMany}}</div>
+        <div fxFlex="33%">
+            <div [ngSwitch]="this.usuarioLogado.tipoUsuario" class="tipo-topico">
+                <div *ngSwitchCase="this.tipoUsuarioEnum.UsuarioComum">
+                    <ng-container *ngTemplateOutlet="alunoAula"></ng-container>
+                </div>
+                <div *ngSwitchCase="this.tipoUsuarioEnum.UsuarioProfessor">
+                    <ng-container *ngTemplateOutlet="professorNoticias"></ng-container>
+                </div>
             </div>
         </div>
         <div fxFlex="33%" fxLayout="column" fxLayoutAlign="start center" class="informacao">
@@ -51,3 +39,83 @@
         </div>
     </div>
 </div>
+
+<ng-template #professorAulas>
+    <div fxLayout="column" fxLayoutAlign="start center" class="informacao">
+        <div fxLayout="row" fxLayoutAlign="center center" class="informacao-header">
+            <mat-icon class="icone-header material-symbols-outlined">school</mat-icon>
+            <div>Aulas</div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center">
+            <mat-icon class="material-symbols-outlined">full_coverage</mat-icon>
+            <div class="informacao-texto">Criadas: {{this.professorInformacaoAula.aulaCriadaMany}}</div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center">
+            <mat-icon class="material-symbols-outlined">thumb_up</mat-icon>
+            <div class="informacao-texto">Curtidas: {{this.professorInformacaoAula.aulaCurtidoMany}}</div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center">
+            <mat-icon class="material-symbols-outlined">edit_square</mat-icon>
+            <div class="informacao-texto">Comentários: {{this.professorInformacaoAula.aulaComentarioMany}}</div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #professorNoticias>
+    <div fxLayout="column" fxLayoutAlign="start center" class="informacao">
+        <div fxLayout="row" fxLayoutAlign="center center" class="informacao-header">
+            <mat-icon class="icone-header material-symbols-outlined">full_coverage</mat-icon>
+            <div>Notícias</div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center">
+            <mat-icon class="material-symbols-outlined">newspaper</mat-icon>
+            <div class="informacao-texto">Notícias criadas: {{this.professorInformacaoNoticia.noticiaCriadaMany}}</div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center">
+            <mat-icon class="material-symbols-outlined">thumb_up</mat-icon>
+            <div class="informacao-texto">Curtidas: {{this.professorInformacaoNoticia.noticiaCurtidoMany}}</div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #alunoWidget>
+    <div fxLayout="column" fxLayoutAlign="start center" class="informacao">
+        <div fxLayout="row" fxLayoutAlign="center center" class="informacao-header">
+            <mat-icon class="icone-header material-symbols-outlined">view_carousel</mat-icon>
+            <div>Widget</div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center">
+            <mat-icon class="material-symbols-outlined">full_coverage</mat-icon>
+            <div class="informacao-texto">Para cursar: {{this.alunoInformacaoWidget.aulaParaCursarMany}}</div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center">
+            <mat-icon class="material-symbols-outlined">thumb_up</mat-icon>
+            <div class="informacao-texto">Cursando: {{this.alunoInformacaoWidget.aulaCursandoMany}}</div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center">
+            <mat-icon class="material-symbols-outlined">edit_square</mat-icon>
+            <div class="informacao-texto">Concluídas: {{this.alunoInformacaoWidget.aulaConcluidoMany}}</div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #alunoAula>
+    <div fxLayout="column" fxLayoutAlign="start center" class="informacao">
+        <div fxLayout="row" fxLayoutAlign="center center" class="informacao-header">
+            <mat-icon class="icone-header material-symbols-outlined">school</mat-icon>
+            <div>Aula</div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center">
+            <mat-icon class="material-symbols-outlined">full_coverage</mat-icon>
+            <div class="informacao-texto">Curtidas: {{ this.alunoInformacaoAula.aulaCurtida}}</div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center">
+            <mat-icon class="material-symbols-outlined">thumb_up</mat-icon>
+            <div class="informacao-texto">Favoritadas: {{this.alunoInformacaoAula.aulaFavoritada}}</div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center">
+            <mat-icon class="material-symbols-outlined">edit_square</mat-icon>
+            <div class="informacao-texto">Sessões favoritadas: {{this.alunoInformacaoAula.aulaSessaoFavoritada}}</div>
+        </div>
+    </div>
+</ng-template>

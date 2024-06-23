@@ -6,14 +6,16 @@ import {
     AlunoHomeComponent,
 } from "../features";
 
+import { UsuarioAlunoResolver } from "./usuario-aluno.resolver";
+
 const alunoRoutes: Routes = [
     {
-        path: "aluno-home/:email",
+        path: "aluno-home/:email/:id",
         component: AlunoHomeComponent,
         canActivate: [AutenticacaoService],
-        // resolve: {
-        //     perfilProfessorResolver: PerfilProfessorResolver
-        // }
+        resolve: {
+            usuarioALunoResolver: UsuarioAlunoResolver
+        }
     },
 ];
 

@@ -13,28 +13,30 @@ import {
 } from 'src/app/componentes';
 
 import { 
+  AreaFisicaModel,
   AulaComentarioModel,
-  AulaModel, 
-  AulaSessaoModel, 
-  LinkYoutubeModel, 
-  TipoSessaoAulaEnum, 
-  UsuarioAulaCurtidoModel, 
-  UsuarioAulaFavoritadaModel, 
-  UsuarioAulaSessaoFavoritadoModel, 
-  UsuarioModel, 
+  AulaModel,
+  AulaSessaoModel,
+  LinkYoutubeModel,
+  TipoSessaoAulaEnum,
+  UsuarioAulaCurtidoModel,
+  UsuarioAulaFavoritadaModel,
+  UsuarioAulaSessaoFavoritadoModel,
+  UsuarioModel,
   WidgetModel,
   WidgetViewModel
 } from 'src/app/models';
 
 import { 
+  alterarTituloPagina,
   atualizarAulaSelected,
   excluirAulaComentario, 
   getIsUsuarioAulaCurtida, 
   getIsUsuarioAulaFavoritada, 
   getIsUsuarioLogadoAulaComentario, 
-  getManyAulaComentarioByAulaId, 
   getManyAulaComentarioByAulaSelected, 
   getManySessaoIdInUsuarioAulaSessaoFavoritado, 
+  getOneAreaFisicaByAreaFisicaId, 
   getOneAulaById, 
   getOneUsuarioLogado, 
   getWidgetMany, 
@@ -51,10 +53,10 @@ import {
   removerWidgetConcluido, 
   removerWidgetCursando, 
   removerWidgetCursar, 
-  selecionarManyAulaComentarioByAulaId, 
 } from 'src/app/store';
 
 import Editor from 'src/app/componentes/genericos/ckeditor/build/ckeditor';
+
 import { AulaHelpers } from '../../helpers/aula-helpers';
 
 @Component({
@@ -62,7 +64,7 @@ import { AulaHelpers } from '../../helpers/aula-helpers';
   templateUrl: './visualizar-aula.component.html',
   styleUrls: ['./visualizar-aula.component.css']
 })
-export class VisualizarAulaComponent implements OnInit {
+export class VisualizarAulaComponent implements OnInit { 
   aulaSubscription$: Subscription = new Subscription();
   aula$: Observable<AulaModel | undefined> = new Observable<AulaModel | undefined>();
   aula: AulaModel = new AulaModel();
@@ -297,7 +299,10 @@ export class VisualizarAulaComponent implements OnInit {
   }
 
   voltarPaginaMecanica() {
-    this.router.navigate(['mecanica'], { queryParams: { areaFisicaId: this.aula.areaFisicaId }});
+    //TODO, precisa retornar para pagina certa
+    this.store.dispatch(alterarTituloPagina({ titulo: 'mecanica', areaFisicaId: this.aula.areaFisicaId }));
+    //TODO, precisa fazer uma store de rotas, salvar a rota anterior
+    this.router.navigate([`mecanica/${this.aula.areaFisicaId}`]);
   }
 
   setupAulaSessao(item: AulaModel) {

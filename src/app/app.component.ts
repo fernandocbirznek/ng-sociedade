@@ -3,7 +3,9 @@ import { Store } from '@ngrx/store';
 
 import { 
   loginAutomaticoWhitToken,
-  selecionarAreaInteresseMany 
+  selecionarAreaInteresseMany, 
+  selecionarManyAreaFisica,
+  selecionarManyTag
 } from './store';
 import { GenericoHelpers } from './componentes';
 
@@ -19,6 +21,8 @@ export class AppComponent {
     public store: Store,
   ) {
     this.store.dispatch(selecionarAreaInteresseMany());
+    this.store.dispatch(selecionarManyAreaFisica());
+    this.store.dispatch(selecionarManyTag());
 
     let token = GenericoHelpers.getToken();
     if (token)

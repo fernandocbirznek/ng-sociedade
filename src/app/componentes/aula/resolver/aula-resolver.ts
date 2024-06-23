@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { ActivatedRoute, ActivatedRouteSnapshot, Router } from "@angular/router";
+import { ActivatedRoute, ActivatedRouteSnapshot } from "@angular/router";
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
 
@@ -19,7 +19,6 @@ export class AulaResolver {
 
     constructor(
         public store: Store,
-        private route: ActivatedRoute
     ){}
 
     resolve(

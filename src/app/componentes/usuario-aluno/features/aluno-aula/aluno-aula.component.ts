@@ -4,7 +4,6 @@ import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 
 import { 
-  AulaModel,
   UsuarioModel,
   WidgetModel,
   WidgetViewModel 
@@ -18,9 +17,6 @@ import {
   removerWidgetConcluido, 
   removerWidgetCursando, 
   removerWidgetCursar, 
-  selecionarWidgetConcluidoByUsuarioId, 
-  selecionarWidgetCursandoByUsuarioId, 
-  selecionarWidgetCursarByUsuarioId 
 } from 'src/app/store';
 
 @Component({
@@ -41,9 +37,6 @@ export class AlunoAulaComponent implements OnInit {
   ) { }
   
   ngOnInit(): void {
-    this.store.dispatch(selecionarWidgetConcluidoByUsuarioId({ usuarioId: this.usuarioLogado.id }));
-    this.store.dispatch(selecionarWidgetCursandoByUsuarioId({ usuarioId: this.usuarioLogado.id }));
-    this.store.dispatch(selecionarWidgetCursarByUsuarioId({ usuarioId: this.usuarioLogado.id }));
     this.setupWidget();
   }
 
@@ -66,6 +59,7 @@ export class AlunoAulaComponent implements OnInit {
 
   moverParaCursando(widgetCursando: WidgetModel) {
     let widget = this.getWidget(widgetCursando);
+    console.log("passou");
     if (widget) {
       this.store.dispatch(inserirWidgetCursando({ widgetCursando: widget }));
       this.store.dispatch(removerWidgetConcluido({ widgetConcluidoId: widget.aulaId }));

@@ -15,8 +15,6 @@ import {
   getManyAreaFisica,
   getOneUsuarioLogado,
   getTituloPagina,
-  selecionarManyAreaFisica, 
-  selecionarManyTag
 } from 'src/app/store';
 
 import { 
@@ -51,11 +49,7 @@ export class HeaderComponent implements OnInit {
     public dialog: MatDialog,
     public router: Router,
     public store: Store,
-  ) { 
-    //TODO, colocar no resolver global
-    this.store.dispatch(selecionarManyAreaFisica());
-    this.store.dispatch(selecionarManyTag());
-  }
+  ) { }
 
   ngOnInit(): void {
     this.setupAreaFisica();
@@ -133,7 +127,7 @@ export class HeaderComponent implements OnInit {
           break; 
         } 
         case TipoUsuarioEnum.UsuarioComum: { 
-          this.router.navigate([`aluno-home/${this.usuarioLogado.email}`])
+          this.router.navigate([`aluno-home/${this.usuarioLogado.email}/${this.usuarioLogado.id}`])
           break; 
         } 
         case TipoUsuarioEnum.UsuarioProfessor: { 

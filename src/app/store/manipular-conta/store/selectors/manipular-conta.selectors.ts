@@ -2,10 +2,14 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as fromManipularConta from '../reducers/manipular-conta.reducer';
 
 import {
+  InformacaoAulaAlunoViewModel,
   UsuarioAulaCurtidoModel,
   UsuarioAulaFavoritadaModel,
+  UsuarioAulaSessaoFavoritadoModel,
   UsuarioNoticiaFavoritadoModel 
 } from 'src/app/models';
+
+import * as usuarioAulaSessaoFavoritadoFeature from '../../../usuario-aula-sessao-favoritado/store';
 
 export const selectManipularContaState = createFeatureSelector<fromManipularConta.ManipularContaState>(
   fromManipularConta.manipularContaFeatureKey
@@ -73,3 +77,22 @@ export const getIsUsuarioAulaFavoritada = (aulaId: number) => createSelector(
     return undefined;
   }
 );
+
+export const getOneInformacaoAulaAluno = createSelector(
+  getManyUsuarioAulaCurtido,
+  getManyUsuarioAulaFavoritada,
+  usuarioAulaSessaoFavoritadoFeature.getManyUsuarioAulaSessaoFavoritadoItens, (
+    usuarioAulaCurtidoMany: UsuarioAulaCurtidoModel[],
+    usuarioAulaFavoritadaMany: UsuarioAulaFavoritadaModel[],
+    usuarioAulaSessaoFavoritadoModel: UsuarioAulaSessaoFavoritadoModel[]
+  ): InformacaoAulaAlunoViewModel => {
+
+    let informacaoAulaAluno: InformacaoAulaAlunoViewModel = new InformacaoAulaAlunoViewModel();
+    //informacaoAulaAluno.aulaComentario = state.itens;
+    informacaoAulaAluno.aulaCurtida = usuarioAulaCurtidoMany.length;
+    informacaoAulaAluno.aulaFavoritada = usuarioAulaFavoritadaMany.length;
+    informacaoAulaAluno.aulaSessaoFavoritada = usuarioAulaSessaoFavoritadoModel.length;
+
+    return informacaoAulaAluno;
+  }
+)

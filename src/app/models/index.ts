@@ -1,3 +1,4 @@
+export * from './aluno-home';
 export * from './area-fisica';
 export * from './area-fisica-divisao';
 export * from './area-interesse';

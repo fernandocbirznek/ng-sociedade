@@ -13,12 +13,9 @@ import {
 import { 
   alterarTituloPagina,
   atualizarAulaSelected,
-  getAreaFisicaId,
   getManyAreaFisicaDivisaoByAreaFisicaId,
   getManyAulaByAreaFisicaId,
   getOneAreaFisicaByAreaFisicaId,
-  selecionarManyAreaFisicaDivisaoByAreaFisicaId,
-  selecionarManyAulaByAreaFisicaId 
 } from 'src/app/store';
 
 @Component({

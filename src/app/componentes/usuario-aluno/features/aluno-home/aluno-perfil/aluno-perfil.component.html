@@ -1,0 +1,49 @@
+<div fxLayout="column" fxLayoutAlign="space-between space-between" class="g-card card">
+    <div class="g-card-titulo" fxLayout="row" fxLayoutAlign="center center">
+        <span class="perfil-text">Perfil</span>
+        <mat-icon class="icone-edit material-symbols-outlined" (click)="editarPerfil()" 
+            matTooltip="Editar perfil">
+            edit_document
+        </mat-icon>
+    </div>
+    <div *ngIf="this.areaInteresseMany.length > 0" fxLayout="row" fxLayoutAlign="start center" 
+        class="g-card-tags card-tags">
+        <div class="area-interesse-text">Area de interesse: </div>
+        <div *ngFor="let areaInteresse of this.areaInteresseMany" class="g-tag">
+            {{ areaInteresse.nome }}
+        </div>
+        <mat-icon class="icone-edit material-symbols-outlined" (click)="editarAreaInteresse()" matTooltip="Editar área de interesse">
+            edit_document
+        </mat-icon>
+    </div>
+    <div fxFlex="100%" fxLayout="row" fxLayoutAlign="space-between start" class="container-perfil">
+        <div fxFlex="200px" fxLayout="column" fxLayoutAlign="space-between center">
+            <div class="usuario-nome">{{ usuarioLogado.nome }}</div>
+            <div *ngIf="this.usuarioLogado.foto" fxLayout="column" fxLayoutAlign="space-between center">
+                <img fxFlex="100px" [src]="'data:image/png;base64,' + this.usuarioLogado.foto" alt="Imagem" class="imagem">
+            </div>
+            <div *ngIf="!this.usuarioLogado.foto">
+                Sem foto
+            </div>
+        </div>
+        <div fxFlex="100%" fxLayout="column" fxLayoutAlign="start start">
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-icon class="material-symbols-outlined">mail</mat-icon>
+                <div class="legend">Email:</div>
+                <div>{{ this.usuarioLogado.email }}</div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <mat-icon class="material-symbols-outlined">celebration</mat-icon>
+                <div class="legend">Data nascimento:</div>
+                <div>{{ this.usuarioLogado.dataNascimento | date : 'dd/MM/yyyy' }}</div>
+            </div>
+            <div fxFlex="100%" fxLayout="row" fxLayoutAlign="start start">
+                <mat-icon class="material-symbols-outlined">surfing</mat-icon>
+                <div class="legend">Hobbie:</div>
+                <div fxLayout="row" fxLayoutAlign="start start" class="hobbie">
+                    <div>{{ this.usuarioLogado.hobbie }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
