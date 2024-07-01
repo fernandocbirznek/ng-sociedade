@@ -27,7 +27,7 @@ export class AulaResolver {
         let id = route.paramMap.get('id');
 
         if (route.url.toString().includes('editar-aula') && id) {
-            this.store.dispatch(selecionarManyAulaSessaoByAulaId({ aulaId:  +id}));
+            this.store.dispatch(selecionarManyAulaSessaoByAulaId({ aulaId: +id}));
             this.store.dispatch(selecionarManyArquivoPdfByAulaId({ aulaId: +id}));
 
             return true;

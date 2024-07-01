@@ -85,29 +85,7 @@ export class HeaderComponent implements OnInit {
   }
 
   areaSelecionada(areaFisica: AreaFisicaModel) {
-    switch(areaFisica.id) {
-      case 1:
-        this.store.dispatch(alterarTituloPagina({ titulo: 'Cosmologia', areaFisicaId: 1 }));
-        break;
-      case 2:
-        this.store.dispatch(alterarTituloPagina({ titulo: 'Mecânica', areaFisicaId: 2 }));
-        break;
-      case 3:
-        this.store.dispatch(alterarTituloPagina({ titulo: 'Termodinâmica', areaFisicaId: 3 }));
-        break;
-      case 4:
-        this.store.dispatch(alterarTituloPagina({ titulo: 'Eletromagnetismo', areaFisicaId: 4 }));
-        break;
-      case 5:
-        this.store.dispatch(alterarTituloPagina({ titulo: 'Física moderna', areaFisicaId: 5 }));
-        break;
-      case 6:
-        this.store.dispatch(alterarTituloPagina({ titulo: 'Óptica', areaFisicaId: 6 }));
-        break;
-      case 7:
-        this.store.dispatch(alterarTituloPagina({ titulo: 'Mecânica quântica', areaFisicaId: 7 }));
-        break;
-    }
+    this.store.dispatch(alterarTituloPagina({ titulo: areaFisica.titulo, areaFisicaId: areaFisica.id }));
     this.router.navigate([`mecanica/${areaFisica.id}`], { queryParams: { areaFisicaId: areaFisica.titulo }});
   }
 
@@ -123,7 +101,7 @@ export class HeaderComponent implements OnInit {
       this.store.dispatch(alterarTituloPagina({ titulo: '', areaFisicaId: 0 }));
       switch(this.usuarioLogado.tipoUsuario) { 
         case TipoUsuarioEnum.UsuarioAdministrador: { 
-          this.router.navigate([`administrador-home/${this.usuarioLogado.email}`])
+          this.router.navigate([`administrador-home/${this.usuarioLogado.email}/${this.usuarioLogado.id}`])
           break; 
         } 
         case TipoUsuarioEnum.UsuarioComum: { 

@@ -314,9 +314,7 @@ export class VisualizarAulaComponent implements OnInit {
 
     if (item.aulaSessaoMany.length > 0) {
       this.aulaSessaoMany = [...item.aulaSessaoMany];
-      this.aulaSessaoMany.sort((a, b) => (a.ordem < b.ordem) ? -1 : 1);
       this.aulaSessaoMany.forEach(item => {
-
         if (item.aulaSessaoTipo == this.tipoSessaoAulaEnum.Video) {
           this.linkYoutubeMany.push(AulaHelpers.getLinkYoutube(item.conteudo, this.sanitizer));
           this.trustedUrlImageHtml.push('');

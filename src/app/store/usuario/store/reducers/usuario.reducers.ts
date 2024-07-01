@@ -171,7 +171,31 @@ export const usuarioReducer = createReducer(
     usuario.nome = action.conta.nome;
     usuario.email = action.conta.email;
     usuario.id = action.response.id;
+    usuario.tipoUsuario = action.response.tipoUsuario;
     usuario.dataCadastro = action.response.dataCadastro;
+
+    switch(usuario.tipoUsuario) { 
+      case TipoUsuarioEnum.UsuarioAdministrador: { 
+        usuario.tipoUsuarioEnum = TipoUsuarioEnum.UsuarioAdministrador;
+        break; 
+      } 
+      case TipoUsuarioEnum.UsuarioProfessor: { 
+        usuario.tipoUsuarioEnum = TipoUsuarioEnum.UsuarioProfessor;
+        break; 
+      } 
+      case TipoUsuarioEnum.UsuarioProfessorAdministrador: { 
+        usuario.tipoUsuarioEnum = TipoUsuarioEnum.UsuarioProfessorAdministrador;
+        break; 
+      } 
+      case TipoUsuarioEnum.UsuarioComum: { 
+        usuario.tipoUsuarioEnum = TipoUsuarioEnum.UsuarioComum;
+        break; 
+      } 
+      default: { 
+        usuario.tipoUsuarioEnum = TipoUsuarioEnum.None;
+        break; 
+      } 
+    }
 
     let itens = [...state.itens];
     itens.push(usuario);

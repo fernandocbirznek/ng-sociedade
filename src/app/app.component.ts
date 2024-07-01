@@ -5,9 +5,14 @@ import {
   loginAutomaticoWhitToken,
   selecionarAreaInteresseMany, 
   selecionarManyAreaFisica,
+  selecionarManyForum,
+  selecionarManyForumTag,
   selecionarManyTag
 } from './store';
-import { GenericoHelpers } from './componentes';
+
+import { 
+  GenericoHelpers 
+} from './componentes';
 
 @Component({
   selector: 'app-root',
@@ -23,6 +28,8 @@ export class AppComponent {
     this.store.dispatch(selecionarAreaInteresseMany());
     this.store.dispatch(selecionarManyAreaFisica());
     this.store.dispatch(selecionarManyTag());
+    this.store.dispatch(selecionarManyForum());
+    this.store.dispatch(selecionarManyForumTag());
 
     let token = GenericoHelpers.getToken();
     if (token)

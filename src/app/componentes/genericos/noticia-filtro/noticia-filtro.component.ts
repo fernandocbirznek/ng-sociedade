@@ -10,7 +10,7 @@ import {
 
 import { 
   filtrarNoticia,
-  getAreaInteresseMany,
+  getManyAreaInteresse,
   getNoticiaFilter 
 } from 'src/app/store';
 
@@ -56,7 +56,7 @@ export class NoticiaFiltroComponent implements OnInit {
   }
 
   setupAreaInteresse() {
-    this.areaInteresseMany$ = this.store.select(getAreaInteresseMany);
+    this.areaInteresseMany$ = this.store.select(getManyAreaInteresse);
     this.areaInteresseManySubscription$ = this.areaInteresseMany$.subscribe(itens => {
       this.areaInteresseMany = itens;
     });

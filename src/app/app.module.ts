@@ -78,7 +78,22 @@ import {
   NoticiaFiltroComponent,
   ProfessorPerfilComponent,
   EditarAulaPosteriorAnteriorComponent,
-  AlunoPerfilComponent
+  AlunoPerfilComponent,
+  AdministradorPerfilComponent,
+  AdministradorInformacaoComponent,
+  AdministradorAreaFisicaComponent,
+  InserirAreaFisicaComponent,
+  AtualizarAreaFisicaComponent,
+  InserirTagComponent,
+  AdministradorTabelaTagComponent,
+  AdministradorTabelaAreaInteresseComponent,
+  InserirAreaInteresseComponent,
+  AdministradorTabelaForumComponent,
+  InserirForumComponent,
+  AtualizarForumComponent,
+  InserirForumTagComponent,
+  AdministradorTabelaForumTagComponent,
+  AdministradorTabelaForumTopicoComponent
 } from './componentes';
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -177,6 +192,21 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     ProfessorPerfilComponent,
     EditarAulaPosteriorAnteriorComponent,
     AlunoPerfilComponent,
+    AdministradorPerfilComponent,
+    AdministradorInformacaoComponent,
+    AdministradorAreaFisicaComponent,
+    InserirAreaFisicaComponent,
+    AtualizarAreaFisicaComponent,
+    InserirTagComponent,
+    AdministradorTabelaTagComponent,
+    AdministradorTabelaAreaInteresseComponent,
+    InserirAreaInteresseComponent,
+    AdministradorTabelaForumComponent,
+    InserirForumComponent,
+    AtualizarForumComponent,
+    InserirForumTagComponent,
+    AdministradorTabelaForumTagComponent,
+    AdministradorTabelaForumTopicoComponent
   ],
   imports: [
     BrowserModule,

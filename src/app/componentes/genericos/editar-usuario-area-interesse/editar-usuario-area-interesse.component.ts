@@ -10,7 +10,7 @@ import {
 } from 'src/app/models';
 
 import { 
-  getAreaInteresseMany, 
+  getManyAreaInteresse, 
   inserirUsuarioAreaInteresse, 
   removerUsuarioAreaInteresse 
 } from 'src/app/store';
@@ -45,7 +45,7 @@ export class EditarUsuarioAreaInteresseComponent implements OnInit {
   }
 
   setupAreaInteresse() {
-    this.areaInteresseMany$ = this.store.select(getAreaInteresseMany);
+    this.areaInteresseMany$ = this.store.select(getManyAreaInteresse);
     this.areaInteresseManySubscription$ = this.areaInteresseMany$.subscribe(itens => {
       this.areaInteresseMany = itens;
     });

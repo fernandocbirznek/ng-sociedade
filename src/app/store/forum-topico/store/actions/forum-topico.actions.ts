@@ -4,6 +4,20 @@ import {
     ForumTopicoModel,
 } from 'src/app/models';
 
+export const selecionarManyForumTopico = createAction(
+  '[ForumTopico] selecionarManyForumTopico'
+);
+
+export const selecionarManyForumTopicoSuccess = createAction(
+  '[ForumTopico] selecionarManyForumTopico Success',
+  props<{ response: ForumTopicoModel[] }>()
+);
+
+export const selecionarManyForumTopicoFailure = createAction(
+  '[ForumTopico] selecionarManyAreaFisicaTopico Failure',
+  props<{ error: any }>()
+);
+
 export const selecionarManyForumTopicoByForumId = createAction(
   '[ForumTopico] selecionarManyForumTopicoByForumId',
   props<{ forumId: number }>()

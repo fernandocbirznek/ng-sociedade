@@ -1,0 +1,20 @@
+<div fxLayout="column" class="container-tag">
+    <h2>Nova tag</h2>
+    <form [formGroup]="this.formGroupTag" fxLayout="column" fxLayoutAlign="start start" class="container-inputs">   
+      <mat-form-field  appearance="outline" class="g-full-width">
+        <mat-label>Nome da tag</mat-label>
+        <input formControlName="formNome" matInput required>
+        <mat-error *ngIf="formNome.invalid">Nome é obrigatório</mat-error>
+      </mat-form-field>          
+    </form>
+    <div fxLayout="row" fxLayoutAlign="space-around center" class="container-buttons">
+      <button mat-stroked-button color="warn" (click)="fecharModal()">
+        <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
+        Cancelar
+      </button>
+      <button mat-stroked-button color="primary" (click)="requestCriarTag()">
+        <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
+        Criar tag
+      </button>
+    </div>
+</div>

@@ -13,7 +13,7 @@ import {
 
 import { 
   atualizarNoticia,
-  getAreaInteresseMany,
+  getManyAreaInteresse,
   getOneNoticiaById,
   getOneUsuarioLogado, 
 } from 'src/app/store';
@@ -86,7 +86,7 @@ export class EditarNoticiaComponent implements OnInit {
   }
 
   setupAreaInteresse() {
-    this.areaInteresseMany$ = this.store.select(getAreaInteresseMany);
+    this.areaInteresseMany$ = this.store.select(getManyAreaInteresse);
     this.areaInteresseManySubscription$ = this.areaInteresseMany$.subscribe(itens => {
       this.areaInteresseMany = itens;
     });

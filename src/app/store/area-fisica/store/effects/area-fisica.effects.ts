@@ -25,4 +25,37 @@ export class AreaFisicaEffects {
      )
    );
   });
+
+  inserirAreaFisica$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(actions.inserirAreaFisica),
+      concatMap((action) =>
+        this.areaFisicaService.inserirAreaFisica(action.areaFisica).pipe(
+          map(response => actions.inserirAreaFisicaSuccess({ response: response })),
+          catchError(error => of(actions.inserirAreaFisicaFailure({ error }))))
+      )
+    );
+   });
+
+   atualizarAreaFisica$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(actions.atualizarAreaFisica),
+      concatMap((action) =>
+        this.areaFisicaService.atualizarAreaFisica(action.areaFisica).pipe(
+          map(response => actions.atualizarAreaFisicaSuccess({ response: response })),
+          catchError(error => of(actions.atualizarAreaFisicaFailure({ error }))))
+      )
+    );
+   });
+
+   removerAreaFisica$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(actions.removerAreaFisica),
+      concatMap((action) =>
+        this.areaFisicaService.removerAreaFisica(action.areaFisicaId).pipe(
+          map(response => actions.removerAreaFisicaSuccess({ response: response })),
+          catchError(error => of(actions.removerAreaFisicaFailure({ error }))))
+      )
+    );
+   });
 }

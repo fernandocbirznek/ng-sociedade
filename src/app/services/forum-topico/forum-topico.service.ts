@@ -12,6 +12,7 @@ import {
 })
 
 export class ForumTopicoService {
+    urlSelecionarManyForumTopico = 'https://localhost:44361/api/ForumTopico/selecionar-topicos-forum';
     urlSelecionarManyForumTopicoByForumId = 'https://localhost:44361/api/ForumTopico/selecionar-forum-topico';
     urlInserirForumTopico = 'https://localhost:44361/api/ForumTopico/inserir';
     urlAtualizarForumTopico = 'https://localhost:44361/api/ForumTopico/atualizar';
@@ -21,6 +22,10 @@ export class ForumTopicoService {
         private httpClient: HttpClient,
         public store: Store
     ) {}
+
+    selecionarManyForumTopico(): Observable<ForumTopicoModel[]> {
+        return this.httpClient.get<ForumTopicoModel[]>(this.urlSelecionarManyForumTopico, this.buildHttpOptions());
+    }
 
     selecionarManyForumTopicoByForumId(forumId: number): Observable<ForumTopicoModel[]> {
         return this.httpClient.get<ForumTopicoModel[]>(

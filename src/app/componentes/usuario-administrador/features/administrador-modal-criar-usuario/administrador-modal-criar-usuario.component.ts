@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { CriarContaPerfilModel } from 'src/app/models';
-import { criarConta } from 'src/app/store';
+import { criarUsuario } from 'src/app/store';
 
 @Component({
   selector: 'app-administrador-modal-criar-usuario',
@@ -20,7 +20,7 @@ export class AdministradorModalCriarUsuarioComponent implements OnInit {
   }
 
   requestCriarConta(formCriarConta: CriarContaPerfilModel) {
-    this.store.dispatch(criarConta({ conta: formCriarConta }));
+    this.store.dispatch(criarUsuario({ conta: formCriarConta }));
     this.dialogRef.close();
   }
 }

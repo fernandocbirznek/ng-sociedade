@@ -15,14 +15,12 @@ import {
 } from 'src/app/componentes';
 
 import { 
-  AreaInteresseModel,
   TipoUsuarioEnum, 
   UsuarioModel
 } from 'src/app/models';
 
 import { 
   excluirUsuario,
-  getAreaInteresseMany,
   getManyUsuarioByTipoUsuario,
 } from 'src/app/store';
 
@@ -34,7 +32,7 @@ import {
 export class AdministradorTabelaAlunoComponent implements OnInit {
 
   displayedColumns: string[] = ['nome', 'email', 'areaInteresse', 'dataCadastro', 'acao'];
-  dataSource: any;
+  dataSource = new MatTableDataSource();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -64,7 +62,7 @@ export class AdministradorTabelaAlunoComponent implements OnInit {
   setupAluno() {
     this.alunoMany$ = this.store.select(getManyUsuarioByTipoUsuario(TipoUsuarioEnum.UsuarioComum));
     this.alunoManySubscription$ = this.alunoMany$.subscribe(itens => {
-      this.dataSource = new MatTableDataSource(itens);
+      this.dataSource.data =itens;
     });
   }
 
@@ -80,13 +78,15 @@ export class AdministradorTabelaAlunoComponent implements OnInit {
   criarUsuario() {
     this.dialog.open(AdministradorModalCriarUsuarioComponent, {
       maxHeight: '800px',
+      width: '600px',
       height: 'auto',
     });
   }
 
   editarUsuario(item: UsuarioModel) {
     this.dialog.open(AdministradorAlterarUsuarioComponent, {
-      data: item
+      data: item,
+      width: '600px'
     });
   }
 

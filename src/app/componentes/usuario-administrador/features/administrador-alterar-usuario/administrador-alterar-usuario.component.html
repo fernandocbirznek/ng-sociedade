@@ -10,7 +10,7 @@
             <input matInput placeholder="fernando@exemplo.com" formControlName="email" required>
             <mat-error *ngIf="email.invalid">Formato de email não é válido</mat-error>
         </mat-form-field>
-        <mat-radio-group fxLayout="row wrap" fxLayoutAlign="space-around center" class="tipo-usuario" 
+        <mat-radio-group fxLayout="row wrap" fxLayoutAlign="space-around center" class="g-gap-20" 
             (change)="selectedTipoUsuario($event)">
             <mat-radio-button [checked]="tipoUsuarioEnum.UsuarioComum == this.tipoUsuario" [value]="tipoUsuarioEnum.UsuarioComum">
                 Aluno

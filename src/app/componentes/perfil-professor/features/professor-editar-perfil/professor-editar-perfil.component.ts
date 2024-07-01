@@ -12,7 +12,7 @@ import {
 
 import { 
   atualizarUsuarioPerfil,
-  getAreaInteresseMany 
+  getManyAreaInteresse 
 } from 'src/app/store';
 
 @Component({
@@ -63,7 +63,7 @@ export class ProfessorEditarPerfilComponent implements OnInit {
   }
 
   setupAreaInteresse() {
-    this.areaInteresseMany$ = this.store.select(getAreaInteresseMany);
+    this.areaInteresseMany$ = this.store.select(getManyAreaInteresse);
     this.areaInteresseManySubscription$ = this.areaInteresseMany$.subscribe(itens => {
       this.areaInteresseMany = itens;
     });

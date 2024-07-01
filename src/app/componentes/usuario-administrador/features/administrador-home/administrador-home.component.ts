@@ -1,21 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
-
-import { 
-  ProfessorEditarPerfilComponent 
-} from 'src/app/componentes';
 
 import { 
   UsuarioModel 
 } from 'src/app/models';
 
 import { 
-  getOneUsuarioLogado, 
-  selecionarManyAula, 
-  selecionarManyNoticia, 
-  selecionarManyUsuario
+  deslogarConta,
+  getOneUsuarioLogado,
 } from 'src/app/store';
 
 @Component({
@@ -29,14 +23,14 @@ export class AdministradorHomeComponent implements OnInit {
   usuarioLogado$: Observable<UsuarioModel | undefined> = new Observable<UsuarioModel | undefined>();
   usuarioLogado: UsuarioModel | undefined = undefined ;
 
+  abaSelecionada: number = 1;
+  abaSelecionadaSistema: number = 1;
+  abaSelecionadaBasico: number = 1;
+
   constructor(
-    private dialog: MatDialog,
+    public router: Router,
     public store: Store,
-  ) {
-    this.store.dispatch(selecionarManyAula());
-    this.store.dispatch(selecionarManyNoticia());
-    this.store.dispatch(selecionarManyUsuario());
-  }
+  ) {}
 
   ngOnInit(): void {
     this.setupUsuarioLogado();
@@ -55,9 +49,20 @@ export class AdministradorHomeComponent implements OnInit {
     });
   }
 
-  editarPerfil() {
-    this.dialog.open(ProfessorEditarPerfilComponent, {
-      data: this.usuarioLogado
-    });
+  selecionarAba(item: number) {
+    this.abaSelecionada = item;
+  }
+
+  selecionarAbaSistema(item: number) {
+    this.abaSelecionadaSistema = item;
+  }
+
+  selecionarAbaBasico(item: number) {
+    this.abaSelecionadaBasico = item;
+  }
+
+  deslogar() {
+    this.store.dispatch(deslogarConta());
+    this.router.navigate(['']);
   }
 }

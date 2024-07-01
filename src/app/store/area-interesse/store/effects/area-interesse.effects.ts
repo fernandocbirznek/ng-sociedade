@@ -25,4 +25,26 @@ export class AreaInteresseEffects {
      )
    );
   });
+
+  inserirAreaInteresse$ = createEffect(() => {
+    return this.actions$.pipe(
+        ofType(actions.inserirAreaInteresse),
+        concatMap((action) =>
+            this.areaInteresseService.inserirAreaInteresse(action.areaInteresse).pipe(
+            map(response => actions.inserirAreaInteresseSuccess({ response: response })),
+            catchError(error => of(actions.inserirAreaInteresseFailure({ error }))))
+        )
+    );
+  });
+
+  excluirAreaInteresse$ = createEffect(() => {
+      return this.actions$.pipe(
+          ofType(actions.excluirAreaInteresse),
+          concatMap((action) =>
+              this.areaInteresseService.excluirAreaInteresse(action.areaInteresseId).pipe(
+              map(response => actions.excluirAreaInteresseSuccess({ response: response })),
+              catchError(error => of(actions.excluirAreaInteresseFailure({ error }))))
+          )
+      );
+  });
 }

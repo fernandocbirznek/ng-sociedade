@@ -21,7 +21,7 @@ import {
 
 import { 
   excluirNoticia,
-  getAreaInteresseMany,
+  getManyAreaInteresse,
   getManyNoticiaByProfessorId, 
 } from 'src/app/store';
 
@@ -69,7 +69,7 @@ export class ProfessorTabelaNoticiaComponent implements OnInit {
   }
 
   setupAreaInteresse() {
-    this.areaInteresseMany$ = this.store.select(getAreaInteresseMany);
+    this.areaInteresseMany$ = this.store.select(getManyAreaInteresse);
     this.areaInteresseManySubscription$ = this.areaInteresseMany$.subscribe(itens => {
       this.areaInteresseMany = itens;
     });

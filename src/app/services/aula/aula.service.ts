@@ -4,6 +4,7 @@ import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
 
 import { 
+    AdministradorHomeAulaInformacaoModel,
     AulaModel,
     AulaTagModel,
 } from "src/app/models";
@@ -28,6 +29,8 @@ export class AulaService {
 
     urlInserirManyAulaTag = 'https://localhost:44303/api/AulaTag/inserir';
     urlExcluirAulaTag = 'https://localhost:44303/api/AulaTag/excluir';
+
+    urlSelecionarAdministradorHomeAulaInformacao = 'https://localhost:44303/api/administrador-home/selecionar-aula-informacao';
 
     constructor(
         private httpClient: HttpClient,
@@ -88,6 +91,11 @@ export class AulaService {
 
     excluirAulaTag(aulaTagId: number): Observable<number> {
         return this.httpClient.delete<number>(this.urlExcluirAulaTag + `/${aulaTagId}`, this.buildHttpOptions());
+    }
+
+
+    selecionarAdministradorHomeAulaInformacao(): Observable<AdministradorHomeAulaInformacaoModel> {
+        return this.httpClient.get<AdministradorHomeAulaInformacaoModel>(this.urlSelecionarAdministradorHomeAulaInformacao, this.buildHttpOptions());
     }
 
     private buildHttpOptions() {

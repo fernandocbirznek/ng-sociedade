@@ -32,7 +32,7 @@ import {
 export class AdministradorTabelaProfessorComponent implements OnInit {
 
   displayedColumns: string[] = ['nome', 'email', 'areaInteresse', 'dataCadastro', 'acao'];
-  dataSource: any;
+  dataSource = new MatTableDataSource();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -62,7 +62,7 @@ export class AdministradorTabelaProfessorComponent implements OnInit {
   setupProfessor() {
     this.professorMany$ = this.store.select(getManyUsuarioByTipoUsuario(TipoUsuarioEnum.UsuarioProfessor));
     this.professorManySubscription$ = this.professorMany$.subscribe(itens => {
-      this.dataSource = new MatTableDataSource(itens);
+      this.dataSource.data = itens;
     });
   }
 
@@ -78,13 +78,15 @@ export class AdministradorTabelaProfessorComponent implements OnInit {
   criarUsuario() {
     this.dialog.open(AdministradorModalCriarUsuarioComponent, {
       maxHeight: '800px',
+      width: '600px',
       height: 'auto',
     });
   }
 
   editarUsuario(item: UsuarioModel) {
     this.dialog.open(AdministradorAlterarUsuarioComponent, {
-      data: item
+      data: item,
+      width: '600px'
     });
   }
 

@@ -1,0 +1,20 @@
+<div fxLayout="column" class="container-area-interesse">
+    <h2>Nova área interesse</h2>
+    <form [formGroup]="this.formGroupAreaInteresse" fxLayout="column" fxLayoutAlign="start start" class="container-inputs">   
+      <mat-form-field  appearance="outline" class="g-full-width">
+        <mat-label>Nome da área de interesse</mat-label>
+        <input formControlName="formNome" matInput required>
+        <mat-error *ngIf="formNome.invalid">Nome é obrigatório</mat-error>
+      </mat-form-field>          
+    </form>
+    <div fxLayout="row" fxLayoutAlign="space-around center" class="container-buttons">
+      <button mat-stroked-button color="warn" (click)="fecharModal()">
+        <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
+        Cancelar
+      </button>
+      <button mat-stroked-button color="primary" (click)="requestCriarAreaInteresse()">
+        <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
+        Criar área de interesse
+      </button>
+    </div>
+</div>

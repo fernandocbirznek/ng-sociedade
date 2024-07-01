@@ -10,6 +10,8 @@ import {
 } from 'src/app/models';
 
 import { 
+  alterarTituloPagina,
+  atualizarAulaSelected,
   getWidgetMany, 
   inserirWidgetConcluido, 
   inserirWidgetCursando, 
@@ -53,13 +55,15 @@ export class AlunoAulaComponent implements OnInit {
   }
 
   visualizarAula(item: WidgetModel) {
-    if(item.aula)
-      this.router.navigate([`visualizar-aula/${item.aula.id}`]);
+    if(item.aula) {
+      this.store.dispatch(alterarTituloPagina({ titulo: `${item.aula.titulo}`, areaFisicaId: item.aula.areaFisicaId }));
+      this.store.dispatch(atualizarAulaSelected({ aulaId: item.aula.id }));
+      this.router.navigate([`visualizar-aula/${item.aula.id}`], { queryParams: { aulaTitulo: item.aula.titulo }});
+    }
   }
 
   moverParaCursando(widgetCursando: WidgetModel) {
     let widget = this.getWidget(widgetCursando);
-    console.log("passou");
     if (widget) {
       this.store.dispatch(inserirWidgetCursando({ widgetCursando: widget }));
       this.store.dispatch(removerWidgetConcluido({ widgetConcluidoId: widget.aulaId }));

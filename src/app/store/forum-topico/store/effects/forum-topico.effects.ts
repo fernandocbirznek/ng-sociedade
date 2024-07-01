@@ -16,6 +16,17 @@ export class ForumTopicoEffects {
   {}
 
   selecionarManyForumTopico$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(actions.selecionarManyForumTopico),
+      concatMap(() =>
+        this.forumTopicoService.selecionarManyForumTopico().pipe(
+          map(response => actions.selecionarManyForumTopicoSuccess({ response: response })),
+          catchError(error => of(actions.selecionarManyForumTopicoFailure({ error }))))
+      )
+    );
+   });
+
+  selecionarManyForumTopicoByForumId$ = createEffect(() => {
    return this.actions$.pipe(
      ofType(actions.selecionarManyForumTopicoByForumId),
      concatMap((action) =>

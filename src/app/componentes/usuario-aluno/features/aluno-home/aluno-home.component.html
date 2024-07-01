@@ -1,7 +1,7 @@
 <div *ngIf="this.usuarioLogado; else usuarioVazio" fxLayout="column" class="container-aluno-home">
     <div class="deslogar" (click)="deslogar()">Deslogar</div>
     <div fxLayout="row wrap" fxLayoutAlign="space-between start" class="container-informacao">
-        <app-professor-perfil [usuarioLogado]="this.usuarioLogado"></app-professor-perfil>
+        <app-aluno-perfil [usuarioLogado]="this.usuarioLogado"></app-aluno-perfil>
         <app-usuario-informacao [usuarioLogado]="this.usuarioLogado"></app-usuario-informacao>
     </div>
 

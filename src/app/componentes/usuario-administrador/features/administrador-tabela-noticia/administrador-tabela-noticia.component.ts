@@ -10,7 +10,8 @@ import { Observable, Subscription } from 'rxjs';
 import { 
   EditarNoticiaComponent,
   ModalExcluirComponent, 
-  NovaNoticiaComponent
+  NovaNoticiaComponent,
+  VisualizarNoticiaComponent
 } from 'src/app/componentes';
 
 import { 
@@ -21,7 +22,7 @@ import {
 
 import { 
   excluirNoticia,
-  getAreaInteresseMany,
+  getManyAreaInteresse,
   getManyNoticia, 
 } from 'src/app/store';
 
@@ -34,7 +35,7 @@ export class AdministradorTabelaNoticiaComponent implements OnInit {
   @Input() usuarioLogado: UsuarioModel | undefined = undefined;
 
   displayedColumns: string[] = ['titulo', 'resumo', 'data-postagem', 'areaInteresse', 'acao'];
-  dataSource: any;
+  dataSource = new MatTableDataSource();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -68,7 +69,7 @@ export class AdministradorTabelaNoticiaComponent implements OnInit {
   }
 
   setupAreaInteresse() {
-    this.areaInteresseMany$ = this.store.select(getAreaInteresseMany);
+    this.areaInteresseMany$ = this.store.select(getManyAreaInteresse);
     this.areaInteresseManySubscription$ = this.areaInteresseMany$.subscribe(itens => {
       this.areaInteresseMany = itens;
     });
@@ -77,7 +78,7 @@ export class AdministradorTabelaNoticiaComponent implements OnInit {
   setupProfessorNoticia() {
     this.noticiaMany$ = this.store.select(getManyNoticia);
     this.noticiaManySubscription$ = this.noticiaMany$.subscribe(itens => {
-      this.dataSource = new MatTableDataSource(itens);
+      this.dataSource.data = itens;
     });
   }
 
@@ -95,7 +96,11 @@ export class AdministradorTabelaNoticiaComponent implements OnInit {
   }
 
   acessarNoticia(item: NoticiaModel) {
-    //TODO, fazer depois que fizer a parte da sessão
+    this.dialog.open(VisualizarNoticiaComponent, {
+      data: item.id,
+      width: '90%',
+      height: 'auto',
+    });
   }
 
   editarNoticia(item: NoticiaModel) {

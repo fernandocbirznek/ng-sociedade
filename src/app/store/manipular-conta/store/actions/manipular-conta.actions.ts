@@ -1,6 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 
 import { 
+  AdministradorHomeAulaInformacaoModel,
   CriarContaPerfilModel, 
   DeletarConta, 
   Login,
@@ -286,5 +287,20 @@ export const removerUsuarioAulaFavoritadaSuccess = createAction(
 
 export const removerUsuarioAulaFavoritadaFailure = createAction(
   '[UsuarioAulaFavoritada] removerUsuarioAulaFavoritada Failure',
+  props<{ error: any }>()
+);
+
+
+export const selecionarAdministradorHomeAulaInformacao = createAction(
+  '[AdministradorHome] AdministradorHomeAulaInformacao'
+);
+
+export const selecionarAdministradorHomeAulaInformacaoSuccess = createAction(
+  '[AdministradorHome] AdministradorHomeAulaInformacao Success',
+  props<{ response: AdministradorHomeAulaInformacaoModel }>()
+);
+
+export const selecionarAdministradorHomeAulaInformacaoFailure = createAction(
+  '[AdministradorHome] AdministradorHomeAulaInformacao Failure',
   props<{ error: any }>()
 );

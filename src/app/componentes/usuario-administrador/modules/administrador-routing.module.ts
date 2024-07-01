@@ -6,14 +6,16 @@ import {
     AdministradorHomeComponent,
 } from "../features";
 
+import { AdministradorResolver } from "./administrador.resolver";
+
 const administradorRoutes: Routes = [
     {
-        path: "administrador-home/:email",
+        path: "administrador-home/:email/:id",
         component: AdministradorHomeComponent,
         canActivate: [AutenticacaoService],
-        // resolve: {
-        //     perfilProfessorResolver: PerfilProfessorResolver
-        // }
+        resolve: {
+            administradorResolver: AdministradorResolver
+        }
     },
 ];
 

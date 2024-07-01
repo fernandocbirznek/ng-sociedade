@@ -13,10 +13,12 @@ import {
 
 import { 
   AreaFisicaModel,
-  AulaModel 
+  AulaViewModel
 } from 'src/app/models';
 
 import { 
+  alterarTituloPagina,
+  atualizarAulaSelected,
   excluirAula,
   getManyAreaFisica,
   getManyAula,
@@ -30,13 +32,13 @@ import {
 export class AdministradorTabelaAulaComponent implements OnInit, AfterViewInit {
 
   displayedColumns: string[] = ['titulo', 'resumo', 'areaFisica', 'data-postagem', 'comentarios', 'curtido', 'favoritado', 'acao'];
-  dataSource: any;
+  dataSource = new MatTableDataSource();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   aulaManySubscription$: Subscription = new Subscription();
-  aulaMany$: Observable<AulaModel[]> = new Observable<AulaModel[]>();
+  aulaMany$: Observable<AulaViewModel[]> = new Observable<AulaViewModel[]>();
 
   areaFisicaManySubscription$: Subscription = new Subscription();
   areaFisicaMany$: Observable<AreaFisicaModel[]> = new Observable<AreaFisicaModel[]>();
@@ -59,6 +61,7 @@ export class AdministradorTabelaAulaComponent implements OnInit, AfterViewInit {
   }
 
   ngOnDestroy() {
+    this.areaFisicaManySubscription$.unsubscribe();
     this.aulaManySubscription$.unsubscribe();
   }
 
@@ -72,7 +75,7 @@ export class AdministradorTabelaAulaComponent implements OnInit, AfterViewInit {
   setupAula() {
     this.aulaMany$ = this.store.select(getManyAula);
     this.aulaManySubscription$ = this.aulaMany$.subscribe(itens => {
-      this.dataSource = new MatTableDataSource(itens);
+      this.dataSource.data = itens;
     });
   }
 
@@ -85,11 +88,13 @@ export class AdministradorTabelaAulaComponent implements OnInit, AfterViewInit {
     }
   }
 
-  acessarAula(item: AulaModel) {
-    //TODO, fazer depois que fizer a parte da sessão
+  acessarAula(item: AulaViewModel) {
+    this.store.dispatch(alterarTituloPagina({ titulo: `${item.titulo}`, areaFisicaId: item.areaFisicaId }));
+    this.store.dispatch(atualizarAulaSelected({ aulaId: item.id }));
+    this.router.navigate([`visualizar-aula/${item.id}`], { queryParams: { aulaTitulo: item.titulo }});
   }
 
-  excluirAula(item: AulaModel) {
+  excluirAula(item: AulaViewModel) {
     this.dialog.open(ModalExcluirComponent, {
       data: `Aula: ${item.titulo}`
     }).afterClosed().subscribe((evento) => {

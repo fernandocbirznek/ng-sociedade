@@ -1,0 +1,1 @@
+export * from './inserir-area-interesse.component';

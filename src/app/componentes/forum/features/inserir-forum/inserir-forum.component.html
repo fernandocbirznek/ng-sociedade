@@ -1,0 +1,25 @@
+<div fxLayout="column" class="container-forum">
+    <h2>Novo fórum</h2>
+    <form [formGroup]="this.formGroupForum" fxLayout="column" fxLayoutAlign="start start" class="container-inputs">   
+      <mat-form-field  appearance="outline" class="g-full-width">
+        <mat-label>Título do fórum</mat-label>
+        <input formControlName="formTitulo" matInput required>
+        <mat-error *ngIf="formTitulo.invalid">Título é obrigatório</mat-error>
+      </mat-form-field>
+      <mat-form-field  appearance="outline" class="g-full-width">
+        <mat-label>descrição</mat-label>
+        <input formControlName="formDescricao" matInput required>
+        <mat-error *ngIf="formDescricao.invalid">Descrição é obrigatório</mat-error>
+      </mat-form-field>         
+    </form>
+    <div fxLayout="row" fxLayoutAlign="space-around center" class="container-buttons">
+      <button mat-stroked-button color="warn" (click)="fecharModal()">
+        <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
+        Cancelar
+      </button>
+      <button mat-stroked-button color="primary" (click)="requestCriarForum()">
+        <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
+        Criar fórum
+      </button>
+    </div>
+</div>

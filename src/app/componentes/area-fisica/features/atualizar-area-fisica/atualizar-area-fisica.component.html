@@ -1,0 +1,30 @@
+<div fxLayout="column" class="container-area-fisica">
+    <h2 >Criar nova área da Física</h2>
+    <form [formGroup]="this.formGroupAreaFisica" fxLayout="column" fxLayoutAlign="start start" class="container-inputs">   
+      <mat-form-field  appearance="outline" class="g-full-width">
+        <mat-label>Título</mat-label>
+        <input formControlName="formTitulo" matInput required>
+        <mat-error *ngIf="formTitulo.invalid">Titulo é obrigatório</mat-error>
+      </mat-form-field>          
+      <mat-form-field appearance="outline" class="g-full-width">
+        <mat-label>Descrição</mat-label>
+        <textarea maxlength="200" formControlName="formDescricao" matInput required></textarea>
+        <mat-error *ngIf="formDescricao.invalid">Descrição é obrigatória</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="g-full-width">
+        <mat-label>Aplicação</mat-label>
+        <textarea maxlength="200" formControlName="formAplicacao" matInput required></textarea>
+        <mat-error *ngIf="formAplicacao.invalid">Aplicação é obrigatória</mat-error>
+      </mat-form-field>
+    </form>
+    <div fxLayout="row" fxLayoutAlign="space-around center" class="container-buttons">
+      <button mat-stroked-button color="warn" (click)="fecharModal()">
+        <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
+        Cancelar
+      </button>
+      <button mat-stroked-button color="primary" (click)="requestAtualizarAreaFisica()">
+        <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
+        Atualizar área da Física
+      </button>
+    </div>
+</div>

@@ -51,6 +51,8 @@ export class MecanicaComponent implements OnInit {
     this.setupAreaFisica();
     this.setupAreaFisicaDivisao();
     this.setupAula();
+
+    this.scrollToTop();
   }
 
   ngOnDestroy(): void {
@@ -100,5 +102,13 @@ export class MecanicaComponent implements OnInit {
     this.store.dispatch(alterarTituloPagina({ titulo: `${item.titulo}`, areaFisicaId: item.areaFisicaId }));
     this.store.dispatch(atualizarAulaSelected({ aulaId: item.id }));
     this.router.navigate([`visualizar-aula/${item.id}`], { queryParams: { aulaTitulo: item.titulo }});
+  }
+
+  scrollToTop() {
+    window.scroll({ 
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth' 
+    });
   }
 }

@@ -1,0 +1,1 @@
+export * from './administrador-tabela-forum.component';

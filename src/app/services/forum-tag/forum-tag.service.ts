@@ -13,6 +13,8 @@ import {
 
 export class ForumTagService {
     urlSelecionarManyForumTag = 'https://localhost:44361/api/ForumTag/selecionar-forum-tag-sistema';
+    urlInserirForumTag = 'https://localhost:44361/api/ForumTag/inserir';
+    urlExcluirForumTag= 'https://localhost:44361/api/ForumTag/excluir';
 
     constructor(
         private httpClient: HttpClient,
@@ -21,6 +23,14 @@ export class ForumTagService {
 
     selecionarManyForumTag(): Observable<ForumTagModel[]> {
         return this.httpClient.get<ForumTagModel[]>(this.urlSelecionarManyForumTag, this.buildHttpOptions());
+    }
+
+    inserirForumTag(forumTag: ForumTagModel): Observable<ForumTagModel> {
+        return this.httpClient.post<ForumTagModel>(this.urlInserirForumTag, JSON.stringify(forumTag), this.buildHttpOptions());
+    }
+
+    excluirForumTag(forumTagId: number): Observable<number> {
+        return this.httpClient.delete<number>(this.urlExcluirForumTag + `/${forumTagId}`, this.buildHttpOptions());
     }
 
     private buildHttpOptions() {

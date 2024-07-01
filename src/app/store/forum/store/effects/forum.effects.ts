@@ -25,4 +25,37 @@ export class ForumEffects {
      )
    );
   });
+
+  inserirForum$ = createEffect(() => {
+    return this.actions$.pipe(
+        ofType(actions.inserirForum),
+        concatMap((action) =>
+            this.forumService.inserirForum(action.forum).pipe(
+            map(response => actions.inserirForumSuccess({ response: response })),
+            catchError(error => of(actions.inserirForumFailure({ error }))))
+        )
+    );
+  });
+
+  atualizarForum$ = createEffect(() => {
+    return this.actions$.pipe(
+        ofType(actions.atualizarForum),
+        concatMap((action) =>
+            this.forumService.atualizarForum(action.forum).pipe(
+            map(response => actions.atualizarForumSuccess({ response: response })),
+            catchError(error => of(actions.atualizarForumFailure({ error }))))
+        )
+    );
+  });
+
+  excluirForum$ = createEffect(() => {
+      return this.actions$.pipe(
+          ofType(actions.excluirForum),
+          concatMap((action) =>
+              this.forumService.excluirForum(action.forumId).pipe(
+              map(response => actions.excluirForumSuccess({ response: response })),
+              catchError(error => of(actions.excluirForumFailure({ error }))))
+          )
+      );
+  });
 }

@@ -1,0 +1,19 @@
+.container-filtro,
+.container-tabela {
+    width: 100%;
+}
+
+.container-filtro {
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.tabela-header {
+    font-weight: bold;
+    color: black;
+    font-size: 16px;
+}
+
+.container-buttons {
+    gap: 10px;
+}

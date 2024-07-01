@@ -27,6 +27,35 @@ export const forumTopicoInitialState: ForumTopicoState = {
 export const forumTopicoReducer = createReducer(
   forumTopicoInitialState,
 
+  on(actions.selecionarManyForumTopico, state => {
+    return { 
+      ...state, 
+      isLoading: true, 
+      isSuccess: false, 
+      isFailure: false, 
+      error: "" 
+    };
+  }),
+  on(actions.selecionarManyForumTopicoSuccess, (state, action) => {
+  
+   return { 
+     ...state, 
+     itens: action.response,
+     isLoading: false, 
+     isSuccess: true, 
+     isFailure: false, 
+   };
+  }),
+  on(actions.selecionarManyForumTopicoFailure, (state) => {
+    return { 
+      ...state, 
+      isLoading: false, 
+      isSuccess: false, 
+      isFailure: true, 
+      mensagem: "Erro ao buscar os tópicos do fórum"
+    };
+  }),
+
   on(actions.selecionarManyForumTopicoByForumId, state => {
     return { 
       ...state, 

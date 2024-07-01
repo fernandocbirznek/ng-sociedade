@@ -30,7 +30,7 @@ export const getNoticiaFilter = createSelector(
 
 export const getManyNoticia = createSelector(
   selecionarNoticiaState,
-  areaInteresseFeature.getAreaInteresseMany,
+  areaInteresseFeature.getManyAreaInteresse,
   manipularContaFeature.getManyUsuarioNoticiaFavoritado, (
     state,
     areaInteresseMany: AreaInteresseModel[],

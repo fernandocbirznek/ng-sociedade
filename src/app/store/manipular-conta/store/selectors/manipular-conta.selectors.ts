@@ -2,6 +2,7 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as fromManipularConta from '../reducers/manipular-conta.reducer';
 
 import {
+  AdministradorHomeAulaInformacaoModel,
   InformacaoAulaAlunoViewModel,
   UsuarioAulaCurtidoModel,
   UsuarioAulaFavoritadaModel,
@@ -19,8 +20,18 @@ export const getOneUsuarioLogado = createSelector(selectManipularContaState, (st
   return state.usuario;
 });
 
-export const getManyUsuarioNoticiaFavoritado = createSelector(selectManipularContaState, (state) => {
+export const getManyUsuarioNoticiaFavoritado = createSelector(
+  selectManipularContaState, (
+    state
+  ): UsuarioNoticiaFavoritadoModel[] => {
   return state.usuarioNoticiaFavoritado;
+});
+
+export const getOneUsuarioAdministradorHomeAulaInformacao = createSelector(
+  selectManipularContaState, (
+    state
+  ): AdministradorHomeAulaInformacaoModel | undefined => {
+  return state.usuarioAdministradorHomeAulaInformacao;
 });
 
 export const getOneUsuarioNoticiaFavoritadoByNoticiaId = (noticiaId: number) => createSelector(

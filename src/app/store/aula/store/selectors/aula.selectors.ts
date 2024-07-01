@@ -90,7 +90,7 @@ export const getManyAula = createSelector(
         if (areaFisica)
           aulaViewModel.areaFisicaTitulo = areaFisica.titulo;
 
-        if (item.aulaTagMany.length > 0) {
+        if (item.aulaTagMany && item.aulaTagMany.length > 0) {
           item.aulaTagMany.forEach(aulaTag => {
             let tag = tagMany.find(tag => tag.id == aulaTag.tagId);
             if (tag)
@@ -223,6 +223,7 @@ export const getOneAulaById = createSelector(
       let arquivoPdfManyFiltrado = arquivoPdfMany.filter(item => item.aulaId == aulaSelected);
 
       aulaSessaoMany = aula.aulaSessaoMany.map(item => {
+
         if (item.aulaSessaoTipo == TipoSessaoAulaEnum.Pdf) {
           let arquivoPdf = arquivoPdfManyFiltrado.find(arquivoPdf => arquivoPdf.id == +item.conteudo);
 
@@ -237,15 +238,32 @@ export const getOneAulaById = createSelector(
           aulaSessao.ordem = item.ordem;
           aulaSessao.titulo = item.titulo;
           aulaSessao.arquivoPdf = arquivoPdf;
-
           return aulaSessao;
         }
-
+        
         return item;
       });
 
-      item.aulaSessaoMany = aulaSessaoMany;
+      item.aulaSessaoMany = aulaSessaoMany.sort((a, b) => a.ordem - b.ordem);
+
+      return item;
     }
+    
+    item.aulaSessaoMany = item.aulaSessaoMany.map(teste => {
+        let aulaSessao: AulaSessaoModel = new AulaSessaoModel();
+        aulaSessao.aulaId = teste.aulaId;
+        aulaSessao.aulaSessaoTipo = teste.aulaSessaoTipo;
+        aulaSessao.conteudo = teste.conteudo;
+        aulaSessao.dataAtualizacao = teste.dataAtualizacao;
+        aulaSessao.dataCadastro = teste.dataCadastro;
+        aulaSessao.favoritado = teste.favoritado;
+        aulaSessao.id = teste.id;
+        aulaSessao.ordem = teste.ordem;
+        aulaSessao.titulo = teste.titulo;
+
+        return aulaSessao;
+      })
+      .sort((a, b) => a.ordem - b.ordem);
 
     return item;
   }

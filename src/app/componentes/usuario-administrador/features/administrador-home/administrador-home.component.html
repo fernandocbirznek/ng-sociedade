@@ -1,31 +1,87 @@
 <div *ngIf="this.usuarioLogado; else usuarioVazio" fxLayout="column" class="container-professor-home">
-    <div fxLayout="row" fxLayoutAlign="space-between center">
-        <div class="titulo">Olá {{this.usuarioLogado.nome}}</div>
-        <div fxLayout="row" fxLayoutAlign="center center" class="editar-perfil" (click)="editarPerfil()">
-            <mat-icon class="material-symbols-outlined">edit_document</mat-icon>
-            <div>Editar perfil</div>
+    <div class="deslogar" (click)="deslogar()">Deslogar</div>
+    <div fxLayout="row wrap" fxLayoutAlign="space-between start" class="container-informacao">
+        <app-administrador-perfil [usuarioLogado]="this.usuarioLogado"></app-administrador-perfil>
+        <app-administrador-informacao></app-administrador-informacao>
+    </div>
+    
+    <div fxLayout="column" fxLayoutAlign="space-between space-between" class="g-card card"
+        [ngClass]="{
+            'card-favorito-2': this.abaSelecionada == 2
+        }">
+        <div class="g-card-titulo card-titulo" fxLayout="row" fxLayoutAlign="start center">
+            <div fxLayout="row" fxLayoutAlign="center center" class="card-titulo-aba card-titulo-aba-1" 
+                [ngClass]="{'card-selecionado': this.abaSelecionada == 1}" (click)="selecionarAba(1)">
+                <span class="perfil-text">Usuários alunos</span>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="center center" class="card-titulo-aba card-titulo-aba-2" 
+                [ngClass]="{'card-selecionado': this.abaSelecionada == 2}"(click)="selecionarAba(2)">
+                <span class="perfil-text">Usuários professores</span>
+            </div>
         </div>
+        <app-administrador-tabela-aluno *ngIf="this.abaSelecionada == 1"></app-administrador-tabela-aluno>
+        <app-administrador-tabela-professor *ngIf="this.abaSelecionada == 2"></app-administrador-tabela-professor>
     </div>
 
-    <!-- TODO, fazer resumo do sistema -->
-    <app-usuario-informacao fxFlex="100%" [usuarioLogado]="this.usuarioLogado"></app-usuario-informacao>
+    <div fxLayout="column" fxLayoutAlign="space-between space-between" class="g-card card"
+        [ngClass]="{
+            'card-sistema-2': this.abaSelecionadaSistema == 2,
+            'card-sistema-3': this.abaSelecionadaSistema == 3
+        }">
+        <div class="g-card-titulo card-titulo" fxLayout="row" fxLayoutAlign="start center">
+            <div fxLayout="row" fxLayoutAlign="center center" class="card-titulo-aba card-titulo-aba-1" 
+                [ngClass]="{'card-selecionado-sistema': this.abaSelecionadaSistema == 1}" (click)="selecionarAbaSistema(1)">
+                <span class="perfil-text">Aulas no sistema</span>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="center center" class="card-titulo-aba card-titulo-aba-sistema-2" 
+                [ngClass]="{'card-selecionado-sistema-2': this.abaSelecionadaSistema == 2}" (click)="selecionarAbaSistema(2)">
+                <span class="perfil-text">Notícias no sistema</span>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="center center" class="card-titulo-aba card-titulo-aba-sistema-3" 
+                [ngClass]="{'card-selecionado-sistema-3': this.abaSelecionadaSistema == 3}" (click)="selecionarAbaSistema(3)">
+                <span class="perfil-text">Fórum tópicos</span>
+            </div>
+        </div>
+        <app-administrador-tabela-aula *ngIf="this.abaSelecionadaSistema == 1"></app-administrador-tabela-aula>
+        <app-administrador-tabela-noticia *ngIf="this.abaSelecionadaSistema == 2" [usuarioLogado]="this.usuarioLogado"></app-administrador-tabela-noticia>
+        <app-administrador-tabela-forum-topico *ngIf="this.abaSelecionadaSistema == 3"></app-administrador-tabela-forum-topico>
+    </div>
 
-    <app-usuario-area-interesse [usuarioLogado]="this.usuarioLogado"></app-usuario-area-interesse>
-
-    <mat-tab-group>
-        <mat-tab label="Usuários alunos">
-            <app-administrador-tabela-aluno></app-administrador-tabela-aluno>
-        </mat-tab>
-        <mat-tab label="usuários professores">
-            <app-administrador-tabela-professor></app-administrador-tabela-professor>
-        </mat-tab>
-        <mat-tab label="Aulas no sistema">
-            <app-administrador-tabela-aula></app-administrador-tabela-aula>
-        </mat-tab>
-        <mat-tab label="Notícias no sistema">
-            <app-administrador-tabela-noticia [usuarioLogado]="this.usuarioLogado"></app-administrador-tabela-noticia>
-        </mat-tab>
-    </mat-tab-group>
+    <div fxLayout="column" fxLayoutAlign="space-between space-between" class="g-card card"
+        [ngClass]="{
+            'card-favorito-basico-2': this.abaSelecionadaBasico == 2,
+            'card-favorito-basico-3': this.abaSelecionadaBasico == 3,
+            'card-favorito-basico-4': this.abaSelecionadaBasico == 4,
+            'card-favorito-basico-5': this.abaSelecionadaBasico == 5
+        }">
+        <div class="g-card-titulo card-titulo" fxLayout="row" fxLayoutAlign="start center">
+            <div fxLayout="row" fxLayoutAlign="center center" class="card-titulo-aba card-titulo-aba-basico-1" 
+                [ngClass]="{'card-selecionado': this.abaSelecionadaBasico == 1}" (click)="selecionarAbaBasico(1)">
+                <span class="perfil-text">Áreas da Física</span>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="center center" class="card-titulo-aba card-titulo-aba-basico-2" 
+                [ngClass]="{'card-selecionado': this.abaSelecionadaBasico == 2}" (click)="selecionarAbaBasico(2)">
+                <span class="perfil-text">Tags</span>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="center center" class="card-titulo-aba card-titulo-aba-basico-3" 
+                [ngClass]="{'card-selecionado': this.abaSelecionadaBasico == 3}" (click)="selecionarAbaBasico(3)">
+                <span class="perfil-text">Áreas de interesse</span>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="center center" class="card-titulo-aba card-titulo-aba-basico-4" 
+                [ngClass]="{'card-selecionado': this.abaSelecionadaBasico == 4}" (click)="selecionarAbaBasico(4)">
+                <span class="perfil-text">Fóruns</span>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="center center" class="card-titulo-aba card-titulo-aba-basico-5" 
+                [ngClass]="{'card-selecionado': this.abaSelecionadaBasico == 5}" (click)="selecionarAbaBasico(5)">
+                <span class="perfil-text">Fórum tags</span>
+            </div>
+        </div>
+        <app-administrador-area-fisica *ngIf="this.abaSelecionadaBasico == 1"></app-administrador-area-fisica>
+        <app-administrador-tabela-tag *ngIf="this.abaSelecionadaBasico == 2"></app-administrador-tabela-tag>
+        <app-administrador-tabela-area-interesse *ngIf="this.abaSelecionadaBasico == 3"></app-administrador-tabela-area-interesse>
+        <app-administrador-tabela-forum *ngIf="this.abaSelecionadaBasico == 4"></app-administrador-tabela-forum>
+        <app-administrador-tabela-forum-tag *ngIf="this.abaSelecionadaBasico == 5"></app-administrador-tabela-forum-tag>
+    </div>
 </div>
 <ng-template #usuarioVazio>
     Carregando informações...

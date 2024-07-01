@@ -8,8 +8,20 @@ export const selectAreaFisicaState = createFeatureSelector<fromAreaFisica.AreaFi
     fromAreaFisica.areaFisicaFeatureKey
 );
 
-export const getManyAreaFisica = createSelector(selectAreaFisicaState, (state) => {
-  return state.areaFisica;
+export const getManyAreaFisica = createSelector(
+  selectAreaFisicaState, (
+    state
+  ): AreaFisicaModel[] => {
+  let itens = [...state.areaFisica].sort((a: AreaFisicaModel, b: AreaFisicaModel) => {
+    if (a.titulo < b.titulo) {
+      return -1;
+    }
+    if (a.titulo > b.titulo) {
+      return 1;
+    }
+    return 0;
+  });
+  return itens;
 })
 
 export const getOneAreaFisicaByAreaFisicaId = createSelector(

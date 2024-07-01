@@ -26,4 +26,26 @@ export class ForumTagEffects {
             )
         );
     });
+
+    inserirForumTag$ = createEffect(() => {
+        return this.actions$.pipe(
+            ofType(actions.inserirForumTag),
+            concatMap((action) =>
+                this.forumTagService.inserirForumTag(action.forumTag).pipe(
+                map(response => actions.inserirForumTagSuccess({ response: response })),
+                catchError(error => of(actions.inserirForumTagFailure({ error }))))
+            )
+        );
+      });
+    
+      excluirForumTag$ = createEffect(() => {
+          return this.actions$.pipe(
+              ofType(actions.excluirForumTag),
+              concatMap((action) =>
+                  this.forumTagService.excluirForumTag(action.forumTagId).pipe(
+                  map(response => actions.excluirForumTagSuccess({ response: response })),
+                  catchError(error => of(actions.excluirForumTagFailure({ error }))))
+              )
+          );
+      });
 }

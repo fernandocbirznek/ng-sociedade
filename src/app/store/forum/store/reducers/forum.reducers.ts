@@ -55,4 +55,98 @@ export const forumReducer = createReducer(
       mensagem: "Erro ao buscar os foruns cadastrados no sistema"
     };
   }),
+
+  on(actions.inserirForum, state => {
+    return { 
+      ...state, 
+      isLoading: true, 
+      isSuccess: false, 
+      isFailure: false, 
+      error: "" 
+    };
+  }),
+  on(actions.inserirForumSuccess, (state, action) => {
+
+   return { 
+     ...state, 
+     itens: [...state.itens, action.response],
+     isLoading: false, 
+     isSuccess: true, 
+     isFailure: false, 
+   };
+  }),
+  on(actions.inserirForumFailure, (state) => {
+    return { 
+      ...state, 
+      isLoading: false, 
+      isSuccess: false, 
+      isFailure: true, 
+      mensagem: "Erro ao inserir fórum."
+    };
+  }),
+
+  on(actions.atualizarForum, state => {
+    return { 
+      ...state, 
+      isLoading: true, 
+      isSuccess: false, 
+      isFailure: false, 
+      error: "" 
+    };
+  }),
+  on(actions.atualizarForumSuccess, (state, action) => {
+    let itens = [...state.itens].map(item => {
+      if(item.id == action.response.id) {
+        return action.response;
+      }
+      return item;
+    });
+
+   return { 
+     ...state, 
+     itens: itens,
+     isLoading: false, 
+     isSuccess: true, 
+     isFailure: false, 
+   };
+  }),
+  on(actions.atualizarForumFailure, (state) => {
+    return { 
+      ...state, 
+      isLoading: false, 
+      isSuccess: false, 
+      isFailure: true, 
+      mensagem: "Erro ao inserir fórum."
+    };
+  }),
+
+  on(actions.excluirForum, state => {
+    return { 
+      ...state, 
+      isLoading: true, 
+      isSuccess: false, 
+      isFailure: false, 
+      error: "" 
+    };
+  }),
+  on(actions.excluirForumSuccess, (state, action) => {
+    let itens = [...state.itens].filter(item => item.id != action.response);
+
+   return { 
+     ...state, 
+     itens: itens,
+     isLoading: false, 
+     isSuccess: true, 
+     isFailure: false, 
+   };
+  }),
+  on(actions.excluirForumFailure, (state) => {
+    return { 
+      ...state, 
+      isLoading: false, 
+      isSuccess: false, 
+      isFailure: true, 
+      mensagem: "Erro ao excluir a fórum"
+    };
+  }),
 );

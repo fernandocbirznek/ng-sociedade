@@ -5,6 +5,6 @@ export const selectAreaInteresseState = createFeatureSelector<fromAreaInteresse.
     fromAreaInteresse.areaInteresseFeatureKey
 );
 
-export const getAreaInteresseMany = createSelector(selectAreaInteresseState, (state) => {
+export const getManyAreaInteresse = createSelector(selectAreaInteresseState, (state) => {
   return state.itens;
 })

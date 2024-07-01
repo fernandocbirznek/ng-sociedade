@@ -11,7 +11,7 @@ import {
 } from 'src/app/models';
 
 import { 
-  getAreaInteresseMany,
+  getManyAreaInteresse,
   getOneUsuarioLogado, 
   inserirNoticia, 
 } from 'src/app/store';
@@ -70,7 +70,7 @@ export class NovaNoticiaComponent implements OnInit {
   }
 
   setupAreaInteresse() {
-    this.areaInteresseMany$ = this.store.select(getAreaInteresseMany);
+    this.areaInteresseMany$ = this.store.select(getManyAreaInteresse);
     this.areaInteresseManySubscription$ = this.areaInteresseMany$.subscribe(itens => {
       this.areaInteresseMany = itens;
     });

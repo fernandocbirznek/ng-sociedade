@@ -37,7 +37,6 @@ export class ForumComponent implements OnInit {
   }
 
   setupForum() {
-    this.store.dispatch(selecionarManyForum());
     this.forumMany$ = this.store.select(getManyForum);
     this.forumManySubscription$ = this.forumMany$.subscribe(item => {
       if (item) 

@@ -8,6 +8,7 @@ import { Store } from '@ngrx/store';
 import * as actions from '../actions/manipular-conta.actions';
 
 import { 
+  AulaService,
   ManipularContaService, 
   UsuarioAreaInteresseService, 
   UsuarioAulaCurtidoService, 
@@ -47,6 +48,7 @@ export class ManipularContaEffects {
 
   constructor(
     private actions$: Actions,
+    private aulaService: AulaService,
     private manipularContaService: ManipularContaService,
     private usuarioPerfilService: UsuarioPerfilService,
     private usuarioAreaInteresseService: UsuarioAreaInteresseService,
@@ -77,7 +79,7 @@ export class ManipularContaEffects {
           map(response => {
             switch(response.tipoUsuario) { 
               case TipoUsuarioEnum.UsuarioAdministrador: { 
-                this.router.navigate([`administrador-home/${response.email}`]);
+                this.router.navigate([`administrador-home/${response.email}/${response.id}`]);
                 break; 
               } 
               case TipoUsuarioEnum.UsuarioComum: { 
@@ -124,7 +126,7 @@ export class ManipularContaEffects {
           map(response => {
             switch(response.tipoUsuario) { 
               case TipoUsuarioEnum.UsuarioAdministrador: { 
-                this.router.navigate([`administrador-home/${response.email}`]);
+                this.router.navigate([`administrador-home/${response.email}/${response.id}`]);
                 break; 
               } 
               case TipoUsuarioEnum.UsuarioComum: { 
@@ -344,5 +346,18 @@ export class ManipularContaEffects {
       )
     );
   });
+
+
+  
+  selecionarAdministradorHomeAulaInformacao$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(actions.selecionarAdministradorHomeAulaInformacao),
+      concatMap(() =>
+        this.aulaService.selecionarAdministradorHomeAulaInformacao().pipe(
+          map(response => actions.selecionarAdministradorHomeAulaInformacaoSuccess({ response: response })),
+          catchError(error => of(actions.selecionarAdministradorHomeAulaInformacaoFailure({ error }))))
+      )
+    );
+   });
 
 }

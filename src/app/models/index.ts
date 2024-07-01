@@ -1,3 +1,4 @@
+export * from './administrador-home';
 export * from './aluno-home';
 export * from './area-fisica';
 export * from './area-fisica-divisao';

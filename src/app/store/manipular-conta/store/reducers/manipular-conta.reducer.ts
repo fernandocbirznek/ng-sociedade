@@ -2,6 +2,7 @@ import { Action, createReducer, on } from '@ngrx/store';
 import * as actions from '../actions/manipular-conta.actions';
 
 import { 
+  AdministradorHomeAulaInformacaoModel,
   AreaInteresseModel, 
   TipoUsuarioEnum, 
   UsuarioAulaCurtidoModel, 
@@ -20,6 +21,8 @@ export interface ManipularContaState {
   usuarioAulaCurtido: UsuarioAulaCurtidoModel[];
   usuarioAulaFavoritada: UsuarioAulaFavoritadaModel[];
 
+  usuarioAdministradorHomeAulaInformacao: AdministradorHomeAulaInformacaoModel | undefined;
+
   isSuccess: boolean;
   isLoading: boolean;
   isFailure: boolean;
@@ -31,6 +34,8 @@ export const manipularContaInitialState: ManipularContaState = {
   usuarioNoticiaFavoritado: [],
   usuarioAulaCurtido: [],
   usuarioAulaFavoritada: [],
+
+  usuarioAdministradorHomeAulaInformacao: undefined,
 
   isSuccess: false,
   isLoading: false,
@@ -659,6 +664,36 @@ export const manipularContaReducer = createReducer(
         isSuccess: false, 
         isFailure: true, 
         mensagem: "Falha em buscar as aulas favoritadas do usuário logado" 
+    };
+  }),
+
+
+  on(actions.selecionarAdministradorHomeAulaInformacao, state => {
+    return { 
+      ...state, 
+      isLoading: true, 
+      isSuccess: false, 
+      isFailure: false, 
+      error: "" 
+    };
+  }),
+  on(actions.selecionarAdministradorHomeAulaInformacaoSuccess, (state, action) => {
+
+   return { 
+     ...state, 
+     usuarioAdministradorHomeAulaInformacao: action.response,
+     isLoading: false, 
+     isSuccess: true, 
+     isFailure: false, 
+   };
+  }),
+  on(actions.selecionarAdministradorHomeAulaInformacaoFailure, (state, action) => {
+    return { 
+      ...state, 
+      isLoading: false, 
+      isSuccess: false, 
+      isFailure: true, 
+      mensagem: "Erro ao buscar informações sobre as aulas."
     };
   }),
 );
