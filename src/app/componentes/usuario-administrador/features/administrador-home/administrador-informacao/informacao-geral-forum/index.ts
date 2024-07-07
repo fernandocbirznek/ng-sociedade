@@ -1,0 +1,1 @@
+export * from './informacao-geral-forum.component';

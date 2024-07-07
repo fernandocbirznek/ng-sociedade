@@ -9,6 +9,7 @@ import * as actions from '../actions/manipular-conta.actions';
 
 import { 
   AulaService,
+  ForumService,
   ManipularContaService, 
   UsuarioAreaInteresseService, 
   UsuarioAulaCurtidoService, 
@@ -49,6 +50,7 @@ export class ManipularContaEffects {
   constructor(
     private actions$: Actions,
     private aulaService: AulaService,
+    private forumService: ForumService,
     private manipularContaService: ManipularContaService,
     private usuarioPerfilService: UsuarioPerfilService,
     private usuarioAreaInteresseService: UsuarioAreaInteresseService,
@@ -356,6 +358,17 @@ export class ManipularContaEffects {
         this.aulaService.selecionarAdministradorHomeAulaInformacao().pipe(
           map(response => actions.selecionarAdministradorHomeAulaInformacaoSuccess({ response: response })),
           catchError(error => of(actions.selecionarAdministradorHomeAulaInformacaoFailure({ error }))))
+      )
+    );
+   });
+
+   selecionarAdministradorHomeForumInformacao$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(actions.selecionarAdministradorHomeForumInformacao),
+      concatMap(() =>
+        this.forumService.selecionarAdministradorHomeForumInformacao().pipe(
+          map(response => actions.selecionarAdministradorHomeForumInformacaoSuccess({ response: response })),
+          catchError(error => of(actions.selecionarAdministradorHomeForumInformacaoFailure({ error }))))
       )
     );
    });

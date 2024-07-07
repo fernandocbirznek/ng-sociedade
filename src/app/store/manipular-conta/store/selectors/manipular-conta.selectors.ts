@@ -3,6 +3,7 @@ import * as fromManipularConta from '../reducers/manipular-conta.reducer';
 
 import {
   AdministradorHomeAulaInformacaoModel,
+  AdministradorHomeForumInformacaoModel,
   InformacaoAulaAlunoViewModel,
   UsuarioAulaCurtidoModel,
   UsuarioAulaFavoritadaModel,
@@ -32,6 +33,13 @@ export const getOneUsuarioAdministradorHomeAulaInformacao = createSelector(
     state
   ): AdministradorHomeAulaInformacaoModel | undefined => {
   return state.usuarioAdministradorHomeAulaInformacao;
+});
+
+export const getOneUsuarioAdministradorHomeForumInformacao = createSelector(
+  selectManipularContaState, (
+    state
+  ): AdministradorHomeForumInformacaoModel | undefined => {
+  return state.usuarioAdministradorHomeForumInformacao;
 });
 
 export const getOneUsuarioNoticiaFavoritadoByNoticiaId = (noticiaId: number) => createSelector(

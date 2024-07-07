@@ -1,0 +1,37 @@
+<div fxLayout="column" fxLayoutAlign="space-between space-between" class="g-card card">
+    <div class="g-card-titulo" fxLayout="row" fxLayoutAlign="center center">
+        <span class="perfil-text">Informações gerais sobre as aulas</span>
+    </div>
+    <div *ngIf="this.AdministradorHomeForumInformacaoModel" fxLayout="row" fxLayoutAlign="space-between start" class="container-informacao">
+        <div fxFlex="33%">
+            <div fxLayout="column" fxLayoutAlign="start center" class="informacao">
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <mat-icon class="material-symbols-outlined">full_coverage</mat-icon>
+                    <div class="informacao-texto">Fóruns: {{ this.AdministradorHomeForumInformacaoModel.forumCount }} </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <mat-icon class="material-symbols-outlined">thumb_up</mat-icon>
+                    <div class="informacao-texto">Tags: {{ this.AdministradorHomeForumInformacaoModel.forumTagCount }}</div>
+                </div>
+            </div>
+        </div>
+        <div fxFlex="33%">
+            <div fxLayout="column" fxLayoutAlign="start center" class="informacao">
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <mat-icon class="material-symbols-outlined">edit_square</mat-icon>
+                    <div class="informacao-texto">Tópicos: {{ this.AdministradorHomeForumInformacaoModel.forumTopicoCount }}</div>
+                </div>
+            </div>
+        </div>
+        <div fxFlex="33%" fxLayout="column" fxLayoutAlign="start center" class="informacao">
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon class="material-symbols-outlined">edit_square</mat-icon>
+                <div class="informacao-texto">Respostas: {{ this.AdministradorHomeForumInformacaoModel.forumTopicoRespostaCount }}</div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon class="material-symbols-outlined">edit_square</mat-icon>
+                <div class="informacao-texto">Replicas: {{ this.AdministradorHomeForumInformacaoModel.forumTopicoReplicaCount }}</div>
+            </div>
+        </div>
+    </div>
+</div>

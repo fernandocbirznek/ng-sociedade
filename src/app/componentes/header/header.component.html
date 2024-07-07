@@ -4,10 +4,10 @@
             <img class="logo-site" src="../../../assets/imagens/header/logosite.png">
         </div>
         <div fxFlex="100%" fxLayout="row wrap" fxLayoutAlign="space-around center" class="menu-navegacao">
-            <a (click)="home()">Home</a>
+            <a (click)="acessarTela('home')">Home</a>
             <a *ngIf="!this.usuarioLogado" (click)="conta()">Criar Conta / Login</a>
             <a *ngIf="this.usuarioLogado" (click)="acessarPerfil()">Acessar perfil</a>
-            <a routerLink="/forum">Fórum</a>
+            <a (click)="acessarTela('forum')">Fórum</a>
             <a *ngFor="let areaFisica of this.areaFisicaMany" class="g-full-width" (mouseover)="mudaFoto(areaFisica.id.toString())" 
                 (mouseout)="mudaFoto('0')" (click)="areaSelecionada(areaFisica)">
                 {{areaFisica.titulo}}

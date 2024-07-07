@@ -13,6 +13,10 @@
     margin-bottom: 20px;
 }
 
+.container-tags {
+    margin: 8px 0;
+}
+
 .tabela-header {
     font-weight: bold;
     color: black;
@@ -22,4 +26,3 @@
 .container-buttons {
     gap: 10px;
 }
-

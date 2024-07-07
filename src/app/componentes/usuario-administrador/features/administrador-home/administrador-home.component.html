@@ -7,7 +7,8 @@
     
     <div fxLayout="column" fxLayoutAlign="space-between space-between" class="g-card card"
         [ngClass]="{
-            'card-favorito-2': this.abaSelecionada == 2
+            'card-favorito-2': this.abaSelecionada == 2,
+            'card-favorito-3': this.abaSelecionada == 3
         }">
         <div class="g-card-titulo card-titulo" fxLayout="row" fxLayoutAlign="start center">
             <div fxLayout="row" fxLayoutAlign="center center" class="card-titulo-aba card-titulo-aba-1" 
@@ -18,9 +19,14 @@
                 [ngClass]="{'card-selecionado': this.abaSelecionada == 2}"(click)="selecionarAba(2)">
                 <span class="perfil-text">Usuários professores</span>
             </div>
+            <div fxLayout="row" fxLayoutAlign="center center" class="card-titulo-aba card-titulo-aba-3" 
+                [ngClass]="{'card-selecionado': this.abaSelecionada == 3}"(click)="selecionarAba(3)">
+                <span class="perfil-text">Usuários administradores</span>
+            </div>
         </div>
         <app-administrador-tabela-aluno *ngIf="this.abaSelecionada == 1"></app-administrador-tabela-aluno>
         <app-administrador-tabela-professor *ngIf="this.abaSelecionada == 2"></app-administrador-tabela-professor>
+        <app-administrador-tabela-administrador *ngIf="this.abaSelecionada == 3"></app-administrador-tabela-administrador>
     </div>
 
     <div fxLayout="column" fxLayoutAlign="space-between space-between" class="g-card card"
@@ -34,11 +40,11 @@
                 <span class="perfil-text">Aulas no sistema</span>
             </div>
             <div fxLayout="row" fxLayoutAlign="center center" class="card-titulo-aba card-titulo-aba-sistema-2" 
-                [ngClass]="{'card-selecionado-sistema-2': this.abaSelecionadaSistema == 2}" (click)="selecionarAbaSistema(2)">
+                [ngClass]="{'card-selecionado-sistema': this.abaSelecionadaSistema == 2}" (click)="selecionarAbaSistema(2)">
                 <span class="perfil-text">Notícias no sistema</span>
             </div>
             <div fxLayout="row" fxLayoutAlign="center center" class="card-titulo-aba card-titulo-aba-sistema-3" 
-                [ngClass]="{'card-selecionado-sistema-3': this.abaSelecionadaSistema == 3}" (click)="selecionarAbaSistema(3)">
+                [ngClass]="{'card-selecionado-sistema': this.abaSelecionadaSistema == 3}" (click)="selecionarAbaSistema(3)">
                 <span class="perfil-text">Fórum tópicos</span>
             </div>
         </div>

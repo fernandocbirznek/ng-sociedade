@@ -2,6 +2,7 @@ import { createAction, props } from '@ngrx/store';
 
 import { 
   AdministradorHomeAulaInformacaoModel,
+  AdministradorHomeForumInformacaoModel,
   CriarContaPerfilModel, 
   DeletarConta, 
   Login,
@@ -302,5 +303,19 @@ export const selecionarAdministradorHomeAulaInformacaoSuccess = createAction(
 
 export const selecionarAdministradorHomeAulaInformacaoFailure = createAction(
   '[AdministradorHome] AdministradorHomeAulaInformacao Failure',
+  props<{ error: any }>()
+);
+
+export const selecionarAdministradorHomeForumInformacao = createAction(
+  '[AdministradorHome] AdministradorHomeForumInformacao'
+);
+
+export const selecionarAdministradorHomeForumInformacaoSuccess = createAction(
+  '[AdministradorHome] AdministradorHomeForumInformacao Success',
+  props<{ response: AdministradorHomeForumInformacaoModel }>()
+);
+
+export const selecionarAdministradorHomeForumInformacaoFailure = createAction(
+  '[AdministradorHome] AdministradorHomeForumInformacao Failure',
   props<{ error: any }>()
 );

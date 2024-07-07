@@ -93,7 +93,10 @@ import {
   AtualizarForumComponent,
   InserirForumTagComponent,
   AdministradorTabelaForumTagComponent,
-  AdministradorTabelaForumTopicoComponent
+  AdministradorTabelaForumTopicoComponent,
+  AdministradorTabelaAdministradorComponent,
+  InformacaoGeralAulaComponent,
+  InformacaoGeralForumComponent
 } from './componentes';
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -206,7 +209,10 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     AtualizarForumComponent,
     InserirForumTagComponent,
     AdministradorTabelaForumTagComponent,
-    AdministradorTabelaForumTopicoComponent
+    AdministradorTabelaForumTopicoComponent,
+    AdministradorTabelaAdministradorComponent,
+    InformacaoGeralAulaComponent,
+    InformacaoGeralForumComponent
   ],
   imports: [
     BrowserModule,

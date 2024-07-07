@@ -5,7 +5,9 @@ import { Observable } from "rxjs";
 
 import { 
     selecionarAdministradorHomeAulaInformacao,
+    selecionarAdministradorHomeForumInformacao,
     selecionarManyAula,
+    selecionarManyForumTopico,
     selecionarManyNoticia,
     selecionarManyUsuario,
 } from "src/app/store";
@@ -26,7 +28,9 @@ export class AdministradorResolver implements Resolve<boolean> {
             this.store.dispatch(selecionarManyAula());
             this.store.dispatch(selecionarManyNoticia());
             this.store.dispatch(selecionarManyUsuario());
+            this.store.dispatch(selecionarManyForumTopico());
             this.store.dispatch(selecionarAdministradorHomeAulaInformacao());
+            this.store.dispatch(selecionarAdministradorHomeForumInformacao());
             return true;
         }  
 

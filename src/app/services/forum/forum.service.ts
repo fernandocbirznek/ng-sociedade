@@ -4,6 +4,7 @@ import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
 
 import { 
+    AdministradorHomeForumInformacaoModel,
     ForumModel,
 } from "src/app/models";
 
@@ -16,6 +17,8 @@ export class ForumService {
     urlInserirForum = 'https://localhost:44361/api/Forum/inserir';
     urlAtualizarForum = 'https://localhost:44361/api/Forum/atualizar';
     urlExcluirForum = 'https://localhost:44361/api/Forum/excluir';
+
+    urlSelecionarAdministradorHomeAulaInformacao = 'https://localhost:44361/api/administrador-home/selecionar-forum-informacao';
 
     constructor(
         private httpClient: HttpClient,
@@ -36,6 +39,10 @@ export class ForumService {
 
     excluirForum(forumId: number): Observable<number> {
         return this.httpClient.delete<number>(this.urlExcluirForum + `/${forumId}`, this.buildHttpOptions());
+    }
+
+    selecionarAdministradorHomeForumInformacao(): Observable<AdministradorHomeForumInformacaoModel> {
+        return this.httpClient.get<AdministradorHomeForumInformacaoModel>(this.urlSelecionarAdministradorHomeAulaInformacao, this.buildHttpOptions());
     }
 
     private buildHttpOptions() {

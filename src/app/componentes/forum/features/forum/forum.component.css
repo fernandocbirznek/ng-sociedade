@@ -4,18 +4,6 @@
     margin-top: 20px;
 }
 
-.acessar {
-    border-radius: 20px;
-    background-color: rgb(175, 84, 187);
-    padding: 5px 15px;
-    cursor: pointer;
-}
-
-.acessar:hover {
-    background-color: rgba(175, 84, 187, 0.849);
-    box-shadow: 4px 4px 4px black;
-}
-
 .card {
     border-radius: 10px;
     border: 2px solid black;
@@ -34,4 +22,17 @@
     border: 2px solid black;
     border-radius: 10px;
     margin: 10px;
+}
+
+.acessar {
+    border-radius: 20px;
+    background-color: rgb(175, 84, 187);
+    padding: 5px 15px;
+    cursor: pointer;
+    color: white;
+}
+
+.acessar:hover {
+    background-color: rgba(175, 84, 187, 0.849);
+    box-shadow: 4px 4px 4px black;
 }

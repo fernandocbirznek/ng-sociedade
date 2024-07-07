@@ -2,6 +2,7 @@ export * from './administrador-alterar-usuario';
 export * from './administrador-area-fisica';
 export * from './administrador-home';
 export * from './administrador-modal-criar-usuario';
+export * from './administrador-tabela-administrador';
 export * from './administrador-tabela-aluno';
 export * from './administrador-tabela-area-interesse';
 export * from './administrador-tabela-aula';

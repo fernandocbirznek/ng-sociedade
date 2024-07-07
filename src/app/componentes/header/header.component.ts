@@ -124,8 +124,15 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  home() {
-    this.router.navigate(['']);
+  acessarTela(item: string) {
+    if (item == 'home') {
+      this.store.dispatch(alterarTituloPagina({ titulo: item, areaFisicaId: 0 }));
+      this.router.navigate(['']);
+    }
+    if (item == 'forum') {
+      this.store.dispatch(alterarTituloPagina({ titulo: item, areaFisicaId: 0 }));
+      this.router.navigate(['forum']);
+    }
   }
 
   mudaFoto (foto: string) {

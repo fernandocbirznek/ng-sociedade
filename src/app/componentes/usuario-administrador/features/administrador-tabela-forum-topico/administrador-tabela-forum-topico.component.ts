@@ -7,15 +7,14 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 
-import { 
-
-} from 'src/app/componentes';
+import { ModalExcluirComponent } from 'src/app/componentes';
 
 import { 
   ForumTopicoModel,
 } from 'src/app/models';
 
 import { 
+  excluirForumTopico,
   getManyForumTopico,
   selecionarManyForumTopico,
 } from 'src/app/store';
@@ -27,7 +26,7 @@ import {
 })
 export class AdministradorTabelaForumTopicoComponent implements OnInit {
 
-  displayedColumns: string[] = ['titulo', 'descricao', 'forumTopicoEnum', 'usuarioCadastro', 'data-postagem', 'acao'];
+  displayedColumns: string[] = ['titulo', 'forumTopicoEnum', 'usuarioCadastro', 'data-postagem', 'acao'];
   dataSource = new MatTableDataSource();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -57,7 +56,6 @@ export class AdministradorTabelaForumTopicoComponent implements OnInit {
   }
 
   setupForumTopico() {
-    this.store.dispatch(selecionarManyForumTopico());
     this.forumTopicoMany$ = this.store.select(getManyForumTopico);
     this.forumTopicoManySubscription$ = this.forumTopicoMany$.subscribe(itens => {
       this.dataSource.data = itens;
@@ -73,29 +71,18 @@ export class AdministradorTabelaForumTopicoComponent implements OnInit {
     }
   }
 
-  criarForumTopico() {
-    // this.dialog.open(InserirForumComponent, {
-    //   maxHeight: '800px',
-    //   width: '500px',
-    //   height: 'auto',
-    // });
-  }
-
-  editarForumTopico(item: ForumTopicoModel) {
-    // this.dialog.open(AtualizarForumComponent, {
-    //   data: item,
-    //   width: '600px'
-    // });
+  visualizarForumTopico(item: ForumTopicoModel) {
+    this.router.navigate([`visualizar-forum-topico/${item.id}`]);
   }
 
   excluirForumTopico(item: ForumTopicoModel) {
-    // this.dialog.open(ModalExcluirComponent, {
-    //   data: `Fórum: ${item.titulo}`
-    // }).afterClosed().subscribe((evento) => {
-    //   if(evento) {
-    //     this.store.dispatch(excluirForum({ forumId: item.id }));
-    //   }
-    // });
+    this.dialog.open(ModalExcluirComponent, {
+      data: `Fórum tópico: ${item.titulo}`
+    }).afterClosed().subscribe((evento) => {
+      if(evento) {
+        this.store.dispatch(excluirForumTopico({ forumTopicoId: item.id }));
+      }
+    });
   }
 
 }

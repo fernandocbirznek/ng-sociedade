@@ -3,6 +3,7 @@ import * as actions from '../actions/manipular-conta.actions';
 
 import { 
   AdministradorHomeAulaInformacaoModel,
+  AdministradorHomeForumInformacaoModel,
   AreaInteresseModel, 
   TipoUsuarioEnum, 
   UsuarioAulaCurtidoModel, 
@@ -22,6 +23,7 @@ export interface ManipularContaState {
   usuarioAulaFavoritada: UsuarioAulaFavoritadaModel[];
 
   usuarioAdministradorHomeAulaInformacao: AdministradorHomeAulaInformacaoModel | undefined;
+  usuarioAdministradorHomeForumInformacao: AdministradorHomeForumInformacaoModel | undefined;
 
   isSuccess: boolean;
   isLoading: boolean;
@@ -36,6 +38,7 @@ export const manipularContaInitialState: ManipularContaState = {
   usuarioAulaFavoritada: [],
 
   usuarioAdministradorHomeAulaInformacao: undefined,
+  usuarioAdministradorHomeForumInformacao: undefined,
 
   isSuccess: false,
   isLoading: false,
@@ -694,6 +697,35 @@ export const manipularContaReducer = createReducer(
       isSuccess: false, 
       isFailure: true, 
       mensagem: "Erro ao buscar informações sobre as aulas."
+    };
+  }),
+
+  on(actions.selecionarAdministradorHomeForumInformacao, state => {
+    return { 
+      ...state, 
+      isLoading: true, 
+      isSuccess: false, 
+      isFailure: false, 
+      error: "" 
+    };
+  }),
+  on(actions.selecionarAdministradorHomeForumInformacaoSuccess, (state, action) => {
+
+   return { 
+     ...state, 
+     usuarioAdministradorHomeForumInformacao: action.response,
+     isLoading: false, 
+     isSuccess: true, 
+     isFailure: false, 
+   };
+  }),
+  on(actions.selecionarAdministradorHomeForumInformacaoFailure, (state, action) => {
+    return { 
+      ...state, 
+      isLoading: false, 
+      isSuccess: false, 
+      isFailure: true, 
+      mensagem: "Erro ao buscar informações sobre o fórum."
     };
   }),
 );
