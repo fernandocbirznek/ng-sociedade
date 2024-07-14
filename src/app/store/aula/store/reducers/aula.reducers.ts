@@ -3,14 +3,14 @@ import * as actions from '../actions/aula.actions';
 
 import { 
   AulaFilterModel,
-  AulaModel 
+  AulaViewModel
 } from 'src/app/models';
 
 
 export const aulaFeatureKey = 'aula';
 
 export interface AulaState {
-  aulas: AulaModel[];
+  aulas: AulaViewModel[];
   aulaFilter: AulaFilterModel;
   aulaSelected: number;
 
@@ -107,7 +107,7 @@ export const aulaReducer = createReducer(
     };
   }),
   on(actions.selecionarAulaByProfessorIdSuccess, (state, action) => {
-   let aulas: AulaModel[] = action.response;
+   let aulas: AulaViewModel[] = action.response;
   
    return { 
      ...state, 
@@ -207,7 +207,7 @@ export const aulaReducer = createReducer(
     };
   }),
   on(actions.inserirAulaSuccess, (state, action) => {
-    let item: AulaModel = {...action.aula};
+    let item: AulaViewModel = {...action.aula};
     item.id = action.response.id;
     item.dataCadastro = action.response.dataCadastro;
 
@@ -243,7 +243,7 @@ export const aulaReducer = createReducer(
   on(actions.atualizarAulaSuccess, (state, action) => {
     let aulas = [...state.aulas].map(item => {
       if(item.id == action.aula.id) {
-        let aula = new AulaModel();
+        let aula = new AulaViewModel();
         aula.areaFisicaId = action.aula.areaFisicaId;
         aula.curtido = action.aula.curtido;
         aula.favoritado = action.aula.favoritado;
@@ -286,7 +286,7 @@ export const aulaReducer = createReducer(
   on(actions.atualizarAulaCurtirSuccess, (state, action) => {
     let aulas = [...state.aulas].map(item => {
       if(item.id == action.aula.id) {
-        let aula: AulaModel = {...item};
+        let aula: AulaViewModel = {...item};
         aula.curtido = action.aula.curtido;
         aula.dataAtualizacao = action.response.dataAtualizacao;
 
@@ -360,7 +360,7 @@ export const aulaReducer = createReducer(
   on(actions.atualizarAulaPosteriorSuccess, (state, action) => {
     let aulas = [...state.aulas].map(item => {
       if(item.id == action.response.id) {
-        let aula = new AulaModel();
+        let aula = new AulaViewModel();
         aula.areaFisicaId = item.areaFisicaId;
         aula.curtido = item.curtido;
         aula.favoritado = item.favoritado;
@@ -377,8 +377,10 @@ export const aulaReducer = createReducer(
         aula.comentario = item.comentario;
         aula.dataCadastro = item.dataCadastro;
         aula.dataAtualizacao = action.response.dataAtualizacao;
-        aula.professorNome = item.professorNome;
         aula.publicado = item.publicado;
+
+        aula.usuarioNome = item.usuarioNome;
+        aula.usuarioFoto = item.usuarioFoto;
 
         return aula;
       }
@@ -415,7 +417,7 @@ export const aulaReducer = createReducer(
   on(actions.atualizarAulaAnteriorSuccess, (state, action) => {
     let aulas = [...state.aulas].map(item => {
       if(item.id == action.response.id) {
-        let aula = new AulaModel();
+        let aula = new AulaViewModel();
         aula.areaFisicaId = item.areaFisicaId;
         aula.curtido = item.curtido;
         aula.favoritado = item.favoritado;
@@ -432,8 +434,10 @@ export const aulaReducer = createReducer(
         aula.comentario = item.comentario;
         aula.dataCadastro = item.dataCadastro;
         aula.dataAtualizacao = action.response.dataAtualizacao;
-        aula.professorNome = item.professorNome;
         aula.publicado = item.publicado;
+
+        aula.usuarioNome = item.usuarioNome;
+        aula.usuarioFoto = item.usuarioFoto;
 
         return aula;
       }
@@ -500,7 +504,7 @@ export const aulaReducer = createReducer(
   on(actions.atualizarAulaPublicadoSuccess, (state, action) => {
     let itens = [...state.aulas].map(item => {
         if(item.id == action.aula.id) {
-          let aula = new AulaModel();
+          let aula = new AulaViewModel();
           aula.areaFisicaId = item.areaFisicaId;
           aula.curtido = item.curtido;
           aula.favoritado = item.favoritado;
@@ -515,8 +519,10 @@ export const aulaReducer = createReducer(
           aula.comentario = item.comentario;
           aula.dataCadastro = item.dataCadastro;
           aula.dataAtualizacao = item.dataCadastro;
-          aula.professorNome = item.professorNome;
           aula.publicado = action.aula.publicado;
+
+          aula.usuarioNome = item.usuarioNome;
+        aula.usuarioFoto = item.usuarioFoto;
 
           return aula;
         }
@@ -562,7 +568,7 @@ export const aulaReducer = createReducer(
   on(actions.inserirManyAulaTagSuccess, (state, action) => {
     let itens = [...state.aulas].map(item => {
       if (item.id == action.response[0].id) {
-        let aula = new AulaModel();
+        let aula = new AulaViewModel();
         aula.areaFisicaId = item.areaFisicaId;
         aula.curtido = item.curtido;
         aula.favoritado = item.favoritado;
@@ -577,7 +583,9 @@ export const aulaReducer = createReducer(
         aula.comentario = item.comentario;
         aula.dataCadastro = item.dataCadastro;
         aula.dataAtualizacao = action.response[0].dataCadastro;
-        aula.professorNome = item.professorNome;
+        
+        aula.usuarioNome = item.usuarioNome;
+        aula.usuarioFoto = item.usuarioFoto;
 
         return aula;
       }
@@ -616,7 +624,7 @@ export const aulaReducer = createReducer(
       if (item.id == action.aulaId) {
         let aulaTagMany = [...item.aulaTagMany].filter(aulaTag => aulaTag.id != action.aulaTagId);
 
-        let aula = new AulaModel();
+        let aula = new AulaViewModel();
         aula.areaFisicaId = item.areaFisicaId;
         aula.curtido = item.curtido;
         aula.favoritado = item.favoritado;
@@ -631,7 +639,9 @@ export const aulaReducer = createReducer(
         aula.comentario = item.comentario;
         aula.dataCadastro = item.dataCadastro;
         aula.dataAtualizacao = item.dataCadastro;
-        aula.professorNome = item.professorNome;
+        
+        aula.usuarioNome = item.usuarioNome;
+        aula.usuarioFoto = item.usuarioFoto;
 
         return aula;
       }
@@ -660,7 +670,7 @@ export const aulaReducer = createReducer(
   on(actions.atualizarAdicaoAulaCurtido, (state, action) => {
     let itens = [...state.aulas].map(item => {
         if(item.id == action.aulaId) {
-          let aula = new AulaModel();
+          let aula = new AulaViewModel();
           aula.areaFisicaId = item.areaFisicaId;
           aula.curtido = item.curtido + 1;
           aula.favoritado = item.favoritado;
@@ -675,7 +685,9 @@ export const aulaReducer = createReducer(
           aula.comentario = item.comentario;
           aula.dataCadastro = item.dataCadastro;
           aula.dataAtualizacao = item.dataCadastro;
-          aula.professorNome = item.professorNome;
+          
+          aula.usuarioNome = item.usuarioNome;
+        aula.usuarioFoto = item.usuarioFoto;
 
           return aula;
         }
@@ -694,7 +706,7 @@ export const aulaReducer = createReducer(
   on(actions.atualizarRemocaoAulaCurtido, (state, action) => {
     let itens = [...state.aulas].map(item => {
         if(item.id == action.aulaId) {
-          let aula = new AulaModel();
+          let aula = new AulaViewModel();
           aula.areaFisicaId = item.areaFisicaId;
           aula.curtido = item.curtido -1;
           aula.favoritado = item.favoritado;
@@ -708,7 +720,9 @@ export const aulaReducer = createReducer(
           aula.aulaTagMany = item.aulaTagMany;
           aula.comentario = item.comentario;
           aula.dataAtualizacao = item.dataCadastro;
-          aula.professorNome = item.professorNome;
+          
+          aula.usuarioNome = item.usuarioNome;
+        aula.usuarioFoto = item.usuarioFoto;
 
           return aula;
         }
@@ -730,7 +744,7 @@ export const aulaReducer = createReducer(
   on(actions.atualizarAdicaoAulaFavoritada, (state, action) => {
     let itens = [...state.aulas].map(item => {
         if(item.id == action.aulaId) {
-          let aula = new AulaModel();
+          let aula = new AulaViewModel();
           aula.areaFisicaId = item.areaFisicaId;
           aula.curtido = item.curtido;
           aula.favoritado = item.favoritado + 1;
@@ -745,7 +759,9 @@ export const aulaReducer = createReducer(
           aula.comentario = item.comentario;
           aula.dataCadastro = item.dataCadastro;
           aula.dataAtualizacao = item.dataCadastro;
-          aula.professorNome = item.professorNome;
+          
+          aula.usuarioNome = item.usuarioNome;
+        aula.usuarioFoto = item.usuarioFoto;
 
           return aula;
         }
@@ -764,7 +780,7 @@ export const aulaReducer = createReducer(
   on(actions.atualizarRemocaoAulaFavoritada, (state, action) => {
     let itens = [...state.aulas].map(item => {
         if(item.id == action.aulaId) {
-          let aula = new AulaModel();
+          let aula = new AulaViewModel();
           aula.areaFisicaId = item.areaFisicaId;
           aula.curtido = item.curtido;
           aula.favoritado = item.favoritado - 1;
@@ -779,7 +795,9 @@ export const aulaReducer = createReducer(
           aula.comentario = item.comentario;
           aula.dataCadastro = item.dataCadastro;
           aula.dataAtualizacao = item.dataCadastro;
-          aula.professorNome = item.professorNome;
+          
+          aula.usuarioNome = item.usuarioNome;
+          aula.usuarioFoto = item.usuarioFoto;
 
           return aula;
         }

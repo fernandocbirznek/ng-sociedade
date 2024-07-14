@@ -8,6 +8,7 @@ import {
   ForumTagModel,
   ForumTopicoEnum,
   ForumTopicoModel,
+  ForumTopicoViewModel,
   UsuarioModel 
 } from 'src/app/models';
 
@@ -108,7 +109,7 @@ export class AtualizarForumTopicoComponent implements OnInit {
 
   requestCriarForumTopico() {
     if (this.usuarioLogado && this.usuarioLogado.id > 0)  {
-      let request: ForumTopicoModel = new ForumTopicoModel();
+      let request: ForumTopicoViewModel = new ForumTopicoViewModel();
       request.id = this.data.forumTopico.id;
       request.titulo = this.formGroupForumTopico.get("formTitulo")?.value;
       request.descricao = this.formGroupForumTopico.get("formConteudo")?.value;

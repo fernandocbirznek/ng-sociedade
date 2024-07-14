@@ -2,6 +2,7 @@ import { createAction, props } from '@ngrx/store';
 
 import { 
     ForumTopicoModel,
+    ForumTopicoViewModel,
 } from 'src/app/models';
 
 export const selecionarManyForumTopico = createAction(
@@ -10,7 +11,7 @@ export const selecionarManyForumTopico = createAction(
 
 export const selecionarManyForumTopicoSuccess = createAction(
   '[ForumTopico] selecionarManyForumTopico Success',
-  props<{ response: ForumTopicoModel[] }>()
+  props<{ response: ForumTopicoViewModel[] }>()
 );
 
 export const selecionarManyForumTopicoFailure = createAction(
@@ -25,7 +26,7 @@ export const selecionarManyForumTopicoByForumId = createAction(
 
 export const selecionarManyForumTopicoByForumIdSuccess = createAction(
   '[ForumTopico] selecionarManyForumTopicoByForumId Success',
-  props<{ response: ForumTopicoModel[] }>()
+  props<{ response: ForumTopicoViewModel[] }>()
 );
 
 export const selecionarManyForumTopicoByForumIdFailure = createAction(
@@ -35,12 +36,12 @@ export const selecionarManyForumTopicoByForumIdFailure = createAction(
 
 export const inserirForumTopico = createAction(
   '[ForumTopico] inserirForumTopico',
-  props<{ forumTopico: ForumTopicoModel }>()
+  props<{ forumTopico: ForumTopicoViewModel }>()
 );
 
 export const inserirForumTopicoSuccess = createAction(
   '[ForumTopico] inserirForumTopico Success',
-  props<{ response: ForumTopicoModel }>()
+  props<{ response: ForumTopicoViewModel }>()
 );
 
 export const inserirForumTopicoFailure = createAction(
@@ -50,12 +51,12 @@ export const inserirForumTopicoFailure = createAction(
 
 export const atualizarForumTopico = createAction(
   '[ForumTopico] atualizarForumTopico',
-  props<{ forumTopico: ForumTopicoModel }>()
+  props<{ forumTopico: ForumTopicoViewModel }>()
 );
 
 export const atualizarForumTopicoSuccess = createAction(
   '[ForumTopico] atualizarForumTopico Success',
-  props<{ forumTopico: ForumTopicoModel, response: ForumTopicoModel }>()
+  props<{ forumTopico: ForumTopicoViewModel, response: ForumTopicoViewModel }>()
 );
 
 export const atualizarForumTopicoFailure = createAction(

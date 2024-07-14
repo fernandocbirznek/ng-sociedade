@@ -3,6 +3,7 @@ import * as fromAulaComentario from '../reducers/aula-comentario.reducers';
 
 import { 
   AulaComentarioModel, 
+  AulaComentarioViewModel, 
   UsuarioModel
 } from 'src/app/models';
 
@@ -12,7 +13,10 @@ export const getAulaComentarioState = createFeatureSelector<fromAulaComentario.A
     fromAulaComentario.aulaComentarioFeatureKey
 );
 
-export const getAulaComentarioMany = createSelector(getAulaComentarioState, (state) => {
+export const getAulaComentarioMany = createSelector(
+  getAulaComentarioState, (
+    state
+  ): AulaComentarioViewModel[] => {
   return state.itens;
 })
 

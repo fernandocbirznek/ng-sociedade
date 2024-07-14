@@ -5,6 +5,7 @@ import { Observable } from "rxjs";
 
 import { 
     ForumTopicoModel,
+    ForumTopicoViewModel,
 } from "src/app/models";
 
 @Injectable({
@@ -23,27 +24,27 @@ export class ForumTopicoService {
         public store: Store
     ) {}
 
-    selecionarManyForumTopico(): Observable<ForumTopicoModel[]> {
-        return this.httpClient.get<ForumTopicoModel[]>(this.urlSelecionarManyForumTopico, this.buildHttpOptions());
+    selecionarManyForumTopico(): Observable<ForumTopicoViewModel[]> {
+        return this.httpClient.get<ForumTopicoViewModel[]>(this.urlSelecionarManyForumTopico, this.buildHttpOptions());
     }
 
-    selecionarManyForumTopicoByForumId(forumId: number): Observable<ForumTopicoModel[]> {
-        return this.httpClient.get<ForumTopicoModel[]>(
+    selecionarManyForumTopicoByForumId(forumId: number): Observable<ForumTopicoViewModel[]> {
+        return this.httpClient.get<ForumTopicoViewModel[]>(
             this.urlSelecionarManyForumTopicoByForumId + `/${forumId}`, 
             this.buildHttpOptions()
         );
     }
 
-    inserirForumTopico(forumTopico: ForumTopicoModel): Observable<ForumTopicoModel> {
-        return this.httpClient.post<ForumTopicoModel>(
+    inserirForumTopico(forumTopico: ForumTopicoViewModel): Observable<ForumTopicoViewModel> {
+        return this.httpClient.post<ForumTopicoViewModel>(
             this.urlInserirForumTopico, 
             JSON.stringify(forumTopico), 
             this.buildHttpOptions()
         );
     }
 
-    atualizarForumTopico(forumTopico: ForumTopicoModel): Observable<ForumTopicoModel> {
-        return this.httpClient.put<ForumTopicoModel>(
+    atualizarForumTopico(forumTopico: ForumTopicoViewModel): Observable<ForumTopicoViewModel> {
+        return this.httpClient.put<ForumTopicoViewModel>(
             this.urlAtualizarForumTopico, 
             JSON.stringify(forumTopico), 
             this.buildHttpOptions()

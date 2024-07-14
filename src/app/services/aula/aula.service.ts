@@ -7,6 +7,7 @@ import {
     AdministradorHomeAulaInformacaoModel,
     AulaModel,
     AulaTagModel,
+    AulaViewModel,
 } from "src/app/models";
 
 @Injectable({
@@ -36,52 +37,52 @@ export class AulaService {
         private httpClient: HttpClient,
         public store: Store
     ) {}
-    inserirAula(aula: AulaModel): Observable<AulaModel> {
-        return this.httpClient.post<AulaModel>(this.urlInserirAula, JSON.stringify(aula), this.buildHttpOptions());
+    inserirAula(aula: AulaViewModel): Observable<AulaViewModel> {
+        return this.httpClient.post<AulaViewModel>(this.urlInserirAula, JSON.stringify(aula), this.buildHttpOptions());
     }
 
-    atualizarAula(aula: AulaModel): Observable<AulaModel> {
-        return this.httpClient.put<AulaModel>(this.urlAtualizarAula, JSON.stringify(aula), this.buildHttpOptions());
+    atualizarAula(aula: AulaViewModel): Observable<AulaViewModel> {
+        return this.httpClient.put<AulaViewModel>(this.urlAtualizarAula, JSON.stringify(aula), this.buildHttpOptions());
     }
 
-    atualizarAulaCurtir(aula: AulaModel): Observable<AulaModel> {
-        return this.httpClient.put<AulaModel>(this.urlAtualizarAulaCurtir, JSON.stringify(aula), this.buildHttpOptions());
+    atualizarAulaCurtir(aula: AulaViewModel): Observable<AulaViewModel> {
+        return this.httpClient.put<AulaViewModel>(this.urlAtualizarAulaCurtir, JSON.stringify(aula), this.buildHttpOptions());
     }
 
-    atualizarAulaFavoritada(aula: AulaModel): Observable<AulaModel> {
-        return this.httpClient.put<AulaModel>(this.urlAtualizarAulaFavoritada, JSON.stringify(aula), this.buildHttpOptions());
+    atualizarAulaFavoritada(aula: AulaViewModel): Observable<AulaViewModel> {
+        return this.httpClient.put<AulaViewModel>(this.urlAtualizarAulaFavoritada, JSON.stringify(aula), this.buildHttpOptions());
     }
 
-    atualizarAulaPosterior(aula: AulaModel): Observable<AulaModel> {
-        return this.httpClient.put<AulaModel>(this.urlAtualizarAulaPosterior, JSON.stringify(aula), this.buildHttpOptions());
+    atualizarAulaPosterior(aula: AulaViewModel): Observable<AulaViewModel> {
+        return this.httpClient.put<AulaViewModel>(this.urlAtualizarAulaPosterior, JSON.stringify(aula), this.buildHttpOptions());
     }
 
-    atualizarAulaAnterior(aula: AulaModel): Observable<AulaModel> {
-        return this.httpClient.put<AulaModel>(this.urlAtualizarAulaAnterior, JSON.stringify(aula), this.buildHttpOptions());
+    atualizarAulaAnterior(aula: AulaViewModel): Observable<AulaViewModel> {
+        return this.httpClient.put<AulaViewModel>(this.urlAtualizarAulaAnterior, JSON.stringify(aula), this.buildHttpOptions());
     }
 
-    excluirAula(aulaId: number): Observable<AulaModel> {
-        return this.httpClient.delete<AulaModel>(this.urlExcluirAula + `/${aulaId}`, this.buildHttpOptions());
+    excluirAula(aulaId: number): Observable<AulaViewModel> {
+        return this.httpClient.delete<AulaViewModel>(this.urlExcluirAula + `/${aulaId}`, this.buildHttpOptions());
     }
 
-    atualizarAulaPublicado(aula: AulaModel): Observable<AulaModel> {
-        return this.httpClient.put<AulaModel>(this.urlAtualizarAulaPublicado, JSON.stringify(aula), this.buildHttpOptions());
+    atualizarAulaPublicado(aula: AulaViewModel): Observable<AulaViewModel> {
+        return this.httpClient.put<AulaViewModel>(this.urlAtualizarAulaPublicado, JSON.stringify(aula), this.buildHttpOptions());
     }
 
-    selecionarManyAulaByAreaFisicaId(aulaFisicaId: number): Observable<AulaModel[]> {
-        return this.httpClient.get<AulaModel[]>(this.urlSelecionarManyAulaAreaFisica + `/${aulaFisicaId}`, this.buildHttpOptions());
+    selecionarManyAulaByAreaFisicaId(aulaFisicaId: number): Observable<AulaViewModel[]> {
+        return this.httpClient.get<AulaViewModel[]>(this.urlSelecionarManyAulaAreaFisica + `/${aulaFisicaId}`, this.buildHttpOptions());
     }
 
-    selecionarOneAulaById(aulaId: number): Observable<AulaModel> {
-        return this.httpClient.get<AulaModel>(this.urlSelecionarAulaById + `/${aulaId}`, this.buildHttpOptions());
+    selecionarOneAulaById(aulaId: number): Observable<AulaViewModel> {
+        return this.httpClient.get<AulaViewModel>(this.urlSelecionarAulaById + `/${aulaId}`, this.buildHttpOptions());
     }
 
-    selecionarManyAulaByProfessorId(professorId: number): Observable<AulaModel[]> {
-        return this.httpClient.get<AulaModel[]>(this.urlSelecionarAulaByProfessorId + `/${professorId}`, this.buildHttpOptions());
+    selecionarManyAulaByProfessorId(professorId: number): Observable<AulaViewModel[]> {
+        return this.httpClient.get<AulaViewModel[]>(this.urlSelecionarAulaByProfessorId + `/${professorId}`, this.buildHttpOptions());
     }
 
-    selecionarManyAula(): Observable<AulaModel[]> {
-        return this.httpClient.get<AulaModel[]>(this.urlSelecionarManyAula, this.buildHttpOptions());
+    selecionarManyAula(): Observable<AulaViewModel[]> {
+        return this.httpClient.get<AulaViewModel[]>(this.urlSelecionarManyAula, this.buildHttpOptions());
     }
 
 

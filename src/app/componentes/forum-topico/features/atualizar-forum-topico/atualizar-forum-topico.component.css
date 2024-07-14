@@ -14,6 +14,12 @@
 
 .container-topico-tags {
     gap: 20px;
+    margin-bottom: 20px;
+}
+
+.container-topico,
+.container-tags {
+    gap: 20px;
 }
 
 ::ng-deep .ckeditor-editar-forum-topico .ck-content {

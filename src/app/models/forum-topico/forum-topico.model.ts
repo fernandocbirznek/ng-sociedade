@@ -12,4 +12,7 @@ export class ForumTopicoModel {
     forumId: number = 0;
 	forumTagMany: ForumTagModel[] = [];
 	forumTopicoEnum: ForumTopicoEnum = ForumTopicoEnum.Geral;
+
+	//TODO, colocar numa view
+	resposta: number = 0;
 }

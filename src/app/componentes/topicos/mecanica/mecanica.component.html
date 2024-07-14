@@ -1,13 +1,13 @@
 <div *ngIf="this.areaFisica; else loading" fxLayout="column" fxLayoutAlign="center center" class="container">
     <div fxLayout="row" fxLayoutAlign="space-around start" class="container-descricao">
-        <div fxFlex="50%" fxLayoutAlign="start start" class="g-card">
-            <div class="g-card-titulo">Descrição</div>
+        <div fxFlex="50%" fxLayoutAlign="start start" class="g-card-postit-yellow">
+            <div class="g-card-postit-titulo-yellow">Descrição</div>
             <div class="paragrafo">
                 {{ this.areaFisica.descricao }}
             </div>
         </div>
-        <div fxFlex="50%" fxLayoutAlign="start start" class="g-card"> 
-            <div class="g-card-titulo">Aplicações</div>
+        <div fxFlex="50%" fxLayoutAlign="start start" class="g-card-postit-yellow"> 
+            <div class="g-card-postit-titulo-yellow">Aplicações</div>
             <div class="paragrafo">
                 {{ this.areaFisica.aplicacao }}
             </div>
@@ -16,8 +16,8 @@
     <div class="titulo">Divisões da Mecânica</div>
     <div fxLayout="row wrap" fxLayoutAlign="space-between start" class="container-descricao">
         <div *ngFor="let areaFisicaDivisao of this.areaFisicaDivisaoMany" fxFlex="500px" fxLayout="column" fxLayoutAlign="start center" 
-            class="g-card card-divisao">
-                <div class="g-card-titulo card-divisao">{{ areaFisicaDivisao.titulo }}</div>
+            class="g-card-postit-yellow card-divisao">
+                <div class="g-card-postit-titulo-yellow card-divisao">{{ areaFisicaDivisao.titulo }}</div>
                 <div class="paragrafo">
                     {{ areaFisicaDivisao.descricao }}
                 </div>
@@ -34,8 +34,8 @@
         <div fxFlex="100%" fxLayout="column" fxLayoutAlign="space-between center" class="container-aula-many">
             <div fxFlex="100%" fxLayout="row wrap" fxLayoutAlign="start start" class="g-full-width">
                 <div *ngFor="let aula of this.pageAulaMany">
-                    <div fxLayout="column" fxLayoutAlign="space-between space-between" class="g-card card-aula">
-                        <div class="g-card-titulo card-titulo">{{ aula.titulo }}</div>
+                    <div fxLayout="column" fxLayoutAlign="space-between space-between" class="g-card-postit-yellow card-aula">
+                        <div class="g-card-postit-titulo-yellow card-titulo">{{ aula.titulo }}</div>
                         <div fxLayout="column" fxLayoutAlign="space-between start" class="g-card-icone-many card-icone-many">
                             <div fxLayout="row" fxLayoutAlign="start center" class="g-full-width">
                                 <mat-icon fxFlex="25px" class="icone material-symbols-outlined" [ngClass]="{'icone-ativo': aula.usuarioLogadoCurtiu}">
@@ -60,29 +60,34 @@
                         <div fxFlex="100%" fxLayout="row" fxLayoutAlign="space-between start" class="card-aula-descricao">
                             <div fxFlex="100px" fxLayout="column" fxLayoutAlign="space-between center" class="aula-autor">
                                 <div>Professor</div>
-                                <div>{{ aula.professorNome }}</div>
-                                <div>FOTO</div>
+                                <div class="usuario-nome">{{ aula.usuarioNome }}</div>
+                                <div *ngIf="aula.usuarioFoto" fxLayout="column" fxLayoutAlign="space-between center">
+                                    <img fxFlex="100px" [src]="'data:image/png;base64,' + aula.usuarioFoto" alt="Imagem" class="imagem">
+                                </div>
+                                <div *ngIf="!aula.usuarioFoto">
+                                    Sem foto
+                                </div>
                             </div>
-                            <div fxFlex="100%" fxLayout="column" fxLayoutAlign="space-around start" class="descricao">
-                                <div fxLayout="column" fxLayoutAlign="space-between start" class="g-full-width">
+                            <div fxFlex="100%" fxLayout="column" class="descricao">
+                                <div fxFlex="120px" fxLayout="column" fxLayoutAlign="space-between start" class="g-full-width">
                                     <div class="sessao">Sessões</div>
-                                    <div fxLayout="row wrap" fxLayoutAlign="start center" class="g-full-width">
+                                    <div fxLayout="column" fxLayoutAlign="start start" class="g-full-width g-full-height">
                                         <div *ngFor="let sessao of aula.aulaSessaoMany" fxLayout="row" fxLayoutAlign="start center"
                                             class="sessao-text">
                                             <mat-icon class="material-symbols-outlined">arrow_right_alt</mat-icon>
-                                            <div>{{ sessao.titulo }}</div>
+                                            <div class="g-text-overflow-1">{{ sessao.titulo }}</div>
                                         </div>
                                     </div>
                                 </div>
+                                <div fxFlex="100%" fxLayout="row" fxLayoutAlign="space-around center">
+                                    <div fxLayout="row" fxLayoutAlign="center center" class="card-aula-acessar" 
+                                        (click)="visualizarAula(aula)">
+                                        <div>Acessar aula</div>
+                                        <mat-icon class="material-symbols-outlined">menu_book</mat-icon>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div fxLayout="row" fxLayoutAlign="space-around center">
-                            <div fxLayout="row" fxLayoutAlign="center center" class="card-aula-acessar" 
-                                (click)="visualizarAula(aula)">
-                                <div>Acessar aula</div>
-                                <mat-icon class="material-symbols-outlined">menu_book</mat-icon>
-                            </div>
-                        </div>
+                        </div>                      
                     </div>
                 </div>
             </div>

@@ -98,10 +98,16 @@
 .aula-autor {
     font-style: italic;
     cursor: pointer;
+    text-align: center;
 }
 
 .aula-autor:hover {
     font-weight: bold;
+}
+
+.imagem-foto {
+    border: 2px solid black;
+    border-radius: 10px;
 }
 
 .aula-data-cadastro {
@@ -281,7 +287,6 @@
 
 .usuario-perfil {
     height: 100%;
-    padding-top: 20px;
     position: relative;
 }
 

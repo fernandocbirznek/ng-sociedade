@@ -86,7 +86,7 @@ export class EditarAulaPosteriorAnteriorComponent implements OnInit {
 
   alterarAulaAnterior() {
     if (this.aulaAnteriorSelectFormControl.value || this.aulaAnteriorSelectFormControl.value == 0) {
-      let request: AulaModel = new AulaModel();
+      let request: AulaViewModel = new AulaViewModel();
       request.id = this.aula.id;
       request.aulaAnteriorId = this.aulaAnteriorSelectFormControl.value;
 
@@ -102,7 +102,7 @@ export class EditarAulaPosteriorAnteriorComponent implements OnInit {
 
   alterarAulaPosterior() {
     if (this.aulaPosteriorSelectFormControl.value || this.aulaPosteriorSelectFormControl.value == 0) {
-      let request: AulaModel = new AulaModel();
+      let request: AulaViewModel = new AulaViewModel();
       request.id = this.aula.id;
       request.aulaPosteriorId = this.aulaPosteriorSelectFormControl.value;
 

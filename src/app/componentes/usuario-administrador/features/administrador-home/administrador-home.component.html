@@ -5,12 +5,12 @@
         <app-administrador-informacao></app-administrador-informacao>
     </div>
     
-    <div fxLayout="column" fxLayoutAlign="space-between space-between" class="g-card card"
+    <div fxLayout="column" fxLayoutAlign="space-between space-between" class="g-card-postit-yellow card"
         [ngClass]="{
             'card-favorito-2': this.abaSelecionada == 2,
             'card-favorito-3': this.abaSelecionada == 3
         }">
-        <div class="g-card-titulo card-titulo" fxLayout="row" fxLayoutAlign="start center">
+        <div class="g-card-postit-titulo-yellow card-titulo" fxLayout="row" fxLayoutAlign="start center">
             <div fxLayout="row" fxLayoutAlign="center center" class="card-titulo-aba card-titulo-aba-1" 
                 [ngClass]="{'card-selecionado': this.abaSelecionada == 1}" (click)="selecionarAba(1)">
                 <span class="perfil-text">Usuários alunos</span>
@@ -29,12 +29,12 @@
         <app-administrador-tabela-administrador *ngIf="this.abaSelecionada == 3"></app-administrador-tabela-administrador>
     </div>
 
-    <div fxLayout="column" fxLayoutAlign="space-between space-between" class="g-card card"
+    <div fxLayout="column" fxLayoutAlign="space-between space-between" class="g-card-postit-yellow card"
         [ngClass]="{
             'card-sistema-2': this.abaSelecionadaSistema == 2,
             'card-sistema-3': this.abaSelecionadaSistema == 3
         }">
-        <div class="g-card-titulo card-titulo" fxLayout="row" fxLayoutAlign="start center">
+        <div class="g-card-postit-titulo-yellow card-titulo" fxLayout="row" fxLayoutAlign="start center">
             <div fxLayout="row" fxLayoutAlign="center center" class="card-titulo-aba card-titulo-aba-1" 
                 [ngClass]="{'card-selecionado-sistema': this.abaSelecionadaSistema == 1}" (click)="selecionarAbaSistema(1)">
                 <span class="perfil-text">Aulas no sistema</span>
@@ -53,14 +53,14 @@
         <app-administrador-tabela-forum-topico *ngIf="this.abaSelecionadaSistema == 3"></app-administrador-tabela-forum-topico>
     </div>
 
-    <div fxLayout="column" fxLayoutAlign="space-between space-between" class="g-card card"
+    <div fxLayout="column" fxLayoutAlign="space-between space-between" class="g-card-postit-yellow card"
         [ngClass]="{
             'card-favorito-basico-2': this.abaSelecionadaBasico == 2,
             'card-favorito-basico-3': this.abaSelecionadaBasico == 3,
             'card-favorito-basico-4': this.abaSelecionadaBasico == 4,
             'card-favorito-basico-5': this.abaSelecionadaBasico == 5
         }">
-        <div class="g-card-titulo card-titulo" fxLayout="row" fxLayoutAlign="start center">
+        <div class="g-card-postit-titulo-yellow card-titulo" fxLayout="row" fxLayoutAlign="start center">
             <div fxLayout="row" fxLayoutAlign="center center" class="card-titulo-aba card-titulo-aba-basico-1" 
                 [ngClass]="{'card-selecionado': this.abaSelecionadaBasico == 1}" (click)="selecionarAbaBasico(1)">
                 <span class="perfil-text">Áreas da Física</span>

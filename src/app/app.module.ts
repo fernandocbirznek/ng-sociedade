@@ -96,7 +96,9 @@ import {
   AdministradorTabelaForumTopicoComponent,
   AdministradorTabelaAdministradorComponent,
   InformacaoGeralAulaComponent,
-  InformacaoGeralForumComponent
+  InformacaoGeralForumComponent,
+  VisualizarForumTopicoReplicaComponent,
+  VisualizarForumTopicoRespostaComponent
 } from './componentes';
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -212,7 +214,9 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     AdministradorTabelaForumTopicoComponent,
     AdministradorTabelaAdministradorComponent,
     InformacaoGeralAulaComponent,
-    InformacaoGeralForumComponent
+    InformacaoGeralForumComponent,
+    VisualizarForumTopicoReplicaComponent,
+    VisualizarForumTopicoRespostaComponent
   ],
   imports: [
     BrowserModule,

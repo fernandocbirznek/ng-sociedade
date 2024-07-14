@@ -96,18 +96,9 @@ export const forumTopicoReplicaReducer = createReducer(
   }),
   on(actions.atualizarForumTopicoReplicaSuccess, (state, action) => {
     let itens = [...state.itens].map(item => {
-        if (item.id == action.forumTopicoReplica.id) {
-            let forumTopicoReplica: ForumTopicoReplicaModel = new ForumTopicoReplicaModel();
-            forumTopicoReplica.dataCadastro = action.forumTopicoReplica.dataCadastro;
-            forumTopicoReplica.descricao = action.forumTopicoReplica.descricao;
-            forumTopicoReplica.forumTopicoId = action.forumTopicoReplica.forumTopicoId;
-            forumTopicoReplica.forumTopicoRespostaId = action.forumTopicoReplica.forumTopicoRespostaId;
-            forumTopicoReplica.id = action.forumTopicoReplica.id;
-            forumTopicoReplica.usuarioId = action.forumTopicoReplica.usuarioId;
-            forumTopicoReplica.dataAtualizacao = action.response.dataAtualizacao;
+        if (item.id == action.response.id)
+          return action.response;
 
-            return forumTopicoReplica;
-        }
         return item;
     })
 

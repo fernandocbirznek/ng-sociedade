@@ -5,6 +5,16 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+:root {
+    --yellow-postit: #FFFBCC;
+    --green-postit: #CCFFCC;
+    --blue-postit: #CCFFFF;
+    --pink-postit: #FFCCE5;
+    --lilac-postit: #E5CCFF;
+    --orange-postit: #FFE5CC;
+}
+
+
 .css-toast {
     margin: 0 !important;
     position: absolute;
@@ -20,12 +30,21 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     height: 100%;
 }
 
-.g-text-overflow-2 {
+@mixin g-text-overflow {
     display: -webkit-box;
-    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.g-text-overflow-1 {
+    @include g-text-overflow;
+    -webkit-line-clamp: 1;
+}
+
+.g-text-overflow-2 {
+    @include g-text-overflow;
+    -webkit-line-clamp: 2;
 }
 
 .g-tag {
@@ -71,18 +90,46 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     gap: 60px;
 }
 
-.g-card {
+@mixin g-card-postit {
     border: 2px solid #737b86;
-    background-color: #fff4ad;
     border-radius: 20px;
     position: relative;
 }
 
-.g-card-titulo {
+.g-card-postit-yellow {
+    @include g-card-postit;
+    background-color: var(--yellow-postit);
+}
+
+.g-card-postit-green {
+    @include g-card-postit;
+    background-color: var(--green-postit);
+}
+
+.g-card-postit-blue {
+    @include g-card-postit;
+    background-color: var(--blue-postit);
+}
+
+.g-card-postit-pink {
+    @include g-card-postit;
+    background-color: var(--pink-postit);
+}
+
+.g-card-postit-lilac {
+    @include g-card-postit;
+    background-color: var(--lilac-postit);
+}
+
+.g-card-postit-orange {
+    @include g-card-postit;
+    background-color: var(--orange-postit);
+}
+
+@mixin g-card-postit-titulo {
     position: absolute;
     top: -57px;
     left: 40px;
-    background-color: #fff4ad;
     border-top: 2px solid #737b86;
     border-left: 2px solid #737b86;
     border-right: 2px solid #737b86;
@@ -92,6 +139,36 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     padding: 8px 20px;
     font-size: 22px;
     font-weight: 700;
+}
+
+.g-card-postit-titulo-yellow {
+    @include g-card-postit-titulo;
+    background-color: var(--yellow-postit);
+}
+
+.g-card-postit-titulo-green {
+    @include g-card-postit-titulo;
+    background-color: var(--green-postit);
+}
+
+.g-card-postit-titulo-blue {
+    @include g-card-postit-titulo;
+    background-color: var(--blue-postit);
+}
+
+.g-card-postit-titulo-pink {
+    @include g-card-postit-titulo;
+    background-color: var(--pink-postit);
+}
+
+.g-card-postit-titulo-lilac {
+    @include g-card-postit-titulo;
+    background-color: var(--lilac-postit);
+}
+
+.g-card-postit-titulo-orange {
+    @include g-card-postit-titulo;
+    background-color: var(--orange-postit);
 }
 
 .g-card-icone-many {

@@ -11,12 +11,12 @@ import { ModalExcluirComponent } from 'src/app/componentes';
 
 import { 
   ForumTopicoModel,
+  ForumTopicoViewModel,
 } from 'src/app/models';
 
 import { 
   excluirForumTopico,
   getManyForumTopico,
-  selecionarManyForumTopico,
 } from 'src/app/store';
 
 @Component({
@@ -33,8 +33,8 @@ export class AdministradorTabelaForumTopicoComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   forumTopicoManySubscription$: Subscription = new Subscription();
-  forumTopicoMany$: Observable<ForumTopicoModel[]> = new Observable<ForumTopicoModel[]>();
-  forumTopicoMany: ForumTopicoModel[] = [];
+  forumTopicoMany$: Observable<ForumTopicoViewModel[]> = new Observable<ForumTopicoViewModel[]>();
+  forumTopicoMany: ForumTopicoViewModel[] = [];
 
   constructor(
     public router: Router,
@@ -72,7 +72,7 @@ export class AdministradorTabelaForumTopicoComponent implements OnInit {
   }
 
   visualizarForumTopico(item: ForumTopicoModel) {
-    this.router.navigate([`visualizar-forum-topico/${item.id}`]);
+    this.router.navigate([`forum/${item.forumId}/forum-topico/${item.id}`]);
   }
 
   excluirForumTopico(item: ForumTopicoModel) {

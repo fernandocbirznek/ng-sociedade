@@ -5,6 +5,7 @@ import {
   AreaFisicaModel,
   ArquivoPdfModel,
   AulaComentarioModel,
+  AulaComentarioViewModel,
   AulaFilterModel,
   AulaSessaoModel, 
   AulaViewModel, 
@@ -82,10 +83,12 @@ export const getManyAula = createSelector(
         aulaViewModel.comentario = item.comentario;
         aulaViewModel.dataCadastro = item.dataCadastro;
         aulaViewModel.dataAtualizacao = item.dataAtualizacao;
-        aulaViewModel.professorNome = item.professorNome;
         aulaViewModel.publicado = item.publicado;
         aulaViewModel.aulaAnteriorId = item.aulaAnteriorId;
         aulaViewModel.aulaPosteriorId = item.aulaPosteriorId;
+
+        aulaViewModel.usuarioNome = item.usuarioNome;
+        aulaViewModel.usuarioFoto = item.usuarioFoto;
 
         if (areaFisica)
           aulaViewModel.areaFisicaTitulo = areaFisica.titulo;
@@ -122,7 +125,7 @@ export const getManyAulaByFilter = createSelector(
     let itens = aulaMany;
 
     if (aulaFilter && aulaFilter.nomeProfessor)
-      itens = itens.filter(item => item.professorNome.toLocaleLowerCase().includes(aulaFilter.nomeProfessor!.toLocaleLowerCase()));
+      itens = itens.filter(item => item.usuarioNome.toLocaleLowerCase().includes(aulaFilter.nomeProfessor!.toLocaleLowerCase()));
 
     if (aulaFilter && aulaFilter.aulaTitulo)
       itens = itens.filter(item => item.titulo.toLocaleLowerCase().includes(aulaFilter.aulaTitulo!.toLocaleLowerCase()));
@@ -208,13 +211,15 @@ export const getOneAulaById = createSelector(
       item.favoritado = aula.favoritado;
       item.id = aula.id;
       item.professorId = aula.professorId;
-      item.professorNome = aula.professorNome;
       item.resumo = aula.resumo;
       item.titulo = aula.titulo;
       item.publicado = aula.publicado;
       item.areaFisicaTitulo = areaFisica.titulo;
       item.aulaAnteriorId = aula.aulaAnteriorId;
       item.aulaPosteriorId = aula.aulaPosteriorId;
+
+      item.usuarioNome = aula.usuarioNome;
+      item.usuarioFoto = aula.usuarioFoto;
     }
 
     if (aula && arquivoPdfMany.length > 0) {
@@ -296,8 +301,8 @@ export const getManyAulaComentarioByAulaSelected = createSelector(
   getOneAulaSelected,
   aulaComentarioFeature.getAulaComentarioMany, (
     aulaSelected: number,
-    aulaComentarioMany: AulaComentarioModel[],
-  ): AulaComentarioModel[] => {
+    aulaComentarioMany: AulaComentarioViewModel[],
+  ): AulaComentarioViewModel[] => {
 
     return aulaComentarioMany
       .filter(item => item.aulaId == aulaSelected);

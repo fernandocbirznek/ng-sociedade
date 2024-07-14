@@ -45,7 +45,7 @@ export class ForumComponent implements OnInit {
   }
 
   acessarForum(item: number) {
-    this.router.navigate([`forum-topico/${item}`]);
+    this.router.navigate([`forum/${item}/forum-topico`]);
   }
 
 }

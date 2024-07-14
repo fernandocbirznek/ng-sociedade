@@ -13,10 +13,11 @@ import {
 } from 'src/app/componentes';
 
 import { 
-  AreaFisicaModel,
   AulaComentarioModel,
+  AulaComentarioViewModel,
   AulaModel,
   AulaSessaoModel,
+  AulaViewModel,
   LinkYoutubeModel,
   TipoSessaoAulaEnum,
   UsuarioAulaCurtidoModel,
@@ -36,7 +37,6 @@ import {
   getIsUsuarioLogadoAulaComentario, 
   getManyAulaComentarioByAulaSelected, 
   getManySessaoIdInUsuarioAulaSessaoFavoritado, 
-  getOneAreaFisicaByAreaFisicaId, 
   getOneAulaById, 
   getOneUsuarioLogado, 
   getWidgetMany, 
@@ -66,13 +66,13 @@ import { AulaHelpers } from '../../helpers/aula-helpers';
 })
 export class VisualizarAulaComponent implements OnInit { 
   aulaSubscription$: Subscription = new Subscription();
-  aula$: Observable<AulaModel | undefined> = new Observable<AulaModel | undefined>();
-  aula: AulaModel = new AulaModel();
+  aula$: Observable<AulaViewModel | undefined> = new Observable<AulaViewModel | undefined>();
+  aula: AulaViewModel = new AulaViewModel();
   aulaId: number = 0;
 
   aulaComentarioManySubscription$: Subscription = new Subscription();
-  aulaComentarioMany$: Observable<AulaComentarioModel[]> = new Observable<AulaComentarioModel[]>();
-  aulaComentarioMany: AulaComentarioModel[] = [];
+  aulaComentarioMany$: Observable<AulaComentarioViewModel[]> = new Observable<AulaComentarioViewModel[]>();
+  aulaComentarioMany: AulaComentarioViewModel[] = [];
 
   isUsuarioAulaComentadoSubscription$: Subscription = new Subscription();
   isUsuarioAulaComentado$: Observable<boolean> = new Observable<boolean>();
@@ -275,7 +275,7 @@ export class VisualizarAulaComponent implements OnInit {
       width: '80%',
       height: 'auto',
       autoFocus: false
-    }).afterClosed().subscribe((aula: AulaModel) => {
+    }).afterClosed().subscribe((aula: AulaViewModel) => {
       if(aula) {
         this.router.navigate([`visualizar-aula/${aula.id}`]);
         this.setupAulaSessao(aula);
@@ -305,7 +305,7 @@ export class VisualizarAulaComponent implements OnInit {
     this.router.navigate([`mecanica/${this.aula.areaFisicaId}`]);
   }
 
-  setupAulaSessao(item: AulaModel) {
+  setupAulaSessao(item: AulaViewModel) {
     this.aula = item;
     this.trustedVisualizarAulaHtml = [];
     this.trustedUrlImageHtml = [];

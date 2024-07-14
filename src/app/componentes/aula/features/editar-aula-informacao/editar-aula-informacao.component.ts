@@ -6,7 +6,8 @@ import { Observable, Subscription } from 'rxjs';
 
 import { 
   AreaFisicaModel,
-  AulaModel 
+  AulaModel, 
+  AulaViewModel
 } from 'src/app/models';
 
 import { 
@@ -68,7 +69,7 @@ export class EditarAulaInformacaoComponent implements OnInit {
   }
 
   atualizarAulaInformacao() {
-    let aula: AulaModel = new AulaModel();
+    let aula: AulaViewModel = new AulaViewModel();
     aula.titulo = this.formGroupAula.get("formTitulo")?.value;
     aula.resumo = this.formGroupAula.get("formResumo")?.value;
     aula.areaFisicaId = this.formGroupAula.get("formAreaFisica")?.value;

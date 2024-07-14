@@ -2,14 +2,15 @@ import { Action, createReducer, on } from '@ngrx/store';
 import * as actions from '../actions/aula-comentario.actions';
 
 import { 
-  AulaComentarioModel 
+  AulaComentarioModel, 
+  AulaComentarioViewModel
 } from 'src/app/models';
 
 
 export const aulaComentarioFeatureKey = 'aula-comentario';
 
 export interface AulaComentarioState {
-  itens: AulaComentarioModel[];
+  itens: AulaComentarioViewModel[];
   isSuccess: boolean;
   isLoading: boolean;
   isFailure: boolean;
@@ -72,7 +73,7 @@ export const aulaComentarioReducer = createReducer(
     };
   }),
   on(actions.inserirAulaComentarioSuccess, (state, action) => {
-    let item: AulaComentarioModel = new AulaComentarioModel();
+    let item: AulaComentarioViewModel = new AulaComentarioViewModel();
     item.dataCadastro = action.response.dataCadastro;
     item.aulaId = action.aulaComentario.aulaId;
     item.descricao = action.aulaComentario.descricao;
@@ -111,13 +112,16 @@ export const aulaComentarioReducer = createReducer(
   on(actions.atualizarAulaComentarioSuccess, (state, action) => {
     let itens = [...state.itens].map(item => {
       if(item.id == action.aulaComentario.id) {
-        let aulaComentario: AulaComentarioModel = new AulaComentarioModel();
+        let aulaComentario: AulaComentarioViewModel = new AulaComentarioViewModel();
         aulaComentario.dataCadastro = item.dataCadastro;
         aulaComentario.dataAtualizacao = action.response.dataAtualizacao;
         aulaComentario.aulaId = action.aulaComentario.aulaId;
         aulaComentario.descricao = action.aulaComentario.descricao;
         aulaComentario.id = item.id;
         aulaComentario.usuarioId = action.aulaComentario.usuarioId;
+
+        aulaComentario.usuarioNome = item.usuarioNome;
+        aulaComentario.usuarioFoto = item.usuarioFoto;
 
         return aulaComentario;
       }

@@ -15,7 +15,8 @@ import {
 
 import { 
   AreaFisicaModel,
-  AulaModel 
+  AulaModel, 
+  AulaViewModel
 } from 'src/app/models';
 
 import { 
@@ -115,10 +116,10 @@ export class ProfessorTabelaAulaComponent implements OnInit, AfterViewInit {
   }
 
   publicar(item: AulaModel, check: MatSlideToggleChange ) {
-    let request: AulaModel = new AulaModel();
+    let request: AulaViewModel = new AulaViewModel();
     request.id = item.id;
     request.publicado = check.checked;
 
-    this.store.dispatch(atualizarAulaPublicado({ aula: request }))
+    this.store.dispatch(atualizarAulaPublicado({ aula: request }));
   }
 }

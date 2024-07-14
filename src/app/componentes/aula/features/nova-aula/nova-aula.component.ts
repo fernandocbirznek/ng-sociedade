@@ -7,6 +7,7 @@ import { Observable, Subscription } from 'rxjs';
 import { 
   AreaFisicaModel,
   AulaModel, 
+  AulaViewModel, 
   UsuarioModel 
 } from 'src/app/models';
 
@@ -81,7 +82,7 @@ export class NovaAulaComponent implements OnInit {
   }
 
   requestCriarAula() {
-    let request: AulaModel = new AulaModel();
+    let request: AulaViewModel = new AulaViewModel();
     request.titulo = this.formGroupAula.get("formTitulo")?.value;
     request.resumo = this.formGroupAula.get("formResumo")?.value;
     request.areaFisicaId = this.formGroupAula.get("formAreaFisica")?.value;

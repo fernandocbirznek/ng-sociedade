@@ -3,13 +3,14 @@ import * as actions from '../actions/forum-topico.actions';
 
 import { 
     ForumTopicoModel,
+    ForumTopicoViewModel,
 } from 'src/app/models';
 
 
 export const forumTopicoFeatureKey = 'forum-topico';
 
 export interface ForumTopicoState {
-    itens: ForumTopicoModel[];
+    itens: ForumTopicoViewModel[];
     isSuccess: boolean;
     isLoading: boolean;
     isFailure: boolean;
@@ -125,19 +126,9 @@ export const forumTopicoReducer = createReducer(
   }),
   on(actions.atualizarForumTopicoSuccess, (state, action) => {
     let itens = [...state.itens].map(item => {
-        if (item.id == action.forumTopico.id) {
-            let forumTopico: ForumTopicoModel = new ForumTopicoModel();
-            forumTopico.dataCadastro = action.forumTopico.dataCadastro;
-            forumTopico.descricao = action.forumTopico.descricao;
-            forumTopico.forumId = action.forumTopico.forumId;
-            forumTopico.forumTagMany = action.forumTopico.forumTagMany;
-            forumTopico.id = action.forumTopico.id;
-            forumTopico.titulo = action.forumTopico.titulo;
-            forumTopico.usuarioId = action.forumTopico.usuarioId;
-            forumTopico.dataAtualizacao = action.response.dataAtualizacao;
+        if (item.id == action.response.id)
+          return action.response;
 
-            return forumTopico;
-        }
         return item;
     })
 

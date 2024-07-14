@@ -1,0 +1,1 @@
+export * from './visualizar-forum-topico-resposta.component';

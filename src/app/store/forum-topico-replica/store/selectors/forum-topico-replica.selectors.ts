@@ -5,6 +5,10 @@ import {
   ForumTopicoReplicaModel 
 } from 'src/app/models';
 
+import { 
+    GenericoHelpers 
+} from 'src/app/componentes';
+
 export const getForumTopicoReplicaState = createFeatureSelector<fromForumTopicoReplica.ForumTopicoReplicaState>(
     fromForumTopicoReplica.forumTopicoReplicaFeatureKey
 );
@@ -14,7 +18,9 @@ export const getManyForumTopicoReplica = createSelector(
         state
     ): ForumTopicoReplicaModel[] => {
 
-    return state.itens;
+    let itens = GenericoHelpers.sortArrayByDataCadastro(state.itens);
+
+    return itens;
 });
 
 export const getManyForumTopicoReplicaByForumTopicoId = (forumTopicoId: number) => createSelector(
@@ -23,4 +29,12 @@ export const getManyForumTopicoReplicaByForumTopicoId = (forumTopicoId: number) 
     ): ForumTopicoReplicaModel[] => {
 
     return itens.filter(item => item.forumTopicoId == forumTopicoId);
+});
+
+export const getManyForumTopicoReplicaByForumTopicoRespostaId = (forumTopicoRespostaId: number) => createSelector(
+    getManyForumTopicoReplica, (
+        itens: ForumTopicoReplicaModel[]
+    ): ForumTopicoReplicaModel[] => {
+
+    return itens.filter(item => item.forumTopicoRespostaId == forumTopicoRespostaId);
 });

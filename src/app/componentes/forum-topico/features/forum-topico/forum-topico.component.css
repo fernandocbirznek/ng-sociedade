@@ -1,3 +1,7 @@
+.card {
+    padding: 30px;
+}
+
 .container-forum-many {
     gap: 25px;
     margin-bottom: 25px;
@@ -9,8 +13,8 @@
 }
 
 .card-aula {
-    border: 2px solid #e07a5f;
-    background-color: #f4b076;
+    border: 2px solid #797979;
+    background-color: #E1E1E1;
     border-radius: 20px;
     box-shadow: 6px 6px 6px rgba(128, 128, 128, 0.658);
     width: 400px;
@@ -31,6 +35,16 @@
     height: 100%;
 }
 
+.usuario-nome {
+    font-size: 12px;
+    text-align: center;
+}
+
+.imagem {
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
 .divisor {
     height: 100%;
     width: 1px;
@@ -42,7 +56,11 @@
     width: 100%;
 }
 
-.card-aula-acessar {
+.container-resposta {
+    gap: 8px;
+}
+
+.button-acessar {
     border: 1px solid black;
     background-color: rgb(106, 199, 30);
     padding: 4px 15px;
@@ -53,16 +71,16 @@
     gap: 5px;
 }
 
-.card-aula-acessar:hover {
+.button-acessar:hover {
     background-color: rgb(76, 141, 23);
     color: white;
 }
 
 .data-cadastro {
-    position: absolute;
-    bottom: 5px;
-    right: 20px;
+    font-style: italic;
+    color: #ababab;
     font-size: 12px;
+    gap: 30px;
 }
 
 .tipo-topico {

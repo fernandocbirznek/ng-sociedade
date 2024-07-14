@@ -1,0 +1,57 @@
+<div fxLayout="column" class="container-replica">
+    <div *ngIf="!this.isReplicaTopico && this.usuarioLogado" fxLayout="row" fxLayoutAlign="center center" class="button-replica"
+        (click)="replicaForumTopico()">
+        <mat-icon class="material-symbols-outlined">record_voice_over</mat-icon>
+        Escrever replica
+    </div>
+
+    <div *ngIf="this.isReplicaTopico" class="container-ckeditor">
+        <ckeditor
+            [formControl]="formConteudoReplicaTopico" #ckEditorTagEditar [editor]="ckEditor">
+        </ckeditor>
+        <div fxLayout="row" fxLayoutAlign="space-around center" class="container-buttons">
+            <button mat-stroked-button color="warn" (click)="replicaForumTopico()">
+                <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
+                Cancelar
+            </button>
+            <button mat-stroked-button color="primary" (click)="requestReplicaForumTopico()">
+                <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
+                Adicionar replica
+            </button>
+        </div>
+    </div>
+
+    <div fxLayout="row wrap" fxLayoutAlign="start start" class="container-replica-many">
+        <div *ngFor="let replica of this.forumTopicoReplicaMany; index as i" fxLayout="row" fxLayoutAlign="start center">
+            <div fxLayout="column" fxLayoutAlign="space-between space-between" class="g-card-postit-orange card-replica"
+            [ngClass]="{'card-replica-margin': !this.usuarioLogado}">
+                <div fxLayout="row" fxLayoutAlign="center center" class="g-card-postit-titulo-orange titulo-replica">
+                    <div class="titulo">Replica: {{ i+1 }}</div>
+                    <mat-icon *ngIf="this.usuarioLogado && replica.forumTopicoReplicaComentario.usuarioId == this.usuarioLogado.id" 
+                        class="icone-editar material-symbols-outlined"
+                        mat-stroked-button color="primary" (click)="editarReplicaForumTopico(replica.forumTopicoReplicaComentario)" 
+                        matTooltip="Editar replica">
+                        edit_document
+                    </mat-icon>
+                </div>
+                <div class="g-card-postit-titulo-orange data-replica" fxLayout="row" fxLayoutAlign="center center">
+                    <div class="titulo"> {{ replica.forumTopicoReplicaComentario.dataCadastro | date : 'dd/MM/yyyy HH:mm' }}</div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-between space-between" class="replica">
+                    <div fxFlex="100px" fxLayout="column">
+                        <div>Usuário foto</div>
+                        <div>Usuário nome</div>
+                    </div>
+                    <div fxFlex="100%" class="replica-resposta">
+                        <div [innerHTML]="replica.trustedHtml"></div>
+                    </div>
+                </div>
+                
+                <div *ngIf="this.usuarioLogado && replica.forumTopicoReplicaComentario.usuarioId == this.usuarioLogado.id" 
+                    fxLayout="row" fxLayoutAlign="space-around center" class="container-delete" matTooltip="Excluir replica">
+                    <mat-icon class="material-symbols-outlined" (click)="excluirReplicaForumTopico(replica.forumTopicoReplicaComentario)">delete</mat-icon>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

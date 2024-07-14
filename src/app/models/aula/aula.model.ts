@@ -23,6 +23,5 @@ export class AulaModel {
     aulaAnteriorId: number = 0;
     aulaPosteriorId: number = 0;
 
-    professorNome: string = '';
     tagMany: TagModel[] = [];
 }

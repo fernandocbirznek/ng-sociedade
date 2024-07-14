@@ -1,0 +1,79 @@
+.container-ckeditor {
+    border: 2px solid black;
+    border-radius: 0 0 10px 10px;
+    background-color: #f1f1f1;
+    margin: 20px 0;
+}
+
+.container-buttons {
+    margin: 20px 0;
+}
+
+.button-resposta {
+    width: fit-content;
+    border: 2px solid #78c9ff;
+    background-color: #d7ecff;
+    font-weight: 500;
+    padding: 8px 10px;
+    border-radius: 10px;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.button-resposta:hover {
+    background-color: #d7e4ff;
+    cursor: pointer;
+}
+
+.container-resposta-many {
+    margin-top: 50px;
+}
+
+.card {
+    padding: 30px;
+}
+
+.card-titulo {
+    gap: 15px;
+}
+
+.titulo {
+    top: -60px;
+}
+
+.icone-editar {
+    cursor: pointer;
+}
+
+.data-resposta {
+    top: -42px;
+    left: 300px;
+    height: 30px;
+    font-size: 12px;
+    background-color: var(--green-postit);
+    gap: 10px;
+}
+
+.container-pergunta {
+    gap: 20px;
+}
+
+.replica-resposta {
+    overflow-y: auto;
+    max-height: 350px;
+}
+
+.resposta-delete {
+    color: #ff6161;
+    position: absolute;
+    right: 30px;
+    top: -38px;
+    border-top: 2px solid #737b86;
+    border-left: 2px solid #737b86;
+    border-right: 2px solid #737b86;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    background-color: #fff6bc;
+    padding: 5px;
+    cursor: pointer;
+}

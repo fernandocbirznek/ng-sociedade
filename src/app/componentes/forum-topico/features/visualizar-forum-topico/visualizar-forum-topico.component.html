@@ -1,131 +1,58 @@
-<div *ngIf="this.forumTopico && this.usuarioLogado; else loading">
+<div *ngIf="this.forumTopico; else loading">
     <div fxLayout="column" class="container-topico">
-        <div fxLayout="row" fxLayoutAlign="start center">
-            <div [ngSwitch]="forumTopico.forumTopicoEnum" class="tipo-topico">
-                <div *ngSwitchCase="this.forumTopicoEnum.Conceito">
-                    <mat-icon class="material-symbols-outlined">drag_handle</mat-icon>
+        <div fxLayout="column" fxLayoutAlign="space-between space-between" class="g-card-postit-yellow card">
+            <div class="g-card-postit-titulo-yellow titulo" fxLayout="row" fxLayoutAlign="center center">
+                <div [ngSwitch]="forumTopico.forumTopicoEnum" class="tipo-topico">
+                    <div *ngSwitchCase="this.forumTopicoEnum.Conceito">
+                        <mat-icon fxLayoutAlign="center center" class="material-symbols-outlined">drag_handle</mat-icon>
+                    </div>
+                    <div *ngSwitchCase="this.forumTopicoEnum.Equacao">
+                        <mat-icon fxLayoutAlign="center center" class="material-symbols-outlined">function</mat-icon>
+                    </div>
+                    <div *ngSwitchCase="this.forumTopicoEnum.Curiosidade">
+                        <mat-icon fxLayoutAlign="center center" class="material-symbols-outlined">fitness_center</mat-icon>
+                    </div>
+                    <div *ngSwitchCase="this.forumTopicoEnum.Exercicio">
+                        <mat-icon fxLayoutAlign="center center" class="material-symbols-outlined">fitness_center</mat-icon>
+                    </div>
+                    <div *ngSwitchCase="this.forumTopicoEnum.Vestibular">
+                        <mat-icon fxLayoutAlign="center center" class="material-symbols-outlined">school</mat-icon>
+                    </div>
+                    <div *ngSwitchCase="this.forumTopicoEnum.Noticia">
+                        <mat-icon fxLayoutAlign="center center" class="material-symbols-outlined">newspaper</mat-icon>
+                    </div>
+                    <div *ngSwitchCase="this.forumTopicoEnum.Geral">
+                        <mat-icon fxLayoutAlign="center center" class="material-symbols-outlined">contact_support</mat-icon>
+                    </div>
                 </div>
-                <div *ngSwitchCase="this.forumTopicoEnum.Equacao">
-                    <mat-icon class="material-symbols-outlined">function</mat-icon>
+                <div class="titulo">{{ this.forumTopico.titulo }}</div>
+                <mat-icon *ngIf="this.usuarioLogado && this.forumTopico.usuarioId == this.usuarioLogado.id" fxLayoutAlign="center center"
+                    mat-stroked-button color="primary" (click)="editarForumTopico()" 
+                    matTooltip="Editar pergunta">
+                    edit_document
+                </mat-icon>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start center" class="container-pergunta">
+                <div fxFlex="100px" fxLayout="column">
+                    <div>Usuário foto</div>
+                    <div>Usuário nome</div>
                 </div>
-                <div *ngSwitchCase="this.forumTopicoEnum.Curiosidade">
-                    <mat-icon class="material-symbols-outlined">fitness_center</mat-icon>
+                <div [innerHTML]="this.trustedVisualizarForumTopicoHtml"></div>
+                <div *ngIf="this.usuarioLogado && this.forumTopico.usuarioId == this.usuarioLogado.id" 
+                    fxLayout="row" fxLayoutAlign="space-around center" class="container-buttons-topico">
+                    <button *ngIf="this.forumTopico.topicoRespostaCount == 0" mat-stroked-button color="warn" 
+                        (click)="excluirForumTopico()">
+                        <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
+                        Excluir
+                    </button>
                 </div>
-                <div *ngSwitchCase="this.forumTopicoEnum.Exercicio">
-                    <mat-icon class="material-symbols-outlined">fitness_center</mat-icon>
-                </div>
-                <div *ngSwitchCase="this.forumTopicoEnum.Vestibular">
-                    <mat-icon class="material-symbols-outlined">school</mat-icon>
-                </div>
-                <div *ngSwitchCase="this.forumTopicoEnum.Noticia">
-                    <mat-icon class="material-symbols-outlined">newspaper</mat-icon>
-                </div>
-                <div *ngSwitchCase="this.forumTopicoEnum.Geral">
-                    <mat-icon class="material-symbols-outlined">contact_support</mat-icon>
-                </div>
-            </div>
-            <div class="titulo">{{ this.forumTopico.titulo }}</div>
-        </div>
-        <div fxLayout="row" fxLayoutAlign="start center" class="container-descricao">
-            <div fxFlex="100px" fxLayout="column">
-                <div>Usuário foto</div>
-                <div>Usuário nome</div>
-            </div>
-            <div [innerHTML]="this.trustedVisualizarForumTopicoHtml"></div>
-            <div *ngIf="this.forumTopico.usuarioId == this.usuarioLogado.id" 
-                fxLayout="row" fxLayoutAlign="space-around center" class="container-buttons-topico">
-                <button *ngIf="this.forumTopicoRespostaMany.length == 0" mat-stroked-button color="warn" 
-                    (click)="excluirForumTopico()">
-                    <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
-                    Excluir
-                </button>
-                <button mat-stroked-button color="primary" (click)="editarForumTopico()">
-                    <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
-                    Editar
-                </button>
-            </div>
-        </div>
-        <div *ngIf="!this.responderTopico" class="container-buttons">
-            <button mat-stroked-button color="primary" (click)="responderForumTopico()">
-                <mat-icon class="material-symbols-outlined">record_voice_over</mat-icon>
-                Comentar
-            </button>
-        </div>
-    </div>
-    <div *ngIf="this.responderTopico">
-        <ckeditor class="ckeditor-responder-topico" 
-            [formControl]="formConteudoResponderTopico" #ckEditorTagEditar [editor]="ckEditor" data="<p>Hello, world!</p>">
-        </ckeditor>
-        <div fxLayout="row" fxLayoutAlign="space-around center" class="container-buttons">
-            <button mat-stroked-button color="warn" (click)="responderForumTopico()">
-                <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
-                Cancelar
-            </button>
-            <button mat-stroked-button color="primary" (click)="requestForumTopico()">
-                <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
-                Adicionar comentario
-            </button>
-        </div>
-    </div>
-    <div *ngFor="let resposta of this.forumTopicoRespostaMany" fxLayout="column" class="container-descricao">
-        <div fxLayout="row" fxLayoutAlign="space-around center">
-            <div fxFlex="100px" fxLayout="column">
-                <div>Usuário foto</div>
-                <div>Usuário nome</div>
-            </div>
-            <div fxLayout="column"[innerHTML]="resposta.trustedHtml"></div>
-            <div *ngIf="resposta.forumTopicoComentario.usuarioId == this.usuarioLogado.id" 
-                fxLayout="row" fxLayoutAlign="space-around center" class="container-buttons-topico">
-                <button *ngIf="this.forumTopicoReplicaMany.length == 0" mat-stroked-button color="warn" 
-                    (click)="excluirRespostaForumTopico(resposta.forumTopicoComentario)">
-                    <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
-                    Excluir comentario
-                </button>
-                <button mat-stroked-button color="primary" (click)="editarRespostaForumTopico(resposta.forumTopicoComentario)">
-                    <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
-                    Editar comentario
-                </button>
-            </div>
-        </div>
-        <button *ngIf="!this.isReplicaTopico" mat-stroked-button color="primary" (click)="replicaForumTopico()">
-            <mat-icon class="material-symbols-outlined">record_voice_over</mat-icon>
-            Replica
-        </button>
-        <div *ngIf="this.isReplicaTopico">
-            <ckeditor class="ckeditor-responder-topico" 
-                [formControl]="formConteudoReplicaTopico" #ckEditorTagEditar [editor]="ckEditor" data="<p>Hello, world!</p>">
-            </ckeditor>
-            <div fxLayout="row" fxLayoutAlign="space-around center" class="container-buttons">
-                <button mat-stroked-button color="warn" (click)="replicaForumTopico()">
-                    <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
-                    Cancelar
-                </button>
-                <button mat-stroked-button color="primary" (click)="requestReplicaForumTopico(resposta.forumTopicoComentario)">
-                    <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
-                    Adicionar replica
-                </button>
-            </div>
-        </div>
-        <div *ngFor="let replica of this.forumTopicoReplicaMany" fxLayout="row" fxLayoutAlign="start center" 
-        class="container-descricao">
-            <div fxFlex="100px" fxLayout="column">
-                <div>Usuário foto</div>
-                <div>Usuário nome</div>
-            </div>
-            <div fxLayout="column"[innerHTML]="replica.trustedHtml"></div>
-            <div *ngIf="replica.forumTopicoComentario.usuarioId == this.usuarioLogado.id" 
-                fxLayout="row" fxLayoutAlign="space-around center" class="container-buttons-topico">
-                <button mat-stroked-button color="warn" (click)="excluirReplicaForumTopico(replica.forumTopicoComentario)">
-                    <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
-                    Excluir replica
-                </button>
-                <button mat-stroked-button color="primary" (click)="editarReplicaForumTopico(replica.forumTopicoComentario)">
-                    <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
-                    Editar replica
-                </button>
             </div>
         </div>
     </div>
+
+    <app-visualizar-forum-topico-resposta
+        [forumTopicoId]="this.forumTopicoId">
+    </app-visualizar-forum-topico-resposta>
 </div>
 <ng-template #loading>
     Carregando

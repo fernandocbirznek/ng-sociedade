@@ -1,6 +1,10 @@
 import { ForumTopicoModel } from "../forum-topico.model";
 
 export class ForumTopicoViewModel extends ForumTopicoModel {
-    usuarioCadastroNome: string = "";
+    usuarioNome: string = '';
+    usuarioFoto: File | undefined = undefined;
+    
     forumTopicoEnumNome: string = '';
+
+    topicoRespostaCount: number = 0;
 }

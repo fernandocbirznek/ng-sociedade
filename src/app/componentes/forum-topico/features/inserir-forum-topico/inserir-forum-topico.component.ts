@@ -8,6 +8,7 @@ import {
   ForumTagModel,
   ForumTopicoEnum,
   ForumTopicoModel,
+  ForumTopicoViewModel,
   UsuarioModel 
 } from 'src/app/models';
 
@@ -93,7 +94,7 @@ export class InserirForumTopicoComponent implements OnInit {
 
   requestCriarForumTopico() {
     if (this.usuarioLogado && this.usuarioLogado.id > 0)  {
-      let request: ForumTopicoModel = new ForumTopicoModel();
+      let request: ForumTopicoViewModel = new ForumTopicoViewModel();
       request.titulo = this.formGroupForumTopico.get("formTitulo")?.value;
       request.descricao = this.formGroupForumTopico.get("formConteudo")?.value;
       request.forumTopicoEnum = this.formGroupForumTopico.get("formTipoTopico")?.value;

@@ -7,22 +7,23 @@ import {
     VisualizarForumTopicoComponent,
 } from "../features";
 
+import { ForumTopicoResolver } from "./forum-topico-resolver";
+import { ForumTopicoVisualizarResolver } from "./forum-topico-visualizar.resolver";
+
 const forumTopicoRoutes: Routes = [
     {
-        path: "forum-topico/:id",
+        path: "forum/:id/forum-topico",
         component: ForumTopicoComponent,
-        //canActivate: [AutenticacaoService],
-        // resolve: {
-        //     perfilProfessorResolver: PerfilProfessorResolver
-        // }
+        resolve: {
+            forumTopicoResolver: ForumTopicoVisualizarResolver
+        }
     },
     {
-        path: "visualizar-forum-topico/:id",
+        path: "forum/:forumId/forum-topico/:id",
         component: VisualizarForumTopicoComponent,
-        //canActivate: [AutenticacaoService],
-        // resolve: {
-        //     perfilProfessorResolver: PerfilProfessorResolver
-        // }
+        resolve: {
+            forumTopicoResolverVisualizar: ForumTopicoResolver
+        }
     },
 ];
 

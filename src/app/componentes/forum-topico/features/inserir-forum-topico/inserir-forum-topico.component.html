@@ -10,21 +10,19 @@
         <div fxLayout="row" fxLayoutAlign="space-around center" class="container-topico-tags">
             <div fxFlex="50%" fxLayout="column" fxLayoutAlign="start start">
                 <h4>Selecione um tipo de tópico:</h4>
-                <div fxLayout="row wrap" fxLayoutAlign="start start" class="container-topico-tags">
-                    <mat-radio-group formControlName="formTipoTopico">
-                        <mat-radio-button [value]="this.forumTopicoEnum.Geral">Geral</mat-radio-button>
-                        <mat-radio-button [value]="this.forumTopicoEnum.Conceito">Conceito</mat-radio-button>
-                        <mat-radio-button [value]="this.forumTopicoEnum.Equacao">Equação</mat-radio-button>
-                        <mat-radio-button [value]="this.forumTopicoEnum.Curiosidade">Curiosidade</mat-radio-button>
-                        <mat-radio-button [value]="this.forumTopicoEnum.Exercicio">Exercício</mat-radio-button>
-                        <mat-radio-button [value]="this.forumTopicoEnum.Vestibular">Vestibular</mat-radio-button>
-                        <mat-radio-button [value]="this.forumTopicoEnum.Noticia">Notícia</mat-radio-button>
-                    </mat-radio-group>  
-                </div>
+                <mat-radio-group fxLayout="row wrap" fxLayoutAlign="start start" class="container-topico" formControlName="formTipoTopico">
+                    <mat-radio-button [value]="this.forumTopicoEnum.Geral">Geral</mat-radio-button>
+                    <mat-radio-button [value]="this.forumTopicoEnum.Conceito">Conceito</mat-radio-button>
+                    <mat-radio-button [value]="this.forumTopicoEnum.Equacao">Equação</mat-radio-button>
+                    <mat-radio-button [value]="this.forumTopicoEnum.Curiosidade">Curiosidade</mat-radio-button>
+                    <mat-radio-button [value]="this.forumTopicoEnum.Exercicio">Exercício</mat-radio-button>
+                    <mat-radio-button [value]="this.forumTopicoEnum.Vestibular">Vestibular</mat-radio-button>
+                    <mat-radio-button [value]="this.forumTopicoEnum.Noticia">Notícia</mat-radio-button>
+                </mat-radio-group>  
             </div>
             <div fxFlex="50%" fxLayout="column" fxLayoutAlign="start start">
                 <h4>Selecione as tags do tópico:</h4>
-                <div fxLayout="row wrap" fxLayoutAlign="start start" class="container-topico-tags">
+                <div fxLayout="row wrap" fxLayoutAlign="start start" class="container-tags">
                     <section *ngFor="let forumTag of this.forumTagMany">
                         <mat-checkbox (change)="selecionouForumTag(forumTag, $event)">{{forumTag.titulo}}</mat-checkbox>
                     </section>

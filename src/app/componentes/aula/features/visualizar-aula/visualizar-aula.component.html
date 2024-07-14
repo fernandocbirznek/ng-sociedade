@@ -4,8 +4,8 @@
         <span>Voltar</span>
     </div>
 
-    <div fxLayout="row" fxLayoutAlign="start start" class="g-card card">
-        <div class="g-card-titulo">Informações da aula</div>
+    <div fxLayout="row" fxLayoutAlign="start start" class="g-card-postit-yellow card">
+        <div class="g-card-postit-titulo-yellow">Informações da aula</div>
         <div fxLayout="column" fxLayoutAlign="space-between start" class="g-card-icone-many">
             <div *ngIf="!this.usuarioAulaCurtido" fxLayout="row" fxLayoutAlign="start center" class="g-full-width" 
                 [ngClass]="{'g-disable-event': !this.usuarioLogado}" (click)="curtirAula()">
@@ -56,8 +56,13 @@
             </div>
         </div>
         <div fxFlex="150px" fxLayout="column" fxLayoutAlign="start center">
-            <div class="aula-autor" (click)="visualizarPerfil()">Nome do professor</div>
-            <div>Foto professor</div>
+            <div class="aula-autor" (click)="visualizarPerfil()">{{ aula.usuarioNome }}</div>
+            <div *ngIf="aula.usuarioFoto" fxLayout="column" fxLayoutAlign="space-between center">
+                <img fxFlex="100px" [src]="'data:image/png;base64,' + aula.usuarioFoto" alt="Imagem" class="imagem-foto">
+            </div>
+            <div *ngIf="!aula.usuarioFoto">
+                Sem foto
+            </div>
         </div>
         <div fxFlex="100%" fxLayout="column" fxLayoutAlign="start start">
             <div fxLayout="row" fxLayoutAlign="start center">
@@ -72,8 +77,8 @@
     </div>
 
     <div *ngFor="let sessao of this.aula.aulaSessaoMany; index as i" fxLayout="column" fxLayoutAlign="center center" 
-        class="g-card card-sessao">
-        <div class="g-card-titulo">{{ sessao.titulo }}</div>
+        class="g-card-postit-yellow card-sessao">
+        <div class="g-card-postit-titulo-yellow">{{ sessao.titulo }}</div>
         <div *ngIf="this.usuarioLogado && this.usuarioLogado.tipoUsuario != 0" 
             fxLayout="column" fxLayoutAlign="space-between start" class="g-card-icone-many" 
             [ngClass]="{'card-icone-many': this.usuarioAulaSessaoFavoritado.includes(sessao.id)}">
@@ -157,8 +162,13 @@
                                 edit_square
                             </mat-icon>
                         </div>
-                        <div fxFlex="100%">FOTO</div>
-                        <div>Nome</div>
+                        <div class="aula-autor">{{ aulaComentario.usuarioNome }}</div>
+                        <div *ngIf="aulaComentario.usuarioFoto" fxLayout="column" fxLayoutAlign="space-between center">
+                            <img fxFlex="100px" [src]="'data:image/png;base64,' + aulaComentario.usuarioFoto" alt="Imagem" class="imagem-foto">
+                        </div>
+                        <div *ngIf="!aulaComentario.usuarioFoto">
+                            Sem foto
+                        </div>
                     </div>
                     <div fxFlex="1px" class="divisoria"></div>
                     <div fxFlex="100%" class="container-comentario-usuario">

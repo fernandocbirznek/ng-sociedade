@@ -81,6 +81,11 @@
     height: 100%;
 }
 
+.usuario-nome {
+    font-size: 12px;
+    text-align: center;
+}
+
 .sessao {
     font-size: 18px;
     font-weight: bold;

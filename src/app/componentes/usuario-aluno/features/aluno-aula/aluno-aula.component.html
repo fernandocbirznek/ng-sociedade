@@ -3,9 +3,9 @@
         <div class="widget-titulo">Para cursar</div>
         <div *ngFor="let widget of this.widget.widgetCursar; index as i" fxLayout="column">
 
-            <div fxLayout="column" fxLayoutAlign="start start" class="g-card card">
-                <div class="g-card-titulo card-titulo">{{ widget.aula!.titulo }}</div>
-                <div class="g-card-titulo card-mover-direita" (click)="moverParaCursando(widget)">
+            <div fxLayout="column" fxLayoutAlign="start start" class="g-card-postit-yellow card">
+                <div class="g-card-postit-titulo-yellow card-titulo">{{ widget.aula!.titulo }}</div>
+                <div class="g-card-postit-titulo-yellow card-mover-direita" (click)="moverParaCursando(widget)">
                     <mat-icon class="material-symbols-outlined" matTooltip="Mover para cursando">move_item</mat-icon>
                 </div>
                 <div fxLayout="row" fxLayoutAlign="space-between center" class="g-full-width">
@@ -41,12 +41,12 @@
         <div class="widget-titulo">Cursando</div>
         <div *ngFor="let widget of this.widget.widgetCursando; index as i" fxLayout="column">
 
-            <div fxLayout="column" fxLayoutAlign="start start" class="g-card card">
-                <div class="g-card-titulo card-titulo-cursando">{{ widget.aula!.titulo }}</div>
-                <div class="g-card-titulo card-mover-esquerda" (click)="moverParaCursar(widget)">
+            <div fxLayout="column" fxLayoutAlign="start start" class="g-card-postit-yellow card">
+                <div class="g-card-postit-titulo-yellow card-titulo-cursando">{{ widget.aula!.titulo }}</div>
+                <div class="g-card-postit-titulo-yellow card-mover-esquerda" (click)="moverParaCursar(widget)">
                     <mat-icon class="material-symbols-outlined" matTooltip="Mover para cursando">keyboard_return</mat-icon>
                 </div>
-                <div class="g-card-titulo card-mover-direita" (click)="moverParaConcluido(widget)">
+                <div class="g-card-postit-titulo-yellow card-mover-direita" (click)="moverParaConcluido(widget)">
                     <mat-icon class="material-symbols-outlined" matTooltip="Mover para concluído">move_item</mat-icon>
                 </div>
                 <div fxLayout="row" fxLayoutAlign="space-between center" class="g-full-width">
@@ -79,9 +79,9 @@
         <div class="widget-titulo">Concluido</div>
         <div *ngFor="let widget of this.widget.widgetConcluido; index as i" fxLayout="column">
 
-            <div fxLayout="column" fxLayoutAlign="start start" class="g-card card">
-                <div class="g-card-titulo card-titulo-concluido">{{ widget.aula!.titulo }}</div>
-                <div class="g-card-titulo card-mover-esquerda" (click)="moverParaCursando(widget)">
+            <div fxLayout="column" fxLayoutAlign="start start" class="g-card-postit-yellow card">
+                <div class="g-card-postit-titulo-yellow card-titulo-concluido">{{ widget.aula!.titulo }}</div>
+                <div class="g-card-postit-titulo-yellow card-mover-esquerda" (click)="moverParaCursando(widget)">
                     <mat-icon class="material-symbols-outlined" matTooltip="Mover para cursando">keyboard_return</mat-icon>
                 </div>
                 <div fxLayout="row" fxLayoutAlign="space-between center" class="g-full-width">

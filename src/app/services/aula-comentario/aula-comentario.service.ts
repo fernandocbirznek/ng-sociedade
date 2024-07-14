@@ -5,6 +5,7 @@ import { Observable } from "rxjs";
 
 import { 
     AulaComentarioModel,
+    AulaComentarioViewModel,
 } from "src/app/models";
 
 @Injectable({
@@ -44,8 +45,8 @@ export class AulaComentarioService {
         );
     }
 
-    selecionarManyAulaComentarioByAulaId(aulaId: number): Observable<AulaComentarioModel[]> {
-        return this.httpClient.get<AulaComentarioModel[]>(
+    selecionarManyAulaComentarioByAulaId(aulaId: number): Observable<AulaComentarioViewModel[]> {
+        return this.httpClient.get<AulaComentarioViewModel[]>(
             this.urlSelecionarManyAulaComentarioByAulaId + `/${aulaId}`, 
             this.buildHttpOptions()
         );

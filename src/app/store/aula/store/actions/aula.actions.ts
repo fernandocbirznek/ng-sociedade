@@ -3,7 +3,8 @@ import { createAction, props } from '@ngrx/store';
 import { 
   AulaFilterModel,
   AulaModel, 
-  AulaTagModel
+  AulaTagModel,
+  AulaViewModel
 } from 'src/app/models';
 
 export const selecionarOneAulaById = createAction(
@@ -13,7 +14,7 @@ export const selecionarOneAulaById = createAction(
 
 export const selecionarOneAulaByIdSuccess = createAction(
   '[Aula] selecionarOneAulaById Success',
-  props<{ aulaId: number, response: AulaModel }>()
+  props<{ aulaId: number, response: AulaViewModel }>()
 );
 
 export const selecionarOneAulaByIdFailure = createAction(
@@ -27,7 +28,7 @@ export const selecionarManyAula = createAction(
 
 export const selecionarManyAulaSuccess = createAction(
   '[Aula] selecionarManyAula Success',
-  props<{ response: AulaModel[] }>()
+  props<{ response: AulaViewModel[] }>()
 );
 
 export const selecionarManyAulaFailure = createAction(
@@ -42,7 +43,7 @@ export const selecionarAulaByProfessorId = createAction(
 
 export const selecionarAulaByProfessorIdSuccess = createAction(
   '[Aula] selecionarAulaByProfessorId Success',
-  props<{ response: AulaModel[] }>()
+  props<{ response: AulaViewModel[] }>()
 );
 
 export const selecionarAulaByProfessorIdFailure = createAction(
@@ -57,7 +58,7 @@ export const selecionarManyAulaByProfessorId = createAction(
 
 export const selecionarManyAulaByProfessorIdSuccess = createAction(
   '[Aula] selecionarManyAulaByProfessorId Success',
-  props<{ response: AulaModel[] }>()
+  props<{ response: AulaViewModel[] }>()
 );
 
 export const selecionarManyAulaByProfessorIdFailure = createAction(
@@ -72,7 +73,7 @@ export const selecionarManyAulaByAreaFisicaId = createAction(
 
 export const selecionarManyAulaByAreaFisicaIdSuccess = createAction(
   '[Aula] selecionarManyAulaByAreaFisicaId Success',
-  props<{ response: AulaModel[] }>()
+  props<{ response: AulaViewModel[] }>()
 );
 
 export const selecionarManyAulaByAreaFisicaIdFailure = createAction(
@@ -82,12 +83,12 @@ export const selecionarManyAulaByAreaFisicaIdFailure = createAction(
 
 export const inserirAula = createAction(
   '[Aula] inserirAula',
-  props<{ aula: AulaModel }>()
+  props<{ aula: AulaViewModel }>()
 );
 
 export const inserirAulaSuccess = createAction(
   '[Aula] inserirAula Success',
-  props<{ aula: AulaModel, response: AulaModel }>()
+  props<{ aula: AulaViewModel, response: AulaViewModel }>()
 );
 
 export const inserirAulaFailure = createAction(
@@ -97,12 +98,12 @@ export const inserirAulaFailure = createAction(
 
 export const atualizarAula = createAction(
   '[Aula] atualizarAula',
-  props<{ aula: AulaModel }>()
+  props<{ aula: AulaViewModel }>()
 );
 
 export const atualizarAulaSuccess = createAction(
   '[Aula] atualizarAula Success',
-  props<{ aula: AulaModel, response: AulaModel }>()
+  props<{ aula: AulaViewModel, response: AulaViewModel }>()
 );
 
 export const atualizarAulaFailure = createAction(
@@ -112,12 +113,12 @@ export const atualizarAulaFailure = createAction(
 
 export const atualizarAulaCurtir = createAction(
   '[Aula] atualizarAulaCurtir',
-  props<{ aula: AulaModel }>()
+  props<{ aula: AulaViewModel }>()
 );
 
 export const atualizarAulaCurtirSuccess = createAction(
   '[Aula] atualizarAulaCurtir Success',
-  props<{ aula: AulaModel, response: AulaModel }>()
+  props<{ aula: AulaViewModel, response: AulaViewModel }>()
 );
 
 export const atualizarAulaCurtirFailure = createAction(
@@ -127,12 +128,12 @@ export const atualizarAulaCurtirFailure = createAction(
 
 export const atualizarAulaFavoritada = createAction(
   '[Aula] atualizarAulaFavoritada',
-  props<{ aula: AulaModel }>()
+  props<{ aula: AulaViewModel }>()
 );
 
 export const atualizarAulaFavoritadaSuccess = createAction(
   '[Aula] atualizarAulaFavoritada Success',
-  props<{ response: AulaModel }>()
+  props<{ response: AulaViewModel }>()
 );
 
 export const atualizarAulaFavoritadaFailure = createAction(
@@ -142,12 +143,12 @@ export const atualizarAulaFavoritadaFailure = createAction(
 
 export const atualizarAulaPosterior = createAction(
   '[Aula] atualizarAulaPosterior',
-  props<{ aula: AulaModel }>()
+  props<{ aula: AulaViewModel }>()
 );
 
 export const atualizarAulaPosteriorSuccess = createAction(
   '[Aula] atualizarAulaPosterior Success',
-  props<{ response: AulaModel }>()
+  props<{ response: AulaViewModel }>()
 );
 
 export const atualizarAulaPosteriorFailure = createAction(
@@ -157,12 +158,12 @@ export const atualizarAulaPosteriorFailure = createAction(
 
 export const atualizarAulaAnterior = createAction(
   '[Aula] atualizarAulaAnterior',
-  props<{ aula: AulaModel }>()
+  props<{ aula: AulaViewModel }>()
 );
 
 export const atualizarAulaAnteriorSuccess = createAction(
   '[Aula] atualizarAulaAnterior Success',
-  props<{ response: AulaModel }>()
+  props<{ response: AulaViewModel }>()
 );
 
 export const atualizarAulaAnteriorFailure = createAction(
@@ -192,12 +193,12 @@ export const filtrarAula = createAction(
 
 export const atualizarAulaPublicado = createAction(
   '[Aula] atualizarAulaPublicado',
-  props<{ aula: AulaModel }>()
+  props<{ aula: AulaViewModel }>()
 );
 
 export const atualizarAulaPublicadoSuccess = createAction(
   '[Aula] atualizarAulaPublicado Success',
-  props<{ aula: AulaModel, response: AulaModel }>()
+  props<{ aula: AulaViewModel, response: AulaViewModel }>()
 );
 
 export const atualizarAulaPublicadoFailure = createAction(

@@ -2,18 +2,21 @@
     margin-top: 20px;
 }
 
-.titulo {
-    font-size: 30px;
-    font-weight: bolder;
-    margin-left: 10px;
+.card {
+    padding: 30px;
 }
 
-.container-descricao {
-    margin-top: 20px;
+.titulo {
+    top: -57px;
     gap: 20px;
-    border: 2px solid black;
-    border-radius: 20px;
-    padding: 20px;
+}
+
+.container-pergunta {
+    gap: 20px;
+}
+
+.titulo-resposta {
+    top: -57px;
 }
 
 .container-buttons {

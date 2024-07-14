@@ -1,0 +1,60 @@
+<div fxLayout="column">
+    <div *ngIf="!this.responderTopico && this.usuarioLogado" fxLayout="row" fxLayoutAlign="center center" class="button-resposta"
+        (click)="responderForumTopico()">
+        <mat-icon class="material-symbols-outlined">record_voice_over</mat-icon>
+        Escrever resposta
+    </div>
+
+    <div *ngIf="this.responderTopico" class="container-ckeditor">
+        <ckeditor
+            [formControl]="formConteudoResponderTopico" #ckEditorTagEditar [editor]="ckEditor">
+        </ckeditor>
+        <div fxLayout="row" fxLayoutAlign="space-around center" class="container-buttons">
+            <button mat-stroked-button color="warn" (click)="responderForumTopico()">
+                <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
+                Cancelar
+            </button>
+            <button mat-stroked-button color="primary" (click)="requestForumTopico()">
+                <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
+                Adicionar comentario
+            </button>
+        </div>
+    </div>
+
+    <div *ngFor="let resposta of this.forumTopicoRespostaMany; index as i" fxLayout="column" class="container-resposta-many">
+        <div fxLayout="column" fxLayoutAlign="space-between space-between" class="g-card-postit-green card">
+            <div class="g-card-postit-titulo-green card-titulo" fxLayout="row" fxLayoutAlign="center center">
+                <div class="titulo">Resposta: {{ i+1 }}</div>
+                <mat-icon *ngIf="this.usuarioLogado && resposta.forumTopicoComentario.usuarioId == this.usuarioLogado.id"
+                     class="icone-editar material-symbols-outlined"
+                    mat-stroked-button color="primary" (click)="editarRespostaForumTopico(resposta.forumTopicoComentario)" 
+                    matTooltip="Editar resposta">
+                    edit_document
+                </mat-icon>
+            </div>
+            <div class="g-card-postit-titulo-green data-resposta" fxLayout="row" fxLayoutAlign="center center">
+                <div class="titulo"> {{ resposta.forumTopicoComentario.dataCadastro | date : 'dd/MM/yyyy HH:mm' }}</div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start start" class="container-pergunta">
+                <div fxFlex="100px" fxLayout="column">
+                    <div>Usuário foto</div>
+                    <div>Usuário nome</div>
+                </div>
+                <div fxFlex="100%" class="replica-resposta">
+                    <div [innerHTML]="resposta.trustedHtml"></div>
+                </div>
+                <div *ngIf="this.usuarioLogado && resposta.forumTopicoComentario.usuarioId == this.usuarioLogado.id && resposta.forumTopicoComentario.forumReplicaCount == 0" 
+                    fxLayout="row" fxLayoutAlign="space-around center" class="resposta-delete">
+                    <mat-icon class="material-symbols-outlined" (click)="excluirRespostaForumTopico(resposta.forumTopicoComentario)"
+                        matTooltip="Excluir resposta">
+                        delete
+                    </mat-icon>
+                </div>
+            </div>
+    
+            <app-visualizar-forum-topico-replica [forumTopicoId]="this.forumTopicoId" 
+                [forumTopicoRespostaId]="resposta.forumTopicoComentario.id">
+            </app-visualizar-forum-topico-replica>
+        </div>
+    </div>
+</div>

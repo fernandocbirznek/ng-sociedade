@@ -1,7 +1,8 @@
 import { createAction, props } from '@ngrx/store';
 
 import { 
-  AulaComentarioModel 
+  AulaComentarioModel, 
+  AulaComentarioViewModel
 } from 'src/app/models';
 
 export const selecionarManyAulaComentarioByAulaId = createAction(
@@ -11,7 +12,7 @@ export const selecionarManyAulaComentarioByAulaId = createAction(
 
 export const selecionarManyAulaComentarioByAulaIdSuccess = createAction(
   '[AulaComentario] selecionarManyAulaComentarioByAulaId Success',
-  props<{ response: AulaComentarioModel[] }>()
+  props<{ response: AulaComentarioViewModel[] }>()
 );
 
 export const selecionarManyAulaComentarioByAulaIdFailure = createAction(

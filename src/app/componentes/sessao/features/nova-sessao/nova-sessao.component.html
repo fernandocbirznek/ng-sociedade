@@ -28,7 +28,7 @@
         <div *ngIf="this.tipoSessao.value == this.tipoSessaoAulaEnum.Equacao" fxFlex="100%" fxLayout="column" fxLayoutAlign="start center" 
           class="g-full-width">
 
-          <div fxLayout="column" fxLayoutAlign="start start" class="g-card card card-latex">
+          <div fxLayout="column" fxLayoutAlign="start start" class="g-card-postit-yellow card card-latex">
             <div fxLayout="row" fxLayoutAlign="start center" class="alerta-link">
               <mat-icon class="material-symbols-outlined">warning</mat-icon>
               Formato em Latex
@@ -68,7 +68,7 @@
         </div>
 
         <div *ngIf="this.tipoSessao.value == this.tipoSessaoAulaEnum.Video" fxFlex="100%" class="g-full-width">
-          <div fxLayout="column" fxLayoutAlign="start start" class="g-card card">
+          <div fxLayout="column" fxLayoutAlign="start start" class="g-card-postit-yellow card">
             <div *ngIf="!this.isVisualizarTutorial" class="visualizar-tutorial" (click)="visualizarTutorial()">Visualizar tutorial</div>
             <div *ngIf="this.isVisualizarTutorial" class="ocultar-tutorial" (click)="visualizarTutorial()">Ocultar tutorial</div>
             <div fxLayout="column" class="container-tutorial" [ngClass]="{'container-tutorial-open': this.isVisualizarTutorial}">

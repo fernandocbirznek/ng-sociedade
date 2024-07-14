@@ -1,0 +1,99 @@
+.container-replica {
+    border-top: 2px solid #000000;
+    margin-top: 20px;
+}
+
+.button-replica {
+    width: fit-content;
+    border: 2px solid #78c9ff;
+    background-color: #d7ecff;
+    font-weight: 500;
+    padding: 8px 10px;
+    border-radius: 10px;
+    gap: 10px;
+    margin: 20px 0 50px 0;
+}
+
+.button-replica:hover {
+    background-color: #d7e4ff;
+    cursor: pointer;
+}
+
+.container-ckeditor {
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    border-radius: 0 0 10px 10px;
+    background-color: #f1f1f1;
+    margin-bottom: 50px;
+}
+
+.container-buttons {
+    margin: 20px 0;
+}
+
+.container-replica-many {
+    gap: 50px;
+}
+
+.card-replica {
+    padding: 10px;
+    width: 400px;
+    height: 200px;
+}
+
+.card-replica-margin {
+    margin-top: 50px;
+}
+
+.titulo-replica {
+    top: -42px;
+    height: 30px;
+    font-size: 16px;
+    background-color: #adc7ff;
+    gap: 10px;
+}
+
+.data-replica {
+    top: -42px;
+    right: 15px;
+    left: unset;
+    height: 30px;
+    font-size: 12px;
+    background-color: #adc7ff;
+    gap: 10px;
+}
+
+.titulo {
+    top: -60px;
+}
+
+.icone-editar {
+    cursor: pointer;
+}
+
+.replica {
+    gap: 10px;
+}
+
+.replica-resposta {
+    font-size: 12px;
+    overflow-y: auto;
+    max-height: 175px;
+    padding-right: 5px;
+}
+
+.container-delete {
+    color: #ff6161;
+    position: absolute;
+    right: -38px;
+    top: 30px;
+    border-top: 2px solid #737b86;
+    border-bottom: 2px solid #737b86;
+    border-right: 2px solid #737b86;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: #d6e3ff;
+    padding: 5px;
+    cursor: pointer;
+}

@@ -11,13 +11,13 @@ import {
 import { 
   ForumModel,
   ForumTopicoEnum,
-  ForumTopicoModel, 
+  ForumTopicoModel,
+  ForumTopicoViewModel, 
 } from 'src/app/models';
 
 import { 
   getManyForumTopico, 
-  getOneForumByForumId, 
-  selecionarManyForumTopicoByForumId 
+  getOneForumByForumId,
 } from 'src/app/store';
 
 @Component({
@@ -26,7 +26,6 @@ import {
   styleUrls: ['./forum-topico.component.css']
 })
 export class ForumTopicoComponent implements OnInit {
-
   forumId: number = 0;
 
   forumSubscription$: Subscription = new Subscription();
@@ -34,8 +33,8 @@ export class ForumTopicoComponent implements OnInit {
   forum: ForumModel | undefined = undefined;
 
   forumTopicoManySubscription$: Subscription = new Subscription();
-  forumTopicoMany$: Observable<ForumTopicoModel[]> = new Observable<ForumTopicoModel[]>();
-  forumTopicoMany: ForumTopicoModel[] = [];
+  forumTopicoMany$: Observable<ForumTopicoViewModel[]> = new Observable<ForumTopicoViewModel[]>();
+  forumTopicoMany: ForumTopicoViewModel[] = [];
 
   readonly forumTopicoEnum = ForumTopicoEnum;
 
@@ -67,15 +66,14 @@ export class ForumTopicoComponent implements OnInit {
   }
 
   setupForumTopico() {
-    this.store.dispatch(selecionarManyForumTopicoByForumId({ forumId: this.forumId }));
     this.forumTopicoMany$ = this.store.select(getManyForumTopico);
     this.forumTopicoManySubscription$ = this.forumTopicoMany$.subscribe(itens => {
       this.forumTopicoMany = itens;        
     });
   }
 
-  acessarForumTopico(item: ForumTopicoModel) {
-    this.router.navigate([`visualizar-forum-topico/${item.id}`]);
+  acessarForumTopico(item: ForumTopicoViewModel) {
+    this.router.navigate([`forum/${this.forumId}/forum-topico/${item.id}`]);
   }
 
   aplicarFiltro(item: any) {
