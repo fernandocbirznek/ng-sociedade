@@ -37,8 +37,13 @@
             </div>
             <div fxLayout="row" fxLayoutAlign="start start" class="container-pergunta">
                 <div fxFlex="100px" fxLayout="column">
-                    <div>Usuário foto</div>
-                    <div>Usuário nome</div>
+                    <div class="g-text-overflow-2 usuario-nome">{{ resposta.forumTopicoComentario.usuarioNome }}</div>
+                    <div *ngIf="resposta.forumTopicoComentario.usuarioFoto" fxLayout="column" fxLayoutAlign="space-between center">
+                        <img fxFlex="100px" [src]="'data:image/png;base64,' + resposta.forumTopicoComentario.usuarioFoto" alt="Imagem" class="imagem">
+                    </div>
+                    <div *ngIf="!resposta.forumTopicoComentario.usuarioFoto">
+                        Sem foto
+                    </div>
                 </div>
                 <div fxFlex="100%" class="replica-resposta">
                     <div [innerHTML]="resposta.trustedHtml"></div>

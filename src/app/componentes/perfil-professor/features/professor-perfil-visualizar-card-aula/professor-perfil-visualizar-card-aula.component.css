@@ -2,16 +2,11 @@
     height: 460px;
 }
 
-.card-titulo {
-    background-color: #b5adff;
-}
-
 .card {
     margin-top: 50px;
     min-height: 200px;
     padding: 20px;
     gap: 10px;
-    background-color: #b5adff;
 }
 
 .app-aula-filtro {
@@ -35,10 +30,10 @@
     border-radius: 15px;
     padding: 25px 15px 15px 15px;
     gap: 8px;
-    width: 400px;
+    width: 350px;
     height: 200px;
     position: relative;
-    background-color: #fff4ad;
+    background-color: var(--blue-postit);
 }
 
 .aula-area-fisica {

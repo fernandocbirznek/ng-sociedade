@@ -38,7 +38,7 @@
             <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
             Cancelar
         </button>
-        <button mat-stroked-button color="primary" (click)="requestCriarForumTopico()">
+        <button mat-stroked-button color="primary" [disabled]="!this.formGroupForumTopico.valid" (click)="requestCriarForumTopico()">
             <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
             Novo fórum tópico
         </button>

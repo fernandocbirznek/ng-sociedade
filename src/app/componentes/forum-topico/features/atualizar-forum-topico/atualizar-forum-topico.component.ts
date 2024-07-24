@@ -72,9 +72,8 @@ export class AtualizarForumTopicoComponent implements OnInit {
   setupUsuarioLogado() {
     this.usuarioLogado$ = this.store.select(getOneUsuarioLogado);
     this.usuarioLogadoSubscription$ = this.usuarioLogado$.subscribe(item => {
-      if(item) {
+      if(item)
         this.usuarioLogado = item;
-      }  
     });
   }
 
@@ -136,8 +135,7 @@ export class AtualizarForumTopicoComponent implements OnInit {
       if (!this.forumTagSelect.find(item => item.id == forumTag.id))
         this.forumTagSelect.push(forumTag);
     }
-    else {
+    else
       this.forumTagSelect = this.forumTagSelect.filter(item => item.id != forumTag.id);
-    }
   }
 }

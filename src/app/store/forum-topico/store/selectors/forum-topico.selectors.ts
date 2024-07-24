@@ -21,7 +21,7 @@ export const getManyForumTopico = createSelector(getForumTopicoState, (state) =>
 export const getOneForumTopicoById = (forumTopicoId: number) => createSelector(
   getManyForumTopico,
   forumTopicoRespostaFeature.getManyForumTopicoRespostaByForumTopicoId(forumTopicoId), (
-    itens: ForumTopicoModel[],
+    itens: ForumTopicoViewModel[],
     forumTopicoRespostaMany: ForumTopicoRespostaViewModel[]
   ): ForumTopicoViewModel | undefined => {
 
@@ -40,6 +40,9 @@ export const getOneForumTopicoById = (forumTopicoId: number) => createSelector(
     item.id = forumTopico.id;
     item.titulo = forumTopico.titulo;
     item.usuarioId = forumTopico.usuarioId;
+
+    item.usuarioFoto = forumTopico.usuarioFoto;
+    item.usuarioNome = forumTopico.usuarioNome;
 
     item.topicoRespostaCount = forumTopicoRespostaMany.length;
 

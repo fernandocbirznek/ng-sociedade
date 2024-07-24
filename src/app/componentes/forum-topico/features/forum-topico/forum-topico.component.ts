@@ -11,7 +11,6 @@ import {
 import { 
   ForumModel,
   ForumTopicoEnum,
-  ForumTopicoModel,
   ForumTopicoViewModel, 
 } from 'src/app/models';
 

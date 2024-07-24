@@ -2,8 +2,14 @@
 <div fxLayout="column" fxLayoutAlign="center center">
     <div>Deseja realmente excluir?</div>
     <div class="text-item-excluir"> {{ data }} </div>
-    <div fxLayout="row" fxLayoutAlign="space-around center" class="container-botao">
-        <div fxLayoutAlign="center center" class="botao-confirmar" (click)="confirmarExcluir()">Sim</div>
-        <div fxLayoutAlign="center center" class="botao-cancelar" (click)="fecharModal()">Não</div>
+    <div fxLayout="row" fxLayoutAlign="space-around center" class="container-button">
+        <button mat-stroked-button color="primary" (click)="fecharModal()">
+            <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
+            Cancelar
+        </button>
+        <button mat-stroked-button color="warn" (click)="confirmarExcluir()">
+            <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
+            Excluir item
+        </button>
     </div>
 </div>

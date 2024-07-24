@@ -18,8 +18,8 @@
     </div>
     <div fxLayout="row wrap" fxLayoutAlign="start start" class="container-forum-many">
         <div *ngFor="let forumTopico of this.forumTopicoMany">
-            <div fxLayout="column" fxLayoutAlign="space-between space-between" class="card-aula">
-                <div fxFlex="100%" fxLayout="row" fxLayoutAlign="space-between start" class="card-aula-descricao">
+            <div fxLayout="column" fxLayoutAlign="space-between space-between" class="card-forum">
+                <div fxFlex="100%" fxLayout="row" fxLayoutAlign="space-between start">
                     <div fxFlex="30%" fxLayout="column" fxLayoutAlign="space-between center" class="aula-autor">
                         <div class="g-text-overflow-2 usuario-nome">{{ forumTopico.usuarioNome }}</div>
                         <div *ngIf="this.forumTopico.usuarioFoto" fxLayout="column" fxLayoutAlign="space-between center">
@@ -35,7 +35,7 @@
                             <div class="titulo">{{ forumTopico.titulo }}</div>
                         </div>
                         <div fxLayout="column" fxLayoutAlign="space-between start" class="g-full-width">
-                            <div fxLayout="row wrap" fxLayoutAlign="space-around center" class="container-tags">
+                            <div fxLayout="row" fxLayoutAlign="space-around center" class="container-tags">
                                 <div *ngFor="let tag of forumTopico.forumTagMany" fxLayout="row" fxLayoutAlign="start center">
                                     <span class="g-tag">{{ tag.titulo }}</span>
                                 </div>
@@ -52,6 +52,8 @@
                 </div>
                 <div fxLayout="row" fxLayoutAlign="space-around center" class="data-cadastro">
                     <div>Cadastro: {{ forumTopico.dataCadastro | date : 'dd/MM/yyyy' }}</div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="space-around center" class="data-atualizacao">
                     <div>Atualizado: {{ forumTopico.dataAtualizacao | date : 'dd/MM/yyyy' }}</div>
                 </div>
                 <div [ngSwitch]="forumTopico.forumTopicoEnum" class="tipo-topico">

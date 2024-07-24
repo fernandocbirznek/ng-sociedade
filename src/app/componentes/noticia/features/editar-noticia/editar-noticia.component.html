@@ -1,6 +1,6 @@
 <div fxLayout="column" class="container-noticia">
     <h2>Editar notícia</h2>
-    <form [formGroup]="this.formGroupNoticia" fxLayout="column" fxLayoutAlign="start center" class="g-gap-20">   
+    <form [formGroup]="this.formGroupNoticia" fxLayout="column" fxLayoutAlign="start center" class="g-container-form-inputs">   
         <mat-form-field appearance="outline" class="g-full-width">
             <mat-label>Título</mat-label>
             <input formControlName="formTitulo" matInput required>
@@ -29,7 +29,7 @@
             <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
             Cancelar
         </button>
-        <button mat-stroked-button color="primary" (click)="requestEditarNoticia()">
+        <button mat-stroked-button color="primary" [disabled]="!this.formGroupNoticia.valid" (click)="requestEditarNoticia()">
             <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
             Editar noticia
         </button>

@@ -30,7 +30,6 @@ import {
 } from 'src/app/store';
 
 import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-browser';
-
 import { AulaHelpers } from '../../helpers';
 
 @Component({
@@ -46,8 +45,8 @@ export class EditarAulaComponent implements OnInit {
   aula$: Observable<AulaViewModel | undefined> = new Observable<AulaViewModel | undefined>();
   aula: AulaViewModel | undefined = undefined;
 
-  aulaSessaoSubscription$: Subscription = new Subscription();
-  aulaSessao$: Observable<AulaSessaoModel[]> = new Observable<AulaSessaoModel[]>();
+  aulaSessaoManySubscription$: Subscription = new Subscription();
+  aulaSessaoMany$: Observable<AulaSessaoModel[]> = new Observable<AulaSessaoModel[]>();
   aulaSessaoMany: AulaSessaoModel[] = [];
 
   usuarioLogadoSubscription$: Subscription = new Subscription();
@@ -81,22 +80,21 @@ export class EditarAulaComponent implements OnInit {
 
   ngOnDestroy() {
     this.aulaSubscription$.unsubscribe();
-    this.aulaSessaoSubscription$.unsubscribe();
+    this.aulaSessaoManySubscription$.unsubscribe();
     this.usuarioLogadoSubscription$.unsubscribe();
   }
 
   setupAula() {
     this.aula$ = this.store.select(getOneAulaById);
     this.aulaSubscription$ = this.aula$.subscribe(item => {
-      if(item) {
+      if(item)
         this.aula = item;
-      }
     });
   }
 
   setupAulaSessao() {
-    this.aulaSessao$ = this.store.select(getManyAulaSessaoByAulaId(this.aulaId));
-    this.aulaSessaoSubscription$ = this.aulaSessao$.subscribe(itens => {
+    this.aulaSessaoMany$ = this.store.select(getManyAulaSessaoByAulaId(this.aulaId));
+    this.aulaSessaoManySubscription$ = this.aulaSessaoMany$.subscribe(itens => {
       this.trustedDashboardHtml = [];
       this.trustedUrlImageHtml = [];
       this.linkYoutubeMany = [];
@@ -137,9 +135,8 @@ export class EditarAulaComponent implements OnInit {
   setupUsuarioLogado() {
     this.usuarioLogado$ = this.store.select(getOneUsuarioLogado);
     this.usuarioLogadoSubscription$ = this.usuarioLogado$.subscribe(item => {
-      if(item) {
+      if(item)
         this.usuarioLogado = item;
-      }  
     });
   }
 
@@ -172,18 +169,18 @@ export class EditarAulaComponent implements OnInit {
   public reordenarSessoes(): void {
     let ordem = 0;
     this.aulaSessaoMany = this.aulaSessaoMany.map((aulaSessao) => {
-      let aulaAlterada = new AulaSessaoModel();
-      aulaAlterada.aulaId = aulaSessao.aulaId;
-      aulaAlterada.aulaSessaoTipo = aulaSessao.aulaSessaoTipo;
-      aulaAlterada.conteudo = aulaSessao.conteudo;
-      aulaAlterada.dataAtualizacao = aulaSessao.dataAtualizacao;
-      aulaAlterada.dataCadastro = aulaSessao.dataCadastro;
-      aulaAlterada.favoritado = aulaSessao.favoritado;
-      aulaAlterada.id = aulaSessao.id;
-      aulaAlterada.ordem = ordem++;
-      aulaAlterada.titulo = aulaSessao.titulo;
+      let aulaSessaoAlterada = new AulaSessaoModel();
+      aulaSessaoAlterada.aulaId = aulaSessao.aulaId;
+      aulaSessaoAlterada.aulaSessaoTipo = aulaSessao.aulaSessaoTipo;
+      aulaSessaoAlterada.conteudo = aulaSessao.conteudo;
+      aulaSessaoAlterada.dataAtualizacao = aulaSessao.dataAtualizacao;
+      aulaSessaoAlterada.dataCadastro = aulaSessao.dataCadastro;
+      aulaSessaoAlterada.favoritado = aulaSessao.favoritado;
+      aulaSessaoAlterada.id = aulaSessao.id;
+      aulaSessaoAlterada.ordem = ordem++;
+      aulaSessaoAlterada.titulo = aulaSessao.titulo;
 
-      return aulaAlterada;
+      return aulaSessaoAlterada;
     });
     let request: AulaSessaoOrdemRequestModel = new AulaSessaoOrdemRequestModel();
     request.aulaSessaoMany = this.aulaSessaoMany;

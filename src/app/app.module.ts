@@ -98,7 +98,8 @@ import {
   InformacaoGeralAulaComponent,
   InformacaoGeralForumComponent,
   VisualizarForumTopicoReplicaComponent,
-  VisualizarForumTopicoRespostaComponent
+  VisualizarForumTopicoRespostaComponent,
+  CardNoticiaComponent
 } from './componentes';
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -216,7 +217,8 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     InformacaoGeralAulaComponent,
     InformacaoGeralForumComponent,
     VisualizarForumTopicoReplicaComponent,
-    VisualizarForumTopicoRespostaComponent
+    VisualizarForumTopicoRespostaComponent,
+    CardNoticiaComponent
   ],
   imports: [
     BrowserModule,

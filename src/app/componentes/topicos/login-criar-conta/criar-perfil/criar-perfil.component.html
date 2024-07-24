@@ -6,7 +6,16 @@
             <mat-datepicker-toggle matIconSuffix class="data-picker" [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
-        <input type="file" formControlName="foto" (change)="requestCriarPerfil()">
+        <div fxFlex="150px"  fxLayout="column" fxLayoutAlign="space-between center" class="g-full-height">
+            <div fxLayout="column" fxLayoutAlign="start center" class="container-escolher-foto">
+                <div>Escolha uma foto</div>
+                <input type="file" formControlName="foto" (change)="imagemAlterada($event)" accept="image/*">
+                <div>Foto escolhida</div>
+            </div>
+            <div *ngIf="this.fotoEscolhida" fxFlex="100%" fxLayout="column" fxLayoutAlign="center center">
+                <img fxFlex="100px" [src]="'data:image/png;base64,' + this.fotoEscolhida" alt="Imagem" class="imagem">
+            </div>
+        </div>
         <mat-form-field appearance="outline">
             <mat-label>Hobbie</mat-label>
             <textarea formControlName="hobbie" matInput (change)="requestCriarPerfil()"></textarea>

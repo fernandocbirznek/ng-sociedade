@@ -35,10 +35,10 @@
     border-radius: 15px;
     padding: 25px 15px 15px 15px;
     gap: 8px;
-    width: 400px;
+    width: 350px;
     height: 200px;
     position: relative;
-    background-color: #fff4ad;
+    background-color: var(--yellow-postit);
 }
 
 .aula-area-fisica {

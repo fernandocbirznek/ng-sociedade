@@ -4,15 +4,10 @@
     position: relative;
 }
 
-.card-titulo {
-    background-color: #b5adff;
-}
-
 .card {
     margin-top: 50px;
     padding: 15px;
     height: 220px;
-    background-color: #b5adff;
 }
 
 .imagem {

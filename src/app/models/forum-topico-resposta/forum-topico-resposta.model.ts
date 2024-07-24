@@ -6,4 +6,8 @@ export class ForumTopicoRespostaModel {
 	descricao: string = "";
     usuarioId: number = 0;
     forumTopicoId: number = 0;
+
+    //TODO, colocar numa view
+    usuarioNome: string = '';
+    usuarioFoto: File | undefined = undefined;
 }

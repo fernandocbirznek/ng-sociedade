@@ -15,7 +15,6 @@ import {
 import { 
   AulaComentarioModel,
   AulaComentarioViewModel,
-  AulaModel,
   AulaSessaoModel,
   AulaViewModel,
   LinkYoutubeModel,
@@ -147,6 +146,7 @@ export class VisualizarAulaComponent implements OnInit {
     this.usuarioAulaSessaoFavoritadoSubscription$.unsubscribe();
     this.usuarioAulaCurtidoSubscription$.unsubscribe();
     this.usuarioAulaFavoritadaSubscription$.unsubscribe();
+    this.isUsuarioAulaComentadoSubscription$.unsubscribe();
     this.usuarioLogadoSubscription$.unsubscribe();
     this.widgetSubscription$.unsubscribe();    
   }

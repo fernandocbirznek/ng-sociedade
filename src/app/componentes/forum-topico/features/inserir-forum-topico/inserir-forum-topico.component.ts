@@ -7,7 +7,6 @@ import { Store } from '@ngrx/store';
 import { 
   ForumTagModel,
   ForumTopicoEnum,
-  ForumTopicoModel,
   ForumTopicoViewModel,
   UsuarioModel 
 } from 'src/app/models';

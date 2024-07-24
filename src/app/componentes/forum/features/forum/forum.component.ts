@@ -9,7 +9,6 @@ import {
 
 import { 
   getManyForum, 
-  selecionarManyForum 
 } from 'src/app/store';
 
 @Component({

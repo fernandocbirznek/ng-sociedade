@@ -24,6 +24,8 @@ export class AtualizarAreaFisicaComponent implements OnInit {
   formDescricao = new FormControl('', [Validators.required, Validators.maxLength(200)]);
   formAplicacao = new FormControl('', [Validators.required, Validators.maxLength(200)]);
 
+  isButtonDisabled: boolean = true;
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: AreaFisicaModel,
     public dialogRef: MatDialogRef<AtualizarAreaFisicaComponent>,

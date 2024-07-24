@@ -49,5 +49,4 @@ export class InserirAreaInteresseComponent implements OnInit {
   fecharModal() {
     this.dialogRef.close();
   }
-
 }

@@ -11,7 +11,7 @@
             <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
             Cancelar
         </button>
-        <button mat-stroked-button color="primary" (click)="requestAtualizarForumTopico()">
+        <button mat-stroked-button color="primary" [disabled]="!this.formGroupForumTopicoReplica.valid" (click)="requestAtualizarForumTopico()">
             <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
             Alterar comentário
         </button>

@@ -16,8 +16,8 @@
     <div class="titulo">Divisões da Mecânica</div>
     <div fxLayout="row wrap" fxLayoutAlign="space-between start" class="container-descricao">
         <div *ngFor="let areaFisicaDivisao of this.areaFisicaDivisaoMany" fxFlex="500px" fxLayout="column" fxLayoutAlign="start center" 
-            class="g-card-postit-yellow card-divisao">
-                <div class="g-card-postit-titulo-yellow card-divisao">{{ areaFisicaDivisao.titulo }}</div>
+            class="g-card-postit-green card-postit-green">
+                <div class="g-card-postit-titulo-green">{{ areaFisicaDivisao.titulo }}</div>
                 <div class="paragrafo">
                     {{ areaFisicaDivisao.descricao }}
                 </div>
@@ -60,7 +60,7 @@
                         <div fxFlex="100%" fxLayout="row" fxLayoutAlign="space-between start" class="card-aula-descricao">
                             <div fxFlex="100px" fxLayout="column" fxLayoutAlign="space-between center" class="aula-autor">
                                 <div>Professor</div>
-                                <div class="usuario-nome">{{ aula.usuarioNome }}</div>
+                                <div class="g-text-overflow-2 usuario-nome">{{ aula.usuarioNome }}</div>
                                 <div *ngIf="aula.usuarioFoto" fxLayout="column" fxLayoutAlign="space-between center">
                                     <img fxFlex="100px" [src]="'data:image/png;base64,' + aula.usuarioFoto" alt="Imagem" class="imagem">
                                 </div>

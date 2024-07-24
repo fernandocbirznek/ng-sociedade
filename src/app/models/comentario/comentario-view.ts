@@ -6,4 +6,7 @@ export class ComentarioView {
     trustedHtml: SafeHtml = '';
     forumTopicoComentario: ForumTopicoRespostaViewModel = new ForumTopicoRespostaViewModel();
     forumTopicoReplicaComentario: ForumTopicoReplicaModel = new ForumTopicoReplicaModel();
+
+    usuarioNome: string = '';
+    usuarioFoto: File | undefined = undefined;
 }

@@ -1,6 +1,6 @@
 <div fxLayout="column" class="container-area-fisica">
-    <h2 >Criar nova área da Física</h2>
-    <form [formGroup]="this.formGroupAreaFisica" fxLayout="column" fxLayoutAlign="start start" class="container-inputs">   
+    <h2>Criar nova área da Física</h2>
+    <form [formGroup]="this.formGroupAreaFisica" fxLayout="column" fxLayoutAlign="start start" class="g-container-form-inputs">   
       <mat-form-field  appearance="outline" class="g-full-width">
         <mat-label>Título</mat-label>
         <input formControlName="formTitulo" matInput required>
@@ -22,7 +22,7 @@
         <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
         Cancelar
       </button>
-      <button mat-stroked-button color="primary" (click)="requestCriarAreaFisica()">
+      <button mat-stroked-button color="primary" [disabled]="!this.formGroupAreaFisica.valid" (click)="requestCriarAreaFisica()">
         <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
         Nova área da Física
       </button>

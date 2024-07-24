@@ -3,11 +3,7 @@
 }
 
 .postagens {
-    background-color: #D1D1D1;
-    border: 2px solid #919191;
-    border-radius: 10px;
-    box-shadow: 5px 5px 5px rgba(131, 131, 131, 0.589);
-    padding: 0 10px 10px 10px;
+    display: grid;
 }
 
 .postagens-titulo {
@@ -18,55 +14,8 @@
     color: #5d5dff;
 }
 
-.container-noticia {
-    border-bottom: 2px dotted #5d5dff;
-    height: 220px;
-}
-
-.titulo-noticia {
-    font-weight: bold;
-    font-size: 22px;
-    margin: 8px 0;
-    cursor: pointer;
-}
-
-.container-usuario {
-    font-size: 11px;
-}
-
-.usuario-nome {
-    color: #6060ff;
-}
-
-.container-curtido {
-    font-size: 18px;
-    gap: 5px;
-}
-
 .favoritou {
     color: rgb(64, 148, 64);
-}
-
-.usuario-nome:hover {
-    text-decoration: underline;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.postagem-resumo {
-    margin-top: 10px;
-    font-size: 15px;
-    font-weight: 500;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-    text-align: justify;
-}
-
-.container-tags {
-    margin: 8px 0;
 }
 
 .button-noticias {

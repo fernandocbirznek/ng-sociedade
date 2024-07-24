@@ -9,6 +9,10 @@
     width: 100%;
 }
 
+.card-postit-green {
+    margin-bottom: 30px;
+}
+
 .paragrafo {
     font-weight: 500;
     padding: 15px 30px;
@@ -27,11 +31,6 @@
     font-size: 28px;
     font-weight: bold;
     margin: 20px 0;
-}
-
-.card-divisao {
-    background-color: #8e98ff;
-    border: 2px solid black;
 }
 
 .imagem {

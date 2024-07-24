@@ -1,6 +1,6 @@
 <div fxLayout="column" class="container-aula">
     <h2>Atualizar informações aula</h2>
-    <form [formGroup]="this.formGroupAula" fxLayout="column">   
+    <form [formGroup]="this.formGroupAula" fxLayout="column" class="g-container-form-inputs">   
         <mat-form-field appearance="outline">
             <mat-label>Área da Física</mat-label>
             <mat-select formControlName="formAreaFisica" matInput>
@@ -20,13 +20,13 @@
         </mat-form-field>
     </form>
     <div fxLayout="row" fxLayoutAlign="space-around center" class="container-buttons">
-      <button mat-stroked-button color="primary" (click)="atualizarAulaInformacao()">
-        <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
-        Atualizar informações
-      </button>
       <button mat-stroked-button color="warn" (click)="fecharModal()">
         <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
         Cancelar
+      </button>
+      <button mat-stroked-button color="primary" [disabled]="!this.formGroupAula.valid" (click)="atualizarAulaInformacao()">
+        <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
+        Atualizar informações
       </button>
     </div>
 </div>

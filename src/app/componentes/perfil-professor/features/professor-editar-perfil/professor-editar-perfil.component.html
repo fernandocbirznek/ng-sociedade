@@ -1,6 +1,6 @@
 <div fxLayout="column" class="container-criar-perfil">
     <div class="titulo">Alterar perfil</div>
-    <form fxLayout="column" [formGroup]="this.formPerfil" class="container-form">
+    <form fxLayout="column" [formGroup]="this.formPerfil" class="g-container-form-inputs">
         <mat-form-field class="container-data">
             <mat-label>Data de Nascimento</mat-label>
             <input matInput formControlName="formData" [matDatepicker]="picker">
@@ -40,7 +40,7 @@
             <mat-icon class="material-symbols-outlined">contract_delete</mat-icon>
             Cancelar
         </button>
-        <button mat-stroked-button color="primary" (click)="requestCriarPerfil()">
+        <button mat-stroked-button color="primary" [disabled]="!this.formPerfil.valid" (click)="requestCriarPerfil()">
             <mat-icon class="material-symbols-outlined">manage_accounts</mat-icon>
             Editar perfil
         </button>

@@ -1,8 +1,8 @@
 <div *ngIf="this.usuario; else loading" fxLayout="column" class="container-perfil">
     <mat-icon class="icone-close material-symbols-outlined" (click)="this.fecharModal()">close</mat-icon>
 
-    <div fxLayout="row" fxLayoutAlign="start start" class="g-card-postit-yellow card">
-        <div class="g-card-postit-titulo-yellow card-titulo">Informações do professor</div>
+    <div fxLayout="row" fxLayoutAlign="start start" class="g-card-postit-orange card">
+        <div class="g-card-postit-titulo-orange card-titulo">Informações do professor</div>
         <div fxFlex="150px" fxLayout="column" fxLayoutAlign="start center">
             <div *ngIf="this.usuario.foto" fxLayout="column" fxLayoutAlign="space-between center">
                 <img fxFlex="100px" [src]="'data:image/png;base64,' + this.usuario.foto" alt="Imagem" class="imagem">

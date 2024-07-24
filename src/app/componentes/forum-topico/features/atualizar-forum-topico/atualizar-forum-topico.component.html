@@ -1,7 +1,7 @@
 <div fxLayout="column" class="container-forum-topico">
     <div fxLayoutAlign="end end" class="fechar" (click)="fecharModal()">X</div>
     <h2>Criando novo tópico do fórum</h2>
-    <form [formGroup]="this.formGroupForumTopico" fxLayout="column" fxLayoutAlign="start center">   
+    <form [formGroup]="this.formGroupForumTopico" fxLayout="column" fxLayoutAlign="start center" class="g-container-form-inputs">   
         <mat-form-field  appearance="outline" class="g-full-width">
             <mat-label>Título</mat-label>
             <input formControlName="formTitulo" matInput required>
@@ -39,7 +39,7 @@
             <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
             Cancelar
         </button>
-        <button mat-stroked-button color="primary" (click)="requestCriarForumTopico()">
+        <button mat-stroked-button color="primary" [disabled]="!this.formGroupForumTopico.valid" (click)="requestCriarForumTopico()">
             <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
             Novo fórum tópico
         </button>

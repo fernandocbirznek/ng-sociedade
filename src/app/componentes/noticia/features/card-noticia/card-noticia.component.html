@@ -1,0 +1,17 @@
+<div *ngIf="this.noticia" fxLayout="column" class="card-noticia">
+    <div class="g-text-overflow-1 noticia-titulo" (click)="visualizarNoticia()">{{ noticia.titulo }}</div>
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="container-usuario">
+        <span class="card-noticia-autor" (click)="visualizarUsuario()">@{{noticia.usuarioCadastroNome}}</span>
+        <div  fxLayout="row" fxLayoutAlign="center center" class="card-noticia-curtida" [ngClass]="{'favoritou': this.noticia.usuarioLogadoCurtiu}">
+            <mat-icon class="icone material-symbols-outlined">thumb_up</mat-icon>
+            <div>{{ noticia.favoritado }}</div>
+        </div>
+        <span fxLayoutAlign="end center" class="card-noticia-data">{{noticia.dataCadastro | date: 'dd/MM/yyyy HH:mm' }}</span>
+    </div>
+    <div fxFlex="100%" class="noticia-resumo">{{ noticia.resumo }}</div>
+    <div *ngIf="noticia.areaInteresseMany.length > 0" fxLayout="row" fxLayoutAlign="center center" class="card-noticia-tags">
+        <div *ngFor="let item of noticia.areaInteresseMany">
+            <span class="g-tag">{{item.nome}}</span>
+        </div>
+    </div>
+</div>

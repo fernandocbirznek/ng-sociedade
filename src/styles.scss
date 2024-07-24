@@ -233,6 +233,24 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     filter: brightness(0.95);
 } 
 
+.g-container-form-inputs {
+    gap: 25px;
+}
+
+.button-go {
+    background-color: var(--green-postit);
+    width: auto;
+    padding: 8px;
+    border-radius: 20px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.8s;
+}
+
+.button-go:hover {
+    box-shadow: 0 0 0 2px black;
+}
+
 /* Altera o overflow da modal, faz aparecer scroll*/
 .cdk-overlay-pane {
     overflow-y: auto;
@@ -254,6 +272,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .mat-select-panel {
     min-width: 100% !important;
+}
+
+.mat-error {
+    margin-top: 15px;
+}
+
+.container-login .material-icons {
+    vertical-align: unset !important;
 }
 
 /* Arrow dropdown input */

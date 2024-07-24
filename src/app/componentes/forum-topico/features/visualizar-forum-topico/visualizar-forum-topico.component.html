@@ -34,8 +34,13 @@
             </div>
             <div fxLayout="row" fxLayoutAlign="start center" class="container-pergunta">
                 <div fxFlex="100px" fxLayout="column">
-                    <div>Usuário foto</div>
-                    <div>Usuário nome</div>
+                    <div class="g-text-overflow-2 usuario-nome">{{ this.forumTopico.usuarioNome }}</div>
+                    <div *ngIf="this.forumTopico.usuarioFoto" fxLayout="column" fxLayoutAlign="space-between center">
+                        <img fxFlex="100px" [src]="'data:image/png;base64,' + this.forumTopico.usuarioFoto" alt="Imagem" class="imagem">
+                    </div>
+                    <div *ngIf="!this.forumTopico.usuarioFoto">
+                        Sem foto
+                    </div>
                 </div>
                 <div [innerHTML]="this.trustedVisualizarForumTopicoHtml"></div>
                 <div *ngIf="this.usuarioLogado && this.forumTopico.usuarioId == this.usuarioLogado.id" 

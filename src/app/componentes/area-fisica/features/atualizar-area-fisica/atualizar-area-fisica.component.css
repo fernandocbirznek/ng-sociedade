@@ -2,18 +2,6 @@
     min-width: 400px;
 }
 
-.container-inputs {
-    gap: 15px;
-}
-
-.area-fisica-text {
-    font-weight: bold;
-}
-
-.container-radio {
-    gap: 20px;
-}
-
 .container-buttons {
     margin-top: 20px;
     gap: 20px;

@@ -74,6 +74,8 @@ export class VisualizarForumTopicoRespostaComponent implements OnInit {
         let comentarioView = new ComentarioView();
         comentarioView.trustedHtml = this.sanitizer.bypassSecurityTrustHtml(item.descricao);
         comentarioView.forumTopicoComentario = item;
+        comentarioView.usuarioFoto = item.usuarioFoto;
+        comentarioView.usuarioNome = item.usuarioNome;
         this.forumTopicoRespostaMany.push(comentarioView);
       });
     });

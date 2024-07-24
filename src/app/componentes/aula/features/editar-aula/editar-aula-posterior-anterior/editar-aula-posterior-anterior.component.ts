@@ -51,6 +51,10 @@ export class EditarAulaPosteriorAnteriorComponent implements OnInit {
     this.setupAulaAnteriorPosterior();
   }
 
+  ngOnDestroy(): void {
+    this.aulaManySubscription$.unsubscribe();
+  }
+
   setupAulaAnteriorPosterior() {
     this.aulaAnteriorSelectFormControl.setValue(this.aula.aulaAnteriorId);
     this.aulaPosteriorSelectFormControl.setValue(this.aula.aulaPosteriorId);

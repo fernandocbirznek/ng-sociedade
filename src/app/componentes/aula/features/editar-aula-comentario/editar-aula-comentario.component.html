@@ -1,12 +1,11 @@
 <div fxLayout="column">
     <form [formGroup]="this.formComentario" fxLayout="column" fxLayoutAlign="center center" class="g-full-width">
-        <ckeditor formControlName="comentario" class="ckeditor-editar-comentario" #ckEditorTag [editor]="ckEditor" 
-            data="<p>Escreva o comentário</p>">
+        <ckeditor formControlName="comentario" class="ckeditor-editar-comentario" #ckEditorTag [editor]="ckEditor">
         </ckeditor>
     </form>
 
     <div fxLayout="row" fxLayoutAlign="space-around center" class="container-buttons">
         <button mat-stroked-button color="accent" (click)="cancelar()">Cancelar</button>
-        <button mat-stroked-button color="primary" (click)="editarComentario()">Comentar</button>
+        <button mat-stroked-button color="primary" [disabled]="!this.formComentario.valid" (click)="editarComentario()">Comentar</button>
     </div>
 </div>

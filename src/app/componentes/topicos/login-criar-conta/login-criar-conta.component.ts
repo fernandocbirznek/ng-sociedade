@@ -27,6 +27,8 @@ export class LoginCriarContaComponent implements OnInit {
   email = new FormControl('', [Validators.required]);
   senha = new FormControl('', [Validators.required]);
 
+  criarPerfil: CriarContaPerfilModel = new CriarContaPerfilModel();
+
   usuarioLogado$: Observable<any>;
   mensagemConta: string = "";
 
@@ -66,10 +68,20 @@ export class LoginCriarContaComponent implements OnInit {
 
   requestCriarConta(formCriarConta: CriarContaPerfilModel) {
     if(formCriarConta) {
-      this.store.dispatch(criarConta({ conta: formCriarConta }));
+      this.criarPerfil.email = formCriarConta.email;
+      this.criarPerfil.nome = formCriarConta.nome;
+      this.criarPerfil.senha = formCriarConta.senha;
+
+      this.store.dispatch(criarConta({ conta: this.criarPerfil }));
       this.dialogRef.close();
     } else
       this.isTelaCriarConta = !this.isTelaCriarConta;
+  }
+
+  requestCriarPerfil(formCriarPerfil: CriarContaPerfilModel) {
+    this.criarPerfil.foto = formCriarPerfil.foto;
+    this.criarPerfil.hobbie = formCriarPerfil.hobbie;
+    this.criarPerfil.dataNascimento = formCriarPerfil.dataNascimento;
   }
 
   fecharModal() {

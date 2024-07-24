@@ -7,4 +7,8 @@ export class ForumTopicoReplicaModel {
     usuarioId: number = 0;
     forumTopicoRespostaId: number = 0;
     forumTopicoId: number = 0;
+
+    //TODO, colocar numa view
+    usuarioNome: string = '';
+    usuarioFoto: File | undefined = undefined;
 }
