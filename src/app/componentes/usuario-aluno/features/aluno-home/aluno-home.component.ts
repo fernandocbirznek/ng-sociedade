@@ -9,7 +9,8 @@ import {
 
 import { 
   deslogarConta,
-  getOneUsuarioLogado
+  getOneUsuarioLogado,
+  removerRota
 } from 'src/app/store';
 
 @Component({
@@ -53,5 +54,12 @@ export class AlunoHomeComponent implements OnInit {
   deslogar() {
     this.store.dispatch(deslogarConta());
     this.router.navigate(['']);
+    this.store.dispatch(removerRota({ 
+      rota: {
+        rotaNome: '', 
+        rotaAcessar: ``,
+        rotaNivel: 1
+      } 
+    }));
   }
 }

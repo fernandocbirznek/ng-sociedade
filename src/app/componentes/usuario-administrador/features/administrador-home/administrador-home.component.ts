@@ -10,6 +10,7 @@ import {
 import { 
   deslogarConta,
   getOneUsuarioLogado,
+  removerRota,
 } from 'src/app/store';
 
 @Component({
@@ -63,6 +64,13 @@ export class AdministradorHomeComponent implements OnInit {
 
   deslogar() {
     this.store.dispatch(deslogarConta());
+    this.store.dispatch(removerRota({ 
+      rota: {
+        rotaNome: '', 
+        rotaAcessar: ``,
+        rotaNivel: 1
+      } 
+    }));
     this.router.navigate(['']);
   }
 }

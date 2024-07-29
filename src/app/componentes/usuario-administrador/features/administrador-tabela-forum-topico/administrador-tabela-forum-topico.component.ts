@@ -15,6 +15,7 @@ import {
 } from 'src/app/models';
 
 import { 
+  adicionarRota,
   excluirForumTopico,
   getManyForumTopico,
 } from 'src/app/store';
@@ -73,6 +74,13 @@ export class AdministradorTabelaForumTopicoComponent implements OnInit {
 
   visualizarForumTopico(item: ForumTopicoModel) {
     this.router.navigate([`forum/${item.forumId}/forum-topico/${item.id}`]);
+    this.store.dispatch(adicionarRota({ 
+      rota: {
+        rotaNome: `fórum tópico`, 
+        rotaAcessar: `forum/${item.forumId}/forum-topico/${item.id}`,
+        rotaNivel: 2
+      } 
+    }));
   }
 
   excluirForumTopico(item: ForumTopicoModel) {

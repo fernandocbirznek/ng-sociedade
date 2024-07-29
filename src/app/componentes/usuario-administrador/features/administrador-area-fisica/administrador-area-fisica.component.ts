@@ -18,6 +18,7 @@ import {
 } from 'src/app/models';
 
 import { 
+  adicionarRota,
   alterarTituloPagina,
   getManyAreaFisica,
   removerAreaFisica,
@@ -86,6 +87,13 @@ export class AdministradorAreaFisicaComponent implements OnInit {
   acessarAreaFisica(item: AreaFisicaModel) {
     this.store.dispatch(alterarTituloPagina({ titulo: item.titulo, areaFisicaId: item.id }));
     this.router.navigate([`mecanica/${item.id}`], { queryParams: { areaFisicaId: item.titulo }});
+    this.store.dispatch(adicionarRota({ 
+      rota: {
+        rotaNome: item.titulo, 
+        rotaAcessar: `mecanica/${item.id}`,
+        rotaNivel: 2
+      } 
+    }));
   }
 
   editarAreaFisica(item: AreaFisicaModel) {

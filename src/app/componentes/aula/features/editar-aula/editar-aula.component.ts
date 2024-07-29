@@ -26,7 +26,8 @@ import {
   excluirAulaSessao, 
   getManyAulaSessaoByAulaId, 
   getOneAulaById, 
-  getOneUsuarioLogado, 
+  getOneUsuarioLogado,
+  removerRota, 
 } from 'src/app/store';
 
 import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-browser';
@@ -209,6 +210,11 @@ export class EditarAulaComponent implements OnInit {
   }
 
   voltarPaginaPainelProfessor() {
+    this.store.dispatch(removerRota({ 
+      rota: {rotaNome: "", 
+      rotaAcessar: ``,
+      rotaNivel: 2} 
+    }));
     this.router.navigate([`perfil-professor/${this.usuarioLogado?.email}/${this.usuarioLogado?.id}`]);
   }
 

@@ -8,6 +8,7 @@ import {
 } from 'src/app/models';
 
 import { 
+  adicionarRota,
   getManyForum, 
 } from 'src/app/store';
 
@@ -37,14 +38,19 @@ export class ForumComponent implements OnInit {
 
   setupForum() {
     this.forumMany$ = this.store.select(getManyForum);
-    this.forumManySubscription$ = this.forumMany$.subscribe(item => {
-      if (item) 
-        this.forumMany = item;        
+    this.forumManySubscription$ = this.forumMany$.subscribe(itens => {
+      if (itens) 
+        this.forumMany = itens;        
     });
   }
 
-  acessarForum(item: number) {
-    this.router.navigate([`forum/${item}/forum-topico`]);
+  acessarForum(item: ForumModel) {
+    this.store.dispatch(adicionarRota({ 
+      rota: {rotaNome: item.titulo, 
+      rotaAcessar: `forum/${item.id}/forum-topico`,
+      rotaNivel: 2} 
+    }));
+    this.router.navigate([`forum/${item.id}/forum-topico`]);
   }
 
 }

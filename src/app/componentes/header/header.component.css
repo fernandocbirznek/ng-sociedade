@@ -54,3 +54,16 @@
     font-weight: bold;
     margin-top: 20px;
 }
+
+.rota {
+    gap: 10px;
+}
+
+.rota:hover {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.rota-separador {
+    margin-right: 10px;
+}

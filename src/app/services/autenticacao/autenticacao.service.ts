@@ -6,7 +6,8 @@ import { UsuarioModel } from "src/app/models";
 
 import { 
     AppState, 
-    getOneUsuarioLogado 
+    getOneUsuarioLogado, 
+    removerRota
 } from "src/app/store";
 
 @Injectable({
@@ -31,6 +32,13 @@ export class AutenticacaoService implements CanActivate {
         this.usuarioLogado$.subscribe(item => {
             if(item && item.token == "") {
                 this.router.navigate([""]);
+                this.store.dispatch(removerRota({ 
+                    rota: {
+                      rotaNome: '', 
+                      rotaAcessar: ``,
+                      rotaNivel: 1
+                    } 
+                  }));
             } 
         }).unsubscribe();
         return true;

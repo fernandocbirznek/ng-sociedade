@@ -8,7 +8,8 @@ import { Observable } from 'rxjs';
 import { 
   deletarConta, 
   deslogarConta, 
-  getOneUsuarioLogado 
+  getOneUsuarioLogado, 
+  removerRota
 } from 'src/app/store';
 
 import { 
@@ -66,6 +67,13 @@ export class PerfilComponent implements OnInit {
       duration: 5 * 1000,
       panelClass: 'css-toast'
     });
+    this.store.dispatch(removerRota({ 
+      rota: {
+        rotaNome: ``, 
+        rotaAcessar: ``,
+        rotaNivel: 1
+      } 
+    }));
     this.router.navigate(['']);
   }
 

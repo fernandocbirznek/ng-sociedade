@@ -9,7 +9,8 @@ import {
 
 import { 
   deslogarConta,
-  getOneUsuarioLogado 
+  getOneUsuarioLogado, 
+  removerRota
 } from 'src/app/store';
 
 @Component({
@@ -53,6 +54,15 @@ export class ProfessorHomeComponent implements OnInit {
 
   deslogar() {
     this.store.dispatch(deslogarConta());
+    
+    this.store.dispatch(removerRota({ 
+      rota: {
+        rotaNome: '', 
+        rotaAcessar: ``,
+        rotaNivel: 1
+      } 
+    }));
+
     this.router.navigate(['']);
   }
 }

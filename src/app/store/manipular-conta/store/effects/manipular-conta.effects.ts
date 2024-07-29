@@ -34,11 +34,13 @@ import {
 } from 'src/app/store/noticia';
 
 import { 
+  adicionarRota,
   alterarTituloPagina,
   atualizarAdicaoAulaCurtido, 
   atualizarAdicaoAulaFavoritada, 
   atualizarRemocaoAulaCurtido, 
-  atualizarRemocaoAulaFavoritada
+  atualizarRemocaoAulaFavoritada,
+  removerRota
 } from 'src/app/store';
 
 import { GenericoHelpers } from 'src/app/componentes/genericos/helpers/generico.helper';
@@ -82,10 +84,20 @@ export class ManipularContaEffects {
             switch(response.tipoUsuario) { 
               case TipoUsuarioEnum.UsuarioAdministrador: { 
                 this.router.navigate([`administrador-home/${response.email}/${response.id}`]);
+                this.store.dispatch(adicionarRota({ 
+                  rota: {rotaNome: "administrador-home", 
+                  rotaAcessar: `administrador-home/${response.email}/${response.id}`,
+                  rotaNivel: 1} 
+                }));
                 break; 
               } 
               case TipoUsuarioEnum.UsuarioComum: { 
                 this.router.navigate([`aluno-home/${response.email}/${response.id}`]);
+                this.store.dispatch(adicionarRota({ 
+                  rota: {rotaNome: "aluno-home", 
+                  rotaAcessar: `aluno-home/${response.email}/${response.id}`,
+                  rotaNivel: 1} 
+                }));
                 //TODO, colocar num resolver
                 this.store.dispatch(selecionarManyUsuarioAulaCurtido({ usuarioId: response.id }));
                 this.store.dispatch(selecionarManyUsuarioAulaFavoritada({ usuarioId: response.id }));
@@ -93,6 +105,11 @@ export class ManipularContaEffects {
               } 
               case TipoUsuarioEnum.UsuarioProfessor: { 
                 this.router.navigate([`perfil-professor/${response.email}/${response.id}`]);
+                this.store.dispatch(adicionarRota({ 
+                  rota: {rotaNome: "professor-home", 
+                  rotaAcessar: `perfil-professor/${response.email}/${response.id}`,
+                  rotaNivel: 1} 
+                }));
                 //TODO, colocar num resolver
                 this.store.dispatch(selecionarManyUsuarioAulaCurtido({ usuarioId: response.id }));
                 this.store.dispatch(selecionarManyUsuarioAulaFavoritada({ usuarioId: response.id }));
@@ -103,6 +120,13 @@ export class ManipularContaEffects {
               break; 
               } 
               default: { 
+                this.store.dispatch(removerRota({ 
+                  rota: {
+                    rotaNome: '', 
+                    rotaAcessar: ``,
+                    rotaNivel: 1
+                  } 
+                }));
                 this.router.navigate(['']);
               } 
             }
@@ -129,10 +153,20 @@ export class ManipularContaEffects {
             switch(response.tipoUsuario) { 
               case TipoUsuarioEnum.UsuarioAdministrador: { 
                 this.router.navigate([`administrador-home/${response.email}/${response.id}`]);
+                this.store.dispatch(adicionarRota({ 
+                  rota: {rotaNome: "administrador-home", 
+                  rotaAcessar: `administrador-home/${response.email}/${response.id}`,
+                  rotaNivel: 1} 
+                }));
                 break; 
               } 
               case TipoUsuarioEnum.UsuarioComum: { 
                 this.router.navigate([`aluno-home/${response.email}/${response.id}`]);
+                this.store.dispatch(adicionarRota({ 
+                  rota: {rotaNome: "aluno-home", 
+                  rotaAcessar: `aluno-home/${response.email}/${response.id}`,
+                  rotaNivel: 1} 
+                }));
                 //TODO, colocar num resolver
                 this.store.dispatch(selecionarManyUsuarioAulaCurtido({ usuarioId: response.id }));
                 this.store.dispatch(selecionarManyUsuarioAulaFavoritada({ usuarioId: response.id }));
@@ -140,6 +174,11 @@ export class ManipularContaEffects {
               } 
               case TipoUsuarioEnum.UsuarioProfessor: { 
                 this.router.navigate([`perfil-professor/${response.email}/${response.id}`]);
+                this.store.dispatch(adicionarRota({ 
+                  rota: {rotaNome: "professor-home", 
+                  rotaAcessar: `perfil-professor/${response.email}/${response.id}`,
+                  rotaNivel: 1} 
+                }));
                 break; 
               } 
               case TipoUsuarioEnum.UsuarioProfessorAdministrador: { 
@@ -147,6 +186,13 @@ export class ManipularContaEffects {
               break; 
               } 
               default: { 
+                this.store.dispatch(removerRota({ 
+                  rota: {
+                    rotaNome: '', 
+                    rotaAcessar: ``,
+                    rotaNivel: 1
+                  } 
+                }));
                 this.router.navigate(['']);
               } 
             }

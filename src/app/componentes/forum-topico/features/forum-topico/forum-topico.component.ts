@@ -15,6 +15,7 @@ import {
 } from 'src/app/models';
 
 import { 
+  adicionarRota,
   getManyForumTopico, 
   getOneForumByForumId,
 } from 'src/app/store';
@@ -72,6 +73,11 @@ export class ForumTopicoComponent implements OnInit {
   }
 
   acessarForumTopico(item: ForumTopicoViewModel) {
+    this.store.dispatch(adicionarRota({ 
+      rota: {rotaNome: item.titulo, 
+      rotaAcessar: `forum/${this.forumId}/forum-topico/${item.id}`,
+      rotaNivel: 3} 
+    }));
     this.router.navigate([`forum/${this.forumId}/forum-topico/${item.id}`]);
   }
 

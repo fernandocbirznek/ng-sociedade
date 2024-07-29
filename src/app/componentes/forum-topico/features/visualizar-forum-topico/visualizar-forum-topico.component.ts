@@ -16,6 +16,7 @@ import {
   excluirForumTopico,
   getOneForumTopicoById, 
   getOneUsuarioLogado,
+  removerRota,
 } from 'src/app/store';
 
 import { 
@@ -95,7 +96,15 @@ export class VisualizarForumTopicoComponent implements OnInit {
         data: `Fórum tópico: ${this.forumTopico.titulo}`
       }).afterClosed().subscribe((evento) => {
         if(evento && this.forumTopico) {
+          this.store.dispatch(removerRota({ 
+            rota: {
+              rotaNome: '', 
+              rotaAcessar: ``,
+              rotaNivel: 3
+            } 
+          }));
           this.store.dispatch(excluirForumTopico({ forumTopicoId: this.forumTopico.id }));
+          //TODO, verificar para corrigir
           this.router.navigate([`forum/1/forum-topico`]);
         }
       });

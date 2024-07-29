@@ -15,6 +15,7 @@ import {
 } from 'src/app/models';
 
 import { 
+  adicionarRota,
   alterarTituloPagina,
   getManyNoticiaFilter, 
   selecionarManyNoticia 
@@ -69,8 +70,16 @@ export class PainelNoticiaComponent implements OnInit {
       width: '80%',
       height: 'auto',
     }).afterClosed().subscribe((aula: AulaModel) => {
-      if(aula)
+      if(aula) {
+        this.store.dispatch(adicionarRota({ 
+          rota: {
+            rotaNome: 'aula', 
+            rotaAcessar: `visualizar-aula/${aula.id}`,
+            rotaNivel: 1
+          } 
+        }));
         this.router.navigate([`visualizar-aula/${aula.id}`]);
+      } 
     });
   }
 }

@@ -197,8 +197,19 @@ export const getOneAulaById = createSelector(
     let aula = state.aulas.find(item => item.id == aulaSelected);
     let areaFisica: AreaFisicaModel | undefined = undefined;
 
-    if (aula)
-      areaFisica = areaFisicaMany.find(areaFisica => areaFisica.id == aula!.areaFisicaId)
+    if (aula) {
+      areaFisica = areaFisicaMany.find(areaFisica => areaFisica.id == aula!.areaFisicaId);
+      let aulaPosterior = state.aulas.find(item => item.id == aula!.aulaPosteriorId);
+
+      if (aulaPosterior)
+        item.aulaPosteriorNome = aulaPosterior.titulo;
+
+      let aulaAnterior = state.aulas.find(item => item.id == aula!.aulaAnteriorId);
+
+      if (aulaAnterior)
+        item.aulaPosteriorNome = aulaAnterior.titulo;
+    }
+      
 
     if (aula && areaFisica) {
       item.areaFisicaId = aula.areaFisicaId;

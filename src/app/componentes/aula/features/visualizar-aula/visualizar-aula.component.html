@@ -116,11 +116,11 @@
 
     <div fxLayout="row" fxLayoutAlign="space-between center" class="container-anterior-posterior">
         <div class="button-anterior-posterior button-aula-anterior" [ngClass]="{'button-disabled': !this.aula.aulaAnteriorId}"
-            (click)="aulaAnterior()">
+            (click)="acessarAulaAnterior()">
             Acessar aula anterior
         </div>
         <div class="button-anterior-posterior button-aula-posterior" [ngClass]="{'button-disabled': !this.aula.aulaPosteriorId}"
-            (click)="aulaPosterior()">
+            (click)="acessarAulaPosterior()">
             Acessar próxima aula
         </div>
     </div>

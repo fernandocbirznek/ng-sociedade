@@ -18,6 +18,7 @@ export * from './forum-tag';
 export * from './forum-topico';
 export * from './forum-topico-replica';
 export * from './forum-topico-resposta';
+export * from './header-rota';
 export * from './home-professor';
 export * from './link-youtube';
 export * from './login';

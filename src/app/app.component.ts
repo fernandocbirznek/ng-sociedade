@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import { 
+  adicionarRota,
   loginAutomaticoWhitToken,
   selecionarAreaInteresseMany, 
   selecionarManyAreaFisica,
@@ -30,6 +31,7 @@ export class AppComponent {
     this.store.dispatch(selecionarManyTag());
     this.store.dispatch(selecionarManyForum());
     this.store.dispatch(selecionarManyForumTag());
+    this.store.dispatch(adicionarRota({ rota: {rotaNome: "home", rotaAcessar: "", rotaNivel: 0} }));
 
     let token = GenericoHelpers.getToken();
     if (token)

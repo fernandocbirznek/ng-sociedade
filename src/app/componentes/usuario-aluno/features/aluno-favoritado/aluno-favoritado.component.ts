@@ -13,6 +13,7 @@ import {
 } from 'src/app/models';
 
 import { 
+  adicionarRota,
   alterarTipoSessaoAulaEnum,
   getManyUsuarioAulaSessaoFavoritado, 
   selecionarManyUsuarioAulaSessaoFavoritadoByUsuarioId 
@@ -108,6 +109,13 @@ export class AlunoFavoritadoComponent implements OnInit {
 
   acessarAula(item: UsuarioAulaSessaoFavoritadoModel) {
     this.router.navigate([`visualizar-aula/${item.aulaId}`]);
+    this.store.dispatch(adicionarRota({ 
+      rota: {
+        rotaNome: `${item.titulo}`, 
+        rotaAcessar: `visualizar-aula/${item.id}`,
+        rotaNivel: 2
+      } 
+    }));
   }
 
   expandirCard(item: number) {

@@ -11,6 +11,7 @@ import {
 } from 'src/app/models';
 
 import { 
+  adicionarRota,
   alterarTituloPagina,
   atualizarAulaSelected,
   getManyAreaFisicaDivisaoByAreaFisicaId,
@@ -101,6 +102,13 @@ export class MecanicaComponent implements OnInit {
   visualizarAula(item: AulaModel) {
     this.store.dispatch(alterarTituloPagina({ titulo: `${item.titulo}`, areaFisicaId: item.areaFisicaId }));
     this.store.dispatch(atualizarAulaSelected({ aulaId: item.id }));
+    this.store.dispatch(adicionarRota({ 
+      rota: {
+        rotaNome: `${item.titulo}`, 
+        rotaAcessar: `visualizar-aula/${item.id}`,
+        rotaNivel: 2
+      } 
+    }));
     this.router.navigate([`visualizar-aula/${item.id}`], { queryParams: { aulaTitulo: item.titulo }});
   }
 

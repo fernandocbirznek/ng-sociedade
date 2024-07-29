@@ -6,15 +6,19 @@ import { Router } from '@angular/router';
 
 import { 
   AreaFisicaModel, 
+  HeaderRotaModel, 
   TipoUsuarioEnum, 
   UsuarioModel 
 } from 'src/app/models';
 
 import { 
+  adicionarRota,
   alterarTituloPagina,
   getManyAreaFisica,
+  getManyRota,
   getOneUsuarioLogado,
   getTituloPagina,
+  removerRota,
 } from 'src/app/store';
 
 import { 
@@ -37,6 +41,10 @@ export class HeaderComponent implements OnInit {
   headerTitulo$: Observable<string> = new Observable<string>();
   headerTitulo: string = 'Home';
 
+  rotaManySubscription$: Subscription = new Subscription();
+  rotaMany$: Observable<HeaderRotaModel[]> = new Observable<HeaderRotaModel[]>();
+  rotaMany: HeaderRotaModel[] = [];
+
   usuarioLogadoSubscription$: Subscription = new Subscription();
   usuarioLogado$: Observable<UsuarioModel | undefined> = new Observable<UsuarioModel | undefined>();
   usuarioLogado: UsuarioModel | undefined = undefined;
@@ -54,12 +62,14 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.setupAreaFisica();
     this.setupHeaderTitulo();
+    this.setupRota();
     this.setupUsuarioLogado();
   }
 
   ngOnDestroy() {
     this.areaFisicaManySubscription$.unsubscribe();
     this.headerTituloSubscription$.unsubscribe();
+    this.rotaManySubscription$.unsubscribe();
     this.usuarioLogadoSubscription$.unsubscribe();
   }
 
@@ -77,6 +87,13 @@ export class HeaderComponent implements OnInit {
     });
   }
 
+  setupRota() {
+    this.rotaMany$ = this.store.select(getManyRota);
+    this.rotaManySubscription$ = this.rotaMany$.subscribe(itens => {
+      this.rotaMany = itens;
+    });
+  }
+
   setupUsuarioLogado() {
     this.usuarioLogado$ = this.store.select(getOneUsuarioLogado);
     this.usuarioLogadoSubscription$ = this.usuarioLogado$.subscribe(item => {
@@ -85,6 +102,11 @@ export class HeaderComponent implements OnInit {
   }
 
   areaSelecionada(areaFisica: AreaFisicaModel) {
+    this.store.dispatch(adicionarRota({ 
+      rota: {rotaNome:  areaFisica.titulo, 
+      rotaAcessar: `mecanica/${areaFisica.id}`,
+      rotaNivel: 1} 
+    }));
     this.store.dispatch(alterarTituloPagina({ titulo: areaFisica.titulo, areaFisicaId: areaFisica.id }));
     this.router.navigate([`mecanica/${areaFisica.id}`], { queryParams: { areaFisicaId: areaFisica.titulo }});
   }
@@ -101,14 +123,29 @@ export class HeaderComponent implements OnInit {
       this.store.dispatch(alterarTituloPagina({ titulo: '', areaFisicaId: 0 }));
       switch(this.usuarioLogado.tipoUsuario) { 
         case TipoUsuarioEnum.UsuarioAdministrador: { 
+          this.store.dispatch(adicionarRota({ 
+            rota: {rotaNome: "administrador-home", 
+            rotaAcessar: `administrador-home/${this.usuarioLogado.email}/${this.usuarioLogado.id}`,
+            rotaNivel: 1} 
+          }));
           this.router.navigate([`administrador-home/${this.usuarioLogado.email}/${this.usuarioLogado.id}`])
           break; 
         } 
         case TipoUsuarioEnum.UsuarioComum: { 
+          this.store.dispatch(adicionarRota({ 
+            rota: {rotaNome: "aluno-home", 
+            rotaAcessar: `aluno-home/${this.usuarioLogado.email}/${this.usuarioLogado.id}`,
+            rotaNivel: 1} 
+          }));
           this.router.navigate([`aluno-home/${this.usuarioLogado.email}/${this.usuarioLogado.id}`])
           break; 
         } 
         case TipoUsuarioEnum.UsuarioProfessor: { 
+          this.store.dispatch(adicionarRota({ 
+            rota: {rotaNome: "professor-home", 
+            rotaAcessar: `perfil-professor/${this.usuarioLogado.email}/${this.usuarioLogado.id}`,
+            rotaNivel: 1} 
+          }));
           this.router.navigate([`perfil-professor/${this.usuarioLogado.email}/${this.usuarioLogado.id}`])
           break; 
         } 
@@ -116,7 +153,14 @@ export class HeaderComponent implements OnInit {
           //TODO, professor administrador; 
         break; 
         } 
-        default: { 
+        default: {
+          this.store.dispatch(removerRota({ 
+            rota: {
+              rotaNome: '', 
+              rotaAcessar: ``,
+              rotaNivel: 1
+            } 
+          }));
           this.router.navigate(['']);
           break; 
         } 
@@ -126,13 +170,29 @@ export class HeaderComponent implements OnInit {
 
   acessarTela(item: string) {
     if (item == 'home') {
+      this.store.dispatch(removerRota({ 
+        rota: {rotaNome: "", 
+        rotaAcessar: ``,
+        rotaNivel: 1} 
+      }));
       this.store.dispatch(alterarTituloPagina({ titulo: item, areaFisicaId: 0 }));
       this.router.navigate(['']);
     }
     if (item == 'forum') {
+      this.store.dispatch(adicionarRota({ 
+        rota: {
+          rotaNome: "forum", 
+          rotaAcessar: `forum`,
+          rotaNivel: 1
+        } 
+      }));
       this.store.dispatch(alterarTituloPagina({ titulo: item, areaFisicaId: 0 }));
       this.router.navigate(['forum']);
     }
+  }
+
+  rotaAcessar(item: string) {
+    this.router.navigate([item]);
   }
 
   mudaFoto (foto: string) {

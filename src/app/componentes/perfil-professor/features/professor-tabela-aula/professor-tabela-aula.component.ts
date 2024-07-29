@@ -20,6 +20,7 @@ import {
 } from 'src/app/models';
 
 import { 
+  adicionarRota,
   alterarTituloPagina,
   atualizarAulaPublicado,
   excluirAula,
@@ -98,10 +99,24 @@ export class ProfessorTabelaAulaComponent implements OnInit, AfterViewInit {
 
   acessarAula(item: AulaModel) {
     this.store.dispatch(alterarTituloPagina({ titulo: `${item.titulo}`, areaFisicaId: item.areaFisicaId }));
+    this.store.dispatch(adicionarRota({ 
+      rota: {
+        rotaNome: `${item.titulo}`, 
+        rotaAcessar: `visualizar-aula/${item.id}`,
+        rotaNivel: 2
+      } 
+    }));
     this.router.navigate([`visualizar-aula/${item.id}`]);
   }
 
   editarAula(item: AulaModel) {
+    this.store.dispatch(adicionarRota({ 
+      rota: {
+        rotaNome: `editar/${item.titulo}`, 
+        rotaAcessar: `editar-aula/${item.id}`,
+        rotaNivel: 2
+      } 
+    }));
     this.router.navigate([`editar-aula/${item.id}`]);
   }
 

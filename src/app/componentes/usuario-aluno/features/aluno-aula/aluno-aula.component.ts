@@ -10,6 +10,7 @@ import {
 } from 'src/app/models';
 
 import { 
+  adicionarRota,
   alterarTituloPagina,
   atualizarAulaSelected,
   getWidgetMany, 
@@ -59,6 +60,13 @@ export class AlunoAulaComponent implements OnInit {
       this.store.dispatch(alterarTituloPagina({ titulo: `${item.aula.titulo}`, areaFisicaId: item.aula.areaFisicaId }));
       this.store.dispatch(atualizarAulaSelected({ aulaId: item.aula.id }));
       this.router.navigate([`visualizar-aula/${item.aula.id}`], { queryParams: { aulaTitulo: item.aula.titulo }});
+      this.store.dispatch(adicionarRota({ 
+        rota: {
+          rotaNome: `${item.aula.titulo}`, 
+          rotaAcessar: `visualizar-aula/${item.id}`,
+          rotaNivel: 2
+        } 
+      }));
     }
   }
 

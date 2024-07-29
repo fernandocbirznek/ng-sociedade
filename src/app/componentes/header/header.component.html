@@ -21,4 +21,10 @@
     <div *ngIf="this.headerTitulo" fxLayoutAlign="center center" class="menu-selecionado">
         {{ this.headerTitulo }}
     </div>
+    <div fxLayout="row" fxLayoutAlign="start center">
+        <span *ngFor="let rota of rotaMany; index as i" fxLayout="row" class="rota" (click)="rotaAcessar(rota.rotaAcessar)">
+            <span>{{ rota.rotaNome }}</span>
+            <span *ngIf="rotaMany.length != (i+1)" class="rota-separador">/</span>
+        </span>
+    </div>
 </div>

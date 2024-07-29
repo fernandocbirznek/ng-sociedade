@@ -28,6 +28,7 @@ import {
 } from 'src/app/models';
 
 import { 
+  adicionarRota,
   alterarTituloPagina,
   atualizarAulaSelected,
   excluirAulaComentario, 
@@ -36,7 +37,7 @@ import {
   getIsUsuarioLogadoAulaComentario, 
   getManyAulaComentarioByAulaSelected, 
   getManySessaoIdInUsuarioAulaSessaoFavoritado, 
-  getOneAulaById, 
+  getOneAulaById,
   getOneUsuarioLogado, 
   getWidgetMany, 
   inserirAulaComentario, 
@@ -46,6 +47,7 @@ import {
   inserirWidgetConcluido, 
   inserirWidgetCursando, 
   inserirWidgetCursar, 
+  removerRota, 
   removerUsuarioAulaCurtido, 
   removerUsuarioAulaFavoritada, 
   removerUsuarioAulaSessaoFavoritado, 
@@ -299,9 +301,12 @@ export class VisualizarAulaComponent implements OnInit {
   }
 
   voltarPaginaMecanica() {
-    //TODO, precisa retornar para pagina certa
     this.store.dispatch(alterarTituloPagina({ titulo: 'mecanica', areaFisicaId: this.aula.areaFisicaId }));
-    //TODO, precisa fazer uma store de rotas, salvar a rota anterior
+    this.store.dispatch(removerRota({ 
+      rota: {rotaNome: "", 
+      rotaAcessar: ``,
+      rotaNivel: 2} 
+    }));
     this.router.navigate([`mecanica/${this.aula.areaFisicaId}`]);
   }
 
@@ -459,12 +464,22 @@ export class VisualizarAulaComponent implements OnInit {
     }
   }
 
-  aulaPosterior() {
+  acessarAulaPosterior() {
     this.router.navigate([`visualizar-aula/${this.aula.aulaPosteriorId}`]);
+    this.store.dispatch(adicionarRota({ 
+      rota: {rotaNome: this.aula.aulaPosteriorNome, 
+      rotaAcessar: `visualizar-aula/${this.aula.aulaPosteriorId}`,
+      rotaNivel: 3} 
+    }));
     this.store.dispatch(atualizarAulaSelected({ aulaId: this.aula.aulaPosteriorId }));
   }
 
-  aulaAnterior() {
+  acessarAulaAnterior() {
+    this.store.dispatch(adicionarRota({ 
+      rota: {rotaNome: this.aula.aulaAnteriorNome, 
+      rotaAcessar: `visualizar-aula/${this.aula.aulaAnteriorId}`,
+      rotaNivel: 3} 
+    }));
     this.router.navigate([`visualizar-aula/${this.aula.aulaAnteriorId}`]);
     this.store.dispatch(atualizarAulaSelected({ aulaId: this.aula.aulaAnteriorId }));
   }
