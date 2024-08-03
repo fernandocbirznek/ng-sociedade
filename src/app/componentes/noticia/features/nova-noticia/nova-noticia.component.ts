@@ -16,8 +16,6 @@ import {
   inserirNoticia, 
 } from 'src/app/store';
 
-import Editor from 'src/app/componentes/genericos/ckeditor/build/ckeditor';
-
 @Component({
   selector: 'app-nova-noticia',
   templateUrl: './nova-noticia.component.html',
@@ -40,8 +38,6 @@ export class NovaNoticiaComponent implements OnInit {
   areaInteresseMany: AreaInteresseModel[] = [];
 
   areaInteresseSelecionado: number[] = [];
-
-  public ckEditor = Editor;
 
   constructor(
     public dialog: MatDialog,
@@ -95,6 +91,10 @@ export class NovaNoticiaComponent implements OnInit {
     this.areaInteresseSelecionado = [];
     this.store.dispatch(inserirNoticia({ noticia: request }));
     this.dialogRef.close();
+  }
+
+  alterouFormEditor(item: string) {
+    this.formConteudo.setValue(item);
   }
 
   fecharModal() {

@@ -11,9 +11,7 @@
             <textarea maxlength="200" formControlName="formResumo" matInput required></textarea>
             <mat-error *ngIf="formResumo.invalid">Resumo é obrigatória</mat-error>
         </mat-form-field>
-        <ckeditor class="ckeditor-editar-noticia" 
-            formControlName="formConteudo" #ckEditorTagEditar [editor]="ckEditor">
-        </ckeditor>
+        <app-ckeditor (onAlterouEditor)="alterouFormEditor($event)"></app-ckeditor>
     </form>
     <h4>Selecione as áreas de interesse da notícia:</h4>
     <div fxLayout="row" fxLayoutAlign="start center" class="container-area-interesse">

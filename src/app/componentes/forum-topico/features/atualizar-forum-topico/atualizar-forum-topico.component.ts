@@ -19,7 +19,6 @@ import {
   selecionarManyForumTag
 } from 'src/app/store';
 
-import Editor from 'src/app/componentes/genericos/ckeditor/build/ckeditor';
 @Component({
   selector: 'app-atualizar-forum-topico',
   templateUrl: './atualizar-forum-topico.component.html',
@@ -45,8 +44,6 @@ export class AtualizarForumTopicoComponent implements OnInit {
   forumTagSelectId: number[] = [];
 
   readonly forumTopicoEnum = ForumTopicoEnum;
-
-  public ckEditor = Editor;
 
   constructor(
     public dialog: MatDialog,
@@ -124,6 +121,10 @@ export class AtualizarForumTopicoComponent implements OnInit {
       this.dialogRef.close();
     }
     
+  }
+
+  alterouFormEditor(item: string) {
+    this.formConteudo.setValue(item);
   }
 
   fecharModal() {

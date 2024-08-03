@@ -24,8 +24,6 @@ import {
   ModalExcluirComponent 
 } from 'src/app/componentes';
 
-import Editor from 'src/app/componentes/genericos/ckeditor/build/ckeditor';
-
 @Component({
   selector: 'app-visualizar-forum-topico',
   templateUrl: './visualizar-forum-topico.component.html',
@@ -46,8 +44,6 @@ export class VisualizarForumTopicoComponent implements OnInit {
   trustedVisualizarForumTopicoHtml : SafeHtml | undefined = undefined;
 
   readonly forumTopicoEnum = ForumTopicoEnum;
-
-  public ckEditor = Editor;
 
   formConteudoEditarTopico = new FormControl('', [Validators.required, Validators.maxLength(8000)]);
 

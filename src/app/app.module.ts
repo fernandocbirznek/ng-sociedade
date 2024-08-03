@@ -99,12 +99,15 @@ import {
   InformacaoGeralForumComponent,
   VisualizarForumTopicoReplicaComponent,
   VisualizarForumTopicoRespostaComponent,
-  CardNoticiaComponent
+  CardNoticiaComponent,
+  CkeditorComponent
 } from './componentes';
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { KatexModule } from 'ng-katex';
+
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 import {
   AreaFisicaStoreModule,
@@ -131,7 +134,6 @@ import {
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 @NgModule({
   declarations: [
@@ -218,11 +220,12 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     InformacaoGeralForumComponent,
     VisualizarForumTopicoReplicaComponent,
     VisualizarForumTopicoRespostaComponent,
-    CardNoticiaComponent
+    CardNoticiaComponent,
+    CkeditorComponent,
   ],
   imports: [
     BrowserModule,
-    CKEditorModule, 
+    CKEditorModule,
     KatexModule,
     AppRoutingModule,
     AppRoutingModuleMecanica,

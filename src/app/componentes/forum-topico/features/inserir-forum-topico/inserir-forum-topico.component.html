@@ -29,9 +29,7 @@
                 </div>
             </div>
         </div>
-        <ckeditor class="ckeditor-novo-forum-topico" 
-            formControlName="formConteudo" #ckEditorTagEditar [editor]="ckEditor" data="<p>Hello, world!</p>">
-        </ckeditor>
+        <app-ckeditor (onAlterouEditor)="alterouFormEditor($event)"></app-ckeditor>
     </form>
     <div fxLayout="row" fxLayoutAlign="space-around center" class="container-buttons">
         <button mat-stroked-button color="warn" (click)="fecharModal()">

@@ -1,5 +1,6 @@
 export * from './aula-filtro';
 export * from './aula-icone';
+export * from './ckeditor';
 export * from './editar-usuario-area-interesse';
 export * from './helpers';
 export * from './modal-excluir';

@@ -23,8 +23,6 @@ import {
   inserirForumTopicoReplica
 } from 'src/app/store';
 
-import Editor from 'src/app/componentes/genericos/ckeditor/build/ckeditor';
-
 @Component({
   selector: 'app-visualizar-forum-topico-replica',
   templateUrl: './visualizar-forum-topico-replica.component.html',
@@ -41,8 +39,6 @@ export class VisualizarForumTopicoReplicaComponent implements OnInit {
   usuarioLogadoSubscription$: Subscription = new Subscription();
   usuarioLogado$: Observable<UsuarioModel | undefined> = new Observable<UsuarioModel | undefined>();
   usuarioLogado: UsuarioModel | undefined = undefined ;
-
-  public ckEditor = Editor;
 
   formConteudoReplicaTopico = new FormControl('', [Validators.required, Validators.maxLength(8000)]);
 
@@ -104,6 +100,10 @@ export class VisualizarForumTopicoReplicaComponent implements OnInit {
 
       this.store.dispatch(inserirForumTopicoReplica({ forumTopicoReplica: forumTopicoReplica }));
     }
+  }
+
+  alterouFormEditor(item: string) {
+    this.formConteudoReplicaTopico.setValue(item);
   }
 
   editarReplicaForumTopico(item: any) {

@@ -56,8 +56,6 @@ import {
   removerWidgetCursar, 
 } from 'src/app/store';
 
-import Editor from 'src/app/componentes/genericos/ckeditor/build/ckeditor';
-
 import { AulaHelpers } from '../../helpers/aula-helpers';
 
 @Component({
@@ -114,7 +112,6 @@ export class VisualizarAulaComponent implements OnInit {
   escreverComentario: boolean = false;
   formComentario: FormGroup = null as any;
   formControlComentario = new FormControl('', [Validators.required, Validators.maxLength(2000)]);
-  public ckEditor = Editor;
 
   readonly tipoSessaoAulaEnum = TipoSessaoAulaEnum;
 
@@ -437,6 +434,10 @@ export class VisualizarAulaComponent implements OnInit {
       if (this.widget.widgetCursar.find(item => item.aula?.id == this.aula.id))
         this.alterarSalvarSelecionado('cursar');
     }
+  }
+
+  alterouFormEditor(item: string) {
+    this.formControlComentario.setValue(item);
   }
 
   alterarSalvarSelecionado(item: string) {

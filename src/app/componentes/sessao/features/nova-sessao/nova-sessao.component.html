@@ -20,10 +20,9 @@
           <mat-error *ngIf="tipoSessao.invalid">Sessão é obrigatória</mat-error>
         </mat-form-field>
 
-        <ckeditor *ngIf="this.tipoSessao.value == this.tipoSessaoAulaEnum.Conceito || this.tipoSessao.value == this.tipoSessaoAulaEnum.Texto" 
-          fxFlex="100%" class="ckeditor-nova-sessao" #ckEditorTag [editor]="ckEditor"
-          (change)="alterouForm()">
-        </ckeditor>
+        <app-ckeditor *ngIf="this.tipoSessao.value == this.tipoSessaoAulaEnum.Conceito || this.tipoSessao.value == this.tipoSessaoAulaEnum.Texto" 
+          (onAlterouEditor)="alterouFormEditor($event)">
+        </app-ckeditor>
 
         <div *ngIf="this.tipoSessao.value == this.tipoSessaoAulaEnum.Equacao" fxFlex="100%" fxLayout="column" fxLayoutAlign="start center" 
           class="g-full-width">
@@ -110,7 +109,7 @@
     </div>
     <div fxLayout="row" fxLayoutAlign="space-around center" class="container-buttons">
       <button mat-stroked-button color="accent" (click)="fecharModal()">Cancelar</button>
-      <button mat-stroked-button color="primary" (click)="cadastrarSessao()" [disabled]="!this.isFormValid">
+      <button mat-stroked-button color="primary" (click)="cadastrarSessao()">
         <mat-icon class="material-symbols-outlined">add_circle</mat-icon>
         Cadastrar sessão
       </button>

@@ -14,8 +14,6 @@ import {
   getOneUsuarioLogado 
 } from 'src/app/store';
 
-import Editor from 'src/app/componentes/genericos/ckeditor/build/ckeditor';
-
 @Component({
   selector: 'app-atualizar-forum-topico-resposta',
   templateUrl: './atualizar-forum-topico-resposta.component.html',
@@ -30,8 +28,6 @@ export class AtualizarForumTopicoRespostaComponent implements OnInit {
   usuarioLogadoSubscription$: Subscription = new Subscription();
   usuarioLogado$: Observable<UsuarioModel | undefined> = new Observable<UsuarioModel | undefined>();
   usuarioLogado: UsuarioModel | undefined = undefined ;
-
-  public ckEditor = Editor;
 
   constructor(
     public dialog: MatDialog,
@@ -83,6 +79,10 @@ export class AtualizarForumTopicoRespostaComponent implements OnInit {
       this.store.dispatch(atualizarForumTopicoResposta({ forumTopicoResposta: request }));
       this.dialogRef.close();
     }
+  }
+
+  alterouFormEditor(item: string) {
+    this.formConteudoResposta.setValue(item);
   }
 
   fecharModal() {

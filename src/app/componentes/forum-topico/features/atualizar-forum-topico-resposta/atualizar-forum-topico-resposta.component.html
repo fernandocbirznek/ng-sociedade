@@ -2,9 +2,7 @@
     <div fxLayoutAlign="end end" class="fechar" (click)="fecharModal()">X</div>
     <h2>Alterar comentário do fórum</h2>
     <form [formGroup]="this.formGroupForumTopicoResposta" fxLayout="column" fxLayoutAlign="start center">   
-        <ckeditor class="ckeditor-editar-forum-topico-resposta" 
-            formControlName="formConteudoResposta" #ckEditorTagEditar [editor]="ckEditor" data="<p>Hello, world!</p>">
-        </ckeditor>
+        <app-ckeditor (onAlterouEditor)="alterouFormEditor($event)"></app-ckeditor>
     </form>
     <div fxLayout="row" fxLayoutAlign="space-around center" class="container-buttons">
         <button mat-stroked-button color="warn" (click)="fecharModal()">

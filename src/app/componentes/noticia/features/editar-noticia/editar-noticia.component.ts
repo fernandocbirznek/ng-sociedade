@@ -18,8 +18,6 @@ import {
   getOneUsuarioLogado, 
 } from 'src/app/store';
 
-import Editor from 'src/app/componentes/genericos/ckeditor/build/ckeditor';
-
 @Component({
   selector: 'app-editar-noticia',
   templateUrl: './editar-noticia.component.html',
@@ -45,8 +43,6 @@ export class EditarNoticiaComponent implements OnInit {
   usuarioLogado: UsuarioModel | undefined = undefined ;
 
   areaInteresseSelecionado: number[] = [];
-
-  public ckEditor = Editor;
 
   constructor(
     public dialogRef: MatDialogRef<EditarNoticiaComponent>,
@@ -125,6 +121,10 @@ export class EditarNoticiaComponent implements OnInit {
     this.areaInteresseSelecionado = [];
     this.store.dispatch(atualizarNoticia({ noticia: request }));
     this.dialogRef.close();
+  }
+
+  alterouFormEditor(item: string) {
+    this.formConteudo.setValue(item);
   }
 
   fecharModal() {

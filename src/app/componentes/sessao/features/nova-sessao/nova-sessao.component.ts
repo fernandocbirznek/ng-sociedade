@@ -3,8 +3,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 
-import Editor from 'src/app/componentes/genericos/ckeditor/build/ckeditor';
-
 import { 
   ArquivoPdfCommandModel,
   AulaModel, 
@@ -26,11 +24,11 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 })
 export class NovaSessaoComponent implements OnInit {
 
-  public ckEditor = Editor;
   @ViewChild('ckEditorTag') ckEditorTag: any;
 
   tipoSessao = new FormControl('', [Validators.required]);
   conteudo = new FormControl('', [Validators.required, Validators.maxLength(8000)]);
+  conteudoCkeditor: string = '';
   titulo = new FormControl('', [Validators.required, Validators.maxLength(200)]);
   formFoto = new FormControl('');
   linkYoutube = new FormControl('');
@@ -77,7 +75,7 @@ export class NovaSessaoComponent implements OnInit {
     switch(this.formSessao.get("tipo_sessao")?.value) { 
       case TipoSessaoAulaEnum.Conceito:
       case TipoSessaoAulaEnum.Texto:
-        conteudo = this.ckEditorTag.editorInstance.getData();
+        conteudo = this.conteudoCkeditor;
         break; 
       case TipoSessaoAulaEnum.Equacao:
         conteudo = this.formSessao.get("conteudo_sessao")?.value;
@@ -169,6 +167,10 @@ export class NovaSessaoComponent implements OnInit {
 
   visualizarTutorial() {
     this.isVisualizarTutorial = !this.isVisualizarTutorial;
+  }
+
+  alterouFormEditor(item: string) {
+    this.conteudoCkeditor = item;
   }
 
   alterouForm() {

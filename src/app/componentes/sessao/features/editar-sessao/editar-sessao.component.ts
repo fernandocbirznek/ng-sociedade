@@ -13,16 +13,12 @@ import {
   atualizarAulaSessao 
 } from 'src/app/store';
 
-import Editor from 'src/app/componentes/genericos/ckeditor/build/ckeditor';
-
 @Component({
   selector: 'app-editar-sessao',
   templateUrl: './editar-sessao.component.html',
   styleUrls: ['./editar-sessao.component.css']
 })
 export class EditarSessaoComponent implements OnInit {
-
-  public ckEditor = Editor;
 
   tipoSessao = new FormControl({value: '', disabled: true}, [Validators.required]);
   titulo = new FormControl('', [Validators.required, Validators.maxLength(200)]);
@@ -79,6 +75,10 @@ export class EditarSessaoComponent implements OnInit {
 
     this.store.dispatch(atualizarAulaSessao({ aulaSessao: sessao }));
     this.dialogRef.close();
+  }
+
+  alterouFormEditor(item: string) {
+    this.conteudoSessao.setValue(item);
   }
 
   public fecharModal() {

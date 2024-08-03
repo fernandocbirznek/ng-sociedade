@@ -18,8 +18,6 @@ import {
   selecionarManyForumTag
 } from 'src/app/store';
 
-import Editor from 'src/app/componentes/genericos/ckeditor/build/ckeditor';
-
 @Component({
   selector: 'app-inserir-forum-topico',
   templateUrl: './inserir-forum-topico.component.html',
@@ -44,8 +42,6 @@ export class InserirForumTopicoComponent implements OnInit {
   forumTagSelect: ForumTagModel[] = [];
 
   readonly forumTopicoEnum = ForumTopicoEnum;
-
-  public ckEditor = Editor;
 
   constructor(
     public dialog: MatDialog,
@@ -106,7 +102,10 @@ export class InserirForumTopicoComponent implements OnInit {
       this.store.dispatch(inserirForumTopico({ forumTopico: request }));
       this.dialogRef.close();
     }
-    
+  }
+
+  alterouFormEditor(item: string) {
+    this.formConteudo.setValue(item);
   }
 
   fecharModal() {

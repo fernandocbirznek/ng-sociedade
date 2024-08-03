@@ -1,0 +1,13 @@
+<div>
+	<div class="main-container">
+		<div class="editor-container editor-container_classic-editor editor-container_include-style" #editorContainerElement>
+			<div class="editor-container__editor">
+				<div #editorElement>
+					<ckeditor *ngIf="isLayoutReady" [editor]="Editor" [config]="config" [formControl]="this.conteudo" 
+					(change)="alterouForm()">
+					</ckeditor>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

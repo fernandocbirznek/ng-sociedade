@@ -24,8 +24,6 @@ import {
   inserirForumTopicoResposta
 } from 'src/app/store';
 
-import Editor from 'src/app/componentes/genericos/ckeditor/build/ckeditor';
-
 @Component({
   selector: 'app-visualizar-forum-topico-resposta',
   templateUrl: './visualizar-forum-topico-resposta.component.html',
@@ -45,8 +43,6 @@ export class VisualizarForumTopicoRespostaComponent implements OnInit {
   formConteudoResponderTopico = new FormControl('', [Validators.required, Validators.maxLength(8000)]);
   
   responderTopico: boolean = false;
-
-  public ckEditor = Editor;
 
   constructor(
     public store: Store,
@@ -105,6 +101,10 @@ export class VisualizarForumTopicoRespostaComponent implements OnInit {
     }
     this.responderForumTopico();
     this.formConteudoResponderTopico.setValue('Escreva uma resposta');
+  }
+
+  alterouFormEditor(item: string) {
+    this.formConteudoResponderTopico.setValue(item);
   }
 
   excluirRespostaForumTopico(item: any) {

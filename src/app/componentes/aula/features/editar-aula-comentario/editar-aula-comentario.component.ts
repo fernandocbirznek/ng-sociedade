@@ -3,8 +3,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 
-import Editor from 'src/app/componentes/genericos/ckeditor/build/ckeditor';
-
 import { 
   AulaComentarioModel, 
   UsuarioModel
@@ -23,7 +21,6 @@ export class EditarAulaComentarioComponent implements OnInit {
 
   formComentario: FormGroup = null as any;
   formControlComentario = new FormControl('', [Validators.required, Validators.maxLength(2000)]);
-  public ckEditor = Editor;
 
   constructor(
     public store: Store,
@@ -55,6 +52,10 @@ export class EditarAulaComentarioComponent implements OnInit {
     aulaComentario.descricao = this.formComentario.get("comentario")?.value;
     this.store.dispatch(atualizarAulaComentario({ aulaComentario: aulaComentario }));
     this.dialogRef.close();
+  }
+
+  alterouFormEditor(item: string) {
+    this.formControlComentario.setValue(item);
   }
 
   cancelar() {
