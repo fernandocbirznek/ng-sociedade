@@ -2,9 +2,10 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { AutenticacaoService } from "src/app/services";
 
-import { MecanicaComponent } from "../mecanica";
+import { MecanicaComponent } from "../features/mecanica";
 
 import { TopicoResolver } from ".";
+import { PerfilComponent } from "../features";
 
 
 const topicoRoutes: Routes = [
@@ -15,6 +16,11 @@ const topicoRoutes: Routes = [
             topicoResolver: TopicoResolver
         }
     },
+    {
+        path: "perfil/:email",
+        component:PerfilComponent,
+        canActivate: [AutenticacaoService],
+    }
 ];
 
 @NgModule({

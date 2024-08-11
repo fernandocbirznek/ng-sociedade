@@ -14,10 +14,9 @@ import {
   getNoticiaFilter 
 } from 'src/app/store';
 
-
-import { NoticiaHelpers } from '../../noticia/helpers/noticia.helpers';
-
 import { FormControl } from '@angular/forms';
+
+import { NoticiaHelpers } from 'src/app/componentes/noticia/helpers/noticia.helpers';
 
 @Component({
   selector: 'app-noticia-filtro',

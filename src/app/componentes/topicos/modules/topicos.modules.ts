@@ -9,15 +9,16 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
-import { CriarContaComponent } from 'src/app/componentes/topicos/login-criar-conta/criar-conta/criar-conta.component';
-import { CriarPerfilComponent } from 'src/app/componentes/topicos/login-criar-conta/criar-perfil/criar-perfil.component';
-import { LoginCriarContaComponent } from 'src/app/componentes/topicos/login-criar-conta/login-criar-conta.component';
-
-import { EquipeContatoComponent } from 'src/app/componentes/topicos/equipe-contato/equipe-contato.component';
-import { MecanicaComponent } from 'src/app/componentes/topicos/mecanica/mecanica.component';
-import { PerfilComponent } from 'src/app/componentes/topicos/perfil/perfil.component';
-
 import { GenericoModule } from '../../genericos';
+
+import { 
+    CriarContaComponent,
+    CriarPerfilComponent, 
+    EquipeContatoComponent, 
+    LoginCriarContaComponent,
+    MecanicaComponent,
+    PerfilComponent
+} from '../features';
 
 @NgModule({
     declarations: [

@@ -16,7 +16,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { 
   HeaderComponent, FooterComponent, MecanicaUmComponent, AppRoutingModuleMecanica, MecanicaDoisComponent, 
   MecanicaTresComponent, HomeComponent,
-  MecanicaQuatroComponent, AulaTresExercicioComponent, PerfilRoutingModule,
+  MecanicaQuatroComponent, AulaTresExercicioComponent,
   PerfilProfessorRoutingModule,
   AulaRoutingModule,
   TopicoRoutingModule,
@@ -106,7 +106,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     KatexModule,
     AppRoutingModule,
     AppRoutingModuleMecanica,
-    PerfilRoutingModule,
     NoticiaRoutingModule,
     BrowserAnimationsModule,
     DragDropModule,

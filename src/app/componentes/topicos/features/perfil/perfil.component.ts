@@ -13,13 +13,13 @@ import {
 } from 'src/app/store';
 
 import { 
-  ModalExcluirComponent, 
-  ToastComponent 
-} from '../../genericos';
-
-import { 
   UsuarioModel 
 } from 'src/app/models';
+
+import { 
+  ModalExcluirComponent, 
+  ToastComponent 
+} from 'src/app/componentes';
 
 @Component({
   selector: 'app-perfil',
