@@ -15,4 +15,4 @@ import { NoticiaEffects } from '../store/effects/noticia.effects';
     EffectsModule.forFeature([NoticiaEffects])
   ]
 })
-export class NoticiaModule { }
+export class NoticiaStoreModule { }

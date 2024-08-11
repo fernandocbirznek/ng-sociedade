@@ -4,6 +4,7 @@ export * from './ckeditor';
 export * from './editar-usuario-area-interesse';
 export * from './helpers';
 export * from './modal-excluir';
+export * from './modules';
 export * from './noticia-filtro';
 export * from './toast';
 export * from './usuario-area-interesse';
