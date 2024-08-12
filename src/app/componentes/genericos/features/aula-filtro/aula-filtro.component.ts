@@ -72,7 +72,7 @@ export class AulaFiltroComponent implements OnInit {
   filtroNomeProfessor() {
     this.aulaFilter = {
       ...this.aulaFilter,
-      nomeProfessor: this.formControlTitulo.value
+      nomeProfessor: this.formControlTitulo.value ? this.formControlTitulo.value : ''
     }
     
     this.store.dispatch(filtrarAula({ aulaFilter: this.aulaFilter }));
@@ -81,7 +81,7 @@ export class AulaFiltroComponent implements OnInit {
   filtroTitulo() {
     this.aulaFilter = {
       ...this.aulaFilter,
-      aulaTitulo: this.formControlTitulo.value
+      aulaTitulo: this.formControlTitulo.value ? this.formControlTitulo.value : ''
     }
     
     this.store.dispatch(filtrarAula({ aulaFilter: this.aulaFilter }));
@@ -90,7 +90,7 @@ export class AulaFiltroComponent implements OnInit {
   filtroDataInicio() {
     this.aulaFilter = {
       ...this.aulaFilter,
-      dataInicio: this.formControlDataInicio.value
+      dataInicio: this.formControlDataInicio.value ? new Date(this.formControlDataInicio.value) : undefined
     }
     
     this.store.dispatch(filtrarAula({ aulaFilter: this.aulaFilter }));
@@ -99,7 +99,7 @@ export class AulaFiltroComponent implements OnInit {
   filtroDataFim() {
     this.aulaFilter = {
       ...this.aulaFilter,
-      dataFim: this.formControlDataFim.value
+      dataFim: this.formControlDataFim.value ? new Date(this.formControlDataFim.value) : undefined
     }
     
     this.store.dispatch(filtrarAula({ aulaFilter: this.aulaFilter }));
@@ -108,7 +108,8 @@ export class AulaFiltroComponent implements OnInit {
   filtroTag() {
     this.aulaFilter = {
       ...this.aulaFilter,
-      tagMany: this.formControlTitulo.value
+      //TODO verificar
+      //tagMany: this.formControlTitulo.value
     }
     
     this.store.dispatch(filtrarAula({ aulaFilter: this.aulaFilter }));

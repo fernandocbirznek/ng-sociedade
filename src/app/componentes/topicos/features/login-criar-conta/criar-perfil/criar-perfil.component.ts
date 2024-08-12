@@ -36,8 +36,8 @@ export class CriarPerfilComponent implements OnInit {
   }
 
   requestCriarPerfil() {
-    this.criarPerfil.dataNascimento = this.data.value;
-    this.criarPerfil.hobbie = this.hobbie.value;
+    this.criarPerfil.dataNascimento = this.data.value ? new Date(this.data.value) : undefined;
+    this.criarPerfil.hobbie = this.hobbie.value ? this.hobbie.value : '';
     this.ngCriarPerfil.emit(this.criarPerfil);
   }
 

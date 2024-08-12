@@ -93,7 +93,7 @@ export class VisualizarForumTopicoRespostaComponent implements OnInit {
   requestForumTopico() {
     if (this.usuarioLogado) {
       let forumTopicoResposta = new ForumTopicoRespostaModel();
-      forumTopicoResposta.descricao = this.formConteudoResponderTopico.value;
+      forumTopicoResposta.descricao = this.formConteudoResponderTopico.value ? this.formConteudoResponderTopico.value : '';
       forumTopicoResposta.forumTopicoId = this.forumTopicoId;
       forumTopicoResposta.usuarioId = this.usuarioLogado.id;
 

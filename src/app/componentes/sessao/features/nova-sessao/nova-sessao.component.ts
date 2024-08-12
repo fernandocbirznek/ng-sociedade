@@ -84,7 +84,7 @@ export class NovaSessaoComponent implements OnInit {
         conteudo = this.conteudoImagem!;
         break;
       case TipoSessaoAulaEnum.Video:
-        if (SessaoHelpers.isLinkYoutube(this.linkYoutube.value))
+        if (this.linkYoutube.value && SessaoHelpers.isLinkYoutube(this.linkYoutube.value))
           conteudo = this.linkYoutube.value;
         else
           conteudo = '';

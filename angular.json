@@ -105,8 +105,10 @@
       }
     }
   },
-  "defaultProject": "sociedade-da-fisica",
   "cli": {
-    "defaultCollection": "@ngrx/schematics"
+    "schematicCollections": [
+      "@ngrx/schematics"
+    ],
+    "analytics": "5669d9ee-458e-4459-b509-f77873a29017"
   }
 }

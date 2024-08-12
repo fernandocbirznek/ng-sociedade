@@ -93,7 +93,7 @@ export class VisualizarForumTopicoReplicaComponent implements OnInit {
   requestReplicaForumTopico() {
     if (this.usuarioLogado && this.usuarioLogado.id > 0) {
       let forumTopicoReplica = new ForumTopicoReplicaModel();
-      forumTopicoReplica.descricao = this.formConteudoReplicaTopico.value;
+      forumTopicoReplica.descricao = this.formConteudoReplicaTopico.value ? this.formConteudoReplicaTopico.value : '';
       forumTopicoReplica.forumTopicoId = this.forumTopicoId;
       forumTopicoReplica.usuarioId = this.usuarioLogado.id;
       forumTopicoReplica.forumTopicoRespostaId = this.forumTopicoRespostaId;

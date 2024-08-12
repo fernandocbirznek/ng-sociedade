@@ -20,11 +20,11 @@
           <mat-error *ngIf="tipoSessao.invalid">Sessão é obrigatória</mat-error>
         </mat-form-field>
 
-        <app-ckeditor *ngIf="this.tipoSessao.value == this.tipoSessaoAulaEnum.Conceito || this.tipoSessao.value == this.tipoSessaoAulaEnum.Texto" 
+        <app-ckeditor *ngIf="this.tipoSessao.value == '1' || this.tipoSessao.value == '5'" 
           (onAlterouEditor)="alterouFormEditor($event)">
         </app-ckeditor>
 
-        <div *ngIf="this.tipoSessao.value == this.tipoSessaoAulaEnum.Equacao" fxFlex="100%" fxLayout="column" fxLayoutAlign="start center" 
+        <div *ngIf="this.tipoSessao.value == '2'" fxFlex="100%" fxLayout="column" fxLayoutAlign="start center" 
           class="g-full-width">
 
           <div fxLayout="column" fxLayoutAlign="start start" class="g-card-postit-yellow card card-latex">
@@ -49,7 +49,7 @@
           </mat-form-field>
         </div>
 
-        <div *ngIf="this.tipoSessao.value == this.tipoSessaoAulaEnum.Imagem" fxFlex="100%" fxLayout="column" fxLayoutAlign="start center" 
+        <div *ngIf="this.tipoSessao.value == '3'" fxFlex="100%" fxLayout="column" fxLayoutAlign="start center" 
           class="g-full-width">
           <input type="file" formControlName="formFoto" (change)="imagemAlterada($event)" accept="image/*">
           <div *ngIf="this.conteudoImagem" fxLayout="column" fxLayoutAlign="space-between center">
@@ -57,7 +57,7 @@
         </div>
         </div>
 
-        <div *ngIf="this.tipoSessao.value == this.tipoSessaoAulaEnum.Pdf" fxFlex="100%" fxLayout="column" class="container-input-pdf">
+        <div *ngIf="this.tipoSessao.value == '7'" fxFlex="100%" fxLayout="column" class="container-input-pdf">
           <input type="file" (change)="selecionarPdf($event)" #fileUpload />
           <div fxLayout="row" fxLayoutAlign="start center" class="alerta-link">
             <mat-icon class="material-symbols-outlined">warning</mat-icon>
@@ -66,7 +66,7 @@
           <embed *ngIf="pdfUrl" [src]="pdfUrl" type="application/pdf" class="g-full-height">
         </div>
 
-        <div *ngIf="this.tipoSessao.value == this.tipoSessaoAulaEnum.Video" fxFlex="100%" class="g-full-width">
+        <div *ngIf="this.tipoSessao.value == '4'" fxFlex="100%" class="g-full-width">
           <div fxLayout="column" fxLayoutAlign="start start" class="g-card-postit-yellow card">
             <div *ngIf="!this.isVisualizarTutorial" class="visualizar-tutorial" (click)="visualizarTutorial()">Visualizar tutorial</div>
             <div *ngIf="this.isVisualizarTutorial" class="ocultar-tutorial" (click)="visualizarTutorial()">Ocultar tutorial</div>

@@ -106,8 +106,8 @@ export class ProfessorEditarPerfilComponent implements OnInit {
   requestCriarPerfil () {
     this.request.id = this.data.usuarioPerfilId;
     this.request.usuarioId = this.data.id;
-    this.request.dataNascimento = this.formData.value;
-    this.request.hobbie = this.formHobbie.value;
+    this.request.dataNascimento = this.formData.value ? new Date(this.formData.value) : undefined;
+    this.request.hobbie = this.formHobbie.value ? this.formHobbie.value : '';
     if (!this.isImagemAlterada)
       this.request.foto = this.data.foto;
     this.store.dispatch(atualizarUsuarioPerfil({ usuarioPerfil: this.request }));

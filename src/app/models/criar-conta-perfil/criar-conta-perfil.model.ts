@@ -1,4 +1,4 @@
-import { Byte } from "@angular/compiler/src/util";
+
 
 export class CriarContaPerfilModel {
 	nome: string = "";
@@ -6,5 +6,5 @@ export class CriarContaPerfilModel {
 	senha: string = "";
     dataNascimento: Date | undefined = undefined;
     hobbie: string = "";
-    foto: Byte[] | undefined = undefined;
+    foto: Uint8Array[] | undefined = undefined;
 }

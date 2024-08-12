@@ -72,7 +72,7 @@ export class NoticiaFiltroComponent implements OnInit {
   filtroTitulo() {
     this.noticiaFilter = {
       ...this.noticiaFilter,
-      noticiaTitulo: this.formControlTitulo.value
+      noticiaTitulo: this.formControlTitulo.value ? this.formControlTitulo.value : ''
     }
     
     this.store.dispatch(filtrarNoticia({ noticiaFilter: this.noticiaFilter }));
@@ -81,7 +81,7 @@ export class NoticiaFiltroComponent implements OnInit {
   filtroNomeUsuario() {
     this.noticiaFilter = {
       ...this.noticiaFilter,
-      usuarioNome: this.formControlNome.value
+      usuarioNome: this.formControlNome.value ? this.formControlNome.value : ''
     }
     
     this.store.dispatch(filtrarNoticia({ noticiaFilter: this.noticiaFilter }));
@@ -90,7 +90,7 @@ export class NoticiaFiltroComponent implements OnInit {
   filtroDataInicio() {
     this.noticiaFilter = {
       ...this.noticiaFilter,
-      dataInicio: this.formControlDataInicio.value
+      dataInicio: this.formControlDataInicio.value ? new Date(this.formControlDataInicio.value) : undefined
     }
     
     this.store.dispatch(filtrarNoticia({ noticiaFilter: this.noticiaFilter }));
@@ -99,7 +99,7 @@ export class NoticiaFiltroComponent implements OnInit {
   filtroDataFim() {
     this.noticiaFilter = {
       ...this.noticiaFilter,
-      dataFim: this.formControlDataFim.value
+      dataFim: this.formControlDataFim.value ? new Date(this.formControlDataFim.value) : undefined
     }
     
     this.store.dispatch(filtrarNoticia({ noticiaFilter: this.noticiaFilter }));

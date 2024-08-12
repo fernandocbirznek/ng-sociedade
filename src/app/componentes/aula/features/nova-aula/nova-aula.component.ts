@@ -78,7 +78,7 @@ export class NovaAulaComponent implements OnInit {
       formAreaFisica: this.formAreaFisica
     });
 
-    this.formAreaFisica.setValue(1);
+    this.formAreaFisica.setValue('1');
   }
 
   requestCriarAula() {
