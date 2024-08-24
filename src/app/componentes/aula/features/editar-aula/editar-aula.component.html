@@ -1,26 +1,26 @@
-<div *ngIf="this.aula; else carregando" fxLayout="column" class="container-aula">
-  <div fxLayout="row" fxLayoutAlign="center center" class="g-container-voltar" (click)="voltarPaginaPainelProfessor()">
+<div *ngIf="this.aula; else carregando" class="g-column-start-start container-aula">
+  <div class="g-row-center-center g-container-voltar" (click)="voltarPaginaPainelProfessor()">
     <mat-icon class="material-symbols-outlined">undo</mat-icon>
     <span>Voltar</span>
   </div>
-  <div fxLayout="column" fxLayoutAlign="space-between space-between" class="g-card-postit-yellow card">
-    <div class="g-card-postit-titulo-yellow" fxLayout="row" fxLayoutAlign="center center">
+  <div class="g-column-between-between g-card-postit-yellow card">
+    <div class="g-row-center-center g-card-postit-titulo-yellow">
         Informações da Aula
         <mat-icon class="icone-edit material-symbols-outlined" (click)="editarAulaInformacao()" 
           matTooltip="Editar informações">
           edit_document
         </mat-icon>
     </div>
-    <div fxLayout="column" fxLayoutAlign="start start" class="container-informacao">
-      <div fxLayout="row" fxLayoutAlign="start center">
+    <div class="g-column-start-start container-informacao">
+      <div class="g-row-start-center">
         <span class="label">Área da Física: </span>
         <span>{{ this.aula.areaFisicaTitulo }}</span>
       </div>
-      <div fxLayout="row" fxLayoutAlign="start center">
+      <div class="g-row-start-center">
         <span class="label">Título: </span>
         <span>{{ this.aula.titulo }}</span>
       </div>
-      <div fxLayout="row" fxLayoutAlign="start center">
+      <div class="g-row-start-center">
         <span class="label">Resumo: </span>
         <span>{{ this.aula.resumo }}</span>
       </div>
@@ -34,8 +34,7 @@
   </div>
   
   <div cdkDropList (cdkDropListDropped)="ordenarSessao($event)">
-    <div cdkDrag *ngFor="let sessao of this.aulaSessaoMany; index as i" fxLayout="column" fxLayoutAlign="center center"  
-      class="g-card-postit-yellow card-sessao">
+    <div cdkDrag *ngFor="let sessao of this.aulaSessaoMany; index as i" class="g-column-center-center g-card-postit-yellow card-sessao">
       <div cdkDragHandle class="container-move">
         <mat-icon class="icone-move material-symbols-outlined" matTooltip="Ordenar sessão. Clique, segure e arraste">
           open_with
@@ -47,7 +46,7 @@
         </mat-icon>
       </div>
       <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
-      <div class="g-card-postit-titulo-yellow" fxLayout="row" fxLayoutAlign="center center">
+      <div class="g-row-center-center g-card-postit-titulo-yellow">
         {{ sessao.titulo }}
         <mat-icon *ngIf="sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Conceito || 
           sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Texto || sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Equacao" 
@@ -56,24 +55,24 @@
           edit_document
         </mat-icon>
       </div>
-      <div *ngIf="sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Conceito" 
-          fxLayout="column" fxLayoutAlign="center center" class="conceito" [innerHTML]="this.trustedDashboardHtml[i]">
+      <div *ngIf="sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Conceito" class="g-column-center-center conceito"
+        [innerHTML]="this.trustedDashboardHtml[i]">
       </div>
-      <div *ngIf="sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Texto" 
-        fxLayout="column" fxLayoutAlign="center center" [innerHTML]="this.trustedDashboardHtml[i]">
+      <div *ngIf="sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Texto" class="g-column-center-center" 
+        [innerHTML]="this.trustedDashboardHtml[i]">
       </div>
       <div *ngIf="sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Equacao"> 
         <ng-katex [equation]="sessao.conteudo"></ng-katex>
       </div>
-      <div *ngIf="sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Imagem" fxLayoutAlign="center start">
+      <div *ngIf="sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Imagem" class="g-column-cecnter-start">
         <img [src]="this.trustedUrlImageHtml[i]" alt="Imagem" class="imagem">
       </div>
-      <iframe *ngIf="sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Video" fxLayout="column" fxLayoutAlign="center center" 
+      <iframe *ngIf="sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Video" class="g-column-center-center"
         [width]="this.linkYoutubeMany[i].width" [height]="this.linkYoutubeMany[i].height" 
         [src]="this.linkYoutubeMany[i].src">
       </iframe>
       <iframe *ngIf="sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Pdf && sessao.arquivoPdf && sessao.arquivoPdf.conteudo" 
-        fxFlex="100%" fxLayout="column" class="pdf" 
+        fxFlex="100%" class="g-column-start-start pdf" 
         [src]="this.trustedPdfUrl[i]">
       </iframe>
     </div>

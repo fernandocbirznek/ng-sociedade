@@ -1,13 +1,12 @@
-<div fxLayout="column" fxLayoutAlign="space-between space-between" class="g-card-postit-yellow card">
-    <div class="g-card-postit-titulo-yellow" fxLayout="row" fxLayoutAlign="center center">
+<div class="g-column-between-between g-card-postit-yellow card">
+    <div class="g-row-center-center g-card-postit-titulo-yellow">
         <span class="perfil-text">Perfil</span>
         <mat-icon class="icone-edit material-symbols-outlined" (click)="editarPerfil()" 
             matTooltip="Editar perfil">
             edit_document
         </mat-icon>
     </div>
-    <div fxLayout="row" fxLayoutAlign="start center" 
-        class="g-card-tags card-tags">
+    <div class="g-row-start-center g-card-tags card-tags">
         <div class="area-interesse-text">Area de interesse: </div>
         <div *ngFor="let areaInteresse of this.areaInteresseMany" class="g-tag">
             {{ areaInteresse.nome }}
@@ -16,31 +15,31 @@
             edit_document
         </mat-icon>
     </div>
-    <div fxFlex="100%" fxLayout="row" fxLayoutAlign="space-between start" class="container-perfil">
-        <div fxFlex="200px" fxLayout="column" fxLayoutAlign="space-between center">
+    <div fxFlex="100%" class="g-row-between-start container-perfil">
+        <div fxFlex="200px" class="g-column-between-center">
             <div class="usuario-nome">{{ usuarioLogado.nome }}</div>
-            <div *ngIf="this.usuarioLogado.foto" fxLayout="column" fxLayoutAlign="space-between center">
+            <div *ngIf="this.usuarioLogado.foto" class="g-column-between-center">
                 <img fxFlex="100px" [src]="'data:image/png;base64,' + this.usuarioLogado.foto" alt="Imagem" class="imagem">
             </div>
             <div *ngIf="!this.usuarioLogado.foto">
                 Sem foto
             </div>
         </div>
-        <div fxFlex="100%" fxLayout="column" fxLayoutAlign="start start">
-            <div fxLayout="row" fxLayoutAlign="start start">
+        <div fxFlex="100%" class="g-column-start-start">
+            <div class="g-row-start-center">
                 <mat-icon class="material-symbols-outlined">mail</mat-icon>
                 <div class="legend">Email:</div>
                 <div>{{ this.usuarioLogado.email }}</div>
             </div>
-            <div fxLayout="row" fxLayoutAlign="start start">
+            <div class="g-row-start-center">
                 <mat-icon class="material-symbols-outlined">celebration</mat-icon>
                 <div class="legend">Data nascimento:</div>
                 <div>{{ this.usuarioLogado.dataNascimento | date : 'dd/MM/yyyy' }}</div>
             </div>
-            <div fxFlex="100%" fxLayout="row" fxLayoutAlign="start start">
+            <div fxFlex="100%" class="g-row-start-start">
                 <mat-icon class="material-symbols-outlined">surfing</mat-icon>
                 <div class="legend">Hobbie:</div>
-                <div fxLayout="row" fxLayoutAlign="start start" class="hobbie">
+                <div class="g-row-start-start hobbie">
                     <div>{{ this.usuarioLogado.hobbie }}</div>
                 </div>
             </div>

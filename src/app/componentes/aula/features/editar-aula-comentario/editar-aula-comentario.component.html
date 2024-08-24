@@ -1,9 +1,9 @@
-<div fxLayout="column">
-    <form [formGroup]="this.formComentario" fxLayout="column" fxLayoutAlign="center center" class="g-full-width">
+<div class="g-column-start-start">
+    <form [formGroup]="this.formComentario" class="g-column-center-center g-full-width">
         <app-ckeditor (onAlterouEditor)="alterouFormEditor($event)"></app-ckeditor>
     </form>
 
-    <div fxLayout="row" fxLayoutAlign="space-around center" class="container-buttons">
+    <div class="g-row-around-center container-buttons">
         <button mat-stroked-button color="accent" (click)="cancelar()">Cancelar</button>
         <button mat-stroked-button color="primary" [disabled]="!this.formComentario.valid" (click)="editarComentario()">Comentar</button>
     </div>

@@ -1,60 +1,60 @@
-<div fxLayout="column" fxLayoutAlign="start start" class="container-favoritado-many">
+<div class="g-column-start-start container-favoritado-many">
     <!-- TODO, separar componente ou pensar num For -->
-    <div fxLayout="row wrap" fxLayoutAlign="center center"class="container-filtro">
+    <div class="g-row-center-center g-row-wrapcontainer-filtro">
         <div class="filtro-text">Filtros: </div>
-        <div fxLayout="row" fxLayoutAlign="center center" class="filtro-item"
+        <div class="g-row-center-center filtro-item"
             [ngClass]="{'filtro-item-selecionado': this.filtroSessaoAulaEnum == this.tipoFiltroFavoritadoEnum.Conceito}"
             (click)="selecionouFiltro(this.tipoFiltroFavoritadoEnum.Conceito)">
-            <mat-icon fxLayoutAlign="center center" class="filtro-icone material-symbols-outlined" 
+            <mat-icon class="g-row-center-center filtro-icone material-symbols-outlined" 
                 [ngClass]="{'filtro-icone-aparecer': this.filtroSessaoAulaEnum == this.tipoFiltroFavoritadoEnum.Conceito}">
                 check
             </mat-icon>
             Conceito
         </div>
-        <div fxLayout="row" fxLayoutAlign="center center" class="filtro-item"
+        <div class="g-row-center-center filtro-item"
             [ngClass]="{'filtro-item-selecionado': this.filtroSessaoAulaEnum == this.tipoFiltroFavoritadoEnum.Texto}"
             (click)="selecionouFiltro(this.tipoFiltroFavoritadoEnum.Texto)">
-            <mat-icon fxLayoutAlign="center center" class="filtro-icone material-symbols-outlined" 
+            <mat-icon class="g-row-center-center filtro-icone material-symbols-outlined" 
                 [ngClass]="{'filtro-icone-aparecer': this.filtroSessaoAulaEnum == this.tipoFiltroFavoritadoEnum.Texto}">
                 check
             </mat-icon>
             Texto
         </div>
-        <div fxLayout="row" fxLayoutAlign="center center" class="filtro-item"
+        <div class="g-row-center-center filtro-item"
             [ngClass]="{'filtro-item-selecionado': this.filtroSessaoAulaEnum == this.tipoFiltroFavoritadoEnum.Imagem}"
             (click)="selecionouFiltro(this.tipoFiltroFavoritadoEnum.Imagem)">
-            <mat-icon fxLayoutAlign="center center" class="filtro-icone material-symbols-outlined" 
+            <mat-icon class="g-row-center-center filtro-icone material-symbols-outlined" 
                 [ngClass]="{'filtro-icone-aparecer': this.filtroSessaoAulaEnum == this.tipoFiltroFavoritadoEnum.Imagem}">
                 check
             </mat-icon>
             Imagem
         </div>
-        <div fxLayout="row" fxLayoutAlign="center center" class="filtro-item"
+        <div class="g-row-center-center filtro-item"
             [ngClass]="{'filtro-item-selecionado': this.filtroSessaoAulaEnum == this.tipoFiltroFavoritadoEnum.Equacao}"
             (click)="selecionouFiltro(this.tipoFiltroFavoritadoEnum.Equacao)">
-            <mat-icon fxLayoutAlign="center center" class="filtro-icone material-symbols-outlined" 
+            <mat-icon class="g-row-center-center filtro-icone material-symbols-outlined" 
                 [ngClass]="{'filtro-icone-aparecer': this.filtroSessaoAulaEnum == this.tipoFiltroFavoritadoEnum.Equacao}">
                 check
             </mat-icon>
             Equação
         </div>
-        <div fxLayout="row" fxLayoutAlign="center center" class="filtro-item"
+        <div class="g-row-center-center filtro-item"
             [ngClass]="{'filtro-item-selecionado': this.filtroSessaoAulaEnum == this.tipoFiltroFavoritadoEnum.Aula}"
             (click)="selecionouFiltro(this.tipoFiltroFavoritadoEnum.Aula)">
-            <mat-icon fxLayoutAlign="center center" class="filtro-icone material-symbols-outlined" 
+            <mat-icon class="g-row-center-center filtro-icone material-symbols-outlined" 
                 [ngClass]="{'filtro-icone-aparecer': this.filtroSessaoAulaEnum == this.tipoFiltroFavoritadoEnum.Aula}">
                 check
             </mat-icon>
             Aula
         </div>
     </div>
-    <div fxLayout="row wrap" fxLayoutAlign="start start" class="container-favoritado-many">
-        <div *ngFor="let item of this.usuarioAulaSessaoFavoritado; index as i" fxLayout="row wrap" fxLayoutAlign="space-aroud start">
-            <div *ngIf="item.aulaSessaoTipo == this.tipoSessaoAulaEnum.Conceito" fxLayout="column" fxLayoutAlign="center center"
-                class="card-favoritado" [ngClass]="{'card-expandido': this.cardExpandidoMany[i]}">
+    <div class="g-row-start-start g-row-wrap container-favoritado-many">
+        <div *ngFor="let item of this.usuarioAulaSessaoFavoritado; index as i" class="g-row-around-start g-row-wrap">
+            <div *ngIf="item.aulaSessaoTipo == this.tipoSessaoAulaEnum.Conceito"
+                class="g-column-center-center card-favoritado" [ngClass]="{'card-expandido': this.cardExpandidoMany[i]}">
                 <div class="card-tipo-aula card-tipo">Conceito</div>
                 <div class="card-tipo-aula acessar-aula" (click)="acessarAula(item)">Acessar aula</div>
-                <div fxLayout="column" class="card-conteudo">
+                <div class="g-column-start-center card-conteudo">
                     <div class="aba">
                         <div class="titulo-sessao">{{ item.titulo }}</div>
                     </div>
@@ -66,11 +66,11 @@
                 </div>
             </div>
             
-            <div *ngIf="item.aulaSessaoTipo == this.tipoSessaoAulaEnum.Texto" fxLayout="column" fxLayoutAlign="center center"
-                class="card-favoritado" [ngClass]="{'card-expandido': this.cardExpandidoMany[i]}">
+            <div *ngIf="item.aulaSessaoTipo == this.tipoSessaoAulaEnum.Texto"
+                class="g-column-center-center card-favoritado" [ngClass]="{'card-expandido': this.cardExpandidoMany[i]}">
                 <div class="card-tipo-aula card-tipo">Texto</div>
                 <div class="card-tipo-aula acessar-aula" (click)="acessarAula(item)">Acessar aula</div>
-                <div fxLayout="column" class="card-conteudo">
+                <div class="g-column-start-center card-conteudo">
                     <div class="aba">
                         <div class="titulo-sessao">{{ item.titulo }}</div>
                     </div>
@@ -82,11 +82,11 @@
                 </div>
             </div>
         
-            <div *ngIf="item.aulaSessaoTipo == this.tipoSessaoAulaEnum.Equacao" fxLayout="column" fxLayoutAlign="center center"
-                class="card-favoritado" [ngClass]="{'card-expandido': this.cardExpandidoMany[i]}"> 
+            <div *ngIf="item.aulaSessaoTipo == this.tipoSessaoAulaEnum.Equacao"
+                class="g-column-center-center card-favoritado" [ngClass]="{'card-expandido': this.cardExpandidoMany[i]}"> 
                 <div class="card-tipo-aula card-tipo">Equação</div>
                 <div class="card-tipo-aula acessar-aula" (click)="acessarAula(item)">Acessar aula</div>
-                <div fxLayout="column" class="card-conteudo">
+                <div class="g-column-start-center card-conteudo">
                     <div class="aba">
                         <div class="titulo-sessao">{{ item.titulo }}</div>
                     </div>
@@ -98,11 +98,11 @@
                 </div>
             </div>
         
-            <div *ngIf="item.aulaSessaoTipo == this.tipoSessaoAulaEnum.Imagem" fxLayout="column" fxLayoutAlign="center center"
-                class="card-favoritado" [ngClass]="{'card-expandido': this.cardExpandidoMany[i]}">
+            <div *ngIf="item.aulaSessaoTipo == this.tipoSessaoAulaEnum.Imagem"
+                class="g-column-center-center card-favoritado" [ngClass]="{'card-expandido': this.cardExpandidoMany[i]}">
                 <div class="card-tipo-aula card-tipo">Imagem</div>
                 <div class="card-tipo-aula acessar-aula" (click)="acessarAula(item)">Acessar aula</div>
-                <div fxLayout="column" fxLayoutAlign="start center" class="card-conteudo">
+                <div class="g-column-start-center card-conteudo">
                     <div class="aba">
                         <div class="titulo-sessao">{{ item.titulo }}</div>
                     </div>
@@ -115,20 +115,20 @@
                 </div>
             </div>
 
-            <div *ngIf="item.aulaSessaoTipo == this.tipoSessaoAulaEnum.Video" fxLayout="column" fxLayoutAlign="center center"
-                class="card-favoritado" [ngClass]="{'card-expandido': this.cardExpandidoMany[i]}">
+            <div *ngIf="item.aulaSessaoTipo == this.tipoSessaoAulaEnum.Video"
+                class="g-column-center-center card-favoritado" [ngClass]="{'card-expandido': this.cardExpandidoMany[i]}">
                 <div class="card-tipo-aula card-tipo">Video</div>
                 <div class="card-tipo-aula acessar-aula" (click)="acessarAula(item)">Acessar aula</div>
-                <div fxLayout="column" fxLayoutAlign="start center" class="card-conteudo">
+                <div class="g-column-start-center card-conteudo">
                     <div class="aba">
                         <div class="titulo-sessao">{{ item.titulo }}</div>
                     </div>
                     
-                    <iframe *ngIf="!this.cardExpandidoMany[i]" fxLayout="column" fxLayoutAlign="center center" 
+                    <iframe *ngIf="!this.cardExpandidoMany[i]" class="g-column-center-center"
                         [height]="this.linkYoutubeMany[i].height" 
                         [src]="this.linkYoutubeMany[i].src">
                     </iframe>
-                    <iframe *ngIf="this.cardExpandidoMany[i]" fxLayout="column" fxLayoutAlign="center center" 
+                    <iframe *ngIf="this.cardExpandidoMany[i]" class="g-column-center-center"
                         [width]="this.linkYoutubeMany[i].width" [height]="this.linkYoutubeMany[i].height" 
                         [src]="this.linkYoutubeMany[i].src">
                     </iframe>
@@ -138,17 +138,17 @@
                 </div>
             </div>
 
-            <div *ngIf="item.aulaSessaoTipo == this.tipoSessaoAulaEnum.Pdf" fxLayout="column" fxLayoutAlign="center center"
-                class="card-favoritado" [ngClass]="{'card-expandido': this.cardExpandidoMany[i]}">
+            <div *ngIf="item.aulaSessaoTipo == this.tipoSessaoAulaEnum.Pdf"
+                class="g-column-center-center card-favoritado" [ngClass]="{'card-expandido': this.cardExpandidoMany[i]}">
                 <div class="card-tipo-aula card-tipo">PDF</div>
                 <div class="card-tipo-aula acessar-aula" (click)="acessarAula(item)">Acessar aula</div>
-                <div fxLayout="column" fxLayoutAlign="start center" class="card-conteudo">
+                <div class="g-column-start-center card-conteudo">
                     <div class="aba">
                         <div class="titulo-sessao">{{ item.titulo }}</div>
                     </div>
                     
                     <iframe *ngIf="item.aulaSessaoTipo == this.tipoSessaoAulaEnum.Pdf && item.arquivoPdf && item.arquivoPdf.conteudo" 
-                        fxFlex="100%" fxLayout="column" class="pdf" 
+                        fxFlex="100%" class="g-column-start-center pdf" 
                         [src]="this.trustedPdfUrl[i]" type="application/pdf">
                     </iframe>
                 </div>

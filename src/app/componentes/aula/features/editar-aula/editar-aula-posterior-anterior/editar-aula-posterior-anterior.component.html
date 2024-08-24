@@ -1,19 +1,18 @@
-<div fxLayout="row" fxLayoutAlign="space-around center" class="g-card-postit-yellow card-nova-sessao">
-    <div fxFlex="400px" fxLayout="row" fxLayoutAlign="start center">
-        <div fxLayout="row" fxLayoutAlign="center center" class="g-button-adicionar button-nova-sessao" 
+<div class="g-row-around-center g-card-postit-yellow card-nova-sessao">
+    <div fxFlex="400px" class="g-row-start-center">
+        <div class="g-row-center-center g-button-adicionar button-nova-sessao" 
             [ngClass]="{'button-disabled': this.aulaSessaoLength >= 4}" (click)="novaSessao()">
             <mat-icon class="material-symbols-outlined">note_add</mat-icon>
             <div>Criar sessão</div>
         </div>
-        <div fxLayout="row" fxLayoutAlign="start center" class="alerta-link" [ngClass]="{'alerta-link-ativo': this.aulaSessaoLength >= 4}">
-            <mat-icon fxLayoutAlign="center center" class="material-symbols-outlined">warning</mat-icon>
+        <div class="g-row-start-center alerta-link" [ngClass]="{'alerta-link-ativo': this.aulaSessaoLength >= 4}">
+            <mat-icon class="g-row-center-center material-symbols-outlined">warning</mat-icon>
             <span>Aceito no máximo 4 sessões por aula!</span>
         </div>
     </div>
 
-    <form [formGroup]="this.formAulaPosteriorAnterior" fxLayout="row" fxLayoutAlign="space-around center" 
-        class="container-aula-anterior-posterior">
-        <div fxLayout="column" fxLayoutAlign="start center">
+    <form [formGroup]="this.formAulaPosteriorAnterior" class="g-row-around-center container-aula-anterior-posterior">
+        <div class="g-column-start-center">
             <mat-form-field class="g-full-width" appearance="outline">
                 <mat-label>Vincular aula anterior</mat-label>
                 <mat-select formControlName="aula_anterior" matInput (selectionChange)="alterouAulaAnteriorSelect()"
@@ -27,7 +26,7 @@
                 Alterar vinculo aula anterior
             </button>
         </div>
-        <div fxLayout="column" fxLayoutAlign="start center">
+        <div class="g-column-start-center">
             <mat-form-field class="g-full-width" appearance="outline">
                 <mat-label>Vincular aula posterior</mat-label>
                 <mat-select formControlName="aula_posterior" matInput (selectionChange)="alterouAulaPosteriorSelect()"

@@ -1,7 +1,7 @@
 <div class="editar-sessao-component">
-    <div fxLayoutAlign="end end" class="fechar" (click)="fecharModal()">X</div>
-    <div fxLayout="column" fxLayoutAlign="center center">
-      <form [formGroup]="this.formSessao" fxLayout="column" fxLayoutAlign="center center" class="container-inputs">
+    <div class="g-row-end-end fechar" (click)="fecharModal()">X</div>
+    <div class="g-column-center-center">
+      <form [formGroup]="this.formSessao" class="g-column-center-center container-inputs">
         <mat-form-field class="g-full-width" appearance="outline">
           <mat-label>Titulo</mat-label>
           <input formControlName="titulo_sessao" matInput required />
@@ -19,9 +19,9 @@
         </mat-form-field>
         <app-ckeditor *ngIf="this.tipoSessao.value == '1' || this.tipoSessao.value == '5'" (onAlterouEditor)="alterouFormEditor($event)">
         </app-ckeditor>
-        <div *ngIf="this.tipoSessao.value == '2'" fxLayout="column" fxLayoutAlign="start center" class="g-full-width">
-          <div fxLayout="column" class="container-exemplo">
-            <div fxLayout="row" fxLayoutAlign="start center">
+        <div *ngIf="this.tipoSessao.value == '2'" class="g-column-start-center g-full-width">
+          <div class="g-column-start-start container-exemplo">
+            <div class="g-row-start-center">
               Aceita formato Latex. Para aprender latex clique em: 
               <a href="https://edisciplinas.usp.br/pluginfile.php/5567087/mod_resource/content/1/Tutorial_TEX.pdf">Tutorial Latex</a>
             </div>
@@ -37,7 +37,7 @@
         </div>
       </form>
     </div>
-    <div fxLayout="row" fxLayoutAlign="space-around center" class="container-buttons">
+    <div class="g-row-around-center container-buttons">
       <button mat-stroked-button color="accent" (click)="fecharModal()">Cancelar</button>
       <button mat-stroked-button color="primary" (click)="editarSessao()">
         <mat-icon class="material-symbols-outlined">edit</mat-icon>

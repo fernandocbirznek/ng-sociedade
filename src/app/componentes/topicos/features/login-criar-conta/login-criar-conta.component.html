@@ -1,7 +1,7 @@
-<div fxLayout="column" class="container-login">
-    <div fxLayoutAlign="end end" class="fechar" (click)="fecharModal()">X</div>
-    <div fxLayout="column" fxLayoutAlign="center center" *ngIf="!this.isTelaCriarConta">
-        <form [formGroup]="this.formLogin" fxLayout="column" fxLayoutAlign="center center" class="container-inputs">
+<div class="g-column-start-center  container-login">
+    <div class="g-row-end-end fechar" (click)="fecharModal()">X</div>
+    <div *ngIf="!this.isTelaCriarConta" class="g-column-center-center ">
+        <form [formGroup]="this.formLogin" class="g-column-center-center container-inputs">
             <mat-form-field class="container-inputs" appearance="outline">
                 <mat-label>Email</mat-label>
                 <input formControlName="email" [formControl]="email" matInput required>

@@ -1,25 +1,25 @@
-<div *ngIf="this.usuarioLogado; else usuarioVazio" fxLayout="column" class="container-professor-home">
+<div *ngIf="this.usuarioLogado; else usuarioVazio" class="g-column-start-center container-professor-home">
     <div class="deslogar" (click)="deslogar()">Deslogar</div>
-    <div fxLayout="row wrap" fxLayoutAlign="space-between start" class="container-informacao">
+    <div class="g-row-between-start g-row-wrap container-informacao">
         <app-administrador-perfil [usuarioLogado]="this.usuarioLogado"></app-administrador-perfil>
         <app-administrador-informacao></app-administrador-informacao>
     </div>
     
-    <div fxLayout="column" fxLayoutAlign="space-between space-between" class="g-card-postit-yellow card"
+    <div class="g-column-between-between g-card-postit-yellow card"
         [ngClass]="{
             'card-favorito-2': this.abaSelecionada == 2,
             'card-favorito-3': this.abaSelecionada == 3
         }">
-        <div class="g-card-postit-titulo-yellow card-titulo" fxLayout="row" fxLayoutAlign="start center">
-            <div fxLayout="row" fxLayoutAlign="center center" class="card-titulo-aba card-titulo-aba-1" 
+        <div class="g-row-start-center g-card-postit-titulo-yellow card-titulo">
+            <div class="g-row-center-center card-titulo-aba card-titulo-aba-1" 
                 [ngClass]="{'card-selecionado': this.abaSelecionada == 1}" (click)="selecionarAba(1)">
                 <span class="perfil-text">Usuários alunos</span>
             </div>
-            <div fxLayout="row" fxLayoutAlign="center center" class="card-titulo-aba card-titulo-aba-2" 
+            <div class="g-row-center-center ard-titulo-aba card-titulo-aba-2" 
                 [ngClass]="{'card-selecionado': this.abaSelecionada == 2}"(click)="selecionarAba(2)">
                 <span class="perfil-text">Usuários professores</span>
             </div>
-            <div fxLayout="row" fxLayoutAlign="center center" class="card-titulo-aba card-titulo-aba-3" 
+            <div class="g-row-center-center card-titulo-aba card-titulo-aba-3" 
                 [ngClass]="{'card-selecionado': this.abaSelecionada == 3}"(click)="selecionarAba(3)">
                 <span class="perfil-text">Usuários administradores</span>
             </div>
@@ -29,21 +29,21 @@
         <app-administrador-tabela-administrador *ngIf="this.abaSelecionada == 3"></app-administrador-tabela-administrador>
     </div>
 
-    <div fxLayout="column" fxLayoutAlign="space-between space-between" class="g-card-postit-yellow card"
+    <div class="g-column-between-between g-card-postit-yellow card"
         [ngClass]="{
             'card-sistema-2': this.abaSelecionadaSistema == 2,
             'card-sistema-3': this.abaSelecionadaSistema == 3
         }">
-        <div class="g-card-postit-titulo-yellow card-titulo" fxLayout="row" fxLayoutAlign="start center">
-            <div fxLayout="row" fxLayoutAlign="center center" class="card-titulo-aba card-titulo-aba-1" 
+        <div class="g-row-start-center g-card-postit-titulo-yellow card-titulo">
+            <div class="g-row-center-center card-titulo-aba card-titulo-aba-1" 
                 [ngClass]="{'card-selecionado-sistema': this.abaSelecionadaSistema == 1}" (click)="selecionarAbaSistema(1)">
                 <span class="perfil-text">Aulas no sistema</span>
             </div>
-            <div fxLayout="row" fxLayoutAlign="center center" class="card-titulo-aba card-titulo-aba-sistema-2" 
+            <div class="g-row-center-center card-titulo-aba card-titulo-aba-sistema-2" 
                 [ngClass]="{'card-selecionado-sistema': this.abaSelecionadaSistema == 2}" (click)="selecionarAbaSistema(2)">
                 <span class="perfil-text">Notícias no sistema</span>
             </div>
-            <div fxLayout="row" fxLayoutAlign="center center" class="card-titulo-aba card-titulo-aba-sistema-3" 
+            <div class="g-row-center-center card-titulo-aba card-titulo-aba-sistema-3" 
                 [ngClass]="{'card-selecionado-sistema': this.abaSelecionadaSistema == 3}" (click)="selecionarAbaSistema(3)">
                 <span class="perfil-text">Fórum tópicos</span>
             </div>
@@ -53,31 +53,31 @@
         <app-administrador-tabela-forum-topico *ngIf="this.abaSelecionadaSistema == 3"></app-administrador-tabela-forum-topico>
     </div>
 
-    <div fxLayout="column" fxLayoutAlign="space-between space-between" class="g-card-postit-yellow card"
+    <div class="g-column-between-between g-card-postit-yellow card"
         [ngClass]="{
             'card-favorito-basico-2': this.abaSelecionadaBasico == 2,
             'card-favorito-basico-3': this.abaSelecionadaBasico == 3,
             'card-favorito-basico-4': this.abaSelecionadaBasico == 4,
             'card-favorito-basico-5': this.abaSelecionadaBasico == 5
         }">
-        <div class="g-card-postit-titulo-yellow card-titulo" fxLayout="row" fxLayoutAlign="start center">
-            <div fxLayout="row" fxLayoutAlign="center center" class="card-titulo-aba card-titulo-aba-basico-1" 
+        <div class="g-row-start-center g-card-postit-titulo-yellow card-titulo">
+            <div class="g-row-center-center card-titulo-aba card-titulo-aba-basico-1" 
                 [ngClass]="{'card-selecionado': this.abaSelecionadaBasico == 1}" (click)="selecionarAbaBasico(1)">
                 <span class="perfil-text">Áreas da Física</span>
             </div>
-            <div fxLayout="row" fxLayoutAlign="center center" class="card-titulo-aba card-titulo-aba-basico-2" 
+            <div class="g-row-center-center card-titulo-aba card-titulo-aba-basico-2" 
                 [ngClass]="{'card-selecionado': this.abaSelecionadaBasico == 2}" (click)="selecionarAbaBasico(2)">
                 <span class="perfil-text">Tags</span>
             </div>
-            <div fxLayout="row" fxLayoutAlign="center center" class="card-titulo-aba card-titulo-aba-basico-3" 
+            <div class="g-row-center-center card-titulo-aba card-titulo-aba-basico-3" 
                 [ngClass]="{'card-selecionado': this.abaSelecionadaBasico == 3}" (click)="selecionarAbaBasico(3)">
                 <span class="perfil-text">Áreas de interesse</span>
             </div>
-            <div fxLayout="row" fxLayoutAlign="center center" class="card-titulo-aba card-titulo-aba-basico-4" 
+            <div class="g-row-center-center card-titulo-aba card-titulo-aba-basico-4" 
                 [ngClass]="{'card-selecionado': this.abaSelecionadaBasico == 4}" (click)="selecionarAbaBasico(4)">
                 <span class="perfil-text">Fóruns</span>
             </div>
-            <div fxLayout="row" fxLayoutAlign="center center" class="card-titulo-aba card-titulo-aba-basico-5" 
+            <div class="g-row-center-center card-titulo-aba card-titulo-aba-basico-5" 
                 [ngClass]="{'card-selecionado': this.abaSelecionadaBasico == 5}" (click)="selecionarAbaBasico(5)">
                 <span class="perfil-text">Fórum tags</span>
             </div>

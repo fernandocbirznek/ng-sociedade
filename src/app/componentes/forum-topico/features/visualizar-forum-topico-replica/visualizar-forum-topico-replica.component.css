@@ -34,6 +34,8 @@
 
 .container-replica-many {
     gap: 50px;
+    width: 100%;
+    padding-top: 20px;
 }
 
 .card-replica {
@@ -47,7 +49,7 @@
 }
 
 .titulo-replica {
-    top: -42px;
+    top: -60px;
     height: 30px;
     font-size: 16px;
     background-color: var(--orange-postit);
@@ -55,7 +57,7 @@
 }
 
 .data-replica {
-    top: -42px;
+    top: -60px;
     right: 15px;
     left: unset;
     height: 30px;

@@ -1,8 +1,8 @@
-<div fxLayout="column" fxLayoutAlign="space-between space-between" class="g-card-postit-yellow card">
-    <div class="g-card-postit-titulo-yellow" fxLayout="row" fxLayoutAlign="center center">
+<div class="g-column-between-between g-card-postit-yellow card">
+    <div class="g-row-center-center g-card-postit-titulo-yellow">
         <span class="perfil-text">Informações gerais</span>
     </div>
-    <div fxLayout="row" fxLayoutAlign="space-between start" class="container-informacao">
+    <div class="g-row-between-start container-informacao">
         <div fxFlex="33%">
             <div [ngSwitch]="this.usuarioLogado.tipoUsuario" class="tipo-topico">
                 <div *ngSwitchCase="this.tipoUsuarioEnum.UsuarioComum">
@@ -23,16 +23,16 @@
                 </div>
             </div>
         </div>
-        <div fxFlex="33%" fxLayout="column" fxLayoutAlign="start center" class="informacao">
-            <div fxLayout="row" fxLayoutAlign="center center" class="informacao-header">
+        <div fxFlex="33%" class="g-column-start-center informacao">
+            <div class="g-row-center-center informacao-header">
                 <mat-icon class="icone-header material-symbols-outlined">forum</mat-icon>
                 <div>Fórum</div>
             </div>
-            <div fxLayout="row" fxLayoutAlign="start center">
+            <div class="g-row-start-center">
                 <mat-icon class="material-symbols-outlined">edit_square</mat-icon>
                 <div class="informacao-texto">Tópicos criados: {{this.usuarioLogado.topicoForum}}</div>
             </div>
-            <div fxLayout="row" fxLayoutAlign="start center">
+            <div class="g-row-start-center">
                 <mat-icon class="material-symbols-outlined">comment</mat-icon>
                 <div class="informacao-texto">Comentários: {{this.usuarioLogado.comentarioForum}}</div>
             </div>
@@ -41,20 +41,20 @@
 </div>
 
 <ng-template #professorAulas>
-    <div fxLayout="column" fxLayoutAlign="start center" class="informacao">
-        <div fxLayout="row" fxLayoutAlign="center center" class="informacao-header">
+    <div class="g-column-start-center informacao">
+        <div class="g-row-center-center informacao-header">
             <mat-icon class="icone-header material-symbols-outlined">school</mat-icon>
             <div>Aulas</div>
         </div>
-        <div fxLayout="row" fxLayoutAlign="start center">
+        <div class="g-row-start-center">
             <mat-icon class="material-symbols-outlined">full_coverage</mat-icon>
             <div class="informacao-texto">Criadas: {{this.professorInformacaoAula.aulaCriadaMany}}</div>
         </div>
-        <div fxLayout="row" fxLayoutAlign="start center">
+        <div class="g-row-start-center">
             <mat-icon class="material-symbols-outlined">thumb_up</mat-icon>
             <div class="informacao-texto">Curtidas: {{this.professorInformacaoAula.aulaCurtidoMany}}</div>
         </div>
-        <div fxLayout="row" fxLayoutAlign="start center">
+        <div class="g-row-start-center">
             <mat-icon class="material-symbols-outlined">edit_square</mat-icon>
             <div class="informacao-texto">Comentários: {{this.professorInformacaoAula.aulaComentarioMany}}</div>
         </div>
@@ -62,16 +62,16 @@
 </ng-template>
 
 <ng-template #professorNoticias>
-    <div fxLayout="column" fxLayoutAlign="start center" class="informacao">
-        <div fxLayout="row" fxLayoutAlign="center center" class="informacao-header">
+    <div class="g-column-start-center informacao">
+        <div class="g-row-center-center informacao-header">
             <mat-icon class="icone-header material-symbols-outlined">full_coverage</mat-icon>
             <div>Notícias</div>
         </div>
-        <div fxLayout="row" fxLayoutAlign="start center">
+        <div class="g-row-start-center">
             <mat-icon class="material-symbols-outlined">newspaper</mat-icon>
             <div class="informacao-texto">Notícias criadas: {{this.professorInformacaoNoticia.noticiaCriadaMany}}</div>
         </div>
-        <div fxLayout="row" fxLayoutAlign="start center">
+        <div class="g-row-start-center">
             <mat-icon class="material-symbols-outlined">thumb_up</mat-icon>
             <div class="informacao-texto">Curtidas: {{this.professorInformacaoNoticia.noticiaCurtidoMany}}</div>
         </div>
@@ -79,20 +79,20 @@
 </ng-template>
 
 <ng-template #alunoWidget>
-    <div fxLayout="column" fxLayoutAlign="start center" class="informacao">
-        <div fxLayout="row" fxLayoutAlign="center center" class="informacao-header">
+    <div class="g-column-start-center informacao">
+        <div class="g-row-center-center informacao-header">
             <mat-icon class="icone-header material-symbols-outlined">view_carousel</mat-icon>
             <div>Widget</div>
         </div>
-        <div fxLayout="row" fxLayoutAlign="start center">
+        <div class="g-row-start-center">
             <mat-icon class="material-symbols-outlined">full_coverage</mat-icon>
             <div class="informacao-texto">Para cursar: {{this.alunoInformacaoWidget.aulaParaCursarMany}}</div>
         </div>
-        <div fxLayout="row" fxLayoutAlign="start center">
+        <div class="g-row-start-center">
             <mat-icon class="material-symbols-outlined">thumb_up</mat-icon>
             <div class="informacao-texto">Cursando: {{this.alunoInformacaoWidget.aulaCursandoMany}}</div>
         </div>
-        <div fxLayout="row" fxLayoutAlign="start center">
+        <div class="g-row-start-center">
             <mat-icon class="material-symbols-outlined">edit_square</mat-icon>
             <div class="informacao-texto">Concluídas: {{this.alunoInformacaoWidget.aulaConcluidoMany}}</div>
         </div>
@@ -100,20 +100,20 @@
 </ng-template>
 
 <ng-template #alunoAula>
-    <div fxLayout="column" fxLayoutAlign="start center" class="informacao">
-        <div fxLayout="row" fxLayoutAlign="center center" class="informacao-header">
+    <div class="g-column-start-center informacao">
+        <div class="g-row-center-center informacao-header">
             <mat-icon class="icone-header material-symbols-outlined">school</mat-icon>
             <div>Aula</div>
         </div>
-        <div fxLayout="row" fxLayoutAlign="start center">
+        <div class="g-row-start-center">
             <mat-icon class="material-symbols-outlined">full_coverage</mat-icon>
             <div class="informacao-texto">Curtidas: {{ this.alunoInformacaoAula.aulaCurtida}}</div>
         </div>
-        <div fxLayout="row" fxLayoutAlign="start center">
+        <div class="g-row-start-center">
             <mat-icon class="material-symbols-outlined">thumb_up</mat-icon>
             <div class="informacao-texto">Favoritadas: {{this.alunoInformacaoAula.aulaFavoritada}}</div>
         </div>
-        <div fxLayout="row" fxLayoutAlign="start center">
+        <div class="g-row-start-center">
             <mat-icon class="material-symbols-outlined">edit_square</mat-icon>
             <div class="informacao-texto">Sessões favoritadas: {{this.alunoInformacaoAula.aulaSessaoFavoritada}}</div>
         </div>

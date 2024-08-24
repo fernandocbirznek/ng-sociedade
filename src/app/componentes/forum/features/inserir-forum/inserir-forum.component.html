@@ -1,6 +1,6 @@
-<div fxLayout="column" class="container-forum">
+<div class="g-column-start-start container-forum">
     <h2>Novo fórum</h2>
-    <form [formGroup]="this.formGroupForum" fxLayout="column" fxLayoutAlign="start start" class="g-container-form-inputs">   
+    <form [formGroup]="this.formGroupForum" class="g-column-start-start g-container-form-inputs">   
       <mat-form-field  appearance="outline" class="g-full-width">
         <mat-label>Título do fórum</mat-label>
         <input formControlName="formTitulo" matInput required>
@@ -12,7 +12,7 @@
         <mat-error *ngIf="formDescricao.invalid">Descrição é obrigatório</mat-error>
       </mat-form-field>         
     </form>
-    <div fxLayout="row" fxLayoutAlign="space-around center" class="container-buttons">
+    <div class="g-row-around-center container-buttons">
       <button mat-stroked-button color="warn" (click)="fecharModal()">
         <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
         Cancelar

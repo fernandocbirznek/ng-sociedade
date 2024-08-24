@@ -4,15 +4,20 @@
 
 .card {
     padding: 30px;
+    width: calc(100% - 60px);
 }
 
 .titulo {
-    top: -57px;
+    top: -60px;
     gap: 20px;
 }
 
 .container-pergunta {
     gap: 20px;
+}
+
+.usuario-nome {
+    text-align: center;
 }
 
 .titulo-resposta {

@@ -1,7 +1,7 @@
-<div fxLayout="column" class="g-full-width">
+<div class="g-column-start-start g-full-width">
     <div class="text-filtro">Filtros</div>
-    <div fxLayout="row" fxLayoutAlign="start start" [ngClass]="{'flex-column': this.flexColumn}">
-        <div fxFlex="100%" fxLayout="row wrap" fxLayoutAlign="start start" class="container-inputs" 
+    <div class="g-row-start-start" [ngClass]="{'flex-column': this.flexColumn}">
+        <div fxFlex="100%" class="g-row-start-start g-row-wrap container-inputs" 
             [ngClass]="{'flex-column': this.flexColumn}">
             <mat-form-field fxFlex="250px" appearance="outline" [ngClass]="{'full-width': this.flexColumn}">
                 <mat-label>Título notícia</mat-label>
@@ -24,18 +24,18 @@
                 <mat-datepicker #pickerDataFim></mat-datepicker>
             </mat-form-field>
         </div>
-        <div fxLayout="column">
+        <div class="g-column-start-start">
             <div class="text-filtro">Filtrar por tags</div>
-            <div fxLayout="row wrap" fxLayoutAlign="start start" class="container-tag-filter">
+            <mat-slide-toggle>aaaaaaaaaaaaaa</mat-slide-toggle>
+            <div class="g-row-start-start g-row-wrap container-tag-filter">
                 <div *ngFor="let areaInteresse of this.areaInteresseMany">
                     <mat-slide-toggle (click)="filtroTag(areaInteresse)">{{ areaInteresse.nome }}</mat-slide-toggle>
                 </div>
             </div>
         </div>
     </div>
-    <div *ngIf="!this.flexColumn" fxLayout="row" fxLayoutAlign="center center" class="container-filter-many">
-        <div *ngFor="let item of this.noticiaFilterSelectedMany" fxLayout="row" fxLayoutAlign="space-between center" 
-            class="container-filter">
+    <div *ngIf="!this.flexColumn" class="g-row-center-center container-filter-many">
+        <div *ngFor="let item of this.noticiaFilterSelectedMany" class="g-row-between-center container-filter">
             <mat-icon class="material-symbols-outlined">{{ item.matIconName }}</mat-icon>
             <div fxFlex="100%">{{ item.filtroNome }}</div>
             <mat-icon class="icone-filter-close material-symbols-outlined" (click)="retirarFiltro(item)">cancel</mat-icon>

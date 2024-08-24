@@ -1,45 +1,44 @@
-<div fxLayout="column" class="container-aula">
-    <div fxLayout="row" fxLayoutAlign="center center" class="g-container-voltar" (click)="voltarPaginaMecanica()">
+<div class="g-column-start-start container-aula">
+    <div class="g-row-center-center g-container-voltar" (click)="voltarPaginaMecanica()">
         <mat-icon class="material-symbols-outlined">undo</mat-icon>
         <span>Voltar</span>
     </div>
 
-    <div fxLayout="row" fxLayoutAlign="start start" class="g-card-postit-yellow card">
+    <div class="g-row-start-start g-card-postit-yellow card">
         <div class="g-card-postit-titulo-yellow">Informações da aula</div>
-        <div fxLayout="column" fxLayoutAlign="space-between start" class="g-card-icone-many">
-            <div *ngIf="!this.usuarioAulaCurtido" fxLayout="row" fxLayoutAlign="start center" class="g-full-width" 
+        <div class="g-column-between-start g-card-icone-many">
+            <div *ngIf="!this.usuarioAulaCurtido" class="g-row-start-center g-full-width" 
                 [ngClass]="{'g-disable-event': !this.usuarioLogado}" (click)="curtirAula()">
                 <mat-icon fxFlex="25px" class="icone material-symbols-outlined" [ngClass]="{'g-disable-event': !this.usuarioLogado}">
                     thumb_up
                 </mat-icon>
-                <div fxFlex="100%" fxLayoutAlign="center center">{{ aula.curtido }}</div>
+                <div fxFlex="100%" class="g-row-center-center">{{ aula.curtido }}</div>
             </div>
-            <div *ngIf="this.usuarioAulaCurtido" fxLayout="row" fxLayoutAlign="start center" class="g-full-width" 
+            <div *ngIf="this.usuarioAulaCurtido" class="g-row-start-center g-full-width" 
                 (click)="removerCurtirAula()">
                 <mat-icon fxFlex="25px" class="icone icone-curtido material-symbols-outlined">thumb_up</mat-icon>
-                <div fxFlex="100%" fxLayoutAlign="center center">{{ aula.curtido }}</div>
+                <div fxFlex="100%" class="g-row-center-center">{{ aula.curtido }}</div>
             </div>
-            <div *ngIf="!this.usuarioAulaFavoritada" fxLayout="row" fxLayoutAlign="start center" class="g-full-width" 
+            <div *ngIf="!this.usuarioAulaFavoritada" class="g-row-start-center g-full-width" 
                 [ngClass]="{'g-disable-event': !this.usuarioLogado}" (click)="favoritarAula()">
                 <mat-icon fxFlex="25px" class="icone material-symbols-outlined" [ngClass]="{'g-disable-event': !this.usuarioLogado}">star</mat-icon>
-                <div fxFlex="100%" fxLayoutAlign="center center">{{ aula.favoritado }}</div>
+                <div fxFlex="100%" class="g-row-center-center">{{ aula.favoritado }}</div>
             </div>
-            <div *ngIf="this.usuarioAulaFavoritada" fxLayout="row" fxLayoutAlign="start center" class="g-full-width" 
+            <div *ngIf="this.usuarioAulaFavoritada" class="g-row-start-center g-full-width" 
                 (click)="removerAulaFavoritada()">
                 <mat-icon fxFlex="25px" class="icone icone-curtido material-symbols-outlined">star</mat-icon>
-                <div fxFlex="100%" fxLayoutAlign="center center">{{ aula.favoritado }}</div>
+                <div fxFlex="100%" class="g-row-center-center">{{ aula.favoritado }}</div>
             </div>
-            <div fxLayout="row" fxLayoutAlign="start center" class="g-full-width">
+            <div class="g-row-start-center g-full-width">
                 <mat-icon fxFlex="25px" class="icone-chat material-symbols-outlined" 
                     [ngClass]="{'icone-curtido': this.isUsuarioAulaComentado}">
                     chat
                 </mat-icon>
-                <div fxFlex="100%" fxLayoutAlign="center center">{{ aula.aulaComentarioMany.length }}</div>
+                <div fxFlex="100%" class="g-row-center-center">{{ aula.aulaComentarioMany.length }}</div>
             </div>
         </div>
         <div *ngIf="this.usuarioLogado && this.usuarioLogado.tipoUsuario == 1" class="g-card-tags card-tags">
-            <div *ngIf="this.usuarioLogado && this.usuarioLogado.tipoUsuario == 1" fxLayout="row" fxLayoutAlign="start center" 
-                class="container-salvar-aula">
+            <div *ngIf="this.usuarioLogado && this.usuarioLogado.tipoUsuario == 1" class="g-row-start-center container-salvar-aula">
                 <span>salvar em:</span>
                 <div class="salvar-aula para-cursar" [ngClass]="{'para-cursar-selecionado': this.widgetCursar }" 
                     (click)="cursar()">
@@ -55,66 +54,65 @@
                 </div>
             </div>
         </div>
-        <div fxFlex="150px" fxLayout="column" fxLayoutAlign="start center">
+        <div fxFlex="150px" class="g-column-start-center">
             <div class="aula-autor" (click)="visualizarPerfil()">{{ aula.usuarioNome }}</div>
-            <div *ngIf="aula.usuarioFoto" fxLayout="column" fxLayoutAlign="space-between center">
+            <div *ngIf="aula.usuarioFoto" class="g-column-between-center">
                 <img fxFlex="100px" [src]="'data:image/png;base64,' + aula.usuarioFoto" alt="Imagem" class="imagem-foto">
             </div>
             <div *ngIf="!aula.usuarioFoto">
                 Sem foto
             </div>
         </div>
-        <div fxFlex="100%" fxLayout="column" fxLayoutAlign="start start">
-            <div fxLayout="row" fxLayoutAlign="start center">
+        <div fxFlex="100%" class="g-column-start-start">
+            <div class="g-row-start-center">
                 <span class="aula-informacao">Data cadastro: </span>
                 <div class="informacao">{{ this.aula.dataCadastro | date : 'dd/MM/yyyy HH:mm' }}</div>
             </div>
-            <div fxLayout="row" fxLayoutAlign="start center">
+            <div class="g-row-start-center">
                 <span class="aula-informacao">Resumo: </span>
                 <div class="informacao">{{ this.aula.resumo }}</div>
             </div>
         </div>
     </div>
 
-    <div *ngFor="let sessao of this.aula.aulaSessaoMany; index as i" fxLayout="column" fxLayoutAlign="center center" 
-        class="g-card-postit-yellow card-sessao">
+    <div *ngFor="let sessao of this.aula.aulaSessaoMany; index as i" class="g-column-center-center g-card-postit-yellow card-sessao">
         <div class="g-card-postit-titulo-yellow">{{ sessao.titulo }}</div>
         <div *ngIf="this.usuarioLogado && this.usuarioLogado.tipoUsuario != 0" 
-            fxLayout="column" fxLayoutAlign="space-between start" class="g-card-icone-many" 
+            class="g-column-between-start g-card-icone-many" 
             [ngClass]="{'card-icone-many': this.usuarioAulaSessaoFavoritado.includes(sessao.id)}">
-            <div *ngIf="!this.usuarioAulaSessaoFavoritado.includes(sessao.id)" fxLayoutAlign="center center" class="adicionar-favorito"
+            <div *ngIf="!this.usuarioAulaSessaoFavoritado.includes(sessao.id)" class="g-row-center-center adicionar-favorito"
                 (click)="salvarSessaoFavoritado(sessao)" matTooltip="Adicionar aos favoritos">
                 <mat-icon class="material-symbols-outlined">bookmark_add</mat-icon>
             </div>
-            <div *ngIf="this.usuarioAulaSessaoFavoritado.includes(sessao.id)"  fxLayoutAlign="center center" class="remover-favorito"
+            <div *ngIf="this.usuarioAulaSessaoFavoritado.includes(sessao.id)" class="g-row-center-center remover-favorito"
                 (click)="removerSessaoFavoritado(sessao)" matTooltip="Remover dos favoritos">
                 <mat-icon class="material-symbols-outlined">bookmark_added</mat-icon>
             </div>
         </div>
 
         <div *ngIf="sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Conceito" 
-            fxLayout="column" fxLayoutAlign="center center" class="conceito" [innerHTML]="this.trustedVisualizarAulaHtml[i]">
+            class="g-column-center-center conceito" [innerHTML]="this.trustedVisualizarAulaHtml[i]">
         </div>
         <div *ngIf="sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Texto" 
-            fxLayout="column" fxLayoutAlign="center center" [innerHTML]="this.trustedVisualizarAulaHtml[i]">
+            class="g-column-center-center" [innerHTML]="this.trustedVisualizarAulaHtml[i]">
         </div>
         <div *ngIf="sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Equacao"> 
             <ng-katex [equation]="sessao.conteudo"></ng-katex>
         </div>
-        <div *ngIf="sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Imagem" fxLayoutAlign="center start">
-            <img [src]="this.trustedUrlImageHtml[i]" alt="Imagem" class="imagem">
+        <div *ngIf="sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Imagem">
+            <img [src]="this.trustedUrlImageHtml[i]" alt="Imagem" class="g-row-center-start imagem">
         </div>
-        <iframe *ngIf="sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Video" fxLayout="column" fxLayoutAlign="center center" 
+        <iframe *ngIf="sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Video" class="g-column-center-center" 
             [width]="this.linkYoutubeMany[i].width" [height]="this.linkYoutubeMany[i].height" 
             [src]="this.linkYoutubeMany[i].src">
         </iframe>
         <iframe *ngIf="sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Pdf && sessao.arquivoPdf && sessao.arquivoPdf.conteudo" 
-            fxFlex="100%" fxLayout="column" class="pdf" 
+            fxFlex="100%" class="g-column-start-start pdf" 
             [src]="this.trustedPdfUrl[i]" type="application/pdf">
         </iframe>
     </div>
 
-    <div fxLayout="row" fxLayoutAlign="space-between center" class="container-anterior-posterior">
+    <div class="g-row-between-center container-anterior-posterior">
         <div class="button-anterior-posterior button-aula-anterior" [ngClass]="{'button-disabled': !this.aula.aulaAnteriorId}"
             (click)="acessarAulaAnterior()">
             Acessar aula anterior
@@ -125,32 +123,32 @@
         </div>
     </div>
  
-    <div fxLayout="column" class="container-comentario-cards">
+    <div class="g-column-start-start container-comentario-cards">
         <div class="text-comentarios">Comentários</div>
-        <div *ngIf="this.usuarioLogado && this.usuarioLogado.tipoUsuario != 0 && !escreverComentario" fxLayout="column" 
-            class="button-comentario" (click)="comentar()">
+        <div *ngIf="this.usuarioLogado && this.usuarioLogado.tipoUsuario != 0 && !escreverComentario"
+            class="g-column-start-start button-comentario" (click)="comentar()">
             Escrever comentário
         </div>
-        <div *ngIf="this.usuarioLogado && this.usuarioLogado.tipoUsuario != 0 && escreverComentario" fxLayout="column">
-            <form [formGroup]="this.formComentario" fxLayout="column" fxLayoutAlign="center center" class="g-full-width">
+        <div *ngIf="this.usuarioLogado && this.usuarioLogado.tipoUsuario != 0 && escreverComentario" class="g-column-start-start">
+            <form [formGroup]="this.formComentario" class="g-column-center-center g-full-width">
                 <app-ckeditor (onAlterouEditor)="alterouFormEditor($event)"></app-ckeditor>
             </form>
 
-            <div fxLayout="row" fxLayoutAlign="space-around center" class="container-buttons">
+            <div class="g-row-around-center container-buttons">
                 <button mat-stroked-button color="accent" (click)="cancelarComentario()">Cancelar</button>
                 <button mat-stroked-button color="primary" (click)="cadastrarComentario()">Comentar</button>
             </div>
         </div>
-        <div fxLayout="row wrap" class="g-gap-20">
-            <div *ngFor="let aulaComentario of this.aulaComentarioMany; index as i" fxLayout="row wrap" 
-                class="container-comentario-many">
-                <div fxLayout="row" fxLayoutAlign="space-between start" class="container-comentario">
+        <div class="g-row-wrap g-gap-20">
+            <div *ngFor="let aulaComentario of this.aulaComentarioMany; index as i"
+                class="g-row-wrap container-comentario-many">
+                <div class="g-row-between-start container-comentario">
                     <div class="comentario-data-cadastro">
                         {{ aulaComentario.dataCadastro | date : 'dd/MM/yyyy HH:mm' }}
                     </div>
-                    <div fxFlex="100px" fxLayout="column" fxLayoutAlign="space-between center" class="usuario-perfil">
+                    <div fxFlex="100px" class="g-column-between-center usuario-perfil">
                         <div *ngIf="this.usuarioLogado && this.usuarioLogado.id == this.aulaComentario.usuarioId"  
-                            fxLayout="row" fxLayoutAlign="space-around center" class="container-comentario-buttons">
+                            class="g-row-around-center container-comentario-buttons">
                             <mat-icon class="icone-delete material-symbols-outlined" (click)="excluirComentario(aulaComentario)"
                                 matTooltip="Excluir comentário">
                                 delete
@@ -161,7 +159,7 @@
                             </mat-icon>
                         </div>
                         <div class="aula-autor">{{ aulaComentario.usuarioNome }}</div>
-                        <div *ngIf="aulaComentario.usuarioFoto" fxLayout="column" fxLayoutAlign="space-between center">
+                        <div *ngIf="aulaComentario.usuarioFoto" class="g-column-between-center">
                             <img fxFlex="100px" [src]="'data:image/png;base64,' + aulaComentario.usuarioFoto" alt="Imagem" class="imagem-foto">
                         </div>
                         <div *ngIf="!aulaComentario.usuarioFoto">
@@ -170,7 +168,7 @@
                     </div>
                     <div fxFlex="1px" class="divisoria"></div>
                     <div fxFlex="100%" class="container-comentario-usuario">
-                        <div fxFlex="100%" fxLayout="column" fxLayoutAlign="start center" class="comentario"
+                        <div fxFlex="100%" class="g-column-start-center comentario"
                             [innerHTML]="this.trustedAulaComentarioHtml[i]">
                         </div>
                     </div>

@@ -1,31 +1,31 @@
-<div fxLayout="column" class="container-criar-perfil">
+<div class="g-column-start-start container-criar-perfil">
     <div class="titulo">Alterar perfil</div>
-    <form fxLayout="column" [formGroup]="this.formPerfil" class="g-container-form-inputs">
+    <form [formGroup]="this.formPerfil" class="g-column-start-start g-container-form-inputs">
         <mat-form-field class="container-data">
             <mat-label>Data de Nascimento</mat-label>
             <input matInput formControlName="formData" [matDatepicker]="picker">
             <mat-datepicker-toggle matIconSuffix class="data-picker" [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
-        <div fxFlex="150px" fxLayout="row" fxLayoutAlign="space-around center">
-            <div fxLayout="column" fxLayoutAlign="space-between center" class="g-full-height">
+        <div fxFlex="150px" class="g-row-around-center">
+            <div class="g-column-between-center g-full-height">
                 <div>Foto atual</div>
-                <div *ngIf="this.data.foto" fxFlex="100%" fxLayout="column" fxLayoutAlign="center center">
+                <div *ngIf="this.data.foto" fxFlex="100%" class="g-column-center-center">
                     <img fxFlex="100px" [src]="'data:image/png;base64,' + this.data.foto" alt="Imagem" class="imagem">
                 </div>
-                <div *ngIf="!this.data.foto" fxFlex="100%" fxLayoutAlign="center center">
+                <div *ngIf="!this.data.foto" fxFlex="100%" class="g-row-center-center">
                     Sem foto
                 </div>
             </div>
-            <div fxLayout="column" fxLayoutAlign="space-between center" class="g-full-height">
-                <div fxLayout="column" fxLayoutAlign="start center" class="container-escolher-foto">
+            <div class="g-column-between-center g-full-height">
+                <div class="g-column-start-center container-escolher-foto">
                     <input type="file" formControlName="formFoto" (change)="imagemAlterada($event)" accept="image/*">
                     <div>Foto escolhida</div>
                 </div>
-                <div *ngIf="this.fotoEscolhida" fxFlex="100%" fxLayout="column" fxLayoutAlign="center center">
+                <div *ngIf="this.fotoEscolhida" fxFlex="100%" class="g-columns-center-center">
                     <img fxFlex="100px" [src]="'data:image/png;base64,' + this.fotoEscolhida" alt="Imagem" class="imagem">
                 </div>
-                <div *ngIf="!this.fotoEscolhida" fxFlex="100%" fxLayoutAlign="center center">
+                <div *ngIf="!this.fotoEscolhida" fxFlex="100%" class="g-row-center-center">
                     Escolha uma foto
                 </div>
             </div>
@@ -35,7 +35,7 @@
             <textarea formControlName="formHobbie" matInput></textarea>
         </mat-form-field>
     </form>
-    <div fxLayout="row" fxLayoutAlign="space-around center" class="container-buttons">
+    <div class="g-row-around-center container-buttons">
         <button mat-stroked-button color="warn" (click)="fecharModal()">
             <mat-icon class="material-symbols-outlined">contract_delete</mat-icon>
             Cancelar

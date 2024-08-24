@@ -1,12 +1,12 @@
-<div *ngIf="this.forum; else loading" fxLayout="column">
-    <div fxLayout="column" fxLayoutAlign="space-between space-between" class="g-card-postit-yellow card">
-        <div class="g-card-postit-titulo-yellow" fxLayout="row" fxLayoutAlign="center center">
+<div *ngIf="this.forum; else loading" class="g-column-start-start container-forum-topico">
+    <div class="g-column-between-between g-card-postit-yellow card">
+        <div class="g-row-center-center g-card-postit-titulo-yellow">
             <span class="perfil-text">{{ this.forum.titulo }}</span>
         </div>
         <div>{{ this.forum.descricao }}</div>
     </div>
     
-    <div fxLayout="row" fxLayoutAlign="start center" class="container-filtro">
+    <div *ngIf="this.usuarioLogado" class="g-row-start-center container-filtro">
         <button mat-stroked-button color="accent" (click)="criarForum()">
             <mat-icon class="material-symbols-outlined">note_add</mat-icon>
             Novo fórum
@@ -16,13 +16,13 @@
             <input matInput (keyup)="aplicarFiltro($event)" placeholder="Ex: energia solar" #input>
         </mat-form-field>
     </div>
-    <div fxLayout="row wrap" fxLayoutAlign="start start" class="container-forum-many">
+    <div class="g-row-start-start g-row-wrap container-forum-many">
         <div *ngFor="let forumTopico of this.forumTopicoMany">
-            <div fxLayout="column" fxLayoutAlign="space-between space-between" class="card-forum">
-                <div fxFlex="100%" fxLayout="row" fxLayoutAlign="space-between start">
-                    <div fxFlex="30%" fxLayout="column" fxLayoutAlign="space-between center" class="aula-autor">
+            <div class="g-column-between-between card-forum">
+                <div fxFlex="100%" class="g-row-between-start">
+                    <div fxFlex="30%" class="g-column-between-center aula-autor">
                         <div class="g-text-overflow-2 usuario-nome">{{ forumTopico.usuarioNome }}</div>
-                        <div *ngIf="this.forumTopico.usuarioFoto" fxLayout="column" fxLayoutAlign="space-between center">
+                        <div *ngIf="this.forumTopico.usuarioFoto" class="g-column-between-center">
                             <img fxFlex="100px" [src]="'data:image/png;base64,' + this.forumTopico.usuarioFoto" alt="Imagem" class="imagem">
                         </div>
                         <div *ngIf="!this.forumTopico.usuarioFoto">
@@ -30,30 +30,30 @@
                         </div>
                     </div>
                     <div fxFlex="1px" class="divisor"></div>
-                    <div fxFlex="70%" fxLayout="column" fxLayoutAlign="space-around start" class="descricao">
-                        <div fxLayout="row" fxLayoutAlign="center center" class="g-full-width">
+                    <div fxFlex="70%" class="g-column-around-start descricao">
+                        <div class="g-row-center-center g-full-width">
                             <div class="titulo">{{ forumTopico.titulo }}</div>
                         </div>
-                        <div fxLayout="column" fxLayoutAlign="space-between start" class="g-full-width">
-                            <div fxLayout="row" fxLayoutAlign="space-around center" class="container-tags">
-                                <div *ngFor="let tag of forumTopico.forumTagMany" fxLayout="row" fxLayoutAlign="start center">
+                        <div fxFlex="100%" class="g-column-between-start g-full-width">
+                            <div class="g-row-around-center container-tags">
+                                <div *ngFor="let tag of forumTopico.forumTagMany" class="g-row-start-center">
                                     <span class="g-tag">{{ tag.titulo }}</span>
                                 </div>
                             </div>
                         </div>
-                        <div fxLayout="row" fxLayoutAlign="space-around center" class="g-full-width">
+                        <div class="g-row-around-center g-full-width">
                             <div class="button-acessar" (click)="acessarForumTopico(forumTopico)">Acessar</div>
-                            <div fxLayout="row" fxLayoutAlign="center center" class="container-resposta">
+                            <div class="g-row-center-center container-resposta">
                                 <mat-icon class="material-symbols-outlined">forum</mat-icon>
                                 <div>{{ forumTopico.resposta }}</div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div fxLayout="row" fxLayoutAlign="space-around center" class="data-cadastro">
+                <div class="g-row-around-center data-cadastro">
                     <div>Cadastro: {{ forumTopico.dataCadastro | date : 'dd/MM/yyyy' }}</div>
                 </div>
-                <div fxLayout="row" fxLayoutAlign="space-around center" class="data-atualizacao">
+                <div class="g-row-around-center data-atualizacao">
                     <div>Atualizado: {{ forumTopico.dataAtualizacao | date : 'dd/MM/yyyy' }}</div>
                 </div>
                 <div [ngSwitch]="forumTopico.forumTopicoEnum" class="tipo-topico">

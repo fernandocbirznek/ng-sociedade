@@ -1,9 +1,9 @@
-<div fxLayout="column">
-    <fieldset fxLayout="column" class="g-fieldset">
+<div class="g-column-start-start">
+    <fieldset class="g-column-start-start g-fieldset">
         <app-noticia-filtro></app-noticia-filtro>
     </fieldset>
-    <div fxFlex="100%" fxLayout="row wrap" fxLayoutAlign="start start" class="container-card-noticia">
-        <div *ngFor="let noticia of this.noticiaMany" fxLayout="column" class="g-card-noticia">
+    <div fxFlex="100%" class="g-row-start-start g-row-wrap container-card-noticia">
+        <div *ngFor="let noticia of this.noticiaMany" class="g-column-start-start g-card-noticia">
             <app-card-noticia [noticia]="noticia"></app-card-noticia>
         </div>
     </div>

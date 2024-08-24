@@ -1,11 +1,11 @@
 <!-- TODO, MATAR COMPONENTE ??? -->
 <fieldset class="g-fieldset">
     <div class="g-fieldset-titulo">Áreas de interesse</div>
-    <div fxLayout="row" fxLayoutAlign="center center" class="editar-area-interesse" (click)="editarAreaInteresse()">
+    <div class="g-row-center-center editar-area-interesse" (click)="editarAreaInteresse()">
         <mat-icon class="material-symbols-outlined">edit_document</mat-icon>
         <div>Editar área de interesse</div>
     </div>
-    <div *ngIf="usuarioLogado" fxLayout="row" fxLayoutAlign="center center" class="container-tags">
+    <div *ngIf="usuarioLogado" class="g-row-center-center container-tags">
         <div *ngFor="let areaInteresse of this.areaInteresseMany">
             <span class="g-tag">{{areaInteresse.nome}}</span>
         </div>

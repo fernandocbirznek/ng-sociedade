@@ -1,11 +1,17 @@
+.container-forum-topico {
+    gap: 50px;
+}
+
 .card {
     padding: 30px;
     margin-top: 50px;
+    width: calc(100% - 60px);
 }
 
 .container-forum-many {
     gap: 25px;
     margin-bottom: 25px;
+    width: 100%;
 }
 
 .container-filtro {

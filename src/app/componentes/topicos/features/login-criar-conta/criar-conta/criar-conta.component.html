@@ -1,5 +1,5 @@
-<div fxLayout="column" fxLayoutAlign="center center" class="container-criar-conta">
-    <form fxLayout="column" [formGroup]="this.formConta" class="g-container-form-inputs">
+<div class="g-column-center-center container-criar-conta">
+    <form [formGroup]="this.formConta" class="g-columns-start-center g-container-form-inputs">
         <mat-form-field appearance="outline">
             <mat-label>Nome Completo</mat-label>
             <input formControlName="nome" matInput required>
@@ -21,7 +21,7 @@
             <mat-error *ngIf="senha.invalid">Senha é obrigatório, mínimo 8 digitos</mat-error>
         </mat-form-field>
     </form>
-    <div fxLayout="row" fxLayoutAlign="space-between center" class="container-inputs">
+    <div class="g-row-between-center container-inputs">
         <button mat-stroked-button color="accent" (click)="fecharModal()">Cancelar</button>
         <button mat-stroked-button color="primary" [disabled]="!this.formConta.valid" (click)="requestCriarConta()">Criar Conta</button>
     </div>

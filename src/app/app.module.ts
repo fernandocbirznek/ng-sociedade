@@ -72,6 +72,7 @@ import {
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatLegacyTableModule as MatTableModule } from '@angular/material/legacy-table';
 import { MatLegacyPaginatorModule as MatPaginatorModule } from '@angular/material/legacy-paginator';
+import { FxFlexDirective } from './diretivas';
 
 @NgModule({
   declarations: [
@@ -84,6 +85,8 @@ import { MatLegacyPaginatorModule as MatPaginatorModule } from '@angular/materia
     MecanicaTresComponent,
     MecanicaQuatroComponent,
     AulaTresExercicioComponent,
+
+    FxFlexDirective
   ],
   imports: [
     AreaFisicaModule,

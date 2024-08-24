@@ -1,42 +1,42 @@
 <div *ngIf="this.forumTopico; else loading">
-    <div fxLayout="column" class="container-topico">
-        <div fxLayout="column" fxLayoutAlign="space-between space-between" class="g-card-postit-yellow card">
-            <div class="g-card-postit-titulo-yellow titulo" fxLayout="row" fxLayoutAlign="center center">
+    <div class="g-column-start-center container-topico">
+        <div class="g-column-between-between g-card-postit-yellow card">
+            <div class="g-row-center-center g-card-postit-titulo-yellow titulo">
                 <div [ngSwitch]="forumTopico.forumTopicoEnum" class="tipo-topico">
                     <div *ngSwitchCase="this.forumTopicoEnum.Conceito">
-                        <mat-icon fxLayoutAlign="center center" class="material-symbols-outlined">drag_handle</mat-icon>
+                        <mat-icon class="g-row-center-center material-symbols-outlined">drag_handle</mat-icon>
                     </div>
                     <div *ngSwitchCase="this.forumTopicoEnum.Equacao">
-                        <mat-icon fxLayoutAlign="center center" class="material-symbols-outlined">function</mat-icon>
+                        <mat-icon class="g-row-center-center material-symbols-outlined">function</mat-icon>
                     </div>
                     <div *ngSwitchCase="this.forumTopicoEnum.Curiosidade">
-                        <mat-icon fxLayoutAlign="center center" class="material-symbols-outlined">fitness_center</mat-icon>
+                        <mat-icon class="g-row-center-center material-symbols-outlined">fitness_center</mat-icon>
                     </div>
                     <div *ngSwitchCase="this.forumTopicoEnum.Exercicio">
-                        <mat-icon fxLayoutAlign="center center" class="material-symbols-outlined">fitness_center</mat-icon>
+                        <mat-icon class="g-row-center-center material-symbols-outlined">fitness_center</mat-icon>
                     </div>
                     <div *ngSwitchCase="this.forumTopicoEnum.Vestibular">
-                        <mat-icon fxLayoutAlign="center center" class="material-symbols-outlined">school</mat-icon>
+                        <mat-icon class="g-row-center-center material-symbols-outlined">school</mat-icon>
                     </div>
                     <div *ngSwitchCase="this.forumTopicoEnum.Noticia">
-                        <mat-icon fxLayoutAlign="center center" class="material-symbols-outlined">newspaper</mat-icon>
+                        <mat-icon class="g-row-center-center material-symbols-outlined">newspaper</mat-icon>
                     </div>
                     <div *ngSwitchCase="this.forumTopicoEnum.Geral">
-                        <mat-icon fxLayoutAlign="center center" class="material-symbols-outlined">contact_support</mat-icon>
+                        <mat-icon class="g-row-center-center material-symbols-outlined">contact_support</mat-icon>
                     </div>
                 </div>
                 <div class="titulo">{{ this.forumTopico.titulo }}</div>
-                <mat-icon *ngIf="this.usuarioLogado && this.forumTopico.usuarioId == this.usuarioLogado.id" fxLayoutAlign="center center"
+                <mat-icon *ngIf="this.usuarioLogado && this.forumTopico.usuarioId == this.usuarioLogado.id" class="g-row-center-center"
                     mat-stroked-button color="primary" (click)="editarForumTopico()" 
                     matTooltip="Editar pergunta">
                     edit_document
                 </mat-icon>
             </div>
-            <div fxLayout="row" fxLayoutAlign="start center" class="container-pergunta">
-                <div fxFlex="100px" fxLayout="column">
+            <div class="g-row-start-start container-pergunta">
+                <div fxFlex="100px" class="g-column-start-center">
                     <div class="g-text-overflow-2 usuario-nome">{{ this.forumTopico.usuarioNome }}</div>
-                    <div *ngIf="this.forumTopico.usuarioFoto" fxLayout="column" fxLayoutAlign="space-between center">
-                        <img fxFlex="100px" [src]="'data:image/png;base64,' + this.forumTopico.usuarioFoto" alt="Imagem" class="imagem">
+                    <div *ngIf="this.forumTopico.usuarioFoto" class="g-column-between-center">
+                        <img fxFlex="150px" [src]="'data:image/png;base64,' + this.forumTopico.usuarioFoto" alt="Imagem" class="imagem">
                     </div>
                     <div *ngIf="!this.forumTopico.usuarioFoto">
                         Sem foto
@@ -44,7 +44,7 @@
                 </div>
                 <div [innerHTML]="this.trustedVisualizarForumTopicoHtml"></div>
                 <div *ngIf="this.usuarioLogado && this.forumTopico.usuarioId == this.usuarioLogado.id" 
-                    fxLayout="row" fxLayoutAlign="space-around center" class="container-buttons-topico">
+                    class="g-row-around-center container-buttons-topico">
                     <button *ngIf="this.forumTopico.topicoRespostaCount == 0" mat-stroked-button color="warn" 
                         (click)="excluirForumTopico()">
                         <mat-icon class="material-symbols-outlined">add_notes</mat-icon>

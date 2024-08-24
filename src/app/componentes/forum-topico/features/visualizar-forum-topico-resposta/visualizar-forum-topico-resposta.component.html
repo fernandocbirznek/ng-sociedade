@@ -1,5 +1,5 @@
-<div fxLayout="column">
-    <div *ngIf="!this.responderTopico && this.usuarioLogado" fxLayout="row" fxLayoutAlign="center center" class="button-resposta"
+<div class="g-column-start-center">
+    <div *ngIf="!this.responderTopico && this.usuarioLogado" class="g-row-center-center button-resposta"
         (click)="responderForumTopico()">
         <mat-icon class="material-symbols-outlined">record_voice_over</mat-icon>
         Escrever resposta
@@ -7,7 +7,7 @@
 
     <div *ngIf="this.responderTopico" class="container-ckeditor">
         <app-ckeditor (onAlterouEditor)="alterouFormEditor($event)"></app-ckeditor>
-        <div fxLayout="row" fxLayoutAlign="space-around center" class="container-buttons">
+        <div class="g-row-around-center container-buttons">
             <button mat-stroked-button color="warn" (click)="responderForumTopico()">
                 <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
                 Cancelar
@@ -19,9 +19,9 @@
         </div>
     </div>
 
-    <div *ngFor="let resposta of this.forumTopicoRespostaMany; index as i" fxLayout="column" class="container-resposta-many">
-        <div fxLayout="column" fxLayoutAlign="space-between space-between" class="g-card-postit-green card">
-            <div class="g-card-postit-titulo-green card-titulo" fxLayout="row" fxLayoutAlign="center center">
+    <div *ngFor="let resposta of this.forumTopicoRespostaMany; index as i" class="g-column-start-center container-resposta-many">
+        <div class="g-column-between-between g-card-postit-green card">
+            <div class="g-row-center-center g-card-postit-titulo-green card-titulo">
                 <div class="titulo">Resposta: {{ i+1 }}</div>
                 <mat-icon *ngIf="this.usuarioLogado && resposta.forumTopicoComentario.usuarioId == this.usuarioLogado.id"
                      class="icone-editar material-symbols-outlined"
@@ -30,14 +30,14 @@
                     edit_document
                 </mat-icon>
             </div>
-            <div class="g-card-postit-titulo-green data-resposta" fxLayout="row" fxLayoutAlign="center center">
+            <div class="g-row-center-center g-card-postit-titulo-green data-resposta">
                 <div class="titulo"> {{ resposta.forumTopicoComentario.dataCadastro | date : 'dd/MM/yyyy HH:mm' }}</div>
             </div>
-            <div fxLayout="row" fxLayoutAlign="start start" class="container-pergunta">
-                <div fxFlex="100px" fxLayout="column">
+            <div class="g-row-start-start container-pergunta">
+                <div fxFlex="100px" class="g-column-start-center">
                     <div class="g-text-overflow-2 usuario-nome">{{ resposta.forumTopicoComentario.usuarioNome }}</div>
-                    <div *ngIf="resposta.forumTopicoComentario.usuarioFoto" fxLayout="column" fxLayoutAlign="space-between center">
-                        <img fxFlex="100px" [src]="'data:image/png;base64,' + resposta.forumTopicoComentario.usuarioFoto" alt="Imagem" class="imagem">
+                    <div *ngIf="resposta.forumTopicoComentario.usuarioFoto" class="g-column-between-center">
+                        <img fxFlex="150px" [src]="'data:image/png;base64,' + resposta.forumTopicoComentario.usuarioFoto" alt="Imagem" class="imagem">
                     </div>
                     <div *ngIf="!resposta.forumTopicoComentario.usuarioFoto">
                         Sem foto
@@ -47,7 +47,7 @@
                     <div [innerHTML]="resposta.trustedHtml"></div>
                 </div>
                 <div *ngIf="this.usuarioLogado && resposta.forumTopicoComentario.usuarioId == this.usuarioLogado.id && resposta.forumTopicoComentario.forumReplicaCount == 0" 
-                    fxLayout="row" fxLayoutAlign="space-around center" class="resposta-delete">
+                    class="g-row-around-center resposta-delete">
                     <mat-icon class="material-symbols-outlined" (click)="excluirRespostaForumTopico(resposta.forumTopicoComentario)"
                         matTooltip="Excluir resposta">
                         delete

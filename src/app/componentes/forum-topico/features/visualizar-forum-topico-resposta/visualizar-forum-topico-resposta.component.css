@@ -26,11 +26,13 @@
 }
 
 .container-resposta-many {
-    margin-top: 50px;
+    margin-top: 60px;
+    width: 100%;
 }
 
 .card {
     padding: 30px;
+    width: calc(100% - 60px);
 }
 
 .card-titulo {
@@ -46,7 +48,7 @@
 }
 
 .data-resposta {
-    top: -42px;
+    top: -60px;
     left: 300px;
     height: 30px;
     font-size: 12px;
@@ -56,6 +58,10 @@
 
 .container-pergunta {
     gap: 20px;
+}
+
+.usuario-nome {
+    text-align: center;
 }
 
 .replica-resposta {

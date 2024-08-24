@@ -1,7 +1,7 @@
-<div fxLayout="column" fxLayoutAlign="start start" class="container-area-interesse">
+<div class="g-column-start-start container-area-interesse">
     <div class="titulo">Alterar área de interesse</div>
     <div class="texto">Selecione até 5 áreas de interesse:</div>
-    <div fxLayout="row wrap" class="container-check">
+    <div class="g-row-wrap container-check">
         <section *ngFor="let areaInteresse of this.areaInteresseMany">
             <mat-checkbox [ngClass]="{'check-ativo': this.selecionado.includes(areaInteresse.id)}" 
                 [checked]="this.selecionado.includes(areaInteresse.id)" 
@@ -10,7 +10,7 @@
             </mat-checkbox>
         </section>
     </div>
-    <div fxLayout="row" fxLayoutAlign="space-around center" class="container-buttons">
+    <div class="g-row-around-center container-buttons">
         <button mat-stroked-button color="warn" (click)="fecharModal()">
             <mat-icon class="material-symbols-outlined">cancel</mat-icon>
             Cancelar

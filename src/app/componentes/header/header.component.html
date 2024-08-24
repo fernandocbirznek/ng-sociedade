@@ -1,9 +1,9 @@
-<div fxLayout="column">
-    <div fxLayout="row" fxLayoutAlign="space-between center" class="container-header">
-        <div fxFlex="400px" fxLayout="column" fxLayoutAlign="center center">
+<div class="g-column-start-start">
+    <div class="g-row-between-center container-header">
+        <div fxFlex="400px" class="g-column-center-center">
             <img class="logo-site" src="../../../assets/imagens/header/logosite.png">
         </div>
-        <div fxFlex="100%" fxLayout="row wrap" fxLayoutAlign="space-around center" class="menu-navegacao">
+        <div fxFlex="100%" class="g-row-around-center g-row-wrap menu-navegacao">
             <a (click)="acessarTela('home')">Home</a>
             <a *ngIf="!this.usuarioLogado" (click)="conta()">Criar Conta / Login</a>
             <a *ngIf="this.usuarioLogado" (click)="acessarPerfil()">Acessar perfil</a>
@@ -13,16 +13,16 @@
                 {{areaFisica.titulo}}
             </a>
         </div>
-        <div fxFlex="20%" fxLayout="column" fxLayoutAlign="center center">
+        <div fxFlex="20%" class="g-column-center-center">
             <img class="img-topico" [src]="imagem">
             <p class="paragrafo-topico">{{ this.resumoTopico }}</p>
         </div> 
     </div>
-    <div *ngIf="this.headerTitulo" fxLayoutAlign="center center" class="menu-selecionado">
+    <div *ngIf="this.headerTitulo" class="g-row-center-center menu-selecionado">
         {{ this.headerTitulo }}
     </div>
-    <div fxLayout="row" fxLayoutAlign="start center">
-        <span *ngFor="let rota of rotaMany; index as i" fxLayout="row" class="rota" (click)="rotaAcessar(rota.rotaAcessar)">
+    <div class="g-row-start-center">
+        <span *ngFor="let rota of rotaMany; index as i" class="g-row-start-center rota" (click)="rotaAcessar(rota.rotaAcessar)">
             <span>{{ rota.rotaNome }}</span>
             <span *ngIf="rotaMany.length != (i+1)" class="rota-separador">/</span>
         </span>

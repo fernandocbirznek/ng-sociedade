@@ -1,30 +1,30 @@
-<div *ngIf="this.widget" fxLayout="row" fxLayoutAlign="space-between start" class="container-aulas">
-    <div fxFlex="33%" fxLayout="column" class="g-gap-60">
+<div *ngIf="this.widget" class="g-row-between-start container-aulas">
+    <div fxFlex="33%" class="g-column-start-center g-gap-60">
         <div class="widget-titulo">Para cursar</div>
-        <div *ngFor="let widget of this.widget.widgetCursar; index as i" fxLayout="column">
+        <div *ngFor="let widget of this.widget.widgetCursar; index as i" class="g-column-start-center">
 
-            <div fxLayout="column" fxLayoutAlign="start start" class="g-card-postit-yellow card">
+            <div class="g-column-start-start g-card-postit-yellow card">
                 <div class="g-card-postit-titulo-yellow card-titulo">{{ widget.aula!.titulo }}</div>
                 <div class="g-card-postit-titulo-yellow card-mover-direita" (click)="moverParaCursando(widget)">
                     <mat-icon class="material-symbols-outlined" matTooltip="Mover para cursando">move_item</mat-icon>
                 </div>
-                <div fxLayout="row" fxLayoutAlign="space-between center" class="g-full-width">
-                    <div fxLayout="column">
+                <div class="g-row-between-center g-full-width">
+                    <div class="g-column-start-center">
                         <div class="descricao-titulo">Área da física</div>
                         <app-aula-icone class="descricao" [areaFisicaId]="widget.aula!.areaFisicaId" [areaFisicaNome]="true">
                         </app-aula-icone>
                     </div>
-                    <div fxLayout="column">
+                    <div class="g-column-start-center">
                         <div class="descricao-titulo">Professor</div>
                         <!-- <div class="descricao">{{ widget.aula!.professorNome }}</div> -->
                         <div class="descricao">Fernando Carvalho Birznek</div>
                     </div>
                 </div>
-                <div fxLayout="row" fxLayoutAlign="start start" class="container-resumo">
+                <div class="g-row-start-start container-resumo">
                     <div class="resumo">{{ widget.aula!.resumo }}</div>
                 </div>
-                <div fxLayoutAlign="center center" class="g-full-width">
-                    <div fxLayout="row" fxLayoutAlign="center center" class="card-aula-acessar" 
+                <div class="g-column-center-center g-full-width">
+                    <div class="g-row-center-center card-aula-acessar" 
                         (click)="visualizarAula(widget)">
                         <div>Acessar aula</div>
                         <mat-icon class="material-symbols-outlined">menu_book</mat-icon>
@@ -37,11 +37,11 @@
         TODO, paginação
     </div>
 
-    <div fxFlex="33%" fxLayout="column" class="g-gap-60">
+    <div fxFlex="33%" class="g-column-start-center g-gap-60">
         <div class="widget-titulo">Cursando</div>
-        <div *ngFor="let widget of this.widget.widgetCursando; index as i" fxLayout="column">
+        <div *ngFor="let widget of this.widget.widgetCursando; index as i" class="g-column-start-center">
 
-            <div fxLayout="column" fxLayoutAlign="start start" class="g-card-postit-yellow card">
+            <div class="g-column-start-start g-card-postit-yellow card">
                 <div class="g-card-postit-titulo-yellow card-titulo-cursando">{{ widget.aula!.titulo }}</div>
                 <div class="g-card-postit-titulo-yellow card-mover-esquerda" (click)="moverParaCursar(widget)">
                     <mat-icon class="material-symbols-outlined" matTooltip="Mover para cursando">keyboard_return</mat-icon>
@@ -49,22 +49,22 @@
                 <div class="g-card-postit-titulo-yellow card-mover-direita" (click)="moverParaConcluido(widget)">
                     <mat-icon class="material-symbols-outlined" matTooltip="Mover para concluído">move_item</mat-icon>
                 </div>
-                <div fxLayout="row" fxLayoutAlign="space-between center" class="g-full-width">
-                    <div fxLayout="column">
+                <div class="g-row-between-center g-full-width">
+                    <div class="g-column-start-center">
                         <div class="descricao-titulo">Área da física</div>
                         <app-aula-icone class="descricao" [areaFisicaId]="widget.aula!.areaFisicaId" [areaFisicaNome]="true">
                         </app-aula-icone>
                     </div>
-                    <div fxLayout="column">
+                    <div class="g-column-start-center">
                         <div class="descricao-titulo">Professor</div>
                         <!-- <div class="descricao">{{ widget.aula!.professorNome }}</div> -->
                         <div class="descricao">Fernando Carvalho Birznek</div>
                     </div>
                 </div>
-                <div fxLayout="row" fxLayoutAlign="start start" class="container-resumo">
+                <div class="g-row-start-start container-resumo">
                     <div class="resumo">{{ widget.aula!.resumo }}</div>
                 </div>
-                <div fxLayout="row" fxLayoutAlign="center center" class="card-aula-acessar" 
+                <div class="g-row-center-center card-aula-acessar" 
                     (click)="visualizarAula(widget)">
                     <div>Acessar aula</div>
                     <mat-icon class="material-symbols-outlined">menu_book</mat-icon>
@@ -75,31 +75,31 @@
         TODO, paginação
     </div>
 
-    <div fxFlex="33%" fxLayout="column" class="g-gap-60">
+    <div fxFlex="33%" class="g-column-start-center g-gap-60">
         <div class="widget-titulo">Concluido</div>
-        <div *ngFor="let widget of this.widget.widgetConcluido; index as i" fxLayout="column">
+        <div *ngFor="let widget of this.widget.widgetConcluido; index as i" class="g-column-start-center">
 
-            <div fxLayout="column" fxLayoutAlign="start start" class="g-card-postit-yellow card">
+            <div class="g-column-start-start g-card-postit-yellow card">
                 <div class="g-card-postit-titulo-yellow card-titulo-concluido">{{ widget.aula!.titulo }}</div>
                 <div class="g-card-postit-titulo-yellow card-mover-esquerda" (click)="moverParaCursando(widget)">
                     <mat-icon class="material-symbols-outlined" matTooltip="Mover para cursando">keyboard_return</mat-icon>
                 </div>
-                <div fxLayout="row" fxLayoutAlign="space-between center" class="g-full-width">
-                    <div fxLayout="column">
+                <div class="g-row-between-center g-full-width">
+                    <div class="g-column-start-center">
                         <div class="descricao-titulo">Área da física</div>
                         <app-aula-icone class="descricao" [areaFisicaId]="widget.aula!.areaFisicaId" [areaFisicaNome]="true">
                         </app-aula-icone>
                     </div>
-                    <div fxLayout="column">
+                    <div class="g-column-start-center">
                         <div class="descricao-titulo">Professor</div>
                         <!-- <div class="descricao">{{ widget.aula!.professorNome }}</div> -->
                         <div class="descricao">Fernando Carvalho Birznek</div>
                     </div>
                 </div>
-                <div fxLayout="row" fxLayoutAlign="start start" class="container-resumo">
+                <div class="g-row-start-start container-resumo">
                     <div class="resumo">{{ widget.aula!.resumo }}</div>
                 </div>
-                <div fxLayout="row" fxLayoutAlign="center center" class="card-aula-acessar" 
+                <div class="g-row-center-center card-aula-acessar" 
                     (click)="visualizarAula(widget)">
                     <div>Acessar aula</div>
                     <mat-icon class="material-symbols-outlined">menu_book</mat-icon>

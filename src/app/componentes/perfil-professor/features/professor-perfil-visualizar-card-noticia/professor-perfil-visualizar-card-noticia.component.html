@@ -1,21 +1,20 @@
-<div fxLayout="row" fxLayoutAlign="start start" class="g-card-postit-yellow card">
+<div class="g-row-start-start g-card-postit-yellow card">
     <div class="g-card-postit-titulo-yellow card-titulo">Notícias postadas</div>
-    <div fxLayout="row" fxLayoutAlign="space-between start" class="container-aulas">
+    <div class="g-row-between-start container-aulas">
         <app-noticia-filtro fxFlex="300px" class="app-aula-filtro" [flexColumn]="true"></app-noticia-filtro >
-        <div fxLayout="column" fxLayoutAlign="space-between center" class="g-full-height">
-            <div fxFlex="100%" fxLayout="row wrap" fxLayoutAlign="space-around start" class="container-card-aula">
-                <div *ngFor="let noticia of this.pageNoticiaMany" fxLayout="column"
-                    class="card-aula">
+        <div class="g-column-between-center g-full-height">
+            <div fxFlex="100%" class="g-row-around-start g-row-wrap container-card-aula">
+                <div *ngFor="let noticia of this.pageNoticiaMany" class="g-column-start-start card-aula">
                     <div class="data-cadastro">{{ noticia.dataCadastro | date : 'dd/MM/yyyy HH:mm' }}</div>
                     <div fxFlex="100%">
                         <div class="aula-titulo" (click)="visualizarNoticia(noticia)">{{ noticia.titulo }}</div>
-                        <div fxLayout="row" fxLayoutAlign="start center">
+                        <div class="g-row-start-center">
                             <div class="aula-resumo">{{ noticia.resumo }}</div>
                         </div>
                     </div>
-                    <div fxLayout="row" fxLayoutAlign="center center" class="container-tags">
-                        <div fxFlex="50px" fxLayout="row" fxLayoutAlign="space-around center">
-                            <div fxLayout="column" fxLayoutAlign="center center">
+                    <div class="g-row-center-center container-tags">
+                        <div fxFlex="50px" class="g-row-around-center">
+                            <div class="g-column-center-center">
                                 <mat-icon class="material-symbols-outlined" [ngClass]="{'icone-ativo': noticia.usuarioLogadoCurtiu}">
                                     thumb_up
                                 </mat-icon>
@@ -29,12 +28,12 @@
                     
                 </div>
             </div>
-            <div *ngIf="this.pageMax > 1" fxLayout="row" fxLayoutAlign="center center" class="container-paginacao">
-                <mat-icon fxLayoutAlign="center center" class="button-page" (click)="mudarPagina(-1)">
+            <div *ngIf="this.pageMax > 1" class="g-row-center-center container-paginacao">
+                <mat-icon class="g-row-center-center button-page" (click)="mudarPagina(-1)">
                     chevron_left
                 </mat-icon>
                 <div>Página {{ pageAtual + 1 }} de {{ pageMax }}</div>
-                <mat-icon fxLayoutAlign="center center" class="button-page" (click)="mudarPagina(1)">
+                <mat-icon class="g-row-center-center button-page" (click)="mudarPagina(1)">
                     navigate_next
                 </mat-icon>
             </div>

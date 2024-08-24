@@ -223,6 +223,7 @@
     margin-top: 20px;
     border-top: 2px solid #CCC;
     position: relative;
+    width: 100%;
 }
 
 .text-comentarios {

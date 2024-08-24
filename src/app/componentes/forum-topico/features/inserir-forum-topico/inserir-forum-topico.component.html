@@ -1,16 +1,16 @@
-<div fxLayout="column" class="container-forum-topico">
-    <div fxLayoutAlign="end end" class="fechar" (click)="fecharModal()">X</div>
+<div class="g-column-start-center container-forum-topico">
+    <div class="g-row-end-end fechar" (click)="fecharModal()">X</div>
     <h2>Criando novo tópico do fórum</h2>
-    <form [formGroup]="this.formGroupForumTopico" fxLayout="column" fxLayoutAlign="start center">   
+    <form [formGroup]="this.formGroupForumTopico" class="g-column-start-center">   
         <mat-form-field  appearance="outline" class="g-full-width">
             <mat-label>Título</mat-label>
             <input formControlName="formTitulo" matInput required>
             <mat-error *ngIf="formTitulo.invalid">Titulo é obrigatório</mat-error>
         </mat-form-field>
-        <div fxLayout="row" fxLayoutAlign="space-around center" class="container-topico-tags">
-            <div fxFlex="50%" fxLayout="column" fxLayoutAlign="start start">
+        <div class="g-row-around-center container-topico-tags">
+            <div fxFlex="50%" class="g-column-start-start">
                 <h4>Selecione um tipo de tópico:</h4>
-                <mat-radio-group fxLayout="row wrap" fxLayoutAlign="start start" class="container-topico" formControlName="formTipoTopico">
+                <mat-radio-group class="g-column-start-start g-row-wrap container-topico" formControlName="formTipoTopico">
                     <mat-radio-button [value]="this.forumTopicoEnum.Geral">Geral</mat-radio-button>
                     <mat-radio-button [value]="this.forumTopicoEnum.Conceito">Conceito</mat-radio-button>
                     <mat-radio-button [value]="this.forumTopicoEnum.Equacao">Equação</mat-radio-button>
@@ -20,9 +20,9 @@
                     <mat-radio-button [value]="this.forumTopicoEnum.Noticia">Notícia</mat-radio-button>
                 </mat-radio-group>  
             </div>
-            <div fxFlex="50%" fxLayout="column" fxLayoutAlign="start start">
+            <div fxFlex="50%" class="g-column-start-start">
                 <h4>Selecione as tags do tópico:</h4>
-                <div fxLayout="row wrap" fxLayoutAlign="start start" class="container-tags">
+                <div class="g-row-start-start g-row-wrap container-tags">
                     <section *ngFor="let forumTag of this.forumTagMany">
                         <mat-checkbox (change)="selecionouForumTag(forumTag, $event)">{{forumTag.titulo}}</mat-checkbox>
                     </section>
@@ -31,7 +31,7 @@
         </div>
         <app-ckeditor (onAlterouEditor)="alterouFormEditor($event)"></app-ckeditor>
     </form>
-    <div fxLayout="row" fxLayoutAlign="space-around center" class="container-buttons">
+    <div class="g-row-around-center container-buttons">
         <button mat-stroked-button color="warn" (click)="fecharModal()">
             <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
             Cancelar

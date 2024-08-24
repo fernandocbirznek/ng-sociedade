@@ -1,3 +1,9 @@
+.container-filtro {
+    border: 2px solid #818181;
+    padding: 10px;
+    border-radius: 10px;
+}
+
 .text-filtro {
     font-size: 18px;
     font-weight: bold;
@@ -13,6 +19,7 @@
 .container-ordenar {
     padding: 20px 0;
     border-top: 2px solid #CCCCCC;
+    width: 100%;
 }
 
 .text-ordenar {
@@ -24,6 +31,8 @@
     font-size: 16px;
     color: #CECECE;
     pointer-events: none;
+    align-content: center;
+    gap: 5px;
 }
 
 .icone-resetar-on {
@@ -35,11 +44,13 @@
 .container-radio {
     gap: 10px;
     margin-bottom: 20px;
+    width: 100%;
 }
 
 .window-tag {
     height: 200px;
     overflow-y: auto;
+    width: 100%;
 }
 
 .container-tag {

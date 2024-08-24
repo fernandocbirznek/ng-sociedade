@@ -68,6 +68,7 @@
     top: -49px;
     font-size: 16px;
     background-color: #ffe280;
+    max-width: 380px;
 }
 
 .card-aula-descricao {
@@ -112,7 +113,6 @@
     background-color: rgb(239 239 239);
     padding: 4px 15px;
     border-radius: 20px;
-    display: inline-block;
     cursor: pointer;
     margin-bottom: 10px;
     gap: 5px;

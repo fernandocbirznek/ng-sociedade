@@ -1,8 +1,8 @@
-<div fxLayout="column" class="container-aula">
+<div class="g-column-start-start container-aula">
     <h2 >Criando nova Aula</h2>
-    <form [formGroup]="this.formGroupAula" fxLayout="column" fxLayoutAlign="start start" class="g-container-form-inputs">   
+    <form [formGroup]="this.formGroupAula" class="g-column-start-start g-container-form-inputs">   
       <div class="area-fisica-text">Área da física:</div>
-      <mat-radio-group formControlName="formAreaFisica" fxLayout="row wrap" fxLayoutAlign="start center" class="container-radio">
+      <mat-radio-group formControlName="formAreaFisica" class="g-row-start-center g-row-wrap container-radio">
         <mat-radio-button *ngFor="let area of this.areaFisicaMany" [value]="area.id">{{ area.titulo }}</mat-radio-button>
       </mat-radio-group>
       <mat-form-field  appearance="outline" class="g-full-width">
@@ -16,7 +16,7 @@
         <mat-error *ngIf="formResumo.invalid">Resumo é obrigatória</mat-error>
       </mat-form-field>
     </form>
-    <div fxLayout="row" fxLayoutAlign="space-around center" class="container-buttons">
+    <div class="g-row-around-center container-buttons">
       <button mat-stroked-button color="warn" (click)="fecharModal()">
         <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
         Cancelar

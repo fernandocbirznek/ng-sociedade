@@ -1,4 +1,4 @@
-<div fxLayout="column" fxLayoutAlign="center center" class="container-criar-conta">
+<div class="g-column-center-center container-criar-conta">
     <form [formGroup]="this.formAlterarUsuario" class="container-form">
         <mat-form-field class="container-inputs" appearance="outline">
             <mat-label>Nome Completo</mat-label>
@@ -10,7 +10,7 @@
             <input matInput placeholder="fernando@exemplo.com" formControlName="email" required>
             <mat-error *ngIf="email.invalid">Formato de email não é válido</mat-error>
         </mat-form-field>
-        <mat-radio-group fxLayout="row wrap" fxLayoutAlign="space-around center" class="g-gap-20" 
+        <mat-radio-group class="g-row-around-center g-row-wrap g-gap-20" 
             (change)="selectedTipoUsuario($event)">
             <mat-radio-button [checked]="tipoUsuarioEnum.UsuarioComum == this.tipoUsuario" [value]="tipoUsuarioEnum.UsuarioComum">
                 Aluno
@@ -27,7 +27,7 @@
         </mat-radio-group>
     </form>
     
-    <div fxLayout="row" fxLayoutAlign="space-between center" class="container-inputs">
+    <div class="g-row-between-center container-inputs">
         <button mat-stroked-button color="accent" (click)="fecharModal()">Cancelar</button>
         <button mat-stroked-button color="primary" (click)="requestAlterarUsuario()">Atualizar usuário</button>
     </div>

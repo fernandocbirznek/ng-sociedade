@@ -1,10 +1,10 @@
-<div *ngIf="this.usuario; else loading" fxLayout="column" class="container-perfil">
+<div *ngIf="this.usuario; else loading" class="g-column-start-start container-perfil">
     <mat-icon class="icone-close material-symbols-outlined" (click)="this.fecharModal()">close</mat-icon>
 
-    <div fxLayout="row" fxLayoutAlign="start start" class="g-card-postit-orange card">
+    <div class="g-row-start-start g-card-postit-orange card">
         <div class="g-card-postit-titulo-orange card-titulo">Informações do professor</div>
-        <div fxFlex="150px" fxLayout="column" fxLayoutAlign="start center">
-            <div *ngIf="this.usuario.foto" fxLayout="column" fxLayoutAlign="space-between center">
+        <div fxFlex="150px" class="g-column-start-center">
+            <div *ngIf="this.usuario.foto" class="g-column-between-center">
                 <img fxFlex="100px" [src]="'data:image/png;base64,' + this.usuario.foto" alt="Imagem" class="imagem">
                 <div class="usuario-nome">{{ this.usuario.nome }}</div>
             </div>
@@ -12,26 +12,26 @@
                 Sem foto
             </div>
         </div>
-        <div fxFlex="100%" fxLayout="column" fxLayoutAlign="start start" class="g-full-height">
-            <div fxLayout="row" fxLayoutAlign="start start" class="informacao">
+        <div fxFlex="100%" class="g-column-start-start g-full-height">
+            <div class="g-row-start-start informacao">
                 <mat-icon class="material-symbols-outlined">mail</mat-icon>
                 <div><b>email: </b></div>
                 <div>{{ this.usuario.email }}</div>
             </div>
-            <div fxLayout="row" fxLayoutAlign="start start" class="g-full-height">
+            <div class="g-row-start-start g-full-height">
                 <mat-icon class="material-symbols-outlined">surfing</mat-icon>
                 <div class="hobbie-legend">Hobbie:</div>
-                <div fxLayout="row" fxLayoutAlign="start start" class="informacao hobbie">
+                <div class="g-row-start-start informacao hobbie">
                     <div>{{ this.usuario.hobbie }}</div>
                 </div>
             </div>
         </div>
-        <div fxFlex="190px" fxLayout="column" fxLayoutAlign="start start" class="container-tag-many">
-            <div fxLayout="row" fxLayoutAlign="start center" class="informacao">
+        <div fxFlex="190px" class="g-column-start-start container-tag-many">
+            <div class="g-row-start-center informacao">
                 <mat-icon class="material-symbols-outlined">stars</mat-icon>
                 <div><b>Áreas de interesse</b></div>
             </div>
-            <div *ngFor="let areaInteresse of this.usuario.usuarioAreaInteresses" fxLayoutAlign="center center" class="g-full-width">
+            <div *ngFor="let areaInteresse of this.usuario.usuarioAreaInteresses" class="g-column-center-center g-full-width">
                 <div class="g-tag tag">{{ areaInteresse.nome }}</div>     
             </div> 
         </div>

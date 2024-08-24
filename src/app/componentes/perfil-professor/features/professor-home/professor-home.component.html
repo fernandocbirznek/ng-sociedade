@@ -1,22 +1,22 @@
-<div *ngIf="this.usuarioLogado; else usuarioVazio" fxLayout="column" class="container-professor-home">
+<div *ngIf="this.usuarioLogado; else usuarioVazio" class="g-column-start-start container-professor-home">
     <div class="deslogar" (click)="deslogar()">Deslogar</div>
-    <div fxLayout="row wrap" fxLayoutAlign="space-between start" class="container-informacao">
+    <div class="g-row-between-start g-row-wrap container-informacao">
         <app-professor-perfil [usuarioLogado]="this.usuarioLogado"></app-professor-perfil>
         <app-usuario-informacao [usuarioLogado]="this.usuarioLogado"></app-usuario-informacao>
     </div>
 
     <app-usuario-conquistas [usuarioLogado]="this.usuarioLogado"></app-usuario-conquistas>
 
-    <div fxLayout="column" fxLayoutAlign="space-between space-between" class="g-card-postit-yellow card"
+    <div class="g-column-between-between g-card-postit-yellow card"
         [ngClass]="{'card-noticia': this.abaSelecionada == 2, 'card-favorito': this.abaSelecionada == 3}">
-        <div class="g-card-postit-titulo-yellow card-titulo" fxLayout="row" fxLayoutAlign="start center">
-            <div fxLayout="row" fxLayoutAlign="center center" class="card-titulo-aba card-titulo-aba-1" (click)="selecionarAba(1)">
+        <div class="g-row-start-center g-card-postit-titulo-yellow card-titulo">
+            <div class="g-row-center-center card-titulo-aba card-titulo-aba-1" (click)="selecionarAba(1)">
                 <span class="perfil-text">Aulas</span>
             </div>
-            <div fxLayout="row" fxLayoutAlign="center center" class="card-titulo-aba card-titulo-aba-2" (click)="selecionarAba(2)">
+            <div class="g-row-center-center card-titulo-aba card-titulo-aba-2" (click)="selecionarAba(2)">
                 <span class="perfil-text">Notícias</span>
             </div>
-            <div fxLayout="row" fxLayoutAlign="center center" class="card-titulo-aba card-titulo-aba-3" (click)="selecionarAba(3)">
+            <div class="g-row-center-center card-titulo-aba card-titulo-aba-3" (click)="selecionarAba(3)">
                 <span class="perfil-text">Informações favoritadas</span>
             </div>
         </div>

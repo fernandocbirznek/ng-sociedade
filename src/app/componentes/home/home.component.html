@@ -1,12 +1,12 @@
-<div fxLayout="row" fxLayoutAlign="space-between start" class="container-home">
+<div class="g-row-between-start container-home">
     <div fxFlex="400px" class="postagens">
-        <div fxLayoutAlign="center center" class="postagens-titulo">Últimas postagens</div>
-        <div *ngFor="let noticia of this.noticiaMany" fxLayout="column">
+        <div class="g-row-center-center postagens-titulo">Últimas postagens</div>
+        <div *ngFor="let noticia of this.noticiaMany" class="g-column-start-center">
             <app-card-noticia [noticia]="noticia"></app-card-noticia>
         </div>
         
-        <div fxLayoutAlign="center center" class="button-go" (click)="acessarNoticias()">
-            <mat-icon fxLayoutAlign="center center" class="material-symbols-outlined">full_coverage</mat-icon>
+        <div class="g-row-center-center button-go" (click)="acessarNoticias()">
+            <mat-icon class="g-row-center-center material-symbols-outlined">full_coverage</mat-icon>
             Acessar todas as notícias
         </div>
     </div>
@@ -29,7 +29,7 @@
         <p class="paragrafo-geral">Para se compreender desde um átomo até o surgimento do universo é necessário um bom tempo de estudo 
             dos diversos conceitos, leis e teorias que a Física construiu ao longo dos anos. E para compreender 
             cada uma delas temos algumas área que esses conceitos estão:</p>
-        <div fxLayout="row" fxLayoutAlign="center center" class="postagem-geral-conteudos">
+        <div class="g-row-center-center postagem-geral-conteudos">
             <div fxFlex="20%" class="postagem-geral-card">
                 <div class="topicos">Mecânica</div>
                 <p class="postagem-geral-card-paragrafo">Estuda sobre o movimento dos corpos, como exemplo, a queda 

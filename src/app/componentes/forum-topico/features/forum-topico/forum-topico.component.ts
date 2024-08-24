@@ -11,13 +11,15 @@ import {
 import { 
   ForumModel,
   ForumTopicoEnum,
-  ForumTopicoViewModel, 
+  ForumTopicoViewModel,
+  UsuarioModel, 
 } from 'src/app/models';
 
 import { 
   adicionarRota,
   getManyForumTopico, 
   getOneForumByForumId,
+  getOneUsuarioLogado,
 } from 'src/app/store';
 
 @Component({
@@ -36,6 +38,10 @@ export class ForumTopicoComponent implements OnInit {
   forumTopicoMany$: Observable<ForumTopicoViewModel[]> = new Observable<ForumTopicoViewModel[]>();
   forumTopicoMany: ForumTopicoViewModel[] = [];
 
+  usuarioLogadoSubscription$: Subscription = new Subscription();
+  usuarioLogado$: Observable<UsuarioModel | undefined> = new Observable<UsuarioModel | undefined>();
+  usuarioLogado: UsuarioModel | undefined = undefined;
+
   readonly forumTopicoEnum = ForumTopicoEnum;
 
   constructor(
@@ -50,6 +56,7 @@ export class ForumTopicoComponent implements OnInit {
   ngOnInit(): void {
     this.setupForum();
     this.setupForumTopico();
+    this.setupUsuarioLogado();
   }
 
   ngOnDestroy() {
@@ -69,6 +76,13 @@ export class ForumTopicoComponent implements OnInit {
     this.forumTopicoMany$ = this.store.select(getManyForumTopico);
     this.forumTopicoManySubscription$ = this.forumTopicoMany$.subscribe(itens => {
       this.forumTopicoMany = itens;        
+    });
+  }
+
+  setupUsuarioLogado() {
+    this.usuarioLogado$ = this.store.select(getOneUsuarioLogado);
+    this.usuarioLogadoSubscription$ = this.usuarioLogado$.subscribe(item => {
+      this.usuarioLogado = item;
     });
   }
 

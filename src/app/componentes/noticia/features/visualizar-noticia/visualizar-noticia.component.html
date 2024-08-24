@@ -1,19 +1,19 @@
-<div *ngIf="this.noticia; else loading" fxLayout="column" class="container-noticia">
+<div *ngIf="this.noticia; else loading" class="g-column-start-center container-noticia">
     <mat-icon class="icone-close material-symbols-outlined" (click)="this.fecharModal()">close</mat-icon>
-    <div fxLayout="row" fxLayoutAlign="center center"class="noticia-titulo">{{ this.noticia.titulo }}</div>
-    <div fxLayout="row" fxLayoutAlign="space-between center">
-        <div fxLayout="row wrap" fxLayoutAlign="start center">
+    <div class="g-row-center-center noticia-titulo">{{ this.noticia.titulo }}</div>
+    <div class="g-row-between-center">
+        <div class="g-row-start-center g-row-wrap">
             <div *ngFor="let item of this.noticia.areaInteresseMany">
                 <span class="g-tag">{{item.nome}}</span>
             </div>
-            <div *ngIf="this.noticia" fxLayout="row" fxLayoutAlign="center center" class="container-curtido" 
+            <div *ngIf="this.noticia" class="g-row-center-center container-curtido" 
                 [ngClass]="{'favoritou': this.usuarioNoticiaFavoritado}"
                 (click)="curtirNoticia()">
                 <mat-icon class="material-symbols-outlined">thumb_up</mat-icon>
                 <div>{{ this.noticia.favoritado }}</div>
             </div>
         </div>
-        <div fxLayout="column" fxLayoutAlign="center end">
+        <div class="g-column-center-end">
             <div class="noticia-autor">{{ this.noticia.usuarioCadastroNome }}</div>
             <div class="noticia-data-cadastro">{{ this.noticia.dataCadastro | date : 'dd/MM/yyyy HH:mm' }}</div>
         </div>

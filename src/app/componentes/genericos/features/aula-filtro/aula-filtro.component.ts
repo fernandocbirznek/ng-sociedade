@@ -125,6 +125,17 @@ export class AulaFiltroComponent implements OnInit {
     this.store.dispatch(filtrarAula({ aulaFilter: this.aulaFilter }));
   }
 
+  resetTag() {
+    this.tagSelectedId = [];
+    this.tagSelected = [];
+    this.aulaFilter = {
+      ...this.aulaFilter,
+      tagMany: this.tagSelected
+    }
+    
+    this.store.dispatch(filtrarAula({ aulaFilter: this.aulaFilter }));
+  }
+
   ordenar(item: TipoOrdenarAulaFiltroEnum) {
     this.aulaFilter = {
       ...this.aulaFilter,

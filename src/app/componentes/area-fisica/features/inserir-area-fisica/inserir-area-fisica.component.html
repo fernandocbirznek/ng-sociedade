@@ -1,6 +1,6 @@
-<div fxLayout="column" class="container-area-fisica">
+<div class="g-column-start-start container-area-fisica">
     <h2>Criar nova área da Física</h2>
-    <form [formGroup]="this.formGroupAreaFisica" fxLayout="column" fxLayoutAlign="start start" class="g-container-form-inputs">   
+    <form [formGroup]="this.formGroupAreaFisica" class="g-column-start-start g-container-form-inputs">   
       <mat-form-field  appearance="outline" class="g-full-width">
         <mat-label>Título</mat-label>
         <input formControlName="formTitulo" matInput required>
@@ -17,7 +17,7 @@
         <mat-error *ngIf="formAplicacao.invalid">Aplicação é obrigatória</mat-error>
       </mat-form-field>
     </form>
-    <div fxLayout="row" fxLayoutAlign="space-around center" class="container-buttons">
+    <div class="g-row-around-center container-buttons">
       <button mat-stroked-button color="warn" (click)="fecharModal()">
         <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
         Cancelar

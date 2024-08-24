@@ -175,8 +175,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     position: absolute;
     width: 70px;
     top: 25px;
-    right: -72px;
-    background-color: #fff4ad;
+    right: -84px;
+    background-color: var(--yellow-postit);
     border-top: 2px solid #737b86;
     border-bottom: 2px solid #737b86;
     border-right: 2px solid #737b86;
@@ -263,7 +263,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .mat-form-field-appearance-outline .mat-form-field-infix {
     padding: 8px;
-    transform: translateY(-7px);
+    //transform: translateY(-7px);
 }
 
 .mat-input-element {
@@ -289,4 +289,465 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .mat-select-trigger {
     margin-top: 5px;
+}
+
+// flex layout
+@mixin g-flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin g-flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.g-row-wrap {
+    @include g-flex-row;
+    flex-wrap: wrap;
+}
+
+//start
+.g-row-start-start {
+    @include g-flex-row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.g-row-start-center {
+    @include g-flex-row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.g-row-start-end {
+    @include g-flex-row;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.g-row-start-between {
+    @include g-flex-row;
+    justify-content: space-between flex-start;
+    align-items: stretch;
+}
+
+.g-row-start-around {
+    @include g-flex-row;
+    justify-content: space-around flex-start;
+    align-items: stretch;
+}
+
+.g-row-start-evenly {
+    @include g-flex-row;
+    justify-content: stretch flex-start;
+    align-items: stretch;
+}
+
+//center
+.g-row-center-start {
+    @include g-flex-row;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.g-row-center-center {
+    @include g-flex-row;
+    justify-content: center;
+    align-items: center;
+}
+
+.g-row-center-end {
+    @include g-flex-row;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.g-row-center-between {
+    @include g-flex-row;
+    justify-content: space-between center;
+    align-items: stretch;
+}
+
+.g-row-center-around {
+    @include g-flex-row;
+    justify-content: space-around center;
+    align-items: stretch;
+}
+
+.g-row-center-evenly {
+    @include g-flex-row;
+    justify-content: stretch center;
+    align-items: stretch;
+}
+
+//end
+.g-row-end-start {
+    @include g-flex-row;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+.g-row-end-center {
+    @include g-flex-row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.g-row-end-end {
+    @include g-flex-row;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.g-row-end-between {
+    @include g-flex-row;
+    justify-content: space-between flex-end;
+    align-items: stretch;
+}
+
+.g-row-end-around {
+    @include g-flex-row;
+    justify-content: space-around flex-end;
+    align-items: stretch;
+}
+
+.g-row-end-evenly {
+    @include g-flex-row;
+    justify-content: stretch flex-end;
+    align-items: stretch;
+}
+
+//between
+.g-row-between-start {
+    @include g-flex-row;
+    justify-content: flex-start space-between;
+    align-items: flex-start;
+}
+
+.g-row-between-center {
+    @include g-flex-row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.g-row-between-end {
+    @include g-flex-row;
+    justify-content: flex-end space-between;
+    align-items: flex-end;
+}
+
+.g-row-between-between {
+    @include g-flex-row;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.g-row-between-around {
+    @include g-flex-row;
+    justify-content: space-around space-between;
+    align-items: stretch;
+}
+
+.g-row-between-evenly {
+    @include g-flex-row;
+    justify-content: stretch space-between;
+    align-items: stretch;
+}
+
+//around
+.g-row-around-start {
+    @include g-flex-row;
+    justify-content: flex-start space-around;
+    align-items: flex-start;
+}
+
+.g-row-around-center {
+    @include g-flex-row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.g-row-around-end {
+    @include g-flex-row;
+    justify-content: flex-end space-around;
+    align-items: flex-end;
+}
+
+.g-row-around-between {
+    @include g-flex-row;
+    justify-content: space-between space-around;
+    align-items: stretch;
+}
+
+.g-row-around-around {
+    @include g-flex-row;
+    justify-content: space-around;
+    align-items: stretch;
+}
+
+.g-row-around-evenly {
+    @include g-flex-row;
+    justify-content: stretch space-around;
+    align-items: stretch;
+}
+
+//evenly
+.g-row-evenly-start {
+    @include g-flex-row;
+    justify-content: flex-start space-evenly;
+    align-items: flex-start;
+}
+
+.g-row-evenly-center {
+    @include g-flex-row;
+    justify-content: center space-evenly;
+    align-items: center;
+}
+
+.g-row-evenly-end {
+    @include g-flex-row;
+    justify-content: flex-end space-evenly;
+    align-items: flex-end;
+}
+
+.g-row-evenly-between {
+    @include g-flex-row;
+    justify-content: space-between space-evenly;
+    align-items: stretch;
+}
+
+.g-row-evenly-around {
+    @include g-flex-row;
+    justify-content: space-around space-evenly;
+    align-items: stretch;
+}
+
+.g-row-around-evenly {
+    @include g-flex-row;
+    justify-content: stretch space-evenly;
+    align-items: stretch;
+}
+
+
+// column start
+.g-column-start-start {
+    @include g-flex-column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.g-column-start-center {
+    @include g-flex-column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.g-column-start-end {
+    @include g-flex-column;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.g-column-start-between {
+    @include g-flex-column;
+    justify-content: space-between flex-start;
+    align-items: stretch;
+}
+
+.g-column-start-around {
+    @include g-flex-column;
+    justify-content: space-around flex-start;
+    align-items: stretch;
+}
+
+.g-column-start-evenly {
+    @include g-flex-column;
+    justify-content: stretch flex-start;
+    align-items: stretch;
+}
+
+//center
+.g-column-center-start {
+    @include g-flex-column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.g-column-center-center {
+    @include g-flex-column;
+    justify-content: center;
+    align-items: center;
+}
+
+.g-column-center-end {
+    @include g-flex-column;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.g-column-center-between {
+    @include g-flex-column;
+    justify-content: space-between center;
+    align-items: stretch;
+}
+
+.g-column-center-around {
+    @include g-flex-column;
+    justify-content: space-around center;
+    align-items: stretch;
+}
+
+.g-column-center-evenly {
+    @include g-flex-column;
+    justify-content: stretch center;
+    align-items: stretch;
+}
+
+//end
+.g-column-end-start {
+    @include g-flex-column;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+.g-column-end-center {
+    @include g-flex-column;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.g-column-end-end {
+    @include g-flex-column;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.g-column-end-between {
+    @include g-flex-column;
+    justify-content: space-between flex-end;
+    align-items: stretch;
+}
+
+.g-column-end-around {
+    @include g-flex-column;
+    justify-content: space-around flex-end;
+    align-items: stretch;
+}
+
+.g-column-end-evenly {
+    @include g-flex-column;
+    justify-content: stretch flex-end;
+    align-items: stretch;
+}
+
+//between
+.g-column-between-start {
+    @include g-flex-column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.g-column-between-center {
+    @include g-flex-column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.g-column-between-end {
+    @include g-flex-column;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.g-column-between-between {
+    @include g-flex-column;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.g-column-between-around {
+    @include g-flex-column;
+    justify-content: space-around space-between;
+    align-items: stretch;
+}
+
+.g-column-between-evenly {
+    @include g-flex-column;
+    justify-content: stretch space-between;
+    align-items: stretch;
+}
+
+//around
+.g-column-around-start {
+    @include g-flex-column;
+    justify-content: flex-start space-around;
+    align-items: flex-start;
+}
+
+.g-column-around-center {
+    @include g-flex-column;
+    justify-content: center space-around;
+    align-items: center;
+}
+
+.g-column-around-end {
+    @include g-flex-column;
+    justify-content: flex-end space-around;
+    align-items: flex-end;
+}
+
+.g-column-around-between {
+    @include g-flex-column;
+    justify-content: space-between space-around;
+    align-items: stretch;
+}
+
+.g-column-around-around {
+    @include g-flex-column;
+    justify-content: space-around;
+    align-items: stretch;
+}
+
+.g-column-around-evenly {
+    @include g-flex-column;
+    justify-content: stretch space-around;
+    align-items: stretch;
+}
+
+//evenly
+.g-column-evenly-start {
+    @include g-flex-column;
+    justify-content: flex-start space-evenly;
+    align-items: flex-start;
+}
+
+.g-column-evenly-center {
+    @include g-flex-column;
+    justify-content: center space-evenly;
+    align-items: center;
+}
+
+.g-column-evenly-end {
+    @include g-flex-column;
+    justify-content: flex-end space-evenly;
+    align-items: flex-end;
+}
+
+.g-column-evenly-between {
+    @include g-flex-column;
+    justify-content: space-between space-evenly;
+    align-items: stretch;
+}
+
+.g-column-evenly-around {
+    @include g-flex-column;
+    justify-content: space-around space-evenly;
+    align-items: stretch;
+}
+
+.g-column-around-evenly {
+    @include g-flex-column;
+    justify-content: stretch space-evenly;
+    align-items: stretch;
 }
