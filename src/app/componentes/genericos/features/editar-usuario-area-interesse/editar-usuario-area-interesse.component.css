@@ -1,6 +1,7 @@
 .container-area-interesse {
     gap: 20px;
     min-width: 600px;
+    margin: 20px;
 }
 
 .titulo {

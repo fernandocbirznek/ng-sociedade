@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, ViewEncapsulation, ElementRef, ViewChild, Output, EventEmitter } from '@angular/core';
+import { ChangeDetectorRef, Component, ViewEncapsulation, ElementRef, ViewChild, Output, EventEmitter, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 import {
@@ -82,6 +82,7 @@ import {
   encapsulation: ViewEncapsulation.None
 })
 export class CkeditorComponent {
+	@Input() conteudoRecebido: string = '';
 	@Output() onAlterouEditor = new EventEmitter();
 	@ViewChild('editorMenuBarElement') private editorMenuBar!: ElementRef<HTMLDivElement>;
 
@@ -383,6 +384,8 @@ export class CkeditorComponent {
 
 		this.isLayoutReady = true;
 		this.changeDetector.detectChanges();
+
+		this.conteudo.setValue(this.conteudoRecebido);
 	}
 
 	alterouForm() {

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { Router } from '@angular/router';
 
 import {
@@ -19,6 +18,7 @@ import {
   getManyNoticiaHome,
   selecionarNoticiaManyHome 
 } from 'src/app/store';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-home',
@@ -59,6 +59,7 @@ export class HomeComponent implements OnInit {
       data: item.id,
       width: '90%',
       height: 'auto',
+      maxHeight: '90%',
     });
   }
 
@@ -66,7 +67,8 @@ export class HomeComponent implements OnInit {
     this.dialog.open(ProfessorPerfilVisualizarComponent, {
       data: item.usuarioCadastroId,
       width: '80%',
-      height: 'auto',
+      height: 'atuo',
+      maxHeight: '90%',
     }).afterClosed().subscribe((aula: AulaModel) => {
       if(aula) {
         this.store.dispatch(adicionarRota({ 

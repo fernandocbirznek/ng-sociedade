@@ -26,15 +26,15 @@
     padding: 25px;
     gap: 15px;
     margin: 50px 0;
-    width: 100%;
+    width: calc(100% - 55px);
 }
 
 .card-noticia {
-    background-color: #b5adff;
+    background-color: var(--lilac-postit);
 }
 
 .card-favorito {
-    background-color: #ffd2ad;
+    background-color: var(--orange-postit);
 }
 
 .card-titulo {
@@ -61,13 +61,13 @@
 }
 
 .card-titulo-aba-1 {
-    background-color: #fff4ad;
+    background-color: var(--yellow-postit);
 }
 
 .card-titulo-aba-2 {
-    background-color: #b5adff;
+    background-color: var(--lilac-postit);
 }
 
 .card-titulo-aba-3{
-    background-color: #ffd2ad;
+    background-color: var(--orange-postit);
 }

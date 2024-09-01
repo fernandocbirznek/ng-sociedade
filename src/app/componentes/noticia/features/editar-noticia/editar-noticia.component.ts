@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA, MatLegacyDialogRef as MatDialogRef } from '@angular/material/legacy-dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 
@@ -44,6 +44,8 @@ export class EditarNoticiaComponent implements OnInit {
 
   areaInteresseSelecionado: number[] = [];
 
+  conteudoRecebido: string = '';
+
   constructor(
     public dialogRef: MatDialogRef<EditarNoticiaComponent>,
     @Inject(MAT_DIALOG_DATA) public data: NoticiaModel,
@@ -77,6 +79,7 @@ export class EditarNoticiaComponent implements OnInit {
       if(item) {
         this.noticia = item;
         this.setupFormulario();
+        this.conteudoRecebido = this.noticia.conteudo;
       }  
     });
   }

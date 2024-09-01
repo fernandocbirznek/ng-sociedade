@@ -1,4 +1,10 @@
+.container-forum-tag {
+    min-width: 400px;
+    margin: 20px;
+}
+
 .container-buttons {
     margin-top: 20px;
     gap: 20px;
+    width: 100%;
 }

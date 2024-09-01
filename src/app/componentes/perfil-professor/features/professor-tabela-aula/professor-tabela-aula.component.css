@@ -1,12 +1,12 @@
 .container-criar-aula {
     gap: 15px;
     width: 100%;
-    margin-bottom: 15px;
 }
 
 .button-adicionar {
     gap: 10px;
     text-wrap: nowrap;
+    margin-bottom: 20px;
 }
 
 .container-tabela {

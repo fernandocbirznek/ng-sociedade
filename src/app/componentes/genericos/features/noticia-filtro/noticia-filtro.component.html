@@ -26,7 +26,6 @@
         </div>
         <div class="g-column-start-start">
             <div class="text-filtro">Filtrar por tags</div>
-            <mat-slide-toggle>aaaaaaaaaaaaaa</mat-slide-toggle>
             <div class="g-row-start-start g-row-wrap container-tag-filter">
                 <div *ngFor="let areaInteresse of this.areaInteresseMany">
                     <mat-slide-toggle (click)="filtroTag(areaInteresse)">{{ areaInteresse.nome }}</mat-slide-toggle>

@@ -26,7 +26,7 @@
     padding: 25px;
     gap: 15px;
     margin: 50px 0;
-    width: 100%;
+    width: calc(100% - 50px);
 }
 
 .card-titulo {
@@ -53,27 +53,27 @@
 }
 
 .card-titulo-aba-1 {
-    background-color: #fff4ad;
+    background-color: var(--yellow-postit);
 }
 
 .card-titulo-aba-2,
 .card-favorito-2  {
-    background-color: #ffd2ad;
+    background-color: var(--orange-postit);
 }
 
 .card-titulo-aba-3,
 .card-favorito-3  {
-    background-color: #deadff;
+    background-color: var(--lilac-postit);
 }
 
 .card-titulo-aba-sistema-2,
 .card-sistema-2  {
-    background-color: #d5ffad;
+    background-color: var(--green-postit);
 }
 
 .card-titulo-aba-sistema-3,
 .card-sistema-3  {
-    background-color: #adc7ff;
+    background-color: var(--lilac-postit);
 }
 
 .card-titulo-2 {
@@ -82,21 +82,21 @@
 
 .card-selecionado,
 .card-selecionado-sistema {
-    height: 47px;
+    height: 27px;
 }
 
 .card-titulo-aba-basico-1 {
-    background-color: #fff4ad;
+    background-color: var(--yellow-postit);
 }
 
 .card-titulo-aba-basico-2,
 .card-favorito-basico-2 {
-    background-color: #ffd2ad;
+    background-color: var(--orange-postit);
 }
 
 .card-titulo-aba-basico-3,
 .card-favorito-basico-3 {
-    background-color: #adc7ff;
+    background-color: var(--lilac-postit);
 }
 
 .card-titulo-aba-basico-4,

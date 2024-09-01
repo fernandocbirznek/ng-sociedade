@@ -1,6 +1,6 @@
 <div class="g-column-start-start container-criar-perfil">
     <div class="titulo">Alterar perfil</div>
-    <form [formGroup]="this.formPerfil" class="g-column-start-start g-container-form-inputs">
+    <form [formGroup]="this.formPerfil" class="g-column-start-center g-container-form-inputs g-full-width">
         <mat-form-field class="container-data">
             <mat-label>Data de Nascimento</mat-label>
             <input matInput formControlName="formData" [matDatepicker]="picker">
@@ -30,7 +30,7 @@
                 </div>
             </div>
         </div>
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" class="g-full-width">
             <mat-label>Hobbie</mat-label>
             <textarea formControlName="formHobbie" matInput></textarea>
         </mat-form-field>

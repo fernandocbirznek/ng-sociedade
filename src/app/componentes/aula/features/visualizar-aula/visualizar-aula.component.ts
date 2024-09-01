@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -57,6 +56,7 @@ import {
 } from 'src/app/store';
 
 import { AulaHelpers } from '../../helpers/aula-helpers';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-visualizar-aula',
@@ -273,6 +273,7 @@ export class VisualizarAulaComponent implements OnInit {
       data: this.aula.professorId,
       width: '80%',
       height: 'auto',
+      maxHeight: '90%',
       autoFocus: false
     }).afterClosed().subscribe((aula: AulaViewModel) => {
       if(aula) {

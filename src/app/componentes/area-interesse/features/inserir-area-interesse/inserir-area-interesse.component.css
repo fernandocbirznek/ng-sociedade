@@ -1,8 +1,10 @@
 .container-area-interesse {
     min-width: 400px;
+    padding: 20px;
 }
 
 .container-buttons {
     margin-top: 20px;
     gap: 20px;
+    width: 100%;
 }

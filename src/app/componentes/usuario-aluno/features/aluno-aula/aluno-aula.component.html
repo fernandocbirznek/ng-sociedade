@@ -3,7 +3,7 @@
         <div class="widget-titulo">Para cursar</div>
         <div *ngFor="let widget of this.widget.widgetCursar; index as i" class="g-column-start-center">
 
-            <div class="g-column-start-start g-card-postit-yellow card">
+            <div class="g-column-space-between-start g-card-postit-yellow card">
                 <div class="g-card-postit-titulo-yellow card-titulo">{{ widget.aula!.titulo }}</div>
                 <div class="g-card-postit-titulo-yellow card-mover-direita" (click)="moverParaCursando(widget)">
                     <mat-icon class="material-symbols-outlined" matTooltip="Mover para cursando">move_item</mat-icon>

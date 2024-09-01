@@ -3,6 +3,12 @@
     width: 100%;
 }
 
+.button-adicionar {
+    gap: 10px;
+    text-wrap: nowrap;
+    margin-bottom: 20px;
+}
+
 .coluna:hover ~ .coluna, .coluna:hover, .coluna:has(~ .coluna:hover) {
     background-color: rgba(0, 0, 0, 0.034);
     cursor: pointer;
@@ -10,7 +16,6 @@
 
 .container-filtro {
     gap: 15px;
-    margin-bottom: 20px;
 }
 
 .container-tags {

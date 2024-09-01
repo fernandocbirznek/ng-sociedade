@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
@@ -61,6 +61,7 @@ export class PainelNoticiaComponent implements OnInit {
       data: item.id,
       width: '90%',
       height: 'auto',
+      maxHeight: '90%',
     });
   }
 
@@ -69,6 +70,7 @@ export class PainelNoticiaComponent implements OnInit {
       data: item.usuarioCadastroId,
       width: '80%',
       height: 'auto',
+      maxHeight: '90%',
     }).afterClosed().subscribe((aula: AulaModel) => {
       if(aula) {
         this.store.dispatch(adicionarRota({ 

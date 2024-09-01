@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 import { Router } from '@angular/router';
@@ -26,6 +25,7 @@ import {
 } from '../topicos';
 
 import { HeaderHelpers } from './helpers/header.helpers';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-header',

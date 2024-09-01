@@ -1,6 +1,5 @@
 import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA, MatLegacyDialogRef as MatDialogRef } from '@angular/material/legacy-dialog';
 import { Store } from '@ngrx/store';
 
 import { 
@@ -16,6 +15,7 @@ import {
 } from 'src/app/store';
 import { SessaoHelpers } from '../../helpers/sessao-helpers';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-nova-sessao',

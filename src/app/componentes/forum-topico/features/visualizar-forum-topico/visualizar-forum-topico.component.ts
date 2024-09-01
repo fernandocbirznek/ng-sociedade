@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 import { FormControl, Validators } from '@angular/forms';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 
 import { 
   ForumTopicoEnum, 
@@ -23,6 +22,7 @@ import {
   AtualizarForumTopicoComponent, 
   ModalExcluirComponent 
 } from 'src/app/componentes';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-visualizar-forum-topico',

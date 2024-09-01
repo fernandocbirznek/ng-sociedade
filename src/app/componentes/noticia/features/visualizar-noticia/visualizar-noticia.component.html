@@ -1,7 +1,7 @@
 <div *ngIf="this.noticia; else loading" class="g-column-start-center container-noticia">
     <mat-icon class="icone-close material-symbols-outlined" (click)="this.fecharModal()">close</mat-icon>
     <div class="g-row-center-center noticia-titulo">{{ this.noticia.titulo }}</div>
-    <div class="g-row-between-center">
+    <div class="g-row-between-center g-full-width">
         <div class="g-row-start-center g-row-wrap">
             <div *ngFor="let item of this.noticia.areaInteresseMany">
                 <span class="g-tag">{{item.nome}}</span>

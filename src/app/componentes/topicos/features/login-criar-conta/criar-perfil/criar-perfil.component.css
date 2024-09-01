@@ -1,9 +1,11 @@
 .container-criar-perfil {
-    margin-top: 20px;
+    padding: 20px;
 }
 
 .container-form{
     gap: 20px;
+    flex-direction: column !important;
+    width: 100%;
 }
 
 .container-data {

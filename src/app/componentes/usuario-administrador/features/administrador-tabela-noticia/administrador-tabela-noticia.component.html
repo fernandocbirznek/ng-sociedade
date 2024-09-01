@@ -1,16 +1,15 @@
 <div class="g-column-start-center">
     <div class="g-row-start-center container-filtro">
-        <button mat-stroked-button color="accent" (click)="criarNoticia()">
+        <button class="g-row-center-center g-button-adicionar button-adicionar" (click)="criarNoticia()">
             <mat-icon class="material-symbols-outlined">note_add</mat-icon>
             Novo noticia
         </button>
-        <mat-form-field fxFlex="100%">
+        <mat-form-field appearance="outline" fxFlex="100%">
             <mat-label>Filtrar noticias</mat-label>
             <input matInput (keyup)="aplicarFiltro($event)" placeholder="Ex: aquecimento global" #input>
         </mat-form-field>
     </div>
-    <fieldset class="g-fieldset">
-        <div class="g-fieldset-titulo">Gerenciar noticias</div>
+    <fieldset class="g-fieldset g-full-width">
         <table mat-table [dataSource]="dataSource" class="container-tabela" matSort>
             <ng-container matColumnDef="titulo">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="35%" class="g-row-start-center tabela-header"> 

@@ -3,9 +3,14 @@
     width: 100%;
 }
 
+.button-adicionar {
+    gap: 10px;
+    text-wrap: nowrap;
+    margin-bottom: 20px;
+}
+
 .container-filtro {
     gap: 15px;
-    margin-bottom: 20px;
 }
 
 .tabela-header {

@@ -1,12 +1,15 @@
 .container-tag {
     min-width: 400px;
+    padding: 20px;
 }
 
 .container-inputs {
     gap: 15px;
+    width: 100%;
 }
 
 .container-buttons {
     margin-top: 20px;
     gap: 20px;
+    width: 100%;
 }

@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 
 import { 
   AreaInteresseModel,
@@ -9,6 +8,7 @@ import {
 import { 
   EditarUsuarioAreaInteresseComponent 
 } from '..';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-usuario-area-interesse',

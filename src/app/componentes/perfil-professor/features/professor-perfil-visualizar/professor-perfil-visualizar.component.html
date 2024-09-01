@@ -37,10 +37,10 @@
         </div>
     </div>
     
-    <app-professor-perfil-visualizar-card-aula [professorId]="this.data" (ngAcessarAula)="acessarAula($event)">
+    <app-professor-perfil-visualizar-card-aula class="app-card-width" [professorId]="this.data" (ngAcessarAula)="acessarAula($event)">
     </app-professor-perfil-visualizar-card-aula>
 
-    <app-professor-perfil-visualizar-card-noticia [professorId]="this.data">
+    <app-professor-perfil-visualizar-card-noticia class="app-card-width" [professorId]="this.data">
     </app-professor-perfil-visualizar-card-noticia>
 </div>
 <ng-template #loading>

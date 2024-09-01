@@ -1,3 +1,7 @@
+.container-excluir {
+    margin: 20px;
+}
+
 .fechar {
     font-weight: bolder;
     cursor: pointer;
@@ -17,4 +21,6 @@
 .container-button {
     width: 250px;
     padding-top: 20px;
+    gap: 20px;
+    width: 100%;
 }

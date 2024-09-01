@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
@@ -32,6 +31,7 @@ import {
 
 import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-browser';
 import { AulaHelpers } from '../../helpers';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-editar-aula',

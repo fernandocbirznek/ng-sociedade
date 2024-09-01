@@ -1,15 +1,17 @@
-<div class="g-column-end-end fechar" (click)="fecharModal()">X</div>
-<div class="g-column-center-center">
-    <div>Deseja realmente excluir?</div>
-    <div class="text-item-excluir"> {{ data }} </div>
-    <div class="g-row-around-center container-button">
-        <button mat-stroked-button color="primary" (click)="fecharModal()">
-            <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
-            Cancelar
-        </button>
-        <button mat-stroked-button color="warn" (click)="confirmarExcluir()">
-            <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
-            Excluir item
-        </button>
+<div class="container-excluir">
+    <div class="g-column-end-end fechar" (click)="fecharModal()">X</div>
+    <div class="g-column-center-center">
+        <div>Deseja realmente excluir?</div>
+        <div class="text-item-excluir"> {{ data }} </div>
+        <div class="g-row-around-center container-button">
+            <button mat-stroked-button color="primary" (click)="fecharModal()">
+                <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
+                Cancelar
+            </button>
+            <button mat-stroked-button color="warn" (click)="confirmarExcluir()">
+                <mat-icon class="material-symbols-outlined">add_notes</mat-icon>
+                Excluir item
+            </button>
+        </div>
     </div>
 </div>

@@ -1,16 +1,17 @@
 .container-criar-noticia {
     gap: 15px;
     width: 100%;
-    margin-bottom: 15px;
 }
 
 .button-adicionar {
     gap: 10px;
     text-wrap: nowrap;
+    margin-bottom: 20px;
 }
 
 .container-tabela {
     border: 2px solid black;
+    width: 100%;
 }
 
 .coluna:hover ~ .coluna, .coluna:hover, .coluna:has(~ .coluna:hover) {

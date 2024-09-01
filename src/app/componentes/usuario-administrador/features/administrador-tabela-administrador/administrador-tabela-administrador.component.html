@@ -1,28 +1,27 @@
 <div class="g-column-start-center container-tabela-administrador">
     <div class="g-row-start-center container-filtro">
-        <mat-form-field fxFlex="100%">
+        <mat-form-field appearance="outline" fxFlex="100%">
             <mat-label>Filtrar administradores</mat-label>
             <input matInput (keyup)="aplicarFiltro($event)" placeholder="Ex: Fernando" #input>
         </mat-form-field>
     </div>
-    <fieldset class="g-fieldset">
-        <div class="g-fieldset-titulo">Gerenciar administradores</div>
+    <fieldset class="g-fieldset g-full-width">
         <table mat-table [dataSource]="dataSource" class="container-tabela" matSort>
             <ng-container matColumnDef="nome">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="30%" class="g-row-start-center tabela-header"> 
+                <th mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="50%" class="g-row-start-center tabela-header"> 
                     Nome
                 </th>
-                <td mat-cell *matCellDef="let element" fxFlex="30%" class="g-row-start-center coluna"
+                <td mat-cell *matCellDef="let element" fxFlex="50%" class="g-row-start-center coluna"
                     (click)="visualizarUsuario(element)"> 
                     {{element.nome}} 
                 </td>
             </ng-container>
     
             <ng-container matColumnDef="email">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="30%" class="g-row-start-center tabela-header"> 
+                <th mat-header-cell *matHeaderCellDef mat-sort-header fxFlex="50%" class="g-row-start-center tabela-header"> 
                     Email
                 </th>
-                <td mat-cell *matCellDef="let element" fxFlex="30%" class="g-row-start-center coluna"
+                <td mat-cell *matCellDef="let element" fxFlex="50%" class="g-row-start-center coluna"
                     (click)="visualizarUsuario(element)"
                     > 
                     <span class="g-text-overflow-2">{{element.email}}</span>

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 
@@ -39,6 +39,7 @@ export class CardNoticiaComponent implements OnInit {
         data: this.noticia.id,
         width: '90%',
         height: 'auto',
+        maxHeight: '90%',
       });
   }
 
@@ -48,6 +49,7 @@ export class CardNoticiaComponent implements OnInit {
         data: this.noticia.usuarioCadastroId,
         width: '80%',
         height: 'auto',
+        maxHeight: '90%',
       }).afterClosed().subscribe((aula: AulaModel) => {
         if(aula) {
           this.store.dispatch(adicionarRota({ 
