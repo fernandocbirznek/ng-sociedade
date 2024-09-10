@@ -8,9 +8,9 @@
             <mat-error *ngIf="formTitulo.invalid">Titulo é obrigatório</mat-error>
         </mat-form-field>
         <div class="g-row-around-center container-topico-tags">
-            <div fxFlex="50%" class="g-column-start-start">
+            <div class="g-column-start-start width-50pc">
                 <h4>Selecione um tipo de tópico:</h4>
-                <mat-radio-group class="g-column-start-start g-row-wrap container-topico" formControlName="formTipoTopico">
+                <mat-radio-group class="g-row-start-start g-row-wrap container-topico" formControlName="formTipoTopico">
                     <mat-radio-button [value]="this.forumTopicoEnum.Geral">Geral</mat-radio-button>
                     <mat-radio-button [value]="this.forumTopicoEnum.Conceito">Conceito</mat-radio-button>
                     <mat-radio-button [value]="this.forumTopicoEnum.Equacao">Equação</mat-radio-button>
@@ -20,7 +20,7 @@
                     <mat-radio-button [value]="this.forumTopicoEnum.Noticia">Notícia</mat-radio-button>
                 </mat-radio-group>  
             </div>
-            <div fxFlex="50%" class="g-column-start-start">
+            <div class="g-column-start-start width-50pc">
                 <h4>Selecione as tags do tópico:</h4>
                 <div class="g-row-start-start g-row-wrap container-tags">
                     <section *ngFor="let forumTag of this.forumTagMany">

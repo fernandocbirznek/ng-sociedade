@@ -20,7 +20,8 @@ export class ForumTopicoRespostaEffects {
      ofType(actions.selecionarManyForumTopicoRespostaByForumTopicoId),
      concatMap((action) =>
        this.forumTopicoRespostaService.selecionarManyForumTopicoRespostaByForumTopicoId(action.forumTopicoId).pipe(
-         map(response => actions.selecionarManyForumTopicoRespostaByForumTopicoIdSuccess({ response: response })),
+         map(response => { console.log("response = ", response);
+          return actions.selecionarManyForumTopicoRespostaByForumTopicoIdSuccess({ response: response })}),
          catchError(error => of(actions.selecionarManyForumTopicoRespostaByForumTopicoIdFailure({ error }))))
      )
    );

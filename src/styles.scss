@@ -233,10 +233,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     filter: brightness(0.95);
 } 
 
-.g-container-form-inputs {
-    gap: 20px;
-}
-
 .button-go {
     background-color: var(--green-postit);
     width: auto;
@@ -421,7 +417,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 //between
 .g-row-between-start {
     @include g-flex-row;
-    justify-content: flex-start space-between;
+    justify-content: space-between;
     align-items: flex-start;
 }
 
@@ -458,7 +454,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 //around
 .g-row-around-start {
     @include g-flex-row;
-    justify-content: flex-start space-around;
+    justify-content: space-around;
     align-items: flex-start;
 }
 

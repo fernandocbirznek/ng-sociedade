@@ -4,6 +4,7 @@
 
 .postagens {
     display: grid;
+    width: 400px;
 }
 
 .postagens-titulo {
@@ -30,9 +31,11 @@
 
 .postagem-geral {
     margin-left: 20px;
+    width: 90%;
 }
 
 .postagem-geral-card {
+    width: 20%;
     text-align: center;
     font-size: 0.9em;
     margin: 0 auto;

@@ -6,6 +6,10 @@
     height: 200px;
 }
 
+.width-33pc {
+    width: 33%;
+}
+
 .container-email {
     margin-bottom: 15px;
     gap: 10px;

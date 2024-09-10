@@ -18,6 +18,11 @@
     gap: 15px;
 }
 
+.coluna-acoes {
+    text-align: center;
+    width: 200px;
+}
+
 .container-tags {
     margin: 8px 0;
 }

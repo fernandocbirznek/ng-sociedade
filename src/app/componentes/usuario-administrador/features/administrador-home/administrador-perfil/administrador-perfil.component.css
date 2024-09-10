@@ -26,6 +26,7 @@
 
 .container-perfil {
     gap: 20px;
+    width: 100%;
 }
 
 .usuario-nome {
@@ -37,6 +38,7 @@
 .imagem {
     border: 2px solid black;
     border-radius: 10px;
+    width: 100px;
 }
 
 .icone-edit:hover {

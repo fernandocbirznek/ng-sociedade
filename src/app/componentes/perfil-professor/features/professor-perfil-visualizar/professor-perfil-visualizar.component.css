@@ -9,7 +9,11 @@
     margin-top: 50px;
     padding: 15px;
     height: 220px;
-    width: 100%;
+    width: calc(100% - 40px);
+}
+
+.witdh-150px {
+    width: 150px;
 }
 
 .imagem {
@@ -19,6 +23,7 @@
     border: 2px solid black;
     border-radius: 10px;
     margin-bottom: 10px;
+    width: 100px;
 }
 
 .usuario-nome {
@@ -60,6 +65,7 @@
 }
 
 .container-tag-many {
+    width: 190px;
     gap: 10px;
     height: 100%;
     border-left: 2px solid black;

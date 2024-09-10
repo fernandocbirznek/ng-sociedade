@@ -1,6 +1,12 @@
 .container-aulas {
     gap: 50px;
     margin: 20px 0;
+    overflow-x: auto;
+}
+
+.container-widget {
+    width: 33%;
+    min-width: 400px;
 }
 
 .widget-titulo {
@@ -94,6 +100,8 @@
 .container-resumo {
     margin-top: 10px;
     overflow-y: auto;
+    height: 100%;
+    max-height: 110px;
 }
 
 .resumo {

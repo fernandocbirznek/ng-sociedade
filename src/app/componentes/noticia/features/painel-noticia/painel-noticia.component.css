@@ -15,6 +15,7 @@
 .container-card-noticia {
     gap: 20px;
     margin: 20px 0;
+    width: 100%;
 }
 
 .card-noticia {

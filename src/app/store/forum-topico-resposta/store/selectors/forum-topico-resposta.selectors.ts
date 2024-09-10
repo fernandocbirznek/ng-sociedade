@@ -44,6 +44,8 @@ export const getManyForumTopicoRespostaByForumTopicoId = (forumTopicoId: number)
             item.forumTopicoId = forumRespostaTopico.forumTopicoId;
             item.id = forumRespostaTopico.id;
             item.usuarioId = forumRespostaTopico.usuarioId;
+            item.usuarioFoto = forumRespostaTopico.usuarioFoto;
+            item.usuarioNome = forumRespostaTopico.usuarioNome;
 
             let forumTopicoReplicaFilter = 
                 forumTopicoReplicaMany

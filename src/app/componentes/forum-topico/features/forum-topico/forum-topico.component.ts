@@ -101,7 +101,8 @@ export class ForumTopicoComponent implements OnInit {
 
   criarForum() {
     this.dialog.open(InserirForumTopicoComponent, {
-      data: { forumId: this.forumId }
+      data: { forumId: this.forumId },
+      maxHeight: "90%"
     });
   }
 

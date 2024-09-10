@@ -5,6 +5,10 @@
     gap: 20px;
 }
 
+.container-criar-sessao {
+    width: 400px;
+}
+
 .alerta-link {
     color: rgb(184, 184, 184);
     font-weight: bold;

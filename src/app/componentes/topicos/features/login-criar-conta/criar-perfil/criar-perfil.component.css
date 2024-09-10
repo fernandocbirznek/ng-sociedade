@@ -12,6 +12,10 @@
     position: relative;
 }
 
+.width-150px {
+    width: 150px;
+}
+
 .data-picker {
     position: absolute;
     right: 0;
@@ -26,4 +30,5 @@
 .imagem {
     border: 2px solid black;
     border-radius: 10px;
+    width: 100px;
 }

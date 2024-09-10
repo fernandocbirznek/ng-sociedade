@@ -8,7 +8,7 @@
         </div>
         <span class="g-row-end-center card-noticia-data">{{noticia.dataCadastro | date: 'dd/MM/yyyy HH:mm' }}</span>
     </div>
-    <div fxFlex="100%" class="noticia-resumo">{{ noticia.resumo }}</div>
+    <div class="noticia-resumo">{{ noticia.resumo }}</div>
     <div *ngIf="noticia.areaInteresseMany.length > 0" class="g-row-center-center card-noticia-tags">
         <div *ngFor="let item of noticia.areaInteresseMany">
             <span class="g-tag">{{item.nome}}</span>

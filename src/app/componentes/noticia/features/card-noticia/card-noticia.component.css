@@ -5,7 +5,7 @@
     border-radius: 15px;
     padding: 15px;
     gap: 8px;
-    width: 400px;
+    width: 360px;
     height: 200px;
     margin: 50px 0;
     position: relative;
@@ -70,6 +70,7 @@
 .noticia-resumo {
     height: 150px;
     overflow-y: auto;
+    width: 100%;
 }
 
 .card-noticia-tags {

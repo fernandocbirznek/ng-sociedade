@@ -1,12 +1,12 @@
 <div *ngIf="this.areaFisica; else loading" class="g-column-center-center  container">
     <div class="g-row-around-start container-descricao">
-        <div fxFlex="50%" class="g-column-start-start g-card-postit-yellow">
+        <div class="g-column-start-start g-card-postit-yellow width-50pc">
             <div class="g-card-postit-titulo-yellow">Descrição</div>
             <div class="paragrafo">
                 {{ this.areaFisica.descricao }}
             </div>
         </div>
-        <div fxFlex="50%" class="g-column-start-start g-card-postit-yellow"> 
+        <div class="g-column-start-start g-card-postit-yellow width-50pc"> 
             <div class="g-card-postit-titulo-yellow">Aplicações</div>
             <div class="paragrafo">
                 {{ this.areaFisica.aplicacao }}
@@ -15,24 +15,24 @@
     </div>
     <div class="titulo">Divisões da Mecânica</div>
     <div class="g-row-between-start g-row-wrap container-descricao">
-        <div *ngFor="let areaFisicaDivisao of this.areaFisicaDivisaoMany" fxFlex="500px"
+        <div *ngFor="let areaFisicaDivisao of this.areaFisicaDivisaoMany"
             class="g-column-start-center g-card-postit-green card-postit-green">
                 <div class="g-card-postit-titulo-green">{{ areaFisicaDivisao.titulo }}</div>
                 <div class="paragrafo">
                     {{ areaFisicaDivisao.descricao }}
                 </div>
                 <div *ngIf="areaFisicaDivisao.foto" class="g-column-between-center ">
-                    <img fxFlex="100px" [src]="'data:image/png;base64,' + areaFisicaDivisao.foto" alt="Imagem" class="imagem">
+                    <img [src]="'data:image/png;base64,' + areaFisicaDivisao.foto" alt="Imagem" class="imagem">
                 </div>
         </div>
     </div>
     <div class="titulo">Painel de aulas</div>
-    <div class="g-row-between-start  painel-aula-many">
+    <div class="g-row-between-start painel-aula-many">
 
-        <app-aula-filtro fxFlex="400px"></app-aula-filtro>
+        <app-aula-filtro class="width-400px"></app-aula-filtro>
         
-        <div fxFlex="100%" class="g-column-between-center container-aula-many">
-            <div fxFlex="100%" class="g-row-start-start g-row-wrap g-full-width g-gap-20">
+        <div class="g-column-between-center container-aula-many">
+            <div class="g-full-width g-row-start-start g-row-wrap g-full-width g-gap-20">
                 <div *ngFor="let aula of this.pageAulaMany">
                     <div class="g-column-between-between g-card-postit-yellow card-aula">
                         <div class="g-card-postit-titulo-yellow card-titulo">
@@ -40,38 +40,38 @@
                         </div>
                         <div class="g-column-between-start g-card-icone-many card-icone-many">
                             <div class="g-row-start-center g-full-width">
-                                <mat-icon fxFlex="25px" class="icone material-symbols-outlined" [ngClass]="{'icone-ativo': aula.usuarioLogadoCurtiu}">
+                                <mat-icon class="icone material-symbols-outlined" [ngClass]="{'icone-ativo': aula.usuarioLogadoCurtiu}">
                                     thumb_up
                                 </mat-icon>
-                                <div fxFlex="100%" class="g-row-center-center">{{ aula.curtido }}</div>
+                                <div class="g-full-width g-row-center-center">{{ aula.curtido }}</div>
                             </div>
                             <div class="g-row-start-center g-full-width">
-                                <mat-icon fxFlex="25px" class="icone material-symbols-outlined" [ngClass]="{'icone-ativo': aula.usuarioLogadoFavoritada}">
+                                <mat-icon class="icone material-symbols-outlined" [ngClass]="{'icone-ativo': aula.usuarioLogadoFavoritada}">
                                     star
                                 </mat-icon>
-                                <div fxFlex="100%" class="g-row-center-center">{{ aula.favoritado }}</div>
+                                <div class="g-full-width g-row-center-center">{{ aula.favoritado }}</div>
                             </div>
                             <div class="g-row-start-center g-full-width">
-                                <mat-icon fxFlex="25px" class="icone material-symbols-outlined">chat</mat-icon>
-                                <div fxFlex="100%" class="g-row-center-center">{{ aula.aulaComentarioMany.length }}</div>
+                                <mat-icon class="icone material-symbols-outlined">chat</mat-icon>
+                                <div class="g-full-width g-row-center-center">{{ aula.aulaComentarioMany.length }}</div>
                             </div>
                         </div>
                         <div *ngIf="aula.tagMany.length > 0" class="g-row-start-center g-card-tags">
                             <div *ngFor="let tag of aula.tagMany"class="g-tag">{{ tag.nome }}</div>
                         </div>
-                        <div fxFlex="100%" class="g-row-between-start card-aula-descricao">
-                            <div fxFlex="100px" class="g-column-between-center aula-autor">
+                        <div class="g-row-between-start card-aula-descricao">
+                            <div class="g-column-between-center aula-autor">
                                 <div>Professor</div>
                                 <div class="g-text-overflow-2 usuario-nome">{{ aula.usuarioNome }}</div>
                                 <div *ngIf="aula.usuarioFoto" class="g-column-between-center">
-                                    <img fxFlex="100px" [src]="'data:image/png;base64,' + aula.usuarioFoto" alt="Imagem" class="imagem">
+                                    <img [src]="'data:image/png;base64,' + aula.usuarioFoto" alt="Imagem" class="imagem">
                                 </div>
                                 <div *ngIf="!aula.usuarioFoto">
                                     Sem foto
                                 </div>
                             </div>
-                            <div fxFlex="100%" class="descricao" class="g-column-start-center">
-                                <div fxFlex="120px" class="g-column-between-start g-full-width">
+                            <div class="g-full-width g-column-start-center descricao">
+                                <div class="g-column-between-start g-full-width">
                                     <div class="sessao">Sessões</div>
                                     <div class="g-column-start-start g-full-width g-full-height">
                                         <div *ngFor="let sessao of aula.aulaSessaoMany" class="g-row-start-center sessao-text">
@@ -80,7 +80,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div fxFlex="100%" class="g-row-around-center">
+                                <div class="g-full-width g-row-around-center">
                                     <div class="g-row-center-center card-aula-acessar" 
                                         (click)="visualizarAula(aula)">
                                         <div>Acessar aula</div>

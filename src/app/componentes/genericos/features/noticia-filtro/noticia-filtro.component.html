@@ -1,23 +1,23 @@
 <div class="g-column-start-start g-full-width">
     <div class="text-filtro">Filtros</div>
     <div class="g-row-start-start" [ngClass]="{'flex-column': this.flexColumn}">
-        <div fxFlex="100%" class="g-row-start-start g-row-wrap container-inputs" 
+        <div class="g-row-start-start g-row-wrap container-inputs" 
             [ngClass]="{'flex-column': this.flexColumn}">
-            <mat-form-field fxFlex="250px" appearance="outline" [ngClass]="{'full-width': this.flexColumn}">
+            <mat-form-field appearance="outline" class="width-250px" [ngClass]="{'full-width': this.flexColumn}">
                 <mat-label>Título notícia</mat-label>
                 <input [formControl]="formControlTitulo" matInput (change)="filtroTitulo()">
             </mat-form-field> 
-            <mat-form-field  fxFlex="250px" appearance="outline" [ngClass]="{'full-width': this.flexColumn}">
+            <mat-form-field appearance="outline" class="width-250px" [ngClass]="{'full-width': this.flexColumn}">
                 <mat-label>Nome usuário</mat-label>
                 <input [formControl]="formControlNome" matInput (change)="filtroNomeUsuario()">
             </mat-form-field>
-            <mat-form-field  fxFlex="250px" appearance="outline" [ngClass]="{'full-width': this.flexColumn}">
+            <mat-form-field  appearance="outline" class="width-250px" [ngClass]="{'full-width': this.flexColumn}">
                 <mat-label>Data início</mat-label>
                 <input [formControl]="formControlDataInicio" matInput [matDatepicker]="pickerDataInicio" (dateChange)="filtroDataInicio()">
                 <mat-datepicker-toggle matIconSuffix [for]="pickerDataInicio" class="m-datapicker-toggle"></mat-datepicker-toggle>
                 <mat-datepicker #pickerDataInicio></mat-datepicker>
             </mat-form-field>
-            <mat-form-field  fxFlex="250px" appearance="outline" [ngClass]="{'full-width': this.flexColumn}">
+            <mat-form-field appearance="outline" class="width-250px" [ngClass]="{'full-width': this.flexColumn}">
                 <mat-label>Data fim</mat-label>
                 <input [formControl]="formControlDataFim" matInput [matDatepicker]="pickerDataFim" (dateChange)="filtroDataFim()">
                 <mat-datepicker-toggle matIconSuffix [for]="pickerDataFim" class="m-datapicker-toggle"></mat-datepicker-toggle>
@@ -36,7 +36,7 @@
     <div *ngIf="!this.flexColumn" class="g-row-center-center container-filter-many">
         <div *ngFor="let item of this.noticiaFilterSelectedMany" class="g-row-between-center container-filter">
             <mat-icon class="material-symbols-outlined">{{ item.matIconName }}</mat-icon>
-            <div fxFlex="100%">{{ item.filtroNome }}</div>
+            <div class="g-full-width">{{ item.filtroNome }}</div>
             <mat-icon class="icone-filter-close material-symbols-outlined" (click)="retirarFiltro(item)">cancel</mat-icon>
         </div>
     </div>

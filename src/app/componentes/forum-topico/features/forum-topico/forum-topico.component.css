@@ -17,6 +17,7 @@
 .container-filtro {
     gap: 15px;
     margin-bottom: 20px;
+    width: 100%;
 }
 
 .card-forum {
@@ -37,6 +38,14 @@
     font-weight: bold;
 }
 
+.aula-autor {
+    width: 30%;
+}
+
+.descricao {
+    width: 70%;
+}
+
 .aula-autor, 
 .descricao {
     gap: 8px;
@@ -51,6 +60,13 @@
 .imagem {
     border: 2px solid black;
     border-radius: 10px;
+    width: 100px;
+}
+
+.button-adicionar {
+    gap: 10px;
+    text-wrap: nowrap;
+    margin-bottom: 20px;
 }
 
 .divisor {

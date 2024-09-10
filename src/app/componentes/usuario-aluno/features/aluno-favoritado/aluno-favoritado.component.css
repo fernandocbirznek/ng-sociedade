@@ -109,7 +109,7 @@
 .card-imagem {
     border: 2px solid black;
     border-radius: 10px;
-    height: 220px;
+    height: 90%;
 }
 
 .card-imagem-expandido {
@@ -130,4 +130,5 @@
 .pdf {
     width: 100%;
     margin-bottom: 20px;
+    height: 100%;
 }

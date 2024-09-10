@@ -15,6 +15,10 @@
     gap: 20px;
 }
 
+.width-33pc {
+    width: 33%;
+}
+
 .informacao {
     gap: 15px;
     min-width: 200px;

@@ -1,6 +1,7 @@
 .container {
     margin: auto ;
-    margin-top: 20px;
+    margin: 20px;
+    width: 100%;
 }
 
 a:hover, a {
@@ -50,6 +51,7 @@ a:hover, a {
 }
 
 .container-divisao {
+    width: 33%;
     border: 2px solid #e07a5f;
     background-color: #5fabd4;
     padding-bottom: 5px;
@@ -61,6 +63,7 @@ a:hover, a {
 
 .container-cards {
     width: 100%;
+    gap: 30px;
 }
 
 .tamanho-horizontal {

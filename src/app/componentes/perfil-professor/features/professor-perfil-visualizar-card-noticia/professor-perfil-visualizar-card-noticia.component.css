@@ -1,5 +1,5 @@
 .container-aulas {
-    height: 460px;
+    height: 500px;
 }
 
 .card-titulo {
@@ -16,7 +16,8 @@
     min-width: 1100px;
 }
 
-.app-aula-filtro {
+.app-noticia-filtro {
+    width: 400px;
     overflow-y: auto;
     height: 450px;
     padding: 10px;
@@ -30,6 +31,7 @@
 
 .container-card-aula {
     gap: 20px;
+    width: 100%;
 }
 
 .card-aula {
@@ -69,6 +71,10 @@
     font-size: 12px;
     max-height: 75px;
     overflow-y: auto;
+}
+
+.width-50px {
+    width: 50px;
 }
 
 .icone-ativo {

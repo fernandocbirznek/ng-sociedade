@@ -43,6 +43,8 @@ export class AtualizarForumTopicoComponent implements OnInit {
   forumTagSelect: ForumTagModel[] = [];
   forumTagSelectId: number[] = [];
 
+  conteudoRecebido: string = '';
+
   readonly forumTopicoEnum = ForumTopicoEnum;
 
   constructor(
@@ -55,6 +57,7 @@ export class AtualizarForumTopicoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.conteudoRecebido = this.data.forumTopico.descricao;
     this.criarFormulario();
     this.setupFormulario();
     this.setupForumTag();

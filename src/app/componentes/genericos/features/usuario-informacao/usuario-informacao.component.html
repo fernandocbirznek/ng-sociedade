@@ -3,7 +3,7 @@
         <span class="perfil-text">Informações gerais</span>
     </div>
     <div class="g-row-between-start container-informacao">
-        <div fxFlex="33%">
+        <div class="width-33pc">
             <div [ngSwitch]="this.usuarioLogado.tipoUsuario" class="tipo-topico">
                 <div *ngSwitchCase="this.tipoUsuarioEnum.UsuarioComum">
                     <ng-container *ngTemplateOutlet="alunoWidget"></ng-container>
@@ -13,7 +13,7 @@
                 </div>
             </div>
         </div>
-        <div fxFlex="33%">
+        <div class="width-33pc">
             <div [ngSwitch]="this.usuarioLogado.tipoUsuario" class="tipo-topico">
                 <div *ngSwitchCase="this.tipoUsuarioEnum.UsuarioComum">
                     <ng-container *ngTemplateOutlet="alunoAula"></ng-container>
@@ -23,7 +23,7 @@
                 </div>
             </div>
         </div>
-        <div fxFlex="33%" class="g-column-start-center informacao">
+        <div class="g-column-start-center width-33pc informacao">
             <div class="g-row-center-center informacao-header">
                 <mat-icon class="icone-header material-symbols-outlined">forum</mat-icon>
                 <div>Fórum</div>

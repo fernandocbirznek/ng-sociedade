@@ -1,19 +1,19 @@
 <div class="g-column-start-center container-criar-perfil">
     <form [formGroup]="this.formPerfil" class="g-column-start-center container-form">
-        <mat-form-field class="container-data" class="g-full-width">
+        <mat-form-field class="g-full-widthcontainer-data ">
             <mat-label>Data de Nascimento</mat-label>
             <input matInput formControlName="data" [matDatepicker]="picker" (change)="requestCriarPerfil()">
             <mat-datepicker-toggle matIconSuffix class="data-picker" [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
-        <div fxFlex="150px" class="g-column-between-center g-full-height g-full-width">
+        <div class="g-column-between-center g-full-height g-full-width width-150px">
             <div class="g-column-start-center  container-escolher-foto">
                 <div>Escolha uma foto</div>
                 <input type="file" formControlName="foto" (change)="imagemAlterada($event)" accept="image/*">
                 <div>Foto escolhida</div>
             </div>
-            <div *ngIf="this.fotoEscolhida" fxFlex="100%" class="g-column-center-center ">
-                <img fxFlex="100px" [src]="'data:image/png;base64,' + this.fotoEscolhida" alt="Imagem" class="imagem">
+            <div *ngIf="this.fotoEscolhida" class="g-full-width g-column-center-center">
+                <img [src]="'data:image/png;base64,' + this.fotoEscolhida" alt="Imagem" class="imagem">
             </div>
         </div>
         <mat-form-field appearance="outline" class="g-full-width">

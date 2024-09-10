@@ -7,11 +7,11 @@
     </div>
     
     <div *ngIf="this.usuarioLogado" class="g-row-start-center container-filtro">
-        <button mat-stroked-button color="accent" (click)="criarForum()">
+        <button class="g-row-center-center g-button-adicionar button-adicionar" (click)="criarForum()">
             <mat-icon class="material-symbols-outlined">note_add</mat-icon>
             Novo fórum
         </button>
-        <mat-form-field fxFlex="100%">
+        <mat-form-field class="g-full-width">
             <mat-label>Filtrar fórum</mat-label>
             <input matInput (keyup)="aplicarFiltro($event)" placeholder="Ex: energia solar" #input>
         </mat-form-field>
@@ -19,22 +19,22 @@
     <div class="g-row-start-start g-row-wrap container-forum-many">
         <div *ngFor="let forumTopico of this.forumTopicoMany">
             <div class="g-column-between-between card-forum">
-                <div fxFlex="100%" class="g-row-between-start">
-                    <div fxFlex="30%" class="g-column-between-center aula-autor">
+                <div class="g-full-width g-row-between-start">
+                    <div class="g-column-between-center aula-autor">
                         <div class="g-text-overflow-2 usuario-nome">{{ forumTopico.usuarioNome }}</div>
                         <div *ngIf="this.forumTopico.usuarioFoto" class="g-column-between-center">
-                            <img fxFlex="100px" [src]="'data:image/png;base64,' + this.forumTopico.usuarioFoto" alt="Imagem" class="imagem">
+                            <img [src]="'data:image/png;base64,' + this.forumTopico.usuarioFoto" alt="Imagem" class="imagem">
                         </div>
                         <div *ngIf="!this.forumTopico.usuarioFoto">
                             Sem foto
                         </div>
                     </div>
-                    <div fxFlex="1px" class="divisor"></div>
-                    <div fxFlex="70%" class="g-column-around-start descricao">
+                    <div class="divisor"></div>
+                    <div class="g-column-around-start descricao">
                         <div class="g-row-center-center g-full-width">
                             <div class="titulo">{{ forumTopico.titulo }}</div>
                         </div>
-                        <div fxFlex="100%" class="g-column-between-start g-full-width">
+                        <div class="g-column-between-start g-full-width">
                             <div class="g-row-around-center container-tags">
                                 <div *ngFor="let tag of forumTopico.forumTagMany" class="g-row-start-center">
                                     <span class="g-tag">{{ tag.titulo }}</span>

@@ -1,19 +1,19 @@
 <div class="g-row-start-start g-card-postit-yellow card">
     <div class="g-card-postit-titulo-yellow card-titulo">Notícias postadas</div>
     <div class="g-row-between-start container-aulas">
-        <app-noticia-filtro fxFlex="300px" class="app-aula-filtro" [flexColumn]="true"></app-noticia-filtro >
+        <app-noticia-filtro class="app-noticia-filtro" [flexColumn]="true"></app-noticia-filtro >
         <div class="g-column-between-center g-full-height">
-            <div fxFlex="100%" class="g-row-around-start g-row-wrap container-card-aula">
+            <div class="g-row-around-start g-row-wrap container-card-aula">
                 <div *ngFor="let noticia of this.pageNoticiaMany" class="g-column-start-start card-aula">
                     <div class="data-cadastro">{{ noticia.dataCadastro | date : 'dd/MM/yyyy HH:mm' }}</div>
-                    <div fxFlex="100%">
+                    <div class="g-full-width g-full-height">
                         <div class="aula-titulo" (click)="visualizarNoticia(noticia)">{{ noticia.titulo }}</div>
-                        <div class="g-row-start-center">
+                        <div class="g-row-start-start">
                             <div class="aula-resumo">{{ noticia.resumo }}</div>
                         </div>
                     </div>
                     <div class="g-row-center-center g-full-width">
-                        <div fxFlex="50px" class="g-row-around-center">
+                        <div class="g-row-around-center width-50px">
                             <div class="g-column-center-center">
                                 <mat-icon class="material-symbols-outlined" [ngClass]="{'icone-ativo': noticia.usuarioLogadoCurtiu}">
                                     thumb_up

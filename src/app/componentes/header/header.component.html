@@ -1,9 +1,9 @@
 <div class="g-column-start-start">
     <div class="g-row-between-center container-header">
-        <div fxFlex="400px" class="g-column-center-center">
+        <div class="g-column-center-center width-400px">
             <img class="logo-site" src="../../../assets/imagens/header/logosite.png">
         </div>
-        <div fxFlex="100%" class="g-row-around-center g-row-wrap menu-navegacao">
+        <div class="g-row-around-center g-row-wrap menu-navegacao">
             <a (click)="acessarTela('home')">Home</a>
             <a *ngIf="!this.usuarioLogado" (click)="conta()">Criar Conta / Login</a>
             <a *ngIf="this.usuarioLogado" (click)="acessarPerfil()">Acessar perfil</a>
@@ -13,7 +13,7 @@
                 {{areaFisica.titulo}}
             </a>
         </div>
-        <div fxFlex="20%" class="g-column-center-center">
+        <div class="g-column-center-center width-20pc">
             <img class="img-topico" [src]="imagem">
             <p class="paragrafo-topico">{{ this.resumoTopico }}</p>
         </div> 

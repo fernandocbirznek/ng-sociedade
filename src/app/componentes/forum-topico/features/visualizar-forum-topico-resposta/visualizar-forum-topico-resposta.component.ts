@@ -73,6 +73,7 @@ export class VisualizarForumTopicoRespostaComponent implements OnInit {
         comentarioView.usuarioFoto = item.usuarioFoto;
         comentarioView.usuarioNome = item.usuarioNome;
         this.forumTopicoRespostaMany.push(comentarioView);
+        console.log("item = ", item);
       });
     });
   }

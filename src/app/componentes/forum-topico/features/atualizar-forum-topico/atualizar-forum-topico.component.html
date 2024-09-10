@@ -1,14 +1,14 @@
 <div class="g-column-start-center container-forum-topico">
     <div class="g-row-end-end fechar" (click)="fecharModal()">X</div>
     <h2>Criando novo tópico do fórum</h2>
-    <form [formGroup]="this.formGroupForumTopico" class="g-column-start-center g-container-form-inputs">   
+    <form [formGroup]="this.formGroupForumTopico" class="g-column-start-center">   
         <mat-form-field  appearance="outline" class="g-full-width">
             <mat-label>Título</mat-label>
             <input formControlName="formTitulo" matInput required>
             <mat-error *ngIf="formTitulo.invalid">Titulo é obrigatório</mat-error>
         </mat-form-field>
         <div class="g-row-around-center container-topico-tags">
-            <div fxFlex="50%" class="g-column-start-start">
+            <div class="g-column-start-start width-50pc">
                 <h4>Selecione um tipo de tópico:</h4>
                 <mat-radio-group class="g-row-start-center g-row-wrap container-topico" formControlName="formTipoTopico">
                     <mat-radio-button [value]="this.forumTopicoEnum.Geral">Geral</mat-radio-button>
@@ -20,17 +20,17 @@
                     <mat-radio-button [value]="this.forumTopicoEnum.Noticia">Notícia</mat-radio-button>
                 </mat-radio-group>  
             </div>
-            <div *ngIf="this.forumTagMany.length > 0" fxFlex="50%" class="g-column-start-start">
+            <div *ngIf="this.forumTagMany.length > 0" class="g-column-start-start width-50pc">
                 <h4>Selecione as tags do tópico:</h4>
                 <div class="g-row-start-start g-row-wrap container-tags">
                     <section *ngFor="let forumTag of this.forumTagMany">
-                        <mat-checkbox [checked]="this.forumTagSelectId.includes(forumTag.id)" 
+                        <mat-checkbox [checked]="this.forumTagSelectId.includes(forumTag.id)"
                             (change)="selecionouForumTag(forumTag, $event)">{{forumTag.titulo}}</mat-checkbox>
                     </section>
                 </div>
             </div>
         </div>
-        <app-ckeditor (onAlterouEditor)="alterouFormEditor($event)"></app-ckeditor>
+        <app-ckeditor [conteudoRecebido]="this.conteudoRecebido" (onAlterouEditor)="alterouFormEditor($event)"></app-ckeditor>
     </form>
     <div class="g-row-around-center container-buttons">
         <button mat-stroked-button color="warn" (click)="fecharModal()">

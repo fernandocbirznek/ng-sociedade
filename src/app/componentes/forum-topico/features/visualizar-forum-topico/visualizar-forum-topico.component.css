@@ -16,6 +16,14 @@
     gap: 20px;
 }
 
+.imagem {
+    width: 100px;
+}
+
+.width-150px {
+    width: 150px;
+}
+
 .usuario-nome {
     text-align: center;
 }

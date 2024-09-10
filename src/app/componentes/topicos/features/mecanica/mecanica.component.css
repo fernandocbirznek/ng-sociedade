@@ -9,7 +9,12 @@
     width: 100%;
 }
 
+.width-50pc {
+    width: 50%;
+}
+
 .card-postit-green {
+    width: 500px;
     margin-bottom: 30px;
 }
 
@@ -21,12 +26,6 @@
     line-height: 26px;
 }
 
-.imagem {
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100%;
-}
-
 .titulo {
     font-size: 28px;
     font-weight: bold;
@@ -34,9 +33,10 @@
 }
 
 .imagem {
-    width: 90%;
-    height: auto;
+    background-repeat: no-repeat;
     background-size: cover;
+    height: 100%;
+    width: 100px;
     margin-bottom: 20px;
     border: 1px solid black;
 }
@@ -51,9 +51,14 @@
     min-height: 600px;
 }
 
+.width-400px {
+    width: 400px;
+}
+
 .container-aula-many {
     padding: 30px 20px 0 20px;
     height: 100%;
+    width: 100%;
 }
 
 .card-aula {
@@ -73,6 +78,7 @@
 
 .card-aula-descricao {
     gap: 15px;
+    width: 100%;
 }
 
 .aula-autor, 
@@ -101,7 +107,7 @@
 }
 
 .icone {
-    margin-right: 5px;
+    width: 40px;
 }
 
 .icone-ativo {

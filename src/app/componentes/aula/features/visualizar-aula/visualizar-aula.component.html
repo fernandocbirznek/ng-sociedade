@@ -9,32 +9,32 @@
         <div class="g-column-between-start g-card-icone-many">
             <div *ngIf="!this.usuarioAulaCurtido" class="g-row-start-center g-full-width" 
                 [ngClass]="{'g-disable-event': !this.usuarioLogado}" (click)="curtirAula()">
-                <mat-icon fxFlex="25px" class="icone material-symbols-outlined" [ngClass]="{'g-disable-event': !this.usuarioLogado}">
+                <mat-icon class="icone material-symbols-outlined" [ngClass]="{'g-disable-event': !this.usuarioLogado}">
                     thumb_up
                 </mat-icon>
-                <div fxFlex="100%" class="g-row-center-center">{{ aula.curtido }}</div>
+                <div class="g-full-width g-row-center-center">{{ aula.curtido }}</div>
             </div>
             <div *ngIf="this.usuarioAulaCurtido" class="g-row-start-center g-full-width" 
                 (click)="removerCurtirAula()">
-                <mat-icon fxFlex="25px" class="icone icone-curtido material-symbols-outlined">thumb_up</mat-icon>
-                <div fxFlex="100%" class="g-row-center-center">{{ aula.curtido }}</div>
+                <mat-icon class="icone icone-curtido material-symbols-outlined">thumb_up</mat-icon>
+                <div class="g-full-width g-row-center-center">{{ aula.curtido }}</div>
             </div>
             <div *ngIf="!this.usuarioAulaFavoritada" class="g-row-start-center g-full-width" 
                 [ngClass]="{'g-disable-event': !this.usuarioLogado}" (click)="favoritarAula()">
-                <mat-icon fxFlex="25px" class="icone material-symbols-outlined" [ngClass]="{'g-disable-event': !this.usuarioLogado}">star</mat-icon>
-                <div fxFlex="100%" class="g-row-center-center">{{ aula.favoritado }}</div>
+                <mat-icon class="icone material-symbols-outlined" [ngClass]="{'g-disable-event': !this.usuarioLogado}">star</mat-icon>
+                <div class="g-full-width g-row-center-center">{{ aula.favoritado }}</div>
             </div>
             <div *ngIf="this.usuarioAulaFavoritada" class="g-row-start-center g-full-width" 
                 (click)="removerAulaFavoritada()">
-                <mat-icon fxFlex="25px" class="icone icone-curtido material-symbols-outlined">star</mat-icon>
-                <div fxFlex="100%" class="g-row-center-center">{{ aula.favoritado }}</div>
+                <mat-icon class="icone icone-curtido material-symbols-outlined">star</mat-icon>
+                <div class="g-full-width g-row-center-center">{{ aula.favoritado }}</div>
             </div>
             <div class="g-row-start-center g-full-width">
-                <mat-icon fxFlex="25px" class="icone-chat material-symbols-outlined" 
+                <mat-icon class="icone material-symbols-outlined" 
                     [ngClass]="{'icone-curtido': this.isUsuarioAulaComentado}">
                     chat
                 </mat-icon>
-                <div fxFlex="100%" class="g-row-center-center">{{ aula.aulaComentarioMany.length }}</div>
+                <div class="g-full-width g-row-center-center">{{ aula.aulaComentarioMany.length }}</div>
             </div>
         </div>
         <div *ngIf="this.usuarioLogado && this.usuarioLogado.tipoUsuario == 1" class="g-card-tags card-tags">
@@ -54,16 +54,16 @@
                 </div>
             </div>
         </div>
-        <div fxFlex="150px" class="g-column-start-center">
+        <div class="g-column-start-center" class="container-foto">
             <div class="aula-autor" (click)="visualizarPerfil()">{{ aula.usuarioNome }}</div>
             <div *ngIf="aula.usuarioFoto" class="g-column-between-center">
-                <img fxFlex="100px" [src]="'data:image/png;base64,' + aula.usuarioFoto" alt="Imagem" class="imagem-foto">
+                <img [src]="'data:image/png;base64,' + aula.usuarioFoto" alt="Imagem" class="imagem-foto">
             </div>
             <div *ngIf="!aula.usuarioFoto">
                 Sem foto
             </div>
         </div>
-        <div fxFlex="100%" class="g-column-start-start">
+        <div class="g-full-width g-column-start-start">
             <div class="g-row-start-center">
                 <span class="aula-informacao">Data cadastro: </span>
                 <div class="informacao">{{ this.aula.dataCadastro | date : 'dd/MM/yyyy HH:mm' }}</div>
@@ -107,7 +107,7 @@
             [src]="this.linkYoutubeMany[i].src">
         </iframe>
         <iframe *ngIf="sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Pdf && sessao.arquivoPdf && sessao.arquivoPdf.conteudo" 
-            fxFlex="100%" class="g-column-start-start pdf" 
+            class="g-column-start-start pdf" 
             [src]="this.trustedPdfUrl[i]" type="application/pdf">
         </iframe>
     </div>
@@ -146,7 +146,7 @@
                     <div class="comentario-data-cadastro">
                         {{ aulaComentario.dataCadastro | date : 'dd/MM/yyyy HH:mm' }}
                     </div>
-                    <div fxFlex="100px" class="g-column-between-center usuario-perfil">
+                    <div class="g-column-between-center usuario-perfil">
                         <div *ngIf="this.usuarioLogado && this.usuarioLogado.id == this.aulaComentario.usuarioId"  
                             class="g-row-around-center container-comentario-buttons">
                             <mat-icon class="icone-delete material-symbols-outlined" (click)="excluirComentario(aulaComentario)"
@@ -160,15 +160,15 @@
                         </div>
                         <div class="aula-autor">{{ aulaComentario.usuarioNome }}</div>
                         <div *ngIf="aulaComentario.usuarioFoto" class="g-column-between-center">
-                            <img fxFlex="100px" [src]="'data:image/png;base64,' + aulaComentario.usuarioFoto" alt="Imagem" class="imagem-foto">
+                            <img [src]="'data:image/png;base64,' + aulaComentario.usuarioFoto" alt="Imagem" class="imagem-foto">
                         </div>
                         <div *ngIf="!aulaComentario.usuarioFoto">
                             Sem foto
                         </div>
                     </div>
-                    <div fxFlex="1px" class="divisoria"></div>
-                    <div fxFlex="100%" class="container-comentario-usuario">
-                        <div fxFlex="100%" class="g-column-start-center comentario"
+                    <div class="divisoria"></div>
+                    <div class="container-comentario-usuario">
+                        <div class="g-column-start-center comentario"
                             [innerHTML]="this.trustedAulaComentarioHtml[i]">
                         </div>
                     </div>

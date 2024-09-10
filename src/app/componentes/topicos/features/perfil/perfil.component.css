@@ -17,6 +17,10 @@
     border-radius: 10px;
 }
 
+.width-32pc {
+    width: 32%;
+}
+
 .deslogar-conta:hover {
     cursor: pointer;
     box-shadow: 0px 0px 0px 2px black;

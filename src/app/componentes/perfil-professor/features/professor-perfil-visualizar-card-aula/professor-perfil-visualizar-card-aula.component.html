@@ -1,19 +1,19 @@
 <div class="g-row-start-start g-card-postit-yellow card">
     <div class="g-card-postit-titulo-yellow">Aulas postadas</div>
     <div class="g-row-between-start container-aulas">
-        <app-aula-filtro fxFlex="300px" class="app-aula-filtro"></app-aula-filtro>
+        <app-aula-filtro class="app-aula-filtro"></app-aula-filtro>
         <div class="g-column-between-center g-full-height">
-            <div fxFlex="100%" class="g-row-around-start g-row-wrap container-card-aula">
+            <div class="g-row-around-start g-row-wrap container-card-aula">
                 <div *ngFor="let aula of this.pageAulaMany" class="g-column-start-start card-aula">
                     <app-aula-icone [areaFisicaId]="aula.areaFisicaId" class="aula-area-fisica"></app-aula-icone>
                     <div class="data-cadastro">{{ aula.dataCadastro | date : 'dd/MM/yyyy HH:mm' }}</div>
-                    <div fxFlex="100%">
+                    <div class="g-full-width g-full-height">
                         <div class="aula-titulo">{{ aula.titulo }}</div>
                         <div class="g-row-start-center">
                             <div class="aula-resumo">{{ aula.resumo }}</div>
                         </div>
                     </div>
-                    <div fxFlex="50px" class="g-full-width g-row-around-center">
+                    <div class="g-full-width g-row-around-center">
                         <div class="g-column-center-center">
                             <mat-icon class="material-symbols-outlined" [ngClass]="{'icone-ativo': aula.usuarioLogadoCurtiu}">
                                 thumb_up

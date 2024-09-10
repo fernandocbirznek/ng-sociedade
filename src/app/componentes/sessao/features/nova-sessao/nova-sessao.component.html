@@ -1,7 +1,7 @@
 <div class="g-column-start-start cadastro-sessao-component">
     <div class="g-row-end-end fechar" (click)="fecharModal()">X</div>
     <div class="titulo">Criar nova sessão</div>
-    <div fxFlex="100%" class="g-column-start-center g-full-width">
+    <div class="g-full-width g-column-start-center g-full-width">
       <form [formGroup]="this.formSessao" class="g-column-start-center container-inputs">
         <mat-form-field class="g-full-width" appearance="outline">
           <mat-label>Titulo</mat-label>
@@ -24,7 +24,7 @@
           (onAlterouEditor)="alterouFormEditor($event)">
         </app-ckeditor>
 
-        <div *ngIf="this.tipoSessao.value == '2'" fxFlex="100%" class="g-column-start-center g-full-width">
+        <div *ngIf="this.tipoSessao.value == '2'" class="g-full-width g-column-start-center g-full-width">
 
           <div class="g-column-start-start g-card-postit-yellow card card-latex">
             <div class="g-row-start-center alerta-link">
@@ -48,14 +48,14 @@
           </mat-form-field>
         </div>
 
-        <div *ngIf="this.tipoSessao.value == '3'" fxFlex="100%" class="g-column-start-center g-full-width">
+        <div *ngIf="this.tipoSessao.value == '3'" class="g-full-width g-column-start-center g-full-width">
           <input type="file" formControlName="formFoto" (change)="imagemAlterada($event)" accept="image/*">
           <div *ngIf="this.conteudoImagem" class="g-column-between-center">
             <img [src]="'data:image/png;base64,' + this.conteudoImagem" alt="Imagem" class="imagem">
         </div>
         </div>
 
-        <div *ngIf="this.tipoSessao.value == '7'" fxFlex="100%" class="g-column-start-start ontainer-input-pdf">
+        <div *ngIf="this.tipoSessao.value == '7'" class="g-column-start-start container-input-pdf">
           <input type="file" (change)="selecionarPdf($event)" #fileUpload />
           <div class="g-row-start-center alerta-link">
             <mat-icon class="material-symbols-outlined">warning</mat-icon>
@@ -64,7 +64,7 @@
           <embed *ngIf="pdfUrl" [src]="pdfUrl" type="application/pdf" class="g-full-height">
         </div>
 
-        <div *ngIf="this.tipoSessao.value == '4'" fxFlex="100%" class="g-full-width">
+        <div *ngIf="this.tipoSessao.value == '4'" class="g-full-width g-full-width">
           <div class="g-column-start-start g-card-postit-yellow card">
             <div *ngIf="!this.isVisualizarTutorial" class="visualizar-tutorial" (click)="visualizarTutorial()">Visualizar tutorial</div>
             <div *ngIf="this.isVisualizarTutorial" class="ocultar-tutorial" (click)="visualizarTutorial()">Ocultar tutorial</div>
@@ -76,14 +76,14 @@
               <div>Para colocar o vídeo siga os seguintes passos:</div>
               <div class="g-row-center-center">
                 <div class="g-column-start-center">
-                  <div fxFlex="40px" class="g-row-center-center text-tutorial">
+                  <div class="g-row-center-center text-tutorial width-40px">
                     <mat-icon class="material-symbols-outlined">looks_one</mat-icon>
                     <div>Acesse o vídeo no youtube</div>
                   </div>
                   <img src="../../../../../assets/imagens/diversos/tutorial-youtube-1.png" alt="Imagem" class="imagem">
                 </div>
                 <div class="g-column-start-center">
-                  <div fxFlex="40px" class="g-row-center-center text-tutorial">
+                  <div class="g-row-center-center text-tutorial width-40px">
                     <mat-icon class="material-symbols-outlined">looks_two</mat-icon>
                     <div>Clique com o botão direito do mouse sobre o vídeo <br> selecione a opção em laranja na imagem</div>
                   </div>

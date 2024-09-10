@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -86,9 +85,10 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MecanicaQuatroComponent,
     AulaTresExercicioComponent,
 
-    FxFlexDirective
+    
   ],
   imports: [
+    FxFlexDirective,
     AreaFisicaModule,
     AreaInteresseModule,
     AulaModule,
@@ -103,7 +103,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     TopicoModule,
     AdministradorModule,
     UsuarioAlunoModule,
-
     BrowserModule,
     CKEditorModule,
     KatexModule,
@@ -112,7 +111,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     NoticiaRoutingModule,
     BrowserAnimationsModule,
     DragDropModule,
-    FlexLayoutModule,
 
     FormsModule, 
     ReactiveFormsModule,

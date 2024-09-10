@@ -10,8 +10,11 @@
 }
 
 .container-inputs {
-    gap: 15px;
     width: 100%;
+}
+
+.width-250px {
+    width: 250px;
 }
 
 /* important usado para sobscrever o flexLayout */

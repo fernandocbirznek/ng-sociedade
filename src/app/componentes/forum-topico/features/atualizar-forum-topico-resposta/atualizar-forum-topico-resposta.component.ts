@@ -29,6 +29,8 @@ export class AtualizarForumTopicoRespostaComponent implements OnInit {
   usuarioLogado$: Observable<UsuarioModel | undefined> = new Observable<UsuarioModel | undefined>();
   usuarioLogado: UsuarioModel | undefined = undefined ;
 
+  conteudoRecebido: string = '';
+
   constructor(
     public dialog: MatDialog,
     public dialogRef: MatDialogRef<AtualizarForumTopicoRespostaComponent>,
@@ -37,6 +39,7 @@ export class AtualizarForumTopicoRespostaComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.conteudoRecebido = this.data.forumTopicoResposta.descricao;
     this.criarFormulario();
     this.setupFormulario();
     this.setupUsuarioLogado();

@@ -15,17 +15,17 @@
             edit_document
         </mat-icon>
     </div>
-    <div fxFlex="100%" class="g-row-between-start container-perfil">
-        <div fxFlex="200px" class="g-column-between-center">
+    <div class="g-row-start-start container-perfil">
+        <div class="g-column-between-center">
             <div class="usuario-nome">{{ usuarioLogado.nome }}</div>
             <div *ngIf="this.usuarioLogado.foto" class="g-column-between-center">
-                <img fxFlex="100px" [src]="'data:image/png;base64,' + this.usuarioLogado.foto" alt="Imagem" class="imagem">
+                <img [src]="'data:image/png;base64,' + this.usuarioLogado.foto" alt="Imagem" class="imagem">
             </div>
             <div *ngIf="!this.usuarioLogado.foto">
                 Sem foto
             </div>
         </div>
-        <div fxFlex="100%" class="g-column-start-start">
+        <div class="g-full-width g-column-start-start">
             <div class="g-row-start-center">
                 <mat-icon class="material-symbols-outlined">mail</mat-icon>
                 <div class="legend">Email:</div>
@@ -36,7 +36,7 @@
                 <div class="legend">Data nascimento:</div>
                 <div>{{ this.usuarioLogado.dataNascimento | date : 'dd/MM/yyyy' }}</div>
             </div>
-            <div fxFlex="100%" class="g-row-start-start">
+            <div class="g-full-width g-row-start-start">
                 <mat-icon class="material-symbols-outlined">surfing</mat-icon>
                 <div class="legend">Hobbie:</div>
                 <div class="g-row-start-start hobbie">

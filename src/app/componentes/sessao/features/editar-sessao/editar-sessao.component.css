@@ -13,10 +13,6 @@
   font-size: 18px;
 }
 
-.container-inputs {
-  gap: 20px;
-}
-
 ::ng-deep .ckeditor-editar-sessao .ck-content {
   min-height: 150px;
 }

@@ -78,7 +78,12 @@
     gap: 10px;
 }
 
+.imagem {
+    width: 100px;
+}
+
 .replica-resposta {
+    width: 100%;
     font-size: 12px;
     overflow-y: auto;
     max-height: 175px;

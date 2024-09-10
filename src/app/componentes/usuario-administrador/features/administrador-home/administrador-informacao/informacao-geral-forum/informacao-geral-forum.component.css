@@ -11,6 +11,10 @@
     gap: 10px;
 }
 
+.width-33pc {
+    width: 33%;
+}
+
 .container-informacao {
     gap: 20px;
 }

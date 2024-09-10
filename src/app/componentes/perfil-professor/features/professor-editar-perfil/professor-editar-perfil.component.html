@@ -1,19 +1,19 @@
 <div class="g-column-start-start container-criar-perfil">
     <div class="titulo">Alterar perfil</div>
-    <form [formGroup]="this.formPerfil" class="g-column-start-center g-container-form-inputs g-full-width">
+    <form [formGroup]="this.formPerfil" class="g-column-start-center g-full-width">
         <mat-form-field class="container-data">
             <mat-label>Data de Nascimento</mat-label>
             <input matInput formControlName="formData" [matDatepicker]="picker">
             <mat-datepicker-toggle matIconSuffix class="data-picker" [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
-        <div fxFlex="150px" class="g-row-around-center">
+        <div class="g-row-around-center g-full-width">
             <div class="g-column-between-center g-full-height">
                 <div>Foto atual</div>
-                <div *ngIf="this.data.foto" fxFlex="100%" class="g-column-center-center">
-                    <img fxFlex="100px" [src]="'data:image/png;base64,' + this.data.foto" alt="Imagem" class="imagem">
+                <div *ngIf="this.data.foto" class="g-full-width g-column-center-center">
+                    <img [src]="'data:image/png;base64,' + this.data.foto" alt="Imagem" class="imagem">
                 </div>
-                <div *ngIf="!this.data.foto" fxFlex="100%" class="g-row-center-center">
+                <div *ngIf="!this.data.foto" class="g-full-width g-row-center-center">
                     Sem foto
                 </div>
             </div>
@@ -22,10 +22,10 @@
                     <input type="file" formControlName="formFoto" (change)="imagemAlterada($event)" accept="image/*">
                     <div>Foto escolhida</div>
                 </div>
-                <div *ngIf="this.fotoEscolhida" fxFlex="100%" class="g-columns-center-center">
-                    <img fxFlex="100px" [src]="'data:image/png;base64,' + this.fotoEscolhida" alt="Imagem" class="imagem">
+                <div *ngIf="this.fotoEscolhida" class="g-full-width g-columns-center-center">
+                    <img [src]="'data:image/png;base64,' + this.fotoEscolhida" alt="Imagem" class="imagem">
                 </div>
-                <div *ngIf="!this.fotoEscolhida" fxFlex="100%" class="g-row-center-center">
+                <div *ngIf="!this.fotoEscolhida" class="g-full-width g-row-center-center">
                     Escolha uma foto
                 </div>
             </div>

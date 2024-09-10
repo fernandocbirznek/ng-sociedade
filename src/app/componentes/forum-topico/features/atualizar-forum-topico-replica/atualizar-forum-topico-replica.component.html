@@ -2,7 +2,7 @@
     <div class="g-row-end-end fechar" (click)="fecharModal()">X</div>
     <h2>Alterar comentário do fórum</h2>
     <form [formGroup]="this.formGroupForumTopicoReplica" class="g-column-start-center">   
-        <app-ckeditor (onAlterouEditor)="alterouFormEditor($event)"></app-ckeditor>
+        <app-ckeditor [conteudoRecebido]="this.conteudoRecebido" (onAlterouEditor)="alterouFormEditor($event)"></app-ckeditor>
     </form>
     <div class="g-row-around-center container-buttons">
         <button mat-stroked-button color="warn" (click)="fecharModal()">

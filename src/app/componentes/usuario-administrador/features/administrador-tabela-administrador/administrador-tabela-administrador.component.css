@@ -16,6 +16,11 @@
     margin: 8px 0;
 }
 
+.coluna-acoes {
+    text-align: center;
+    width: 200px;
+}
+
 .tabela-header {
     font-weight: bold;
     color: black;
