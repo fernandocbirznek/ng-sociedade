@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from "@angular/router";
+import { ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree } from "@angular/router";
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
 import { UsuarioModel } from "src/app/models";
@@ -14,7 +14,7 @@ import {
     providedIn: 'root'
 })
 
-export class AutenticacaoService implements CanActivate {
+export class AutenticacaoService  {
 
     usuarioLogado$: Observable<UsuarioModel | undefined> = new Observable<UsuarioModel | undefined>();
 

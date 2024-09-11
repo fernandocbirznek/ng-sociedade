@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { ActivatedRouteSnapshot, Resolve } from "@angular/router";
+import { ActivatedRouteSnapshot } from "@angular/router";
 import { Store } from "@ngrx/store";
 import { Observable, Subscription } from "rxjs";
 
@@ -16,7 +16,7 @@ import {
 
 
 @Injectable({ providedIn: 'root' })
-export class UsuarioAlunoResolver implements Resolve<boolean> {
+export class UsuarioAlunoResolver  {
 
     usuarioLogadoSubscription$: Subscription = new Subscription();
     usuarioLogado$: Observable<UsuarioModel | undefined> = new Observable<UsuarioModel | undefined>();

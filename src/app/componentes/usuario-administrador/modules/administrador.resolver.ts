@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { ActivatedRouteSnapshot, Resolve } from "@angular/router";
+import { ActivatedRouteSnapshot } from "@angular/router";
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
 
@@ -14,7 +14,7 @@ import {
 
 
 @Injectable({ providedIn: 'root' })
-export class AdministradorResolver implements Resolve<boolean> {
+export class AdministradorResolver  {
 
     constructor(
         public store: Store,
