@@ -1,7 +1,7 @@
 <div *ngIf="this.noticia" class="g-column-start-start card-noticia">
     <div class="g-text-overflow-1 noticia-titulo" (click)="visualizarNoticia()">{{ noticia.titulo }}</div>
     <div class="g-row-between-center container-usuario">
-        <span class="card-noticia-autor" (click)="visualizarUsuario()">@{{noticia.usuarioCadastroNome}}</span>
+        <span class="card-noticia-autor" (click)="visualizarUsuario()">&#64;{{noticia.usuarioCadastroNome}}</span>
         <div class="g-row-center-center card-noticia-curtida" [ngClass]="{'favoritou': this.noticia.usuarioLogadoCurtiu}">
             <mat-icon class="icone material-symbols-outlined">thumb_up</mat-icon>
             <div>{{ noticia.favoritado }}</div>

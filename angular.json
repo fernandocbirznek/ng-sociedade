@@ -70,10 +70,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "sociedade-da-fisica:build:production"
+              "buildTarget": "sociedade-da-fisica:build:production"
             },
             "development": {
-              "browserTarget": "sociedade-da-fisica:build:development"
+              "buildTarget": "sociedade-da-fisica:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -81,7 +81,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "sociedade-da-fisica:build"
+            "buildTarget": "sociedade-da-fisica:build"
           }
         },
         "test": {
