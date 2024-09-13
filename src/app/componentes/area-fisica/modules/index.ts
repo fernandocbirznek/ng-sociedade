@@ -1,1 +1,1 @@
-export * from './area-fisica.modules';
+//export * from './area-fisica.modules';

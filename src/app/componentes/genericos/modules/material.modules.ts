@@ -32,7 +32,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTreeModule } from '@angular/material/tree';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { KatexModule } from 'ng-katex';
+//import { KatexModule } from 'ng-katex';
 
 @NgModule({
   declarations: [
@@ -73,7 +73,7 @@ import { KatexModule } from 'ng-katex';
     MatTreeModule,
 
     DragDropModule,
-    KatexModule
+    //KatexModule
   ],
   exports: [
     ClipboardModule,
@@ -109,7 +109,7 @@ import { KatexModule } from 'ng-katex';
     MatTreeModule,
 
     DragDropModule,
-    KatexModule
+    //KatexModule
   ],
 })
 export class MaterialUIModule { }

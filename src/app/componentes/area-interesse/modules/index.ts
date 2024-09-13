@@ -1,1 +1,1 @@
-export * from './area-interesse.modules';
+//export * from './area-interesse.modules';

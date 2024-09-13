@@ -62,7 +62,7 @@
         [innerHTML]="this.trustedDashboardHtml[i]">
       </div>
       <div *ngIf="sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Equacao"> 
-        <ng-katex [equation]="sessao.conteudo"></ng-katex>
+        <!-- <ng-katex [equation]="sessao.conteudo"></ng-katex> -->
       </div>
       <div *ngIf="sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Imagem" class="g-column-cecnter-start">
         <img [src]="this.trustedUrlImageHtml[i]" alt="Imagem" class="imagem">

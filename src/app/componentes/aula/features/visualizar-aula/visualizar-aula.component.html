@@ -97,7 +97,7 @@
             class="g-column-center-center" [innerHTML]="this.trustedVisualizarAulaHtml[i]">
         </div>
         <div *ngIf="sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Equacao"> 
-            <ng-katex [equation]="sessao.conteudo"></ng-katex>
+            <!-- <ng-katex [equation]="sessao.conteudo"></ng-katex> -->
         </div>
         <div *ngIf="sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Imagem">
             <img [src]="this.trustedUrlImageHtml[i]" alt="Imagem" class="g-row-center-start imagem">
