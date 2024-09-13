@@ -375,7 +375,7 @@ import { PerfilComponent } from './componentes/topicos/features';
     TopicoRoutingModule,
     StoreModule.forRoot([]),
     EffectsModule.forRoot([]),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production , connectInZone: true}),
   ],
   providers: [],
   bootstrap: [AppComponent]
