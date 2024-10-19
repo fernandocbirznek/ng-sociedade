@@ -4,9 +4,8 @@ import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
 
 import { 
-    ForumTopicoModel,
     ForumTopicoViewModel,
-} from "src/app/models";
+} from "../../models";
 
 @Injectable({
     providedIn: 'root'

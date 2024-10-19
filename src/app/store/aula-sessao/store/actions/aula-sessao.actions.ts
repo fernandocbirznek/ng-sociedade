@@ -1,9 +1,9 @@
 import { createAction, props } from '@ngrx/store';
 
 import { 
-  AulaSessaoModel,
+  AulaSessaoModel, 
   AulaSessaoOrdemRequestModel
-} from 'src/app/models';
+} from '../../../../models';
 
 export const selecionarOneAulaSessaoById = createAction(
   '[AulaSessao] selecionarOneAulaSessaoById',

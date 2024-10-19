@@ -9,14 +9,14 @@ import {
   TipoUsuarioEnum, 
   UsuarioModel, 
   InformacaoAulaAlunoViewModel
-} from 'src/app/models';
+} from '../../../../models';
 
 import { 
   getOneInformacaoAlunoWidget,
   getOneInformacaoAulaAluno,
   getProfessorInformacaoAulaMany, 
   getProfessorInformacaoNoticiaMany
-} from 'src/app/store';
+} from '../../../../store';
 
 @Component({
   selector: 'app-usuario-informacao',

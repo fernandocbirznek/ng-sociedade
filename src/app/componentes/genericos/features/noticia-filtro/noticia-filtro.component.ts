@@ -6,17 +6,17 @@ import {
   AreaInteresseModel,
   NoticiaFilterModel, 
   NoticiaFilterSelectedModel 
-} from 'src/app/models';
+} from '../../../../models';
 
 import { 
   filtrarNoticia,
   getManyAreaInteresse,
   getNoticiaFilter 
-} from 'src/app/store';
+} from '../../../../store';
 
 import { FormControl } from '@angular/forms';
 
-import { NoticiaHelpers } from 'src/app/componentes/noticia/helpers/noticia.helpers';
+import { NoticiaHelpers } from '../../../noticia/helpers/noticia.helpers';
 
 @Component({
   selector: 'app-noticia-filtro',
@@ -64,8 +64,10 @@ export class NoticiaFiltroComponent implements OnInit {
   setupNoticiaFilter() {
     this.noticiaFilter$ = this.store.select(getNoticiaFilter);
     this.noticiaFilterSubscription$ = this.noticiaFilter$.subscribe(item => {
-      this.noticiaFilter = item;
-      this.noticiaFilterSelectedMany = NoticiaHelpers.noticiaSelectedItemMany(item);
+      if (item) {
+        this.noticiaFilter = item;
+        this.noticiaFilterSelectedMany = NoticiaHelpers.noticiaSelectedItemMany(item);
+      }
     });
   }
 
@@ -106,6 +108,7 @@ export class NoticiaFiltroComponent implements OnInit {
   }
 
   filtroTag(areaInteresseSelected: AreaInteresseModel) {
+    console.log("this.noticiaFilter = ", this.noticiaFilter);
     let areaInteresse = this.noticiaFilter.areaInteresseMany.find(areaInteresse => areaInteresse.id == areaInteresseSelected.id);
 
     if (areaInteresse) {

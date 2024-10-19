@@ -7,11 +7,11 @@ import {
   AulaModel, 
   AulaSessaoModel, 
   TipoSessaoAulaEnum
-} from 'src/app/models';
+} from '../../../../models';
 
 import { 
   atualizarAulaSessao 
-} from 'src/app/store';
+} from '../../../../store';
 
 @Component({
   selector: 'app-editar-sessao',
@@ -22,7 +22,7 @@ export class EditarSessaoComponent implements OnInit {
 
   tipoSessao = new FormControl({value: '', disabled: true}, [Validators.required]);
   titulo = new FormControl('', [Validators.required, Validators.maxLength(200)]);
-  conteudoSessao = new FormControl('', [Validators.required, Validators.maxLength(8000)]);
+  conteudoSessao = new FormControl('', [Validators.required, Validators.maxLength(100000)]);
 
   formSessao: FormGroup = null as any;
 
@@ -39,6 +39,7 @@ export class EditarSessaoComponent implements OnInit {
 
   public ngOnInit(): void {
     this.setupEditarSessao();
+    console.log("this.data = ", this.data);
   }
 
   private criarFormularioSessao() {

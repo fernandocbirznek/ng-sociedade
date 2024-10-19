@@ -5,11 +5,11 @@ import { Store } from '@ngrx/store';
 
 import { 
   TagModel 
-} from 'src/app/models';
+} from '../../../../models';
 
 import { 
   inserirTag 
-} from 'src/app/store';
+} from '../../../../store';
 
 @Component({
   selector: 'app-inserir-tag',

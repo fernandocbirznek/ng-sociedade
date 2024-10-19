@@ -5,13 +5,13 @@ import { Observable, Subscription } from 'rxjs';
 
 import { 
   UsuarioModel 
-} from 'src/app/models';
+} from '../../../../models';
 
 import { 
   deslogarConta,
   getOneUsuarioLogado,
   removerRota,
-} from 'src/app/store';
+} from '../../../../store';
 
 @Component({
   selector: 'app-administrador-home',

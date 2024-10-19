@@ -2,7 +2,7 @@ import { createAction, props } from '@ngrx/store';
 
 import { 
     TagModel,
-} from 'src/app/models';
+} from '../../../../models';
 
 export const selecionarManyTag = createAction(
     '[Tag] selecionarManyTag'

@@ -6,18 +6,18 @@ import { Router } from '@angular/router';
 import {
   ProfessorPerfilVisualizarComponent,
   VisualizarNoticiaComponent
-} from 'src/app/componentes';
+} from '../../componentes';
 
 import { 
   AulaModel,
   NoticiaViewModel
-} from 'src/app/models';
+} from '../../models';
 
 import { 
   adicionarRota,
   getManyNoticiaHome,
   selecionarNoticiaManyHome 
-} from 'src/app/store';
+} from '../../store';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({

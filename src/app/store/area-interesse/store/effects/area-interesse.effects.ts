@@ -5,7 +5,9 @@ import { of } from 'rxjs';
 
 import * as actions from '../actions/area-interesse.actions';
 
-import { AreaInteresseService } from 'src/app/services';
+import { 
+  AreaInteresseService 
+} from '../../../../services';
 
 @Injectable()
 export class AreaInteresseEffects {

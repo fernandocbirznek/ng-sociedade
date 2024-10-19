@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 import { Router } from '@angular/router';
@@ -8,7 +8,7 @@ import {
   HeaderRotaModel, 
   TipoUsuarioEnum, 
   UsuarioModel 
-} from 'src/app/models';
+} from '../../models';
 
 import { 
   adicionarRota,
@@ -18,7 +18,7 @@ import {
   getOneUsuarioLogado,
   getTituloPagina,
   removerRota,
-} from 'src/app/store';
+} from '../../store';
 
 import { 
   LoginCriarContaComponent 
@@ -30,7 +30,7 @@ import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
   areaFisicaManySubscription$: Subscription = new Subscription();
@@ -48,13 +48,14 @@ export class HeaderComponent implements OnInit {
   usuarioLogadoSubscription$: Subscription = new Subscription();
   usuarioLogado$: Observable<UsuarioModel | undefined> = new Observable<UsuarioModel | undefined>();
   usuarioLogado: UsuarioModel | undefined = undefined;
+
+  readonly dialog = inject(MatDialog);
   
   public imagem: string = "../../../assets/imagens/header/home.png";
   public resumoTopico: string = "Aqui é a página principal, nela temos um resumo sobre a Física," 
   + "na esquerda temos as últimas postagens...";
 
   constructor(
-    public dialog: MatDialog,
     public router: Router,
     public store: Store,
   ) { }

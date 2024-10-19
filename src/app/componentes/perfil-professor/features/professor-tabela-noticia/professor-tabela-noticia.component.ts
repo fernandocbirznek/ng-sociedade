@@ -12,18 +12,18 @@ import {
   ModalExcluirComponent, 
   NovaNoticiaComponent,
   VisualizarNoticiaComponent
-} from 'src/app/componentes';
+} from '../../../../componentes';
 
 import { 
   AreaInteresseModel, 
   NoticiaModel
-} from 'src/app/models';
+} from '../../../../models';
 
 import { 
   excluirNoticia,
   getManyAreaInteresse,
   getManyNoticiaByProfessorId, 
-} from 'src/app/store';
+} from '../../../../store';
 
 @Component({
   selector: 'app-professor-tabela-noticia',
@@ -34,7 +34,7 @@ export class ProfessorTabelaNoticiaComponent implements OnInit {
 
   @Input() professorId: number = 0;
 
-  displayedColumns: string[] = ['titulo', 'resumo', 'data-postagem', 'areaInteresse', 'acao'];
+  displayedColumns: string[] = ['titulo', 'resumo', 'data-postagem', 'acao'];
   dataSource: any;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;

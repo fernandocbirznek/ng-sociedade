@@ -5,7 +5,9 @@ import { of } from 'rxjs';
 
 import * as actions from '../actions/forum-topico.actions';
 
-import { ForumTopicoService } from 'src/app/services';
+import { 
+  ForumTopicoService 
+} from '../../../../services';
 
 @Injectable()
 export class ForumTopicoEffects {

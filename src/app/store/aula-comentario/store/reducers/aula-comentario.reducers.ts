@@ -1,11 +1,9 @@
-import { Action, createReducer, on } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
 import * as actions from '../actions/aula-comentario.actions';
 
 import { 
-  AulaComentarioModel, 
-  AulaComentarioViewModel
-} from 'src/app/models';
-
+  AulaComentarioViewModel 
+} from '../../../../models';
 
 export const aulaComentarioFeatureKey = 'aula-comentario';
 

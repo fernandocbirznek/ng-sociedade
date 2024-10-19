@@ -3,7 +3,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 import { 
   UsuarioModel 
-} from 'src/app/models';
+} from '../../../../models';
 
 @Component({
   selector: 'app-aluno-visualizar',

@@ -3,7 +3,7 @@ import { createAction, props } from '@ngrx/store';
 import { 
     CriarContaPerfilModel,
     UsuarioModel,
-} from 'src/app/models';
+} from '../../../../models';
 
 export const selecionarUsuarioById = createAction(
     '[Usuario] selecionarUsuarioById',

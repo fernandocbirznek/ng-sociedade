@@ -8,11 +8,11 @@ import {
   AreaFisicaModel,
   AulaModel, 
   AulaViewModel
-} from 'src/app/models';
+} from '../../../../models';
 
 import { 
   atualizarAula, getManyAreaFisica 
-} from 'src/app/store';
+} from '../../../../store';
 
 @Component({
   selector: 'app-editar-aula-informacao',
@@ -28,7 +28,7 @@ export class EditarAulaInformacaoComponent implements OnInit {
   formGroupAula: FormGroup = null as any;
 
   formTitulo = new FormControl('', [Validators.required, Validators.maxLength(200)]);
-  formResumo = new FormControl('', [Validators.required, Validators.maxLength(200)]);
+  formResumo = new FormControl('', [Validators.required, Validators.maxLength(1000)]);
   formAreaFisica = new FormControl('', [Validators.required]);
 
   constructor(

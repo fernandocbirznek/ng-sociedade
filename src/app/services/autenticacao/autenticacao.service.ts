@@ -2,13 +2,16 @@ import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree } from "@angular/router";
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
-import { UsuarioModel } from "src/app/models";
+
+import { 
+    UsuarioModel 
+} from "../../models";
 
 import { 
     AppState, 
     getOneUsuarioLogado, 
     removerRota
-} from "src/app/store";
+} from "../../store";
 
 @Injectable({
     providedIn: 'root'

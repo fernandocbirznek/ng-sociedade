@@ -1,10 +1,9 @@
-import { Action, createReducer, on } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
 import * as actions from '../actions/area-fisica.actions';
 
 import { 
-    AreaFisicaModel,
-} from 'src/app/models';
-
+  AreaFisicaModel 
+} from '../../../../models';
 
 export const areaFisicaFeatureKey = 'area-fisica';
 

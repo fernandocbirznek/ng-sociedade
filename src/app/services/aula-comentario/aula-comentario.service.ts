@@ -6,7 +6,7 @@ import { Observable } from "rxjs";
 import { 
     AulaComentarioModel,
     AulaComentarioViewModel,
-} from "src/app/models";
+} from "../../models";
 
 @Injectable({
     providedIn: 'root'

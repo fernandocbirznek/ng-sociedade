@@ -80,6 +80,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     margin-right: 10px;
 }
 
+.g-gap-10 {
+    gap: 10px;
+}
+
 .g-gap-20 {
     gap: 20px;
 }
@@ -675,19 +679,19 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 //around
 .g-column-around-start {
     @include g-flex-column;
-    justify-content: flex-start space-around;
+    justify-content: space-around;
     align-items: flex-start;
 }
 
 .g-column-around-center {
     @include g-flex-column;
-    justify-content: center space-around;
+    justify-content: space-around;
     align-items: center;
 }
 
 .g-column-around-end {
     @include g-flex-column;
-    justify-content: flex-end space-around;
+    justify-content: space-around;
     align-items: flex-end;
 }
 

@@ -9,14 +9,14 @@ import {
   NoticiaModel,
   NoticiaRequestModel, 
   UsuarioModel 
-} from 'src/app/models';
+} from '../../../../models';
 
 import { 
   atualizarNoticia,
   getManyAreaInteresse,
   getOneNoticiaById,
   getOneUsuarioLogado, 
-} from 'src/app/store';
+} from '../../../../store';
 
 @Component({
   selector: 'app-editar-noticia',

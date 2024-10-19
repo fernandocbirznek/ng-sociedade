@@ -5,16 +5,16 @@ import { Observable, Subscription } from 'rxjs';
 
 import { 
   VisualizarNoticiaComponent 
-} from 'src/app/componentes';
+} from '../../../../componentes';
 
 import { 
   NoticiaViewModel
-} from 'src/app/models';
+} from '../../../../models';
 
 import { 
   getManyNoticiaByProfessorId, 
   selecionarNoticiaManyByProfessorId 
-} from 'src/app/store';
+} from '../../../../store';
 
 @Component({
   selector: 'app-professor-perfil-visualizar-card-noticia',

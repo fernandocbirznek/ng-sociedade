@@ -4,14 +4,13 @@ import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
 
 import { 
-    CriarConta, 
     CriarContaPerfilModel, 
     DeletarConta, 
     Login, 
     UsuarioModel
-} from "src/app/models";
+} from "../../models";
 
-import { getOneUsuarioLogado } from "src/app/store";
+import { getOneUsuarioLogado } from "../../store";
 
 @Injectable({
     providedIn: 'root'

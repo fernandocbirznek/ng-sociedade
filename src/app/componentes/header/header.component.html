@@ -21,10 +21,11 @@
     <div *ngIf="this.headerTitulo" class="g-row-center-center menu-selecionado">
         {{ this.headerTitulo }}
     </div>
-    <div class="g-row-start-center">
+    <!-- TODO, precisa melhorar as rotas -->
+    <!-- <div class="g-row-start-center">
         <span *ngFor="let rota of rotaMany; index as i" class="g-row-start-center rota" (click)="rotaAcessar(rota.rotaAcessar)">
             <span>{{ rota.rotaNome }}</span>
             <span *ngIf="rotaMany.length != (i+1)" class="rota-separador">/</span>
         </span>
-    </div>
+    </div> -->
 </div>

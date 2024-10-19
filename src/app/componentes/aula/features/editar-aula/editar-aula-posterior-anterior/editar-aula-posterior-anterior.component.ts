@@ -4,16 +4,15 @@ import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 
 import { 
-  AulaModel, 
   AulaViewModel, 
   UsuarioModel
-} from 'src/app/models';
+} from '../../../../../models';
 
 import { 
   atualizarAulaAnterior,
   atualizarAulaPosterior,
   getManyAulaForEditarAulaSelectByAreaFisicaId 
-} from 'src/app/store';
+} from '../../../../../store';
 
 @Component({
   selector: 'app-editar-aula-posterior-anterior',

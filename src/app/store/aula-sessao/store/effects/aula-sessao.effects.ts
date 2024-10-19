@@ -5,7 +5,9 @@ import { of } from 'rxjs';
 
 import * as actions from '../actions/aula-sessao.actions';
 
-import { AulaSessaoService } from 'src/app/services';
+import { 
+  AulaSessaoService 
+} from '../../../../services';
 
 @Injectable()
 export class AulaSessaoEffects {
@@ -42,7 +44,10 @@ export class AulaSessaoEffects {
       ofType(actions.inserirAulaSessao),
       concatMap((action) =>
         this.aulaSessaoService.inserirAulaSessao(action.aulaSessao).pipe(
-          map(response => actions.inserirAulaSessaoSuccess({ aulaSessao: action.aulaSessao, response: response })),
+          map(response => {
+            console.log("response = ", response);
+            return actions.inserirAulaSessaoSuccess({ aulaSessao: action.aulaSessao, response: response })}
+          ),
           catchError(error => of(actions.inserirAulaSessaoFailure({ error }))))
       )
     );

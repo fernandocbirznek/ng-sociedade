@@ -8,21 +8,21 @@ import { Observable, Subscription } from 'rxjs';
 import { 
   AtualizarForumTopicoRespostaComponent, 
   ModalExcluirComponent 
-} from 'src/app/componentes';
+} from '../../../../componentes';
 
 import { 
   ComentarioView,
   ForumTopicoRespostaModel,
   ForumTopicoRespostaViewModel, 
   UsuarioModel
-} from 'src/app/models';
+} from '../../../../models';
 
 import { 
   excluirForumTopicoResposta, 
   getManyForumTopicoRespostaByForumTopicoId, 
   getOneUsuarioLogado,
   inserirForumTopicoResposta
-} from 'src/app/store';
+} from '../../../../store';
 
 @Component({
   selector: 'app-visualizar-forum-topico-resposta',

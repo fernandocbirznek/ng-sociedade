@@ -1,10 +1,10 @@
-import { Action, createReducer, on } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
 import * as actions from '../actions/usuario-aula-sessao-favoritado.actions';
 
 import { 
   TipoSessaoAulaEnum,
   UsuarioAulaSessaoFavoritadoModel
-} from 'src/app/models';
+} from '../../../../models';
 
 export const usuarioAulaSessaoFavoritadoFeatureKey = 'usuario-aula-sessao-favorita';
 

@@ -71,12 +71,12 @@
                                 </div>
                             </div>
                             <div class="g-full-width g-column-start-center descricao">
-                                <div class="g-column-between-start g-full-width">
+                                <div class="g-column-between-start g-full-width g-full-height g-gap-10">
                                     <div class="sessao">Sessões</div>
-                                    <div class="g-column-start-start g-full-width g-full-height">
+                                    <div class="g-column-start-start g-full-width g-full-height g-gap-10">
                                         <div *ngFor="let sessao of aula.aulaSessaoMany" class="g-row-start-center sessao-text">
-                                            <mat-icon class="material-symbols-outlined">arrow_right_alt</mat-icon>
-                                            <div class="g-text-overflow-1">{{ sessao.titulo }}</div>
+                                            <mat-icon class="icone-flecha material-symbols-outlined">arrow_right_alt</mat-icon>
+                                            <div class="g-text-overflow-2">{{ sessao.titulo }}</div>
                                         </div>
                                     </div>
                                 </div>

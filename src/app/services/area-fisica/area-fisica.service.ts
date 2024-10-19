@@ -5,7 +5,7 @@ import { Observable } from "rxjs";
 
 import { 
     AreaFisicaModel,
-} from "src/app/models";
+} from "../../models";
 
 @Injectable({
     providedIn: 'root'

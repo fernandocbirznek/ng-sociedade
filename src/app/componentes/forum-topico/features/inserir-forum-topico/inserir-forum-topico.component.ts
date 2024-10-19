@@ -8,14 +8,15 @@ import {
   ForumTopicoEnum,
   ForumTopicoViewModel,
   UsuarioModel 
-} from 'src/app/models';
+} from '../../../../models';
 
 import { 
   getManyForumTag, 
   getOneUsuarioLogado, 
   inserirForumTopico, 
   selecionarManyForumTag
-} from 'src/app/store';
+} from '../../../../store';
+
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 @Component({

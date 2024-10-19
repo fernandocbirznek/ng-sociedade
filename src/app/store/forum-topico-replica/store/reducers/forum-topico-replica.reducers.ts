@@ -2,9 +2,8 @@ import { Action, createReducer, on } from '@ngrx/store';
 import * as actions from '../actions/forum-topico-replica.actions';
 
 import { 
-    ForumTopicoReplicaModel,
-} from 'src/app/models';
-
+  ForumTopicoReplicaModel 
+} from '../../../../models';
 
 export const forumTopicoReplicaFeatureKey = 'forum-topico-replica';
 

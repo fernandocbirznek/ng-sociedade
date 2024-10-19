@@ -7,13 +7,13 @@ import { Observable, Subscription } from 'rxjs';
 
 import { 
   ToastComponent 
-} from 'src/app/componentes';
+} from '../../../../componentes';
 
 import { 
   NoticiaModel, 
   UsuarioModel,
   UsuarioNoticiaFavoritadoModel
-} from 'src/app/models';
+} from '../../../../models';
 
 import { 
   getOneNoticiaById, 
@@ -22,7 +22,7 @@ import {
   inserirUsuarioNoticiaFavoritado, 
   removerUsuarioNoticiaFavoritado, 
   selecionarManyUsuarioNoticiaFavoritado 
-} from 'src/app/store';
+} from '../../../../store';
 
 @Component({
   selector: 'app-visualizar-noticia',

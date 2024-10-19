@@ -9,12 +9,12 @@ import { Observable, Subscription } from 'rxjs';
 
 import { 
   ModalExcluirComponent, 
-} from 'src/app/componentes';
+} from '../../../../componentes';
 
 import { 
   AreaFisicaModel,
   AulaViewModel
-} from 'src/app/models';
+} from '../../../../models';
 
 import { 
   adicionarRota,
@@ -23,7 +23,7 @@ import {
   excluirAula,
   getManyAreaFisica,
   getManyAula,
-} from 'src/app/store';
+} from '../../../../store';
 
 @Component({
   selector: 'app-administrador-tabela-aula',

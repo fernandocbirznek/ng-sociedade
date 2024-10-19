@@ -3,21 +3,21 @@ import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-brows
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
-import { AulaHelpers } from 'src/app/componentes/aula/helpers/aula-helpers';
 
 import { 
   LinkYoutubeModel,
   TipoSessaoAulaEnum, 
   UsuarioAulaSessaoFavoritadoModel, 
   UsuarioModel 
-} from 'src/app/models';
+} from '../../../../models';
 
 import { 
   adicionarRota,
   alterarTipoSessaoAulaEnum,
   getManyUsuarioAulaSessaoFavoritado, 
-  selecionarManyUsuarioAulaSessaoFavoritadoByUsuarioId 
-} from 'src/app/store';
+} from '../../../../store';
+
+import { AulaHelpers } from '../../../aula/helpers/aula-helpers';
 
 @Component({
   selector: 'app-aluno-favoritado',

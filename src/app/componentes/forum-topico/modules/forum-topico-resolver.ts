@@ -7,7 +7,7 @@ import {
     selecionarManyForumTopicoByForumId,
     selecionarManyForumTopicoReplicaByForumTopicoId,
     selecionarManyForumTopicoRespostaByForumTopicoId,
-} from "src/app/store";
+} from "../../../store";
 
 @Injectable({
     providedIn: 'root'

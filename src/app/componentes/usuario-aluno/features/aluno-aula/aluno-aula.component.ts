@@ -4,23 +4,23 @@ import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 
 import { 
-  UsuarioModel,
-  WidgetModel,
-  WidgetViewModel 
-} from 'src/app/models';
+  UsuarioModel, 
+  WidgetViewModel, 
+  WidgetModel 
+} from '../../../../models';
 
 import { 
-  adicionarRota,
-  alterarTituloPagina,
-  atualizarAulaSelected,
   getWidgetMany, 
-  inserirWidgetConcluido, 
+  alterarTituloPagina, 
+  atualizarAulaSelected, 
+  adicionarRota, 
   inserirWidgetCursando, 
-  inserirWidgetCursar, 
   removerWidgetConcluido, 
-  removerWidgetCursando, 
   removerWidgetCursar, 
-} from 'src/app/store';
+  inserirWidgetCursar, 
+  removerWidgetCursando, 
+  inserirWidgetConcluido 
+} from '../../../../store';
 
 @Component({
   selector: 'app-aluno-aula',

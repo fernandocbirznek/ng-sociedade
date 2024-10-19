@@ -5,12 +5,12 @@ import { Observable, Subscription } from 'rxjs';
 
 import { 
   ForumModel 
-} from 'src/app/models';
+} from '../../../../models';
 
 import { 
   adicionarRota,
   getManyForum, 
-} from 'src/app/store';
+} from '../../../../store';
 
 @Component({
   selector: 'app-forum',

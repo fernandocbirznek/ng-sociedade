@@ -7,12 +7,12 @@ import { Observable, Subscription } from 'rxjs';
 import { 
   ForumTopicoReplicaModel, 
   UsuarioModel 
-} from 'src/app/models';
+} from '../../../../models';
 
 import { 
   atualizarForumTopicoReplica, 
   getOneUsuarioLogado 
-} from 'src/app/store';
+} from '../../../../store';
 
 @Component({
   selector: 'app-atualizar-forum-topico-replica',

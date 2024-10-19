@@ -4,11 +4,11 @@ import { Observable, Subscription } from 'rxjs';
 
 import { 
   AdministradorHomeAulaInformacaoModel,
-} from 'src/app/models';
+} from '../../../../../../models';
 
 import { 
   getOneUsuarioAdministradorHomeAulaInformacao, 
-} from 'src/app/store';
+} from '../../../../../../store';
 
 @Component({
   selector: 'app-informacao-geral-aula',

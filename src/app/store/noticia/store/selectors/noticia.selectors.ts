@@ -10,10 +10,10 @@ import {
   AreaInteresseModel, 
   InformacaoNoticiaViewModel, 
   NoticiaFilterModel, 
-  NoticiaModel, 
   NoticiaViewModel, 
   UsuarioNoticiaFavoritadoModel
-} from 'src/app/models';
+} from '../../../../models';
+import { GenericoHelpers } from '../../../../componentes';
 
 export const selecionarNoticiaState = createFeatureSelector<fromNoticia.NoticiaState>(
   fromNoticia.noticiaFeatureKey
@@ -110,8 +110,10 @@ export const getOneNoticiaById = (noticiaId: number) => createSelector(seleciona
 
 export const getManyNoticiaByProfessorId = (professorId: number) => createSelector(
   getManyNoticiaFilter, (
-    itens: NoticiaViewModel[]
+    noticiaMany: NoticiaViewModel[]
   ): NoticiaViewModel[] => {
+
+    let itens = GenericoHelpers.sortArrayByDataCadastro(noticiaMany);
 
     return itens.filter(item => item.usuarioCadastroId == professorId);
   }

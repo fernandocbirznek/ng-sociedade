@@ -4,11 +4,11 @@ import { Observable, Subscription } from 'rxjs';
 
 import { 
   AdministradorHomeForumInformacaoModel,
-} from 'src/app/models';
+} from '../../../../../../models';
 
 import { 
   getOneUsuarioAdministradorHomeForumInformacao 
-} from 'src/app/store';
+} from '../../../../../../store';
 
 @Component({
   selector: 'app-informacao-geral-forum',

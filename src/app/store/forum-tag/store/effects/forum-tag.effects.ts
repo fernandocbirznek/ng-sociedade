@@ -5,7 +5,9 @@ import { of } from 'rxjs';
 
 import * as actions from '../actions/forum-tag.actions';
 
-import { ForumTagService } from 'src/app/services';
+import { 
+    ForumTagService 
+} from '../../../../services';
 
 @Injectable()
 export class ForumTagEffects {

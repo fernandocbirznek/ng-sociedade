@@ -4,12 +4,12 @@ import { Observable, Subscription } from 'rxjs';
 
 import { 
   AulaViewModel, 
-} from 'src/app/models';
+} from '../../../../models';
 
 import { 
   getManyAulaByProfessorId, 
   selecionarManyAulaByProfessorId
-} from 'src/app/store';
+} from '../../../../store';
 
 @Component({
   selector: 'app-professor-perfil-visualizar-card-aula',

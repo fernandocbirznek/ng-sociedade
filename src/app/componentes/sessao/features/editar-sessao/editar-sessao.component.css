@@ -1,15 +1,16 @@
-.cadastro-sessao-component {
+.editar-sessao-component {
   position: relative;
   min-width: 800px;
   min-height: 400px;
+  padding: 20px;
 }
 
 .fechar {
   font-weight: bolder;
   cursor: pointer;
   position: absolute;
-  top: -15px;
-  right: -15px;
+  top: 10px;
+  right: 10px;
   font-size: 18px;
 }
 

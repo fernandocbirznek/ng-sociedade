@@ -8,13 +8,13 @@ import {
   AreaInteresseModel,
   NoticiaRequestModel, 
   UsuarioModel 
-} from 'src/app/models';
+} from '../../../../models';
 
 import { 
   getManyAreaInteresse,
   getOneUsuarioLogado, 
   inserirNoticia, 
-} from 'src/app/store';
+} from '../../../../store';
 
 @Component({
   selector: 'app-nova-noticia',

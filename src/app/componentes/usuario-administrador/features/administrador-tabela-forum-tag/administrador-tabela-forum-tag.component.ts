@@ -10,16 +10,16 @@ import { Observable, Subscription } from 'rxjs';
 import { 
   InserirForumTagComponent,
   ModalExcluirComponent, 
-} from 'src/app/componentes';
+} from '../../../../componentes';
 
 import { 
   ForumTagModel,
-} from 'src/app/models';
+} from '../../../../models';
 
 import { 
   excluirForumTag,
   getManyForumTag,
-} from 'src/app/store';
+} from '../../../../store';
 
 @Component({
   selector: 'app-administrador-tabela-forum-tag',

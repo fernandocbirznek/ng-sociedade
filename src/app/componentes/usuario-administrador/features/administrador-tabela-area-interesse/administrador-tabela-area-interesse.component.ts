@@ -10,16 +10,16 @@ import { Observable, Subscription } from 'rxjs';
 import { 
   InserirAreaInteresseComponent,
   ModalExcluirComponent, 
-} from 'src/app/componentes';
+} from '../../../../componentes';
 
 import { 
   AreaInteresseModel,
-} from 'src/app/models';
+} from '../../../../models';
 
 import { 
   excluirAreaInteresse,
   getManyAreaInteresse,
-} from 'src/app/store';
+} from '../../../../store';
 
 @Component({
   selector: 'app-administrador-tabela-area-interesse',

@@ -5,7 +5,9 @@ import { of } from 'rxjs';
 
 import * as actions from '../actions/area-fisica.actions';
 
-import { AreaFisicaService } from 'src/app/services';
+import { 
+  AreaFisicaService 
+} from '../../../../services';
 
 @Injectable()
 export class AreaFisicaEffects {

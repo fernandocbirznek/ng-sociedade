@@ -7,13 +7,13 @@ import {
   AreaInteresseModel, 
   UsuarioAreaInteresseModel, 
   UsuarioModel 
-} from 'src/app/models';
+} from '../../../../models';
 
 import { 
   getManyAreaInteresse, 
   inserirUsuarioAreaInteresse, 
   removerUsuarioAreaInteresse 
-} from 'src/app/store';
+} from '../../../../store';
 
 @Component({
   selector: 'app-editar-usuario-area-interesse',

@@ -6,7 +6,7 @@ import { Observable } from "rxjs";
 import { 
     NoticiaModel, 
     NoticiaRequestModel 
-} from "src/app/models";
+} from "../../models";
 
 @Injectable({
     providedIn: 'root'

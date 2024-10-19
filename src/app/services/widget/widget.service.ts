@@ -5,7 +5,7 @@ import { Observable } from "rxjs";
 
 import { 
     WidgetModel, 
-} from "src/app/models";
+} from "../../models";
 
 @Injectable({
     providedIn: 'root'

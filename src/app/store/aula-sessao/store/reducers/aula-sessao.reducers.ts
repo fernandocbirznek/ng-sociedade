@@ -1,10 +1,9 @@
-import { Action, createReducer, on } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
 import * as actions from '../actions/aula-sessao.actions';
 
 import { 
   AulaSessaoModel 
-} from 'src/app/models';
-
+} from '../../../../models';
 
 export const aulaSessaoFeatureKey = 'aula-sessao';
 

@@ -2,6 +2,7 @@ export * from './aula-filtro';
 export * from './aula-icone';
 export * from './ckeditor';
 export * from './editar-usuario-area-interesse';
+export * from './katex';
 export * from './modal-excluir';
 export * from './noticia-filtro';
 export * from './toast';

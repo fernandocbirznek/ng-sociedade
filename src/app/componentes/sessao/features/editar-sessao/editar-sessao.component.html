@@ -17,7 +17,9 @@
           </mat-select>
           <mat-error *ngIf="tipoSessao.invalid">Sessão é obrigatória</mat-error>
         </mat-form-field>
-        <app-ckeditor *ngIf="this.tipoSessao.value == '1' || this.tipoSessao.value == '5'" (onAlterouEditor)="alterouFormEditor($event)">
+        <app-ckeditor *ngIf="this.tipoSessao.value == '1' || this.tipoSessao.value == '5'" 
+          [conteudoRecebido]="this.data.sessaoEditar.conteudo"
+          (onAlterouEditor)="alterouFormEditor($event)">
         </app-ckeditor>
         <div *ngIf="this.tipoSessao.value == '2'" class="g-column-start-center g-full-width">
           <div class="g-column-start-start container-exemplo">

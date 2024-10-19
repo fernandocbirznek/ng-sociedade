@@ -1,9 +1,8 @@
-// import { NgModule } from '@angular/core';
+// import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 // import { BrowserModule } from '@angular/platform-browser';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { CommonModule } from '@angular/common';
 // import { LayoutModule } from '@angular/cdk/layout';
-// import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 // import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -14,11 +13,10 @@
 //     AlunoPerfilComponent, 
 //     AlunoVisualizarComponent 
 // } from '../features';
-
-// import { GenericoModule } from '../../genericos/modules/generico.modules';
-// import { AulaModule } from '../../aula';
+// import { MatIconModule } from '@angular/material/icon';
 
 // @NgModule({
+//     schemas: [CUSTOM_ELEMENTS_SCHEMA],
 //     declarations: [
 //         AlunoAulaComponent,
 //         AlunoFavoritadoComponent,
@@ -31,11 +29,11 @@
 //         BrowserModule,
 //         CommonModule,
 //         LayoutModule,
-//         CKEditorModule,
 //         FormsModule,
 //         ReactiveFormsModule,
+//         MatIconModule
 //         //GenericoModule
-//         AulaModule
+//         //AulaModule
 //     ],
 //     exports: [
 //         AlunoAulaComponent,

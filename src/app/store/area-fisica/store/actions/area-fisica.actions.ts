@@ -1,8 +1,8 @@
 import { createAction, props } from '@ngrx/store';
 
 import { 
-    AreaFisicaModel,
-} from 'src/app/models';
+  AreaFisicaModel 
+} from '../../../../models';
 
 export const selecionarManyAreaFisica = createAction(
   '[AreaFisica] selecionarManyAreaFisica'

@@ -1,6 +1,9 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { CriarContaPerfilModel } from 'src/app/models';
+
+import { 
+  CriarContaPerfilModel 
+} from '../../../../../models';
 
 @Component({
   selector: 'app-criar-perfil',

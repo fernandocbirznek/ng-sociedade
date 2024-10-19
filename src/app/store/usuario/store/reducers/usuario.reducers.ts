@@ -1,10 +1,10 @@
-import { Action, createReducer, on } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
 import * as actions from '../actions/usuario.actions';
 
 import { 
   TipoUsuarioEnum,
     UsuarioModel
-} from 'src/app/models';
+} from '../../../../models';
 
 export const usuarioFeatureKey = 'usuario';
 

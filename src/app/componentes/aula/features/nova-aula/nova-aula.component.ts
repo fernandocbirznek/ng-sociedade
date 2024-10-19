@@ -6,16 +6,15 @@ import { Observable, Subscription } from 'rxjs';
 
 import { 
   AreaFisicaModel,
-  AulaModel, 
   AulaViewModel, 
   UsuarioModel 
-} from 'src/app/models';
+} from '../../../../models';
 
 import { 
   getManyAreaFisica,
   getOneUsuarioLogado, 
   inserirAula, 
-} from 'src/app/store';
+} from '../../../../store';
 
 @Component({
   selector: 'app-nova-aula',
@@ -27,7 +26,7 @@ export class NovaAulaComponent implements OnInit {
   formGroupAula: FormGroup = null as any;
 
   formTitulo = new FormControl('', [Validators.required, Validators.maxLength(200)]);
-  formResumo = new FormControl('', [Validators.required, Validators.maxLength(200)]);
+  formResumo = new FormControl('', [Validators.required, Validators.maxLength(1000)]);
   formAreaFisica = new FormControl('', [Validators.required]);
 
   usuarioLogadoSubscription$: Subscription = new Subscription();

@@ -1,4 +1,4 @@
-import { UsuarioModel } from "src/app/models";
+import { UsuarioModel } from "../../../models";
 
 export class GenericoHelpers {
     static saveLocalStorage(usuarioLogado: UsuarioModel): void {
@@ -17,9 +17,9 @@ export class GenericoHelpers {
         return [...itens].sort((a, b) => {
             if (!a.dataCadastro || !b.dataCadastro)
                 return 0;
-            if (a.dataCadastro > b.dataCadastro)
-                return 1;
             if (a.dataCadastro < b.dataCadastro)
+                return 1;
+            if (a.dataCadastro > b.dataCadastro)
                 return -1;
             return 0;
         });

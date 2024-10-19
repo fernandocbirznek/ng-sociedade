@@ -8,7 +8,7 @@ import {
   AreaFisicaModel,
   AulaModel, 
   AulaViewModel
-} from 'src/app/models';
+} from '../../../../models';
 
 import { 
   adicionarRota,
@@ -17,7 +17,7 @@ import {
   getManyAreaFisicaDivisaoByAreaFisicaId,
   getManyAulaByAreaFisicaId,
   getOneAreaFisicaByAreaFisicaId,
-} from 'src/app/store';
+} from '../../../../store';
 
 @Component({
   selector: 'app-mecanica',

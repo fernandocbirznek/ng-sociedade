@@ -4,7 +4,7 @@ import * as fromUsuario from '../reducers/usuario.reducers';
 import { 
   TipoUsuarioEnum, 
   UsuarioModel
-} from 'src/app/models';
+} from '../../../../models';
 
 export const getUsuarioState = createFeatureSelector<fromUsuario.UsuarioState>(
   fromUsuario.usuarioFeatureKey

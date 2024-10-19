@@ -1,10 +1,9 @@
 import { createAction, props } from '@ngrx/store';
 
 import { 
-    TipoFiltroFavoritadoEnum,
     TipoSessaoAulaEnum,
     UsuarioAulaSessaoFavoritadoModel,
-} from 'src/app/models';
+} from '../../../../models';
 
 export const selecionarManyUsuarioAulaSessaoFavoritadoByUsuarioId = createAction(
     '[UsuarioAulaSessaoFavoritadoModel] selecionarManyUsuarioAulaSessaoFavoritadoByUsuarioId',

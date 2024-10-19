@@ -7,13 +7,13 @@ import { Observable } from 'rxjs';
 import { 
   CriarContaPerfilModel, 
   Login 
-} from 'src/app/models';
+} from '../../../../models';
 
 import { 
   criarConta, 
   loginConta, 
   getOneUsuarioLogado 
-} from 'src/app/store';
+} from '../../../../store';
 
 @Component({
   selector: 'app-login-criar-conta',

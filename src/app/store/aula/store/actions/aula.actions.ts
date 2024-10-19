@@ -2,10 +2,9 @@ import { createAction, props } from '@ngrx/store';
 
 import { 
   AulaFilterModel,
-  AulaModel, 
   AulaTagModel,
-  AulaViewModel
-} from 'src/app/models';
+  AulaViewModel 
+} from '../../../../models';
 
 export const selecionarOneAulaById = createAction(
   '[Aula] selecionarOneAulaById',

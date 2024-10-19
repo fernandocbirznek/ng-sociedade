@@ -1,5 +1,5 @@
 import { DomSanitizer } from "@angular/platform-browser";
-import { LinkYoutubeModel } from "src/app/models";
+import { LinkYoutubeModel } from "../../../models";
 
 export class AulaHelpers {
     static getLinkYoutube(item: string, sanitizer: DomSanitizer): LinkYoutubeModel {

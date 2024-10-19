@@ -10,7 +10,7 @@ import {
     selecionarManyForumTopico,
     selecionarManyNoticia,
     selecionarManyUsuario,
-} from "src/app/store";
+} from "../../../store";
 
 
 @Injectable({ providedIn: 'root' })

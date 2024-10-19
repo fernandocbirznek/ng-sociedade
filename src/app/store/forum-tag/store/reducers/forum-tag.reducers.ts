@@ -1,10 +1,9 @@
-import { Action, createReducer, on } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
 import * as actions from '../actions/forum-tag.actions';
 
 import { 
-    ForumTagModel,
-} from 'src/app/models';
-
+  ForumTagModel 
+} from '../../../../models';
 
 export const forumTagFeatureKey = 'forum-tag';
 

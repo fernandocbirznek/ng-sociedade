@@ -3,7 +3,7 @@ import * as fromHeader from '../reducers/header.reducers';
 
 import { 
   HeaderRotaModel 
-} from 'src/app/models';
+} from '../../../../models';
 
 export const selecionarHeaderState = createFeatureSelector<fromHeader.HeaderState>(
   fromHeader.headerFeatureKey

@@ -2,7 +2,7 @@ import { createAction, props } from '@ngrx/store';
 
 import { 
     WidgetModel,
-} from 'src/app/models';
+} from '../../../../models';
 
 export const selecionarWidgetCursarByUsuarioId = createAction(
     '[Widget] selecionarWidgetCursarByUsuarioId',

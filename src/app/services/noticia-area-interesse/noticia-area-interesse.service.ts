@@ -5,8 +5,7 @@ import { Observable } from "rxjs";
 
 import { 
     AreaInteresseModel,
-    NoticiaAreaInteresseModel,
-} from "src/app/models";
+} from "../../models";
 
 @Injectable({
     providedIn: 'root'

@@ -8,16 +8,17 @@ import {
   deslogarConta, 
   getOneUsuarioLogado, 
   removerRota
-} from 'src/app/store';
+} from '../../../../store';
 
 import { 
   UsuarioModel 
-} from 'src/app/models';
+} from '../../../../models';
 
 import { 
   ModalExcluirComponent, 
   ToastComponent 
-} from 'src/app/componentes';
+} from '../../../../componentes';
+
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 

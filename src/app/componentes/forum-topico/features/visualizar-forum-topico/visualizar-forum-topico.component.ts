@@ -9,19 +9,20 @@ import {
   ForumTopicoEnum, 
   ForumTopicoViewModel, 
   UsuarioModel
-} from 'src/app/models';
+} from '../../../../models';
 
 import { 
   excluirForumTopico,
   getOneForumTopicoById, 
   getOneUsuarioLogado,
   removerRota,
-} from 'src/app/store';
+} from '../../../../store';
 
 import { 
   AtualizarForumTopicoComponent, 
   ModalExcluirComponent 
-} from 'src/app/componentes';
+} from '../../../../componentes';
+
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({

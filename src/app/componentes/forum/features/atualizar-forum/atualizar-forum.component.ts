@@ -5,11 +5,11 @@ import { Store } from '@ngrx/store';
 
 import { 
   ForumModel,
-} from 'src/app/models';
+} from '../../../../models';
 
 import { 
   atualizarForum,
-} from 'src/app/store';
+} from '../../../../store';
 
 @Component({
   selector: 'app-atualizar-forum',

@@ -4,12 +4,12 @@ import { MatDialog } from '@angular/material/dialog';
 import { 
   EditarUsuarioAreaInteresseComponent, 
   ProfessorEditarPerfilComponent
-} from 'src/app/componentes';
+} from '../../../../../componentes';
 
 import { 
   AreaInteresseModel,
   UsuarioModel 
-} from 'src/app/models';
+} from '../../../../../models';
 
 @Component({
   selector: 'app-professor-perfil',

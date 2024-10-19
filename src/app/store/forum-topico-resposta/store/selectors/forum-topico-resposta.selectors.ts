@@ -1,17 +1,17 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as fromForumTopicoResposta from '../reducers/forum-topico-resposta.reducers';
 
+import * as forumTopicoReplicaFeature from '../../../forum-topico-replica/store';
+
 import { 
     ForumTopicoReplicaModel,
     ForumTopicoRespostaModel, 
     ForumTopicoRespostaViewModel
-} from 'src/app/models';
-
-import * as forumTopicoReplicaFeature from '../../../forum-topico-replica/store';
+} from '../../../../models';
 
 import { 
     GenericoHelpers 
-} from 'src/app/componentes';
+} from '../../../../componentes';
 
 export const getForumTopicoRespostaState = createFeatureSelector<fromForumTopicoResposta.ForumTopicoRespostaState>(
     fromForumTopicoResposta.forumTopicoRespostaFeatureKey

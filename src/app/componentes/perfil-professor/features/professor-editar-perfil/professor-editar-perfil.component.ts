@@ -8,12 +8,12 @@ import {
   AreaInteresseModel,
   UsuarioModel, 
   UsuarioPerfilModel
-} from 'src/app/models';
+} from '../../../../models';
 
 import { 
   atualizarUsuarioPerfil,
   getManyAreaInteresse 
-} from 'src/app/store';
+} from '../../../../store';
 
 @Component({
   selector: 'app-professor-editar-perfil',

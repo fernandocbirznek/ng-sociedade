@@ -12,17 +12,17 @@ import {
   AdministradorModalCriarUsuarioComponent,
   ModalExcluirComponent,
   ProfessorPerfilVisualizarComponent, 
-} from 'src/app/componentes';
+} from '../../../../componentes';
 
 import { 
   TipoUsuarioEnum, 
   UsuarioModel
-} from 'src/app/models';
+} from '../../../../models';
 
 import { 
   excluirUsuario,
   getManyUsuarioByTipoUsuario,
-} from 'src/app/store';
+} from '../../../../store';
 
 @Component({
   selector: 'app-administrador-tabela-professor',
@@ -31,7 +31,7 @@ import {
 })
 export class AdministradorTabelaProfessorComponent implements OnInit {
 
-  displayedColumns: string[] = ['nome', 'email', 'areaInteresse', 'dataCadastro', 'acao'];
+  displayedColumns: string[] = ['nome', 'email', 'dataCadastro', 'acao'];
   dataSource = new MatTableDataSource();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;

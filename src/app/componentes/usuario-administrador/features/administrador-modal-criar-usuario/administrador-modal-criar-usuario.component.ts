@@ -1,8 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
-import { CriarContaPerfilModel } from 'src/app/models';
-import { criarUsuario } from 'src/app/store';
+
+import { 
+  CriarContaPerfilModel 
+} from '../../../../models';
+
+import { 
+  criarUsuario 
+} from '../../../../store';
 
 @Component({
   selector: 'app-administrador-modal-criar-usuario',

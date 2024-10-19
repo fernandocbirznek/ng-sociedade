@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 
 import { 
   UsuarioModel 
-} from 'src/app/models';
+} from '../../../../models';
 
 @Component({
   selector: 'app-usuario-conquistas',

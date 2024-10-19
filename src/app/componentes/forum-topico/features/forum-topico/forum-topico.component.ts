@@ -6,21 +6,21 @@ import { Observable, Subscription } from 'rxjs';
 
 import { 
   InserirForumTopicoComponent 
-} from 'src/app/componentes';
+} from '../../../../componentes';
 
 import { 
   ForumModel,
   ForumTopicoEnum,
   ForumTopicoViewModel,
   UsuarioModel, 
-} from 'src/app/models';
+} from '../../../../models';
 
 import { 
   adicionarRota,
   getManyForumTopico, 
   getOneForumByForumId,
   getOneUsuarioLogado,
-} from 'src/app/store';
+} from '../../../../store';
 
 @Component({
   selector: 'app-forum-topico',

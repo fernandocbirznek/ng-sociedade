@@ -1,9 +1,8 @@
 import { createAction, props } from "@ngrx/store";
 
 import { 
-    ArquivoPdfCommandModel, 
-    ArquivoPdfCommandResponseModel
-} from "src/app/models";
+  ArquivoPdfCommandModel 
+} from "../../../../models";
 
 export const selecionarManyArquivoPdfByAulaId = createAction(
   '[ArquivoPdf] selecionarManyArquivoPdfByAulaId',

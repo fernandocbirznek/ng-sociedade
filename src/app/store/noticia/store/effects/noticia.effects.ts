@@ -9,7 +9,7 @@ import * as actions from '../actions/noticia.actions';
 import { 
   NoticiaAreaInteresseService, 
   NoticiaService 
-} from 'src/app/services';
+} from '../../../../services';
 
 @Injectable()
 export class NoticiaEffects {

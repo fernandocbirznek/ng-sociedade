@@ -37,8 +37,9 @@
 
 .card-titulo-cursando,
 .card-titulo-concluido {
-    margin-left: 55px;
+    margin-left: 41px;
     max-width: 240px;
+    background-color: #ffcd76;
 }
 
 .card-mover-direita:hover,

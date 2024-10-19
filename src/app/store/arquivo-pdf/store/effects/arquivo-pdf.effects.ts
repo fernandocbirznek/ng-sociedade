@@ -5,10 +5,19 @@ import { of } from 'rxjs';
 
 import * as actions from '../actions/arquivo-pdf.actions';
 
-import { ArquivoPdfService } from 'src/app/services';
 import { Store } from '@ngrx/store';
-import { inserirAulaSessao, inserirAulaSessaoSuccess } from 'src/app/store';
-import { AulaSessaoModel } from 'src/app/models';
+
+import { 
+  AulaSessaoModel 
+} from '../../../../models';
+
+import { 
+  ArquivoPdfService 
+} from '../../../../services';
+
+import { 
+  inserirAulaSessaoSuccess 
+} from '../../../aula-sessao';
 
 @Injectable()
 export class ArquivoPdfEffects {
@@ -45,6 +54,7 @@ export class ArquivoPdfEffects {
               aulaSessao.aulaId = action.arquivoPdfCommand.aulaSessao.aulaId;
               aulaSessao.aulaSessaoTipo = action.arquivoPdfCommand.aulaSessao.aulaSessaoTipo;
               aulaSessao.conteudo = response.id.toString();
+              aulaSessao.id = response.aulaSessaoId;
 
               //TODO, corrigir
               this.store.dispatch(inserirAulaSessaoSuccess({ aulaSessao: aulaSessao, response: aulaSessao }));

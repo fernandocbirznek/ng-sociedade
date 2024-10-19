@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, concatMap } from 'rxjs/operators';
 import { of } from 'rxjs';
@@ -16,11 +16,11 @@ import {
   UsuarioAulaFavoritadaService, 
   UsuarioNoticiaFavoritadoService, 
   UsuarioPerfilService 
-} from 'src/app/services';
+} from '../../../../services';
 
 import { 
   TipoUsuarioEnum 
-} from 'src/app/models';
+} from '../../../../models';
 
 import { 
   selecionarManyUsuarioAulaCurtido, 
@@ -29,24 +29,30 @@ import {
 } from '../actions/manipular-conta.actions';
 
 import { 
-  atualizarAdicaoNoticiaFavoritado, 
-  atualizarRemocaoNoticiaFavoritado 
-} from 'src/app/store/noticia';
+  GenericoHelpers 
+} from '../../../../componentes';
 
 import { 
-  adicionarRota,
-  alterarTituloPagina,
   atualizarAdicaoAulaCurtido, 
-  atualizarAdicaoAulaFavoritada, 
   atualizarRemocaoAulaCurtido, 
-  atualizarRemocaoAulaFavoritada,
-  removerRota
-} from 'src/app/store';
+  atualizarAdicaoAulaFavoritada, 
+  atualizarRemocaoAulaFavoritada 
+} from '../../../aula';
 
-import { GenericoHelpers } from 'src/app/componentes/genericos/helpers/generico.helper';
+import { 
+  adicionarRota, 
+  removerRota, 
+  alterarTituloPagina 
+} from '../../../header';
+
+import { 
+  atualizarAdicaoNoticiaFavoritado, 
+  atualizarRemocaoNoticiaFavoritado 
+} from '../../../noticia';
 
 @Injectable()
 export class ManipularContaEffects {
+  //private actions2$ = inject(Actions);
   snackBar: any;
 
   constructor(

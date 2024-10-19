@@ -1,9 +1,9 @@
-import { Action, createReducer, on } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
 import * as actions from '../actions/widget.actions';
 
 import { 
     WidgetModel
-} from 'src/app/models';
+} from '../../../../models';
 
 export const widgetFeatureKey = 'widget';
 

@@ -5,11 +5,11 @@ import { Store } from '@ngrx/store';
 
 import { 
   AreaFisicaModel 
-} from 'src/app/models';
+} from '../../../../models';
 
 import { 
   inserirAreaFisica 
-} from 'src/app/store';
+} from '../../../../store';
 
 @Component({
   selector: 'app-inserir-area-fisica',

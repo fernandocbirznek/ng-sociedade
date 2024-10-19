@@ -6,9 +6,11 @@ import { Store } from '@ngrx/store';
 import { 
   TipoUsuarioEnum, 
   UsuarioModel
-} from 'src/app/models';
-import { atualizarUsuario } from 'src/app/store';
+} from '../../../../models';
 
+import { 
+  atualizarUsuario 
+} from '../../../../store';
 
 @Component({
   selector: 'app-administrador-alterar-usuario',

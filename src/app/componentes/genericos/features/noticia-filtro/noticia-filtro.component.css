@@ -11,6 +11,7 @@
 
 .container-inputs {
     width: 100%;
+    gap: 20px;
 }
 
 .width-250px {
@@ -24,12 +25,6 @@
     max-height: 100% !important;
     min-height: 100% !important;
     flex: auto !important;
-}
-
-.m-datapicker-toggle {
-    position: absolute;
-    right: -5px;
-    top: 0px;
 }
 
 .container-tag-filter {
@@ -48,6 +43,10 @@
     font-weight: bold;
     font-size: 18px;
     gap: 5px;
+}
+
+.icone {
+    width: 40px;
 }
 
 .icone-filter-close:hover {

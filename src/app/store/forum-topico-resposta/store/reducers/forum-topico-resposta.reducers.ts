@@ -1,10 +1,9 @@
-import { Action, createReducer, on } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
 import * as actions from '../actions/forum-topico-resposta.actions';
 
 import { 
-    ForumTopicoRespostaModel,
-} from 'src/app/models';
-
+  ForumTopicoRespostaModel 
+} from '../../../../models';
 
 export const forumTopicoRespostaFeatureKey = 'forum-topico-resposta';
 

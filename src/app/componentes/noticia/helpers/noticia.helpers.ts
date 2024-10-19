@@ -1,7 +1,8 @@
+import moment from "moment";
 import { 
     NoticiaFilterModel, 
     NoticiaFilterSelectedModel
-} from "src/app/models";
+} from "../../../models";
 
 export class NoticiaHelpers {
     static noticiaSelectedItemMany(item: NoticiaFilterModel): NoticiaFilterSelectedModel[] {
@@ -19,12 +20,12 @@ export class NoticiaHelpers {
 
         if (item && item.dataInicio) 
             noticiaFilterSelectedMany.push(
-                this.getSelectedItem(item.dataInicio.toDateString(), 3000, "today")
+                this.getSelectedItem(moment(item.dataInicio).format('MM/DD/YYYY'), 3000, "today")
             );
 
         if (item && item.dataFim) 
             noticiaFilterSelectedMany.push(
-                this.getSelectedItem(item.dataFim.toDateString(), 4000, "event")
+                this.getSelectedItem(moment(item.dataFim).format('MM/DD/YYYY'), 4000, "event")
             );
 
         return noticiaFilterSelectedMany

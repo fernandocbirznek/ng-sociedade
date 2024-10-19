@@ -1,11 +1,11 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as fromAreaFisicaDivisao from '../reducers/area-fisica-divisao.reducers';
 
-import { 
-    AreaFisicaDivisaoModel 
-} from 'src/app/models';
-
 import * as headerFeature from '../../../header/store';
+
+import { 
+  AreaFisicaDivisaoModel 
+} from '../../../../models';
 
 export const selectAreaFisicaDivisaoState = createFeatureSelector<fromAreaFisicaDivisao.AreaFisicaDivisaoState>(
     fromAreaFisicaDivisao.areaFisicaDivisaoFeatureKey

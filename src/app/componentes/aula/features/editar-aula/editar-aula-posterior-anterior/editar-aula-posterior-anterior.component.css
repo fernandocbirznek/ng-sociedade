@@ -6,7 +6,8 @@
 }
 
 .container-criar-sessao {
-    width: 400px;
+    width: 300px;
+    gap: 10px;
 }
 
 .alerta-link {
@@ -21,8 +22,8 @@
 
 .button-nova-sessao {
     width: 150px;
-    margin-right: 20px;
     gap: 10px;
+    text-wrap: nowrap;
 }
 
 .button-disabled {

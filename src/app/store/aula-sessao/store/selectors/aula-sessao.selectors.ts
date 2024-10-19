@@ -1,12 +1,12 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as fromAulaSessao from '../reducers/aula-sessao.reducers';
 
+import * as arquivoPdfFeature from '../../../arquivo-pdf/store';
+
 import { 
   ArquivoPdfModel, 
   AulaSessaoModel
-} from 'src/app/models';
-
-import * as arquivoPdfFeature from '../../../arquivo-pdf/store';
+} from '../../../../models';
 
 export const selectAulaSessaoState = createFeatureSelector<fromAulaSessao.AulaSessaoState>(
   fromAulaSessao.aulaSessaoFeatureKey

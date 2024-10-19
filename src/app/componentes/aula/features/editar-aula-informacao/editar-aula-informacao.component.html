@@ -1,21 +1,21 @@
 <div class="g-column-start-start container-aula">
     <h2>Atualizar informações aula</h2>
-    <form [formGroup]="this.formGroupAula" class="g-column-start-start">   
-        <mat-form-field appearance="outline">
+    <form [formGroup]="this.formGroupAula" class="g-column-start-start g-full-width">   
+        <mat-form-field appearance="outline" class="g-full-width">
             <mat-label>Área da Física</mat-label>
             <mat-select formControlName="formAreaFisica" matInput>
                 <mat-option *ngFor="let area of this.areaFisicaMany" [value]="area.id">{{ area.descricao }}</mat-option>
             </mat-select>
             <mat-error *ngIf="formAreaFisica.invalid">Área da Física é obrigatória</mat-error>
         </mat-form-field>
-        <mat-form-field  appearance="outline">
+        <mat-form-field  appearance="outline" class="g-full-width">
             <mat-label>Título</mat-label>
             <input formControlName="formTitulo" matInput required>
             <mat-error *ngIf="formTitulo.invalid">Titulo é obrigatório</mat-error>
         </mat-form-field>         
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" class="g-full-width">
             <mat-label>Resumo</mat-label>
-            <textarea maxlength="200" formControlName="formResumo" matInput required></textarea>
+            <textarea maxlength="1000" rows="4" formControlName="formResumo" matInput required></textarea>
             <mat-error *ngIf="formResumo.invalid">Resumo é obrigatória</mat-error>
         </mat-form-field>
     </form>

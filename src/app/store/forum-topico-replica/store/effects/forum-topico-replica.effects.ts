@@ -5,7 +5,9 @@ import { of } from 'rxjs';
 
 import * as actions from '../actions/forum-topico-replica.actions';
 
-import { ForumTopicoReplicaService } from 'src/app/services';
+import { 
+  ForumTopicoReplicaService 
+} from '../../../../services';
 
 @Injectable()
 export class ForumTopicoReplicaEffects {

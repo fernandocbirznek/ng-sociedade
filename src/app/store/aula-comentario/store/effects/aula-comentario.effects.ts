@@ -5,7 +5,9 @@ import { of } from 'rxjs';
 
 import * as actions from '../actions/aula-comentario.actions';
 
-import { AulaComentarioService } from 'src/app/services';
+import { 
+  AulaComentarioService 
+} from '../../../../services';
 
 @Injectable()
 export class AulaComentarioEffects {

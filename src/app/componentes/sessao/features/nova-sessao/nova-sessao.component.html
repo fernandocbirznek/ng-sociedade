@@ -21,6 +21,7 @@
         </mat-form-field>
 
         <app-ckeditor *ngIf="this.tipoSessao.value == '1' || this.tipoSessao.value == '5'" 
+          class="g-full-width app-nova-sessao-ckeditor"
           (onAlterouEditor)="alterouFormEditor($event)">
         </app-ckeditor>
 
@@ -36,7 +37,6 @@
               <a href="https://edisciplinas.usp.br/pluginfile.php/5567087/mod_resource/content/1/Tutorial_TEX.pdf">Tutorial Latex</a>
             </div>
             <span>Exemplo, em Latex: {{ this.exemploEquacao }}</span>
-            <!-- <div>fica: <ng-katex [equation]="exemploEquacao"></ng-katex></div> -->
           </div>
           
           <mat-form-field class="g-full-width" appearance="outline">
@@ -46,9 +46,13 @@
             </textarea>
             <mat-error *ngIf="conteudo.invalid">Conteúdo é obrigatório</mat-error>
           </mat-form-field>
+          <div class="g-column-start-center g-full-width">
+            <div>Vai ficar desse modo:</div>
+            <app-katex [equacao]="this.formSessao.get('conteudo_sessao')?.value"></app-katex>
+          </div>
         </div>
 
-        <div *ngIf="this.tipoSessao.value == '3'" class="g-full-width g-column-start-center g-full-width">
+        <div *ngIf="this.tipoSessao.value == '3'" class="g-column-start-center g-full-width">
           <input type="file" formControlName="formFoto" (change)="imagemAlterada($event)" accept="image/*">
           <div *ngIf="this.conteudoImagem" class="g-column-between-center">
             <img [src]="'data:image/png;base64,' + this.conteudoImagem" alt="Imagem" class="imagem">

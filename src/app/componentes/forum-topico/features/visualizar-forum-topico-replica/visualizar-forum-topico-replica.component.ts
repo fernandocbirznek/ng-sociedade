@@ -8,20 +8,20 @@ import { Observable, Subscription } from 'rxjs';
 import { 
   AtualizarForumTopicoReplicaComponent,
   ModalExcluirComponent
-} from 'src/app/componentes';
+} from '../../../../componentes';
 
 import { 
   ComentarioView,
   ForumTopicoReplicaModel, 
   UsuarioModel
-} from 'src/app/models';
+} from '../../../../models';
 
 import { 
   excluirForumTopicoReplica, 
   getManyForumTopicoReplicaByForumTopicoRespostaId,
   getOneUsuarioLogado,
   inserirForumTopicoReplica
-} from 'src/app/store';
+} from '../../../../store';
 
 @Component({
   selector: 'app-visualizar-forum-topico-replica',

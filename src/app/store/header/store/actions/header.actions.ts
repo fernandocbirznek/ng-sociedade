@@ -2,7 +2,7 @@ import { createAction, props } from '@ngrx/store';
 
 import { 
   HeaderRotaModel 
-} from 'src/app/models';
+} from '../../../../models';
 
 export const alterarTituloPagina = createAction(
   '[Header] AlterarTituloPagina',

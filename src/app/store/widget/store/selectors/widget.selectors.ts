@@ -5,7 +5,7 @@ import {
   InformacaoWidgetAlunoViewModel, 
   WidgetModel, 
   WidgetViewModel 
-} from 'src/app/models';
+} from '../../../../models';
 
 export const getWidgetState = createFeatureSelector<fromWidget.WidgetState>(
   fromWidget.widgetFeatureKey

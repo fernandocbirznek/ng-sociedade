@@ -3,7 +3,7 @@ import * as fromForum from '../reducers/forum.reducers';
 
 import { 
   ForumModel 
-} from 'src/app/models';
+} from '../../../../models';
 
 export const getForumState = createFeatureSelector<fromForum.ForumState>(
     fromForum.forumFeatureKey

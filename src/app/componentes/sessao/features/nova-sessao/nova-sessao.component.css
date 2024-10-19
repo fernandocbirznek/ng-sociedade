@@ -3,14 +3,15 @@
   min-width: 800px;
   min-height: 400px;
   height: 100%;
+  padding: 20px;
 }
 
 .fechar {
   font-weight: bolder;
   cursor: pointer;
   position: absolute;
-  top: -15px;
-  right: -15px;
+  top: 10px;
+  right: 10px;
   font-size: 18px;
 }
 
@@ -25,8 +26,13 @@
   height: 100%;
 }
 
-::ng-deep .ckeditor-nova-sessao .ck-content {
+::ng-deep .app-nova-sessao-ckeditor .ck-content {
   min-height: 150px;
+}
+
+::ng-deep .app-nova-sessao-ckeditor .main-container,
+::ng-deep .app-nova-sessao-ckeditor .editor-container__editor {
+  max-width: 100% !important;
 }
 
 .container-exemplo {

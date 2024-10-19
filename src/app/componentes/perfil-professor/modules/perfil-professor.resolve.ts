@@ -5,14 +5,14 @@ import { Observable, Subscription } from "rxjs";
 
 import { 
     UsuarioModel 
-} from "src/app/models";
+} from "../../../models";
 
 import { 
     selecionarManyAulaByProfessorId, 
     selecionarManyUsuarioAulaCurtido, 
     selecionarManyUsuarioAulaFavoritada, 
     selecionarNoticiaManyByProfessorId 
-} from "src/app/store";
+} from "../../../store";
 
 @Injectable({ providedIn: 'root' })
 export class PerfilProfessorResolver  {

@@ -14,13 +14,13 @@
             <mat-form-field  appearance="outline" class="width-250px" [ngClass]="{'full-width': this.flexColumn}">
                 <mat-label>Data início</mat-label>
                 <input [formControl]="formControlDataInicio" matInput [matDatepicker]="pickerDataInicio" (dateChange)="filtroDataInicio()">
-                <mat-datepicker-toggle matIconSuffix [for]="pickerDataInicio" class="m-datapicker-toggle"></mat-datepicker-toggle>
+                <mat-datepicker-toggle matIconSuffix [for]="pickerDataInicio"></mat-datepicker-toggle>
                 <mat-datepicker #pickerDataInicio></mat-datepicker>
             </mat-form-field>
             <mat-form-field appearance="outline" class="width-250px" [ngClass]="{'full-width': this.flexColumn}">
                 <mat-label>Data fim</mat-label>
                 <input [formControl]="formControlDataFim" matInput [matDatepicker]="pickerDataFim" (dateChange)="filtroDataFim()">
-                <mat-datepicker-toggle matIconSuffix [for]="pickerDataFim" class="m-datapicker-toggle"></mat-datepicker-toggle>
+                <mat-datepicker-toggle matIconSuffix [for]="pickerDataFim"></mat-datepicker-toggle>
                 <mat-datepicker #pickerDataFim></mat-datepicker>
             </mat-form-field>
         </div>
@@ -35,9 +35,9 @@
     </div>
     <div *ngIf="!this.flexColumn" class="g-row-center-center container-filter-many">
         <div *ngFor="let item of this.noticiaFilterSelectedMany" class="g-row-between-center container-filter">
-            <mat-icon class="material-symbols-outlined">{{ item.matIconName }}</mat-icon>
+            <mat-icon class="icone material-symbols-outlined">{{ item.matIconName }}</mat-icon>
             <div class="g-full-width">{{ item.filtroNome }}</div>
-            <mat-icon class="icone-filter-close material-symbols-outlined" (click)="retirarFiltro(item)">cancel</mat-icon>
+            <mat-icon class="icone icone-filter-close material-symbols-outlined" (click)="retirarFiltro(item)">cancel</mat-icon>
         </div>
     </div>
 </div>

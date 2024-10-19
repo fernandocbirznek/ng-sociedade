@@ -5,11 +5,11 @@ import { Store } from '@ngrx/store';
 
 import { 
   AreaInteresseModel,
-} from 'src/app/models';
+} from '../../../../models';
 
 import { 
   inserirAreaInteresse,
-} from 'src/app/store';
+} from '../../../../store';
 
 @Component({
   selector: 'app-inserir-area-interesse',

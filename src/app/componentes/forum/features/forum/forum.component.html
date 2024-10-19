@@ -2,14 +2,14 @@
     <div class="g-row-center-center g-row-wrap">
         <div *ngFor="let forum of this.forumMany" class="g-column-start-center card">
             <div>{{ forum.titulo }}</div>
-            <img *ngIf="forum.id == 1" class="imagem" src="../../../../assets/imagens/header/mecanica.png">
-            <img *ngIf="forum.id == 2" class="imagem" src="../../../../assets/imagens/header/termodinamica.png">
-            <img *ngIf="forum.id == 3" class="imagem" src="../../../../assets/imagens/header/ondulatoria.png">
-            <img *ngIf="forum.id == 4" class="imagem" src="../../../../assets/imagens/header/eletromagnetismo.png">
-            <img *ngIf="forum.id == 5" class="imagem" src="../../../../assets/imagens/header/fisicamoderna.png">
-            <img *ngIf="forum.id == 6" class="imagem" src="../../../../assets/imagens/header/matematica.png">
-            <img *ngIf="forum.id == 7" class="imagem" src="../../../../assets/imagens/header/vestibular.png">
-            <img *ngIf="forum.id == 8" class="imagem" src="../../../../assets/imagens/header/home.png">
+            <img *ngIf="forum.id == 1" class="imagem" src="../../../../../assets/imagens/header/mecanica.png">
+            <img *ngIf="forum.id == 2" class="imagem" src="../../../../../assets/imagens/header/termodinamica.png">
+            <img *ngIf="forum.id == 3" class="imagem" src="../../../../../assets/imagens/header/ondulatoria.png">
+            <img *ngIf="forum.id == 4" class="imagem" src="../../../../../assets/imagens/header/eletromagnetismo.png">
+            <img *ngIf="forum.id == 5" class="imagem" src="../../../../../assets/imagens/header/fisicamoderna.png">
+            <img *ngIf="forum.id == 6" class="imagem" src="../../../../../assets/imagens/header/matematica.png">
+            <img *ngIf="forum.id == 7" class="imagem" src="../../../../../assets/imagens/header/vestibular.png">
+            <img *ngIf="forum.id == 8" class="imagem" src="../../../../../assets/imagens/header/home.png">
             <div class="acessar" (click)="acessarForum(forum)">Acessar</div>
         </div>
     </div> 

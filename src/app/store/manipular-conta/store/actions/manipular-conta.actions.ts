@@ -12,7 +12,7 @@ import {
   UsuarioModel,
   UsuarioNoticiaFavoritadoModel,
   UsuarioPerfilModel
-} from 'src/app/models';
+} from '../../../../models';
 
 export const criarConta = createAction(
   '[CriarConta] CriarConta',

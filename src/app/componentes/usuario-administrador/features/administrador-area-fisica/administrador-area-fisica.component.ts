@@ -11,18 +11,18 @@ import {
   AtualizarAreaFisicaComponent,
   InserirAreaFisicaComponent,
   ModalExcluirComponent, 
-} from 'src/app/componentes';
+} from '../../../../componentes';
 
 import { 
   AreaFisicaModel,
-} from 'src/app/models';
+} from '../../../../models';
 
 import { 
   adicionarRota,
   alterarTituloPagina,
   getManyAreaFisica,
   removerAreaFisica,
-} from 'src/app/store';
+} from '../../../../store';
 
 @Component({
   selector: 'app-administrador-area-fisica',

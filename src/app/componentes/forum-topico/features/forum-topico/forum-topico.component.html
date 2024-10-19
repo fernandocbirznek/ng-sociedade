@@ -19,8 +19,8 @@
     <div class="g-row-start-start g-row-wrap container-forum-many">
         <div *ngFor="let forumTopico of this.forumTopicoMany">
             <div class="g-column-between-between card-forum">
-                <div class="g-full-width g-row-between-start">
-                    <div class="g-column-between-center aula-autor">
+                <div class="g-full-width g-full-height g-row-between-start">
+                    <div class="g-column-start-center aula-autor">
                         <div class="g-text-overflow-2 usuario-nome">{{ forumTopico.usuarioNome }}</div>
                         <div *ngIf="this.forumTopico.usuarioFoto" class="g-column-between-center">
                             <img [src]="'data:image/png;base64,' + this.forumTopico.usuarioFoto" alt="Imagem" class="imagem">
@@ -31,7 +31,7 @@
                     </div>
                     <div class="divisor"></div>
                     <div class="g-column-around-start descricao">
-                        <div class="g-row-center-center g-full-width">
+                        <div class="g-row-center-start g-full-width g-full-height">
                             <div class="titulo">{{ forumTopico.titulo }}</div>
                         </div>
                         <div class="g-column-between-start g-full-width">

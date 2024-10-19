@@ -1,13 +1,13 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as fromAulaComentario from '../reducers/aula-comentario.reducers';
 
+import * as manipularContaFeature from '../../../manipular-conta/store';
+
 import { 
-  AulaComentarioModel, 
+  AulaComentarioModel,
   AulaComentarioViewModel, 
   UsuarioModel
-} from 'src/app/models';
-
-import * as manipularContaFeature from '../../../manipular-conta/store';
+} from '../../../../models';
 
 export const getAulaComentarioState = createFeatureSelector<fromAulaComentario.AulaComentarioState>(
     fromAulaComentario.aulaComentarioFeatureKey

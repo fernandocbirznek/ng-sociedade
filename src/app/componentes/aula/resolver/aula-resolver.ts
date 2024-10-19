@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { ActivatedRoute, ActivatedRouteSnapshot } from "@angular/router";
+import { ActivatedRouteSnapshot } from "@angular/router";
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
 
@@ -9,7 +9,7 @@ import {
     selecionarManyAulaComentarioByAulaId, 
     selecionarManyAulaSessaoByAulaId, 
     selecionarOneAulaById
-} from "src/app/store";
+} from "../../../store";
 
 @Injectable({
     providedIn: 'root'

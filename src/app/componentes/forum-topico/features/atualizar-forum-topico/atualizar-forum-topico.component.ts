@@ -9,14 +9,15 @@ import {
   ForumTopicoModel,
   ForumTopicoViewModel,
   UsuarioModel 
-} from 'src/app/models';
+} from '../../../../models';
 
 import { 
   atualizarForumTopico,
   getManyForumTag, 
   getOneUsuarioLogado, 
   selecionarManyForumTag
-} from 'src/app/store';
+} from '../../../../store';
+
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 @Component({

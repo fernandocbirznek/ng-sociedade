@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { AutenticacaoService } from "src/app/services";
+import { AutenticacaoService } from "../../../services";
 
 import { MecanicaComponent } from "../features/mecanica";
 

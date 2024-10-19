@@ -5,14 +5,14 @@ import { Observable, Subscription } from "rxjs";
 
 import { 
     UsuarioModel 
-} from "src/app/models";
+} from "../../../models";
 
 import { 
     selecionarManyUsuarioAulaSessaoFavoritadoByUsuarioId,
     selecionarWidgetConcluidoByUsuarioId, 
     selecionarWidgetCursandoByUsuarioId, 
     selecionarWidgetCursarByUsuarioId 
-} from "src/app/store";
+} from "../../../store";
 
 
 @Injectable({ providedIn: 'root' })

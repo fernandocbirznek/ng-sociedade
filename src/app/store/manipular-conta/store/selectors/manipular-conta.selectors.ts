@@ -9,7 +9,7 @@ import {
   UsuarioAulaFavoritadaModel,
   UsuarioAulaSessaoFavoritadoModel,
   UsuarioNoticiaFavoritadoModel 
-} from 'src/app/models';
+} from '../../../../models';
 
 import * as usuarioAulaSessaoFavoritadoFeature from '../../../usuario-aula-sessao-favoritado/store';
 

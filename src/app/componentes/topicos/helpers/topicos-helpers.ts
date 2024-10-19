@@ -1,7 +1,7 @@
 import { 
     AulaViewModel,
     TipoOrdenarAulaFiltroEnum 
-} from "src/app/models";
+} from "../../../models";
 
 export class TopicoHelpers {
     static ordernarByTipoAulaFiltroEnum(itens: AulaViewModel[], tipoEnum: TipoOrdenarAulaFiltroEnum): AulaViewModel[] {

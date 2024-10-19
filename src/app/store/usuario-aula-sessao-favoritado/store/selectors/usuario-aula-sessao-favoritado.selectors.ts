@@ -5,7 +5,7 @@ import {
   ArquivoPdfModel,
   TipoSessaoAulaEnum,
   UsuarioAulaSessaoFavoritadoModel
-} from 'src/app/models';
+} from '../../../../models';
 
 export const getUsuarioAulaSessaoFavoritadoState = createFeatureSelector<
     fromUsuarioAulaSessaoFavoritado.UsuarioAulaSessaoFavoritadoState>(

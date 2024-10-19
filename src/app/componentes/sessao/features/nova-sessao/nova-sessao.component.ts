@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, ViewChild } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild, ElementRef } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 
@@ -7,15 +7,18 @@ import {
   AulaModel, 
   AulaSessaoModel, 
   TipoSessaoAulaEnum
-} from 'src/app/models';
+} from '../../../../models';
 
 import { 
   inserirArquivoPdf,
   inserirAulaSessao 
-} from 'src/app/store';
+} from '../../../../store';
+
 import { SessaoHelpers } from '../../helpers/sessao-helpers';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+
+import katex from 'katex';
 
 @Component({
   selector: 'app-nova-sessao',
@@ -27,7 +30,7 @@ export class NovaSessaoComponent implements OnInit {
   @ViewChild('ckEditorTag') ckEditorTag: any;
 
   tipoSessao = new FormControl('', [Validators.required]);
-  conteudo = new FormControl('', [Validators.required, Validators.maxLength(8000)]);
+  conteudo = new FormControl('', [Validators.required, Validators.maxLength(100000)]);
   conteudoCkeditor: string = '';
   titulo = new FormControl('', [Validators.required, Validators.maxLength(200)]);
   formFoto = new FormControl('');
@@ -36,8 +39,8 @@ export class NovaSessaoComponent implements OnInit {
 
   formSessao: FormGroup = null as any;
 
-  exemploEquacao: string = "y = 5 + \\sqrt{100} - \\sum (x+1) + \\int z \\Delta z";
-  rows = 10;
+  exemploEquacao: string = "c = \\pm\\sqrt{a^2 + b^2}";
+  rows = 5;
 
   selectedFile: File | null = null;
   conteudoImagem: string | undefined = undefined;
@@ -53,6 +56,7 @@ export class NovaSessaoComponent implements OnInit {
     public dialogRef: MatDialogRef<NovaSessaoComponent>,
     public store: Store,
     private sanitizer: DomSanitizer,
+    private el: ElementRef,
     @Inject(MAT_DIALOG_DATA) public data: {aula: AulaModel, sessaoMany: AulaSessaoModel[]}
   ) { }
 

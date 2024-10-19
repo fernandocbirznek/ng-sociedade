@@ -1,9 +1,8 @@
 import { createAction, props } from '@ngrx/store';
 
 import { 
-    ForumTopicoModel,
-    ForumTopicoViewModel,
-} from 'src/app/models';
+  ForumTopicoViewModel 
+} from '../../../../models';
 
 export const selecionarManyForumTopico = createAction(
   '[ForumTopico] selecionarManyForumTopico'

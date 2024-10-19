@@ -9,7 +9,7 @@ import {
   EditarSessaoComponent,
   ModalExcluirComponent,
   NovaSessaoComponent,
-} from 'src/app/componentes';
+} from '../../../../componentes';
 
 import {  
   AulaSessaoOrdemRequestModel,
@@ -18,7 +18,7 @@ import {
   TipoSessaoAulaEnum,
   LinkYoutubeModel,
   AulaViewModel
-} from 'src/app/models';
+} from '../../../../models';
 
 import { 
   atualizarAulaSessaoOrdem, 
@@ -27,7 +27,7 @@ import {
   getOneAulaById, 
   getOneUsuarioLogado,
   removerRota, 
-} from 'src/app/store';
+} from '../../../../store';
 
 import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-browser';
 import { AulaHelpers } from '../../helpers';
@@ -145,6 +145,7 @@ export class EditarAulaComponent implements OnInit {
     this.dialog.open(EditarAulaInformacaoComponent, {
       minWidth: '500px',
       height: 'auto',
+      minHeight: '400px',
       data: {
         aula: this.aula
       }

@@ -5,7 +5,9 @@ import { of } from 'rxjs';
 
 import * as actions from '../actions/forum-topico-resposta.actions';
 
-import { ForumTopicoRespostaService } from 'src/app/services';
+import { 
+  ForumTopicoRespostaService 
+} from '../../../../services';
 
 @Injectable()
 export class ForumTopicoRespostaEffects {

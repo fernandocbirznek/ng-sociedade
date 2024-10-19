@@ -8,7 +8,7 @@ import {
   AulaModel,
   NoticiaModel, 
   UsuarioModel 
-} from 'src/app/models';
+} from '../../../../models';
 
 import { 
   getManyNoticiaByProfessorId, 
@@ -16,7 +16,7 @@ import {
   selecionarAreaInteresseMany, 
   selecionarNoticiaManyByProfessorId, 
   selecionarUsuarioById 
-} from 'src/app/store';
+} from '../../../../store';
 
 @Component({
   selector: 'app-professor-perfil-visualizar',

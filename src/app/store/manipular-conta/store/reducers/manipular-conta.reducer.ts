@@ -10,9 +10,11 @@ import {
   UsuarioAulaFavoritadaModel, 
   UsuarioModel, 
   UsuarioNoticiaFavoritadoModel 
-} from 'src/app/models';
+} from '../../../../models';
 
-import { GenericoHelpers } from 'src/app/componentes/genericos/helpers/generico.helper';
+import { 
+  GenericoHelpers 
+} from '../../../../componentes';
 
 export const manipularContaFeatureKey = 'manipularConta';
 

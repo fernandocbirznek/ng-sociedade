@@ -27,7 +27,7 @@
     </div>
   </div>
 
-  <div *ngIf="this.aula && this.usuarioLogado">
+  <div *ngIf="this.aula && this.usuarioLogado" class="g-full-width">
     <app-editar-aula-posterior-anterior [aulaSessaoLength]="this.aulaSessaoMany.length" [aula]="this.aula" 
       [usuarioLogado]="this.usuarioLogado" (onNovaSessao)="novaSessao()">
     </app-editar-aula-posterior-anterior>
@@ -62,7 +62,7 @@
         [innerHTML]="this.trustedDashboardHtml[i]">
       </div>
       <div *ngIf="sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Equacao"> 
-        <!-- <ng-katex [equation]="sessao.conteudo"></ng-katex> -->
+        <app-katex [equacao]="sessao.conteudo"></app-katex>
       </div>
       <div *ngIf="sessao.aulaSessaoTipo == this.tipoSessaoAulaEnum.Imagem" class="g-column-cecnter-start">
         <img [src]="this.trustedUrlImageHtml[i]" alt="Imagem" class="imagem">

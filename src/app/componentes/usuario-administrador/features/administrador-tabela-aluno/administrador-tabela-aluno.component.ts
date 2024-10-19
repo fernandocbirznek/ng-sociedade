@@ -12,17 +12,17 @@ import {
   AdministradorModalCriarUsuarioComponent,
   AlunoVisualizarComponent,
   ModalExcluirComponent, 
-} from 'src/app/componentes';
+} from '../../../../componentes';
 
 import { 
   TipoUsuarioEnum, 
   UsuarioModel
-} from 'src/app/models';
+} from '../../../../models';
 
 import { 
   excluirUsuario,
   getManyUsuarioByTipoUsuario,
-} from 'src/app/store';
+} from '../../../../store';
 
 @Component({
   selector: 'app-administrador-tabela-aluno',

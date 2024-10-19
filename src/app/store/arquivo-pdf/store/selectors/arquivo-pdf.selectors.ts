@@ -1,6 +1,9 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as fromArquivoPdf from '../reducers/arquivo-pdf.reducers';
-import { ArquivoPdfModel } from 'src/app/models';
+
+import { 
+  ArquivoPdfModel 
+} from '../../../../models';
 
 export const getArquivoPdfState = createFeatureSelector<fromArquivoPdf.ArquivoPdfState>(
     fromArquivoPdf.arquivoPdfFeatureKey

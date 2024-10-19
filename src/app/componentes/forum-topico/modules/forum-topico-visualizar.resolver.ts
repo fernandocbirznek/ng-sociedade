@@ -5,7 +5,7 @@ import { Observable } from "rxjs";
 
 import { 
     selecionarManyForumTopicoByForumId,
-} from "src/app/store";
+} from "../../../store";
 
 @Injectable({
     providedIn: 'root'

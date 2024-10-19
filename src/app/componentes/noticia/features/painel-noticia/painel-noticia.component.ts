@@ -7,19 +7,19 @@ import { Observable, Subscription } from 'rxjs';
 import { 
   ProfessorPerfilVisualizarComponent,
   VisualizarNoticiaComponent 
-} from 'src/app/componentes';
+} from '../../../../componentes';
 
 import { 
   AulaModel,
   NoticiaViewModel
-} from 'src/app/models';
+} from '../../../../models';
 
 import { 
   adicionarRota,
   alterarTituloPagina,
   getManyNoticiaFilter, 
   selecionarManyNoticia 
-} from 'src/app/store';
+} from '../../../../store';
 
 @Component({
   selector: 'app-painel-noticia',

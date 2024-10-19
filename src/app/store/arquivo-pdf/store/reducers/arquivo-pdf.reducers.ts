@@ -1,10 +1,9 @@
-import { Action, createReducer, on } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
 import * as actions from '../actions/arquivo-pdf.actions';
 
 import { 
-    ArquivoPdfModel,
-} from 'src/app/models';
-
+  ArquivoPdfModel 
+} from '../../../../models';
 
 export const arquivoPdfFeatureKey = 'arquivo-pdf';
 

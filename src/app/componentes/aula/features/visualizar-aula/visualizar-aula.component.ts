@@ -9,7 +9,7 @@ import {
   EditarAulaComentarioComponent,
   ModalExcluirComponent,
   ProfessorPerfilVisualizarComponent 
-} from 'src/app/componentes';
+} from '../../../../componentes';
 
 import { 
   AulaComentarioModel,
@@ -24,7 +24,7 @@ import {
   UsuarioModel,
   WidgetModel,
   WidgetViewModel
-} from 'src/app/models';
+} from '../../../../models';
 
 import { 
   adicionarRota,
@@ -53,7 +53,7 @@ import {
   removerWidgetConcluido, 
   removerWidgetCursando, 
   removerWidgetCursar, 
-} from 'src/app/store';
+} from '../../../../store';
 
 import { AulaHelpers } from '../../helpers/aula-helpers';
 import { MatDialog } from '@angular/material/dialog';

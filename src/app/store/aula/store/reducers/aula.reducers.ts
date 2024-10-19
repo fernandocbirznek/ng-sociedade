@@ -1,11 +1,10 @@
-import { Action, createReducer, on } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
 import * as actions from '../actions/aula.actions';
 
 import { 
   AulaFilterModel,
-  AulaViewModel
-} from 'src/app/models';
-
+  AulaViewModel 
+} from '../../../../models';
 
 export const aulaFeatureKey = 'aula';
 

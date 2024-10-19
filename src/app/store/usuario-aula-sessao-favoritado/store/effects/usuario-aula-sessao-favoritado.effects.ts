@@ -8,7 +8,7 @@ import * as actions from '../actions/usuario-aula-sessao-favoritado.actions';
 
 import { 
     UsuarioAulaSessaoFavoritadoService,
-} from 'src/app/services';
+} from '../../../../services';
 
 @Injectable()
 export class UsuarioAulaSessaoFavoritadoEffects {

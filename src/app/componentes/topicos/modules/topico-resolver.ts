@@ -6,7 +6,7 @@ import { Observable } from "rxjs";
 import { 
     selecionarManyAreaFisicaDivisaoByAreaFisicaId,
     selecionarManyAulaByAreaFisicaId
-} from "src/app/store";
+} from "../../../store";
 
 @Injectable({
     providedIn: 'root'

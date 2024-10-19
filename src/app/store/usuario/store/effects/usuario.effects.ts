@@ -9,7 +9,7 @@ import * as actions from '../actions/usuario.actions';
 import { 
   ManipularContaService,
   UsuarioService,
-} from 'src/app/services';
+} from '../../../../services';
 
 @Injectable()
 export class UsuarioEffects {

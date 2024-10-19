@@ -1,10 +1,9 @@
-import { Action, createReducer, on } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
 import * as actions from '../actions/forum-topico.actions';
 
 import { 
-    ForumTopicoViewModel,
-} from 'src/app/models';
-
+  ForumTopicoViewModel 
+} from '../../../../models';
 
 export const forumTopicoFeatureKey = 'forum-topico';
 

@@ -13,6 +13,13 @@
 
 .noticia-titulo {
     font-weight: 500;
+    transition: 0.7s;
+}
+
+.noticia-titulo:hover {
+    cursor: pointer;
+    color: #6060ff;
+    text-decoration: underline;
 }
 
 .card-noticia-autor {
@@ -26,6 +33,7 @@
     border-top-right-radius: 10px;
     padding: 8px 5px;
     font-size: 12px;
+    max-width: 250px;
 }
 
 .card-noticia-autor:hover {

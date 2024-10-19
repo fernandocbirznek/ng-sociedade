@@ -2,12 +2,12 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as fromForumTopicoReplica from '../reducers/forum-topico-replica.reducers';
 
 import { 
-  ForumTopicoReplicaModel 
-} from 'src/app/models';
+    ForumTopicoReplicaModel 
+} from '../../../../models';
 
 import { 
     GenericoHelpers 
-} from 'src/app/componentes';
+} from '../../../../componentes';
 
 export const getForumTopicoReplicaState = createFeatureSelector<fromForumTopicoReplica.ForumTopicoReplicaState>(
     fromForumTopicoReplica.forumTopicoReplicaFeatureKey

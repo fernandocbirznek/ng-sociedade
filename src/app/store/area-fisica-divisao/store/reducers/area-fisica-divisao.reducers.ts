@@ -1,10 +1,9 @@
-import { Action, createReducer, on } from '@ngrx/store';
+import {createReducer, on } from '@ngrx/store';
 import * as actions from '../actions/area-fisica-divisao.actions';
 
 import { 
-    AreaFisicaDivisaoModel,
-} from 'src/app/models';
-
+  AreaFisicaDivisaoModel 
+} from '../../../../models';
 
 export const areaFisicaDivisaoFeatureKey = 'area-fisica-divisao';
 

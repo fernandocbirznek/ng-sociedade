@@ -10,16 +10,16 @@ import { Observable, Subscription } from 'rxjs';
 import { 
   InserirTagComponent,
   ModalExcluirComponent, 
-} from 'src/app/componentes';
+} from '../../../../componentes';
 
 import { 
   TagModel,
-} from 'src/app/models';
+} from '../../../../models';
 
 import { 
   excluirTag,
   getManyTag,
-} from 'src/app/store';
+} from '../../../../store';
 
 @Component({
   selector: 'app-administrador-tabela-tag',

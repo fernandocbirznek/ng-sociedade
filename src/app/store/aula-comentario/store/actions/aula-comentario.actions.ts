@@ -2,8 +2,8 @@ import { createAction, props } from '@ngrx/store';
 
 import { 
   AulaComentarioModel, 
-  AulaComentarioViewModel
-} from 'src/app/models';
+  AulaComentarioViewModel 
+} from '../../../../models';
 
 export const selecionarManyAulaComentarioByAulaId = createAction(
   '[AulaComentario] selecionarManyAulaComentarioByAulaId',

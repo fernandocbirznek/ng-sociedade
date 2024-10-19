@@ -7,13 +7,13 @@ import {
   AulaFilterModel, 
   TagModel, 
   TipoOrdenarAulaFiltroEnum
-} from 'src/app/models';
+} from '../../../../models';
 
 import { 
   filtrarAula, 
   getManyTag, 
   getOneAulaFilter 
-} from 'src/app/store';
+} from '../../../../store';
 
 @Component({
   selector: 'app-aula-filtro',

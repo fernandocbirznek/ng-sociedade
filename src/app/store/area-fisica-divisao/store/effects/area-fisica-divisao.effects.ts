@@ -5,7 +5,10 @@ import { of } from 'rxjs';
 
 import * as actions from '../actions/area-fisica-divisao.actions';
 
-import { AreaFisicaDivisaoService } from 'src/app/services';
+import { 
+  AreaFisicaDivisaoService 
+} from '../../../../services';
+
 
 @Injectable()
 export class AreaFisicaDivisaoEffects {

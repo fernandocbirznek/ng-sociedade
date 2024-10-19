@@ -1,11 +1,11 @@
-import { Action, createReducer, on } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
 import * as actions from '../actions/noticia.actions';
 
 import { 
   AreaInteresseModel, 
   NoticiaFilterModel, 
   NoticiaModel 
-} from 'src/app/models';
+} from '../../../../models';
 
 export const noticiaFeatureKey = 'noticia';
 

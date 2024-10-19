@@ -11,16 +11,16 @@ import {
   AtualizarForumComponent,
   InserirForumComponent,
   ModalExcluirComponent, 
-} from 'src/app/componentes';
+} from '../../../../componentes';
 
 import { 
   ForumModel,
-} from 'src/app/models';
+} from '../../../../models';
 
 import { 
   excluirForum,
   getManyForum,
-} from 'src/app/store';
+} from '../../../../store';
 
 @Component({
   selector: 'app-administrador-tabela-forum',

@@ -3,11 +3,12 @@ import { Component, Input, OnInit } from '@angular/core';
 import { 
   AreaInteresseModel,
   UsuarioModel 
-} from 'src/app/models';
+} from '../../../../models';
 
 import { 
   EditarUsuarioAreaInteresseComponent 
 } from '..';
+
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({

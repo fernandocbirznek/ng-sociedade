@@ -12,19 +12,19 @@ import {
   ModalExcluirComponent, 
   NovaNoticiaComponent,
   VisualizarNoticiaComponent
-} from 'src/app/componentes';
+} from '../../../../componentes';
 
 import { 
   AreaInteresseModel, 
   NoticiaModel,
   UsuarioModel
-} from 'src/app/models';
+} from '../../../../models';
 
 import { 
   excluirNoticia,
   getManyAreaInteresse,
   getManyNoticia, 
-} from 'src/app/store';
+} from '../../../../store';
 
 @Component({
   selector: 'app-administrador-tabela-noticia',
@@ -34,7 +34,7 @@ import {
 export class AdministradorTabelaNoticiaComponent implements OnInit {
   @Input() usuarioLogado: UsuarioModel | undefined = undefined;
 
-  displayedColumns: string[] = ['titulo', 'resumo', 'data-postagem', 'areaInteresse', 'acao'];
+  displayedColumns: string[] = ['titulo', 'resumo', 'data-postagem', 'acao'];
   dataSource = new MatTableDataSource();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;

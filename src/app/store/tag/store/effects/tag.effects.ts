@@ -5,7 +5,7 @@ import { of } from 'rxjs';
 
 import * as actions from '../actions/tag.actions';
 
-import { TagService } from 'src/app/services';
+import { TagService } from '../../../../services';
 
 @Injectable()
 export class TagEffects {

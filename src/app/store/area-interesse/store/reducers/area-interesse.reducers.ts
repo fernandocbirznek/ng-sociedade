@@ -3,7 +3,7 @@ import * as actions from '../actions/area-interesse.actions';
 
 import { 
   AreaInteresseModel 
-} from 'src/app/models';
+} from '../../../../models';
 
 export const areaInteresseFeatureKey = 'area-interesse';
 

@@ -31,21 +31,7 @@
                     <span class="g-text-overflow-2">{{element.email}}</span>
                 </td>
             </ng-container>
-    
-            <ng-container matColumnDef="areaInteresse">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header class="tabela-header"> 
-                    Área da interesse
-                </th>
-                <td mat-cell *matCellDef="let element" class="coluna"
-                    (click)="visualizarUsuario(element)"> 
-                    <div class="g-row-start-center container-tags">
-                        <div *ngFor="let item of element.usuarioAreaInteresses">
-                            <span class="g-tag">{{item.nome}}</span>
-                        </div>
-                    </div>
-                </td>
-            </ng-container>
-        
+            
             <ng-container matColumnDef="dataCadastro">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="tabela-header"> 
                     Data cadastro

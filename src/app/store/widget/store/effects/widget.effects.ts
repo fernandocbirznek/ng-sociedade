@@ -6,9 +6,7 @@ import { Store } from '@ngrx/store';
 
 import * as actions from '../actions/widget.actions';
 
-import { 
-    WidgetService,
-} from 'src/app/services';
+import { WidgetService } from '../../../../services';
 
 @Injectable()
 export class WidgetEffects {

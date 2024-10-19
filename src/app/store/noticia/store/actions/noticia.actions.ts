@@ -4,7 +4,7 @@ import {
     NoticiaFilterModel,
     NoticiaModel, 
     NoticiaRequestModel
-} from 'src/app/models';
+} from '../../../../models';
 
 export const selecionarNoticiaManyHome = createAction(
     '[Noticia] selecionarNoticiaManyHome'

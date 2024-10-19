@@ -5,8 +5,11 @@ import { Store } from '@ngrx/store';
 
 import { 
   ForumTagModel 
-} from 'src/app/models';
-import { inserirForumTag } from 'src/app/store';
+} from '../../../../models';
+
+import { 
+  inserirForumTag 
+} from '../../../../store';
 
 @Component({
   selector: 'app-inserir-forum-tag',

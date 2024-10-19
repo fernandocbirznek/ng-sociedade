@@ -1,13 +1,12 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as fromForumTopico from '../reducers/forum-topico.reducers';
 
-import { 
-  ForumTopicoModel, 
-  ForumTopicoRespostaViewModel,
-  ForumTopicoViewModel
-} from 'src/app/models';
-
 import * as forumTopicoRespostaFeature from '../../../forum-topico-resposta/store';
+
+import { 
+  ForumTopicoRespostaViewModel, 
+  ForumTopicoViewModel 
+} from '../../../../models';
 
 export const getForumTopicoState = createFeatureSelector<fromForumTopico.ForumTopicoState>(
     fromForumTopico.forumTopicoFeatureKey

@@ -1,22 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as fromAula from '../reducers/aula.reducers';
 
-import { 
-  AreaFisicaModel,
-  ArquivoPdfModel,
-  AulaComentarioModel,
-  AulaComentarioViewModel,
-  AulaFilterModel,
-  AulaSessaoModel, 
-  AulaViewModel, 
-  InformacaoAulaViewModel, 
-  TagModel,
-  TipoOrdenarAulaFiltroEnum,
-  TipoSessaoAulaEnum,
-  UsuarioAulaCurtidoModel,
-  UsuarioAulaFavoritadaModel
-} from 'src/app/models';
-
 import * as areaFisicaFeature from '../../../area-fisica/store';
 import * as arquivoPdfFeature from '../../../arquivo-pdf/store';
 import * as aulaComentarioFeature from '../../../aula-comentario/store';
@@ -24,8 +8,27 @@ import * as headerFeature from '../../../header/store';
 import * as manipularContaFeature from '../../../manipular-conta/store';
 import * as tagFeature from '../../../tag/store';
 
-import moment from 'moment';
-import { TopicoHelpers } from 'src/app/componentes/topicos/helpers/topicos-helpers';
+import { 
+  AreaFisicaModel,
+  ArquivoPdfModel,
+  AulaComentarioViewModel,
+  AulaFilterModel, 
+  AulaSessaoModel, 
+  AulaViewModel, 
+  InformacaoAulaViewModel, 
+  TagModel, 
+  TipoOrdenarAulaFiltroEnum, 
+  TipoSessaoAulaEnum, 
+  UsuarioAulaCurtidoModel,
+  UsuarioAulaFavoritadaModel
+} from '../../../../models';
+
+import { 
+  TopicoHelpers 
+} from '../../../../componentes/topicos/helpers';
+import { GenericoHelpers } from '../../../../componentes';
+
+//import moment from 'moment';
 
 export const selectAulaState = createFeatureSelector<fromAula.AulaState>(
   fromAula.aulaFeatureKey
@@ -130,11 +133,11 @@ export const getManyAulaByFilter = createSelector(
     if (aulaFilter && aulaFilter.aulaTitulo)
       itens = itens.filter(item => item.titulo.toLocaleLowerCase().includes(aulaFilter.aulaTitulo!.toLocaleLowerCase()));
 
-    if (aulaFilter && aulaFilter.dataInicio)
-      itens = itens.filter(item => moment(item.dataCadastro!).startOf('day') >= moment(aulaFilter.dataInicio!).startOf('day'));
+    //if (aulaFilter && aulaFilter.dataInicio)
+    //  itens = itens.filter(item => moment(item.dataCadastro!).startOf('day') >= moment(aulaFilter.dataInicio!).startOf('day'));
 
-    if (aulaFilter && aulaFilter.dataFim)
-      itens = itens.filter(item => moment(item.dataCadastro!).startOf('day') <= moment(aulaFilter.dataFim!).startOf('day'));
+    //if (aulaFilter && aulaFilter.dataFim)
+    //  itens = itens.filter(item => moment(item.dataCadastro!).startOf('day') <= moment(aulaFilter.dataFim!).startOf('day'));
 
     if (aulaFilter && aulaFilter.tagMany.length > 0) {
       itens = itens.filter(item => item
@@ -155,7 +158,9 @@ export const getManyAulaByProfessorId = (professorId: number) => createSelector(
     aulaMany: AulaViewModel[],
   ) => {
 
-    return aulaMany
+    let itens = GenericoHelpers.sortArrayByDataCadastro(aulaMany);
+
+    return itens
       .filter(item => item.professorId == professorId);
   }
 )

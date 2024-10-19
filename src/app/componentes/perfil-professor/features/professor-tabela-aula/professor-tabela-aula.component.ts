@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
@@ -11,13 +11,13 @@ import { Observable, Subscription } from 'rxjs';
 import { 
   ModalExcluirComponent, 
   NovaAulaComponent
-} from 'src/app/componentes';
+} from '../../../../componentes';
 
 import { 
   AreaFisicaModel,
   AulaModel, 
   AulaViewModel
-} from 'src/app/models';
+} from '../../../../models';
 
 import { 
   adicionarRota,
@@ -26,7 +26,7 @@ import {
   excluirAula,
   getManyAreaFisica,
   getManyAulaByProfessorId, 
-} from 'src/app/store';
+} from '../../../../store';
 
 
 @Component({

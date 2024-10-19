@@ -6,11 +6,11 @@ import { Store } from '@ngrx/store';
 import { 
   AulaComentarioModel, 
   UsuarioModel
-} from 'src/app/models';
+} from '../../../../models';
 
 import { 
   atualizarAulaComentario 
-} from 'src/app/store';
+} from '../../../../store';
 
 @Component({
   selector: 'app-editar-aula-comentario',
