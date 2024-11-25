@@ -1,0 +1,14 @@
+version: '3'
+services:
+  sociedadefisica:
+    image: sociedadefisica:1
+    container_name: sociedadefisica
+    ports:
+      - "8000:80"
+    restart: always
+    networks:
+      - sociedadefisicanetwork
+
+networks:
+  sociedadefisicanetwork:
+    driver: bridge
