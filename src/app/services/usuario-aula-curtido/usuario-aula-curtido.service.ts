@@ -6,15 +6,17 @@ import { Observable } from "rxjs";
 import { 
     UsuarioAulaCurtidoModel, 
 } from "../../models";
+import { environment } from "../../../environments/environment";
 
 @Injectable({
     providedIn: 'root'
 })
 
 export class UsuarioAulaCurtidoService {
-    urlSelecionarManyAulaCurtidoByUsuarioId = 'https://localhost:44303/api/UsuarioAulaCurtido/selecionar-usuario-aula-curtido';
-    urlInserirUsuarioAulaCurtido = 'https://localhost:44303/api/UsuarioAulaCurtido/inserir';
-    urlRemoverUsuarioAulaCurtido = 'https://localhost:44303/api/UsuarioAulaCurtido/excluir';
+    private readonly baseUrl = `${environment.aulaApiUrl}/UsuarioAulaCurtido`;
+    urlSelecionarManyAulaCurtidoByUsuarioId = `${this.baseUrl}/selecionar-usuario-aula-curtido`;
+    urlInserirUsuarioAulaCurtido = `${this.baseUrl}/inserir`;
+    urlRemoverUsuarioAulaCurtido = `${this.baseUrl}/excluir`;
 
     constructor(
         private httpClient: HttpClient,

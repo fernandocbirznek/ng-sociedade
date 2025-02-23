@@ -7,19 +7,22 @@ import {
     AulaSessaoModel,
     AulaSessaoOrdemRequestModel,
 } from "../../models";
+import { environment } from "../../../environments/environment";
 
 @Injectable({
     providedIn: 'root'
 })
 
 export class AulaSessaoService {
-    urlInserirAulaSessao = 'https://localhost:44303/api/AulaSessao/inserir';
-    urlAtualizarAulaSessao = 'https://localhost:44303/api/AulaSessao/atualizar';
-    urlAtualizarAulaSessaoOrdem = 'https://localhost:44303/api/AulaSessao/atualizar-aula-sessao-ordem';
-    urlAtualizarAulaSessaoFavoritada = 'https://localhost:44303/api/AulaSessao/atualizar-favoritada';
-    urlExcluirAulaSessao = 'https://localhost:44303/api/AulaSessao/excluir'; 
-    urlSelecionarManyAulaSessaoByAulaId = 'https://localhost:44303/api/AulaSessao/selecionar-sessoes-aula';
-    urlSelecionarAulaSessaoById = 'https://localhost:44303/api/AulaSessao/selecionar-aula-sessao';
+    private readonly baseUrl = `${environment.aulaApiUrl}/AulaSessao`;
+
+    urlInserirAulaSessao = `${this.baseUrl}/inserir`;
+    urlAtualizarAulaSessao = `${this.baseUrl}/atualizar`;
+    urlAtualizarAulaSessaoOrdem = `${this.baseUrl}/atualizar-aula-sessao-ordem`;
+    urlAtualizarAulaSessaoFavoritada = `${this.baseUrl}/atualizar-favoritada`;
+    urlExcluirAulaSessao = `${this.baseUrl}/excluir`; 
+    urlSelecionarManyAulaSessaoByAulaId = `${this.baseUrl}/selecionar-sessoes-aula`;
+    urlSelecionarAulaSessaoById = `${this.baseUrl}/selecionar-aula-sessao`;
 
     constructor(
         private httpClient: HttpClient,

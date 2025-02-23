@@ -12,16 +12,21 @@ import {
 
 import { getOneUsuarioLogado } from "../../store";
 
+import { environment } from "../../../environments/environment";
+
 @Injectable({
     providedIn: 'root'
 })
 
 export class ManipularContaService {
-    urlCriarConta = 'https://localhost:44362/api/Usuario/inserir';
-    urlLoginConta = 'https://localhost:44362/api/Usuario/login';
-    urlLoginAutomaticoWhitToken = 'https://localhost:44362/api/Usuario/login-automatico';
-    urlDeletarConta = 'http://localhost:3000/criarConta/deletarConta';
+    private readonly baseUrl = `${environment.usuarioApiUrl}/Usuario`;
 
+    urlCriarConta = `${this.baseUrl}/inserir`;
+    urlLoginConta = `${this.baseUrl}/login`;
+    urlLoginAutomaticoWhitToken = `${this.baseUrl}/login-automatico`;
+    //TODO, ta errado, precisa configurar
+    urlDeletarConta = `${this.baseUrl}/deletarConta`;
+    
     usuariologado$: Observable<any>;
 
     constructor(
@@ -44,6 +49,7 @@ export class ManipularContaService {
         return this.httpClient.post<UsuarioModel>(this.urlLoginAutomaticoWhitToken, JSON.stringify({token: token }), this.buildHttpOptions());
     }
 
+    //TODO, ta errado precisa configurar
     deletarConta(deletarConta: DeletarConta): Observable<any> {
         return this.httpClient.delete(this.urlDeletarConta + `/${deletarConta}`, this.buildHttpOptionsToken());
     }

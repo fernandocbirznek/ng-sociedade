@@ -7,15 +7,19 @@ import {
     UsuarioNoticiaFavoritadoModel 
 } from "../../models";
 
+import { environment } from "../../../environments/environment";
+
 @Injectable({
     providedIn: 'root'
 })
 
 export class UsuarioNoticiaFavoritadoService {
-    urlInserirUsuarioNoticiaFavoritado = 'https://localhost:44362/api/UsuarioNoticiaFavoritado/inserir';
-    urlExcluirUsuarioNoticiaFavoritado = 'https://localhost:44362/api/UsuarioNoticiaFavoritado/excluir';
-    urlSelecionarManyUsuarioNoticiaFavoritadoByUsuarioId = 'https://localhost:44362/api/UsuarioNoticiaFavoritado/selecionar-usuario-noticia-favoritado';
+    private readonly baseUrl = `${environment.usuarioApiUrl}/UsuarioNoticiaFavoritado`;
 
+    urlInserirUsuarioNoticiaFavoritado = `${this.baseUrl}/inserir`;
+    urlExcluirUsuarioNoticiaFavoritado = `${this.baseUrl}/excluir`;
+    urlSelecionarManyUsuarioNoticiaFavoritadoByUsuarioId = `${this.baseUrl}/selecionar-usuario-noticia-favoritado`;
+    
     constructor(
         private httpClient: HttpClient,
         public store: Store

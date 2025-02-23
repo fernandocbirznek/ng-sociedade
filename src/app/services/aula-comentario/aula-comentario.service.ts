@@ -8,15 +8,18 @@ import {
     AulaComentarioViewModel,
 } from "../../models";
 
+import { environment } from "../../../environments/environment";
+
 @Injectable({
     providedIn: 'root'
 })
 
 export class AulaComentarioService {
-    urlInserirAulaComentario = 'https://localhost:44303/api/AulaComentario/inserir';
-    urlAtualizarAulaComentario = 'https://localhost:44303/api/AulaComentario/atualizar';
-    urlExcluirAulaComentario = 'https://localhost:44303/api/AulaComentario/excluir';
-    urlSelecionarManyAulaComentarioByAulaId = 'https://localhost:44303/api/AulaComentario/selecionar-aula-comentario';
+    private readonly baseUrl = `${environment.aulaApiUrl}/AulaComentario`;
+    urlInserirAulaComentario = `${this.baseUrl}/inserir`;
+    urlAtualizarAulaComentario = `${this.baseUrl}/atualizar`;
+    urlExcluirAulaComentario = `${this.baseUrl}/excluir`;
+    urlSelecionarManyAulaComentarioByAulaId = `${this.baseUrl}/selecionar-aula-comentario`;
 
     constructor(
         private httpClient: HttpClient,

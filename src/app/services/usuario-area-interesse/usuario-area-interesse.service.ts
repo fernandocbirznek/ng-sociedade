@@ -7,14 +7,18 @@ import {
     UsuarioAreaInteresseModel,
 } from "../../models";
 
+import { environment } from "../../../environments/environment";
+
 @Injectable({
     providedIn: 'root'
 })
 
 export class UsuarioAreaInteresseService {
-    urlInserirUsuarioAreaInteresse = 'https://localhost:44362/api/UsuarioAreaInteresse/inserir';
-    urlRemoverUsuarioAreaInteresse = 'https://localhost:44362/api/UsuarioAreaInteresse/excluir';
+    private readonly baseUrl = `${environment.usuarioApiUrl}/UsuarioAreaInteresse`;
 
+    urlInserirUsuarioAreaInteresse = `${this.baseUrl}/inserir`;
+    urlRemoverUsuarioAreaInteresse = `${this.baseUrl}/excluir`;
+    
     constructor(
         private httpClient: HttpClient,
         public store: Store

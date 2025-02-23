@@ -87,7 +87,7 @@ export class NovaAulaComponent implements OnInit {
     request.areaFisicaId = this.formGroupAula.get("formAreaFisica")?.value;
     request.professorId = this.usuarioLogado!.id;
     this.formGroupAula.reset();
-    this.store.dispatch(inserirAula({ aula: request }))
+    this.store.dispatch(inserirAula({ aula: request }));
     this.dialogRef.close();
   }
 

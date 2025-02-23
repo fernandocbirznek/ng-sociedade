@@ -6,17 +6,20 @@ import { Observable } from "rxjs";
 import { 
     ForumTopicoViewModel,
 } from "../../models";
+import { environment } from "../../../environments/environment";
 
 @Injectable({
     providedIn: 'root'
 })
 
 export class ForumTopicoService {
-    urlSelecionarManyForumTopico = 'https://localhost:44361/api/ForumTopico/selecionar-topicos-forum';
-    urlSelecionarManyForumTopicoByForumId = 'https://localhost:44361/api/ForumTopico/selecionar-forum-topico';
-    urlInserirForumTopico = 'https://localhost:44361/api/ForumTopico/inserir';
-    urlAtualizarForumTopico = 'https://localhost:44361/api/ForumTopico/atualizar';
-    urlExcluirForumTopico = 'https://localhost:44361/api/ForumTopico/excluir';
+    private readonly baseUrl = `${environment.forumApiUrl}/ForumTopico`;
+    
+    urlSelecionarManyForumTopico = `${this.baseUrl}/selecionar-topicos-forum`;
+    urlSelecionarManyForumTopicoByForumId = `${this.baseUrl}/selecionar-forum-topico`;
+    urlInserirForumTopico = `${this.baseUrl}/inserir`;
+    urlAtualizarForumTopico = `${this.baseUrl}/atualizar`;
+    urlExcluirForumTopico = `${this.baseUrl}/excluir`;
 
     constructor(
         private httpClient: HttpClient,

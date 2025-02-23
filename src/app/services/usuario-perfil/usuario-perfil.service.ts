@@ -7,12 +7,16 @@ import {
     UsuarioPerfilModel, 
 } from "../../models";
 
+import { environment } from "../../../environments/environment";
+
 @Injectable({
     providedIn: 'root'
 })
 
 export class UsuarioPerfilService {
-    urlAlterarUsuarioPerfil = 'https://localhost:44362/api/UsuarioPerfil/atualizar';
+    private readonly baseUrl = `${environment.usuarioApiUrl}/UsuarioPerfil`;
+
+    urlAlterarUsuarioPerfil = `${this.baseUrl}/atualizar`;
 
     constructor(
         private httpClient: HttpClient,

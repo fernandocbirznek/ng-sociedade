@@ -6,16 +6,19 @@ import { Observable } from "rxjs";
 import { 
     AreaInteresseModel,
 } from "../../models";
+import { environment } from "../../../environments/environment";
 
 @Injectable({
     providedIn: 'root'
 })
 
 export class AreaInteresseService {
-    urlSelecionarAreaInteresseMany = 'https://localhost:44362/api/AreaInteresse/selecionar-area-interesse';
-    urlInserirAreaInteresse = 'https://localhost:44362/api/AreaInteresse/inserir';
-    urlExcluirAreaInteresse = 'https://localhost:44362/api/AreaInteresse/excluir';
-
+    private readonly baseUrl = `${environment.usuarioApiUrl}/AreaInteresse`;
+    
+    urlSelecionarAreaInteresseMany = `${this.baseUrl}/selecionar-area-interesse`;
+    urlInserirAreaInteresse = `${this.baseUrl}/inserir`;
+    urlExcluirAreaInteresse = `${this.baseUrl}/excluir`;
+    
     constructor(
         private httpClient: HttpClient,
         public store: Store

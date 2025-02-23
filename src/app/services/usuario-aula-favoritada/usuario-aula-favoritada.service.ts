@@ -7,14 +7,17 @@ import {
     UsuarioAulaFavoritadaModel, 
 } from "../../models";
 
+import { environment } from "../../../environments/environment";
+
 @Injectable({
     providedIn: 'root'
 })
 
 export class UsuarioAulaFavoritadaService {
-    urlSelecionarManyAulaFavoritadaByUsuarioId = 'https://localhost:44303/api/AulaFavoritada/selecionar-aulas-favoritadas';
-    urlInserirUsuarioAulaFavoritada = 'https://localhost:44303/api/AulaFavoritada/inserir';
-    urlRemoverUsuarioAulaFavoritada = 'https://localhost:44303/api/AulaFavoritada/excluir';
+    private readonly baseUrl = `${environment.aulaApiUrl}/AulaFavoritada`;
+    urlSelecionarManyAulaFavoritadaByUsuarioId = `${this.baseUrl}/selecionar-aulas-favoritadas`;
+    urlInserirUsuarioAulaFavoritada = `${this.baseUrl}/inserir`;
+    urlRemoverUsuarioAulaFavoritada = `${this.baseUrl}/excluir`;
 
     constructor(
         private httpClient: HttpClient,

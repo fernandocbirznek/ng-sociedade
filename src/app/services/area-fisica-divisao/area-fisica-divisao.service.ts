@@ -6,13 +6,15 @@ import { Observable } from "rxjs";
 import { 
     AreaFisicaDivisaoModel,
 } from "../../models";
+import { environment } from "../../../environments/environment";
 
 @Injectable({
     providedIn: 'root'
 })
 
 export class AreaFisicaDivisaoService {
-    urlSelecionarManyAreaFisicaDivisaoByAreaFisicaId = 'https://localhost:44303/api/AreaFisicaDivisao/selecionar-area-fisica-divisao';
+    private readonly baseUrl = `${environment.aulaApiUrl}/AreaFisicaDivisao`;
+    urlSelecionarManyAreaFisicaDivisaoByAreaFisicaId = `${this.baseUrl}/selecionar-area-fisica-divisao`;
 
     constructor(
         private httpClient: HttpClient,

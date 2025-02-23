@@ -6,23 +6,28 @@ import { Observable } from "rxjs";
 import { 
     WidgetModel, 
 } from "../../models";
+import { environment } from "../../../environments/environment";
 
 @Injectable({
     providedIn: 'root'
 })
 
 export class WidgetService {
-    urlSelecionarWidgetCursarByUsuarioId = 'https://localhost:44303/api/WidgetCursar/selecionar-aulas-cursar';
-    urlSelecionarWidgetCursandoByUsuarioId = 'https://localhost:44303/api/WidgetCursando/selecionar-aulas-cursando';
-    urlSelecionarWidgetConcluidoByUsuarioId = 'https://localhost:44303/api/WidgetConcluido/selecionar-aulas-concluido';
+    private readonly widgetCursarUrl = `${environment.aulaApiUrl}/WidgetCursar`;
+    private readonly widgetCursandoUrl = `${environment.aulaApiUrl}/WidgetCursando`;
+    private readonly widgetConcluidoUrl = `${environment.aulaApiUrl}/WidgetConcluido`;
 
-    urlInserirWidgetConcluido = 'https://localhost:44303/api/WidgetConcluido/inserir';
-    urlInserirWidgetCursando = 'https://localhost:44303/api/WidgetCursando/inserir';
-    urlInserirWidgetCursar = 'https://localhost:44303/api/WidgetCursar/inserir';
+    urlSelecionarWidgetCursarByUsuarioId = `${this.widgetCursarUrl}/selecionar-aulas-cursar`;
+    urlSelecionarWidgetCursandoByUsuarioId = `${this.widgetCursandoUrl}/selecionar-aulas-cursando`;
+    urlSelecionarWidgetConcluidoByUsuarioId = `${this.widgetConcluidoUrl}/selecionar-aulas-concluido`;
 
-    urlRemoverWidgetConcluido = 'https://localhost:44303/api/WidgetConcluido/excluir';
-    urlRemoverWidgetCursando = 'https://localhost:44303/api/WidgetCursando/excluir';
-    urlRemoverWidgetCursar = 'https://localhost:44303/api/WidgetCursar/excluir';
+    urlInserirWidgetConcluido = `${this.widgetConcluidoUrl}/inserir`;
+    urlInserirWidgetCursando = `${this.widgetCursandoUrl}/inserir`;
+    urlInserirWidgetCursar = `${this.widgetCursarUrl}/inserir`;
+
+    urlRemoverWidgetConcluido = `${this.widgetConcluidoUrl}/excluir`;
+    urlRemoverWidgetCursando = `${this.widgetCursandoUrl}/excluir`;
+    urlRemoverWidgetCursar = `${this.widgetCursarUrl}/excluir`;
 
     constructor(
         private httpClient: HttpClient,

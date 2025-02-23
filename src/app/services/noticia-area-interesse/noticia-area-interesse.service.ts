@@ -7,12 +7,16 @@ import {
     AreaInteresseModel,
 } from "../../models";
 
+import { environment } from "../../../environments/environment";
+
 @Injectable({
     providedIn: 'root'
 })
 
 export class NoticiaAreaInteresseService {
-    urlSelecionarManyAreaInteresseByNoticiaId = 'https://localhost:44362/api/NoticiaAreaInteresse/selecionar-areas-interesse-noticia'
+    private readonly baseUrl = `${environment.usuarioApiUrl}/NoticiaAreaInteresse`;
+
+    urlSelecionarManyAreaInteresseByNoticiaId = `${this.baseUrl}/selecionar-areas-interesse-noticia`;
 
     constructor(
         private httpClient: HttpClient,

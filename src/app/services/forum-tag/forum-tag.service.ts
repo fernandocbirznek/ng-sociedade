@@ -7,14 +7,18 @@ import {
     ForumTagModel,
 } from "../../models";
 
+import { environment } from "../../../environments/environment";
+
 @Injectable({
     providedIn: 'root'
 })
 
 export class ForumTagService {
-    urlSelecionarManyForumTag = 'https://localhost:44361/api/ForumTag/selecionar-forum-tag-sistema';
-    urlInserirForumTag = 'https://localhost:44361/api/ForumTag/inserir';
-    urlExcluirForumTag= 'https://localhost:44361/api/ForumTag/excluir';
+    private readonly baseUrl = `${environment.forumApiUrl}/ForumTag`;
+
+    urlSelecionarManyForumTag = `${this.baseUrl}/selecionar-forum-tag-sistema`;
+    urlInserirForumTag = `${this.baseUrl}/inserir`;
+    urlExcluirForumTag = `${this.baseUrl}/excluir`;
 
     constructor(
         private httpClient: HttpClient,

@@ -7,14 +7,17 @@ import {
     TagModel,
 } from "../../models";
 
+import { environment } from "../../../environments/environment";
+
 @Injectable({
     providedIn: 'root'
 })
 
 export class TagService {
-    urlInserirTag = 'https://localhost:44303/api/Tag/inserir';
-    urlExcluirTag = 'https://localhost:44303/api/Tag/excluir';
-    urlSelecionarManyTag = 'https://localhost:44303/api/Tag/selecionar-tag-sistema';
+    private readonly baseUrl = `${environment.aulaApiUrl}/Tag`;
+    urlInserirTag = `${this.baseUrl}/inserir`;
+    urlExcluirTag = `${this.baseUrl}/excluir`;
+    urlSelecionarManyTag = `${this.baseUrl}/selecionar-tag-sistema`;
 
     constructor(
         private httpClient: HttpClient,

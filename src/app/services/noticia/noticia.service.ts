@@ -8,17 +8,21 @@ import {
     NoticiaRequestModel 
 } from "../../models";
 
+import { environment } from "../../../environments/environment";
+
 @Injectable({
     providedIn: 'root'
 })
 
 export class NoticiaService {
-    urlInserirNoticia = 'https://localhost:44362/api/Noticia/inserir';
-    urlAtualizarNoticia = 'https://localhost:44362/api/Noticia/atualizar';
-    urlExcluirNoticia = 'https://localhost:44362/api/Noticia/excluir';
-    urlSelecionarManyNoticia = 'https://localhost:44362/api/Noticia/selecionar-noticias-sistema';
-    urlSelecionarNoticiaManyHome = 'https://localhost:44362/api/Noticia/selecionar-noticia-many/home';
-    urlSelecionarNoticiaManyProfessor = 'https://localhost:44362/api/Noticia/selecionar-noticia-many';
+    private readonly baseUrl = `${environment.usuarioApiUrl}/Noticia`;
+
+    urlInserirNoticia = `${this.baseUrl}/inserir`;
+    urlAtualizarNoticia = `${this.baseUrl}/atualizar`;
+    urlExcluirNoticia = `${this.baseUrl}/excluir`;
+    urlSelecionarManyNoticia = `${this.baseUrl}/selecionar-noticias-sistema`;
+    urlSelecionarNoticiaManyHome = `${this.baseUrl}/selecionar-noticia-many/home`;
+    urlSelecionarNoticiaManyProfessor = `${this.baseUrl}/selecionar-noticia-many`;
 
     constructor(
         private httpClient: HttpClient,

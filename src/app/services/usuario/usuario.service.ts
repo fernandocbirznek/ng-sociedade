@@ -7,16 +7,20 @@ import {
     UsuarioModel, 
 } from "../../models";
 
+import { environment } from "../../../environments/environment";
+
 @Injectable({
     providedIn: 'root'
 })
 
 export class UsuarioService {
-    urlSelecionarUsuarioById = 'https://localhost:44362/api/Usuario/selecionar-usuario';
-    urlSelecionarManyUsuario = 'https://localhost:44362/api/Usuario/selecionar-usuarios';
-    urlAtualizarUsuario = 'https://localhost:44362/api/Usuario/atualizar';
-    urlExcluirUsuario = 'https://localhost:44362/api/Usuario/excluir';
-    
+    private readonly baseUrl = `${environment.usuarioApiUrl}/Usuario`;
+
+    urlSelecionarUsuarioById = `${this.baseUrl}/selecionar-usuario`;
+    urlSelecionarManyUsuario = `${this.baseUrl}/selecionar-usuarios`;
+    urlAtualizarUsuario = `${this.baseUrl}/atualizar`;
+    urlExcluirUsuario = `${this.baseUrl}/excluir`;
+        
     constructor(
         private httpClient: HttpClient,
         public store: Store

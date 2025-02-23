@@ -7,18 +7,22 @@ import {
     AdministradorHomeForumInformacaoModel,
     ForumModel,
 } from "../../models";
+import { environment } from "../../../environments/environment";
 
 @Injectable({
     providedIn: 'root'
 })
 
 export class ForumService {
-    urlSelecionarManyForum = 'https://localhost:44361/api/Forum/selecionar-forum-sistema';
-    urlInserirForum = 'https://localhost:44361/api/Forum/inserir';
-    urlAtualizarForum = 'https://localhost:44361/api/Forum/atualizar';
-    urlExcluirForum = 'https://localhost:44361/api/Forum/excluir';
+    private readonly baseUrl = `${environment.forumApiUrl}/Forum`;
+    private readonly administradorUrl = `${environment.forumApiUrl}/administrador-home`;
 
-    urlSelecionarAdministradorHomeAulaInformacao = 'https://localhost:44361/api/administrador-home/selecionar-forum-informacao';
+    urlSelecionarManyForum = `${this.baseUrl}/selecionar-forum-sistema`;
+    urlInserirForum = `${this.baseUrl}/inserir`;
+    urlAtualizarForum = `${this.baseUrl}/atualizar`;
+    urlExcluirForum = `${this.baseUrl}/excluir`;
+
+    urlSelecionarAdministradorHomeAulaInformacao = `${this.administradorUrl}/selecionar-forum-informacao`;
 
     constructor(
         private httpClient: HttpClient,

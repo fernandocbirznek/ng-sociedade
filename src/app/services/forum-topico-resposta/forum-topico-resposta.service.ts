@@ -7,15 +7,19 @@ import {
     ForumTopicoRespostaModel,
 } from "../../models";
 
+import { environment } from "../../../environments/environment";
+
 @Injectable({
     providedIn: 'root'
 })
 
 export class ForumTopicoRespostaService {
-    urlSelecionarManyForumTopicoRespostaByForumTopicoId = 'https://localhost:44361/api/ForumTopicoResposta/selecionar-forum-topico-resposta';
-    urlInserirForumTopicoResposta = 'https://localhost:44361/api/ForumTopicoResposta/inserir';
-    urlAtualizarForumTopicoResposta = 'https://localhost:44361/api/ForumTopicoResposta/atualizar';
-    urlExcluirForumTopicoResposta = 'https://localhost:44361/api/ForumTopicoResposta/excluir';
+    private readonly baseUrl = `${environment.forumApiUrl}/ForumTopicoResposta`;
+    
+    urlSelecionarManyForumTopicoRespostaByForumTopicoId = `${this.baseUrl}/selecionar-forum-topico-resposta'`;
+    urlInserirForumTopicoResposta = `${this.baseUrl}/inserir`;
+    urlAtualizarForumTopicoResposta = `${this.baseUrl}/atualizar`;
+    urlExcluirForumTopicoResposta = `${this.baseUrl}/excluir`;
 
     constructor(
         private httpClient: HttpClient,

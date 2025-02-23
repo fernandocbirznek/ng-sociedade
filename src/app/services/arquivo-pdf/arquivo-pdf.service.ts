@@ -7,14 +7,16 @@ import {
     ArquivoPdfCommandModel,
     ArquivoPdfCommandResponseModel,
 } from "../../models";
+import { environment } from "../../../environments/environment";
 
 @Injectable({
     providedIn: 'root'
 })
 
 export class ArquivoPdfService {
-    urlSelecionarManyArquivoPdfByAulaId = 'https://localhost:44303/api/ArquivoPdf/arquivo-pdf-many';
-    urlInserirArquivoPdf = 'https://localhost:44303/api/ArquivoPdf/inserir';
+    private readonly baseUrl = `${environment.aulaApiUrl}/ArquivoPdf`;
+    urlSelecionarManyArquivoPdfByAulaId = `${this.baseUrl}/arquivo-pdf-many`;
+    urlInserirArquivoPdf = `${this.baseUrl}/inserir`;
 
     constructor(
         private httpClient: HttpClient,

@@ -8,29 +8,34 @@ import {
     AulaTagModel,
     AulaViewModel,
 } from "../../models";
+import { environment } from "../../../environments/environment";
 
 @Injectable({
     providedIn: 'root'
 })
 
 export class AulaService {
-    urlInserirAula = 'https://localhost:44303/api/Aula/inserir';
-    urlAtualizarAula = 'https://localhost:44303/api/Aula/atualizar';
-    urlAtualizarAulaCurtir = 'https://localhost:44303/api/Aula/atualizar-curtir';
-    urlAtualizarAulaFavoritada = 'https://localhost:44303/api/Aula/atualizar-favoritada';
-    urlAtualizarAulaPosterior = 'https://localhost:44303/api/Aula/atualizar-aula-posterior';
-    urlAtualizarAulaAnterior = 'https://localhost:44303/api/Aula/atualizar-aula-anterior';
-    urlExcluirAula = 'https://localhost:44303/api/Aula/excluir';
-    urlAtualizarAulaPublicado = 'https://localhost:44303/api/Aula/atualizar-publicado';
-    urlSelecionarAulaById = 'https://localhost:44303/api/Aula/selecionar-aula';
-    urlSelecionarManyAulaAreaFisica = 'https://localhost:44303/api/Aula/selecionar-aulas-area-fisica';
-    urlSelecionarAulaByProfessorId = 'https://localhost:44303/api/Aula/selecionar-aulas-professor';
-    urlSelecionarManyAula = 'https://localhost:44303/api/Aula/selecionar-aulas-sistema';
+    private readonly baseUrl = `${environment.aulaApiUrl}/Aula`;
+    private readonly aulaTagUrl = `${environment.aulaApiUrl}/AulaTag`;
+    private readonly aulaAdministradorHomeUrl = `${environment.aulaApiUrl}/administrador-home`;
+    
+    urlInserirAula = `${this.baseUrl}/inserir`;
+    urlAtualizarAula = `${this.baseUrl}/atualizar`;
+    urlAtualizarAulaCurtir = `${this.baseUrl}/atualizar-curtir`;
+    urlAtualizarAulaFavoritada = `${this.baseUrl}/atualizar-favoritada`;
+    urlAtualizarAulaPosterior = `${this.baseUrl}/atualizar-aula-posterior`;
+    urlAtualizarAulaAnterior = `${this.baseUrl}/atualizar-aula-anterior`;
+    urlExcluirAula = `${this.baseUrl}/excluir`;
+    urlAtualizarAulaPublicado = `${this.baseUrl}/atualizar-publicado`;
+    urlSelecionarAulaById = `${this.baseUrl}/selecionar-aula`;
+    urlSelecionarManyAulaAreaFisica = `${this.baseUrl}/selecionar-aulas-area-fisica`;
+    urlSelecionarAulaByProfessorId = `${this.baseUrl}/selecionar-aulas-professor`;
+    urlSelecionarManyAula = `${this.baseUrl}/selecionar-aulas-sistema`;
 
-    urlInserirManyAulaTag = 'https://localhost:44303/api/AulaTag/inserir';
-    urlExcluirAulaTag = 'https://localhost:44303/api/AulaTag/excluir';
+    urlInserirManyAulaTag = `${this.aulaTagUrl}/inserir`;
+    urlExcluirAulaTag = `${this.aulaTagUrl}/excluir`;
 
-    urlSelecionarAdministradorHomeAulaInformacao = 'https://localhost:44303/api/administrador-home/selecionar-aula-informacao';
+    urlSelecionarAdministradorHomeAulaInformacao = `${this.aulaAdministradorHomeUrl}/selecionar-aula-informacao`;
 
     constructor(
         private httpClient: HttpClient,

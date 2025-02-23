@@ -1,14 +1,27 @@
-version: '3'
-services:
-  sociedadefisica:
-    image: sociedadefisica:1
-    container_name: sociedadefisica
-    ports:
-      - "8000:80"
-    restart: always
-    networks:
-      - sociedadefisicanetwork
+# version: '3.8'
+# services:
+#   sociedadefisica:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile
+#     #image: sociedadefisica
+#     container_name: sociedadefisica
+#     ports:
+#       - "9090:80"
+#     restart: always
+#     networks:
+#       - sociedadefisicanetwork
 
-networks:
-  sociedadefisicanetwork:
-    driver: bridge
+# networks:
+#   sociedadefisicanetwork:
+#     driver: bridge
+version: '3.8'
+
+services:
+  angular-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "9090:80" # Mapeia a porta 80 do container para a 8080 do host
+    restart: always

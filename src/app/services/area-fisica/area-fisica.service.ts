@@ -7,15 +7,18 @@ import {
     AreaFisicaModel,
 } from "../../models";
 
+import { environment } from "../../../environments/environment";
+
 @Injectable({
     providedIn: 'root'
 })
 
 export class AreaFisicaService {
-    urlSelecionarAreaFisicaMany = 'https://localhost:44303/api/AreaFisica/selecionar-areas-fisica';
-    urlInserirAreaFisica = 'https://localhost:44303/api/AreaFisica/inserir';
-    urlAtualizarAreaFisica = 'https://localhost:44303/api/AreaFisica/atualizar';
-    urlRemoverAreaFisica = 'https://localhost:44303/api/AreaFisica/excluir';
+    private readonly baseUrl = `${environment.aulaApiUrl}/AreaFisica`;
+    urlSelecionarAreaFisicaMany = `${this.baseUrl}/selecionar-areas-fisica`;
+    urlInserirAreaFisica = `${this.baseUrl}/inserir`;
+    urlAtualizarAreaFisica = `${this.baseUrl}/atualizar`;
+    urlRemoverAreaFisica = `${this.baseUrl}/excluir`;
 
     constructor(
         private httpClient: HttpClient,

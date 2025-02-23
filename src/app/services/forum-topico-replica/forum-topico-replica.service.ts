@@ -7,15 +7,19 @@ import {
     ForumTopicoReplicaModel,
 } from "../../models";
 
+import { environment } from "../../../environments/environment";
+
 @Injectable({
     providedIn: 'root'
 })
 
 export class ForumTopicoReplicaService {
-    urlSelecionarManyForumTopicoReplicaByForumTopicoId = 'https://localhost:44361/api/ForumTopicoReplica/selecionar-forum-topico-replica';
-    urlInserirForumTopicoReplica = 'https://localhost:44361/api/ForumTopicoReplica/inserir';
-    urlAtualizarForumTopicoReplica = 'https://localhost:44361/api/ForumTopicoReplica/atualizar';
-    urlExcluirForumTopicoReplica = 'https://localhost:44361/api/ForumTopicoReplica/excluir';
+    private readonly baseUrl = `${environment.forumApiUrl}/ForumTopicoReplica`;
+    
+    urlSelecionarManyForumTopicoReplicaByForumTopicoId = `${this.baseUrl}/selecionar-forum-topico-replica`;
+    urlInserirForumTopicoReplica = `${this.baseUrl}/inserir`;
+    urlAtualizarForumTopicoReplica = `${this.baseUrl}/atualizar`;
+    urlExcluirForumTopicoReplica = `${this.baseUrl}/excluir`;
 
     constructor(
         private httpClient: HttpClient,
