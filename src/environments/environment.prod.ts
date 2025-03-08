@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  aulaApiUrl: 'http://localhost:8100/api',
-  forumApiUrl: 'http://localhost:8104/api',
-  usuarioApiUrl: 'http://localhost:8102/api'
+  aulaApiUrl: 'http://104.41.24.46:8100/api',
+  forumApiUrl: 'http://104.41.24.46:8104/api',
+  usuarioApiUrl: 'http://104.41.24.46:8102/api'
 };
