@@ -1,20 +1,3 @@
-# version: '3.8'
-# services:
-#   sociedadefisica:
-#     build:
-#       context: .
-#       dockerfile: Dockerfile
-#     #image: sociedadefisica
-#     container_name: sociedadefisica
-#     ports:
-#       - "9090:80"
-#     restart: always
-#     networks:
-#       - sociedadefisicanetwork
-
-# networks:
-#   sociedadefisicanetwork:
-#     driver: bridge
 version: '3.8'
 
 services:
@@ -26,9 +9,8 @@ services:
       - "9090:80" # Mapeia a porta 80 do container para a 8080 do host
     restart: always
     networks:
-      - default
+      - rede-compartilhada
 
 networks:
-  default:
-    name: rede-compartilhada
+  rede-compartilhada:
     external: true

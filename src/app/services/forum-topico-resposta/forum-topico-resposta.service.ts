@@ -16,7 +16,7 @@ import { environment } from "../../../environments/environment";
 export class ForumTopicoRespostaService {
     private readonly baseUrl = `${environment.forumApiUrl}/ForumTopicoResposta`;
     
-    urlSelecionarManyForumTopicoRespostaByForumTopicoId = `${this.baseUrl}/selecionar-forum-topico-resposta'`;
+    urlSelecionarManyForumTopicoRespostaByForumTopicoId = `${this.baseUrl}/selecionar-forum-topico-resposta`;
     urlInserirForumTopicoResposta = `${this.baseUrl}/inserir`;
     urlAtualizarForumTopicoResposta = `${this.baseUrl}/atualizar`;
     urlExcluirForumTopicoResposta = `${this.baseUrl}/excluir`;
