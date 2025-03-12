@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  aulaApiUrl: 'http://ms-aula:5001/api',
-  forumApiUrl: 'http://ms-forum:5002/api',
-  usuarioApiUrl: 'http://ms-usuario:5000/api'
+  aulaApiUrl: 'http://104.41.24.46:8100/api',
+  forumApiUrl: 'http://104.41.24.46:8104/api',
+  usuarioApiUrl: 'http://104.41.24.46:8102/api'
 };
