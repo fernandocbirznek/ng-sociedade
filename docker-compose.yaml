@@ -8,13 +8,3 @@ services:
     ports:
       - "9090:80" # Mapeia a porta 80 do container para a 8080 do host
     restart: always
-    networks:
-      - rede-compartilhada
-    environment:
-      - MS_USUARIO_URL=http://ms-usuario:5000
-      - MS_AULA_URL=http://ms-aula:5001
-      - MS_FORUM_URL=http://ms-forum:5002
-
-networks:
-  rede-compartilhada:
-    external: true
