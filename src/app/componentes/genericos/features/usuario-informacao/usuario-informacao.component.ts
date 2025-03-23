@@ -24,7 +24,7 @@ import {
   styleUrls: ['./usuario-informacao.component.css']
 })
 export class UsuarioInformacaoComponent implements OnInit {
-  @Input() usuarioLogado: UsuarioModel = new UsuarioModel();
+  @Input() usuarioLogado: UsuarioModel = UsuarioModel.create({});
 
   alunoInformacaoWidgetSubscription$: Subscription = new Subscription();
   alunoInformacaoWidget$: Observable<InformacaoWidgetAlunoViewModel> = new Observable<InformacaoWidgetAlunoViewModel>();

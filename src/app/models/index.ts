@@ -24,6 +24,7 @@ export * from './link-youtube';
 export * from './login';
 export * from './noticia';
 export * from './noticia-area-interesse';
+export * from './tabela';
 export * from './tag';
 export * from './usuario';
 export * from './usuario-area-interesse';

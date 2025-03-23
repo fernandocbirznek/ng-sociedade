@@ -18,7 +18,6 @@ export class AulaModel {
 	curtido: number = 0;
     professorId: number = 0;
     areaFisicaId: number = 0;
-    areaFisicaTitulo: string = '';
     publicado: boolean = false;
     aulaAnteriorId: number = 0;
     aulaPosteriorId: number = 0;

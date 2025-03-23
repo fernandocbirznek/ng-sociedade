@@ -1,26 +1,25 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 
 import { 
   AdministradorAlterarUsuarioComponent,
+  AdministradorModalCriarUsuarioComponent,
   AlunoVisualizarComponent,
   ModalExcluirComponent, 
 } from '../../../../componentes';
 
 import { 
+  TabelaModel,
   TipoUsuarioEnum, 
   UsuarioModel
 } from '../../../../models';
 
 import { 
   excluirUsuario,
-  getManyUsuarioByTipoUsuario,
+  getManyTabelaUsuarioByTipoUsuario
 } from '../../../../store';
 
 @Component({
@@ -30,14 +29,9 @@ import {
 })
 export class AdministradorTabelaAdministradorComponent implements OnInit {
 
-  displayedColumns: string[] = ['nome', 'email', 'dataCadastro', 'acao'];
-  dataSource = new MatTableDataSource();
-
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
-
-  alunoManySubscription$: Subscription = new Subscription();
-  alunoMany$: Observable<UsuarioModel[]> = new Observable<UsuarioModel[]>();
+  tabelaSubscription$: Subscription = new Subscription();
+  tabela$: Observable<TabelaModel> = new Observable<TabelaModel>();
+  tabela: TabelaModel = TabelaModel.create({});
 
   constructor(
     public router: Router,
@@ -46,33 +40,27 @@ export class AdministradorTabelaAdministradorComponent implements OnInit {
   ) {}
 
   public ngOnInit() {
-    this.setupAluno();
-  }
-
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    this.setupTabela();
   }
 
   ngOnDestroy() {
-    this.alunoManySubscription$.unsubscribe();
+    this.tabelaSubscription$.unsubscribe();
   }
 
-  setupAluno() {
-    this.alunoMany$ = this.store.select(getManyUsuarioByTipoUsuario(TipoUsuarioEnum.UsuarioAdministrador));
-    this.alunoManySubscription$ = this.alunoMany$.subscribe(itens => {
-      this.dataSource.data =itens;
-    });
-  }
-
-  aplicarFiltro(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
+  setupTabela() {
+      this.tabela$ = this.store.select(getManyTabelaUsuarioByTipoUsuario(TipoUsuarioEnum.UsuarioAdministrador));
+      this.tabelaSubscription$ = this.tabela$.subscribe(item => {
+        this.tabela = item;
+      });
     }
-  }
+
+  criarUsuario() {
+      this.dialog.open(AdministradorModalCriarUsuarioComponent, {
+        maxHeight: '800px',
+        width: '600px',
+        height: 'auto',
+      });
+    }
 
   editarUsuario(item: UsuarioModel) {
     this.dialog.open(AdministradorAlterarUsuarioComponent, {
@@ -99,5 +87,4 @@ export class AdministradorTabelaAdministradorComponent implements OnInit {
       }
     });
   }
-
 }

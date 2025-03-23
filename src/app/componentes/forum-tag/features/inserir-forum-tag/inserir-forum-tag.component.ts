@@ -38,8 +38,9 @@ export class InserirForumTagComponent implements OnInit {
   }
 
   requestCriarForumTag() {
-    let request: ForumTagModel = new ForumTagModel();
-    request.titulo = this.formGroupForumTag.get("formTitulo")?.value;
+    let request: ForumTagModel = ForumTagModel.create({
+      titulo: this.formGroupForumTag.get("formTitulo")?.value
+    });
  
     this.formGroupForumTag.reset();
     this.store.dispatch(inserirForumTag({ forumTag: request }))

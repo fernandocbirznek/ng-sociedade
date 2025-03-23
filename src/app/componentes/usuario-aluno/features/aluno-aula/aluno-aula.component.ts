@@ -28,7 +28,7 @@ import {
   styleUrls: ['./aluno-aula.component.css']
 })
 export class AlunoAulaComponent implements OnInit {
-  @Input() usuarioLogado: UsuarioModel = new UsuarioModel();
+  @Input() usuarioLogado: UsuarioModel = UsuarioModel.create({});
 
   widgetSubscription$: Subscription = new Subscription();
   widget$: Observable<WidgetViewModel> = new Observable<WidgetViewModel>();

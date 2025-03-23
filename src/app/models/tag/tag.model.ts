@@ -4,4 +4,12 @@ export class TagModel {
     dataAtualizacao: Date | undefined = undefined;
 
 	nome: string = "";
+
+    protected constructor(item?: Partial<TagModel>) {
+        Object.assign(this, item);
+    }
+
+    static create(item: Partial<TagModel>): TagModel {
+        return new TagModel(item);
+    }
 }

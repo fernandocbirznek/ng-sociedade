@@ -39,24 +39,9 @@ export const usuarioReducer = createReducer(
   on(actions.selecionarUsuarioByIdSuccess, (state, action) => {
     
     let itens = [...state.itens].map(item => {
-      if (item.id == action.response.id) {
-        let novoUsuario = new UsuarioModel();
-        novoUsuario.id = action.response.id;
-        novoUsuario.nome = action.response.nome;
-        novoUsuario.comentarioAula = action.response.comentarioAula;
-        novoUsuario.comentarioForum = action.response.comentarioForum;
-        novoUsuario.curtirAula = action.response.curtirAula;
-        novoUsuario.dataNascimento = action.response.dataNascimento;
-        novoUsuario.dataCadastro = action.response.dataCadastro;
-        novoUsuario.email = action.response.email;
-        novoUsuario.hobbie = action.response.hobbie;
-        novoUsuario.noticiaVisualizada = action.response.noticiaVisualizada;
-        novoUsuario.usuarioAreaInteresses = action.response.usuarioAreaInteresses;
-        novoUsuario.sociedadeId = action.response.sociedadeId;
-        novoUsuario.tipoUsuario = action.response.tipoUsuario;
-
-        return novoUsuario;
-      }
+      if (item.id == action.response.id)
+        return UsuarioModel.create(action.response);
+      
       return item;
     });
     
@@ -96,20 +81,7 @@ export const usuarioReducer = createReducer(
     
     action.response.forEach(usuario => {
       if(!state.itens.find(item => item.id == usuario.id)) {
-        let novoUsuario = new UsuarioModel();
-        novoUsuario.id = usuario.id;
-        novoUsuario.nome = usuario.nome;
-        novoUsuario.comentarioAula = usuario.comentarioAula;
-        novoUsuario.comentarioForum = usuario.comentarioForum;
-        novoUsuario.curtirAula = usuario.curtirAula;
-        novoUsuario.dataNascimento = usuario.dataNascimento;
-        novoUsuario.dataCadastro = usuario.dataCadastro;
-        novoUsuario.email = usuario.email;
-        novoUsuario.hobbie = usuario.hobbie;
-        novoUsuario.noticiaVisualizada = usuario.noticiaVisualizada;
-        novoUsuario.usuarioAreaInteresses = usuario.usuarioAreaInteresses;
-        novoUsuario.sociedadeId = usuario.sociedadeId;
-        novoUsuario.tipoUsuario = usuario.tipoUsuario;
+        let novoUsuario = UsuarioModel.create(usuario);
 
         switch(usuario.tipoUsuario) { 
           case TipoUsuarioEnum.UsuarioAdministrador: { 
@@ -167,12 +139,13 @@ export const usuarioReducer = createReducer(
     };
   }),
   on(actions.criarUsuarioSuccess, (state, action) => {
-    let usuario = new UsuarioModel();
-    usuario.nome = action.conta.nome;
-    usuario.email = action.conta.email;
-    usuario.id = action.response.id;
-    usuario.tipoUsuario = action.response.tipoUsuario;
-    usuario.dataCadastro = action.response.dataCadastro;
+    let usuario = UsuarioModel.create({
+      nome: action.conta.nome,
+      email: action.conta.email,
+      id: action.response.id,
+      tipoUsuario: action.response.tipoUsuario,
+      dataCadastro: action.response.dataCadastro
+    });
 
     switch(usuario.tipoUsuario) { 
       case TipoUsuarioEnum.UsuarioAdministrador: { 
@@ -230,24 +203,14 @@ export const usuarioReducer = createReducer(
   on(actions.atualizarUsuarioSuccess, (state, action) => {
     let itens = [...state.itens].map(item => {
       if (item.id == action.usuario.id) {
-        let usuario: UsuarioModel = new UsuarioModel();
-        usuario.id = usuario.id;
-        usuario.nome = action.usuario.nome;
-        usuario.comentarioAula = usuario.comentarioAula;
-        usuario.comentarioForum = usuario.comentarioForum;
-        usuario.curtirAula = usuario.curtirAula;
-        usuario.dataNascimento = usuario.dataNascimento;
-        usuario.dataCadastro = usuario.dataCadastro;
-        usuario.dataAtualizacao = action.response;
-        usuario.email = action.usuario.email;
-        usuario.hobbie = usuario.hobbie;
-        usuario.noticiaVisualizada = usuario.noticiaVisualizada;
-        usuario.usuarioAreaInteresses = usuario.usuarioAreaInteresses;
-        usuario.sociedadeId = usuario.sociedadeId;
-        usuario.tipoUsuario = action.usuario.tipoUsuarioEnum;
-        usuario.tipoUsuarioEnum = action.usuario.tipoUsuarioEnum;
-
-        return usuario;
+        return UsuarioModel.create({
+          ...item,
+          nome: action.usuario.nome,
+          dataAtualizacao: action.response,
+          email: action.usuario.email,
+          tipoUsuario: action.usuario.tipoUsuarioEnum,
+          tipoUsuarioEnum: action.usuario.tipoUsuarioEnum
+        });
       }
       return item;
     })

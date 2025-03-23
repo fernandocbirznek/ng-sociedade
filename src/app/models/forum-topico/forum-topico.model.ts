@@ -13,6 +13,11 @@ export class ForumTopicoModel {
 	forumTagMany: ForumTagModel[] = [];
 	forumTopicoEnum: ForumTopicoEnum = ForumTopicoEnum.Geral;
 
-	//TODO, colocar numa view
-	resposta: number = 0;
+	protected constructor(item?: Partial<ForumTopicoModel>) {
+        Object.assign(this, item);
+    }
+
+    static create(item: Partial<ForumTopicoModel>): ForumTopicoModel {
+        return new ForumTopicoModel(item);
+    }
 }

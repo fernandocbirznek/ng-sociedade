@@ -4,8 +4,12 @@ import * as fromAreaFisica from '../reducers/area-fisica.reducers';
 import * as headerFeature from '../../../header/store';
 
 import { 
-  AreaFisicaModel 
+  AreaFisicaModel, 
+  TabelaModel
 } from '../../../../models';
+import { AreaFisicaStoreHelpers } from '../../helpers/area-fisica-helper';
+import { AreaFisicaViewModel } from '../../../../models/area-fisica/area-fisica-view.model';
+import moment from 'moment';
 
 export const selectAreaFisicaState = createFeatureSelector<fromAreaFisica.AreaFisicaState>(
     fromAreaFisica.areaFisicaFeatureKey
@@ -14,8 +18,16 @@ export const selectAreaFisicaState = createFeatureSelector<fromAreaFisica.AreaFi
 export const getManyAreaFisica = createSelector(
   selectAreaFisicaState, (
     state
-  ): AreaFisicaModel[] => {
-  let itens = [...state.areaFisica].sort((a: AreaFisicaModel, b: AreaFisicaModel) => {
+  ): AreaFisicaViewModel[] => {
+
+    let itens = state.areaFisica.map(
+      item => AreaFisicaViewModel.create({
+        ...item,
+        dataCadastroString: moment(item.dataCadastro).format('DD/MM/YYYY')
+      })
+    );
+
+  return itens.sort((a: AreaFisicaModel, b: AreaFisicaModel) => {
     if (a.titulo < b.titulo) {
       return -1;
     }
@@ -24,16 +36,29 @@ export const getManyAreaFisica = createSelector(
     }
     return 0;
   });
-  return itens;
 })
 
 export const getOneAreaFisicaByAreaFisicaId = createSelector(
   getManyAreaFisica,
   headerFeature.getAreaFisicaId, (
-    itens: AreaFisicaModel[],
+    itens: AreaFisicaViewModel[],
     areaFisicaId: number
-  ): AreaFisicaModel | undefined => {
+  ): AreaFisicaViewModel | undefined => {
     
     return itens.find(item => item.id == areaFisicaId);
+  }
+)
+
+export const getManyAreaFisicaAdministradorTabela = createSelector(
+  getManyAreaFisica,
+  headerFeature.getAreaFisicaId, (
+    itens: AreaFisicaViewModel[]
+  ): TabelaModel => {
+    
+    let tabela: TabelaModel = AreaFisicaStoreHelpers.getAdministradorTabelaAreaFisica();
+
+    tabela.dataSource.data = itens;
+
+    return tabela;
   }
 )

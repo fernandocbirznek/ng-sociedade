@@ -53,12 +53,13 @@ export class AdministradorAlterarUsuarioComponent implements OnInit {
   }
 
   requestAlterarUsuario() {
-    let request: UsuarioModel = new UsuarioModel();
-    request.id = this.data.id;
-    request.nome = this.formAlterarUsuario.get("nome")?.value;
-    request.email = this.formAlterarUsuario.get("email")?.value;
-    request.tipoUsuarioEnum = this.tipoUsuario;
-    request.tipoUsuario = this.tipoUsuario;
+    let request: UsuarioModel = UsuarioModel.create({
+      id: this.data.id,
+      nome: this.formAlterarUsuario.get("nome")?.value,
+      email: this.formAlterarUsuario.get("email")?.value,
+      tipoUsuarioEnum: this.tipoUsuario,
+      tipoUsuario: this.tipoUsuario
+    });
 
     this.store.dispatch(atualizarUsuario({ usuario: request }));
     this.dialogRef.close();

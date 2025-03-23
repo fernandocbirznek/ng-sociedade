@@ -52,11 +52,12 @@ export class AtualizarAreaFisicaComponent implements OnInit {
   }
 
   requestAtualizarAreaFisica() {
-    let request: AreaFisicaModel = new AreaFisicaModel();
-    request.id = this.data.id;
-    request.titulo = this.formGroupAreaFisica.get("formTitulo")?.value;
-    request.descricao = this.formGroupAreaFisica.get("formDescricao")?.value;
-    request.aplicacao = this.formGroupAreaFisica.get("formAplicacao")?.value;
+    let request: AreaFisicaModel = AreaFisicaModel.create({
+      id: this.data.id,
+      titulo: this.formGroupAreaFisica.get("formTitulo")?.value,
+      descricao: this.formGroupAreaFisica.get("formDescricao")?.value,
+      aplicacao: this.formGroupAreaFisica.get("formAplicacao")?.value
+    });
  
     this.formGroupAreaFisica.reset();
     this.store.dispatch(atualizarAreaFisica({ areaFisica: request }))

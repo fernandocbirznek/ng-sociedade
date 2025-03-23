@@ -16,6 +16,7 @@ import {
   AulaSessaoModel, 
   AulaViewModel, 
   InformacaoAulaViewModel, 
+  TabelaModel, 
   TagModel, 
   TipoOrdenarAulaFiltroEnum, 
   TipoSessaoAulaEnum, 
@@ -27,6 +28,8 @@ import {
   TopicoHelpers 
 } from '../../../../componentes/topicos/helpers';
 import { GenericoHelpers } from '../../../../componentes';
+import moment from 'moment';
+import { AulaStoreHelpers } from '../../helpers/aula-store-helper';
 
 //import moment from 'moment';
 
@@ -89,6 +92,8 @@ export const getManyAula = createSelector(
         aulaViewModel.publicado = item.publicado;
         aulaViewModel.aulaAnteriorId = item.aulaAnteriorId;
         aulaViewModel.aulaPosteriorId = item.aulaPosteriorId;
+
+        aulaViewModel.dataCadastroString = moment(aulaViewModel.dataCadastro).format('DD/MM/YYYY');
 
         aulaViewModel.usuarioNome = item.usuarioNome;
         aulaViewModel.usuarioFoto = item.usuarioFoto;
@@ -322,5 +327,17 @@ export const getManyAulaComentarioByAulaSelected = createSelector(
 
     return aulaComentarioMany
       .filter(item => item.aulaId == aulaSelected);
+  }
+)
+
+export const getManyAulaAdministrador = createSelector(
+  getManyAula, (
+    aulaMany: AulaViewModel[],
+  ): TabelaModel => {
+    let tabela: TabelaModel = AulaStoreHelpers.getAdministradorTabelaAula();
+
+    tabela.dataSource.data = aulaMany;
+
+    return tabela;
   }
 )

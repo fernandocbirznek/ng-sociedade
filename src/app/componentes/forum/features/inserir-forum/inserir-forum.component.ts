@@ -40,9 +40,10 @@ export class InserirForumComponent implements OnInit {
   }
 
   requestCriarForum() {
-    let request: ForumModel = new ForumModel();
-    request.titulo = this.formGroupForum.get("formTitulo")?.value;
-    request.descricao = this.formGroupForum.get("formDescricao")?.value;
+    let request: ForumModel = ForumModel.create({
+      titulo: this.formGroupForum.get("formTitulo")?.value,
+      descricao: this.formGroupForum.get("formDescricao")?.value
+    });
  
     this.formGroupForum.reset();
     this.store.dispatch(inserirForum({ forum: request }))

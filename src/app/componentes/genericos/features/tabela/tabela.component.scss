@@ -1,0 +1,42 @@
+.container-filtro {
+    width: 100%;
+}
+
+.container-tabela {
+    overflow: auto;
+    width: 100%;
+}
+
+.button-criar {
+    gap: 10px;
+    text-wrap: nowrap;
+    margin-bottom: 20px;
+}
+
+.coluna:hover ~ .coluna, .coluna:hover, .coluna:has(~ .coluna:hover) {
+    background-color: rgba(0, 0, 0, 0.034);
+    cursor: pointer;
+}
+
+.container-filtro {
+    gap: 15px;
+}
+
+.tabela-header {
+    font-weight: bold;
+    color: black;
+    font-size: 16px;
+}
+
+.coluna-acoes {
+    text-align: center;
+    width: 200px;
+}
+
+.container-buttons {
+    gap: 10px;
+}
+
+.paginacao {
+    width: 100%;
+}

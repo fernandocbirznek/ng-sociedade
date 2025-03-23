@@ -11,9 +11,11 @@ import {
   InformacaoNoticiaViewModel, 
   NoticiaFilterModel, 
   NoticiaViewModel, 
+  TabelaModel, 
   UsuarioNoticiaFavoritadoModel
 } from '../../../../models';
 import { GenericoHelpers } from '../../../../componentes';
+import { NoticiaStoreHelper } from '../../helpers/noticia-store-helper';
 
 export const selecionarNoticiaState = createFeatureSelector<fromNoticia.NoticiaState>(
   fromNoticia.noticiaFeatureKey
@@ -70,6 +72,24 @@ export const getManyNoticia = createSelector(
 
     return itens;
 })
+
+export const getTabelaNoticia = createSelector(
+  getManyNoticia, (
+    noticiaMany: NoticiaViewModel[]
+  ): TabelaModel => {
+
+    let itens = noticiaMany.map(noticia => NoticiaViewModel.create({
+      ...noticia,
+      dataCadastroString: moment(noticia.dataCadastro).format('DD/MM/YYYY')
+    }));
+
+    let tabela: TabelaModel = NoticiaStoreHelper.getTabelaNoticia();
+    
+    tabela.dataSource.data = itens;
+
+    return tabela;
+  }
+)
 
 export const getManyNoticiaFilter = createSelector(
   getNoticiaFilter,

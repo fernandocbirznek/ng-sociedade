@@ -11,5 +11,13 @@ export class NoticiaModel {
 	dataCadastro: Date | undefined = undefined;
 	dataAtualizacao: Date | undefined = undefined;
 
-	areaInteresseMany: AreaInteresseModel[] = [] 
+	areaInteresseMany: AreaInteresseModel[] = [];
+
+	protected constructor(item?: Partial<NoticiaModel>) {
+        Object.assign(this, item);
+    }
+
+    static create(item: Partial<NoticiaModel>): NoticiaModel {
+        return new NoticiaModel(item);
+    }
 }

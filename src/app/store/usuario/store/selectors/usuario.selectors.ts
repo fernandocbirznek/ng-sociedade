@@ -2,9 +2,20 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as fromUsuario from '../reducers/usuario.reducers';
 
 import { 
+  TabelaModel,
   TipoUsuarioEnum, 
   UsuarioModel
 } from '../../../../models';
+
+import { 
+  UsuarioStoreHelper 
+} from '../../helpers/usuario-store-helper';
+
+import { 
+  UsuarioViewModel 
+} from '../../../../models/usuario/usuario-view-model';
+
+import moment from 'moment';
 
 export const getUsuarioState = createFeatureSelector<fromUsuario.UsuarioState>(
   fromUsuario.usuarioFeatureKey
@@ -48,5 +59,25 @@ export const getManyUsuarioByTipoUsuario = (tipoUsuario: TipoUsuarioEnum) => cre
     }
 
     return itens;
+  }
+)
+
+export const getManyTabelaUsuarioByTipoUsuario = (
+  tipoUsuario: TipoUsuarioEnum
+) => createSelector(
+  getManyUsuarioByTipoUsuario(tipoUsuario), (
+    usuarioMany: UsuarioModel[]
+  ): TabelaModel => {
+
+    let itens = usuarioMany.map(item => UsuarioViewModel.create({
+      ...item,
+      dataCadastroString: moment(item.dataCadastro).format('DD/MM/YYYY')
+    }));
+
+    let tabela: TabelaModel = UsuarioStoreHelper.getAdministradorTabelaUsuario();
+    
+    tabela.dataSource.data = itens;
+
+    return tabela;
   }
 )

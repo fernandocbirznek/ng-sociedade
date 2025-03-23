@@ -1,8 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
@@ -15,11 +12,12 @@ import {
 
 import { 
   ForumModel,
+  TabelaModel,
 } from '../../../../models';
 
 import { 
   excluirForum,
-  getManyForum,
+  getTabelaForum,
 } from '../../../../store';
 
 @Component({
@@ -29,15 +27,9 @@ import {
 })
 export class AdministradorTabelaForumComponent implements OnInit {
 
-  displayedColumns: string[] = ['titulo', 'descricao', 'data-postagem', 'acao'];
-  dataSource = new MatTableDataSource();
-
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
-
-  forumManySubscription$: Subscription = new Subscription();
-  forumMany$: Observable<ForumModel[]> = new Observable<ForumModel[]>();
-  forumMany: ForumModel[] = [];
+  tabelaSubscription$: Subscription = new Subscription();
+  tabela$: Observable<TabelaModel> = new Observable<TabelaModel>();
+  tabela: TabelaModel = TabelaModel.create({});
 
   constructor(
     public router: Router,
@@ -49,29 +41,15 @@ export class AdministradorTabelaForumComponent implements OnInit {
     this.setupForum();
   }
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
-
   ngOnDestroy() {
-    this.forumManySubscription$.unsubscribe();
+    this.tabelaSubscription$.unsubscribe();
   }
 
   setupForum() {
-    this.forumMany$ = this.store.select(getManyForum);
-    this.forumManySubscription$ = this.forumMany$.subscribe(itens => {
-      this.dataSource.data = itens;
-    });
-  }
-
-  aplicarFiltro(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
+    this.tabela$ = this.store.select(getTabelaForum);
+      this.tabelaSubscription$ = this.tabela$.subscribe(item => {
+        this.tabela = item;
+      });
   }
 
   criarForum() {

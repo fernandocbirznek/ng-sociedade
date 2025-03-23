@@ -1,8 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
@@ -14,11 +11,12 @@ import {
 
 import { 
   AreaInteresseModel,
+  TabelaModel,
 } from '../../../../models';
 
 import { 
   excluirAreaInteresse,
-  getManyAreaInteresse,
+  getTabelaAreaInteresse,
 } from '../../../../store';
 
 @Component({
@@ -27,16 +25,9 @@ import {
   styleUrls: ['./administrador-tabela-area-interesse.component.css']
 })
 export class AdministradorTabelaAreaInteresseComponent implements OnInit {
-
-  displayedColumns: string[] = ['nome', 'data-postagem', 'acao'];
-  dataSource = new MatTableDataSource();
-
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
-
-  areaInteresseManySubscription$: Subscription = new Subscription();
-  areaInteresseMany$: Observable<AreaInteresseModel[]> = new Observable<AreaInteresseModel[]>();
-  areaInteresseMany: AreaInteresseModel[] = [];
+  tabelaSubscription$: Subscription = new Subscription();
+  tabela$: Observable<TabelaModel> = new Observable<TabelaModel>();
+  tabela: TabelaModel = TabelaModel.create({});
 
   constructor(
     public router: Router,
@@ -45,32 +36,18 @@ export class AdministradorTabelaAreaInteresseComponent implements OnInit {
   ) {}
 
   public ngOnInit() {
-    this.setupAreaInteresse();
-  }
-
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    this.setupTabela();
   }
 
   ngOnDestroy() {
-    this.areaInteresseManySubscription$.unsubscribe();
+    this.tabelaSubscription$.unsubscribe();
   }
 
-  setupAreaInteresse() {
-    this.areaInteresseMany$ = this.store.select(getManyAreaInteresse);
-    this.areaInteresseManySubscription$ = this.areaInteresseMany$.subscribe(itens => {
-      this.dataSource.data = itens;
-    });
-  }
-
-  aplicarFiltro(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
+  setupTabela() {
+    this.tabela$ = this.store.select(getTabelaAreaInteresse);
+      this.tabelaSubscription$ = this.tabela$.subscribe(item => {
+        this.tabela = item;
+      });
   }
 
   criarAreaInteresse() {

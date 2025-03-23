@@ -10,7 +10,7 @@ import {
   styleUrls: ['./usuario-conquistas.component.css']
 })
 export class UsuarioConquistasComponent implements OnInit {
-  @Input() usuarioLogado: UsuarioModel = new UsuarioModel();
+  @Input() usuarioLogado: UsuarioModel = UsuarioModel.create({});
 
   constructor() { }
 

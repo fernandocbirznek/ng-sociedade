@@ -45,6 +45,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     -webkit-line-clamp: 2;
 }
 
+.g-text-overflow-3 {
+    @include g-text-overflow;
+    -webkit-line-clamp: 3;
+}
+
 .g-tag {
     font-size: 0.7em;
     border: 1px solid #5d5dff;
@@ -421,6 +426,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     @include g-flex-row;
     justify-content: space-between;
     align-items: flex-start;
+     
 }
 
 .g-row-between-center {
@@ -439,6 +445,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     @include g-flex-row;
     justify-content: space-between;
     align-items: stretch;
+    
 }
 
 .g-row-between-around {
@@ -748,4 +755,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     @include g-flex-column;
     justify-content: stretch space-evenly;
     align-items: stretch;
+}
+
+.home-screen {
+    background-color:#F5F5DC;
+    
 }

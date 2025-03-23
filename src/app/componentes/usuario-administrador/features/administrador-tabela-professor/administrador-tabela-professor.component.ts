@@ -15,12 +15,14 @@ import {
 } from '../../../../componentes';
 
 import { 
+  TabelaModel,
   TipoUsuarioEnum, 
   UsuarioModel
 } from '../../../../models';
 
 import { 
   excluirUsuario,
+  getManyTabelaUsuarioByTipoUsuario,
   getManyUsuarioByTipoUsuario,
 } from '../../../../store';
 
@@ -31,14 +33,9 @@ import {
 })
 export class AdministradorTabelaProfessorComponent implements OnInit {
 
-  displayedColumns: string[] = ['nome', 'email', 'dataCadastro', 'acao'];
-  dataSource = new MatTableDataSource();
-
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
-
-  professorManySubscription$: Subscription = new Subscription();
-  professorMany$: Observable<UsuarioModel[]> = new Observable<UsuarioModel[]>();
+  tabelaSubscription$: Subscription = new Subscription();
+  tabela$: Observable<TabelaModel> = new Observable<TabelaModel>();
+  tabela: TabelaModel = TabelaModel.create({});
 
   constructor(
     public router: Router,
@@ -47,32 +44,18 @@ export class AdministradorTabelaProfessorComponent implements OnInit {
   ) {}
 
   public ngOnInit() {
-    this.setupProfessor();
-  }
-
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    this.setupUsuario();
   }
 
   ngOnDestroy() {
-    this.professorManySubscription$.unsubscribe();
+    this.tabelaSubscription$.unsubscribe();
   }
 
-  setupProfessor() {
-    this.professorMany$ = this.store.select(getManyUsuarioByTipoUsuario(TipoUsuarioEnum.UsuarioProfessor));
-    this.professorManySubscription$ = this.professorMany$.subscribe(itens => {
-      this.dataSource.data = itens;
-    });
-  }
-
-  aplicarFiltro(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
+  setupUsuario() {
+    this.tabela$ = this.store.select(getManyTabelaUsuarioByTipoUsuario(TipoUsuarioEnum.UsuarioProfessor));
+      this.tabelaSubscription$ = this.tabela$.subscribe(item => {
+        this.tabela = item;
+      });
   }
 
   criarUsuario() {

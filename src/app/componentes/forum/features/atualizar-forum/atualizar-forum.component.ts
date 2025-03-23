@@ -47,11 +47,13 @@ export class AtualizarForumComponent implements OnInit {
   }
 
   requestCriarForum() {
-    let request: ForumModel = new ForumModel();
-    request.id = this.data.id;
-    request.titulo = this.formGroupForum.get("formTitulo")?.value;
-    request.descricao = this.formGroupForum.get("formDescricao")?.value;
- 
+    let request: ForumModel = ForumModel.create({
+      id: this.data.id,
+      titulo: this.formGroupForum.get("formTitulo")?.value,
+      descricao: this.formGroupForum.get("formDescricao")?.value
+   
+    });
+
     this.formGroupForum.reset();
     this.store.dispatch(atualizarForum({ forum: request }))
     this.dialogRef.close();

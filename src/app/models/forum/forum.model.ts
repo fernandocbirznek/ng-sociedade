@@ -5,4 +5,12 @@ export class ForumModel {
     
 	titulo: string = "";
 	descricao: string = "";
+
+	protected constructor(item?: Partial<ForumModel>) {
+        Object.assign(this, item);
+    }
+
+    static create(item: Partial<ForumModel>): ForumModel {
+        return new ForumModel(item);
+    }
 }

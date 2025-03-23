@@ -43,10 +43,11 @@ export class InserirAreaFisicaComponent implements OnInit {
   }
 
   requestCriarAreaFisica() {
-    let request: AreaFisicaModel = new AreaFisicaModel();
-    request.titulo = this.formGroupAreaFisica.get("formTitulo")?.value;
-    request.descricao = this.formGroupAreaFisica.get("formDescricao")?.value;
-    request.aplicacao = this.formGroupAreaFisica.get("formAplicacao")?.value;
+    let request: AreaFisicaModel = AreaFisicaModel.create({
+      titulo: this.formGroupAreaFisica.get("formTitulo")?.value,
+      descricao: this.formGroupAreaFisica.get("formDescricao")?.value,
+      aplicacao: this.formGroupAreaFisica.get("formAplicacao")?.value
+    });
  
     this.formGroupAreaFisica.reset();
     this.store.dispatch(inserirAreaFisica({ areaFisica: request }))

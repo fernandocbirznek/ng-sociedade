@@ -5,6 +5,7 @@ export * from './editar-usuario-area-interesse';
 export * from './katex';
 export * from './modal-excluir';
 export * from './noticia-filtro';
+export * from './tabela';
 export * from './toast';
 export * from './usuario-area-interesse';
 export * from './usuario-conquistas';

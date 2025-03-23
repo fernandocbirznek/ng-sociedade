@@ -17,7 +17,7 @@ import {
   styleUrls: ['./professor-perfil.component.css']
 })
 export class ProfessorPerfilComponent implements OnInit {
-  @Input() usuarioLogado: UsuarioModel = new UsuarioModel();
+  @Input() usuarioLogado: UsuarioModel = UsuarioModel.create({});
 
   areaInteresseMany: AreaInteresseModel[] = [];
 

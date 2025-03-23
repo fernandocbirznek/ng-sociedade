@@ -6,4 +6,12 @@ export class AreaFisicaModel {
 	descricao: string = "";
 	titulo: string = '';
 	aplicacao: string = '';
+
+	protected constructor(item?: Partial<AreaFisicaModel>) {
+        Object.assign(this, item);
+    }
+
+    static create(item: Partial<AreaFisicaModel>): AreaFisicaModel {
+        return new AreaFisicaModel(item);
+    }
 }

@@ -4,4 +4,12 @@ export class ForumTagModel {
 	dataAtualizacao: Date | undefined = undefined;
     
 	titulo: string = "";
+
+	protected constructor(item?: Partial<ForumTagModel>) {
+        Object.assign(this, item);
+    }
+
+    static create(item: Partial<ForumTagModel>): ForumTagModel {
+        return new ForumTagModel(item);
+    }
 }

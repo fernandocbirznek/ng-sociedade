@@ -171,20 +171,17 @@ export const noticiaReducer = createReducer(
   }),
   on(actions.atualizarNoticiaSuccess, (state, action) => {
     let itens = [...state.itens].map(item => {
-        if(item.id == action.request.id) {
-          let noticia: NoticiaModel = new NoticiaModel();
-          noticia.id = item.id;
-          noticia.dataCadastro = item.dataCadastro;
-          noticia.titulo = action.request.titulo;
-          noticia.resumo = action.request.resumo;
-          noticia.conteudo = action.request.conteudo;
-          noticia.usuarioCadastroNome = item.usuarioCadastroNome;
-          noticia.favoritado = item.favoritado;
-          noticia.usuarioCadastroId = item.usuarioCadastroId;
-          noticia.dataAtualizacao = action.response.dataAtualizacao;
-          noticia.areaInteresseMany = action.response.areaInteresseMany;
-          return noticia;
-        }
+        if(item.id == action.request.id)
+          return NoticiaModel
+            .create({
+              ...item,
+              titulo: action.request.titulo,
+              resumo: action.request.resumo,
+              conteudo: action.request.conteudo,
+              dataAtualizacao: action.response.dataAtualizacao,
+              areaInteresseMany: action.response.areaInteresseMany
+            });
+
         return item;
     });
     
@@ -246,26 +243,19 @@ export const noticiaReducer = createReducer(
   }),
   on(actions.selecionarManyAreaInteresseByNoticiaIdSuccess, (state, action) => {
     let areaInteresses = action.response.map(item => {
-      let areaInteresse = new AreaInteresseModel();
-      areaInteresse.nome = item.areaInteresse ? item.areaInteresse.nome : "";
-      return areaInteresse;
+      return AreaInteresseModel.create({
+        nome: item.areaInteresse ? item.areaInteresse.nome : ""
+      });
     })
   
     let itens = [...state.itens].map(item => {
-      if(item.id == action.noticiaId) {
-        let noticia = new NoticiaModel();
-        noticia.dataAtualizacao = item.dataAtualizacao,
-        noticia.dataCadastro = item.dataCadastro,
-        noticia.conteudo = item.conteudo,
-        noticia.id = item.id;
-        noticia.usuarioCadastroNome = item.usuarioCadastroNome;
-        noticia.resumo = item.resumo;
-        noticia.favoritado = item.favoritado;
-        noticia.titulo = item.titulo;
-        noticia.usuarioCadastroId = item.usuarioCadastroId;
-        noticia.areaInteresseMany = areaInteresses;
-        return noticia;
-      }
+      if(item.id == action.noticiaId)
+        return NoticiaModel
+          .create({
+            ...item,
+            areaInteresseMany: areaInteresses
+          });
+
       return item;
     });
   
@@ -297,20 +287,13 @@ export const noticiaReducer = createReducer(
 
   on(actions.atualizarAdicaoNoticiaFavoritado, (state, action) => {
     let itens = [...state.itens].map(item => {
-        if(item.id == action.noticiaId) {
-          let noticia: NoticiaModel = new NoticiaModel();
-          noticia.id = item.id;
-          noticia.dataCadastro = item.dataCadastro;
-          noticia.titulo = item.titulo;
-          noticia.resumo = item.resumo;
-          noticia.usuarioCadastroNome = item.usuarioCadastroNome;
-          noticia.conteudo = item.conteudo;
-          noticia.favoritado = item.favoritado + 1;
-          noticia.usuarioCadastroId = item.usuarioCadastroId;
-          noticia.dataAtualizacao = item.dataAtualizacao;
-          noticia.areaInteresseMany = item.areaInteresseMany;
-          return noticia;
-        }
+        if(item.id == action.noticiaId)
+          return NoticiaModel
+            .create({
+              ...item,
+              favoritado: item.favoritado + 1
+            });
+
         return item;
     });
     
@@ -325,20 +308,13 @@ export const noticiaReducer = createReducer(
   }),
   on(actions.atualizarRemocaoNoticiaFavoritado, (state, action) => {
     let itens = [...state.itens].map(item => {
-        if(item.id == action.noticiaId) {
-          let noticia: NoticiaModel = new NoticiaModel();
-          noticia.id = item.id;
-          noticia.dataCadastro = item.dataCadastro;
-          noticia.titulo = item.titulo;
-          noticia.resumo = item.resumo;
-          noticia.usuarioCadastroNome = item.usuarioCadastroNome;
-          noticia.conteudo = item.conteudo;
-          noticia.favoritado = item.favoritado - 1;
-          noticia.usuarioCadastroId = item.usuarioCadastroId;
-          noticia.dataAtualizacao = item.dataAtualizacao;
-          noticia.areaInteresseMany = item.areaInteresseMany;
-          return noticia;
-        }
+        if(item.id == action.noticiaId)
+          return NoticiaModel
+            .create({
+              ...item,
+              favoritado: item.favoritado - 1
+            });
+
         return item;
     });
     

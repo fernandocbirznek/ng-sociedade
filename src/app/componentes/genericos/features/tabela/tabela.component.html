@@ -1,0 +1,52 @@
+<div class="g-column-start-center container-tabela-aula">
+    <div class="g-row-start-center g-full-width g-gap-20">
+        <button *ngIf="this.tabela.buttonCriar" class="g-row-start-center g-button-adicionar button-criar" (click)="criarItem()">
+            <mat-icon class="material-symbols-outlined">note_add</mat-icon>
+            {{ this.tabela.buttonCriarLabel }}
+        </button>
+        <div class="g-row-start-center container-filtro">
+            <mat-form-field appearance="outline" class="g-full-width">
+                <mat-label>Filtrar</mat-label>
+                <input matInput (keyup)="aplicarFiltro($event)" placeholder="Ex: termodinâmica" #input>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="container-tabela">
+        <table mat-table [dataSource]="this.tabela.dataSource" class="g-full-width" matSort>
+
+            <div *ngFor="let coluna of this.tabela.colunaMany; index as i">
+                <ng-container [matColumnDef]="coluna">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header class="tabela-header" 
+                        [ngStyle]="{'width': this.tabela.colunaWidth[i]*100 + 'px', 'min-width': this.tabela.colunaWidth[i]*100 + 'px'}"> 
+                        {{ this.tabela.colunaHeader[i] }}
+                    </th>
+                    <td mat-cell *matCellDef="let element" class="coluna" 
+                        [ngStyle]="{'width': this.tabela.colunaWidth[i]*100 + 'px', 'min-width': this.tabela.colunaWidth[i]*100 + 'px'}"> 
+    
+                        <div *ngIf="coluna != 'acao'" class="g-text-overflow-3">{{ element[coluna] }}</div>
+    
+                        <div *ngIf="coluna == 'acao'">
+                            <button *ngIf="this.tabela.buttonVisualizar" mat-icon-button color="primary" (click)="acessarItem(element)">
+                                <mat-icon class="material-symbols-outlined">visibility</mat-icon>
+                            </button>
+                            <button *ngIf="this.tabela.buttonEditar" mat-icon-button color="primary" (click)="editarItem(element)">
+                                <mat-icon class="material-symbols-outlined">edit</mat-icon>
+                            </button>
+                            <button *ngIf="this.tabela.buttonExcluir" mat-icon-button color="warn" (click)="excluirItem(element)">
+                                <mat-icon class="material-symbols-outlined">delete</mat-icon>
+                            </button>
+                        </div>
+                    </td>
+                </ng-container>
+            </div>
+    
+            <tr mat-header-row *matHeaderRowDef="this.tabela.colunaMany"></tr>
+            <tr mat-row *matRowDef="let row; columns: this.tabela.colunaMany;"></tr>
+        
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">Não foi encontrado nenhuma aula a partir da busca de: "{{input.value}}"</td>
+            </tr>
+        </table>
+    </div>
+    <mat-paginator class="paginacao" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>

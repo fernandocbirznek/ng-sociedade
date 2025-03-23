@@ -1,6 +1,6 @@
 .card-noticia {
     border: 2px solid #919191;
-    background-color: #E9E9E9;
+    background-color: #f5d894;
     box-shadow: 2px 2px 5px #9b9b9b;
     border-radius: 15px;
     padding: 15px;
@@ -10,7 +10,7 @@
     margin: 50px 0;
     position: relative;
 }
-
+edd98b
 .noticia-titulo {
     font-weight: 500;
     transition: 0.7s;
@@ -18,15 +18,15 @@
 
 .noticia-titulo:hover {
     cursor: pointer;
-    color: #6060ff;
+    color: #5f5faa;
     text-decoration: underline;
 }
 
 .card-noticia-autor {
     position: absolute;
     top: -34px;
-    background-color: #e1e1e1;
-    border-left: 2px solid #919191;
+    background-color: #f5d894;
+    border-left: 2px solid #919191;     
     border-top: 2px solid #919191;
     border-right: 2px solid #919191;
     border-top-left-radius: 10px;
@@ -37,20 +37,21 @@
 }
 
 .card-noticia-autor:hover {
-    color: #6060ff;
+    color: #8484df;
     text-decoration: underline;
     cursor: pointer;
 }
 
 .icone {
     font-size: 22px;
+   
 }
 
 .card-noticia-data {
     position: absolute;
     top: -27px;
     right: 10px;
-    background-color: #e1e1e1;
+    background-color: #f5d894;
     border-left: 2px solid #919191;
     border-top: 2px solid #919191;
     border-right: 2px solid #919191;
@@ -64,7 +65,7 @@
     position: absolute;
     bottom: -38px;
     right: 10px;
-    background-color: #e1e1e1;
+    background-color: #f5d894;
     border-left: 2px solid #919191;
     border-bottom: 2px solid #919191;
     border-right: 2px solid #919191;
@@ -75,16 +76,19 @@
     gap: 10px;
 }
 
+
+
 .noticia-resumo {
     height: 150px;
     overflow-y: auto;
     width: 100%;
+    
 }
 
 .card-noticia-tags {
     position: absolute;
     bottom: -47px;
-    background-color: #e1e1e1;
+    background-color: #f5d894;
     border-left: 2px solid #919191;
     border-bottom: 2px solid #919191;
     border-right: 2px solid #919191;
@@ -92,4 +96,7 @@
     border-bottom-right-radius: 20px;
     padding: 12px 5px;
     gap: 10px;
+}
+.g-tag {
+    background-color: #f5d894;
 }

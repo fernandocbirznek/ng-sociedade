@@ -17,7 +17,7 @@ import {
   styleUrls: ['./administrador-perfil.component.css']
 })
 export class AdministradorPerfilComponent implements OnInit {
-  @Input() usuarioLogado: UsuarioModel = new UsuarioModel();
+  @Input() usuarioLogado: UsuarioModel = UsuarioModel.create({});
 
   areaInteresseMany: AreaInteresseModel[] = [];
 

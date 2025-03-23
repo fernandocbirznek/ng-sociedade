@@ -61,9 +61,10 @@ export const manipularContaReducer = createReducer(
     };
   }),
   on(actions.criarContaSuccess, (state, action) => {
-    let usuario = new UsuarioModel();
-    usuario.nome = action.conta.nome;
-    usuario.email = action.conta.email;
+    let usuario = UsuarioModel.create({
+      nome: action.conta.nome,
+      email: action.conta.email
+    });
 
     return { 
       ...state,
@@ -93,19 +94,7 @@ export const manipularContaReducer = createReducer(
     };
   }),
   on(actions.loginContaSuccess, (state, action) => {
-    let usuario = new UsuarioModel();
-    usuario.id = action.response.id;
-    usuario.nome = action.response.nome;
-    usuario.comentarioAula = action.response.comentarioAula;
-    usuario.comentarioForum = action.response.comentarioForum;
-    usuario.curtirAula = action.response.curtirAula;
-    usuario.dataNascimento = action.response.dataNascimento;
-    usuario.email = action.response.email;
-    usuario.hobbie = action.response.hobbie;
-    usuario.noticiaVisualizada = action.response.noticiaVisualizada;
-    usuario.usuarioAreaInteresses = action.response.usuarioAreaInteresses;
-    usuario.sociedadeId = action.response.sociedadeId;
-    usuario.tipoUsuario = action.response.tipoUsuario;
+    let usuario = UsuarioModel.create(action.response);
 
     switch(action.response.tipoUsuario) { 
       case TipoUsuarioEnum.UsuarioAdministrador: { 
@@ -163,19 +152,7 @@ export const manipularContaReducer = createReducer(
     };
   }),
   on(actions.loginAutomaticoWhitTokenSuccess, (state, action) => {
-    let usuario = new UsuarioModel();
-    usuario.id = action.response.id;
-    usuario.nome = action.response.nome;
-    usuario.comentarioAula = action.response.comentarioAula;
-    usuario.comentarioForum = action.response.comentarioForum;
-    usuario.curtirAula = action.response.curtirAula;
-    usuario.dataNascimento = action.response.dataNascimento;
-    usuario.email = action.response.email;
-    usuario.hobbie = action.response.hobbie;
-    usuario.noticiaVisualizada = action.response.noticiaVisualizada;
-    usuario.usuarioAreaInteresses = action.response.usuarioAreaInteresses;
-    usuario.sociedadeId = action.response.sociedadeId;
-    usuario.tipoUsuario = action.response.tipoUsuario;
+    let usuario = UsuarioModel.create(action.response);
 
     switch(action.response.tipoUsuario) { 
       case TipoUsuarioEnum.UsuarioAdministrador: { 
@@ -314,30 +291,13 @@ export const manipularContaReducer = createReducer(
   on(actions.inserirUsuarioAreaInteresseSuccess, (state, action) => {
     let usuario: UsuarioModel | undefined = undefined;
     if (state.usuario) {
-      usuario = new UsuarioModel();
-      usuario.id = state.usuario.id;
-      usuario.nome = state.usuario.nome;
-      usuario.comentarioAula = state.usuario.comentarioAula;
-      usuario.comentarioForum = state.usuario.comentarioForum;
-      usuario.curtirAula = state.usuario.curtirAula;
-      usuario.dataNascimento = state.usuario.dataNascimento;
-      usuario.email = state.usuario.email;
-      usuario.hobbie = state.usuario.hobbie;
-      usuario.noticiaVisualizada = state.usuario.noticiaVisualizada;
-      usuario.sociedadeId = state.usuario.sociedadeId;
-      usuario.dataAtualizacao = state.usuario.dataAtualizacao;
-      usuario.dataCadastro = state.usuario.dataCadastro;
-      usuario.foto = state.usuario.foto;
-      usuario.tipoUsuario = state.usuario.tipoUsuario;
-      usuario.tipoUsuarioEnum = state.usuario.tipoUsuarioEnum;
-      usuario.token = state.usuario.token;
-      usuario.topicoForum = state.usuario.topicoForum;
-      usuario.usuarioPerfilId = state.usuario.usuarioPerfilId;
+      usuario = UsuarioModel.create(state.usuario);
       usuario.usuarioAreaInteresses = [...state.usuario.usuarioAreaInteresses];
       
-      let usuarioAreaInteresse: AreaInteresseModel = new AreaInteresseModel();
-      usuarioAreaInteresse.id = action.usuarioAreaInteresse.areaInteresseId;
-      usuarioAreaInteresse.nome = action.usuarioAreaInteresse.areaInteresseNome;
+      let usuarioAreaInteresse: AreaInteresseModel = AreaInteresseModel.create({
+        id: action.usuarioAreaInteresse.areaInteresseId,
+        nome: action.usuarioAreaInteresse.areaInteresseNome
+      });
 
       usuario.usuarioAreaInteresses.push(usuarioAreaInteresse);
     }

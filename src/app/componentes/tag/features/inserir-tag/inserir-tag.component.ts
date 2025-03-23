@@ -38,8 +38,9 @@ export class InserirTagComponent implements OnInit {
   }
 
   requestCriarTag() {
-    let request: TagModel = new TagModel();
-    request.nome = this.formGroupTag.get("formNome")?.value;
+    let request: TagModel = TagModel.create({
+      nome: this.formGroupTag.get("formNome")?.value
+    });
  
     this.formGroupTag.reset();
     this.store.dispatch(inserirTag({ tag: request }))

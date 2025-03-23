@@ -25,7 +25,7 @@ import { AulaHelpers } from '../../../aula/helpers/aula-helpers';
   styleUrls: ['./aluno-favoritado.component.css']
 })
 export class AlunoFavoritadoComponent implements OnInit {
-  @Input() usuarioLogado: UsuarioModel = new UsuarioModel();
+  @Input() usuarioLogado: UsuarioModel = UsuarioModel.create({});
 
   usuarioAulaSessaoFavoritadoSubscription$: Subscription = new Subscription();
   usuarioAulaSessaoFavoritado$: Observable<UsuarioAulaSessaoFavoritadoModel[]> = new Observable<UsuarioAulaSessaoFavoritadoModel[]>();

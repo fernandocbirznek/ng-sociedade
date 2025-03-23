@@ -22,4 +22,12 @@ export class UsuarioModel {
     sociedadeId: number = 0;
     token: string = "";
     usuarioAreaInteresses: AreaInteresseModel[] = [];
+
+    protected constructor(item?: Partial<UsuarioModel>) {
+        Object.assign(this, item);
+    }
+
+    static create(item: Partial<UsuarioModel>): UsuarioModel {
+        return new UsuarioModel(item);
+    }
 }

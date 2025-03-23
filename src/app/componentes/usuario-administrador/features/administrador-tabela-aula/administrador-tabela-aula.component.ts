@@ -1,8 +1,5 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
@@ -12,8 +9,8 @@ import {
 } from '../../../../componentes';
 
 import { 
-  AreaFisicaModel,
-  AulaViewModel
+  AulaViewModel,
+  TabelaModel
 } from '../../../../models';
 
 import { 
@@ -21,8 +18,7 @@ import {
   alterarTituloPagina,
   atualizarAulaSelected,
   excluirAula,
-  getManyAreaFisica,
-  getManyAula,
+  getManyAulaAdministrador,
 } from '../../../../store';
 
 @Component({
@@ -30,20 +26,11 @@ import {
   templateUrl: './administrador-tabela-aula.component.html',
   styleUrls: ['./administrador-tabela-aula.component.css']
 })
-export class AdministradorTabelaAulaComponent implements OnInit, AfterViewInit {
+export class AdministradorTabelaAulaComponent implements OnInit {
 
-  displayedColumns: string[] = ['titulo', 'resumo', 'areaFisica', 'data-postagem', 'comentarios', 'curtido', 'favoritado', 'acao'];
-  dataSource = new MatTableDataSource();
-
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
-
-  aulaManySubscription$: Subscription = new Subscription();
-  aulaMany$: Observable<AulaViewModel[]> = new Observable<AulaViewModel[]>();
-
-  areaFisicaManySubscription$: Subscription = new Subscription();
-  areaFisicaMany$: Observable<AreaFisicaModel[]> = new Observable<AreaFisicaModel[]>();
-  areaFisicaMany: AreaFisicaModel[] = [];
+  tabelaSubscription$: Subscription = new Subscription();
+  tabela$: Observable<TabelaModel> = new Observable<TabelaModel>();
+  tabela: TabelaModel = TabelaModel.create({});
 
   constructor(
     public router: Router,
@@ -52,41 +39,19 @@ export class AdministradorTabelaAulaComponent implements OnInit, AfterViewInit {
   ) {}
 
   public ngOnInit() {
-    this.setupAreaFisica();
     this.setupAula();
   }
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
-
   ngOnDestroy() {
-    this.areaFisicaManySubscription$.unsubscribe();
-    this.aulaManySubscription$.unsubscribe();
-  }
-
-  setupAreaFisica() {
-    this.areaFisicaMany$ = this.store.select(getManyAreaFisica);
-    this.areaFisicaManySubscription$ = this.areaFisicaMany$.subscribe(itens => {
-      this.areaFisicaMany = itens;
-    });
+    this.tabelaSubscription$.unsubscribe();
   }
 
   setupAula() {
-    this.aulaMany$ = this.store.select(getManyAula);
-    this.aulaManySubscription$ = this.aulaMany$.subscribe(itens => {
-      this.dataSource.data = itens;
-    });
-  }
-
-  aplicarFiltro(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
+    this.tabela$ = this.store.select(getManyAulaAdministrador);
+    this.tabelaSubscription$ = 
+      this.tabela$.subscribe(item => {
+        this.tabela = item;
+      });
   }
 
   acessarAula(item: AulaViewModel) {

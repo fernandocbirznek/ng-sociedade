@@ -22,7 +22,7 @@ import {
 export class EditarAulaPosteriorAnteriorComponent implements OnInit {
   @Input() aulaSessaoLength: number = 0;
   @Input() aula: AulaViewModel = new AulaViewModel();
-  @Input() usuarioLogado: UsuarioModel = new UsuarioModel();
+  @Input() usuarioLogado: UsuarioModel = UsuarioModel.create({});
 
   @Output() onNovaSessao = new EventEmitter();
 

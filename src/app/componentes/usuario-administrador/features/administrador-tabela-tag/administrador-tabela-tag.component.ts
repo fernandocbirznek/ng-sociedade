@@ -1,8 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
@@ -13,12 +10,13 @@ import {
 } from '../../../../componentes';
 
 import { 
+  TabelaModel,
   TagModel,
 } from '../../../../models';
 
 import { 
   excluirTag,
-  getManyTag,
+  getTabelaTag,
 } from '../../../../store';
 
 @Component({
@@ -27,16 +25,9 @@ import {
   styleUrls: ['./administrador-tabela-tag.component.css']
 })
 export class AdministradorTabelaTagComponent implements OnInit {
-
-  displayedColumns: string[] = ['nome', 'data-postagem', 'acao'];
-  dataSource = new MatTableDataSource();
-
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
-
-  tagManySubscription$: Subscription = new Subscription();
-  tagMany$: Observable<TagModel[]> = new Observable<TagModel[]>();
-  tagMany: TagModel[] = [];
+  tabelaSubscription$: Subscription = new Subscription();
+  tabela$: Observable<TabelaModel> = new Observable<TabelaModel>();
+  tabela: TabelaModel = TabelaModel.create({});
 
   constructor(
     public router: Router,
@@ -45,32 +36,18 @@ export class AdministradorTabelaTagComponent implements OnInit {
   ) {}
 
   public ngOnInit() {
-    this.setupTag();
-  }
-
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    this.setupTabela();
   }
 
   ngOnDestroy() {
-    this.tagManySubscription$.unsubscribe();
+    this.tabelaSubscription$.unsubscribe();
   }
 
-  setupTag() {
-    this.tagMany$ = this.store.select(getManyTag);
-    this.tagManySubscription$ = this.tagMany$.subscribe(itens => {
-      this.dataSource.data = itens;
-    });
-  }
-
-  aplicarFiltro(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
+  setupTabela() {
+    this.tabela$ = this.store.select(getTabelaTag);
+      this.tabelaSubscription$ = this.tabela$.subscribe(item => {
+        this.tabela = item;
+      });
   }
 
   criarTag() {

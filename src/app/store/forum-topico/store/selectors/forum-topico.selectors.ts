@@ -5,8 +5,13 @@ import * as forumTopicoRespostaFeature from '../../../forum-topico-resposta/stor
 
 import { 
   ForumTopicoRespostaViewModel, 
-  ForumTopicoViewModel 
+  ForumTopicoViewModel, 
+  TabelaModel
 } from '../../../../models';
+
+import moment from 'moment';
+
+import { ForumTopicoStoreHelper } from '../../helpers/forum-topico-store-helper';
 
 export const getForumTopicoState = createFeatureSelector<fromForumTopico.ForumTopicoState>(
     fromForumTopico.forumTopicoFeatureKey
@@ -16,6 +21,24 @@ export const getManyForumTopico = createSelector(getForumTopicoState, (state) =>
   
   return state.itens;
 })
+
+export const getTabelaForumTopico = createSelector(
+  getManyForumTopico, (
+    forumTopicoMany: ForumTopicoViewModel[]
+  ): TabelaModel => {
+
+    let itens = forumTopicoMany.map(forumTopico => ForumTopicoViewModel.create({
+      ...forumTopico,
+      dataCadastroString: moment(forumTopico.dataCadastro).format('DD/MM/YYYY')
+    }));
+
+    let tabela: TabelaModel = ForumTopicoStoreHelper.getTabelaForumTopico();
+    
+    tabela.dataSource.data = itens;
+
+    return tabela;
+  }
+)
 
 export const getOneForumTopicoById = (forumTopicoId: number) => createSelector(
   getManyForumTopico,

@@ -18,7 +18,7 @@ import {
 })
 export class AlunoPerfilComponent implements OnInit {
 
-  @Input() usuarioLogado: UsuarioModel = new UsuarioModel();
+  @Input() usuarioLogado: UsuarioModel = UsuarioModel.create({});
 
   areaInteresseMany: AreaInteresseModel[] = [];
 

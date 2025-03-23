@@ -38,8 +38,9 @@ export class InserirAreaInteresseComponent implements OnInit {
   }
 
   requestCriarAreaInteresse() {
-    let request: AreaInteresseModel = new AreaInteresseModel();
-    request.nome = this.formGroupAreaInteresse.get("formNome")?.value;
+    let request: AreaInteresseModel = AreaInteresseModel.create({
+      nome: this.formGroupAreaInteresse.get("formNome")?.value
+    });
  
     this.formGroupAreaInteresse.reset();
     this.store.dispatch(inserirAreaInteresse({ areaInteresse: request }))
