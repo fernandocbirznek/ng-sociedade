@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { 
   TabelaModel 
 } from '../../../../models';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 
 @Component({
   selector: 'app-tabela',
@@ -19,6 +20,7 @@ export class TabelaComponent implements OnInit {
   @Output() onCriar = new EventEmitter();
   @Output() onEditar = new EventEmitter();
   @Output() onExcluir = new EventEmitter();
+  @Output() onPublicar = new EventEmitter();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -57,5 +59,9 @@ export class TabelaComponent implements OnInit {
 
   excluirItem(item: any) {
     this.onExcluir.emit(item);
+  }
+
+  publicar(item: any) {
+    this.onPublicar.emit(item);
   }
 }

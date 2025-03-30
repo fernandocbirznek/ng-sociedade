@@ -23,4 +23,12 @@ export class AulaModel {
     aulaPosteriorId: number = 0;
 
     tagMany: TagModel[] = [];
+
+    protected constructor(item?: Partial<AulaModel>) {
+        Object.assign(this, item);
+    }
+
+    static create(item: Partial<AulaModel>): AulaModel {
+        return new AulaModel(item);
+    }
 }

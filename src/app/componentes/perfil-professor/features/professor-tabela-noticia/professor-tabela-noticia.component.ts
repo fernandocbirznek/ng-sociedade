@@ -1,8 +1,5 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
@@ -15,14 +12,13 @@ import {
 } from '../../../../componentes';
 
 import { 
-  AreaInteresseModel, 
-  NoticiaModel
+  NoticiaModel,
+  TabelaModel
 } from '../../../../models';
 
 import { 
   excluirNoticia,
-  getManyAreaInteresse,
-  getManyNoticiaByProfessorId, 
+  getTabelaNoticiaByProfessorId, 
 } from '../../../../store';
 
 @Component({
@@ -34,18 +30,9 @@ export class ProfessorTabelaNoticiaComponent implements OnInit {
 
   @Input() professorId: number = 0;
 
-  displayedColumns: string[] = ['titulo', 'resumo', 'data-postagem', 'acao'];
-  dataSource: any;
-
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
-
-  noticiaManySubscription$: Subscription = new Subscription();
-  noticiaMany$: Observable<NoticiaModel[]> = new Observable<NoticiaModel[]>();
-
-  areaInteresseManySubscription$: Subscription = new Subscription();
-  areaInteresseMany$: Observable<AreaInteresseModel[]> = new Observable<AreaInteresseModel[]>();
-  areaInteresseMany: AreaInteresseModel[] = [];
+  tabelaSubscription$: Subscription = new Subscription();
+  tabela$: Observable<TabelaModel> = new Observable<TabelaModel>();
+  tabela: TabelaModel = TabelaModel.create({});
 
   constructor(
     public router: Router,
@@ -54,41 +41,18 @@ export class ProfessorTabelaNoticiaComponent implements OnInit {
   ) {}
 
   public ngOnInit() {
-    this.setupAreaInteresse();
-    this.setupProfessorNoticia();
-  }
-
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    this.setupTabela();
   }
 
   ngOnDestroy() {
-    this.areaInteresseManySubscription$.unsubscribe();
-    this.noticiaManySubscription$.unsubscribe();
+    this.tabelaSubscription$.unsubscribe();
   }
 
-  setupAreaInteresse() {
-    this.areaInteresseMany$ = this.store.select(getManyAreaInteresse);
-    this.areaInteresseManySubscription$ = this.areaInteresseMany$.subscribe(itens => {
-      this.areaInteresseMany = itens;
+  setupTabela() {
+    this.tabela$ = this.store.select(getTabelaNoticiaByProfessorId(this.professorId));
+    this.tabelaSubscription$ = this.tabela$.subscribe(item => {
+      this.tabela = item;
     });
-  }
-
-  setupProfessorNoticia() {
-    this.noticiaMany$ = this.store.select(getManyNoticiaByProfessorId(this.professorId));
-    this.noticiaManySubscription$ = this.noticiaMany$.subscribe(itens => {
-      this.dataSource = new MatTableDataSource(itens);
-    });
-  }
-
-  aplicarFiltro(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
   }
 
   criarNoticia() {

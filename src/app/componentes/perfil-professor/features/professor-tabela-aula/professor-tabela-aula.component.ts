@@ -1,9 +1,5 @@
-import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSlideToggleChange } from '@angular/material/slide-toggle';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
@@ -14,9 +10,9 @@ import {
 } from '../../../../componentes';
 
 import { 
-  AreaFisicaModel,
   AulaModel, 
-  AulaViewModel
+  AulaViewModel,
+  TabelaModel
 } from '../../../../models';
 
 import { 
@@ -24,8 +20,7 @@ import {
   alterarTituloPagina,
   atualizarAulaPublicado,
   excluirAula,
-  getManyAreaFisica,
-  getManyAulaByProfessorId, 
+  getTabelaAulaByProfessorId, 
 } from '../../../../store';
 
 
@@ -34,21 +29,12 @@ import {
   templateUrl: './professor-tabela-aula.component.html',
   styleUrls: ['./professor-tabela-aula.component.css']
 })
-export class ProfessorTabelaAulaComponent implements OnInit, AfterViewInit {
+export class ProfessorTabelaAulaComponent implements OnInit {
   @Input() professorId: number = 0;
 
-  displayedColumns: string[] = ['titulo', 'resumo', 'areaFisica', 'data-postagem', 'comentarios', 'curtido', 'favoritado', 'publicado', 'acao'];
-  dataSource: any;
-
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
-
-  aulaManySubscription$: Subscription = new Subscription();
-  aulaMany$: Observable<AulaModel[]> = new Observable<AulaModel[]>();
-
-  areaFisicaManySubscription$: Subscription = new Subscription();
-  areaFisicaMany$: Observable<AreaFisicaModel[]> = new Observable<AreaFisicaModel[]>();
-  areaFisicaMany: AreaFisicaModel[] = [];
+  tabelaSubscription$: Subscription = new Subscription();
+  tabela$: Observable<TabelaModel> = new Observable<TabelaModel>();
+  tabela: TabelaModel = TabelaModel.create({});
 
   constructor(
     public router: Router,
@@ -57,40 +43,18 @@ export class ProfessorTabelaAulaComponent implements OnInit, AfterViewInit {
   ) {}
 
   public ngOnInit() {
-    this.setupAreaFisica();
-    this.setupProfessorAula();
-  }
-
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    this.setupTabela();
   }
 
   ngOnDestroy() {
-    this.aulaManySubscription$.unsubscribe();
+    this.tabelaSubscription$.unsubscribe();
   }
 
-  setupAreaFisica() {
-    this.areaFisicaMany$ = this.store.select(getManyAreaFisica);
-    this.areaFisicaManySubscription$ = this.areaFisicaMany$.subscribe(itens => {
-      this.areaFisicaMany = itens;
+  setupTabela() {
+    this.tabela$ = this.store.select(getTabelaAulaByProfessorId(this.professorId));
+    this.tabelaSubscription$ = this.tabela$.subscribe(item => {
+      this.tabela = item;
     });
-  }
-
-  setupProfessorAula() {
-    this.aulaMany$ = this.store.select(getManyAulaByProfessorId(this.professorId));
-    this.aulaManySubscription$ = this.aulaMany$.subscribe(itens => {
-      this.dataSource = new MatTableDataSource(itens);
-    });
-  }
-
-  aplicarFiltro(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
   }
 
   criarAula() {
@@ -130,10 +94,10 @@ export class ProfessorTabelaAulaComponent implements OnInit, AfterViewInit {
     });
   }
 
-  publicar(item: AulaModel, check: MatSlideToggleChange ) {
+  publicar(item: AulaModel) {
     let request: AulaViewModel = new AulaViewModel();
     request.id = item.id;
-    request.publicado = check.checked;
+    request.publicado = !item.publicado;
 
     this.store.dispatch(atualizarAulaPublicado({ aula: request }));
   }

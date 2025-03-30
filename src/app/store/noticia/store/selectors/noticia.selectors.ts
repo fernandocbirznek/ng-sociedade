@@ -139,6 +139,26 @@ export const getManyNoticiaByProfessorId = (professorId: number) => createSelect
   }
 )
 
+export const getTabelaNoticiaByProfessorId = (
+  professorId: number
+) => createSelector(
+  getManyNoticiaByProfessorId(professorId), (
+    noticiaMany: NoticiaViewModel[]
+  ): TabelaModel => {
+
+    let itens = noticiaMany.map(noticia => NoticiaViewModel.create({
+      ...noticia,
+      dataCadastroString: moment(noticia.dataCadastro).format('DD/MM/YYYY')
+    }));
+
+    let tabela: TabelaModel = NoticiaStoreHelper.getTabelaNoticia();
+    
+    tabela.dataSource.data = itens;
+
+    return tabela;
+  }
+)
+
 export const getManyNoticiaHome = createSelector(
   getManyNoticia, (
     itens: NoticiaViewModel[],

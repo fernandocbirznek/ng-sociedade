@@ -23,7 +23,11 @@
                     <td mat-cell *matCellDef="let element" class="coluna" 
                         [ngStyle]="{'width': this.tabela.colunaWidth[i]*100 + 'px', 'min-width': this.tabela.colunaWidth[i]*100 + 'px'}"> 
     
-                        <div *ngIf="coluna != 'acao'" class="g-text-overflow-3">{{ element[coluna] }}</div>
+                        <div *ngIf="coluna != 'acao' && coluna != 'publicado'" class="g-text-overflow-3">{{ element[coluna] }}</div>
+
+                        <div *ngIf="coluna == 'publicado'">
+                            <mat-slide-toggle [checked]="element[coluna]" (change)="publicar(element)"></mat-slide-toggle>
+                        </div>
     
                         <div *ngIf="coluna == 'acao'">
                             <button *ngIf="this.tabela.buttonVisualizar" mat-icon-button color="primary" (click)="acessarItem(element)">

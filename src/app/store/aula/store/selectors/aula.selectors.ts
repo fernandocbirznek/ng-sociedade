@@ -161,12 +161,32 @@ export const getManyAulaByFilter = createSelector(
 export const getManyAulaByProfessorId = (professorId: number) => createSelector(
   getManyAula, (
     aulaMany: AulaViewModel[],
-  ) => {
+  ): AulaViewModel[] => {
 
     let itens = GenericoHelpers.sortArrayByDataCadastro(aulaMany);
 
     return itens
       .filter(item => item.professorId == professorId);
+  }
+)
+
+export const getTabelaAulaByProfessorId = (
+  professorId: number
+) => createSelector(
+  getManyAulaByProfessorId(professorId), (
+    aulaMany: AulaViewModel[]
+  ): TabelaModel => {
+
+    let itens = aulaMany.map(aula => AulaViewModel.create({
+      ...aula,
+      dataCadastroString: moment(aula.dataCadastro).format('DD/MM/YYYY')
+    }));
+
+    let tabela: TabelaModel = AulaStoreHelpers.getTabelaAulaProfessor();
+    
+    tabela.dataSource.data = itens;
+
+    return tabela;
   }
 )
 
