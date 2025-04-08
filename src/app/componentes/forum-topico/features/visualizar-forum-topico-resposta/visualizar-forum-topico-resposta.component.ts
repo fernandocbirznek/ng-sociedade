@@ -67,13 +67,14 @@ export class VisualizarForumTopicoRespostaComponent implements OnInit {
     this.forumTopicoRespostaSubscription$ = this.forumTopicoResposta$.subscribe(itens => {
       this.forumTopicoRespostaMany = [];
       itens.forEach(item => {
-        let comentarioView = new ComentarioView();
-        comentarioView.trustedHtml = this.sanitizer.bypassSecurityTrustHtml(item.descricao);
-        comentarioView.forumTopicoComentario = item;
-        comentarioView.usuarioFoto = item.usuarioFoto;
-        comentarioView.usuarioNome = item.usuarioNome;
+        let comentarioView = ComentarioView.create({
+          trustedHtml: this.sanitizer.bypassSecurityTrustHtml(item.descricao),
+          forumTopicoComentario: item,
+          usuarioFoto: item.usuarioFoto,
+          usuarioNome: item.usuarioNome
+        });
+ 
         this.forumTopicoRespostaMany.push(comentarioView);
-        console.log("item = ", item);
       });
     });
   }
@@ -93,10 +94,11 @@ export class VisualizarForumTopicoRespostaComponent implements OnInit {
 
   requestForumTopico() {
     if (this.usuarioLogado) {
-      let forumTopicoResposta = new ForumTopicoRespostaModel();
-      forumTopicoResposta.descricao = this.formConteudoResponderTopico.value ? this.formConteudoResponderTopico.value : '';
-      forumTopicoResposta.forumTopicoId = this.forumTopicoId;
-      forumTopicoResposta.usuarioId = this.usuarioLogado.id;
+      let forumTopicoResposta = ForumTopicoRespostaModel.create({
+        descricao: this.formConteudoResponderTopico.value ? this.formConteudoResponderTopico.value : '',
+        forumTopicoId: this.forumTopicoId,
+        usuarioId: this.usuarioLogado.id
+      });
 
       this.store.dispatch(inserirForumTopicoResposta({ forumTopicoResposta: forumTopicoResposta }));
     }

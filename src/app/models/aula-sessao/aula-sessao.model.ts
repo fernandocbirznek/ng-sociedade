@@ -15,4 +15,12 @@ export class AulaSessaoModel {
 
 	favoritado: number = 0;
     aulaSessaoTipo: TipoSessaoAulaEnum = TipoSessaoAulaEnum.None;
+
+    protected constructor(item?: Partial<AulaSessaoModel>) {
+        Object.assign(this, item);
+    }
+
+    static create(item: Partial<AulaSessaoModel>): AulaSessaoModel {
+        return new AulaSessaoModel(item);
+    }
 }

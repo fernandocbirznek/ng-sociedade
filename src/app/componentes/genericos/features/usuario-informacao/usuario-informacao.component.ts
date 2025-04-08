@@ -28,19 +28,19 @@ export class UsuarioInformacaoComponent implements OnInit {
 
   alunoInformacaoWidgetSubscription$: Subscription = new Subscription();
   alunoInformacaoWidget$: Observable<InformacaoWidgetAlunoViewModel> = new Observable<InformacaoWidgetAlunoViewModel>();
-  alunoInformacaoWidget: InformacaoWidgetAlunoViewModel = new InformacaoWidgetAlunoViewModel();
+  alunoInformacaoWidget: InformacaoWidgetAlunoViewModel = InformacaoWidgetAlunoViewModel.create({});
 
   alunoInformacaoAulaSubscription$: Subscription = new Subscription();
   alunoInformacaoAula$: Observable<InformacaoAulaAlunoViewModel> = new Observable<InformacaoAulaAlunoViewModel>();
-  alunoInformacaoAula: InformacaoAulaAlunoViewModel = new InformacaoAulaAlunoViewModel();
+  alunoInformacaoAula: InformacaoAulaAlunoViewModel = InformacaoAulaAlunoViewModel.create({});
 
   professorInformacaoAulaSubscription$: Subscription = new Subscription();
   professorInformacaoAula$: Observable<InformacaoAulaViewModel> = new Observable<InformacaoAulaViewModel>();
-  professorInformacaoAula: InformacaoAulaViewModel = new InformacaoAulaViewModel();
+  professorInformacaoAula: InformacaoAulaViewModel = InformacaoAulaViewModel.create({});
 
   professorInformacaoNoticiaSubscription$: Subscription = new Subscription();
   professorInformacaoNoticia$: Observable<InformacaoNoticiaViewModel> = new Observable<InformacaoNoticiaViewModel>();
-  professorInformacaoNoticia: InformacaoNoticiaViewModel = new InformacaoNoticiaViewModel();
+  professorInformacaoNoticia: InformacaoNoticiaViewModel = InformacaoNoticiaViewModel.create({});
 
   readonly tipoUsuarioEnum = TipoUsuarioEnum;
 

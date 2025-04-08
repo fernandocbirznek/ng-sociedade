@@ -61,9 +61,10 @@ export class EditarUsuarioAreaInteresseComponent implements OnInit {
   requestUsuarioAreaInteresse() {
     this.areaInteresseSelecionado.forEach(item => {
       if (!this.data.usuarioAreaInteresses.find(areaInteresse => areaInteresse.id == item.id)) {
-        let usuarioAreaInteresse: UsuarioAreaInteresseModel = new UsuarioAreaInteresseModel();
-        usuarioAreaInteresse.usuarioId = this.data.id;
-        usuarioAreaInteresse.areaInteresseId = item.id;
+        let usuarioAreaInteresse: UsuarioAreaInteresseModel = UsuarioAreaInteresseModel.create({
+          usuarioId: this.data.id,
+          areaInteresseId: item.id
+        });
 
         this.store.dispatch(inserirUsuarioAreaInteresse({ usuarioAreaInteresse: usuarioAreaInteresse }));
       }
@@ -71,9 +72,10 @@ export class EditarUsuarioAreaInteresseComponent implements OnInit {
 
     this.data.usuarioAreaInteresses.forEach(item => {
       if (!this.areaInteresseSelecionado.find(selecionado => selecionado.id == item.id)) {
-        let usuarioAreaInteresse: UsuarioAreaInteresseModel = new UsuarioAreaInteresseModel();
-        usuarioAreaInteresse.usuarioId = this.data.id;
-        usuarioAreaInteresse.areaInteresseId = item.id;
+        let usuarioAreaInteresse: UsuarioAreaInteresseModel = UsuarioAreaInteresseModel.create({
+          usuarioId: this.data.id,
+          areaInteresseId: item.id
+        });
 
         this.store.dispatch(removerUsuarioAreaInteresse({ usuarioAreaInteresse: usuarioAreaInteresse }));
       }

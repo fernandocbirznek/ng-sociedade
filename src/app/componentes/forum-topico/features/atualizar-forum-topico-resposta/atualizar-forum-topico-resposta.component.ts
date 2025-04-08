@@ -70,12 +70,13 @@ export class AtualizarForumTopicoRespostaComponent implements OnInit {
 
   requestAtualizarForumTopico() {
     if (this.usuarioLogado && this.usuarioLogado.id > 0)  {
-      let request: ForumTopicoRespostaModel = new ForumTopicoRespostaModel();
-      request.id = this.data.forumTopicoResposta.id;
-      request.descricao = this.formGroupForumTopicoResposta.get("formConteudoResposta")?.value;
-      request.usuarioId = this.usuarioLogado.id;
-      request.dataCadastro = this.data.forumTopicoResposta.dataCadastro;
-      request.forumTopicoId = this.data.forumTopicoResposta.forumTopicoId;
+      let request: ForumTopicoRespostaModel = ForumTopicoRespostaModel.create({
+        id: this.data.forumTopicoResposta.id,
+        descricao: this.formGroupForumTopicoResposta.get("formConteudoResposta")?.value,
+        usuarioId: this.usuarioLogado.id,
+        dataCadastro: this.data.forumTopicoResposta.dataCadastro,
+        forumTopicoId: this.data.forumTopicoResposta.forumTopicoId
+      });
 
       this.formGroupForumTopicoResposta.reset();
 

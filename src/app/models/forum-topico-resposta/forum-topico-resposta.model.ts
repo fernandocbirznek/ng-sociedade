@@ -10,4 +10,12 @@ export class ForumTopicoRespostaModel {
     //TODO, colocar numa view
     usuarioNome: string = '';
     usuarioFoto: File | undefined = undefined;
+
+    protected constructor(item?: Partial<ForumTopicoRespostaModel>) {
+        Object.assign(this, item);
+    }
+
+    static create(item: Partial<ForumTopicoRespostaModel>): ForumTopicoRespostaModel {
+        return new ForumTopicoRespostaModel(item);
+    }
 }

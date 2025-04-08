@@ -5,4 +5,12 @@ export class AulaTagModel {
 
 	aulaId: number = 0;
     tagId: number = 0;
+
+    protected constructor(item?: Partial<AulaTagModel>) {
+        Object.assign(this, item);
+    }
+
+    static create(item: Partial<AulaTagModel>): AulaTagModel {
+        return new AulaTagModel(item);
+    }
 }

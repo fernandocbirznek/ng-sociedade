@@ -45,14 +45,10 @@ export const arquivoPdfReducer = createReducer(
           .split("")
           .map(char => char.charCodeAt(0)));
 
-      let arquivoPDfModel = new ArquivoPdfModel();
-      arquivoPDfModel.aulaId = item.aulaId;
-      arquivoPDfModel.contentType = item.contentType;
-      arquivoPDfModel.conteudo = new Blob([byteArray], { type: 'application/pdf' }); 
-      arquivoPDfModel.dataAtualizacao = item.dataAtualizacao;
-      arquivoPDfModel.dataCadastro = item.dataCadastro;
-      arquivoPDfModel.id = item.id;
-      arquivoPDfModel.nome = item.nome;
+      let arquivoPDfModel = ArquivoPdfModel.create({
+        ...item,
+        conteudo: new Blob([byteArray], { type: 'application/pdf' })
+      });
 
       return arquivoPDfModel
     })
@@ -91,13 +87,14 @@ export const arquivoPdfReducer = createReducer(
         .split("")
         .map(char => char.charCodeAt(0)));
     
-    let item: ArquivoPdfModel = new ArquivoPdfModel();
-    item.aulaId = action.arquivoPdfCommand.aulaSessao!.aulaId;
-    item.contentType = action.response.contentType;
-    item.conteudo = new Blob([byteArray], { type: 'application/pdf' }); 
-    item.dataCadastro = action.response.dataCadastro;
-    item.id = action.response.id;
-    item.nome = action.arquivoPdfCommand.nome;
+    let item: ArquivoPdfModel = ArquivoPdfModel.create({
+      aulaId: action.arquivoPdfCommand.aulaSessao!.aulaId,
+      contentType: action.response.contentType,
+      conteudo: new Blob([byteArray], { type: 'application/pdf' }),
+      dataCadastro: action.response.dataCadastro,
+      id: action.response.id,
+      nome: action.arquivoPdfCommand.nome
+    });
 
     let itens = [...state.itens, item];
   

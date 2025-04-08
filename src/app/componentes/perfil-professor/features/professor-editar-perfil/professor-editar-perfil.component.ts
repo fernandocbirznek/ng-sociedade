@@ -36,7 +36,7 @@ export class ProfessorEditarPerfilComponent implements OnInit {
 
   selectedFile: File | null = null;
 
-  request: UsuarioPerfilModel = new UsuarioPerfilModel();
+  request: UsuarioPerfilModel = UsuarioPerfilModel.create({});
 
   isImagemAlterada: boolean = false;
   fotoEscolhida: File | undefined = undefined;

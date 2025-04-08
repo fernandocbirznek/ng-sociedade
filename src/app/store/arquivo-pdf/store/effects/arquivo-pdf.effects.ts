@@ -47,14 +47,12 @@ export class ArquivoPdfEffects {
       concatMap((action) =>
         this.arquivoPdfService.inserirArquivoPdf(action.arquivoPdfCommand).pipe(
           map(response => {
-            let aulaSessao: AulaSessaoModel = new AulaSessaoModel();
             if (action.arquivoPdfCommand.aulaSessao) {
-              aulaSessao.ordem = action.arquivoPdfCommand.aulaSessao.ordem;
-              aulaSessao.titulo = action.arquivoPdfCommand.aulaSessao.titulo;
-              aulaSessao.aulaId = action.arquivoPdfCommand.aulaSessao.aulaId;
-              aulaSessao.aulaSessaoTipo = action.arquivoPdfCommand.aulaSessao.aulaSessaoTipo;
-              aulaSessao.conteudo = response.id.toString();
-              aulaSessao.id = response.aulaSessaoId;
+              let aulaSessao: AulaSessaoModel = AulaSessaoModel.create({
+                  ...action.arquivoPdfCommand.aulaSessao,
+                  conteudo: response.id.toString(),
+                  id: response.aulaSessaoId
+              });
 
               //TODO, corrigir
               this.store.dispatch(inserirAulaSessaoSuccess({ aulaSessao: aulaSessao, response: aulaSessao }));

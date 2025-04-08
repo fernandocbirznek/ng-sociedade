@@ -8,4 +8,12 @@ export class NoticiaFilterModel {
 	dataFim: Date | undefined = undefined;
 
 	areaInteresseMany: AreaInteresseModel[] = [];
+
+	protected constructor(item?: Partial<NoticiaFilterModel>) {
+        Object.assign(this, item);
+    }
+
+    static create(item: Partial<NoticiaFilterModel>): NoticiaFilterModel {
+        return new NoticiaFilterModel(item);
+    }
 }

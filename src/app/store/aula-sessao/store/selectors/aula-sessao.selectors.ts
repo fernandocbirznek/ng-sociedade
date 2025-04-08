@@ -27,16 +27,8 @@ export const getManyAulaSessaoByAulaId = (aulaId: number) => createSelector(
     .aulaSessao
     .filter(item => item.aulaId == aulaId)
     .map(item => {
-      let aulaSessaoModel: AulaSessaoModel = new AulaSessaoModel();
-      aulaSessaoModel.aulaId = item.aulaId;
-      aulaSessaoModel.aulaSessaoTipo = item.aulaSessaoTipo;
-      aulaSessaoModel.conteudo = item.conteudo;
-      aulaSessaoModel.dataAtualizacao = item.dataAtualizacao;
-      aulaSessaoModel.dataCadastro = item.dataCadastro;
-      aulaSessaoModel.favoritado = item.favoritado;
-      aulaSessaoModel.id = item.id;
-      aulaSessaoModel.ordem = item.ordem;
-      aulaSessaoModel.titulo = item.titulo;
+      let aulaSessaoModel: AulaSessaoModel = AulaSessaoModel
+        .create(item);
 
       let arquivoPdf = arquivoPdfMany.find(arquivoPdf => arquivoPdf.id == +item.conteudo);
       if (arquivoPdf)

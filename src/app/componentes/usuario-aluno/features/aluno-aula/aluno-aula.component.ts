@@ -99,12 +99,13 @@ export class AlunoAulaComponent implements OnInit {
 
   getWidget(widget: WidgetModel): WidgetModel | undefined {
     if (this.usuarioLogado && this.usuarioLogado.id > 0) {
-      let widgetAlterado: WidgetModel = new WidgetModel();
-      widgetAlterado.aula = widget.aula;
-      widgetAlterado.usuarioId = this.usuarioLogado.id
-      widgetAlterado.aulaId = widget.aula!.id;
-      return widgetAlterado;
+      return WidgetModel.create({
+        aula: widget.aula,
+        usuarioId: this.usuarioLogado.id,
+        aulaId: widget.aula!.id,
+      });
     }
+    
     return undefined;
   }
 }

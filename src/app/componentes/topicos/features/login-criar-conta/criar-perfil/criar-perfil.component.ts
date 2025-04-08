@@ -19,7 +19,7 @@ export class CriarPerfilComponent implements OnInit {
   foto = new FormControl('');
   hobbie = new FormControl('');
 
-  criarPerfil: CriarContaPerfilModel = new CriarContaPerfilModel();
+  criarPerfil: CriarContaPerfilModel = CriarContaPerfilModel.create({});
 
   fotoEscolhida: File | undefined = undefined;
   selectedFile: File | null = null;

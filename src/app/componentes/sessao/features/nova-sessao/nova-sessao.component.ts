@@ -94,12 +94,13 @@ export class NovaSessaoComponent implements OnInit {
           conteudo = '';
     }
 
-    let request: AulaSessaoModel = new AulaSessaoModel();
-    request.titulo = this.formSessao.get("titulo_sessao")?.value;
-    request.conteudo = conteudo;
-    request.aulaSessaoTipo = this.tipoSessaoValue(this.formSessao.get("tipo_sessao")?.value);
-    request.aulaId = this.data.aula.id;
-    request.ordem = this.data.sessaoMany.length + 1;
+    let request: AulaSessaoModel = AulaSessaoModel.create({
+      titulo: this.formSessao.get("titulo_sessao")?.value,
+      conteudo: conteudo,
+      aulaSessaoTipo: this.tipoSessaoValue(this.formSessao.get("tipo_sessao")?.value),
+      aulaId: this.data.aula.id,
+      ordem: this.data.sessaoMany.length + 1
+    });
 
     if (request.aulaSessaoTipo == TipoSessaoAulaEnum.Pdf) {
       let arquivoPdfCommandModel: ArquivoPdfCommandModel = new ArquivoPdfCommandModel();

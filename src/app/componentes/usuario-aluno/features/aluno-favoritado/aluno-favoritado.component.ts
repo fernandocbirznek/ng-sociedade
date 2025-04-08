@@ -80,18 +80,18 @@ export class AlunoFavoritadoComponent implements OnInit {
           this.trustedPdfUrl.push(this.sanitizer.bypassSecurityTrustResourceUrl(conteudo));
           this.trustedUrlImageHtml.push('');
           this.trustedDashboardHtml.push('');
-          this.linkYoutubeMany.push(new LinkYoutubeModel());
+          this.linkYoutubeMany.push(LinkYoutubeModel.create({}));
         }
         else if (item.aulaSessaoTipo != this.tipoSessaoAulaEnum.Imagem) {
           this.trustedDashboardHtml.push(this.sanitizer.bypassSecurityTrustHtml(item.conteudo));
           this.trustedUrlImageHtml.push('');
-          this.linkYoutubeMany.push(new LinkYoutubeModel());
+          this.linkYoutubeMany.push(LinkYoutubeModel.create({}));
           this.trustedPdfUrl.push('');
         }
         else if (item.aulaSessaoTipo == this.tipoSessaoAulaEnum.Imagem) {
           this.trustedDashboardHtml.push('');
           this.trustedUrlImageHtml.push(this.sanitizer.bypassSecurityTrustUrl('data:image/png;base64,' + item.conteudo));
-          this.linkYoutubeMany.push(new LinkYoutubeModel());
+          this.linkYoutubeMany.push(LinkYoutubeModel.create({}));
           this.trustedPdfUrl.push('');
         }
       });

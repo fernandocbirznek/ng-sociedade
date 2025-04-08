@@ -273,18 +273,10 @@ export const getOneAulaById = createSelector(
         if (item.aulaSessaoTipo == TipoSessaoAulaEnum.Pdf) {
           let arquivoPdf = arquivoPdfManyFiltrado.find(arquivoPdf => arquivoPdf.id == +item.conteudo);
 
-          let aulaSessao: AulaSessaoModel = new AulaSessaoModel();
-          aulaSessao.aulaId = item.aulaId;
-          aulaSessao.aulaSessaoTipo = item.aulaSessaoTipo;
-          aulaSessao.conteudo = item.conteudo;
-          aulaSessao.dataAtualizacao = item.dataAtualizacao;
-          aulaSessao.dataCadastro = item.dataCadastro;
-          aulaSessao.favoritado = item.favoritado;
-          aulaSessao.id = item.id;
-          aulaSessao.ordem = item.ordem;
-          aulaSessao.titulo = item.titulo;
-          aulaSessao.arquivoPdf = arquivoPdf;
-          return aulaSessao;
+          return AulaSessaoModel.create({
+            ...item,
+            arquivoPdf: arquivoPdf
+          });
         }
         
         return item;
@@ -295,19 +287,10 @@ export const getOneAulaById = createSelector(
       return item;
     }
     
-    item.aulaSessaoMany = item.aulaSessaoMany.map(teste => {
-        let aulaSessao: AulaSessaoModel = new AulaSessaoModel();
-        aulaSessao.aulaId = teste.aulaId;
-        aulaSessao.aulaSessaoTipo = teste.aulaSessaoTipo;
-        aulaSessao.conteudo = teste.conteudo;
-        aulaSessao.dataAtualizacao = teste.dataAtualizacao;
-        aulaSessao.dataCadastro = teste.dataCadastro;
-        aulaSessao.favoritado = teste.favoritado;
-        aulaSessao.id = teste.id;
-        aulaSessao.ordem = teste.ordem;
-        aulaSessao.titulo = teste.titulo;
-
-        return aulaSessao;
+    item.aulaSessaoMany = item
+      .aulaSessaoMany
+      .map(item => {
+        return AulaSessaoModel.create(item);;
       })
       .sort((a, b) => a.ordem - b.ordem);
 
@@ -319,7 +302,7 @@ export const getProfessorInformacaoAulaMany = (professorId: number) => createSel
   getManyAulaByProfessorId(professorId), (
     aulaMany: AulaViewModel[],
   ): InformacaoAulaViewModel => {
-    let informacaoAulaView = new InformacaoAulaViewModel();
+    let informacaoAulaView = InformacaoAulaViewModel.create({});
 
     informacaoAulaView.aulaCriadaMany = aulaMany.length;
 

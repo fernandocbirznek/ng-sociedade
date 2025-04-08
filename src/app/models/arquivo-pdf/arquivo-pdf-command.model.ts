@@ -7,4 +7,13 @@ export class ArquivoPdfCommandModel extends ArquivoPdfModel {
 
     aulaSessaoId: number = 0;
     aulaSessaoDataCadastro: Date | undefined = undefined;
+
+    public constructor(item?: Partial<ArquivoPdfCommandModel>) {
+        super(item);
+        Object.assign(this, item);
+    }
+
+    static override create(item: Partial<ArquivoPdfCommandModel>): ArquivoPdfCommandModel {
+        return new ArquivoPdfCommandModel(item);
+    }
 }

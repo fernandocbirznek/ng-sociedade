@@ -5,4 +5,12 @@ export class UsuarioAulaCurtidoModel {
 
 	aulaId: number = 0;
 	usuarioId: number = 0;
+
+    protected constructor(item?: Partial<UsuarioAulaCurtidoModel>) {
+        Object.assign(this, item);
+    }
+
+    static create(item: Partial<UsuarioAulaCurtidoModel>): UsuarioAulaCurtidoModel {
+        return new UsuarioAulaCurtidoModel(item);
+    }
 }

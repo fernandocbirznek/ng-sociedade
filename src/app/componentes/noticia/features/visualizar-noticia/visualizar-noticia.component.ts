@@ -102,9 +102,11 @@ export class VisualizarNoticiaComponent implements OnInit {
       if (this.usuarioNoticiaFavoritado) 
         this.store.dispatch(removerUsuarioNoticiaFavoritado({ usuarioNoticiaFavoritado: this.usuarioNoticiaFavoritado }));
       else {
-        let request: UsuarioNoticiaFavoritadoModel = new UsuarioNoticiaFavoritadoModel();
-        request.usuarioId = this.usuarioLogado.id;
-        request.noticiaId = this.data;
+        let request: UsuarioNoticiaFavoritadoModel = UsuarioNoticiaFavoritadoModel.create({
+          usuarioId: this.usuarioLogado.id,
+          noticiaId: this.data
+        });
+ 
         this.store.dispatch(inserirUsuarioNoticiaFavoritado({ usuarioNoticiaFavoritado: request }));
       }
     }

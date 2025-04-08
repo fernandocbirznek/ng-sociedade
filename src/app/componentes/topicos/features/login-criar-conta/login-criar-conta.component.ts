@@ -27,7 +27,7 @@ export class LoginCriarContaComponent implements OnInit {
   email = new FormControl('', [Validators.required]);
   senha = new FormControl('', [Validators.required]);
 
-  criarPerfil: CriarContaPerfilModel = new CriarContaPerfilModel();
+  criarPerfil: CriarContaPerfilModel = CriarContaPerfilModel.create({});
 
   usuarioLogado$: Observable<any>;
   mensagemConta: string = "";

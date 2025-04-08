@@ -40,16 +40,7 @@ export const getManyUsuarioAulaSessaoFavoritado = createSelector(
     let itens = state
     .itens
     .map(item => {
-      let aulaSessaoModel: UsuarioAulaSessaoFavoritadoModel = new UsuarioAulaSessaoFavoritadoModel();
-      aulaSessaoModel.aulaId = item.aulaId;
-      aulaSessaoModel.aulaSessaoTipo = item.aulaSessaoTipo;
-      aulaSessaoModel.conteudo = item.conteudo;
-      aulaSessaoModel.dataAtualizacao = item.dataAtualizacao;
-      aulaSessaoModel.dataCadastro = item.dataCadastro;
-      aulaSessaoModel.favoritado = item.favoritado;
-      aulaSessaoModel.id = item.id;
-      aulaSessaoModel.ordem = item.ordem;
-      aulaSessaoModel.titulo = item.titulo;
+      let aulaSessaoModel: UsuarioAulaSessaoFavoritadoModel = UsuarioAulaSessaoFavoritadoModel.create(item);
 
       if(item.arquivoConteudo) {
         const byteArray = new Uint8Array(
@@ -57,8 +48,9 @@ export const getManyUsuarioAulaSessaoFavoritado = createSelector(
             .split("")
             .map(char => char.charCodeAt(0)));
         
-        let arquivoPdf: ArquivoPdfModel = new ArquivoPdfModel();
-        arquivoPdf.conteudo = new Blob([byteArray], { type: 'application/pdf' }); 
+        let arquivoPdf: ArquivoPdfModel = ArquivoPdfModel.create({
+          conteudo: new Blob([byteArray], { type: 'application/pdf' })
+        });
 
         aulaSessaoModel.arquivoPdf = arquivoPdf;
       }

@@ -32,7 +32,7 @@ export class NoticiaFiltroComponent implements OnInit {
 
   noticiaFilterSubscription$: Subscription = new Subscription();
   noticiaFilter$: Observable<NoticiaFilterModel> = new Observable<NoticiaFilterModel>();
-  noticiaFilter: NoticiaFilterModel = new NoticiaFilterModel();
+  noticiaFilter: NoticiaFilterModel = NoticiaFilterModel.create({});
   noticiaFilterSelectedMany: NoticiaFilterSelectedModel[] = [];
 
   formControlTitulo = new FormControl('');

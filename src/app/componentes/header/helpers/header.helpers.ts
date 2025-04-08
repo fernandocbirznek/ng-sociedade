@@ -24,10 +24,10 @@ export class HeaderHelpers {
           imagem = "../../../assets/imagens/header/fisicamoderna.png";
           resumoTopico = "Podemos viajar mais rápido que a luz? Qual o tamanho do átomo? Nesse tópico vamos movimento relativístico e as pequenas partículas";
           break;
-        case "6":
-          imagem = "../../../assets/imagens/header/matematica.png";
-          resumoTopico = "Para descrevermos a natureza precisamos compreender sua linguagem. Essa linguagem é a matemática.";
-          break;
+        // case "6":
+        //   imagem = "../../../assets/imagens/header/matematica.png";
+        //   resumoTopico = "Para descrevermos a natureza precisamos compreender sua linguagem. Essa linguagem é a matemática.";
+        //   break;
         case "7":
           imagem = "../../../assets/imagens/header/especiais.png";
           resumoTopico = "Aqui vamos trabalhar alguns tópicos especiais como: história da física, cosmologia, experimentos, etc.";

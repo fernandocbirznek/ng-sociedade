@@ -7,4 +7,12 @@ export class AreaFisicaDivisaoModel {
 	titulo: string = '';
 	areaFisicaId: number = 0;
     foto: File | undefined = undefined;
+
+	protected constructor(item?: Partial<AreaFisicaDivisaoModel>) {
+        Object.assign(this, item);
+    }
+
+    static create(item: Partial<AreaFisicaDivisaoModel>): AreaFisicaDivisaoModel {
+        return new AreaFisicaDivisaoModel(item);
+    }
 }

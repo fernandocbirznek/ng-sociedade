@@ -7,4 +7,12 @@ export class UsuarioAreaInteresseModel {
 	areaInteresseId: number = 0;
 
 	areaInteresseNome: string = '';
+
+	protected constructor(item?: Partial<UsuarioAreaInteresseModel>) {
+        Object.assign(this, item);
+    }
+
+    static create(item: Partial<UsuarioAreaInteresseModel>): UsuarioAreaInteresseModel {
+        return new UsuarioAreaInteresseModel(item);
+    }
 }

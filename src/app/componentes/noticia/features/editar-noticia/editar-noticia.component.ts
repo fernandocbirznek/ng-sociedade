@@ -113,13 +113,15 @@ export class EditarNoticiaComponent implements OnInit {
   }
 
   requestEditarNoticia() {
-    let request: NoticiaRequestModel = new NoticiaRequestModel();
-    request.id = this.data.id;
-    request.titulo = this.formGroupNoticia.get("formTitulo")?.value;
-    request.resumo = this.formGroupNoticia.get("formResumo")?.value;
-    request.conteudo = this.formGroupNoticia.get("formConteudo")?.value;
-    request.usuarioCadastroId = this.usuarioLogado!.id;
-    request.areaInteresseMany = this.areaInteresseSelecionado;
+    let request: NoticiaRequestModel = NoticiaRequestModel.create({
+      id: this.data.id,
+      titulo: this.formGroupNoticia.get("formTitulo")?.value,
+      resumo: this.formGroupNoticia.get("formResumo")?.value,
+      conteudo: this.formGroupNoticia.get("formConteudo")?.value,
+      usuarioCadastroId: this.usuarioLogado!.id,
+      areaInteresseMany: this.areaInteresseSelecionado
+    });
+
     this.formGroupNoticia.reset();
     this.areaInteresseSelecionado = [];
     this.store.dispatch(atualizarNoticia({ noticia: request }));

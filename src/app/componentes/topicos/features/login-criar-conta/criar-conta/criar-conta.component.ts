@@ -39,10 +39,12 @@ export class CriarContaComponent implements OnInit {
   }
 
   requestCriarConta() {
-    let conta: CriarContaPerfilModel = new CriarContaPerfilModel();
-    conta.email = this.formConta.get("email")?.value;
-    conta.nome = this.formConta.get("nome")?.value;
-    conta.senha = this.formConta.get("senha")?.value;
+    let conta: CriarContaPerfilModel = CriarContaPerfilModel.create({
+      email: this.formConta.get("email")?.value,
+      nome: this.formConta.get("nome")?.value,
+      senha: this.formConta.get("senha")?.value
+    });
+
     this.formConta.reset();
     this.ngCriarConta.emit(conta);
   }

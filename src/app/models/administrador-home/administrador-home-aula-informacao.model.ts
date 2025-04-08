@@ -10,4 +10,12 @@ export class AdministradorHomeAulaInformacaoModel {
     widgetConcluidoCount: number = 0;
     widgetCursandoCount: number = 0;
     widgetCursarCount: number = 0;
+
+    protected constructor(item?: Partial<AdministradorHomeAulaInformacaoModel>) {
+        Object.assign(this, item);
+    }
+
+    static create(item: Partial<AdministradorHomeAulaInformacaoModel>): AdministradorHomeAulaInformacaoModel {
+        return new AdministradorHomeAulaInformacaoModel(item);
+    }
 }

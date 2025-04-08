@@ -11,4 +11,12 @@ export class ForumTopicoReplicaModel {
     //TODO, colocar numa view
     usuarioNome: string = '';
     usuarioFoto: File | undefined = undefined;
+
+    protected constructor(item?: Partial<ForumTopicoReplicaModel>) {
+        Object.assign(this, item);
+    }
+
+    static create(item: Partial<ForumTopicoReplicaModel>): ForumTopicoReplicaModel {
+        return new ForumTopicoReplicaModel(item);
+    }
 }

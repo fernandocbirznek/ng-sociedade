@@ -115,17 +115,17 @@ export class EditarAulaComponent implements OnInit {
           this.trustedPdfUrl.push(this.sanitizer.bypassSecurityTrustResourceUrl(conteudo));
           this.trustedUrlImageHtml.push('');
           this.trustedDashboardHtml.push('');
-          this.linkYoutubeMany.push(new LinkYoutubeModel());
+          this.linkYoutubeMany.push(LinkYoutubeModel.create({}));
         }
         else if (item.aulaSessaoTipo != this.tipoSessaoAulaEnum.Imagem) {
           this.trustedDashboardHtml.push(this.sanitizer.bypassSecurityTrustHtml(item.conteudo));
           this.trustedUrlImageHtml.push('');
-          this.linkYoutubeMany.push(new LinkYoutubeModel());
+          this.linkYoutubeMany.push(LinkYoutubeModel.create({}));
           this.trustedPdfUrl.push('');
         }
         else if (item.aulaSessaoTipo == this.tipoSessaoAulaEnum.Imagem) {
           this.trustedDashboardHtml.push('');
-          this.linkYoutubeMany.push(new LinkYoutubeModel());
+          this.linkYoutubeMany.push(LinkYoutubeModel.create({}));
           this.trustedUrlImageHtml.push(this.sanitizer.bypassSecurityTrustUrl('data:image/png;base64,' + item.conteudo));
           this.trustedPdfUrl.push('');
         }
@@ -171,18 +171,10 @@ export class EditarAulaComponent implements OnInit {
   public reordenarSessoes(): void {
     let ordem = 0;
     this.aulaSessaoMany = this.aulaSessaoMany.map((aulaSessao) => {
-      let aulaSessaoAlterada = new AulaSessaoModel();
-      aulaSessaoAlterada.aulaId = aulaSessao.aulaId;
-      aulaSessaoAlterada.aulaSessaoTipo = aulaSessao.aulaSessaoTipo;
-      aulaSessaoAlterada.conteudo = aulaSessao.conteudo;
-      aulaSessaoAlterada.dataAtualizacao = aulaSessao.dataAtualizacao;
-      aulaSessaoAlterada.dataCadastro = aulaSessao.dataCadastro;
-      aulaSessaoAlterada.favoritado = aulaSessao.favoritado;
-      aulaSessaoAlterada.id = aulaSessao.id;
-      aulaSessaoAlterada.ordem = ordem++;
-      aulaSessaoAlterada.titulo = aulaSessao.titulo;
-
-      return aulaSessaoAlterada;
+      return AulaSessaoModel.create({
+        ...aulaSessao,
+        ordem: ordem++
+      });
     });
     let request: AulaSessaoOrdemRequestModel = new AulaSessaoOrdemRequestModel();
     request.aulaSessaoMany = this.aulaSessaoMany;

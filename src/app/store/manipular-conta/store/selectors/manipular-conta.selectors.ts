@@ -106,11 +106,12 @@ export const getOneInformacaoAulaAluno = createSelector(
     usuarioAulaSessaoFavoritadoModel: UsuarioAulaSessaoFavoritadoModel[]
   ): InformacaoAulaAlunoViewModel => {
 
-    let informacaoAulaAluno: InformacaoAulaAlunoViewModel = new InformacaoAulaAlunoViewModel();
+    let informacaoAulaAluno: InformacaoAulaAlunoViewModel = InformacaoAulaAlunoViewModel.create({
+      aulaCurtida: usuarioAulaCurtidoMany.length,
+      aulaFavoritada: usuarioAulaFavoritadaMany.length,
+      aulaSessaoFavoritada: usuarioAulaSessaoFavoritadoModel.length
+    });
     //informacaoAulaAluno.aulaComentario = state.itens;
-    informacaoAulaAluno.aulaCurtida = usuarioAulaCurtidoMany.length;
-    informacaoAulaAluno.aulaFavoritada = usuarioAulaFavoritadaMany.length;
-    informacaoAulaAluno.aulaSessaoFavoritada = usuarioAulaSessaoFavoritadoModel.length;
 
     return informacaoAulaAluno;
   }

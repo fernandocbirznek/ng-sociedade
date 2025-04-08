@@ -21,7 +21,7 @@ export interface AulaState {
 
 export const aulaInitialState: AulaState = {
   aulas: [],
-  aulaFilter: new AulaFilterModel,
+  aulaFilter: AulaFilterModel.create({}),
   aulaSelected: 0,
 
   isSuccess: false,

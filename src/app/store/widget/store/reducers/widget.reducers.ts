@@ -133,10 +133,11 @@ export const widgetReducer = createReducer(
     };
   }),
   on(actions.inserirWidgetConcluidoSuccess, (state, action) => {
-    let item: WidgetModel = new WidgetModel();
-    item.aula = action.widgetConcluido.aula;
-    item.id = action.response.id;
-    item.dataCadastro = action.response.dataCadastro;
+    let item: WidgetModel = WidgetModel.create({
+      aula: action.widgetConcluido.aula,
+      id: action.response.id,
+      dataCadastro: action.response.dataCadastro
+    });
 
     let widgetConcluidoMany = [...state.widgetConcluido];
     widgetConcluidoMany.push(item);
@@ -170,10 +171,11 @@ export const widgetReducer = createReducer(
     };
   }),
   on(actions.inserirWidgetCursandoSuccess, (state, action) => {
-    let item: WidgetModel = new WidgetModel();
-    item.aula = action.widgetCursando.aula;
-    item.id = action.response.id;
-    item.dataCadastro = action.response.dataCadastro;
+    let item: WidgetModel = WidgetModel.create({
+      aula: action.widgetCursando.aula,
+      id: action.response.id,
+      dataCadastro: action.response.dataCadastro
+    });
 
     let widgetCursandoMany = [...state.widgetCursando];
     widgetCursandoMany.push(item);
@@ -207,10 +209,11 @@ export const widgetReducer = createReducer(
     };
   }),
   on(actions.inserirWidgetCursarSuccess, (state, action) => {
-    let item: WidgetModel = new WidgetModel();
-    item.aula = action.widgetCursar.aula;
-    item.id = action.response.id;
-    item.dataCadastro = action.response.dataCadastro;
+    let item: WidgetModel = WidgetModel.create({
+      aula: action.widgetCursar.aula,
+      id: action.response.id,
+      dataCadastro: action.response.dataCadastro
+    });
 
     let widgetCursarMany = [...state.widgetCursar];
     widgetCursarMany.push(item);

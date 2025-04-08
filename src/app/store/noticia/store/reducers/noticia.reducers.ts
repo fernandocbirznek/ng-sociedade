@@ -20,7 +20,7 @@ export interface NoticiaState {
 
 export const noticiaInitialState: NoticiaState = {
     itens: [],
-    noticiaFilter: new NoticiaFilterModel(),
+    noticiaFilter: NoticiaFilterModel.create({}),
     isSuccess: false,
     isLoading: false,
     isFailure: false,

@@ -228,9 +228,10 @@ export class VisualizarAulaComponent implements OnInit {
 
   curtirAula() {
     if (this.usuarioLogado) {
-      let request: UsuarioAulaCurtidoModel = new UsuarioAulaCurtidoModel();
-      request.aulaId = this.aula.id;
-      request.usuarioId = this.usuarioLogado?.id;
+      let request: UsuarioAulaCurtidoModel = UsuarioAulaCurtidoModel.create({
+        aulaId: this.aula.id,
+        usuarioId: this.usuarioLogado?.id
+      });
 
       this.store.dispatch(inserirUsuarioAulaCurtido({ usuarioAulaCurtido: request }));
     }
@@ -238,10 +239,12 @@ export class VisualizarAulaComponent implements OnInit {
 
   removerCurtirAula() {
     if (this.usuarioLogado && this.usuarioAulaCurtido) {
-      let request: UsuarioAulaCurtidoModel = new UsuarioAulaCurtidoModel();
-      request.id = this.usuarioAulaCurtido.id;
-      request.aulaId = this.aula.id;
-      request.usuarioId = this.usuarioLogado?.id;
+      let request: UsuarioAulaCurtidoModel = UsuarioAulaCurtidoModel.create({
+        id: this.usuarioAulaCurtido.id,
+        aulaId: this.aula.id,
+        usuarioId: this.usuarioLogado?.id
+      });
+
 
       this.store.dispatch(removerUsuarioAulaCurtido({ usuarioAulaCurtido: request }));
     }
@@ -249,9 +252,10 @@ export class VisualizarAulaComponent implements OnInit {
 
   favoritarAula() {
     if (this.usuarioLogado) {
-      let request: UsuarioAulaFavoritadaModel = new UsuarioAulaFavoritadaModel();
-      request.aulaId = this.aula.id;
-      request.usuarioId = this.usuarioLogado?.id;
+      let request: UsuarioAulaFavoritadaModel = UsuarioAulaFavoritadaModel.create({
+        aulaId: this.aula.id,
+        usuarioId: this.usuarioLogado?.id
+      });
 
       this.store.dispatch(inserirUsuarioAulaFavoritada({ usuarioAulaFavoritada: request }));
     }
@@ -259,10 +263,11 @@ export class VisualizarAulaComponent implements OnInit {
 
   removerAulaFavoritada() {
     if (this.usuarioLogado && this.usuarioAulaFavoritada) {
-      let request: UsuarioAulaFavoritadaModel = new UsuarioAulaFavoritadaModel();
-      request.id = this.usuarioAulaFavoritada.id;
-      request.aulaId = this.aula.id;
-      request.usuarioId = this.usuarioLogado?.id;
+      let request: UsuarioAulaFavoritadaModel = UsuarioAulaFavoritadaModel.create({
+        id: this.usuarioAulaFavoritada.id,
+        aulaId: this.aula.id,
+        usuarioId: this.usuarioLogado?.id
+      });
 
       this.store.dispatch(removerUsuarioAulaFavoritada({ usuarioAulaFavoritada: request }));
     }
@@ -330,19 +335,19 @@ export class VisualizarAulaComponent implements OnInit {
           this.trustedPdfUrl.push(this.sanitizer.bypassSecurityTrustResourceUrl(conteudo));
           this.trustedUrlImageHtml.push('');
           this.trustedVisualizarAulaHtml.push('');
-          this.linkYoutubeMany.push(new LinkYoutubeModel());
+          this.linkYoutubeMany.push(LinkYoutubeModel.create({}));
         }
         else if (item.aulaSessaoTipo != this.tipoSessaoAulaEnum.Imagem) {
           this.trustedVisualizarAulaHtml.push(this.sanitizer.bypassSecurityTrustHtml(item.conteudo));
           this.trustedUrlImageHtml.push('');
           this.trustedPdfUrl.push('');
-          this.linkYoutubeMany.push(new LinkYoutubeModel());
+          this.linkYoutubeMany.push(LinkYoutubeModel.create({}));
         }
         else if (item.aulaSessaoTipo == this.tipoSessaoAulaEnum.Imagem) {
           this.trustedVisualizarAulaHtml.push('');
           this.trustedPdfUrl.push('');
           this.trustedUrlImageHtml.push(this.sanitizer.bypassSecurityTrustUrl('data:image/png;base64,' + item.conteudo));
-          this.linkYoutubeMany.push(new LinkYoutubeModel());
+          this.linkYoutubeMany.push(LinkYoutubeModel.create({}));
         }
       });
     }
@@ -357,11 +362,12 @@ export class VisualizarAulaComponent implements OnInit {
   }
 
   cadastrarComentario() {
-    let aulaComentario: AulaComentarioModel = new AulaComentarioModel();
     if (this.usuarioLogado) {
-      aulaComentario.aulaId = this.aula.id;
-      aulaComentario.usuarioId = this.usuarioLogado.id;
-      aulaComentario.descricao = this.formComentario.get("comentario")?.value;
+      let aulaComentario: AulaComentarioModel = AulaComentarioModel.create({
+        aulaId: this.aula.id,
+        usuarioId: this.usuarioLogado.id,
+        descricao: this.formComentario.get("comentario")?.value
+      });
 
       this.store.dispatch(inserirAulaComentario({ aulaComentario: aulaComentario }));
     }
@@ -417,11 +423,11 @@ export class VisualizarAulaComponent implements OnInit {
 
   getWidget(): WidgetModel | undefined {
     if (this.usuarioLogado && this.usuarioLogado.id > 0) {
-      let widget: WidgetModel = new WidgetModel();
-      widget.aula = this.aula;
-      widget.usuarioId = this.usuarioLogado.id
-      widget.aulaId = this.aula.id;
-      return widget;
+      return WidgetModel.create({
+        aula: this.aula,
+        usuarioId: this.usuarioLogado.id,
+        aulaId: this.aula.id
+      });
     }
     return undefined;
   }

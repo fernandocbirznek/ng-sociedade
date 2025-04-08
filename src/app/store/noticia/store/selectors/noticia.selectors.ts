@@ -174,7 +174,7 @@ export const getProfessorInformacaoNoticiaMany = (professorId: number) => create
   getManyNoticiaByProfessorId(professorId), (
     noticiaMany: NoticiaViewModel[],
   ): InformacaoNoticiaViewModel => {
-    let informacaoNoticiaView = new InformacaoNoticiaViewModel();
+    let informacaoNoticiaView = InformacaoNoticiaViewModel.create({});
 
     informacaoNoticiaView.noticiaCriadaMany = noticiaMany.length;
 

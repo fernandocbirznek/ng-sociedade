@@ -11,4 +11,12 @@ export class AulaFilterModel {
 	tagMany: TagModel[] = [];
 
 	tipoOrdenarAulaFiltroEnum: TipoOrdenarAulaFiltroEnum = TipoOrdenarAulaFiltroEnum.None;
+
+	protected constructor(item?: Partial<AulaFilterModel>) {
+        Object.assign(this, item);
+    }
+
+    static create(item: Partial<AulaFilterModel>): AulaFilterModel {
+        return new AulaFilterModel(item);
+    }
 }

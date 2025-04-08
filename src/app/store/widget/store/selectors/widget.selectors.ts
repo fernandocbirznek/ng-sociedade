@@ -45,13 +45,12 @@ export const getWidgetMany = createSelector(
   widgetCursarMany: WidgetModel[],
   widgetCursandoMany: WidgetModel[],
   widgetConcluidoMany: WidgetModel[],
-  ) => {
-    let widgetMany : WidgetViewModel = new WidgetViewModel();
-    widgetMany.widgetConcluido = widgetConcluidoMany;
-    widgetMany.widgetCursando = widgetCursandoMany;
-    widgetMany.widgetCursar = widgetCursarMany;
-    
-    return widgetMany;
+  ) => {   
+    return WidgetViewModel.create({
+      widgetConcluido: widgetConcluidoMany,
+      widgetCursando: widgetCursandoMany,
+      widgetCursar: widgetCursarMany
+    });
   }
 )
 
@@ -63,10 +62,11 @@ export const getOneInformacaoAlunoWidget = createSelector(
   widgetCursandoMany: WidgetModel[],
   widgetConcluidoMany: WidgetModel[],
   ):InformacaoWidgetAlunoViewModel => {
-    let informacaoAulaAluno : InformacaoWidgetAlunoViewModel = new InformacaoWidgetAlunoViewModel();
-    informacaoAulaAluno.aulaConcluidoMany = widgetConcluidoMany.length;
-    informacaoAulaAluno.aulaCursandoMany = widgetCursandoMany.length;
-    informacaoAulaAluno.aulaParaCursarMany = widgetCursarMany.length;
+    let informacaoAulaAluno : InformacaoWidgetAlunoViewModel = InformacaoWidgetAlunoViewModel.create({
+      aulaConcluidoMany: widgetConcluidoMany.length,
+      aulaCursandoMany: widgetCursandoMany.length,
+      aulaParaCursarMany: widgetCursarMany.length
+    });
     
     return informacaoAulaAluno;
   }

@@ -3,14 +3,12 @@ import { LinkYoutubeModel } from "../../../models";
 
 export class AulaHelpers {
     static getLinkYoutube(item: string, sanitizer: DomSanitizer): LinkYoutubeModel {
-        let linkYoutube: LinkYoutubeModel = new LinkYoutubeModel();
-
-        linkYoutube.src = sanitizer.bypassSecurityTrustResourceUrl(AulaHelpers.getSrcLink(item));
-        linkYoutube.width = AulaHelpers.getWidthLink(item);
-        linkYoutube.height = AulaHelpers.getHeightLink(item);
-        linkYoutube.title = AulaHelpers.getTitleLink(item);
-
-        return linkYoutube;
+        return LinkYoutubeModel.create({
+            src: sanitizer.bypassSecurityTrustResourceUrl(AulaHelpers.getSrcLink(item)),
+            width: AulaHelpers.getWidthLink(item),
+            height: AulaHelpers.getHeightLink(item),
+            title: AulaHelpers.getTitleLink(item),
+        });
     }
 
     private static getSrcLink(item: string): string {

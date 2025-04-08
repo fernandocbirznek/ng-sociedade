@@ -81,12 +81,14 @@ export class NovaNoticiaComponent implements OnInit {
   }
 
   requestCriarNoticia() {
-    let request: NoticiaRequestModel = new NoticiaRequestModel();
-    request.titulo = this.formGroupNoticia.get("formTitulo")?.value;
-    request.resumo = this.formGroupNoticia.get("formResumo")?.value;
-    request.conteudo = this.formGroupNoticia.get("formConteudo")?.value;
-    request.usuarioCadastroId = this.usuarioLogado!.id;
-    request.areaInteresseMany = this.areaInteresseSelecionado;
+    let request: NoticiaRequestModel = NoticiaRequestModel.create({
+      titulo: this.formGroupNoticia.get("formTitulo")?.value,
+      resumo: this.formGroupNoticia.get("formResumo")?.value,
+      conteudo: this.formGroupNoticia.get("formConteudo")?.value,
+      usuarioCadastroId: this.usuarioLogado!.id,
+      areaInteresseMany: this.areaInteresseSelecionado
+    });
+
     this.formGroupNoticia.reset();
     this.areaInteresseSelecionado = [];
     this.store.dispatch(inserirNoticia({ noticia: request }));

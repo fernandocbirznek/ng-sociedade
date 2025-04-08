@@ -7,4 +7,12 @@ export class UsuarioPerfilModel {
     foto: File | undefined = undefined;
     hobbie: string | undefined = undefined;
     usuarioId: number = 0;
+
+    protected constructor(item?: Partial<UsuarioPerfilModel>) {
+        Object.assign(this, item);
+    }
+
+    static create(item: Partial<UsuarioPerfilModel>): UsuarioPerfilModel {
+        return new UsuarioPerfilModel(item);
+    }
 }

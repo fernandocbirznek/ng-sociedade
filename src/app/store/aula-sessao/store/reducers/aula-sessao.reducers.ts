@@ -106,15 +106,11 @@ export const aulaSessaoReducer = createReducer(
     };
   }),
   on(actions.inserirAulaSessaoSuccess, (state, action) => {
-    let aulaSessao = new AulaSessaoModel();
-    aulaSessao.aulaId = action.aulaSessao.aulaId;
-    aulaSessao.titulo = action.aulaSessao.titulo;
-    aulaSessao.ordem = action.aulaSessao.ordem;
-    aulaSessao.id = action.response.id;
-    aulaSessao.conteudo = action.aulaSessao.conteudo;
-    aulaSessao.favoritado = action.aulaSessao.favoritado;
-    aulaSessao.aulaSessaoTipo = action.aulaSessao.aulaSessaoTipo;
-    aulaSessao.dataCadastro = action.response.dataCadastro;
+    let aulaSessao = AulaSessaoModel.create({
+      ...action.aulaSessao,
+      id: action.response.id,
+      dataCadastro: action.response.dataCadastro
+    });
 
     let itens = [...state.aulaSessao, aulaSessao];
 
@@ -148,18 +144,12 @@ export const aulaSessaoReducer = createReducer(
   on(actions.atualizarAulaSessaoSuccess, (state, action) => {
     let itens = [...state.aulaSessao].map(item => {
       if(item.id == action.aulaSessao.id) {
-        let aulaSessao = new AulaSessaoModel();
-        aulaSessao.aulaId = action.aulaSessao.aulaId;
-        aulaSessao.titulo = action.aulaSessao.titulo;
-        aulaSessao.ordem = action.aulaSessao.ordem;
-        aulaSessao.id = action.aulaSessao.id;
-        aulaSessao.conteudo = action.aulaSessao.conteudo;
-        aulaSessao.favoritado = action.aulaSessao.favoritado;
-        aulaSessao.aulaSessaoTipo = action.aulaSessao.aulaSessaoTipo;
-        aulaSessao.dataCadastro = action.aulaSessao.dataCadastro;
-        aulaSessao.dataAtualizacao = action.response.dataAtualizacao;
-        return aulaSessao;
+        return AulaSessaoModel.create({
+          ...action.aulaSessao,
+          dataAtualizacao: action.response.dataAtualizacao
+        });
       }
+
       return item;
     });
 
@@ -264,19 +254,12 @@ export const aulaSessaoReducer = createReducer(
         .map(item => {
           let aulaSessao = action.aulaSessaoOrdemRequest.aulaSessaoMany.find(aulaSessao => aulaSessao.id == item.id);
           if (aulaSessao) {
-            let aulaSessaoAtualizada = new AulaSessaoModel();
-            aulaSessaoAtualizada.aulaId = item.aulaId;
-            aulaSessaoAtualizada.aulaSessaoTipo = item.aulaSessaoTipo;
-            aulaSessaoAtualizada.conteudo = item.conteudo;
-            aulaSessaoAtualizada.dataAtualizacao = action.response;
-            aulaSessaoAtualizada.dataCadastro = item.dataCadastro;
-            aulaSessaoAtualizada.favoritado = item.favoritado;
-            aulaSessaoAtualizada.id = item.id;
-            aulaSessaoAtualizada.ordem = aulaSessao.ordem;
-            aulaSessaoAtualizada.titulo = item.titulo;
-
-            return aulaSessao;
+            return AulaSessaoModel.create({
+              ...item,
+              ordem: aulaSessao.ordem
+            });
           }
+
           return item;
         });
    

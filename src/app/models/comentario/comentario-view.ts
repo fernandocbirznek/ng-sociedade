@@ -5,8 +5,16 @@ import { ForumTopicoReplicaModel } from "../forum-topico-replica";
 export class ComentarioView {
     trustedHtml: SafeHtml = '';
     forumTopicoComentario: ForumTopicoRespostaViewModel = new ForumTopicoRespostaViewModel();
-    forumTopicoReplicaComentario: ForumTopicoReplicaModel = new ForumTopicoReplicaModel();
+    forumTopicoReplicaComentario: ForumTopicoReplicaModel = ForumTopicoReplicaModel.create({});
 
     usuarioNome: string = '';
     usuarioFoto: File | undefined = undefined;
+
+    protected constructor(item?: Partial<ComentarioView>) {
+        Object.assign(this, item);
+    }
+
+    static create(item: Partial<ComentarioView>): ComentarioView {
+        return new ComentarioView(item);
+    }
 }

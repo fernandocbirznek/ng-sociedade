@@ -70,12 +70,13 @@ export class AtualizarForumTopicoReplicaComponent implements OnInit {
 
   requestAtualizarForumTopico() {
     if (this.usuarioLogado && this.usuarioLogado.id > 0)  {
-      let request: ForumTopicoReplicaModel = new ForumTopicoReplicaModel();
-      request.id = this.data.forumTopicoReplica.id;
-      request.descricao = this.formGroupForumTopicoReplica.get("formConteudoReplica")?.value;
-      request.usuarioId = this.usuarioLogado.id;
-      request.dataCadastro = this.data.forumTopicoReplica.dataCadastro;
-      request.forumTopicoId = this.data.forumTopicoReplica.forumTopicoId;
+      let request: ForumTopicoReplicaModel = ForumTopicoReplicaModel.create({
+        id: this.data.forumTopicoReplica.id,
+        descricao: this.formGroupForumTopicoReplica.get("formConteudoReplica")?.value,
+        usuarioId: this.usuarioLogado.id,
+        dataCadastro: this.data.forumTopicoReplica.dataCadastro,
+        forumTopicoId: this.data.forumTopicoReplica.forumTopicoId
+      });
 
       this.formGroupForumTopicoReplica.reset();
 

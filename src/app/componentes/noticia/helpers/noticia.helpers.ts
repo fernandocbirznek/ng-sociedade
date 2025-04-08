@@ -32,11 +32,10 @@ export class NoticiaHelpers {
     }
 
     static getSelectedItem(nome: string, id: number, iconName: string): NoticiaFilterSelectedModel {
-        let noticiaFilterSelectedModel = new NoticiaFilterSelectedModel();
-        noticiaFilterSelectedModel.filtroNome = nome;
-        noticiaFilterSelectedModel.id = id;
-        noticiaFilterSelectedModel.matIconName = iconName;
-
-        return noticiaFilterSelectedModel;
+        return NoticiaFilterSelectedModel.create({
+            filtroNome: nome,
+            id: id,
+            matIconName: iconName
+        });
     }
 }

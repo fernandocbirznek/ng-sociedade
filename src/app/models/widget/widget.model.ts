@@ -8,4 +8,12 @@ export class WidgetModel {
 	aula: AulaModel | undefined = undefined;
     usuarioId: number = 0;
     aulaId: number = 0;
+
+    protected constructor(item?: Partial<WidgetModel>) {
+        Object.assign(this, item);
+    }
+
+    static create(item: Partial<WidgetModel>): WidgetModel {
+        return new WidgetModel(item);
+    }
 }

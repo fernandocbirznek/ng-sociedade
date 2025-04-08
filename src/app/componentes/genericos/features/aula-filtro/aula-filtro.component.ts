@@ -24,7 +24,7 @@ export class AulaFiltroComponent implements OnInit {
 
   aulaFilterSubscription$: Subscription = new Subscription();
   aulaFilter$: Observable<AulaFilterModel> = new Observable<AulaFilterModel>();
-  aulaFilter: AulaFilterModel = new AulaFilterModel();
+  aulaFilter: AulaFilterModel = AulaFilterModel.create({});
 
   tagManySubscription$: Subscription = new Subscription();
   tagMany$: Observable<TagModel[]> = new Observable<TagModel[]>();
