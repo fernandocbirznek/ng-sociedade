@@ -12,12 +12,27 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     --orange-postit: #FFE5CC;
 }
 
-
 .css-toast {
     margin: 0 !important;
     position: absolute;
     right: 25px;
     top: 60px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Merriweather', serif;
+}
+
+p {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.g-fonte-titulo {
+    font-family: 'Merriweather', serif;
+}
+
+.g-fonte-conteudo {
+    font-family: 'Montserrat', sans-serif;
 }
 
 .g-full-width {

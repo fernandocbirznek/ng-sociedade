@@ -1,6 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 
 import { 
+    AtualizarManyAulaSessaoFavoritadaCommand,
     TipoSessaoAulaEnum,
     UsuarioAulaSessaoFavoritadoModel,
 } from '../../../../models';
@@ -53,4 +54,19 @@ export const removerUsuarioAulaSessaoFavoritadoFailure = createAction(
 export const alterarTipoSessaoAulaEnum = createAction(
     '[UsuarioAulaSessaoFavoritadoModel] alterarTipoSessaoAulaEnum',
     props<{ tipoSessaoAulaEnum: TipoSessaoAulaEnum }>()
+);
+
+export const atualizarManyAulaSessaoFavoritada = createAction(
+    '[AtualizarManyAulaSessaoFavoritada] atualizarManyAulaSessaoFavoritada',
+    props<{ atualizarAulaSessaoFavoritadaMany: AtualizarManyAulaSessaoFavoritadaCommand[] }>()
+);
+
+export const atualizarManyAulaSessaoFavoritadaSuccess = createAction(
+    '[AtualizarManyAulaSessaoFavoritada] atualizarManyAulaSessaoFavoritada Success',
+    props<{ atualizarAulaSessaoFavoritadaMany: AtualizarManyAulaSessaoFavoritadaCommand[] }>()
+);
+
+export const atualizarManyAulaSessaoFavoritadaFailure = createAction(
+    '[AtualizarManyAulaSessaoFavoritada] atualizarManyAulaSessaoFavoritada Failure',
+    props<{ error: any }>()
 );

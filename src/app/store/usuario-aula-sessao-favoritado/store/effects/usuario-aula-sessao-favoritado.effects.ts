@@ -46,6 +46,19 @@ export class UsuarioAulaSessaoFavoritadoEffects {
     );
   });
 
+  atualizarManyAulaSessaoFavoritada$ = createEffect(() => {
+    return this.actions$.pipe( 
+      ofType(actions.atualizarManyAulaSessaoFavoritada),
+      concatMap((action) =>
+        this.usuarioAulaSessaoFavoritadoService.atualizarUsuarioAulaSessaoFavoritado(action.atualizarAulaSessaoFavoritadaMany).pipe(
+          map(response => {
+            return actions.atualizarManyAulaSessaoFavoritadaSuccess({ atualizarAulaSessaoFavoritadaMany: action.atualizarAulaSessaoFavoritadaMany })
+          }),
+          catchError(error => of(actions.atualizarManyAulaSessaoFavoritadaFailure({ error }))))
+      )
+    );
+  });
+
   removerUsuarioAulaSessaoFavoritado$ = createEffect(() => {
     return this.actions$.pipe( 
       ofType(actions.removerUsuarioAulaSessaoFavoritado),

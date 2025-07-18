@@ -40,7 +40,10 @@ export const getManyUsuarioAulaSessaoFavoritado = createSelector(
     let itens = state
     .itens
     .map(item => {
-      let aulaSessaoModel: UsuarioAulaSessaoFavoritadoModel = UsuarioAulaSessaoFavoritadoModel.create(item);
+      let aulaSessaoModel: UsuarioAulaSessaoFavoritadoModel = UsuarioAulaSessaoFavoritadoModel
+        .create({
+          ...item
+        });
 
       if(item.arquivoConteudo) {
         const byteArray = new Uint8Array(

@@ -4,6 +4,7 @@ import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
 
 import { 
+    AtualizarManyAulaSessaoFavoritadaCommand,
     UsuarioAulaSessaoFavoritadoModel, 
 } from "../../models";
 import { environment } from "../../../environments/environment";
@@ -16,6 +17,7 @@ export class UsuarioAulaSessaoFavoritadoService {
     private readonly baseUrl = `${environment.aulaApiUrl}/AulaSessaoFavoritada`;
     urlSelecionarManyAulaSessaoFavoritadoByUsuarioId = `${this.baseUrl}/selecionar-many-aula-sessao-favoritado`;
     urlInserirUsuarioAulaSessaoFavoritado = `${this.baseUrl}/inserir`;
+    urlAtualizarUsuarioAulaSessaoFavoritado = `${this.baseUrl}/atualizar`;
     urlRemoverUsuarioAulaSessaoFavoritado = `${this.baseUrl}/excluir`;
 
     constructor(
@@ -31,6 +33,14 @@ export class UsuarioAulaSessaoFavoritadoService {
         return this.httpClient.post<UsuarioAulaSessaoFavoritadoModel>(
             this.urlInserirUsuarioAulaSessaoFavoritado, 
             JSON.stringify(usuarioAulaSessaoFavoritado), 
+            this.buildHttpOptions()
+        );
+    }
+
+    atualizarUsuarioAulaSessaoFavoritado(itens: AtualizarManyAulaSessaoFavoritadaCommand[]): Observable<UsuarioAulaSessaoFavoritadoModel> {
+        return this.httpClient.put<UsuarioAulaSessaoFavoritadoModel>(
+            this.urlAtualizarUsuarioAulaSessaoFavoritado, 
+            JSON.stringify({ aulaSessaoFavoritadaMany: itens }), 
             this.buildHttpOptions()
         );
     }

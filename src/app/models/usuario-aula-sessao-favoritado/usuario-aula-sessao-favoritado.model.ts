@@ -6,6 +6,9 @@ export class UsuarioAulaSessaoFavoritadoModel extends AulaSessaoModel {
 
     arquivoConteudo: any | undefined = undefined;
 
+    muralPosicaoX: number = 0;
+    muralPosicaoY: number = 0;
+
     public constructor(item?: Partial<UsuarioAulaSessaoFavoritadoModel>) {
         super(item);
         Object.assign(this, item);

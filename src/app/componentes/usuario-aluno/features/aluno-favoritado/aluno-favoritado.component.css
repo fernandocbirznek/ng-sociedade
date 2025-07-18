@@ -1,6 +1,5 @@
 .container-favoritado-many {
     padding: 20px;
-    width: 100%;
     height: 100%;
     gap: 50px;
 }
@@ -131,4 +130,35 @@
     width: 100%;
     margin-bottom: 20px;
     height: 100%;
+}
+
+.mural-wrapper {
+  width: 100%;
+  height: 600px; /* ou 100vh, se for tela cheia */
+  overflow: auto;
+  border: 3px solid #bbb;
+  border-radius: 12px;
+  background-color: #fdfaf6; /* tom de papel ou cortiça leve */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  position: relative;
+  cursor: grab;
+}
+
+.mural-wrapper:active {
+  cursor: grabbing;
+}
+
+.mural-content {
+  position: relative;
+  width: 2000px;
+  height: 2000px;
+  background-image: linear-gradient(to right, #eee 1px, transparent 1px),
+                    linear-gradient(to bottom, #eee 1px, transparent 1px);
+  background-size: 200px 200px; /* tamanho dos quadrados da grade */
+  transform-origin: 0 0;
+}
+
+.card-mural {
+  position: absolute;
+  cursor: move;
 }

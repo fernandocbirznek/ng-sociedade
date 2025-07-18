@@ -130,4 +130,44 @@ export const usuarioAulaSessaoFavoritadoReducer = createReducer(
         tipoSessaoAulaEnum: action.tipoSessaoAulaEnum
     };
   }),
+
+  on(actions.atualizarManyAulaSessaoFavoritada, state => {
+    return { 
+        ...state, 
+        isLoading: true, 
+        isSuccess: false, 
+        isFailure: false, 
+        error: "" 
+    };
+  }),
+  on(actions.atualizarManyAulaSessaoFavoritadaSuccess, (state, action) => {
+    let itens = state.itens.map(item => {
+      let aulaSessaoSessaoFavoritada = action
+        .atualizarAulaSessaoFavoritadaMany
+        .find(aulaSessaoSessaoFavoritada => aulaSessaoSessaoFavoritada.id == item.id);
+
+      if (aulaSessaoSessaoFavoritada)
+        return UsuarioAulaSessaoFavoritadoModel.create(aulaSessaoSessaoFavoritada);
+
+      return UsuarioAulaSessaoFavoritadoModel.create(item);
+    })
+
+    return { 
+        ...state, 
+        itens: itens,
+        isLoading: false, 
+        isSuccess: true, 
+        isFailure: false,
+        error: ""
+    };
+  }),
+  on(actions.atualizarManyAulaSessaoFavoritadaFailure, (state) => {
+    return { 
+        ...state, 
+        isLoading: false, 
+        isSuccess: false, 
+        isFailure: true, 
+        mensagem: "Falha em atualizar as sessões favoritadas" 
+    };
+  }),
 );
